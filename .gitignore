@@ -1,0 +1,7 @@
+node_modules
+dist
+*.local
+.vite
+
+# Third-party reference documents are kept locally, not redistributed via the repo.
+references/**/*.pdf

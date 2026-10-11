@@ -1,0 +1,227 @@
+/*
+ * Minimal UI layer. System fonts only: no web-font request, ever (PROJECT.md §20).
+ * Visual language: dark neutral, quiet, large click targets for a lectern mouse.
+ */
+:root {
+  --bg: #0b0c0e;
+  --panel: rgba(16, 18, 21, 0.82);
+  --line: rgba(255, 255, 255, 0.12);
+  --text: #d9dcdf;
+  --text-dim: #8b9096;
+  --accent: #e8a33d;
+  --radius: 10px;
+  --font: system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --mono: ui-monospace, 'Cascadia Mono', Consolas, 'Courier New', monospace;
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+}
+
+.app {
+  position: fixed;
+  inset: 0;
+}
+
+/* R3F sizes the canvas to its parent; the parent is the full viewport. */
+.scene-canvas {
+  position: absolute !important;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  user-select: none;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background: var(--bg);
+  z-index: 20;
+}
+
+/* Loading / ready ---------------------------------------------------------- */
+.loading {
+  transition: opacity 700ms ease, visibility 0s linear 0s;
+}
+
+.loading.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 700ms ease, visibility 0s linear 700ms;
+}
+
+.loading__mark {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 2px solid var(--line);
+  border-top-color: var(--text-dim);
+  animation: spin 1.1s linear infinite;
+}
+
+.loading__text {
+  margin: 0;
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  color: var(--text-dim);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Failure screens ------------------------------------------------------------ */
+.status {
+  padding: 2rem;
+  text-align: center;
+  z-index: 30;
+}
+
+.status h1 {
+  margin: 0;
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
+  font-weight: 600;
+}
+
+.status p {
+  margin: 0;
+  max-width: 44rem;
+  line-height: 1.5;
+  color: var(--text-dim);
+}
+
+.status__detail {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+}
+
+.status__hint code,
+.status__detail {
+  color: var(--text);
+}
+
+.status__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+/* Buttons ------------------------------------------------------------------- */
+button {
+  min-height: 44px;
+  padding: 0 1.1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 150ms ease, border-color 150ms ease;
+}
+
+button:hover {
+  background: rgba(255, 255, 255, 0.09);
+}
+
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+button[aria-pressed='true'] {
+  border-color: var(--accent);
+  color: #fff;
+}
+
+/* Setup controls (auto-hiding) ------------------------------------------------ */
+.setup {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem;
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) + 4px);
+  background: var(--panel);
+  z-index: 10;
+  transition: opacity 400ms ease;
+}
+
+.setup.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.setup__group {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.setup__label {
+  padding: 0 0.4rem 0 0.5rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+/* Diagnostics (dev / ?debug only) --------------------------------------------- */
+.diagnostics {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 40;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.72);
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 1.45;
+  color: #b9f5c8;
+  pointer-events: auto;
+}
+
+.diagnostics pre {
+  margin: 0 0 8px;
+  font: inherit;
+  white-space: pre;
+}
+
+.diagnostics button {
+  min-height: 28px;
+  padding: 0 0.6rem;
+  font-family: var(--font);
+  font-size: 12px;
+}

@@ -1,0 +1,124 @@
+{
+  "high": {
+    "loadToReadyMs": 2182,
+    "readyWaitMs": 1476,
+    "frames": {
+      "frames": 241,
+      "fps": 60.1,
+      "avgMs": 16.63,
+      "p95Ms": 16.8,
+      "maxMs": 16.9
+    },
+    "diagnostics": "fps        60.1\nframe ms   avg 16.63  worst 17.20\ndraw calls 16\ntriangles  14,752\ngeo / tex  9 / 5   programs 3\nbuffer     1920x1080 @ dpr 1.00\nquality    high (default)\ngpu        ANGLE (Intel, Intel(R) Iris(R) Plus Graphics (0x00008A52) Direct3D11 vs_5_0 ps_5_0, D3D11)\ncamera     explore\n  pos      [40.00, 26.00, 66.00]\n  target   [-7.00, 12.00, -2.00]\n  fov      35.0",
+    "canvas": {
+      "w": 1920,
+      "h": 1080,
+      "cssW": 1920,
+      "cssH": 1080
+    },
+    "poseAfterOrbit": "fps        60.2\nframe ms   avg 16.61  worst 17.20\ndraw calls 16\ntriangles  14,752\ngeo / tex  9 / 5   programs 3\nbuffer     1920x1080 @ dpr 1.00\nquality    high (default)\ngpu        ANGLE (Intel, Intel(R) Iris(R) Plus Graphics (0x00008A52) Direct3D11 vs_5_0 ps_5_0, D3D11)\ncamera     explore\n  pos      [63.45, 14.85, 7.51]\n  target   [-7.00, 12.00, -2.00]\n  fov      35.0",
+    "authorityMidReset": "transition",
+    "poseAfterReset": "fps        60.1\nframe ms   avg 16.64  worst 17.60\ndraw calls 16\ntriangles  14,752\ngeo / tex  9 / 5   programs 3\nbuffer     1920x1080 @ dpr 1.00\nquality    high (default)\ngpu        ANGLE (Intel, Intel(R) Iris(R) Plus Graphics (0x00008A52) Direct3D11 vs_5_0 ps_5_0, D3D11)\ncamera     explore\n  pos      [40.00, 26.00, 66.00]\n  target   [-7.00, 12.00, -2.00]\n  fov      35.0",
+    "log": {
+      "console": [
+        "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.",
+        "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.",
+        "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.",
+        "[log] THREE.WebGLRenderer: Context Lost.",
+        "[warn] [BWRX-300] WebGL context lost.",
+        "[log] THREE.WebGLRenderer: Context Restored.",
+        "[info] [BWRX-300] WebGL context restored; rebuilding the scene.",
+        "[warn] WebGL: INVALID_OPERATION: delete: object does not belong to this context",
+        "[warn] WebGL: INVALID_OPERATION: delete: object does not belong to this context",
+        "[warn] WebGL: INVALID_OPERATION: delete: object does not belong to this context",
+        "[warn] WebGL: INVALID_OPERATION: delete: object does not belong to this context",
+        "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+      ],
+      "pageErrors": [],
+      "failed": [],
+      "external": []
+    }
+  },
+  "qualitySwitch": {
+    "url": "http://localhost:4173/?debug=&quality=low",
+    "switchToReadyMs": 1208,
+    "poseBefore": "[5.88, 31.24, 78.58]",
+    "poseAfter": "[5.78, 31.25, 78.59]",
+    "diagnostics": "fps        60.1\nframe ms   avg 16.63  worst 17.40\ndraw calls 10\ntriangles  1,818\ngeo / tex  11 / 7   programs 6\nbuffer     1920x1080 @ dpr 1.00\nquality    low (user)\ngpu        ANGLE (Intel, Intel(R) Iris(R) Plus Graphics (0x00008A52) Direct3D11 vs_5_0 ps_5_0, D3D11)\ncamera     explore\n  pos      [5.78, 31.25, 78.59]\n  target   [-7.00, 12.00, -2.00]\n  fov      35.0"
+  },
+  "resize1024": {
+    "w": 1024,
+    "h": 768,
+    "cssW": 1024,
+    "cssH": 768
+  },
+  "resize1080": {
+    "w": 1920,
+    "h": 1080,
+    "cssW": 1920,
+    "cssH": 1080
+  },
+  "dpr2High": {
+    "canvas": {
+      "w": 2240,
+      "h": 1260,
+      "cssW": 1280,
+      "cssH": 720
+    },
+    "diag": "buffer     2240x1260 @ dpr 1.75"
+  },
+  "setupVisible": true,
+  "setupHiddenAfterIdle": true,
+  "contextLost": {
+    "status": "context-lost",
+    "overlay": "Graphics reset"
+  },
+  "contextRestoreToReadyMs": 235,
+  "low": {
+    "frames": {
+      "frames": 241,
+      "fps": 60.1,
+      "avgMs": 16.63,
+      "p95Ms": 16.8,
+      "maxMs": 17.3
+    },
+    "diagnostics": "fps        60.2\nframe ms   avg 16.61  worst 17.00\ndraw calls 10\ntriangles  1,818\ngeo / tex  11 / 7   programs 6\nbuffer     1920x1080 @ dpr 1.00\nquality    low (query)\ngpu        ANGLE (Intel, Intel(R) Iris(R) Plus Graphics (0x00008A52) Direct3D11 vs_5_0 ps_5_0, D3D11)\ncamera     explore\n  pos      [40.00, 26.00, 66.00]\n  target   [-7.00, 12.00, -2.00]\n  fov      35.0",
+    "log": {
+      "console": [
+        "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+      ],
+      "pageErrors": [],
+      "failed": [],
+      "external": []
+    }
+  },
+  "noWebgl2": {
+    "heading": "3D view unavailable on this computer",
+    "log": {
+      "console": [],
+      "pageErrors": [],
+      "failed": [],
+      "external": []
+    }
+  },
+  "crash": {
+    "status": "error",
+    "heading": "The 3D scene stopped",
+    "buttons": [
+      "Restart 3D",
+      "Restart in low quality",
+      "Reload page"
+    ],
+    "log": {
+      "console": [
+        "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.",
+        "[error] THREE.WebGLRenderer: Simulated GPU failure (test)",
+        "[error] Error: Simulated GPU failure (test)",
+        "[error] [BWRX-300] 3D scene crashed: Error: Simulated GPU failure (test) \n    at sy (http://localhost:4173/assets/index-BirojNgh.js:4240:19314)\n    at Fg (http://localhost:4173/assets/index-BirojNgh.js:4229:59353)\n    at cy (<anonymous>)\n    at QT (http://localhost:4173/assets/index-BirojNgh.js:4307:3557)\n    at iT (http://localhost:4173/assets/index-BirojNgh.js:4240:115891)\n    at div (<anonymous>)\n    at gE (http://localhost:4173/assets/index-BirojNgh.js:4307:9599)"
+      ],
+      "pageErrors": [],
+      "failed": [],
+      "external": []
+    }
+  }
+}
