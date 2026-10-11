@@ -70,8 +70,11 @@ export const QUALITY_PRESETS: Record<QualityLevel, QualityPreset> = {
   },
 };
 
-/** Radial segment counts for round procedural geometry, per LOD. */
-export const RADIAL_SEGMENTS: Record<QualityPreset['geometryLod'], number> = { high: 64, low: 24 };
+/**
+ * Radial segments for a full circle of large round structures (a half-section gets half).
+ * Even the low count keeps a 37 m cylinder's silhouette smooth at presentation distance.
+ */
+export const RADIAL_SEGMENTS: Record<QualityPreset['geometryLod'], number> = { high: 96, low: 48 };
 
 export const QUALITY_QUERY_PARAM = 'quality';
 

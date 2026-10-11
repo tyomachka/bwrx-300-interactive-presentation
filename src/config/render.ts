@@ -26,10 +26,8 @@ export const RENDER = {
 /** Dark neutral palette (PROJECT.md §5, §17). */
 export const PALETTE = {
   background: '#0b0c0e',
-  /** Floor colour at the centre of the light pool; it falls off to black (StudioEnvironment). */
+  /** Ground colour at the centre of the light pool; it falls off to black (plant/materials). */
   ground: '#2c2f32',
-  /** Display plinth under the placeholder composition. */
-  plinth: '#25272a',
   concrete: '#74777a',
   steel: '#a3a8ad',
   paintedEquipment: '#4a5866',
@@ -37,7 +35,11 @@ export const PALETTE = {
   accent: '#e8a33d',
 } as const;
 
-/** Linear fog that dissolves the ground plane into the background, so no horizon edge shows. */
-export const FOG = { near: 120, far: 380 } as const;
+/**
+ * Linear fog that dissolves the ground into the background, so no horizon edge shows.
+ * Starts beyond the power block as seen from the hero camera (~250 m away).
+ */
+export const FOG = { near: 300, far: 820 } as const;
 
-export const GROUND_RADIUS = 500;
+/** Radius of the studio floor disc around the site (m); its edge sits deep in the fog. */
+export const FLOOR_RADIUS = 1000;

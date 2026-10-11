@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { cameraDirector } from '../camera/cameraDirector';
+import { showReviewView } from '../camera/reviewViews';
+import { REVIEW_VIEWS } from '../config/reviewViews';
 import { useAppStore } from '../state/store';
 import { diagnosticsSample as s } from './diagnostics';
 
@@ -17,6 +19,7 @@ export default function DiagnosticsOverlay() {
   const caps = useAppStore((st) => st.caps);
   const quality = useAppStore((st) => st.quality);
   const qualityReason = useAppStore((st) => st.qualityReason);
+  const sectionReview = useAppStore((st) => st.sectionReview);
 
   useEffect(() => {
     const draw = () => {
@@ -58,9 +61,21 @@ export default function DiagnosticsOverlay() {
   return (
     <div className="diagnostics" aria-hidden="true">
       <pre ref={pre} />
-      <button type="button" onClick={copyPose}>
-        {copied ? 'Copied' : 'Copy pose'}
-      </button>
+      <div className="diagnostics__row">
+        <button type="button" onClick={copyPose}>
+          {copied ? 'Copied' : 'Copy pose'}
+        </button>
+        <button type="button" aria-pressed={sectionReview} title="Shortcut: G" onClick={() => useAppStore.getState().setSectionReview(!sectionReview)}>
+          Section review
+        </button>
+      </div>
+      <div className="diagnostics__row" title="Shortcut: V cycles">
+        {REVIEW_VIEWS.map((view) => (
+          <button key={view.camera} type="button" onClick={() => void showReviewView(view)}>
+            {view.label}
+          </button>
+        ))}
+      </div>
     </div>
   );
 }

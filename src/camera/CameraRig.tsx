@@ -10,6 +10,7 @@ import { useEffect, useMemo } from 'react';
 import { MathUtils, PerspectiveCamera, Vector3 } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { ORBIT } from '../config/camera';
+import { useAppStore } from '../state/store';
 import { cameraDirector } from './cameraDirector';
 
 const _clamped = new Vector3();
@@ -38,10 +39,10 @@ export function CameraRig() {
       maxPolarAngle: ORBIT.maxPolarAngle,
     });
 
-    // Limited pan: keep the orbit target in a box. Camera and target shift together,
-    // so the view never swings when the clamp engages.
-    const { min, max } = ORBIT.panBounds;
+    // Limited pan: keep the orbit target in a box (deeper while section review is on).
+    // Camera and target shift together, so the view never swings when the clamp engages.
     const clampTarget = () => {
+      const { min, max } = useAppStore.getState().sectionReview ? ORBIT.panBoundsSection : ORBIT.panBounds;
       const t = controls.target;
       _clamped.set(
         MathUtils.clamp(t.x, min[0], max[0]),

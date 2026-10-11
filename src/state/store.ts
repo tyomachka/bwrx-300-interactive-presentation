@@ -29,11 +29,17 @@ interface AppState {
   /** Diagnostics are compiled in for dev builds and for `?debug` in production. */
   debugAvailable: boolean;
   debugVisible: boolean;
+  /**
+   * Stage 2 review aid (dev / `?debug`): hide everything in front of the z = 0 plane so the
+   * below-grade shaft, containment and RPV can be inspected. Not the Stage 5 section system.
+   */
+  sectionReview: boolean;
 
   setQuality: (level: QualityLevel) => void;
   setStatus: (status: SceneStatus) => void;
   remountCanvas: () => void;
   toggleDebug: () => void;
+  setSectionReview: (on: boolean) => void;
 }
 
 const caps = detectGpuCapabilities();
@@ -48,6 +54,7 @@ export const useAppStore = create<AppState>()((set, get) => ({
   canvasKey: 0,
   debugAvailable: import.meta.env.DEV || debugParam,
   debugVisible: debugParam,
+  sectionReview: false,
 
   setQuality: (level) => {
     if (level === get().quality) return;
@@ -60,6 +67,7 @@ export const useAppStore = create<AppState>()((set, get) => ({
   toggleDebug: () => {
     if (get().debugAvailable) set((s) => ({ debugVisible: !s.debugVisible }));
   },
+  setSectionReview: (on) => set({ sectionReview: on }),
 }));
 
 export function useQualityPreset(): QualityPreset {

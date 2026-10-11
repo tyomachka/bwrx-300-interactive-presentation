@@ -219,6 +219,13 @@ button[aria-pressed='true'] {
   white-space: pre;
 }
 
+.diagnostics__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+
 .diagnostics button {
   min-height: 28px;
   padding: 0 0.6rem;

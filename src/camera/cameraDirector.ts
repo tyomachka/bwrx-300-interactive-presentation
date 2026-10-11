@@ -19,7 +19,7 @@ import gsap from 'gsap';
 import '../animation/clock';
 import { MathUtils, PerspectiveCamera, Spherical, Vector3 } from 'three';
 import type { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-import { CAMERA_STATES, CAMERA_TRANSITION, type CameraPose, type CameraStateId } from '../config/camera';
+import { CAMERA_STATES, CAMERA_TRANSITION, HOME_CAMERA_STATE, type CameraPose, type CameraStateId } from '../config/camera';
 
 export type CameraAuthority = 'explore' | 'transition' | 'cinematic';
 
@@ -70,7 +70,7 @@ export interface TransitionOptions {
 class CameraDirector {
   authority: CameraAuthority = 'explore';
   /** Live pose written by transitions and (later) the cinematic timeline. */
-  readonly pose: LivePose = { position: new Vector3(), target: new Vector3(), fov: CAMERA_STATES.home.fov };
+  readonly pose: LivePose = { position: new Vector3(), target: new Vector3(), fov: CAMERA_STATES[HOME_CAMERA_STATE].fov };
 
   private camera: PerspectiveCamera | null = null;
   private controls: OrbitControls | null = null;
@@ -82,7 +82,7 @@ class CameraDirector {
   attach(camera: PerspectiveCamera, controls: OrbitControls): void {
     this.camera = camera;
     this.controls = controls;
-    const start = this.parkedPose ?? CAMERA_STATES.home;
+    const start = this.parkedPose ?? CAMERA_STATES[HOME_CAMERA_STATE];
     this.parkedPose = null;
     this.snapTo(start);
   }
@@ -97,7 +97,7 @@ class CameraDirector {
 
   /** The pose currently on screen, as plain data (also used by the debug "copy pose" tool). */
   getPose(): CameraPose {
-    if (!this.camera) return CAMERA_STATES.home;
+    if (!this.camera) return CAMERA_STATES[HOME_CAMERA_STATE];
     const target = this.authority === 'explore' && this.controls ? this.controls.target : this.pose.target;
     return {
       position: this.camera.position.toArray() as CameraPose['position'],
@@ -141,7 +141,7 @@ class CameraDirector {
   }
 
   reset(): Promise<void> {
-    return this.transitionTo('home');
+    return this.transitionTo(HOME_CAMERA_STATE);
   }
 
   /** User grabbed the view mid-transition: stop where we are and give them control. */

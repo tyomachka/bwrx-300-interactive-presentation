@@ -1,10 +1,11 @@
 import { useEffect } from 'react';
 import { cameraDirector } from '../camera/cameraDirector';
+import { cycleReviewView } from '../camera/reviewViews';
 import { useAppStore } from '../state/store';
 
 /**
- * Global shortcuts (PROJECT.md §11). Only the Stage 1 subset is bound. Space, X, C, F,
- * S and Esc are reserved for later stages.
+ * Global shortcuts (PROJECT.md §11). Space, X, C, F, S and Esc are reserved for later
+ * stages. V and G are review aids, active only in dev builds or with `?debug`.
  *
  * Keys are matched by `event.code` (physical position), not `event.key`. On the
  * Lithuanian layout the number row types ą č ę ė ... without Shift, so `key === '1'`
@@ -17,6 +18,13 @@ const BINDINGS: Record<string, () => void> = {
   Digit2: () => useAppStore.getState().setQuality('low'),
   Numpad2: () => useAppStore.getState().setQuality('low'),
   Backquote: () => useAppStore.getState().toggleDebug(),
+  KeyV: () => {
+    if (useAppStore.getState().debugAvailable) void cycleReviewView();
+  },
+  KeyG: () => {
+    const { debugAvailable, sectionReview, setSectionReview } = useAppStore.getState();
+    if (debugAvailable) setSectionReview(!sectionReview);
+  },
 };
 
 function isTypingTarget(target: EventTarget | null): boolean {

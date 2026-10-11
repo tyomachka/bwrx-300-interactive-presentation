@@ -1,13 +1,15 @@
 /**
  * Studio / architectural lighting rig (PROJECT.md §17): key, soft fill, rim.
  *
- * Only the key light casts shadows, and only when the preset allows it. The shadow
- * frustum is fitted to the current composition; Stage 2 refits it to the plant footprint.
+ * Only the key light casts shadows, and only when the preset allows it. Its orthographic
+ * shadow frustum is fitted to the power block (≈150 m x 70 m) plus the section-review depth.
  */
 import { useQualityPreset } from '../state/store';
 
-/** Half-size (m) of the key light's orthographic shadow frustum. */
-const SHADOW_EXTENT = 42;
+/** Half-size (m) of the key light's shadow frustum, centred on the light target (origin). */
+const SHADOW_EXTENT = 135;
+/** Light direction unchanged from Stage 1 (approved look), pushed out to clear the site. */
+const KEY_POSITION: [number, number, number] = [150, 235, 115];
 
 export function LightingRig() {
   const preset = useQualityPreset();
@@ -22,18 +24,18 @@ export function LightingRig() {
         name="light.key"
         color="#fff3e6"
         intensity={2.4}
-        position={[45, 70, 35]}
+        position={KEY_POSITION}
         castShadow={preset.shadows}
         shadow-mapSize={[preset.shadowMapSize || 512, preset.shadowMapSize || 512]}
         shadow-radius={preset.shadowRadius}
-        shadow-bias={-0.0003}
-        shadow-normalBias={0.03}
+        shadow-bias={-0.0004}
+        shadow-normalBias={0.06}
         shadow-camera-left={-SHADOW_EXTENT}
         shadow-camera-right={SHADOW_EXTENT}
         shadow-camera-top={SHADOW_EXTENT}
         shadow-camera-bottom={-SHADOW_EXTENT}
-        shadow-camera-near={10}
-        shadow-camera-far={180}
+        shadow-camera-near={60}
+        shadow-camera-far={620}
       />
 
       {/* Rim: cool light from behind-left, separates silhouettes from the dark background. */}
