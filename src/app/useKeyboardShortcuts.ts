@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { heroShot } from '../animation/heroShot';
+import { masterSequence } from '../animation/masterSequence';
 import { resetPresentation } from '../animation/presentation';
 import { cycleRpvReview } from '../animation/rpvReview';
 import { clearSelection, toggleIsolate, toggleLabels, toggleSection, toggleXray } from '../interaction/exploreActions';
@@ -8,8 +9,11 @@ import { useAppStore } from '../state/store';
 
 /**
  * Global shortcuts (PROJECT.md §11). Explore (Stage 5): Esc clears the selection, X X-ray,
- * C section, I isolate, L labels, R full reset. Space, F and S stay reserved for later stages.
- * V, G, P, K and B are review aids, active only in dev builds or with `?debug`.
+ * C section, I isolate, L labels, R full reset. F and S stay reserved for later stages.
+ * Master sequence (Stage 6, review controls for now): Space play / pause, Home restart,
+ * , / . frame step, [ / ] previous / next beat.
+ * Space, Home, comma, period, brackets, V, G, P, K and B are active only in dev builds or with
+ * `?debug`.
  *
  * Keys are matched by `event.code` (physical position), not `event.key`. On the
  * Lithuanian layout the number row types ą č ę ė ... without Shift, so `key === '1'`
@@ -45,6 +49,17 @@ const BINDINGS: Record<string, () => void> = {
   KeyK: debugOnly(() => heroShot.togglePause()),
   // Stage 4 vessel review states: exterior, cutaway, core, control blades, steam region.
   KeyB: debugOnly(() => void cycleRpvReview()),
+  // Stage 6 master sequence.
+  Space: debugOnly(() => {
+    // A focused button would also take the key as a click.
+    if (document.activeElement instanceof HTMLButtonElement) document.activeElement.blur();
+    masterSequence.togglePause();
+  }),
+  Home: debugOnly(() => masterSequence.play()),
+  Comma: debugOnly(() => masterSequence.step(-1)),
+  Period: debugOnly(() => masterSequence.step(1)),
+  BracketLeft: debugOnly(() => masterSequence.jumpBeat(-1)),
+  BracketRight: debugOnly(() => masterSequence.jumpBeat(1)),
 };
 
 function isTypingTarget(target: EventTarget | null): boolean {

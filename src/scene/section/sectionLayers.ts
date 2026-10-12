@@ -153,19 +153,20 @@ export function setSectionCapDetail(detailed: boolean): void {
 /**
  * `vessel` = the RPV inside the opened containment; `reactor` = the vessel internals, drawn only
  * once the vessel cutaway opens; `turbineHall` (turbine deck and train) and `steamPath` (main
- * steam line) are shown by the Stage 2 section review or an Explore X-ray of their enclosure;
- * `review` = only the section review shows it (pools).
+ * steam line) are shown by the Stage 2 section review, an Explore X-ray of their enclosure or
+ * the master sequence; `pools` (cavity and isolation-condenser pools) once `poolsReveal` shows
+ * them in the cut building, or in the section review.
  */
-export type InteriorLevel = 'belowGrade' | 'building' | 'vessel' | 'reactor' | 'turbineHall' | 'steamPath' | 'review';
+export type InteriorLevel = 'belowGrade' | 'building' | 'vessel' | 'reactor' | 'turbineHall' | 'steamPath' | 'pools';
 
 const interiorGroups = new Map<Object3D, InteriorLevel>();
-const interiorOpen: Record<InteriorLevel, boolean> = { belowGrade: false, building: false, vessel: false, reactor: false, turbineHall: false, steamPath: false, review: false };
+const interiorOpen: Record<InteriorLevel, boolean> = { belowGrade: false, building: false, vessel: false, reactor: false, turbineHall: false, steamPath: false, pools: false };
 
 /**
  * Interior content another system needs drawn regardless of the cuts: Explore X-ray and isolation
  * ghost an enclosure, so what it encloses must be visible (interaction/exploreVisuals.ts).
  */
-export const interiorOverride: Record<InteriorLevel, boolean> = { belowGrade: false, building: false, vessel: false, reactor: false, turbineHall: false, steamPath: false, review: false };
+export const interiorOverride: Record<InteriorLevel, boolean> = { belowGrade: false, building: false, vessel: false, reactor: false, turbineHall: false, steamPath: false, pools: false };
 
 let shadowUpdateRequested = false;
 
@@ -206,11 +207,11 @@ export function applyReveal(state: Readonly<HeroRevealState> | null): void {
     }
     u.exterior.uSectionFill.value = 0;
     SECTION_GLOBAL_UNIFORMS.uSectionDatum.value = 1;
-    setInterior({ belowGrade: true, building: true, vessel: true, reactor: true, turbineHall: true, steamPath: true, review: true });
+    setInterior({ belowGrade: true, building: true, vessel: true, reactor: true, turbineHall: true, steamPath: true, pools: true });
     return;
   }
 
-  const { groundCut: g, exteriorDim: e, shaftReveal: s, containmentReveal: c, rpvEmphasis: r, vesselCut: v, coreSection: k, bladeEmphasis: b } = state;
+  const { groundCut: g, exteriorDim: e, shaftReveal: s, containmentReveal: c, rpvEmphasis: r, vesselCut: v, coreSection: k, bladeEmphasis: b, poolsReveal: p } = state;
 
   // Section planes sweep from in front of each structure to the reactor axis plane.
   setBox(
@@ -267,7 +268,7 @@ export function applyReveal(state: Readonly<HeroRevealState> | null): void {
   u.blades.uSectionRim.value.copy(ACCENT).multiplyScalar(0.6 * b);
   u.blades.uSectionCapTint.value.copy(ACCENT).multiplyScalar(0.3 * b);
 
-  setInterior({ belowGrade: g > 0, building: s > 0, vessel: c > 0, reactor: v > 0, turbineHall: false, steamPath: false, review: false });
+  setInterior({ belowGrade: g > 0, building: s > 0, vessel: c > 0, reactor: v > 0, turbineHall: false, steamPath: false, pools: p > 0 && s > 0 });
 }
 
 const lastPlaneConstants = new Float64Array(Object.keys(SECTION_PLANES).length * 5).fill(Number.NaN);

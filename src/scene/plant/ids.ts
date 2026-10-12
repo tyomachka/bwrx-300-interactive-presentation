@@ -9,6 +9,8 @@ export const PLANT_IDS = {
   reactorBuildingAboveGrade: 'reactor-building-above-grade',
   reactorBuildingShaft: 'reactor-building-shaft',
   pools: 'pools-placeholder',
+  /** The three isolation-condenser pools inside the pools group (a registered component). */
+  icsPools: 'isolation-condenser-pools',
   containment: 'containment-placeholder',
   /** Stage 4: the real vessel profile. All components are registered in scene/components.ts. */
   rpv: 'reactor-pressure-vessel',

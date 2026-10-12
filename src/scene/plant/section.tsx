@@ -18,7 +18,7 @@ export function FrontOfSection({ children }: { children: ReactNode }) {
  * scene graph (addressable by ID, shaders precompiled) but is not drawn, which saves the
  * draw calls, shadow pass included, of geometry hidden inside opaque buildings or under grade.
  */
-export function Interior({ level = 'review', children }: { level?: InteriorLevel; children: ReactNode }) {
+export function Interior({ level, children }: { level: InteriorLevel; children: ReactNode }) {
   const ref = useRef<Group>(null);
   useLayoutEffect(() => (ref.current ? registerInterior(ref.current, level) : undefined), [level]);
   return <group ref={ref}>{children}</group>;

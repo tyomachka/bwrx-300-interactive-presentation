@@ -4,6 +4,7 @@
  * without mouse movement so it never sits in the projected image.
  */
 import { useEffect, useRef, useState } from 'react';
+import { useMasterStore } from '../animation/masterSequence';
 import { resetPresentation } from '../animation/presentation';
 import { QUALITY_PRESETS, type QualityLevel } from '../config/quality';
 import { useAppStore } from '../state/store';
@@ -14,6 +15,9 @@ const LEVELS = Object.keys(QUALITY_PRESETS) as QualityLevel[];
 export function SetupControls() {
   const quality = useAppStore((s) => s.quality);
   const ready = useAppStore((s) => s.status === 'ready');
+  // Nothing in the projected image while the master sequence plays (and no accidental quality
+  // switch, which would rebuild the canvas mid-sequence).
+  const presenting = useMasterStore((s) => s.status === 'playing');
   const [awake, setAwake] = useState(false);
   const hovered = useRef(false);
 
@@ -35,7 +39,7 @@ export function SetupControls() {
     };
   }, []);
 
-  const visible = ready && awake;
+  const visible = ready && awake && !presenting;
 
   return (
     <div

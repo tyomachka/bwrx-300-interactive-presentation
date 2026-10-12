@@ -16,6 +16,7 @@ import { CameraPath } from '../camera/cameraPath';
 import { CAMERA_STATES } from '../config/camera';
 import { HERO_SHOT_CAMERA, HERO_SHOT_DURATION, HERO_SHOT_REVEAL } from '../config/heroShot';
 import { HERO_REVEAL_CLOSED, heroReveal, resetHeroReveal } from './heroReveal';
+import { buildRevealTimeline } from './revealTimeline';
 
 export type HeroShotStatus = 'idle' | 'playing' | 'paused' | 'finished';
 
@@ -80,7 +81,7 @@ class HeroShotController {
     // The ground refills last, after a reset camera has climbed out of the excavation.
     this.closing = gsap
       .timeline({ delay, onComplete: () => void (this.closing = null) })
-      .to(heroReveal, { vesselCut: 0, coreSection: 0, bladeEmphasis: 0, shaftReveal: 0, containmentReveal: 0, rpvEmphasis: 0, duration: duration * 0.6, ease: 'power2.inOut' }, 0)
+      .to(heroReveal, { vesselCut: 0, coreSection: 0, bladeEmphasis: 0, shaftReveal: 0, containmentReveal: 0, rpvEmphasis: 0, poolsReveal: 0, duration: duration * 0.6, ease: 'power2.inOut' }, 0)
       .to(heroReveal, { exteriorDim: 0, duration, ease: 'sine.inOut' }, 0)
       .to(heroReveal, { groundCut: HERO_REVEAL_CLOSED.groundCut, duration: duration * 0.6, ease: 'power2.in' }, duration * 0.4);
   }
@@ -122,25 +123,8 @@ class HeroShotController {
   }
 
   private ensureTimeline(): gsap.core.Timeline {
-    if (this.timeline) return this.timeline;
-    const timeline = gsap.timeline({ paused: true, onComplete: () => this.finish() });
-    const started = new Set<string>();
-    for (const track of HERO_SHOT_REVEAL) {
-      if (!started.has(track.property) && track.from !== HERO_REVEAL_CLOSED[track.property]) {
-        throw new Error(`[BWRX-300] the first "${track.property}" track must start from the closed state`);
-      }
-      started.add(track.property);
-      timeline.fromTo(
-        heroReveal,
-        { [track.property]: track.from },
-        { [track.property]: track.to, duration: track.duration, ease: track.ease, immediateRender: false },
-        track.start,
-      );
-    }
-    // Pin the timeline length to the shot length, whatever the last track is.
-    timeline.set({}, {}, this.duration);
-    this.timeline = timeline;
-    return timeline;
+    this.timeline ??= buildRevealTimeline(HERO_SHOT_REVEAL, this.duration, () => this.finish());
+    return this.timeline;
   }
 }
 

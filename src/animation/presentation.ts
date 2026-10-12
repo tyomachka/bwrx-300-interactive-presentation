@@ -6,6 +6,7 @@ import { cameraDirector } from '../camera/cameraDirector';
 import { CAMERA_TRANSITION, ORBIT } from '../config/camera';
 import { resetExplore } from '../interaction/exploreActions';
 import { heroShot } from './heroShot';
+import { masterSequence } from './masterSequence';
 
 /**
  * A reset from below grade first backs the camera out to this distance from what it was
@@ -24,6 +25,7 @@ export function resetPresentation(): Promise<void> {
   // open cut; the walls start closing once it is clear of them. From above grade (the Stage 3
   // end pose) the reveal closes in step with the camera, as before.
   const fromBelowGrade = cameraDirector.getPose().position[1] < ORBIT.minCameraY;
+  masterSequence.stop();
   heroShot.stop();
   endRpvReview();
   resetExplore();

@@ -89,8 +89,9 @@ export function setIsolate(on: boolean): void {
 
 export const toggleIsolate = () => setIsolate(!exploreState().isolate);
 
+/** Ignored while a presentation owns the scene, like every other Explore input. */
 export function setLabels(on: boolean): void {
-  set({ labels: on });
+  if (canAct()) set({ labels: on });
 }
 
 export const toggleLabels = () => setLabels(!exploreState().labels);
@@ -164,10 +165,14 @@ export function resumeAfterPresentation(revealOpen: boolean): void {
   set({ mode: 'explore', section: { on: revealOpen, context: 'plant', position: 1 } });
 }
 
-/** Back to the initial Explore state (the reveal and camera are reset by resetPresentation). */
+/**
+ * Back to the initial Explore state (the reveal and camera are reset by resetPresentation, which
+ * stops every cinematic first). Explore resumes at once: resuming from a cinematic later would
+ * sync the section to a reveal that is just closing.
+ */
 export function resetExplore(): void {
   sectionTween?.kill();
   sectionTween = null;
   cameraDirector.allowBelowGrade = false;
-  set({ ...EXPLORE_INITIAL, mode: exploreState().mode });
+  set({ ...EXPLORE_INITIAL, mode: 'explore' });
 }

@@ -31,6 +31,9 @@ export interface HeroRevealState {
   coreSection: number;
   /** The control blades become the subject (accent rim); the fuel steps back slightly. */
   bladeEmphasis: number;
+  /** The passive-cooling pools above the containment are drawn (> 0) once the building is cut
+   *  (Stage 6 safety chapter). Reset closes them with the building. */
+  poolsReveal: number;
 }
 
 export const HERO_REVEAL_CLOSED: Readonly<HeroRevealState> = {
@@ -42,6 +45,7 @@ export const HERO_REVEAL_CLOSED: Readonly<HeroRevealState> = {
   vesselCut: 0,
   coreSection: 0,
   bladeEmphasis: 0,
+  poolsReveal: 0,
 };
 
 /** The live reveal state. Mutated only by the shot timeline, the review states and reset. */

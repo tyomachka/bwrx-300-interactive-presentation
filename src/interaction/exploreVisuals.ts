@@ -18,6 +18,10 @@
  *  - X-ray: plant enclosures ghost (ground window, buildings, containment, turbine hall); the
  *    vessel ghosts only when the subject is the vessel or inside it. What a ghosted enclosure
  *    holds is drawn (interior override), and ghosted meshes stop casting shadows.
+ *  - cinematic look (Stage 6): while a presentation owns the scene, a cinematic may supply its
+ *    look as a pure function of its own time; it is applied directly, without easing, so a seek
+ *    shows exactly what playback shows. Subjects lift less and take a fainter rim than a
+ *    selection; the rest steps back by the context dim; ghosts are the X-ray dither.
  */
 import { Box3, Color, Vector3, type Material, type Mesh, type Object3D, type Scene } from 'three';
 import { PALETTE } from '../config/render';
@@ -46,7 +50,35 @@ interface Binding {
   self: Channel;
   keep: Channel;
   ghost: Channel;
+  /** Cinematic subject weight (presentation emphasis). */
+  cine: Channel;
 }
+
+/** A cinematic's look at one instant (see the header). */
+export interface CinematicLook {
+  /** Subject weight 0..1 per component; its physical parts (partOfParent) follow it. */
+  subjects: ReadonlyMap<ComponentId, number>;
+  /** Enclosure ghost 0..1 (the X-ray dither), e.g. the turbine hall around the turbine train. */
+  ghosts: ReadonlyMap<ComponentId, number>;
+  /** 0..1: everything that is not a subject steps back (one global uniform). */
+  contextDim: number;
+  /** Extra interior levels drawn (e.g. the main steam line). */
+  interior: Partial<Record<InteriorLevel, boolean>>;
+}
+
+/** Presentation emphasis: restrained next to an interactive selection (lift 0.12, rim 0.95). */
+const CINEMATIC = { lift: 0.07, rim: 0.32, dim: 0.35 } as const;
+
+let cinematicLook: (() => CinematicLook) | null = null;
+let lookInterior: CinematicLook['interior'] = {};
+
+/** A cinematic supplies (or withdraws, with null) its look; read every frame while presenting. */
+export function setCinematicLook(source: (() => CinematicLook) | null): void {
+  cinematicLook = source;
+  dirty = true;
+}
+
+const cinematicActive = () => cinematicLook !== null && exploreState().mode === 'presentation';
 
 const ACCENT = new Color(PALETTE.accent);
 const RATE = { hover: 14, selected: 10, keep: 8, ghost: 7, dim: 8 } as const;
@@ -143,7 +175,7 @@ export function bindComponents(scene: Scene): boolean {
       if (!Array.isArray(mesh.material) && !mesh.material.visible) regions.push(mesh);
     }
     const channel = (): Channel => ({ value: 0, target: 0 });
-    bindings.set(info.id, { info, object, meshes, regions, uniforms, hover: channel(), selected: channel(), self: channel(), keep: channel(), ghost: channel() });
+    bindings.set(info.id, { info, object, meshes, regions, uniforms, hover: channel(), selected: channel(), self: channel(), keep: channel(), ghost: channel(), cine: channel() });
   }
   dirty = true;
   return true;
@@ -156,7 +188,29 @@ export const allBindings = () => bindings.values();
 
 const EMPTY = new Set<ComponentId>();
 
+function computeCinematicTargets(look: CinematicLook): void {
+  const subject = new Map<ComponentId, number>();
+  for (const [id, w] of look.subjects) for (const part of highlightSet(id)) subject.set(part, Math.max(subject.get(part) ?? 0, w));
+  const ghostOf = (info: ComponentInfo): number => (info.partOfParent && info.parent ? ghostOf(COMPONENTS[info.parent]) : (look.ghosts.get(info.id) ?? 0));
+  for (const b of bindings.values()) {
+    const w = subject.get(b.info.id) ?? 0;
+    b.hover.target = 0;
+    b.selected.target = 0;
+    b.self.target = 0;
+    b.cine.target = w;
+    b.keep.target = w;
+    b.ghost.target = b.regions.length ? 0 : ghostOf(b.info);
+  }
+  dim.target = 1 - CINEMATIC.dim * look.contextDim;
+  lookInterior = look.interior;
+}
+
 function computeTargets(): void {
+  lookInterior = {};
+  if (cinematicActive()) {
+    computeCinematicTargets(cinematicLook!());
+    return;
+  }
   const s = exploreState();
   const active = s.mode === 'explore';
   const hoverSet = active && s.hoveredId ? highlightSet(s.hoveredId) : EMPTY;
@@ -184,6 +238,7 @@ function computeTargets(): void {
     b.self.target = selected === b.info.id ? 1 : 0;
     b.keep.target = keepSet.has(b.info.id) ? 1 : 0;
     b.ghost.target = b.regions.length ? 0 : ghostOf(b.info);
+    b.cine.target = 0;
   }
   dim.target = isolate ? ISOLATION_DIM : 1;
 }
@@ -202,7 +257,10 @@ const ease = (c: Channel, rate: number, dt: number, immediate: boolean): boolean
 
 /** Advance every explore visual by `dt` seconds (or straight to its target). Cheap when idle. */
 export function updateExploreVisuals(dt: number, immediate = false): void {
-  if (!dirty && !immediate) return;
+  const cinematic = cinematicActive();
+  if (!dirty && !immediate && !cinematic) return;
+  // A cinematic look is time-exact: no easing, re-evaluated every frame.
+  immediate ||= cinematic;
   computeTargets();
   let moving = ease(dim, RATE.dim, dt, immediate);
   let castChanged = false;
@@ -214,13 +272,16 @@ export function updateExploreVisuals(dt: number, immediate = false): void {
     moving = ease(b.self, RATE.selected, dt, immediate) || moving;
     moving = ease(b.keep, RATE.keep, dt, immediate) || moving;
     moving = ease(b.ghost, RATE.ghost, dt, immediate) || moving;
+    moving = ease(b.cine, RATE.selected, dt, immediate) || moving;
 
     const u = b.uniforms;
     const h = b.hover.value;
     const sel = b.selected.value;
-    // Hover is a hint (a lift, a trace of rim); selection is the information colour.
-    u.uExploreLift.value = 1 + 0.12 * h * (1 - sel) + 0.12 * sel;
-    u.uExploreRim.value.copy(ACCENT).multiplyScalar(Math.max(0.08 * h, 0.95 * sel));
+    const cine = b.cine.value;
+    // Hover is a hint (a lift, a trace of rim); selection is the information colour; a
+    // cinematic subject is a quieter version of it.
+    u.uExploreLift.value = 1 + 0.12 * h * (1 - sel) + 0.12 * sel + CINEMATIC.lift * cine;
+    u.uExploreRim.value.copy(ACCENT).multiplyScalar(Math.max(0.08 * h, 0.95 * sel, CINEMATIC.rim * cine));
     // Only when it is the subject itself (selecting the core does not turn its blades copper).
     u.uExploreCapTint.value.copy(ACCENT).multiplyScalar((b.info.selectedCapTint ?? 0) * b.self.value);
     u.uExploreKeep.value = b.keep.value;
@@ -249,9 +310,9 @@ export function updateExploreVisuals(dt: number, immediate = false): void {
   }
 
   EXPLORE_GLOBAL_UNIFORMS.uExploreDim.value = dim.value;
-  for (const level of Object.keys(interiorOverride) as InteriorLevel[]) interiorOverride[level] = open[level] ?? false;
+  for (const level of Object.keys(interiorOverride) as InteriorLevel[]) interiorOverride[level] = (open[level] ?? false) || (lookInterior[level] ?? false);
   if (castChanged) requestShadowUpdate();
-  dirty = moving;
+  dirty = moving || cinematic;
 }
 
 /** Current (eased) ghost of a component: picking ignores ghosted shells. */

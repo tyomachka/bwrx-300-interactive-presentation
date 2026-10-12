@@ -26,7 +26,32 @@ export type CameraStateId =
   | 'turbineHallExterior'
   | 'turbineTrain'
   | Stage3ShotPoseId
-  | RpvReviewPoseId;
+  | RpvReviewPoseId
+  | MasterPoseId;
+
+/**
+ * Stage 6 master-sequence waypoints (timing: config/masterSequence.ts). The sequence also
+ * passes through approved poses (Stage 3 RPV hero, Stage 4/5 core, blades, steam region,
+ * turbine train); these are the in-between and chapter poses it adds.
+ */
+export type MasterPoseId =
+  | 'masterVesselOpen'
+  | 'masterCore'
+  | 'masterCoreHold'
+  | 'masterArchitecture'
+  | 'masterSeparators'
+  | 'masterSteamExit'
+  | 'masterSteamLine'
+  | 'masterTurbine'
+  | 'masterGenerator'
+  | 'masterReturn'
+  | 'masterBlades'
+  | 'masterBladesHold'
+  | 'masterSafetyExit'
+  | 'masterSafetyRise'
+  | 'masterSafety'
+  | 'masterSafetyHold'
+  | 'masterFinal';
 
 /** Keyframe poses of the Stage 3 hero shot, in shot order (timing: config/heroShot.ts). */
 export type Stage3ShotPoseId =
@@ -88,6 +113,46 @@ export const CAMERA_STATES: Record<CameraStateId, CameraPose> = {
   controlBladesCloseup: { position: [-3.52, -16.37, 3.52], target: [-0.65, -19.78, 0.65], fov: 35 },
   /** Chimney top, chimney head, separators and dryer, with the steam outlets. */
   steamRegionCloseup: { position: [-11.2, -1.85, 13.4], target: [0, -6.2, 0], fov: 35 },
+
+  // ---- Stage 6 master sequence (config/masterSequence.ts) ----
+  // Plant layout: reactor axis at the origin, everything cut open towards the south-west
+  // cameras (vessel quadrant x < 0, z > 0); main steam line east along z = 0 at y = -2.3 into
+  // the turbine hall (x 20.6..104), up to the turbine shaft (y 14.6); ICS pools above the
+  // containment behind the cut (y 4..15.5, z < 0).
+  /** Closer than the RPV hero, the vessel cut opening: the whole internal stack. */
+  masterVesselOpen: { position: [-13, -8, 23], target: [0, -14.5, 0], fov: 35 },
+  /** The core in the open vessel: fuel, blades, shroud, top guide. */
+  masterCore: { position: [-5.4, -15.2, 6.6], target: [-0.3, -19, 0.3], fov: 35 },
+  /** End of the fission hold: the same composition, a barely perceptible push. */
+  masterCoreHold: { position: [-4.9, -15.6, 6], target: [-0.3, -19.1, 0.3], fov: 35 },
+  /** Pulled back: core, chimney and the downcomer gap in one frame. */
+  masterArchitecture: { position: [-12.5, -10.5, 15], target: [0, -14, 0], fov: 35 },
+  /** Craned up: chimney head and separators. */
+  masterSeparators: { position: [-11.5, -4.5, 13.8], target: [0, -7.6, 0], fov: 35 },
+  /** Dryer and the steam outlet: the camera turns towards the east nozzle. */
+  masterSteamExit: { position: [-9.5, -0.5, 13.5], target: [1.2, -3, 0], fov: 35 },
+  /** Out of the vessel, following the main steam line east through the cut walls. */
+  masterSteamLine: { position: [6, 6, 38], target: [16, -1, 0], fov: 35 },
+  /** The turbine train in the X-rayed hall: steam enters the HP turbine. */
+  masterTurbine: { position: [30, 19, 38], target: [60, 12.5, 0], fov: 35 },
+  /** The generator end of the train. */
+  masterGenerator: { position: [42, 18.5, 37], target: [72, 12.5, 0], fov: 35 },
+  /** High over the opened reactor building on the way back to the core. */
+  masterReturn: { position: [-12, 16, 40], target: [0, -12, 0], fov: 35 },
+  /** The approved control-blade close-up (Stage 4 / Stage 5). */
+  masterBlades: { position: [-3.52, -16.37, 3.52], target: [-0.65, -19.78, 0.65], fov: 35 },
+  /** End of the control hold: a barely perceptible push. */
+  masterBladesHold: { position: [-3.3, -16.6, 3.3], target: [-0.65, -19.8, 0.65], fov: 35 },
+  /** Backing out of the vessel along the sight line, before climbing. */
+  masterSafetyExit: { position: [-12, -8.5, 12.5], target: [-0.4, -16, 0.4], fov: 35 },
+  /** Rising out of the containment: the whole vessel with the pools above it. */
+  masterSafetyRise: { position: [-20, 1, 34], target: [0, -1, -3], fov: 35 },
+  /** Passive cooling: the pools above the containment in the cut reactor building. */
+  masterSafety: { position: [-12, 9, 50], target: [0, 7, -5], fov: 35 },
+  /** End of the safety hold. */
+  masterSafetyHold: { position: [-12.5, 9.2, 52], target: [0, 6.8, -5], fov: 35 },
+  /** Final: the opened plant, reactor and pools, turbine hall beside it; a stable end frame. */
+  masterFinal: { position: [-42, 23, 86], target: [9, -2, 0], fov: 35 },
 };
 
 /** Where Explore mode starts and where `R` returns. */

@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { heroShot } from '../animation/heroShot';
+import { MASTER_FRAME, masterSequence } from '../animation/masterSequence';
+import { MASTER_BEATS, type PresentationBeatId } from '../config/masterSequence';
 import { cameraDirector } from '../camera/cameraDirector';
 import { showRpvReview } from '../animation/rpvReview';
 import { showReviewView } from '../camera/reviewViews';
@@ -19,6 +21,7 @@ const fmt = (v: number[]) => `[${v.map((n) => n.toFixed(2)).join(', ')}]`;
 export default function DiagnosticsOverlay() {
   const pre = useRef<HTMLPreElement>(null);
   const scrubber = useRef<HTMLInputElement>(null);
+  const masterScrubber = useRef<HTMLInputElement>(null);
   const [copied, setCopied] = useState(false);
   const caps = useAppStore((st) => st.caps);
   const quality = useAppStore((st) => st.quality);
@@ -43,8 +46,10 @@ export default function DiagnosticsOverlay() {
         `  target   ${fmt(pose.target)}`,
         `  fov      ${pose.fov.toFixed(1)}`,
         `shot       ${heroShot.status}  ${heroShot.time.toFixed(2)} / ${heroShot.duration.toFixed(1)} s`,
+        `master     ${masterSequence.status}  ${masterSequence.time.toFixed(2)} / ${masterSequence.duration.toFixed(1)} s  ${masterSequence.beat.id}`,
       ].join('\n');
       if (scrubber.current && document.activeElement !== scrubber.current) scrubber.current.value = String(heroShot.time);
+      if (masterScrubber.current && document.activeElement !== masterScrubber.current) masterScrubber.current.value = String(masterSequence.time);
     };
     draw();
     const id = window.setInterval(draw, REFRESH_MS);
@@ -108,6 +113,51 @@ export default function DiagnosticsOverlay() {
         aria-label="Stage 3 shot time"
         onInput={(event) => heroShot.seek(Number(event.currentTarget.value))}
         // Hand keyboard focus back so P / K / R keep working after scrubbing.
+        onPointerUp={(event) => event.currentTarget.blur()}
+      />
+      <div className="diagnostics__row" title="Stage 6 master sequence">
+        <button type="button" title="Shortcut: Space" onClick={() => masterSequence.togglePause()}>
+          Master play / pause
+        </button>
+        <button type="button" title="Shortcut: Home" onClick={() => masterSequence.play()}>
+          Restart
+        </button>
+        <button type="button" title="Shortcut: ," onClick={() => masterSequence.step(-1)}>
+          ◀ frame
+        </button>
+        <button type="button" title="Shortcut: ." onClick={() => masterSequence.step(1)}>
+          frame ▶
+        </button>
+        <select
+          className="diagnostics__select"
+          aria-label="Jump to beat"
+          title="Shortcuts: [ and ]"
+          value=""
+          onChange={(event) => {
+            masterSequence.jumpToBeat(event.currentTarget.value as PresentationBeatId);
+            event.currentTarget.blur();
+          }}
+        >
+          <option value="" disabled>
+            Beat…
+          </option>
+          {MASTER_BEATS.map((beat) => (
+            <option key={beat.id} value={beat.id}>
+              {beat.start.toFixed(1)} {beat.label}
+            </option>
+          ))}
+        </select>
+      </div>
+      <input
+        ref={masterScrubber}
+        className="diagnostics__scrubber"
+        type="range"
+        min={0}
+        max={masterSequence.duration}
+        step={MASTER_FRAME}
+        defaultValue={0}
+        aria-label="Master sequence time"
+        onInput={(event) => masterSequence.seek(Number(event.currentTarget.value))}
         onPointerUp={(event) => event.currentTarget.blur()}
       />
     </div>

@@ -19,7 +19,7 @@ export interface RpvReviewState {
   blades: BladePattern;
 }
 
-const OPEN_PLANT = { groundCut: 1, exteriorDim: 1, shaftReveal: 1, containmentReveal: 1, coreSection: 0 } as const;
+const OPEN_PLANT = { groundCut: 1, exteriorDim: 1, shaftReveal: 1, containmentReveal: 1, coreSection: 0, poolsReveal: 0 } as const;
 
 export const RPV_REVIEW_STATES: readonly RpvReviewState[] = [
   { id: 'rpvExterior', label: 'RPV exterior', reveal: { ...OPEN_PLANT, rpvEmphasis: 1, vesselCut: 0, bladeEmphasis: 0 }, blades: 'operating' },

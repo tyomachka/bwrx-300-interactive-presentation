@@ -28,6 +28,7 @@ export const COMPONENT_IDS = {
   turbine: PLANT_IDS.turbine,
   generator: PLANT_IDS.generator,
   supportBuildings: PLANT_IDS.supportBuildings,
+  icsPools: PLANT_IDS.icsPools,
   // Reactor pressure vessel and internals (Stage 4)
   rpv: 'reactor-pressure-vessel',
   upperHead: 'rpv-upper-head',
@@ -99,6 +100,7 @@ const entries: Record<ComponentId, Entry> = {
   [C.turbineBuilding]: { parent: C.plant, label: 'Turbine hall', description: 'Houses the turbine, the generator and the condenser.', focus: 'turbineHallExterior', tier: 2, source: 'educational-approximation', reference: 'GD Rev J §5, §10', enclosure: { interior: ['turbineHall', 'steamPath'] } },
   [C.turbine]: { parent: C.turbineBuilding, label: 'Turbine', description: 'The steam expands through high- and low-pressure stages and spins the shaft.', focus: 'turbineTrain', tier: 1, source: 'educational-approximation', reference: 'GD Rev J §5.1.2' },
   [C.generator]: { parent: C.turbineBuilding, label: 'Generator', description: 'Turned by the turbine shaft, it converts the motion into electricity.', focus: 'turbineTrain', tier: 1, source: 'educational-approximation', reference: 'GD Rev J §5.1.2' },
+  [C.icsPools]: { parent: C.reactorBuilding, label: 'Isolation condenser pools', description: 'Three pools above the containment, each holding one isolation condenser that can cool the reactor passively, without pumps or operators.', focus: 'reactorBuildingExterior', tier: 1, source: 'educational-approximation', reference: 'GD Rev J §10 (three ICS pools, one IC in each); PROJECT.md §3', selectable: false },
   [C.supportBuildings]: { parent: C.plant, label: 'Support buildings', description: 'Control, waste-processing and maintenance buildings around the power block.', focus: 'plantExterior', tier: 3, source: 'educational-approximation', reference: 'GD Rev J §10' },
 
   // ---- Reactor pressure vessel (Stage 4) ----

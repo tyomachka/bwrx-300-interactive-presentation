@@ -233,6 +233,17 @@ button[aria-pressed='true'] {
   font-size: 12px;
 }
 
+.diagnostics__select {
+  min-height: 28px;
+  padding: 0 0.4rem;
+  font-family: var(--font);
+  font-size: 12px;
+  color: inherit;
+  background: rgba(20, 22, 26, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 6px;
+}
+
 .diagnostics__scrubber {
   display: block;
   width: 100%;

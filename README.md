@@ -6,9 +6,10 @@ references are `references/technical/005N9751-BWRX-300-General-Description.pdf` 
 `references/technical/11.pdf` (UK GDA Chapter 1, NEDO-34163 Rev B). They are kept locally
 and not committed; see `references/links.txt`.
 
-**Current state: Stage 5 (Explore mode interaction architecture)**, awaiting review. Stages
-1-4 (renderer foundation, plant massing, the 10 s hero shot, the reactor vessel and internals)
-are committed checkpoints. Review material is in `docs/stage1-review/` to `docs/stage5-review/`.
+**Current state: Stage 6 (master presentation timeline, ~48 s skeleton)**, awaiting review.
+Stages 1-5 (renderer foundation, plant massing, the 10 s hero shot, the reactor vessel and
+internals, Explore mode) are committed checkpoints. Review material is in
+`docs/stage1-review/` to `docs/stage6-review/`.
 
 ## Commands
 
@@ -45,6 +46,10 @@ Keys are matched by physical position, so they also work on the Lithuanian layou
 | `V` | Review aid: cycle the four Stage 2 review views (dev / `?debug`) |
 | `G` | Review aid: toggle the section review (dev / `?debug`) |
 | `B` | Review aid: cycle the Stage 4 vessel review states: exterior, cutaway, core, control blades, steam region (dev / `?debug`) |
+| `Space` | Master sequence: play / pause; from idle or the held final frame, play from the start (dev / `?debug`) |
+| `Home` | Master sequence: restart from frame 0 (dev / `?debug`) |
+| `,` / `.` | Master sequence: one frame back / forward, paused (dev / `?debug`) |
+| `[` / `]` | Master sequence: previous / next beat (dev / `?debug`) |
 
 The `?debug` panel also has the shot buttons and a time scrubber that shows the exact frame
 at any time. For automation, `window.__bwrx` (dev / `?debug` only) exposes
@@ -153,6 +158,32 @@ click on empty space clears; left-drag orbit, wheel zoom, right-drag pan (limite
   fights it. A focus that needs a cut opens it through the same section engine as the panel.
 - **Presentation safety**: while a cinematic owns the camera, Explore clears its visuals and
   ignores input; it resumes, in sync with the reveal, when the shot hands back.
+
+## Master sequence (Stage 6)
+
+- **Data** (`src/config/masterSequence.ts`): beats, semantic events, camera keys, reveal tracks
+  and look cues, all in seconds of master time; `docs/stage6-review/beat-timings.json` is
+  exported from it (`window.__bwrx.master.timings()`). Scene components own no timing.
+- **Stage 3 is the opening, reused, not copied:** 0-10 s run the hero shot's own camera keys
+  (the same `CameraPath`) and reveal tracks (the same GSAP builder,
+  `animation/revealTimeline.ts`). The master camera continues with a second path that starts
+  at rest on the shot's final pose, so the first ten seconds are byte-identical to the shot.
+- **Later reveal tracks** are a pure-function overlay over the shot's end state (a GSAP
+  timeline cannot hold several tweens of one property safely under backward seeks).
+- **Look** (`MASTER_LOOK`): subject emphasis, context dim, enclosure ghosts and extra interior
+  levels, evaluated from master time and applied without easing through the Stage 5 visuals
+  (`setCinematicLook`), quieter than an interactive selection.
+- **Controller** (`animation/masterSequence.ts`): play, pause, seek, frame step, beat jumps,
+  restart; status in `useMasterStore`. Seek resets the reveal and re-renders it at the time, so
+  any seek (forwards, backwards) shows exactly the frame playback shows; with
+  `animationClock.fixedStep` it exports frame-accurately.
+- **Events for Stages 7-10** (`MASTER_EVENTS`): `masterSequence.subscribe` delivers events
+  crossed during playback, seeks and status changes. Effects should derive their state from
+  `masterSequence.time` (pull) and use events only for one-shot cues, so seeking stays exact.
+- **Authority:** while it owns the camera, Explore is suspended (no hover, selection, labels,
+  panel; clicks and Explore keys do nothing) and the setup panel stays hidden during playback.
+  At the end it holds the final frame (`finished`, cinematic authority) until Reset, a restart
+  or another shot. A quality switch or another shot stops it.
 
 ## Architecture notes
 

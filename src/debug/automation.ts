@@ -6,6 +6,8 @@
  */
 import { heroReveal } from '../animation/heroReveal';
 import { heroShot } from '../animation/heroShot';
+import { masterBeatAt, masterCameraAt, masterLookAt, masterSequence, masterTimings, type MasterSignal } from '../animation/masterSequence';
+import type { PresentationBeatId } from '../config/masterSequence';
 import { showRpvReviewById } from '../animation/rpvReview';
 import * as explore from '../interaction/exploreActions';
 import { exploreState } from '../interaction/exploreStore';
@@ -17,6 +19,7 @@ import { RPV_REVIEW_STATES } from '../config/rpvReview';
 import type { CameraPose, RpvReviewPoseId } from '../config/camera';
 import { animationClock } from '../animation/clock';
 import { cameraDirector } from '../camera/cameraDirector';
+import { Vector3 } from 'three';
 import { diagnosticsSample } from './diagnostics';
 
 const api = {
@@ -32,6 +35,36 @@ const api = {
       return heroShot.status;
     },
     duration: heroShot.duration,
+  },
+  /** Stage 6 master sequence. `signals` records events / seeks / status changes since load. */
+  master: {
+    play: () => masterSequence.play(),
+    seek: (t: number) => masterSequence.seek(t),
+    togglePause: () => masterSequence.togglePause(),
+    stop: () => masterSequence.stop(),
+    step: (frames: number) => masterSequence.step(frames),
+    jumpToBeat: (id: PresentationBeatId) => masterSequence.jumpToBeat(id),
+    get time() {
+      return masterSequence.time;
+    },
+    get status() {
+      return masterSequence.status;
+    },
+    get beat() {
+      return masterSequence.beat.id;
+    },
+    duration: masterSequence.duration,
+    timings: () => masterTimings(),
+    beatAt: (t: number) => masterBeatAt(t).id,
+    cameraAt: (t: number) => {
+      const out = masterCameraAt(t, { position: new Vector3(), target: new Vector3(), fov: 0 });
+      return { position: out.position.toArray(), target: out.target.toArray(), fov: out.fov };
+    },
+    lookAt: (t: number) => {
+      const look = masterLookAt(t);
+      return { subjects: Object.fromEntries(look.subjects), ghosts: Object.fromEntries(look.ghosts), contextDim: look.contextDim, interior: look.interior };
+    },
+    signals: [] as MasterSignal[],
   },
   reveal: heroReveal as Readonly<typeof heroReveal>,
   /** Stage 4 vessel review states; `immediate` jumps (deterministic captures). */
@@ -76,4 +109,5 @@ declare global {
 
 export function installAutomationApi(): void {
   window.__bwrx = api;
+  masterSequence.subscribe((signal) => void api.master.signals.push(signal));
 }

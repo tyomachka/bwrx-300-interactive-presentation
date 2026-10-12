@@ -137,12 +137,13 @@ export function ReactorBuilding() {
         <Interior level="building">
           <SectionSector name="rb.refuelFloor" innerRadius={0} outerRadius={rbInner} y0={RB.refuelFloorY} height={RB.refuelFloorThickness} material={m.concrete} castShadow={false} />
         </Interior>
-        {/* The pools belong to later chapters (passive cooling): only the section review shows them,
-            so the hero reveal keeps attention below grade. */}
-        <Interior level="review">
+        {/* The pools belong to the passive-cooling chapter: drawn once the reveal shows them
+            (poolsReveal, Stage 6) or in the section review, so the hero reveal keeps attention
+            below grade. */}
+        <Interior level="pools">
           <group name={PLANT_IDS.pools} userData={meta(PLANT_IDS.pools, 'educational-approximation')}>
             <Box name="pool.cavity" {...cavityPool} material={m.water} castShadow={false} />
-            <InstancedBoxes name="pool.ics" boxes={icsPools} material={m.water} castShadow={false} />
+            <InstancedBoxes name={PLANT_IDS.icsPools} boxes={icsPools} material={m.water} castShadow={false} />
           </group>
         </Interior>
 
