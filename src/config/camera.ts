@@ -23,6 +23,8 @@ export type CameraStateId =
   | 'reactorBuildingExterior'
   | 'belowGradeOverview'
   | 'turbineRelationship'
+  | 'turbineHallExterior'
+  | 'turbineTrain'
   | Stage3ShotPoseId
   | RpvReviewPoseId;
 
@@ -49,6 +51,10 @@ export const CAMERA_STATES: Record<CameraStateId, CameraPose> = {
   belowGradeOverview: { position: [-24, 6, 152], target: [12, -2, 0], fov: 35 },
   /** Section review: reactor -> main steam path -> turbine -> generator, reading left to right. */
   turbineRelationship: { position: [128, 82, 118], target: [34, 0, -4], fov: 35 },
+  /** Explore focus: the turbine hall from the south-west. */
+  turbineHallExterior: { position: [6, 30, 118], target: [62, 10, -2], fov: 35 },
+  /** Explore focus: the turbine-generator train, seen through the hall's south wall (X-ray). */
+  turbineTrain: { position: [44, 24, 58], target: [64, 13, 0], fov: 35 },
 
   // ---- Stage 3 hero shot: plant exterior -> reactor building -> below grade -> RPV ----
   // The camera stays above grade; its sight lines into the excavation the reveal opens

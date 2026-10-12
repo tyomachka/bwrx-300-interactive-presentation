@@ -2,12 +2,14 @@ import { useEffect } from 'react';
 import { heroShot } from '../animation/heroShot';
 import { resetPresentation } from '../animation/presentation';
 import { cycleRpvReview } from '../animation/rpvReview';
+import { clearSelection, toggleIsolate, toggleLabels, toggleSection, toggleXray } from '../interaction/exploreActions';
 import { cycleReviewView } from '../camera/reviewViews';
 import { useAppStore } from '../state/store';
 
 /**
- * Global shortcuts (PROJECT.md §11). Space, X, C, F, S and Esc are reserved for later
- * stages. V, G, P, K and B are review aids, active only in dev builds or with `?debug`.
+ * Global shortcuts (PROJECT.md §11). Explore (Stage 5): Esc clears the selection, X X-ray,
+ * C section, I isolate, L labels, R full reset. Space, F and S stay reserved for later stages.
+ * V, G, P, K and B are review aids, active only in dev builds or with `?debug`.
  *
  * Keys are matched by `event.code` (physical position), not `event.key`. On the
  * Lithuanian layout the number row types ą č ę ė ... without Shift, so `key === '1'`
@@ -19,6 +21,11 @@ const debugOnly = (action: () => void) => () => {
 
 const BINDINGS: Record<string, () => void> = {
   KeyR: () => void resetPresentation(),
+  Escape: () => clearSelection(),
+  KeyX: () => toggleXray(),
+  KeyC: () => toggleSection(),
+  KeyI: () => toggleIsolate(),
+  KeyL: () => toggleLabels(),
   Digit1: () => useAppStore.getState().setQuality('high'),
   Numpad1: () => useAppStore.getState().setQuality('high'),
   Digit2: () => useAppStore.getState().setQuality('low'),

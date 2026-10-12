@@ -18,6 +18,7 @@ import { SECTION_INSET as E } from '../plant/geometry';
 import { CONTROL_BLADES, FUEL_BUNDLES } from './coreLayout';
 import {
   BLADE,
+  DOWNCOMER,
   CHIMNEY,
   CHIMNEY_HEAD,
   CORE_PLATE,
@@ -436,6 +437,11 @@ function vaneBank(zc: number, halfLength: number, thickness: number, height: num
   shape.closePath();
   const geometry = new ExtrudeGeometry(shape, { depth: height, bevelEnabled: false, steps: 1 });
   return geometry.rotateX(-Math.PI / 2).translate(0, y0, 0);
+}
+
+/** The downcomer annulus as a closed volume (a pick/highlight proxy, never a physical part). */
+export function createDowncomerProxy(d: RpvDetail): BufferGeometry {
+  return createLatheSolid(ring(DOWNCOMER.innerRadius + 0.02, DOWNCOMER.outerRadius - 0.02, DOWNCOMER.bottomH, DOWNCOMER.topH), d.radial);
 }
 
 /** Steam dryer: skirt, support ring, stepped chevron vane banks with cover plates. */

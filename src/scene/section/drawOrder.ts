@@ -27,6 +27,16 @@ export const REVEAL_DRAW_RANK: Record<RevealLayerId, number> = {
 /** Rank for materials that belong to no reveal layer (studio floor, helpers). */
 const UNRANKED = 6;
 
+/**
+ * While the vessel is only partly open, its remaining shell stands in front of most of the
+ * internals: then the shell draws first. Fully open (the review and Explore cutaways), the
+ * internals stand in front of the far shell and draw first (sectionLayers.applyReveal sets it).
+ */
+let vesselFirst = false;
+export function setVesselDrawnFirst(first: boolean): void {
+  vesselFirst = first;
+}
+
 interface OpaqueItem {
   id: number;
   object: Object3D;
@@ -37,7 +47,10 @@ interface OpaqueItem {
   z: number;
 }
 
-const rank = (material: OpaqueItem['material']) => (material.userData.revealRank as number | undefined) ?? UNRANKED;
+const rank = (material: OpaqueItem['material']) => {
+  const r = (material.userData.revealRank as number | undefined) ?? UNRANKED;
+  return vesselFirst && r === REVEAL_DRAW_RANK.vessel ? -1 : r;
+};
 
 /** For `WebGLRenderer.setOpaqueSort`. */
 export function revealOpaqueSort(a: OpaqueItem, b: OpaqueItem): number {

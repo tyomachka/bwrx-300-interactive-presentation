@@ -70,12 +70,16 @@ class HeroShotController {
     this.closing = null;
   }
 
-  /** Close the reveal (e.g. on reset) in step with a camera transition of `duration` seconds. */
-  closeReveal(duration: number): void {
+  /**
+   * Close the reveal (e.g. on reset) in step with a camera transition of `duration` seconds.
+   * `delay`: hold it open that long first, so a camera that starts deep inside (an Explore
+   * focus below grade) leaves through the open cut before the walls close behind it.
+   */
+  closeReveal(duration: number, delay = 0): void {
     this.closing?.kill();
     // The ground refills last, after a reset camera has climbed out of the excavation.
     this.closing = gsap
-      .timeline({ onComplete: () => void (this.closing = null) })
+      .timeline({ delay, onComplete: () => void (this.closing = null) })
       .to(heroReveal, { vesselCut: 0, coreSection: 0, bladeEmphasis: 0, shaftReveal: 0, containmentReveal: 0, rpvEmphasis: 0, duration: duration * 0.6, ease: 'power2.inOut' }, 0)
       .to(heroReveal, { exteriorDim: 0, duration, ease: 'sine.inOut' }, 0)
       .to(heroReveal, { groundCut: HERO_REVEAL_CLOSED.groundCut, duration: duration * 0.6, ease: 'power2.in' }, duration * 0.4);

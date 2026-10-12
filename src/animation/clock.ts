@@ -21,11 +21,14 @@ export const animationClock = {
   time: 0,
   /** When set, each frame advances by exactly this many seconds (offline/video rendering). */
   fixedStep: null as number | null,
+  /** The step of the current frame (seconds): per-frame easing uses it to stay deterministic. */
+  lastStep: 0,
 
   /** Called once per rendered frame, before scene `useFrame` work. */
   advance(realDelta: number): number {
     const step = this.fixedStep ?? Math.min(Math.max(realDelta, 0), MAX_REALTIME_STEP);
     this.time += step;
+    this.lastStep = step;
     gsap.updateRoot(this.time);
     return step;
   },

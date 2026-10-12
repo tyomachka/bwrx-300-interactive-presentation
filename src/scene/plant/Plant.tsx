@@ -17,7 +17,7 @@ export function Plant() {
     <group name={PLANT_IDS.plant} userData={meta(PLANT_IDS.plant, 'official-constrained')}>
       <SiteGround />
       <ReactorBuilding />
-      <Interior>
+      <Interior level="steamPath">
         <MainSteamPath />
       </Interior>
       <TurbineBuilding />

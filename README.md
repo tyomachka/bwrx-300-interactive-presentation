@@ -6,9 +6,9 @@ references are `references/technical/005N9751-BWRX-300-General-Description.pdf` 
 `references/technical/11.pdf` (UK GDA Chapter 1, NEDO-34163 Rev B). They are kept locally
 and not committed; see `references/links.txt`.
 
-**Current state: Stage 4 (reactor pressure vessel and internals)**, awaiting review. Stages
-1-3 (renderer foundation, plant massing, the 10 s hero shot) are committed checkpoints.
-Review material is in `docs/stage1-review/` to `docs/stage4-review/`.
+**Current state: Stage 5 (Explore mode interaction architecture)**, awaiting review. Stages
+1-4 (renderer foundation, plant massing, the 10 s hero shot, the reactor vessel and internals)
+are committed checkpoints. Review material is in `docs/stage1-review/` to `docs/stage5-review/`.
 
 ## Commands
 
@@ -32,7 +32,12 @@ Keys are matched by physical position, so they also work on the Lithuanian layou
 
 | Key | Action |
 |---|---|
-| `R` | Reset: stop the shot, close the reveal, smooth transition to `plantExterior` |
+| `R` | Reset: stop the shot, clear every Explore state, close the reveal, smooth transition to `plantExterior` |
+| `Esc` | Clear the selection |
+| `X` | X-ray on / off |
+| `C` | Section on / off (Reactor context when the selection is inside the vessel) |
+| `I` | Isolate the selection on / off (needs a selection) |
+| `L` | Labels on / off |
 | `1` / `2` | High / low quality |
 | `` ` `` | Toggle diagnostics (dev build, or with `?debug`) |
 | `P` | Review aid: play / restart the Stage 3 hero shot from its first frame (dev / `?debug`) |
@@ -46,7 +51,10 @@ at any time. For automation, `window.__bwrx` (dev / `?debug` only) exposes
 `shot.play() / seek(t) / togglePause()`, `rpvReview.show(id)`, `snapCamera(pose)`, the
 reveal state, the camera pose and per-frame renderer statistics.
 
-Mouse in Explore mode: left-drag orbit, wheel zoom, right-drag pan (limited).
+Mouse in Explore mode: hover names a part, click selects it (and focuses the camera on it),
+click on empty space clears; left-drag orbit, wheel zoom, right-drag pan (limited).
+`window.__bwrx.explore` exposes `state()`, `select(id)`, `xray()`, `isolate()`, `section()`,
+`pickAt(x, y)` and `settle()` for automation.
 
 ## Plant massing (Stage 2)
 
@@ -115,8 +123,36 @@ Mouse in Explore mode: left-drag orbit, wheel zoom, right-drag pan (limited).
 - **Review states** (`src/config/rpvReview.ts`, key `B`): data pairing a camera pose with a
   reveal and a blade pattern. They stand below grade inside the opened plant, so Explore may
   follow them there while a review state is active.
-- **Semantic IDs** (`src/scene/rpv/components.ts`): one registry entry per component (label,
-  description, parent, focus pose, tier, provenance); the scene object's `name` is the ID.
+- **Semantic IDs**: one registry entry per component (label, description, parent, focus pose,
+  tier, provenance); the scene object's `name` is the ID. Since Stage 5 the registry is
+  `src/scene/components.ts` and covers the plant too (see below).
+
+## Explore mode (Stage 5)
+
+- **One registry** (`src/scene/components.ts`): the Stage 4 registry, extended to the plant
+  structures. Behaviour is data on each entry: `selectable`, `partOfParent` (highlighted with
+  its parent, e.g. the fuel and blades with the core), `enclosure` (what X-ray / isolation
+  may ghost, which interior levels then draw, and which reveal field cuts it open), `opens`
+  (the section a focus needs: `plant` or `vessel`), `selectedCapTint`. No hard-coded lists.
+- **One state** (`src/interaction/exploreStore.ts`, zustand): mode, hovered, selected,
+  focused, X-ray, section (on, Plant / Reactor context, position), isolation, labels. Actions
+  in `exploreActions.ts`; the panel, the keys and automation all call those.
+- **Picking** (`picking.ts`): one raycast against the registry's meshes, only after the
+  pointer moved (or the camera came to rest under a still pointer), at most once a frame.
+  Hits in cut-away parts and in ghosted shells are skipped; instanced meshes resolve to their
+  group (`fuel-bundles`, `control-blades`).
+- **Visuals** (`exploreVisuals.ts`): each component gets its own copy of its materials with
+  the same shader program (no compile), so hover, selection, isolation and X-ray are uniform
+  writes, eased per frame and idle once settled. Hover: a slight lift. Selection: lift, a warm
+  luminance-weighted rim, and the cap tint where the registry asks for it. X-ray and isolation
+  ghost enclosures with an ordered-dither discard (no blending, no sorting), keeping
+  silhouettes. No post-processing.
+- **Labels** (`labelLayer.ts`, `ui/ExploreOverlay.tsx`): one HTML label anchored to the
+  selection's bounds, clamped on screen, hidden behind the camera; hover shows the name only.
+- **Focus**: the camera director's `transition` authority (1.1 s), so OrbitControls never
+  fights it. A focus that needs a cut opens it through the same section engine as the panel.
+- **Presentation safety**: while a cinematic owns the camera, Explore clears its visuals and
+  ignores input; it resumes, in sync with the reveal, when the shot hands back.
 
 ## Architecture notes
 
@@ -131,7 +167,8 @@ Mouse in Explore mode: left-drag orbit, wheel zoom, right-drag pan (limited).
   pose object, and the director applies it once per frame. Handing back to OrbitControls
   syncs its target, so nothing jumps.
 - **Draw order and shadows:** `src/scene/section/drawOrder.ts` draws the nested reveal layers
-  inside-out, front to back (the opened plant otherwise overdraws heavily), and the 240 fuel
+  inside-out, front to back (the opened plant otherwise overdraws heavily); while the vessel is
+  only partly open its shell draws before the internals it hides. The 240 fuel
   instances are kept sorted from the camera. The shadow map is re-rendered only on frames where
   a section plane moves (`RevealDriver`): the key light and casters are otherwise static.
 - **Deterministic time:** `src/animation/clock.ts`. GSAP is driven from the R3F frame

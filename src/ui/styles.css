@@ -239,3 +239,164 @@ button[aria-pressed='true'] {
   margin: 8px 0 0;
   accent-color: var(--accent);
 }
+
+button:disabled {
+  opacity: 0.38;
+  cursor: default;
+}
+
+/* Explore panel (auto-hiding, Stage 5) ----------------------------------------- */
+.explore {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  z-index: 10;
+  transition: opacity 400ms ease;
+}
+
+.explore.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.explore__bar,
+.explore__selection {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem;
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) + 4px);
+  background: var(--panel);
+}
+
+.explore__selection {
+  gap: 1rem;
+  max-width: 36rem;
+  padding: 0.6rem 0.6rem 0.6rem 1rem;
+}
+
+.explore__selection-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.explore__name {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.explore__parent {
+  min-height: 26px;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+
+.explore__parent:hover {
+  background: none;
+  color: var(--text);
+}
+
+.explore__description {
+  margin-top: 0.25rem;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: var(--text);
+}
+
+.explore__selection-actions {
+  display: flex;
+  gap: 0.4rem;
+  margin-left: auto;
+}
+
+.explore__section {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0 0.3rem;
+}
+
+.explore__segmented {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.explore__segmented button {
+  min-height: 36px;
+  padding: 0 0.8rem;
+  font-size: 0.88rem;
+}
+
+.explore__slider {
+  width: 190px;
+  accent-color: var(--accent);
+}
+
+/* Explore labels: one anchored label, one hover tag ----------------------------- */
+.explore-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9;
+}
+
+.explore-label,
+.explore-dot,
+.explore-hover {
+  position: absolute;
+  left: 0;
+  top: 0;
+  will-change: transform;
+}
+
+.explore-label {
+  max-width: 23rem;
+  padding: 0.7rem 0.95rem 0.75rem;
+  border-left: 2px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+  background: rgba(12, 14, 17, 0.86);
+}
+
+.explore-label__name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: #fff;
+}
+
+.explore-label__text {
+  margin-top: 0.3rem;
+  font-size: 0.98rem;
+  line-height: 1.4;
+  color: var(--text);
+}
+
+.explore-dot {
+  width: 10px;
+  height: 10px;
+  margin: -5px 0 0 -5px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px rgba(232, 163, 61, 0.22);
+}
+
+.explore-hover {
+  padding: 0.3rem 0.6rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: rgba(12, 14, 17, 0.8);
+  font-size: 0.88rem;
+  color: var(--text);
+  white-space: nowrap;
+}

@@ -23,13 +23,14 @@ import {
   DoubleSide,
   MeshStandardMaterial,
   SRGBColorSpace,
+  type Material,
   type MeshStandardMaterialParameters,
   type Texture,
 } from 'three';
 import { FLOOR_RADIUS, PALETTE } from '../../config/render';
 import { LAYER_CLIP, LAYER_UNIFORMS, SECTION_GLOBAL_UNIFORMS, SECTION_PLANES, type RevealLayerId } from '../section/sectionLayers';
 import { REVEAL_DRAW_RANK } from '../section/drawOrder';
-import { createCapUniforms, installSectionShader, type CapStyle, type SectionUniformMap } from '../section/sectionShader';
+import { createCapUniforms, installSectionShader, type CapStyle, type ExploreUniforms, type SectionUniformMap } from '../section/sectionShader';
 import { SITE } from './dimensions';
 
 function lightPoolTexture(): Texture {
@@ -98,13 +99,57 @@ const SURFACES = {
   human: { color: '#c9ccd0', roughness: 0.7, metalness: 0 },
 } satisfies Record<string, MeshStandardMaterialParameters>;
 
+// ---- Shader uniform bookkeeping ---------------------------------------------------------------
+
+/** The section-shader uniforms each material was built with (userData would be JSON-copied). */
+const SHADER_UNIFORMS = new WeakMap<MeshStandardMaterial, SectionUniformMap>();
+
+/** Built by this module with the section shader (so it can be cloned per component). */
+export function hasSectionShader(material: Material): material is MeshStandardMaterial {
+  return SHADER_UNIFORMS.has(material as MeshStandardMaterial);
+}
+
+function install(material: MeshStandardMaterial, uniforms: SectionUniformMap): void {
+  SHADER_UNIFORMS.set(material, uniforms);
+  installSectionShader(material, uniforms);
+}
+
+/**
+ * A per-component copy of a shared material (Explore mode, Stage 5): same parameters, same
+ * shader source and so the same compiled program, but its own explore uniforms. The layer,
+ * global and cut-surface uniforms stay shared, and so do the live section planes.
+ */
+export function cloneForComponent(base: MeshStandardMaterial, explore: ExploreUniforms): MeshStandardMaterial {
+  const clone = base.clone();
+  clone.name = base.name;
+  clone.defines = { ...base.defines }; // MeshStandardMaterial.copy resets the defines
+  clone.clippingPlanes = base.clippingPlanes; // Material.copy clones the planes: share the live ones
+  clone.userData = { ...base.userData };
+  install(clone, { ...SHADER_UNIFORMS.get(base), ...explore });
+  return clone;
+}
+
+/**
+ * Per-mesh bound copies of material variants a component swaps between at runtime (the fuel's
+ * plain / capped pair). Explore registers them when it binds; the owner looks its variant up.
+ */
+const boundVariants = new WeakMap<object, Map<Material, Material>>();
+
+export function setBoundVariants(mesh: object, variants: Map<Material, Material>): void {
+  boundVariants.set(mesh, variants);
+}
+
+export function boundVariant(mesh: object, base: Material): Material {
+  return boundVariants.get(mesh)?.get(base) ?? base;
+}
+
 // ---- Context materials --------------------------------------------------------------------
 
 /** A context material: standard PBR plus the exterior dim. */
 function context(params: MeshStandardMaterialParameters): MeshStandardMaterial {
   const material = new MeshStandardMaterial(params);
   material.userData.revealRank = REVEAL_DRAW_RANK.exterior;
-  installSectionShader(material, { ...LAYER_UNIFORMS.exterior });
+  install(material, { ...LAYER_UNIFORMS.exterior });
   return material;
 }
 
@@ -179,7 +224,13 @@ function section(layer: RevealLayerId, params: MeshStandardMaterialParameters, c
       Object.assign(uniforms, createCapUniforms(cap));
     }
   }
-  installSectionShader(material, uniforms);
+  install(material, uniforms);
+  return material;
+}
+
+/** A region proxy: picked like a part, drawn only while its component is selected. */
+function regionHighlight(material: MeshStandardMaterial): MeshStandardMaterial {
+  material.visible = false;
   return material;
 }
 
@@ -214,6 +265,8 @@ function createSectionMaterials() {
       chimney: section('internals', SURFACES.chimney, CAPS.chimney),
       supportSteel: section('internals', SURFACES.supportSteel, CAPS.supportSteel),
       dryer: section('internals', SURFACES.dryer, CAPS.dryer),
+      /** The downcomer region (Stage 5): drawn only while selected, as a ghosted warm volume. */
+      downcomerRegion: regionHighlight(section('internals', { color: '#5a4422', emissive: new Color(PALETTE.accent), emissiveIntensity: 0.32, roughness: 1, metalness: 0, side: DoubleSide }, null)),
     },
     fuel: {
       /** The vertical cutaway planes run between assemblies, never through one: no cut surface,

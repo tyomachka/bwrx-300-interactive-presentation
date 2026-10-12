@@ -15,9 +15,9 @@ import { useQualityPreset } from '../../state/store';
 import { REACTOR_PRESSURE_VESSEL as RPV } from '../plant/dimensions';
 import { useDisposeOnChange } from '../plant/hooks';
 import { meta, PLANT_IDS } from '../plant/ids';
-import { getSectionMaterials } from '../plant/materials';
+import { boundVariant, getSectionMaterials } from '../plant/materials';
 import { Interior } from '../plant/section';
-import { RPV_COMPONENT_IDS as IDS, type RpvComponentId } from './components';
+import { COMPONENT_IDS as IDS, type ComponentId } from '../components';
 import { heroReveal } from '../../animation/heroReveal';
 import { bladeStateVersion, CONTROL_BLADES, FUEL_BUNDLES } from './coreLayout';
 import {
@@ -27,6 +27,7 @@ import {
   createChimneyHead,
   createCorePlate,
   createDrives,
+  createDowncomerProxy,
   createDryer,
   createGuideTubesAndSupports,
   createLowerHead,
@@ -44,7 +45,7 @@ import {
 import { BLADE, CORE, DOWNCOMER } from './rpvData';
 
 interface PartProps {
-  id: RpvComponentId;
+  id: ComponentId;
   geometry: BufferGeometry;
   material: Material;
   /** Only the vessel's outer shell casts shadows; the internals are lit like an illustration. */
@@ -55,7 +56,7 @@ function Part({ id, geometry, material, shadows = false }: PartProps) {
   return <mesh name={id} userData={{ componentId: id }} geometry={geometry} material={material} castShadow={shadows} receiveShadow={shadows} />;
 }
 
-function Component({ id, children }: { id: RpvComponentId; children: ReactNode }) {
+function Component({ id, children }: { id: ComponentId; children: ReactNode }) {
   return (
     <group name={id} userData={{ componentId: id }}>
       {children}
@@ -114,6 +115,7 @@ function VesselInternals() {
       chimneyHead: createChimneyHead(detail),
       separators: createSeparators(detail),
       dryer: createDryer(detail),
+      downcomer: createDowncomerProxy(detail),
     };
   }, [detail]);
   useDisposeOnChange(...Object.values(g));
@@ -133,8 +135,11 @@ function VesselInternals() {
       <Part id={IDS.chimneyHead} geometry={g.chimneyHead} material={m.internals.stainless} />
       <Part id={IDS.steamSeparators} geometry={g.separators} material={m.internals.stainless} />
       <Part id={IDS.steamDryer} geometry={g.dryer} material={m.internals.dryer} />
-      {/* A region, not a part: Stage 5 focus/highlight and the Stage 7 return-flow path use it. */}
-      <group name={IDS.downcomer} userData={{ componentId: IDS.downcomer, region: { kind: 'annulus', ...DOWNCOMER } }} />
+      {/* A region, not a part: an annulus proxy that is picked like a part and drawn only while
+          selected (Stage 5); the Stage 7 return-flow path uses the same bounds. */}
+      <group name={IDS.downcomer} userData={{ componentId: IDS.downcomer, region: { kind: 'annulus', ...DOWNCOMER } }}>
+        <mesh name="downcomer-region.proxy" geometry={g.downcomer} material={m.internals.downcomerRegion} />
+      </group>
     </>
   );
 }
@@ -180,7 +185,8 @@ function FuelBundles() {
     const mesh = ref.current;
     if (!mesh || !isShown(mesh)) return;
     // Only the horizontal core section cuts through assemblies: only then draw cut surfaces.
-    mesh.material = heroReveal.coreSection > 0 ? materials.channelCapped : materials.channel;
+    // (Explore binds per-component copies of both variants; boundVariant maps base to copy.)
+    mesh.material = boundVariant(mesh, heroReveal.coreSection > 0 ? materials.channelCapped : materials.channel);
     if (camera.position.distanceToSquared(sortedFrom.current) < 0.01) return;
     sortedFrom.current.copy(camera.position);
     // Plan distance is enough: the assemblies are parallel vertical prisms.
@@ -195,7 +201,7 @@ function FuelBundles() {
       <instancedMesh
         ref={ref}
         name={IDS.fuelBundles}
-        userData={{ componentId: IDS.fuelBundles, instanceIds: FUEL_BUNDLES.map((b) => b.id) }}
+        userData={{ componentId: IDS.fuelBundles, instanceIds: FUEL_BUNDLES.map((b) => b.id), materialVariants: [materials.channel, materials.channelCapped] }}
         args={[geometry, materials.channel, FUEL_BUNDLES.length]}
       />
       {/* Never drawn: makes the ready gate's warm-up compile the capped variant, so switching

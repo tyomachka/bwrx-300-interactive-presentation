@@ -13,7 +13,7 @@
  * which is why section geometry is inset by a few millimetres (scene/section/sectionGeometry).
  * Section materials are double-sided for this. Thin shells (roof, dome) opt out of caps.
  */
-import { Color, Vector4, type IUniform, type MeshStandardMaterial, type WebGLProgramParametersWithUniforms } from 'three';
+import { Color, Vector2, Vector4, type IUniform, type MeshStandardMaterial, type WebGLProgramParametersWithUniforms } from 'three';
 
 /** Uniforms shared by every material of one reveal layer (one object each, updated per frame). */
 export interface LayerUniforms {
@@ -41,6 +41,45 @@ export function createLayerUniforms(): LayerUniforms {
     uSectionCapTint: { value: new Color(0, 0, 0) },
   };
 }
+
+/**
+ * Explore-mode uniforms (Stage 5): one set per selectable component (its material clones), so a
+ * single component can be hovered, selected, isolated or ghosted while it shares its shader
+ * program with everything else. Base materials share the neutral set, whose values never change.
+ */
+export interface ExploreUniforms {
+  /** Multiplier on the lit surface and cut surface: hover/selection lift. */
+  uExploreLift: IUniform<number>;
+  /** 1 = exempt from the isolation dim (the isolated component and its parts). */
+  uExploreKeep: IUniform<number>;
+  /** Accent fresnel rim (linear colour x strength). */
+  uExploreRim: IUniform<Color>;
+  /** Added to this component's cut surfaces (the copper blade emphasis when selected). */
+  uExploreCapTint: IUniform<Color>;
+  /** X-ray ghost 0..1: ordered-dither coverage, silhouettes kept; no blending, no sorting. */
+  uExploreGhost: IUniform<number>;
+  /** (inner, outer) plan radius of a ghost window around the reactor axis; y = 0: whole object. */
+  uExploreGhostWindow: IUniform<Vector2>;
+}
+
+export function createExploreUniforms(): ExploreUniforms {
+  return {
+    uExploreLift: { value: 1 },
+    uExploreKeep: { value: 0 },
+    uExploreRim: { value: new Color(0, 0, 0) },
+    uExploreCapTint: { value: new Color(0, 0, 0) },
+    uExploreGhost: { value: 0 },
+    uExploreGhostWindow: { value: new Vector2(0, 0) },
+  };
+}
+
+/** Shared by every material that is not bound to a component. Never modified. */
+const EXPLORE_NEUTRAL = createExploreUniforms();
+
+/** Shared by every material: the isolation dim of everything that is not kept. */
+export const EXPLORE_GLOBAL_UNIFORMS = {
+  uExploreDim: { value: 1 },
+} satisfies Record<string, IUniform>;
 
 /** How a material's cut surface looks. */
 export interface CapStyle {
@@ -74,6 +113,24 @@ const VERTEX_MAIN = /* glsl */ `
 
 const FRAGMENT_PARS = /* glsl */ `
 uniform float uSectionSurface;
+uniform float uExploreLift;
+uniform float uExploreKeep;
+uniform float uExploreDim;
+uniform vec3 uExploreRim;
+uniform vec3 uExploreCapTint;
+uniform float uExploreGhost;
+uniform vec2 uExploreGhostWindow;
+// 4 x 4 ordered dither threshold, stable in screen space (no temporal flicker).
+float exploreBayer( vec2 p ) {
+	ivec2 q = ivec2( mod( p, 4.0 ) );
+	float m[ 16 ] = float[ 16 ]( 0.0, 8.0, 2.0, 10.0, 12.0, 4.0, 14.0, 6.0, 3.0, 11.0, 1.0, 9.0, 15.0, 7.0, 13.0, 5.0 );
+	return ( m[ q.x + 4 * q.y ] + 0.5 ) / 16.0;
+}
+float exploreGhostAt( vec3 worldPos ) {
+	float g = uExploreGhost;
+	if ( uExploreGhostWindow.y > 0.0 ) g *= 1.0 - smoothstep( uExploreGhostWindow.x, uExploreGhostWindow.y, length( worldPos.xz ) );
+	return g;
+}
 #ifdef SECTION_LAYER
 varying vec3 vSectionWorld;
 uniform float uSectionFill;
@@ -139,12 +196,18 @@ const FRAGMENT_CAP = /* glsl */ `
 	vec3 sectionCapWorld = cameraPosition + ( vSectionWorld - cameraPosition ) * ( sectionThroughCut ? sectionExit : 1.0 );
 	float sectionPx = max( fwidth( sectionCapWorld.y ), 1.0e-6 );
 	if ( ! gl_FrontFacing ) {
+		if ( uExploreGhost > 0.0 ) {
+			// The inside of a ghosted shell is noise: only its true cut surfaces stay, ghosted too.
+			if ( ! sectionThroughCut ) discard;
+			if ( 1.0 - 0.93 * exploreGhostAt( sectionCapWorld ) < exploreBayer( gl_FragCoord.xy ) ) discard;
+		}
 		vec3 sectionN = inverseTransformDirection( sectionCapNormal, viewMatrix );
 		vec3 sectionColor = sectionCapShade( sectionCapWorld, sectionN );
 		// Grade datum: a ~2 px accent line just under y = 0, constant width on screen. Only on
 		// section planes (facing along z), so the excavation's side walls do not outline the pit.
 		float sectionDatum = uSectionCapStyle.y * uSectionDatum * abs( sectionN.z ) * ( 1.0 - smoothstep( 1.0, 1.7, abs( sectionCapWorld.y + sectionPx ) / sectionPx ) );
 		sectionColor = mix( sectionColor, uSectionDatumColor, sectionDatum );
+		sectionColor = sectionColor * uExploreLift * mix( uExploreDim, 1.0, uExploreKeep ) + uExploreCapTint;
 		gl_FragColor = vec4( sectionColor, diffuseColor.a );
 		#include <tonemapping_fragment>
 		#include <colorspace_fragment>
@@ -152,6 +215,20 @@ const FRAGMENT_CAP = /* glsl */ `
 		return;
 	}
 #endif
+`;
+
+/** After the normal is known, before lighting: X-ray ghost coverage (skips shading the holes). */
+const FRAGMENT_GHOST = /* glsl */ `
+	if ( uExploreGhost > 0.0 ) {
+		#ifdef SECTION_LAYER
+			float exploreG = exploreGhostAt( vSectionWorld );
+		#else
+			float exploreG = uExploreGhost;
+		#endif
+		// Faces turned towards the viewer thin out; silhouettes stay, so the shell reads as an outline.
+		float exploreEdge = pow( 1.0 - abs( dot( normal, normalize( vViewPosition ) ) ), 3.0 );
+		if ( 1.0 - exploreG * ( 0.96 - 0.6 * exploreEdge ) < exploreBayer( gl_FragCoord.xy ) ) discard;
+	}
 `;
 
 const FRAGMENT_SURFACE = /* glsl */ `
@@ -170,6 +247,11 @@ const FRAGMENT_SURFACE = /* glsl */ `
 	}
 #endif
 	outgoingLight *= uSectionSurface;
+	// A tight rim (power 5) on lit silhouettes: weighted by the surface's own light, so a large dark
+	// face seen edge-on (a floor's underside) never fills with accent.
+	float exploreLum = dot( outgoingLight, vec3( 0.2126, 0.7152, 0.0722 ) );
+	outgoingLight += uExploreRim * pow( 1.0 - saturate( dot( normal, geometryViewDir ) ), 5.0 ) * smoothstep( 0.02, 0.25, exploreLum );
+	outgoingLight *= uExploreLift * mix( uExploreDim, 1.0, uExploreKeep ) * ( 1.0 - 0.5 * uExploreGhost );
 `;
 
 function inject(source: string, anchor: string, code: string, position: 'before' | 'after'): string {
@@ -189,11 +271,13 @@ export type SectionUniformMap = Record<string, IUniform>;
  */
 export function installSectionShader(material: MeshStandardMaterial, uniforms: SectionUniformMap): void {
   material.onBeforeCompile = (shader: WebGLProgramParametersWithUniforms) => {
-    Object.assign(shader.uniforms, uniforms);
+    // Neutral explore defaults first: a component's own set (in `uniforms`) replaces them.
+    Object.assign(shader.uniforms, EXPLORE_NEUTRAL, EXPLORE_GLOBAL_UNIFORMS, uniforms);
     let vs = inject(shader.vertexShader, '#include <common>', VERTEX_PARS, 'after');
     vs = inject(vs, '#include <project_vertex>', VERTEX_MAIN, 'after');
     let fs = inject(shader.fragmentShader, '#include <common>', FRAGMENT_PARS, 'after');
     fs = inject(fs, '#include <clipping_planes_fragment>', FRAGMENT_CAP, 'after');
+    fs = inject(fs, '#include <normal_fragment_maps>', FRAGMENT_GHOST, 'after');
     fs = inject(fs, '#include <opaque_fragment>', FRAGMENT_SURFACE, 'before');
     shader.vertexShader = vs;
     shader.fragmentShader = fs;

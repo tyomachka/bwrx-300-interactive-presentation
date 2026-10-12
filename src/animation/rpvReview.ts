@@ -48,6 +48,12 @@ export function cycleRpvReview(): Promise<void> {
   return next ? showRpvReview(next) : Promise.resolve();
 }
 
+/** Stop a running review reveal tween (another owner is about to set the reveal). */
+export function stopRpvReviewTween(): void {
+  tween?.kill();
+  tween = null;
+}
+
 /** Leave review: stop its reveal tween and put the camera floor back (reset does this). */
 export function endRpvReview(): void {
   tween?.kill();

@@ -40,9 +40,10 @@ const _b = new Vector3();
  * Pure, deterministic pose interpolation for progress `t` in [0, 1].
  * The target moves in a straight line. The camera orbits it on an arc (radius
  * interpolated logarithmically, so a dolly feels even), instead of cutting through
- * the subject the way a straight position lerp would.
+ * the subject the way a straight position lerp would. `targetT` (default `t`) lets the
+ * target run on its own progress (see `TransitionOptions.exitRadius`).
  */
-export function interpolatePose(from: CameraPose, to: CameraPose, t: number, out: LivePose): LivePose {
+export function interpolatePose(from: CameraPose, to: CameraPose, t: number, out: LivePose, targetT = t): LivePose {
   const fromTarget = _a.fromArray(from.target);
   const toTarget = _b.fromArray(to.target);
   _offsetA.setFromVector3(_v.fromArray(from.position).sub(fromTarget));
@@ -57,7 +58,7 @@ export function interpolatePose(from: CameraPose, to: CameraPose, t: number, out
   const phi = MathUtils.lerp(_offsetA.phi, _offsetB.phi, t);
   const theta = _offsetA.theta + dTheta * t;
 
-  out.target.lerpVectors(fromTarget, toTarget, t);
+  out.target.lerpVectors(fromTarget, toTarget, targetT);
   out.position.setFromSphericalCoords(radius, phi, theta).add(out.target);
   out.fov = MathUtils.lerp(from.fov, to.fov, t);
   return out;
@@ -66,6 +67,21 @@ export function interpolatePose(from: CameraPose, to: CameraPose, t: number, out
 export interface TransitionOptions {
   duration?: number;
   ease?: string;
+  /**
+   * Back out first (metres). The orbit target holds still until the camera has dollied out to
+   * this distance from it, so the camera leaves along its own sight line, through the cut it was
+   * looking into, before turning towards the destination; then the target eases across. Used by
+   * a reset from inside the opened plant. A start already this far out moves as usual.
+   */
+  exitRadius?: number;
+}
+
+/** Progress at which a transition's log-interpolated radius reaches `radius` (0 if never needed). */
+function progressAtRadius(from: CameraPose, to: CameraPose, radius: number): number {
+  const r0 = _v.fromArray(from.position).sub(_a.fromArray(from.target)).length();
+  const r1 = _v.fromArray(to.position).sub(_a.fromArray(to.target)).length();
+  if (r0 >= radius || r1 <= r0) return 0;
+  return MathUtils.clamp(Math.log(radius / r0) / Math.log(r1 / r0), 0, 0.9);
 }
 
 /** Writes the cinematic camera pose for the current frame. */
@@ -141,6 +157,8 @@ class CameraDirector {
     this.takeAuthority('transition');
     const from = this.getPose();
     const progress = { t: 0 };
+    const hold = options.exitRadius ? progressAtRadius(from, to, options.exitRadius) : 0;
+    const targetT = (t: number) => (hold > 0 ? MathUtils.smoothstep(t, hold, 1) : t);
 
     return new Promise<void>((resolve) => {
       this.settle = resolve;
@@ -148,7 +166,7 @@ class CameraDirector {
         t: 1,
         duration: options.duration ?? CAMERA_TRANSITION.duration,
         ease: options.ease ?? CAMERA_TRANSITION.ease,
-        onUpdate: () => void interpolatePose(from, to, progress.t, this.pose),
+        onUpdate: () => void interpolatePose(from, to, progress.t, this.pose, targetT(progress.t)),
         onComplete: () => {
           this.tween = null;
           this.returnToExplore();
@@ -158,8 +176,8 @@ class CameraDirector {
     });
   }
 
-  reset(): Promise<void> {
-    return this.transitionTo(HOME_CAMERA_STATE);
+  reset(options: TransitionOptions = {}): Promise<void> {
+    return this.transitionTo(HOME_CAMERA_STATE, options);
   }
 
   /**
@@ -249,6 +267,9 @@ class CameraDirector {
       this.applyPoseToCamera();
       controls.target.copy(this.pose.target);
       controls.enabled = true;
+      // Limits for *this* pose before the hand-over update: a polar limit left over from the
+      // previous view would otherwise snap the camera (e.g. after a below-grade focus move).
+      this.keepCameraAboveGrade(controls);
       controls.update();
     }
     this.authority = 'explore';

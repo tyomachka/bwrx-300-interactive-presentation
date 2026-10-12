@@ -2,6 +2,8 @@ import { lazy, Suspense, useEffect } from 'react';
 import { SceneCanvas } from '../scene/SceneCanvas';
 import { useAppStore } from '../state/store';
 import { LoadingOverlay } from '../ui/LoadingOverlay';
+import { ExploreOverlay } from '../ui/ExploreOverlay';
+import { ExplorePanel } from '../ui/ExplorePanel';
 import { SetupControls } from '../ui/SetupControls';
 import { ContextLostOverlay, SceneCrashed, WebGLUnavailable } from '../ui/StatusScreens';
 import { AppErrorBoundary, SafeLayer } from './ErrorBoundary';
@@ -41,6 +43,8 @@ export function App() {
       </AppErrorBoundary>
       <LoadingOverlay />
       <ContextLostOverlay />
+      <ExploreOverlay />
+      <ExplorePanel />
       <SetupControls />
       {showDiagnostics && (
         <SafeLayer name="diagnostics-overlay">

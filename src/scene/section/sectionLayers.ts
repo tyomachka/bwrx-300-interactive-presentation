@@ -25,6 +25,7 @@ import { KEY_LIGHT_POSITION, PALETTE } from '../../config/render';
 import { REACTOR_PRESSURE_VESSEL as RPV } from '../plant/dimensions';
 import { CORE_SECTION_H } from '../rpv/rpvData';
 import { cutPlaneZ } from './cutPath';
+import { setVesselDrawnFirst } from './drawOrder';
 import { createLayerUniforms, type LayerUniforms, type SectionUniformMap } from './sectionShader';
 
 export type RevealLayerId = 'exterior' | 'ground' | 'building' | 'containment' | 'vessel' | 'internals' | 'fuel' | 'blades';
@@ -151,17 +152,31 @@ export function setSectionCapDetail(detailed: boolean): void {
 
 /**
  * `vessel` = the RPV inside the opened containment; `reactor` = the vessel internals, drawn only
- * once the vessel cutaway opens; `review` = only the Stage 2 section review shows it (main steam
- * path, turbine hall interior).
+ * once the vessel cutaway opens; `turbineHall` (turbine deck and train) and `steamPath` (main
+ * steam line) are shown by the Stage 2 section review or an Explore X-ray of their enclosure;
+ * `review` = only the section review shows it (pools).
  */
-export type InteriorLevel = 'belowGrade' | 'building' | 'vessel' | 'reactor' | 'review';
+export type InteriorLevel = 'belowGrade' | 'building' | 'vessel' | 'reactor' | 'turbineHall' | 'steamPath' | 'review';
 
 const interiorGroups = new Map<Object3D, InteriorLevel>();
-const interiorOpen: Record<InteriorLevel, boolean> = { belowGrade: false, building: false, vessel: false, reactor: false, review: false };
+const interiorOpen: Record<InteriorLevel, boolean> = { belowGrade: false, building: false, vessel: false, reactor: false, turbineHall: false, steamPath: false, review: false };
+
+/**
+ * Interior content another system needs drawn regardless of the cuts: Explore X-ray and isolation
+ * ghost an enclosure, so what it encloses must be visible (interaction/exploreVisuals.ts).
+ */
+export const interiorOverride: Record<InteriorLevel, boolean> = { belowGrade: false, building: false, vessel: false, reactor: false, turbineHall: false, steamPath: false, review: false };
+
+let shadowUpdateRequested = false;
+
+/** Ask for one shadow-map refresh (e.g. casters stopped casting because they are ghosted). */
+export function requestShadowUpdate(): void {
+  shadowUpdateRequested = true;
+}
 
 export function registerInterior(group: Object3D, level: InteriorLevel): () => void {
   interiorGroups.set(group, level);
-  group.visible = interiorOpen[level];
+  group.visible = interiorOpen[level] || interiorOverride[level];
   return () => void interiorGroups.delete(group);
 }
 
@@ -191,7 +206,7 @@ export function applyReveal(state: Readonly<HeroRevealState> | null): void {
     }
     u.exterior.uSectionFill.value = 0;
     SECTION_GLOBAL_UNIFORMS.uSectionDatum.value = 1;
-    setInterior({ belowGrade: true, building: true, vessel: true, reactor: true, review: true });
+    setInterior({ belowGrade: true, building: true, vessel: true, reactor: true, turbineHall: true, steamPath: true, review: true });
     return;
   }
 
@@ -210,6 +225,7 @@ export function applyReveal(state: Readonly<HeroRevealState> | null): void {
   const corner = VESSEL_CUT_START * (1 - v);
   const floorY = k > 0 ? lerp(RPV.insideBottomY - 7, RPV.insideBottomY + CORE_SECTION_H, k) : -OPEN;
   setBox(SECTION_PLANES.vessel, v > 0 ? { ...CLOSED, cutZ: corner, xMax: -corner, floorY } : CLOSED);
+  setVesselDrawnFirst(v < 0.99);
 
   // Grade datum: full while the ground opens; once the shaft is established it steps back
   // (faint by the containment reveal) and is gone before the RPV becomes the subject.
@@ -251,7 +267,7 @@ export function applyReveal(state: Readonly<HeroRevealState> | null): void {
   u.blades.uSectionRim.value.copy(ACCENT).multiplyScalar(0.6 * b);
   u.blades.uSectionCapTint.value.copy(ACCENT).multiplyScalar(0.3 * b);
 
-  setInterior({ belowGrade: g > 0, building: s > 0, vessel: c > 0, reactor: v > 0, review: false });
+  setInterior({ belowGrade: g > 0, building: s > 0, vessel: c > 0, reactor: v > 0, turbineHall: false, steamPath: false, review: false });
 }
 
 const lastPlaneConstants = new Float64Array(Object.keys(SECTION_PLANES).length * 5).fill(Number.NaN);
@@ -262,7 +278,8 @@ const lastPlaneConstants = new Float64Array(Object.keys(SECTION_PLANES).length *
  * only needs re-rendering on these frames (RevealDriver).
  */
 export function sectionPlanesChanged(): boolean {
-  let changed = false;
+  let changed = shadowUpdateRequested;
+  shadowUpdateRequested = false;
   let i = 0;
   for (const planes of Object.values(SECTION_PLANES)) {
     for (const plane of planes) {
@@ -275,5 +292,11 @@ export function sectionPlanesChanged(): boolean {
 
 function setInterior(open: Record<InteriorLevel, boolean>): void {
   Object.assign(interiorOpen, open);
-  for (const [group, level] of interiorGroups) group.visible = interiorOpen[level];
+  for (const [group, level] of interiorGroups) {
+    const visible = interiorOpen[level] || interiorOverride[level];
+    if (group.visible !== visible) {
+      group.visible = visible;
+      shadowUpdateRequested = true; // casters appeared or disappeared
+    }
+  }
 }

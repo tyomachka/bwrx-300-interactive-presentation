@@ -51,7 +51,7 @@ export function TurbineBuilding() {
   return (
     <group name={PLANT_IDS.turbineBuilding} userData={meta(PLANT_IDS.turbineBuilding, 'educational-approximation')}>
       {/* Behind the cut plane (always visible) */}
-      <Interior>
+      <Interior level="turbineHall">
         <Box name="tb.floor.back" {...floor.back} material={m.concreteDark} castShadow={false} />
       </Interior>
       <Box name="tb.wall.north" x={[x0, x1]} y={[ON_GRADE, wallTop]} z={[zN, zN + TB.wall]} material={m.darkMetal} />
@@ -80,7 +80,7 @@ export function TurbineBuilding() {
       </FrontOfSection>
 
       {/* Equipment is shown whole, never sectioned. */}
-      <Interior>
+      <Interior level="turbineHall">
         <Box name="tb.turbineDeck" x={TB.deck.x} y={[TB.floorTop, TB.deck.top]} z={[-TB.deck.halfWidth, TB.deck.halfWidth]} material={m.concreteDark} />
         <TurbineGenerator />
       </Interior>
