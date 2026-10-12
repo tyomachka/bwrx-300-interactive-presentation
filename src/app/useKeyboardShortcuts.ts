@@ -1,11 +1,13 @@
 import { useEffect } from 'react';
-import { heroShot, resetPresentation } from '../animation/heroShot';
+import { heroShot } from '../animation/heroShot';
+import { resetPresentation } from '../animation/presentation';
+import { cycleRpvReview } from '../animation/rpvReview';
 import { cycleReviewView } from '../camera/reviewViews';
 import { useAppStore } from '../state/store';
 
 /**
  * Global shortcuts (PROJECT.md §11). Space, X, C, F, S and Esc are reserved for later
- * stages. V, G, P and K are review aids, active only in dev builds or with `?debug`.
+ * stages. V, G, P, K and B are review aids, active only in dev builds or with `?debug`.
  *
  * Keys are matched by `event.code` (physical position), not `event.key`. On the
  * Lithuanian layout the number row types ą č ę ė ... without Shift, so `key === '1'`
@@ -34,6 +36,8 @@ const BINDINGS: Record<string, () => void> = {
     heroShot.play();
   }),
   KeyK: debugOnly(() => heroShot.togglePause()),
+  // Stage 4 vessel review states: exterior, cutaway, core, control blades, steam region.
+  KeyB: debugOnly(() => void cycleRpvReview()),
 };
 
 function isTypingTarget(target: EventTarget | null): boolean {

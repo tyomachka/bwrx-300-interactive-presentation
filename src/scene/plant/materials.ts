@@ -27,13 +27,8 @@ import {
   type Texture,
 } from 'three';
 import { FLOOR_RADIUS, PALETTE } from '../../config/render';
-import {
-  LAYER_UNIFORMS,
-  SECTION_GLOBAL_UNIFORMS,
-  SECTION_PLANES,
-  type RevealLayerId,
-  type SectionedLayerId,
-} from '../section/sectionLayers';
+import { LAYER_CLIP, LAYER_UNIFORMS, SECTION_GLOBAL_UNIFORMS, SECTION_PLANES, type RevealLayerId } from '../section/sectionLayers';
+import { REVEAL_DRAW_RANK } from '../section/drawOrder';
 import { createCapUniforms, installSectionShader, type CapStyle, type SectionUniformMap } from '../section/sectionShader';
 import { SITE } from './dimensions';
 
@@ -90,6 +85,15 @@ const SURFACES = {
   /** Matte industrial steel (approved Stage 1 look): RPV, piping, turbine casings. */
   steel: { color: PALETTE.steel, roughness: 0.48, metalness: 0.6 },
   doorPanel: { color: '#1b1e22', roughness: 0.7, metalness: 0.3 },
+  /** RPV internals (Stage 4): one steel family, told apart by value, never by hue. The fuel is
+   *  the lightest block (warm Zircaloy grey), the chimney a dark barrel, the blades dark steel. */
+  stainless: { color: '#959ba1', roughness: 0.45, metalness: 0.55 },
+  chimney: { color: '#5d6269', roughness: 0.55, metalness: 0.45 },
+  supportSteel: { color: '#6b7076', roughness: 0.6, metalness: 0.4 },
+  dryer: { color: '#96938b', roughness: 0.5, metalness: 0.45 },
+  fuelChannel: { color: '#b9b4a7', roughness: 0.42, metalness: 0.35 },
+  blade: { color: '#4b5158', roughness: 0.38, metalness: 0.65 },
+  driveMotor: { color: '#3b4147', roughness: 0.65, metalness: 0.3 },
   water: { color: '#35505b', roughness: 0.22, metalness: 0, envMapIntensity: 1.1 },
   human: { color: '#c9ccd0', roughness: 0.7, metalness: 0 },
 } satisfies Record<string, MeshStandardMaterialParameters>;
@@ -99,6 +103,7 @@ const SURFACES = {
 /** A context material: standard PBR plus the exterior dim. */
 function context(params: MeshStandardMaterialParameters): MeshStandardMaterial {
   const material = new MeshStandardMaterial(params);
+  material.userData.revealRank = REVEAL_DRAW_RANK.exterior;
   installSectionShader(material, { ...LAYER_UNIFORMS.exterior });
   return material;
 }
@@ -143,6 +148,15 @@ const CAPS = {
   water: { color: '#2d4852' },
   door: { color: '#3a3d41' },
   human: { color: '#c9ccd0' },
+  /** Vessel and internals: cut steel reads as a slightly darker, flat-lit section. */
+  vesselSteel: { color: '#8b9095' },
+  stainless: { color: '#7f858b' },
+  chimney: { color: '#686d73' },
+  supportSteel: { color: '#62676d' },
+  dryer: { color: '#847f77' },
+  fuel: { color: '#a29d91' },
+  blade: { color: '#5a6067' },
+  driveMotor: { color: '#3b4147' },
 } satisfies Record<string, CapStyle>;
 
 /**
@@ -152,9 +166,10 @@ const CAPS = {
 function section(layer: RevealLayerId, params: MeshStandardMaterialParameters, cap: CapStyle | null): MeshStandardMaterial {
   const material = new MeshStandardMaterial(params);
   const uniforms: SectionUniformMap = { ...LAYER_UNIFORMS[layer], ...SECTION_GLOBAL_UNIFORMS };
+  material.userData.revealRank = REVEAL_DRAW_RANK[layer];
   material.defines = { SECTION_LAYER: '' };
-  if (layer !== 'exterior' && layer !== 'vessel') {
-    material.clippingPlanes = SECTION_PLANES[layer as SectionedLayerId];
+  if (layer !== 'exterior') {
+    material.clippingPlanes = SECTION_PLANES[LAYER_CLIP[layer]];
     material.clipIntersection = true;
     material.clipShadows = true;
     if (cap) {
@@ -191,7 +206,24 @@ function createSectionMaterials() {
       concrete: section('containment', SURFACES.concreteDark, CAPS.concrete),
     },
     vessel: {
-      steel: section('vessel', SURFACES.steel, null),
+      steel: section('vessel', SURFACES.steel, CAPS.vesselSteel),
+      driveMotor: section('vessel', SURFACES.driveMotor, CAPS.driveMotor),
+    },
+    internals: {
+      stainless: section('internals', SURFACES.stainless, CAPS.stainless),
+      chimney: section('internals', SURFACES.chimney, CAPS.chimney),
+      supportSteel: section('internals', SURFACES.supportSteel, CAPS.supportSteel),
+      dryer: section('internals', SURFACES.dryer, CAPS.dryer),
+    },
+    fuel: {
+      /** The vertical cutaway planes run between assemblies, never through one: no cut surface,
+       *  front faces only (half the fill cost of the 240-assembly field). */
+      channel: section('fuel', SURFACES.fuelChannel, null),
+      /** For the horizontal core section, which does cut through every assembly. */
+      channelCapped: section('fuel', SURFACES.fuelChannel, CAPS.fuel),
+    },
+    blades: {
+      blade: section('blades', SURFACES.blade, CAPS.blade),
     },
   };
 }
@@ -208,5 +240,5 @@ export function getSectionMaterials(): SectionMaterials {
 /** Every material that clips (for per-canvas settings such as alpha-to-coverage). */
 export function sectionedMaterials(): MeshStandardMaterial[] {
   const m = getSectionMaterials();
-  return [...Object.values(m.ground), ...Object.values(m.building), ...Object.values(m.containment)];
+  return [m.ground, m.building, m.containment, m.vessel, m.internals, m.fuel, m.blades].flatMap((set) => Object.values(set));
 }

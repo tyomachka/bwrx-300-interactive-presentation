@@ -6,9 +6,9 @@ references are `references/technical/005N9751-BWRX-300-General-Description.pdf` 
 `references/technical/11.pdf` (UK GDA Chapter 1, NEDO-34163 Rev B). They are kept locally
 and not committed; see `references/links.txt`.
 
-**Current state: Stage 3 (first production-quality shot)**, awaiting review. Stage 1
-(renderer foundation) and Stage 2 (plant massing) are committed checkpoints. Review
-material is in `docs/stage1-review/`, `docs/stage2-review/` and `docs/stage3-review/`.
+**Current state: Stage 4 (reactor pressure vessel and internals)**, awaiting review. Stages
+1-3 (renderer foundation, plant massing, the 10 s hero shot) are committed checkpoints.
+Review material is in `docs/stage1-review/` to `docs/stage4-review/`.
 
 ## Commands
 
@@ -39,11 +39,12 @@ Keys are matched by physical position, so they also work on the Lithuanian layou
 | `K` | Review aid: pause / resume the hero shot (dev / `?debug`) |
 | `V` | Review aid: cycle the four Stage 2 review views (dev / `?debug`) |
 | `G` | Review aid: toggle the section review (dev / `?debug`) |
+| `B` | Review aid: cycle the Stage 4 vessel review states: exterior, cutaway, core, control blades, steam region (dev / `?debug`) |
 
 The `?debug` panel also has the shot buttons and a time scrubber that shows the exact frame
 at any time. For automation, `window.__bwrx` (dev / `?debug` only) exposes
-`shot.play() / seek(t) / togglePause()`, the reveal state, the camera pose and per-frame
-renderer statistics.
+`shot.play() / seek(t) / togglePause()`, `rpvReview.show(id)`, `snapCamera(pose)`, the
+reveal state, the camera pose and per-frame renderer statistics.
 
 Mouse in Explore mode: left-drag orbit, wheel zoom, right-drag pan (limited).
 
@@ -96,6 +97,27 @@ Mouse in Explore mode: left-drag orbit, wheel zoom, right-drag pan (limited).
   restart and seek are exact. After the shot, Explore takes over from the final pose; the
   camera is kept above grade while the plant is opened up.
 
+## Reactor pressure vessel and internals (Stage 4)
+
+- **Sources:** GD 005N9751 Rev J (June 2026) is the authority; NEDO-34163 Rev B (2025, older)
+  differences are recorded, not applied. Every number is in `src/scene/rpv/rpvData.ts` (vessel
+  basics in `plant/dimensions.ts`) with its provenance tag.
+- **Core layout** (`src/scene/rpv/coreLayout.ts`): read off GD Figure 3-6: 57 four-bundle
+  control cells (rows 3-5-7-9-9-9-7-5-3) plus 12 peripheral bundles = 240 bundles, 57
+  blades. Blade insertion is plain data (`ControlBladeState.insertion`, not animated).
+- **Geometry** (`rpvGeometry.ts`, `ReactorPressureVessel.tsx`): closed solids of revolution
+  and merged parts, one draw call per material; bundles and blades are instanced. The
+  internals (`Interior` level `reactor`) are drawn only when the vessel cutaway opens.
+- **Cutaway:** the vessel is a reveal layer like the plant structures. `vesselCut` removes the
+  quadrant facing the south-west cameras (x < 0, z > 0); `coreSection` adds a horizontal step at
+  mid-core (the core in plan). The internals, fuel and blades layers use the vessel's planes,
+  with their own emphasis uniforms. Cutaway planes run between repeated parts by design.
+- **Review states** (`src/config/rpvReview.ts`, key `B`): data pairing a camera pose with a
+  reveal and a blade pattern. They stand below grade inside the opened plant, so Explore may
+  follow them there while a review state is active.
+- **Semantic IDs** (`src/scene/rpv/components.ts`): one registry entry per component (label,
+  description, parent, focus pose, tier, provenance); the scene object's `name` is the ID.
+
 ## Architecture notes
 
 - **Units:** 1 world unit = 1 metre.
@@ -108,6 +130,10 @@ Mouse in Explore mode: left-drag orbit, wheel zoom, right-drag pan (limited).
   (a shot's pose source; the Stage 3 hero shot now, Stage 6 later). They write a plain
   pose object, and the director applies it once per frame. Handing back to OrbitControls
   syncs its target, so nothing jumps.
+- **Draw order and shadows:** `src/scene/section/drawOrder.ts` draws the nested reveal layers
+  inside-out, front to back (the opened plant otherwise overdraws heavily), and the 240 fuel
+  instances are kept sorted from the camera. The shadow map is re-rendered only on frames where
+  a section plane moves (`RevealDriver`): the key light and casters are otherwise static.
 - **Deterministic time:** `src/animation/clock.ts`. GSAP is driven from the R3F frame
   loop rather than its own rAF. Setting `animationClock.fixedStep = 1/30` makes every
   frame advance exactly one video frame (for the Stage 12 H.264 export).

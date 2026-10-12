@@ -11,6 +11,7 @@ const WINDOW_MS = 500;
  */
 export default function FrameProbe() {
   const gl = useThree((s) => s.gl);
+  const scene = useThree((s) => s.scene);
   const timing = useRef({ last: 0, windowStart: 0, frames: 0, sum: 0, worst: 0 });
 
   useFrame(() => {
@@ -37,6 +38,7 @@ export default function FrameProbe() {
     }
 
     sample.renderer = gl;
+    sample.scene = scene;
     const { render, memory, programs } = gl.info;
     sample.drawCalls = render.calls;
     sample.triangles = render.triangles;

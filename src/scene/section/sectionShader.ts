@@ -27,6 +27,8 @@ export interface LayerUniforms {
   uSectionRim: IUniform<Color>;
   /** Soft backlight pool colour x strength (linear): a line light behind the subject. */
   uSectionGlow: IUniform<Color>;
+  /** Added to this layer's cut surfaces (linear): marks a subject's sections with the accent. */
+  uSectionCapTint: IUniform<Color>;
 }
 
 export function createLayerUniforms(): LayerUniforms {
@@ -36,6 +38,7 @@ export function createLayerUniforms(): LayerUniforms {
     uSectionFill: { value: 0 },
     uSectionRim: { value: new Color(0, 0, 0) },
     uSectionGlow: { value: new Color(0, 0, 0) },
+    uSectionCapTint: { value: new Color(0, 0, 0) },
   };
 }
 
@@ -84,6 +87,7 @@ uniform float uSectionGlowRadius;
 #endif
 #ifdef SECTION_CAP
 uniform float uSectionCapMul;
+uniform vec3 uSectionCapTint;
 uniform vec3 uSectionCapColor;
 uniform vec4 uSectionCapStyle; // x strata, y datum, z depth fade, w radial fade
 uniform vec3 uSectionKeyDir;
@@ -105,7 +109,7 @@ vec3 sectionCapShade( vec3 p, vec3 n ) {
 	color += base * uSectionFillColor * ( uSectionFill * max( dot( n, uSectionFillDir ), 0.0 ) );
 	color *= 1.0 - uSectionCapStyle.z * smoothstep( 6.0, 44.0, depth );
 	color *= 1.0 - uSectionCapStyle.w * smoothstep( 24.0, 64.0, length( p.xz ) );
-	return color * uSectionCapMul;
+	return color * uSectionCapMul + uSectionCapTint;
 }
 #endif
 `;

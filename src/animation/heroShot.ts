@@ -13,7 +13,7 @@ import gsap from 'gsap';
 import './clock';
 import { cameraDirector } from '../camera/cameraDirector';
 import { CameraPath } from '../camera/cameraPath';
-import { CAMERA_STATES, CAMERA_TRANSITION } from '../config/camera';
+import { CAMERA_STATES } from '../config/camera';
 import { HERO_SHOT_CAMERA, HERO_SHOT_DURATION, HERO_SHOT_REVEAL } from '../config/heroShot';
 import { HERO_REVEAL_CLOSED, heroReveal, resetHeroReveal } from './heroReveal';
 
@@ -64,13 +64,19 @@ class HeroShotController {
     cameraDirector.endCinematic();
   }
 
+  /** Stop a running `closeReveal` (another owner is about to set the reveal). */
+  cancelClose(): void {
+    this.closing?.kill();
+    this.closing = null;
+  }
+
   /** Close the reveal (e.g. on reset) in step with a camera transition of `duration` seconds. */
   closeReveal(duration: number): void {
     this.closing?.kill();
     // The ground refills last, after a reset camera has climbed out of the excavation.
     this.closing = gsap
       .timeline({ onComplete: () => void (this.closing = null) })
-      .to(heroReveal, { shaftReveal: 0, containmentReveal: 0, rpvEmphasis: 0, duration: duration * 0.6, ease: 'power2.inOut' }, 0)
+      .to(heroReveal, { vesselCut: 0, coreSection: 0, bladeEmphasis: 0, shaftReveal: 0, containmentReveal: 0, rpvEmphasis: 0, duration: duration * 0.6, ease: 'power2.inOut' }, 0)
       .to(heroReveal, { exteriorDim: 0, duration, ease: 'sine.inOut' }, 0)
       .to(heroReveal, { groundCut: HERO_REVEAL_CLOSED.groundCut, duration: duration * 0.6, ease: 'power2.in' }, duration * 0.4);
   }
@@ -80,6 +86,8 @@ class HeroShotController {
     this.closing = null;
     const timeline = this.ensureTimeline();
     const session = ++this.session;
+    // The shot keeps its camera above grade; Explore inherits that after the shot.
+    cameraDirector.allowBelowGrade = false;
     // Tracks start from the closed state, so: reset, then force-render the timeline at `time`
     // (a plain seek skips rendering when the playhead is already there).
     resetHeroReveal();
@@ -133,10 +141,3 @@ class HeroShotController {
 }
 
 export const heroShot = new HeroShotController();
-
-/** "Reset view": stop the shot, close the reveal, fly home. Deterministic from any state. */
-export function resetPresentation(): Promise<void> {
-  heroShot.stop();
-  heroShot.closeReveal(CAMERA_TRANSITION.duration);
-  return cameraDirector.reset();
-}

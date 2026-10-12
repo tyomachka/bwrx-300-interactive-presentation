@@ -12,7 +12,7 @@ import { MathUtils } from 'three';
 import type { SectionedLayerId } from './sectionLayers';
 
 type Station = readonly [progress: number, z: number];
-type StructureCut = Exclude<SectionedLayerId, 'ground'>;
+type StructureCut = Extract<SectionedLayerId, 'building' | 'containment'>;
 
 const STATIONS: Record<StructureCut, readonly Station[]> = {
   // Canopy front at z = 20.9, shaft face at 19.1: slow through the wall and the upper floors

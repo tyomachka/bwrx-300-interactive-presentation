@@ -2,11 +2,12 @@
  * Plant massing dimensions: the single source for every Stage 2 number (metres, grade = y 0).
  *
  * Provenance tags:
- *  [GD]     GE Vernova Hitachi, BWRX-300 General Description 005N9751 Rev J
- *           (references/technical/). Section/figure noted.
- *  [NEDO]   GE Hitachi, BWRX-300 UK GDA Chapter 1, NEDO-34163 Rev B, July 2025
- *           (references/technical/11.pdf). Where it differs from [GD] it is the more recent
- *           official source; differences that the massing does not yet follow are noted.
+ *  [GD]     GE Vernova Hitachi, BWRX-300 General Description 005N9751 Rev J, June 2026
+ *           (references/technical/). Section/figure noted. The newest official source in
+ *           the project, so it wins where sources differ.
+ *  [NEDO]   GE Hitachi, BWRX-300 UK GDA Chapter 1, NEDO-34163 Rev B, July/Aug 2025
+ *           (references/technical/11.pdf). Older than [GD] Rev J; used where the GD is
+ *           silent (shaft depth), and its differences from the GD are recorded, not applied.
  *  [BRIEF]  Stage 2 brief (superseded where [NEDO] now confirms the figure).
  *  [PRESS]  Press coverage of the OPG Darlington build (approximate, not a design figure).
  *  [APPROX] Educational approximation: proportions chosen to agree with the official
@@ -61,7 +62,7 @@ export const CONTAINMENT = {
   /** [GD §3.4] Vertical cylinder ≈ 19 m outside diameter and 38 m high, enclosed in the
    *  deeply embedded RB, on the common basemat. Bottom = basemat underside (-36), so the top
    *  is at +2: "SCCV and RPV are situated at or below grade" [GD §10].
-   *  [NEDO §1.7.6] gives ≈ 18 m OD x 38 m: not yet applied (approved Stage 2 massing). */
+   *  [NEDO §1.7.6] (older) gives ≈ 18 m OD x 38 m: recorded, not applied. */
   outerRadius: 9.5,
   height: 38,
   /** [APPROX] Wall and top-slab thicknesses. */
@@ -75,16 +76,30 @@ export const CONTAINMENT = {
   pedestal: { innerRadius: 3.1, outerRadius: 4.0, height: 10.5 },
 } as const;
 
+/** [GD §3.1.1] "minimum inside diameter of approximately 4.2 m, a wall thickness of
+ *  approximately 13.54 cm with cladding, and a nominal inner height of approximately 27.36 m".
+ *  Table 2-1 rounds these to 4 m ID and 27 m inside height.
+ *  [NEDO §1.7.1 / Table 1-1] (older): ID ≈ 4 m, wall ≈ 14 cm, height ≈ 26 m: recorded, not applied. */
+const RPV_INNER_RADIUS = 2.1;
+const RPV_WALL = 0.1354;
+const RPV_INNER_HEIGHT = 27.36;
+/** [APPROX] Outer top of the head at the containment top slab, as in Fig 3-9 (Stage 2 placement). */
+const RPV_TOP_Y = 1.0;
+
 export const REACTOR_PRESSURE_VESSEL = {
-  /** [GD §3.1] Minimum ID ≈ 4.2 m, wall ≈ 13.54 cm -> OD ≈ 4.47 m. Inner height ≈ 27.36 m.
-   *  [NEDO §1.7.1 / Table 1-1] ID ≈ 4 m, wall ≈ 14 cm, inside height ≈ 26 m: to reconcile when
-   *  Stage 4 replaces this placeholder with the vessel profile. */
-  outerRadius: 2.235,
-  height: 27.6,
-  /** [APPROX] Head at the containment top slab, as in Fig 3-9. */
-  topY: 1.0,
-  /** [APPROX] Main steam nozzle elevation (upper vessel, Fig 5-1). */
-  steamNozzleY: -2.0,
+  innerRadius: RPV_INNER_RADIUS,
+  wall: RPV_WALL,
+  innerHeight: RPV_INNER_HEIGHT,
+  outerRadius: RPV_INNER_RADIUS + RPV_WALL,
+  /** Overall outer height, head apex to bottom-head apex. */
+  height: RPV_INNER_HEIGHT + 2 * RPV_WALL,
+  topY: RPV_TOP_Y,
+  /** World y of the inside bottom of the vessel: the datum for internal heights ("from the
+   *  bottom of the vessel", [GD §3.1.1]). */
+  insideBottomY: RPV_TOP_Y - RPV_WALL - RPV_INNER_HEIGHT,
+  /** [APPROX — elevation constrained by GD Fig 3-1/3-3] Main steam nozzles: just below the head
+   *  flange, at the steam dryer (≈ 24.2 m above the inside bottom). */
+  steamNozzleY: RPV_TOP_Y - RPV_WALL - RPV_INNER_HEIGHT + 24.2,
 } as const;
 
 export const POOLS = {

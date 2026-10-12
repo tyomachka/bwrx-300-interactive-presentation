@@ -3,11 +3,13 @@
  * the DOM overlay reads it a few times per second. No React state, so measuring the
  * frame rate never costs a re-render.
  */
-import type { WebGLRenderer } from 'three';
+import type { Scene, WebGLRenderer } from 'three';
 
 export const diagnosticsSample = {
   /** The live renderer, for automation checks (program info logs, info counters). */
   renderer: null as WebGLRenderer | null,
+  /** The live scene, for automation checks (finding components by semantic ID). */
+  scene: null as Scene | null,
   fps: 0,
   /** Mean and worst interval between presented frames over the last window (ms). */
   frameAvgMs: 0,

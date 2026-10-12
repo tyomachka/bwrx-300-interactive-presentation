@@ -1,14 +1,16 @@
 /**
- * The Stage 3 hero reveal as plain, continuous data.
+ * The reveal as plain, continuous data: the Stage 3 hero reveal, plus the Stage 4 vessel
+ * cutaway fields (which the hero shot leaves closed).
  *
  * GSAP animates these numbers (animation/heroShot.ts). One scene component reads them every
  * frame and derives everything visual from them: section-plane positions, dims, rims and
  * what interior content is drawn (scene/section/RevealDriver.tsx). No other code tweens
  * materials or planes, so the reveal state is always one inspectable object.
  *
- * Every field runs 0 -> 1. The order is the visual hierarchy of the shot:
+ * Every field runs 0 -> 1. The hero shot's order is its visual hierarchy:
  * site dims -> reactor building becomes subordinate -> containment is the subject ->
- * containment becomes subordinate -> the RPV is the subject.
+ * containment becomes subordinate -> the RPV is the subject. The Stage 4 review states
+ * (animation/rpvReview.ts) then open the vessel itself.
  */
 
 export interface HeroRevealState {
@@ -22,6 +24,13 @@ export interface HeroRevealState {
   containmentReveal: number;
   /** The RPV becomes the subject: restrained warm rim, slightly stronger light. */
   rpvEmphasis: number;
+  /** The vessel cutaway: the camera-facing quadrant of the RPV opens and its internals appear. */
+  vesselCut: number;
+  /** A horizontal step in the vessel cutaway at mid-core: the open quadrant refills from the
+   *  bottom up to there, showing the core in plan (fuel squares, cruciform blades). */
+  coreSection: number;
+  /** The control blades become the subject (accent rim); the fuel steps back slightly. */
+  bladeEmphasis: number;
 }
 
 export const HERO_REVEAL_CLOSED: Readonly<HeroRevealState> = {
@@ -30,9 +39,12 @@ export const HERO_REVEAL_CLOSED: Readonly<HeroRevealState> = {
   shaftReveal: 0,
   containmentReveal: 0,
   rpvEmphasis: 0,
+  vesselCut: 0,
+  coreSection: 0,
+  bladeEmphasis: 0,
 };
 
-/** The live reveal state. Mutated only by the shot timeline (and reset). */
+/** The live reveal state. Mutated only by the shot timeline, the review states and reset. */
 export const heroReveal: HeroRevealState = { ...HERO_REVEAL_CLOSED };
 
 export function resetHeroReveal(): void {
@@ -41,5 +53,5 @@ export function resetHeroReveal(): void {
 
 /** True once any part of the plant has been opened up (below-grade camera limits apply). */
 export function isHeroRevealOpen(): boolean {
-  return heroReveal.groundCut > 0 || heroReveal.shaftReveal > 0 || heroReveal.containmentReveal > 0;
+  return heroReveal.groundCut > 0 || heroReveal.shaftReveal > 0 || heroReveal.containmentReveal > 0 || heroReveal.vesselCut > 0;
 }

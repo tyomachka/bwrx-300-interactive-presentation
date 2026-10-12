@@ -4,7 +4,7 @@
  * without mouse movement so it never sits in the projected image.
  */
 import { useEffect, useRef, useState } from 'react';
-import { resetPresentation } from '../animation/heroShot';
+import { resetPresentation } from '../animation/presentation';
 import { QUALITY_PRESETS, type QualityLevel } from '../config/quality';
 import { useAppStore } from '../state/store';
 

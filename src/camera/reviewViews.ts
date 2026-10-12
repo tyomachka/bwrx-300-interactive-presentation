@@ -7,6 +7,7 @@ let current = -1;
 /** Apply a review view: its section-review presentation, then a smooth camera move. */
 export function showReviewView(view: ReviewView): Promise<void> {
   current = REVIEW_VIEWS.indexOf(view);
+  cameraDirector.allowBelowGrade = false;
   useAppStore.getState().setSectionReview(view.sectionReview);
   return cameraDirector.transitionTo(view.camera);
 }

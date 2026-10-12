@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { heroShot } from '../animation/heroShot';
 import { cameraDirector } from '../camera/cameraDirector';
+import { showRpvReview } from '../animation/rpvReview';
 import { showReviewView } from '../camera/reviewViews';
+import { RPV_REVIEW_STATES } from '../config/rpvReview';
 import { REVIEW_VIEWS } from '../config/reviewViews';
 import { useAppStore } from '../state/store';
 import { diagnosticsSample as s } from './diagnostics';
@@ -77,6 +79,13 @@ export default function DiagnosticsOverlay() {
         {REVIEW_VIEWS.map((view) => (
           <button key={view.camera} type="button" onClick={() => void showReviewView(view)}>
             {view.label}
+          </button>
+        ))}
+      </div>
+      <div className="diagnostics__row" title="Stage 4 vessel review. Shortcut: B cycles">
+        {RPV_REVIEW_STATES.map((state) => (
+          <button key={state.id} type="button" onClick={() => void showRpvReview(state)}>
+            {state.label}
           </button>
         ))}
       </div>

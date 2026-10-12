@@ -79,6 +79,11 @@ interface Cinematic {
 
 class CameraDirector {
   authority: CameraAuthority = 'explore';
+  /**
+   * Explore normally keeps the camera above grade (ORBIT.minCameraY). The Stage 4 vessel
+   * review stands inside the opened excavation and lifts that floor while it is active.
+   */
+  allowBelowGrade = false;
   /** Live pose written by transitions and (later) the cinematic timeline. */
   readonly pose: LivePose = { position: new Vector3(), target: new Vector3(), fov: CAMERA_STATES[HOME_CAMERA_STATE].fov };
 
@@ -202,6 +207,10 @@ class CameraDirector {
    * stays above ORBIT.minCameraY. With the target above grade this is the normal limit.
    */
   private keepCameraAboveGrade(controls: OrbitControls): void {
+    if (this.allowBelowGrade) {
+      controls.maxPolarAngle = ORBIT.maxPolarAngle;
+      return;
+    }
     const distance = controls.object.position.distanceTo(controls.target);
     const cos = MathUtils.clamp((ORBIT.minCameraY - controls.target.y) / Math.max(distance, 1e-6), -1, 1);
     controls.maxPolarAngle = Math.min(ORBIT.maxPolarAngle, Math.acos(cos));

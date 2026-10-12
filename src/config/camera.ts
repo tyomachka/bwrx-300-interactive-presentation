@@ -23,7 +23,8 @@ export type CameraStateId =
   | 'reactorBuildingExterior'
   | 'belowGradeOverview'
   | 'turbineRelationship'
-  | Stage3ShotPoseId;
+  | Stage3ShotPoseId
+  | RpvReviewPoseId;
 
 /** Keyframe poses of the Stage 3 hero shot, in shot order (timing: config/heroShot.ts). */
 export type Stage3ShotPoseId =
@@ -33,6 +34,9 @@ export type Stage3ShotPoseId =
   | 'stage3BelowGrade'
   | 'stage3Containment'
   | 'stage3RPVHero';
+
+/** Stage 4 vessel review states (config/rpvReview.ts). Below grade, inside the opened plant. */
+export type RpvReviewPoseId = 'rpvExterior' | 'rpvCutaway' | 'coreCloseup' | 'controlBladesCloseup' | 'steamRegionCloseup';
 
 const PLANT_EXTERIOR: CameraPose = { position: [-95, 64, 150], target: [36, 5, -8], fov: 35 };
 
@@ -61,6 +65,23 @@ export const CAMERA_STATES: Record<CameraStateId, CameraPose> = {
   stage3Containment: { position: [-34, 10, 92], target: [0, -12, 2], fov: 35 },
   /** Final, settled: at the edge of the excavation, grade high in frame, the RPV the subject below. */
   stage3RPVHero: { position: [-24, 2, 74], target: [0, -12, 0], fov: 35 },
+
+  // ---- Stage 4 vessel review (dev / ?debug, key B) ----
+  // Inside the opened excavation, in front of the sectioned containment; the vessel cutaway
+  // removes the quadrant facing these cameras (x < 0, z > 0). Vessel heights: core -21.4..-17.6,
+  // chimney -17..-10, separators -9.4..-6.1, dryer -6..-1.3, steam nozzles -2.3 (world y).
+  /** The whole closed vessel, drives included, standing in the pedestal. */
+  rpvExterior: { position: [-26.66, -10.43, 50.14], target: [0, -15.4, 0], fov: 35 },
+  /** Opened along the bisector of the cut quadrant, slightly from above (as GD Fig 3-1): the
+   *  full vertical hierarchy from the drives to the dryer. */
+  rpvCutaway: { position: [-34.09, -0.59, 37.86], target: [0, -15.2, 0], fov: 35 },
+  /** Fuel, blades, shroud and top guide, from above the core's cut corner. */
+  coreCloseup: { position: [-4.14, -15.85, 4.86], target: [-0.35, -18.6, 0.35], fov: 35 },
+  /** Looking down on the mid-core step section: fuel squares and cruciform blades in plan,
+   *  the half-inserted blades rising behind. */
+  controlBladesCloseup: { position: [-3.52, -16.37, 3.52], target: [-0.65, -19.78, 0.65], fov: 35 },
+  /** Chimney top, chimney head, separators and dryer, with the steam outlets. */
+  steamRegionCloseup: { position: [-11.2, -1.85, 13.4], target: [0, -6.2, 0], fov: 35 },
 };
 
 /** Where Explore mode starts and where `R` returns. */

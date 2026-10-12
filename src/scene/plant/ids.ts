@@ -10,7 +10,8 @@ export const PLANT_IDS = {
   reactorBuildingShaft: 'reactor-building-shaft',
   pools: 'pools-placeholder',
   containment: 'containment-placeholder',
-  rpv: 'reactor-pressure-vessel-placeholder',
+  /** Stage 4: the real vessel profile; its parts are registered in scene/rpv/components.ts. */
+  rpv: 'reactor-pressure-vessel',
   turbineBuilding: 'turbine-building',
   turbine: 'turbine-placeholder',
   generator: 'generator-placeholder',

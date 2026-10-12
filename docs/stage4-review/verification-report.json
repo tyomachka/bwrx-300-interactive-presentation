@@ -1,0 +1,958 @@
+{
+  "generated": "Stage 4 final build, production preview, Chrome headless, ANGLE (Intel, Intel(R) Iris(R) Plus Graphics (0x00008A52) Direct3D11 vs_5_0 ps_5_0, D3D11), 1920x1080 DPR 1",
+  "stage4Views": {
+    "high": {
+      "stage3final": [
+        {
+          "fps": 60.1,
+          "p95": 16.8,
+          "worst": 17,
+          "over20": 0,
+          "frames": 361,
+          "calls": [
+            63,
+            63
+          ],
+          "tris": [
+            46213,
+            46213
+          ]
+        },
+        {
+          "fps": 60.1,
+          "p95": 16.8,
+          "worst": 17.5,
+          "over20": 0,
+          "frames": 361,
+          "calls": [
+            63,
+            63
+          ],
+          "tris": [
+            46213,
+            46213
+          ]
+        }
+      ],
+      "rpvExterior": [
+        {
+          "fps": 60.1,
+          "p95": 16.8,
+          "worst": 17.2,
+          "over20": 0,
+          "frames": 361,
+          "calls": [
+            62,
+            62
+          ],
+          "tris": [
+            45277,
+            45277
+          ]
+        },
+        {
+          "fps": 60.1,
+          "p95": 16.9,
+          "worst": 17.2,
+          "over20": 0,
+          "frames": 361,
+          "calls": [
+            62,
+            62
+          ],
+          "tris": [
+            45277,
+            45277
+          ]
+        }
+      ],
+      "rpvCutaway": [
+        {
+          "fps": 54.5,
+          "p95": 33.3,
+          "worst": 33.7,
+          "over20": 34,
+          "frames": 327,
+          "calls": [
+            80,
+            80
+          ],
+          "tris": [
+            100389,
+            100389
+          ]
+        },
+        {
+          "fps": 52.8,
+          "p95": 33.4,
+          "worst": 34.3,
+          "over20": 44,
+          "frames": 317,
+          "calls": [
+            80,
+            80
+          ],
+          "tris": [
+            100389,
+            100389
+          ]
+        }
+      ],
+      "coreCloseup": [
+        {
+          "fps": 54.5,
+          "p95": 33.3,
+          "worst": 33.9,
+          "over20": 34,
+          "frames": 327,
+          "calls": [
+            55,
+            55
+          ],
+          "tris": [
+            47725,
+            47725
+          ]
+        },
+        {
+          "fps": 54.8,
+          "p95": 33.2,
+          "worst": 34.1,
+          "over20": 32,
+          "frames": 329,
+          "calls": [
+            55,
+            55
+          ],
+          "tris": [
+            47725,
+            47725
+          ]
+        }
+      ],
+      "controlBladesCloseup": [
+        {
+          "fps": 49,
+          "p95": 33.6,
+          "worst": 34,
+          "over20": 67,
+          "frames": 294,
+          "calls": [
+            48,
+            48
+          ],
+          "tris": [
+            57565,
+            57565
+          ]
+        },
+        {
+          "fps": 48.3,
+          "p95": 33.6,
+          "worst": 34.6,
+          "over20": 71,
+          "frames": 291,
+          "calls": [
+            48,
+            48
+          ],
+          "tris": [
+            57565,
+            57565
+          ]
+        }
+      ],
+      "steamRegionCloseup": [
+        {
+          "fps": 52.6,
+          "p95": 33.4,
+          "worst": 33.7,
+          "over20": 45,
+          "frames": 316,
+          "calls": [
+            60,
+            60
+          ],
+          "tris": [
+            47925,
+            47925
+          ]
+        },
+        {
+          "fps": 50.3,
+          "p95": 33.4,
+          "worst": 34.9,
+          "over20": 60,
+          "frames": 303,
+          "calls": [
+            60,
+            60
+          ],
+          "tris": [
+            47925,
+            47925
+          ]
+        }
+      ]
+    },
+    "low": {
+      "stage3final": [
+        {
+          "fps": 60.1,
+          "p95": 16.8,
+          "worst": 16.9,
+          "over20": 0,
+          "frames": 361,
+          "calls": [
+            64,
+            64
+          ],
+          "tris": [
+            23559,
+            23559
+          ]
+        },
+        {
+          "fps": 60.1,
+          "p95": 16.8,
+          "worst": 17.2,
+          "over20": 0,
+          "frames": 361,
+          "calls": [
+            64,
+            64
+          ],
+          "tris": [
+            23559,
+            23559
+          ]
+        }
+      ],
+      "rpvExterior": [
+        {
+          "fps": 60.1,
+          "p95": 16.8,
+          "worst": 17.2,
+          "over20": 0,
+          "frames": 361,
+          "calls": [
+            63,
+            63
+          ],
+          "tris": [
+            23007,
+            23007
+          ]
+        },
+        {
+          "fps": 60.1,
+          "p95": 16.8,
+          "worst": 16.9,
+          "over20": 0,
+          "frames": 361,
+          "calls": [
+            63,
+            63
+          ],
+          "tris": [
+            23007,
+            23007
+          ]
+        }
+      ],
+      "rpvCutaway": [
+        {
+          "fps": 60.1,
+          "p95": 16.8,
+          "worst": 17.4,
+          "over20": 0,
+          "frames": 361,
+          "calls": [
+            81,
+            81
+          ],
+          "tris": [
+            62639,
+            62639
+          ]
+        },
+        {
+          "fps": 60.1,
+          "p95": 16.8,
+          "worst": 17.3,
+          "over20": 0,
+          "frames": 361,
+          "calls": [
+            81,
+            81
+          ],
+          "tris": [
+            62639,
+            62639
+          ]
+        }
+      ],
+      "coreCloseup": [
+        {
+          "fps": 60.1,
+          "p95": 16.8,
+          "worst": 16.9,
+          "over20": 0,
+          "frames": 361,
+          "calls": [
+            56,
+            56
+          ],
+          "tris": [
+            33111,
+            33111
+          ]
+        },
+        {
+          "fps": 60.1,
+          "p95": 16.8,
+          "worst": 17.7,
+          "over20": 0,
+          "frames": 361,
+          "calls": [
+            56,
+            56
+          ],
+          "tris": [
+            33111,
+            33111
+          ]
+        }
+      ],
+      "controlBladesCloseup": [
+        {
+          "fps": 60.1,
+          "p95": 16.8,
+          "worst": 17.2,
+          "over20": 0,
+          "frames": 360,
+          "calls": [
+            49,
+            49
+          ],
+          "tris": [
+            37167,
+            37167
+          ]
+        },
+        {
+          "fps": 60.1,
+          "p95": 16.8,
+          "worst": 17.3,
+          "over20": 0,
+          "frames": 361,
+          "calls": [
+            49,
+            49
+          ],
+          "tris": [
+            37167,
+            37167
+          ]
+        }
+      ],
+      "steamRegionCloseup": [
+        {
+          "fps": 60.1,
+          "p95": 16.8,
+          "worst": 17.5,
+          "over20": 0,
+          "frames": 360,
+          "calls": [
+            61,
+            61
+          ],
+          "tris": [
+            27767,
+            27767
+          ]
+        },
+        {
+          "fps": 60.1,
+          "p95": 16.8,
+          "worst": 17.7,
+          "over20": 0,
+          "frames": 361,
+          "calls": [
+            61,
+            61
+          ],
+          "tris": [
+            27767,
+            27767
+          ]
+        }
+      ]
+    }
+  },
+  "stage4ReviewTransitions": {
+    "high": {
+      "programsAtReady": 13,
+      "transitions": [
+        {
+          "to": "rpvExterior",
+          "programsBefore": 13,
+          "programsAfter": 13,
+          "worst": 66.6,
+          "p95": 33.7,
+          "over20": 17
+        },
+        {
+          "to": "rpvCutaway",
+          "programsBefore": 13,
+          "programsAfter": 13,
+          "worst": 33.6,
+          "p95": 33.3,
+          "over20": 12
+        },
+        {
+          "to": "coreCloseup",
+          "programsBefore": 13,
+          "programsAfter": 13,
+          "worst": 49.7,
+          "p95": 33.4,
+          "over20": 16
+        },
+        {
+          "to": "controlBladesCloseup",
+          "programsBefore": 13,
+          "programsAfter": 13,
+          "worst": 50.1,
+          "p95": 33.9,
+          "over20": 24
+        },
+        {
+          "to": "steamRegionCloseup",
+          "programsBefore": 13,
+          "programsAfter": 13,
+          "worst": 50.2,
+          "p95": 33.6,
+          "over20": 14
+        },
+        {
+          "to": "rpvCutaway",
+          "programsBefore": 13,
+          "programsAfter": 13,
+          "worst": 66.6,
+          "p95": 33.5,
+          "over20": 20
+        }
+      ]
+    },
+    "low": {
+      "programsAtReady": 14,
+      "transitions": [
+        {
+          "to": "rpvExterior",
+          "programsBefore": 14,
+          "programsAfter": 14,
+          "worst": 17.6,
+          "p95": 16.8,
+          "over20": 0
+        },
+        {
+          "to": "rpvCutaway",
+          "programsBefore": 14,
+          "programsAfter": 14,
+          "worst": 16.9,
+          "p95": 16.8,
+          "over20": 0
+        },
+        {
+          "to": "coreCloseup",
+          "programsBefore": 14,
+          "programsAfter": 14,
+          "worst": 16.9,
+          "p95": 16.8,
+          "over20": 0
+        },
+        {
+          "to": "controlBladesCloseup",
+          "programsBefore": 14,
+          "programsAfter": 14,
+          "worst": 16.9,
+          "p95": 16.8,
+          "over20": 0
+        },
+        {
+          "to": "steamRegionCloseup",
+          "programsBefore": 14,
+          "programsAfter": 14,
+          "worst": 16.9,
+          "p95": 16.8,
+          "over20": 0
+        },
+        {
+          "to": "rpvCutaway",
+          "programsBefore": 14,
+          "programsAfter": 14,
+          "worst": 17.1,
+          "p95": 16.8,
+          "over20": 0
+        }
+      ]
+    }
+  },
+  "stage4Console": {
+    "high": {
+      "console": [
+        "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+      ],
+      "errors": [],
+      "external": []
+    },
+    "low": {
+      "console": [
+        "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+      ],
+      "errors": [],
+      "external": []
+    }
+  },
+  "stage3Regression": {
+    "gpu": "ANGLE (Intel, Intel(R) Iris(R) Plus Graphics (0x00008A52) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "qualities": {
+      "high": {
+        "readyMs": 2239,
+        "programsBefore": 13,
+        "programsAfter": 13,
+        "runs": [
+          {
+            "frames": 599,
+            "seconds": 9.96,
+            "fps": 60.1,
+            "avgMs": 16.63,
+            "p95Ms": 16.8,
+            "p99Ms": 16.9,
+            "worstMs": 17.3,
+            "framesOver20ms": 0,
+            "framesOver33ms": 0,
+            "drawCalls": [
+              62,
+              133
+            ],
+            "triangles": [
+              5089,
+              79441
+            ]
+          },
+          {
+            "frames": 599,
+            "seconds": 9.96,
+            "fps": 60.1,
+            "avgMs": 16.63,
+            "p95Ms": 16.8,
+            "p99Ms": 16.9,
+            "worstMs": 17.4,
+            "framesOver20ms": 0,
+            "framesOver33ms": 0,
+            "drawCalls": [
+              62,
+              133
+            ],
+            "triangles": [
+              5089,
+              79441
+            ]
+          },
+          {
+            "frames": 599,
+            "seconds": 9.96,
+            "fps": 60.1,
+            "avgMs": 16.63,
+            "p95Ms": 16.8,
+            "p99Ms": 17,
+            "worstMs": 17.3,
+            "framesOver20ms": 0,
+            "framesOver33ms": 0,
+            "drawCalls": [
+              62,
+              133
+            ],
+            "triangles": [
+              5089,
+              79441
+            ]
+          }
+        ],
+        "determinism": {
+          "maxPoseDeltaAcrossRuns": 0,
+          "finalPose": {
+            "position": [
+              -23.999999999999993,
+              2.000000000000007,
+              74.00000000000004
+            ],
+            "target": [
+              0,
+              -12,
+              0
+            ],
+            "fov": 35,
+            "authority": "explore"
+          },
+          "statusAfterShot": "finished"
+        },
+        "explore": {
+          "dragMovedCamera": true,
+          "authorityAfterDrag": "explore",
+          "cameraYAfterDownDrag": 66.47585509848076,
+          "targetAfterDownDrag": [
+            0,
+            -12,
+            0
+          ]
+        },
+        "reset": {
+          "pose": {
+            "position": [
+              -95,
+              64,
+              150
+            ],
+            "target": [
+              36,
+              4.999999999999998,
+              -8
+            ],
+            "fov": 35,
+            "authority": "explore"
+          },
+          "minCameraYDuringReset": 64,
+          "traceSample": [
+            [
+              15,
+              66.48,
+              1
+            ],
+            [
+              180,
+              67.24,
+              1
+            ],
+            [
+              357,
+              72.01,
+              1
+            ],
+            [
+              515,
+              81.88,
+              1
+            ],
+            [
+              680,
+              94.6,
+              0.997
+            ],
+            [
+              846,
+              90.76,
+              0.96
+            ],
+            [
+              1012,
+              76.07,
+              0.842
+            ],
+            [
+              1179,
+              66.49,
+              0.597
+            ],
+            [
+              1344,
+              64.04,
+              0.179
+            ],
+            [
+              1510,
+              64,
+              0
+            ],
+            [
+              1675,
+              64,
+              0
+            ],
+            [
+              1843,
+              64,
+              0
+            ],
+            [
+              2010,
+              64,
+              0
+            ],
+            [
+              2173,
+              64,
+              0
+            ]
+          ]
+        },
+        "sectionReviewPanelHidden": true,
+        "log": {
+          "console": [
+            "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+          ],
+          "errors": [],
+          "failed": [],
+          "external": []
+        }
+      },
+      "low": {
+        "readyMs": 2279,
+        "programsBefore": 14,
+        "programsAfter": 14,
+        "runs": [
+          {
+            "frames": 599,
+            "seconds": 9.96,
+            "fps": 60.1,
+            "avgMs": 16.63,
+            "p95Ms": 16.8,
+            "p99Ms": 16.9,
+            "worstMs": 17,
+            "framesOver20ms": 0,
+            "framesOver33ms": 0,
+            "drawCalls": [
+              63,
+              73
+            ],
+            "triangles": [
+              3171,
+              23787
+            ]
+          },
+          {
+            "frames": 599,
+            "seconds": 9.96,
+            "fps": 60.1,
+            "avgMs": 16.63,
+            "p95Ms": 16.8,
+            "p99Ms": 16.9,
+            "worstMs": 17.3,
+            "framesOver20ms": 0,
+            "framesOver33ms": 0,
+            "drawCalls": [
+              63,
+              73
+            ],
+            "triangles": [
+              3171,
+              23787
+            ]
+          },
+          {
+            "frames": 599,
+            "seconds": 9.96,
+            "fps": 60.1,
+            "avgMs": 16.63,
+            "p95Ms": 16.8,
+            "p99Ms": 16.9,
+            "worstMs": 17.2,
+            "framesOver20ms": 0,
+            "framesOver33ms": 0,
+            "drawCalls": [
+              63,
+              73
+            ],
+            "triangles": [
+              3171,
+              23787
+            ]
+          }
+        ],
+        "determinism": {
+          "maxPoseDeltaAcrossRuns": 0,
+          "finalPose": {
+            "position": [
+              -23.999999999999993,
+              2.000000000000007,
+              74.00000000000004
+            ],
+            "target": [
+              0,
+              -12,
+              0
+            ],
+            "fov": 35,
+            "authority": "explore"
+          },
+          "statusAfterShot": "finished"
+        },
+        "explore": {
+          "dragMovedCamera": true,
+          "authorityAfterDrag": "explore",
+          "cameraYAfterDownDrag": 66.47585509848074,
+          "targetAfterDownDrag": [
+            0,
+            -12,
+            0
+          ]
+        },
+        "reset": {
+          "pose": {
+            "position": [
+              -95,
+              64,
+              150
+            ],
+            "target": [
+              36,
+              4.999999999999998,
+              -8
+            ],
+            "fov": 35,
+            "authority": "explore"
+          },
+          "minCameraYDuringReset": 64,
+          "traceSample": [
+            [
+              12,
+              66.48,
+              1
+            ],
+            [
+              177,
+              67.17,
+              1
+            ],
+            [
+              345,
+              71.39,
+              1
+            ],
+            [
+              510,
+              81.46,
+              1
+            ],
+            [
+              677,
+              94.38,
+              0.997
+            ],
+            [
+              843,
+              91.05,
+              0.961
+            ],
+            [
+              1009,
+              76.45,
+              0.846
+            ],
+            [
+              1175,
+              66.63,
+              0.605
+            ],
+            [
+              1341,
+              64.05,
+              0.192
+            ],
+            [
+              1508,
+              64,
+              0
+            ],
+            [
+              1675,
+              64,
+              0
+            ],
+            [
+              1841,
+              64,
+              0
+            ],
+            [
+              2008,
+              64,
+              0
+            ],
+            [
+              2173,
+              64,
+              0
+            ]
+          ]
+        },
+        "sectionReviewPanelHidden": true,
+        "log": {
+          "console": [
+            "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+          ],
+          "errors": [],
+          "failed": [],
+          "external": []
+        }
+      }
+    },
+    "qualitySwitch": {
+      "switchToReadyMs": 312,
+      "before": {
+        "position": [
+          -23.999999999999996,
+          1.9999999999999982,
+          74
+        ],
+        "target": [
+          0,
+          -12,
+          0
+        ],
+        "fov": 35,
+        "authority": "cinematic"
+      },
+      "afterLow": {
+        "position": [
+          -23.999999999999993,
+          2.000000000000007,
+          74.00000000000004
+        ],
+        "target": [
+          0,
+          -12,
+          0
+        ],
+        "fov": 35,
+        "authority": "explore"
+      },
+      "afterHigh": {
+        "position": [
+          -23.999999999999993,
+          2.000000000000007,
+          74.00000000000004
+        ],
+        "target": [
+          0,
+          -12,
+          0
+        ],
+        "fov": 35,
+        "authority": "explore"
+      },
+      "url": "http://localhost:4173/?debug=&quality=high",
+      "log": {
+        "console": [
+          "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.",
+          "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.",
+          "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+        ],
+        "errors": [],
+        "failed": [],
+        "external": []
+      }
+    }
+  }
+}

@@ -19,6 +19,7 @@ import { useAppStore, useQualityPreset } from '../state/store';
 import { LightingRig } from './LightingRig';
 import { Plant } from './plant/Plant';
 import { RevealDriver } from './section/RevealDriver';
+import { revealOpaqueSort } from './section/drawOrder';
 import { StudioEnvironment } from './StudioEnvironment';
 
 // Diagnostics are never part of the main bundle; loaded only for dev builds or `?debug`.
@@ -50,6 +51,8 @@ export function SceneCanvas() {
       frameloop="always"
       onCreated={({ gl }) => {
         gl.debug.checkShaderErrors = RENDER.checkShaderErrors;
+        // Opened plant: draw nested reveal layers inside-out, front to back (no overdraw).
+        gl.setOpaqueSort(revealOpaqueSort);
         // With an opaque canvas three defaults the clear alpha to 1, so render-target passes
         // that clear without a background (drei ContactShadows) came out solid black. The
         // opaque main framebuffer ignores clear alpha, so 0 is safe everywhere.
@@ -196,6 +199,8 @@ function ReadyGate() {
         } catch (error) {
           console.warn('[BWRX-300] Warm-up render failed; continuing.', error);
         }
+        // The warm-up drew hidden content into the shadow map: draw it again for real.
+        gl.shadowMap.needsUpdate = true;
         frames.current = 0;
       });
     return () => {

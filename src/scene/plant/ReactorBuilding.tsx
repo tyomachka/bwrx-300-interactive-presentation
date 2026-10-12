@@ -1,6 +1,6 @@
 /**
  * Reactor building massing, nested as the physical hierarchy:
- *   ground -> reactor-building-shaft -> containment-placeholder -> reactor-pressure-vessel-placeholder
+ *   ground -> reactor-building-shaft -> containment-placeholder -> reactor-pressure-vessel (Stage 4)
  * plus the above-grade superstructure (pools, refuelling floor, roof).
  *
  * The key idea (GD §10, NEDO-34163 §1.6): the RPV and containment sit in the deeply
@@ -8,15 +8,17 @@
  * not the reactor.
  *
  * Each structure uses the section materials of the reveal layer that opens it
- * (scene/section/sectionLayers.ts): building + shaft, then containment; the RPV is never cut.
+ * (scene/section/sectionLayers.ts): building + shaft, then containment. The RPV and its
+ * internals are their own module (scene/rpv/); only the Stage 4 vessel cutaway opens them.
  */
 import { useMemo } from 'react';
-import { ConeGeometry, CylinderGeometry, SphereGeometry } from 'three';
+import { ConeGeometry, SphereGeometry } from 'three';
 import { RADIAL_SEGMENTS } from '../../config/quality';
 import { useQualityPreset } from '../../state/store';
 import { CONTAINMENT, POOLS, REACTOR_BUILDING as RB, REACTOR_PRESSURE_VESSEL as RPV } from './dimensions';
 import { insetBox, SECTION_INSET, type BoxExtents, type ProfilePoint } from './geometry';
-import { useDisposeOnChange, useHalfSegments } from './hooks';
+import { ReactorPressureVessel } from '../rpv/ReactorPressureVessel';
+import { useDisposeOnChange } from './hooks';
 import { meta, PLANT_IDS } from './ids';
 import { getSectionMaterials } from './materials';
 import { Box, InstancedBoxes } from './primitives';
@@ -181,31 +183,6 @@ function Containment() {
       <Interior level="vessel">
         <ReactorPressureVessel />
       </Interior>
-    </group>
-  );
-}
-
-/** Whole, never sectioned: the subject the reveal ends on. Stage 4 replaces it. */
-function ReactorPressureVessel() {
-  const m = getSectionMaterials().vessel;
-  const segments = useHalfSegments();
-  const r = RPV.outerRadius;
-  const shell = RPV.height - 2 * r;
-  const geometries = useMemo(
-    () => ({
-      shell: new CylinderGeometry(r, r, shell, segments * 2, 1, true),
-      bottom: new SphereGeometry(r, segments * 2, segments / 2, 0, Math.PI * 2, Math.PI / 2, Math.PI / 2),
-      top: new SphereGeometry(r, segments * 2, segments / 2, 0, Math.PI * 2, 0, Math.PI / 2),
-    }),
-    [r, shell, segments],
-  );
-  useDisposeOnChange(geometries.shell, geometries.bottom, geometries.top);
-
-  return (
-    <group name={PLANT_IDS.rpv} position-y={RPV.topY - RPV.height} userData={meta(PLANT_IDS.rpv, 'official')}>
-      <mesh geometry={geometries.bottom} material={m.steel} position-y={r} castShadow receiveShadow />
-      <mesh geometry={geometries.shell} material={m.steel} position-y={r + shell / 2} castShadow receiveShadow />
-      <mesh geometry={geometries.top} material={m.steel} position-y={r + shell} castShadow receiveShadow />
     </group>
   );
 }
