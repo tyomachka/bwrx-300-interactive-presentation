@@ -6,7 +6,7 @@
  */
 import { useMemo } from 'react';
 import { CylinderGeometry, type Material } from 'three';
-import { TURBINE_BUILDING as TB, TURBINE_TRAIN as TRAIN } from './dimensions';
+import { ON_GRADE, TURBINE_BUILDING as TB, TURBINE_TRAIN as TRAIN } from './dimensions';
 import { splitAtZ0, type BoxExtents, type Range } from './geometry';
 import { useDisposeOnChange, useHalfSegments } from './hooks';
 import { meta, PLANT_IDS } from './ids';
@@ -25,7 +25,7 @@ function finBoxes(side: 'north' | 'south'): BoxExtents[] {
   const doorHalf = TB.door.width / 2 + 0.8;
   for (let x = x0 + 3; x < x1 - 1; x += TB.finSpacing) {
     if (side === 'south' && Math.abs(x - TB.door.x) < doorHalf) continue;
-    boxes.push({ x: [x - 0.225, x + 0.225], y: [0, wallTop], z });
+    boxes.push({ x: [x - 0.225, x + 0.225], y: [ON_GRADE, wallTop], z });
   }
   return boxes;
 }
@@ -40,9 +40,9 @@ const ROOF_UNITS: BoxExtents[] = [
 ];
 
 const roof = splitAtZ0({ x: [x0, x1], y: [TB.height - TB.roof, TB.height], z: [zN, zS] });
-const floor = splitAtZ0({ x: [x0, x1], y: [-0.4, TB.floorTop], z: [zN, zS] });
-const westWall = splitAtZ0({ x: [x0, x0 + TB.wall], y: [0, wallTop], z: [zN, zS] });
-const eastWall = splitAtZ0({ x: [x1 - TB.wall, x1], y: [0, wallTop], z: [zN, zS] });
+const floor = splitAtZ0({ x: [x0, x1], y: [ON_GRADE, TB.floorTop], z: [zN, zS] });
+const westWall = splitAtZ0({ x: [x0, x0 + TB.wall], y: [ON_GRADE, wallTop], z: [zN, zS] });
+const eastWall = splitAtZ0({ x: [x1 - TB.wall, x1], y: [ON_GRADE, wallTop], z: [zN, zS] });
 
 export function TurbineBuilding() {
   const m = getPlantMaterials();
@@ -54,7 +54,7 @@ export function TurbineBuilding() {
       <Interior>
         <Box name="tb.floor.back" {...floor.back} material={m.concreteDark} castShadow={false} />
       </Interior>
-      <Box name="tb.wall.north" x={[x0, x1]} y={[0, wallTop]} z={[zN, zN + TB.wall]} material={m.darkMetal} />
+      <Box name="tb.wall.north" x={[x0, x1]} y={[ON_GRADE, wallTop]} z={[zN, zN + TB.wall]} material={m.darkMetal} />
       <Box name="tb.wall.west.back" {...westWall.back} material={m.darkMetal} />
       <Box name="tb.wall.east.back" {...eastWall.back} material={m.darkMetal} />
       <Box name="tb.roof.back" {...roof.back} material={hall} />
@@ -64,7 +64,7 @@ export function TurbineBuilding() {
 
       {/* In front of the cut plane */}
       <FrontOfSection>
-        <Box name="tb.wall.south" x={[x0, x1]} y={[0, wallTop]} z={[zS - TB.wall, zS]} material={m.darkMetal} />
+        <Box name="tb.wall.south" x={[x0, x1]} y={[ON_GRADE, wallTop]} z={[zS - TB.wall, zS]} material={m.darkMetal} />
         <Box name="tb.wall.west.front" {...westWall.front} material={m.darkMetal} />
         <Box name="tb.wall.east.front" {...eastWall.front} material={m.darkMetal} />
         <Box name="tb.roof.front" {...roof.front} material={hall} />

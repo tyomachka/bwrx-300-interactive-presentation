@@ -1,16 +1,25 @@
 /**
  * Procedural geometry for the plant massing.
  *
- * Every structure that the section review cuts is built as two halves split by the plane
- * z = 0 (the reactor -> turbine axis). `back` stays visible in section review; `front` hides.
- * That gives a clean architectural section model without clipping planes. Stage 5 may
- * replace it with a real clipping/section system without touching the massing data.
+ * Structures the reveal cuts (site earth, reactor building, shaft, containment) are whole,
+ * closed solids: clipping planes cut them and the section shader draws the cut surface
+ * (scene/section/sectionShader.ts). For that to work, two solids must never share a face, so
+ * section solids are inset by SECTION_INSET on every side that touches a neighbour.
+ *
+ * Context structures that only the Stage 2 section review opens (turbine hall) are still
+ * built as halves split at z = 0, with the front half hidden in that review.
  */
-import { BufferGeometry, ExtrudeGeometry, Float32BufferAttribute, Shape } from 'three';
+import { BufferGeometry, ExtrudeGeometry, Float32BufferAttribute, Path, Shape } from 'three';
 
 export type Half = 'back' | 'front';
 
 export type Range = readonly [number, number];
+
+/**
+ * Gap kept between touching section solids (m). Invisible (well below a pixel at the closest
+ * shot distance) yet far above depth-buffer precision there, so cut surfaces never z-fight.
+ */
+export const SECTION_INSET = 0.005;
 
 /** Axis-aligned box given by world extents (metres). */
 export interface BoxExtents {
@@ -26,22 +35,15 @@ export function splitAtZ0(box: BoxExtents): Record<Half, BoxExtents> {
     front: { ...box, z: [Math.max(0, box.z[0]), box.z[1]] },
   };
 }
-export const HALVES: readonly Half[] = ['back', 'front'];
 
-/**
- * Angle convention shared with three's Cylinder/Cone geometry: x = r·sinθ, z = r·cosθ.
- * back (z ≤ 0): θ ∈ [π/2, 3π/2]   front (z ≥ 0): θ ∈ [-π/2, π/2]
- */
-export const HALF_THETA: Record<Half, { thetaStart: number; thetaLength: number }> = {
-  back: { thetaStart: Math.PI / 2, thetaLength: Math.PI },
-  front: { thetaStart: -Math.PI / 2, thetaLength: Math.PI },
-};
-
-/** three's SphereGeometry uses z = r·sinφ·sinθ, so its halves are expressed in φ. */
-export const HALF_PHI: Record<Half, { phiStart: number; phiLength: number }> = {
-  back: { phiStart: Math.PI, phiLength: Math.PI },
-  front: { phiStart: 0, phiLength: Math.PI },
-};
+/** Shrink a box by `inset` on every side (section solids). */
+export function insetBox(box: BoxExtents, inset = SECTION_INSET): BoxExtents {
+  return {
+    x: [box.x[0] + inset, box.x[1] - inset],
+    y: [box.y[0] + inset, box.y[1] - inset],
+    z: [box.z[0] + inset, box.z[1] - inset],
+  };
+}
 
 export interface SectorOptions {
   innerRadius: number;
@@ -57,6 +59,7 @@ export interface SectorOptions {
  * A thick cylindrical sector: outer and inner curved walls with smooth normals, flat
  * top/bottom caps and, when partial, flat cut faces at both ends. `innerRadius = 0` gives
  * a solid sector (slab or disc). Indexed, position + normal only.
+ * Angle convention shared with three's Cylinder geometry: x = r·sinθ, z = r·cosθ.
  */
 export function createSectorGeometry(o: SectorOptions): BufferGeometry {
   const positions: number[] = [];
@@ -142,57 +145,84 @@ export function createSectorGeometry(o: SectorOptions): BufferGeometry {
   return geometry;
 }
 
-export function createHalfSector(half: Half, o: Omit<SectorOptions, 'thetaStart' | 'thetaLength'>): BufferGeometry {
-  return createSectorGeometry({ ...o, ...HALF_THETA[half] });
+export type ProfilePoint = readonly [r: number, y: number];
+
+/**
+ * A closed solid of revolution from a closed (r, y) profile listed counter-clockwise (r to
+ * the right, y up), with sharp, flat-shaded corners. Used where two rings would otherwise
+ * touch along a face (e.g. a wall and its slab): one solid has no internal faces, so a cut
+ * through it shows one clean surface and no hairline crack between parts.
+ */
+export function createRevolvedSolid(profile: readonly ProfilePoint[], segments: number): BufferGeometry {
+  const positions: number[] = [];
+  const normals: number[] = [];
+  const indices: number[] = [];
+  const seg = Math.max(3, Math.round(segments));
+
+  for (let e = 0; e < profile.length; e++) {
+    const [r0, y0] = profile[e]!;
+    const [r1, y1] = profile[(e + 1) % profile.length]!;
+    // Outward normal of a counter-clockwise profile edge: its direction turned right.
+    const length = Math.hypot(r1 - r0, y1 - y0);
+    const nr = (y1 - y0) / length;
+    const ny = -(r1 - r0) / length;
+    const base = positions.length / 3;
+    for (let i = 0; i <= seg; i++) {
+      const theta = (i / seg) * Math.PI * 2;
+      const s = Math.sin(theta);
+      const c = Math.cos(theta);
+      positions.push(r0 * s, y0, r0 * c, r1 * s, y1, r1 * c);
+      normals.push(nr * s, ny, nr * c, nr * s, ny, nr * c);
+    }
+    for (let i = 0; i < seg; i++) {
+      const a = base + 2 * i; // edge start, angle i
+      const b = a + 1; // edge end, angle i
+      const c = a + 2; // edge start, angle i + 1
+      const d = a + 3; // edge end, angle i + 1
+      indices.push(a, c, d, a, d, b);
+    }
+  }
+
+  const geometry = new BufferGeometry();
+  geometry.setAttribute('position', new Float32BufferAttribute(positions, 3));
+  geometry.setAttribute('normal', new Float32BufferAttribute(normals, 3));
+  geometry.setIndex(indices);
+  return geometry;
+}
+
+/** A whole ring/disc section solid, inset so it never shares a face with a neighbour. */
+export function createSectionSolid(o: Omit<SectorOptions, 'thetaStart' | 'thetaLength'>): BufferGeometry {
+  return createSectorGeometry({
+    innerRadius: o.innerRadius > 0 ? o.innerRadius + SECTION_INSET : 0,
+    outerRadius: o.outerRadius - SECTION_INSET,
+    y0: o.y0 + SECTION_INSET,
+    height: o.height - 2 * SECTION_INSET,
+    thetaStart: 0,
+    thetaLength: Math.PI * 2,
+    segments: o.segments,
+  });
 }
 
 /**
- * One half of the site block: a rectangle in plan with a semicircular notch around the
- * reactor shaft, extruded from y = -depth up to grade. Caps carry the ground-surface
- * material (group 0), sides and cut face the earth material (group 1).
+ * The site block (or one of its layers): a rectangle in plan, optionally with a circular
+ * hole for the reactor shaft, extruded from y = -depth up to y = 0 before the mesh positions
+ * it. Caps carry the ground-surface material (group 0), sides the earth material (group 1).
  *
  * Shape space (sx, sy) maps to world (x, -z) after the -90° X rotation applied by the mesh.
  */
-export function createSiteHalfGeometry(
-  half: Half,
-  site: { x: readonly [number, number]; z: readonly [number, number]; depth: number },
-  /** Radius of the shaft notch; 0 for a plain block (earth below the shaft). */
-  notchRadius: number,
+export function createSiteGeometry(
+  site: { x: Range; z: Range; depth: number },
+  /** Radius of the shaft hole; 0 for a plain block (earth below the shaft). */
+  holeRadius: number,
   curveSegments: number,
-  /** Added to side-wall v so a stacked layer continues the layer above's texture bands. */
-  sideVOffset = 0,
 ): ExtrudeGeometry {
   const [x0, x1] = site.x;
   const shape = new Shape();
-  if (half === 'back') {
-    const depth = -site.z[0]; // world z from z[0] (< 0) to 0  ->  sy from 0 to -z[0]
-    shape.moveTo(x0, 0);
-    if (notchRadius > 0) {
-      shape.lineTo(-notchRadius, 0);
-      shape.absarc(0, 0, notchRadius, Math.PI, 0, true);
-    }
-    shape.lineTo(x1, 0);
-    shape.lineTo(x1, depth);
-    shape.lineTo(x0, depth);
-  } else {
-    const depth = site.z[1];
-    shape.moveTo(x1, 0);
-    if (notchRadius > 0) {
-      shape.lineTo(notchRadius, 0);
-      shape.absarc(0, 0, notchRadius, 0, Math.PI, true);
-    }
-    shape.lineTo(x0, 0);
-    shape.lineTo(x0, -depth);
-    shape.lineTo(x1, -depth);
-  }
+  shape.moveTo(x0, -site.z[1]);
+  shape.lineTo(x1, -site.z[1]);
+  shape.lineTo(x1, -site.z[0]);
+  shape.lineTo(x0, -site.z[0]);
   shape.closePath();
-  const geometry = new ExtrudeGeometry(shape, { depth: site.depth, bevelEnabled: false, curveSegments });
-  if (sideVOffset !== 0) {
-    // Group 1 = side walls; their v runs along the extrusion (1 - depth coordinate).
-    const uv = geometry.getAttribute('uv');
-    const sides = geometry.groups[1];
-    if (sides) for (let i = sides.start; i < sides.start + sides.count; i++) uv.setY(i, uv.getY(i) + sideVOffset);
-    uv.needsUpdate = true;
-  }
-  return geometry;
+  if (holeRadius > 0) shape.holes.push(new Path().absarc(0, 0, holeRadius, 0, Math.PI * 2, true));
+  return new ExtrudeGeometry(shape, { depth: site.depth, bevelEnabled: false, curveSegments });
 }

@@ -4,12 +4,11 @@
  * Only the key light casts shadows, and only when the preset allows it. Its orthographic
  * shadow frustum is fitted to the power block (≈150 m x 70 m) plus the section-review depth.
  */
+import { KEY_LIGHT_POSITION } from '../config/render';
 import { useQualityPreset } from '../state/store';
 
 /** Half-size (m) of the key light's shadow frustum, centred on the light target (origin). */
 const SHADOW_EXTENT = 135;
-/** Light direction unchanged from Stage 1 (approved look), pushed out to clear the site. */
-const KEY_POSITION: [number, number, number] = [150, 235, 115];
 
 export function LightingRig() {
   const preset = useQualityPreset();
@@ -24,7 +23,7 @@ export function LightingRig() {
         name="light.key"
         color="#fff3e6"
         intensity={2.4}
-        position={KEY_POSITION}
+        position={KEY_LIGHT_POSITION}
         castShadow={preset.shadows}
         shadow-mapSize={[preset.shadowMapSize || 512, preset.shadowMapSize || 512]}
         shadow-radius={preset.shadowRadius}

@@ -43,3 +43,9 @@ export const FOG = { near: 300, far: 820 } as const;
 
 /** Radius of the studio floor disc around the site (m); its edge sits deep in the fog. */
 export const FLOOR_RADIUS = 1000;
+
+/**
+ * Key light position (Stage 1 direction, pushed out to clear the site). Shared by the lighting rig
+ * and the section shader, so cut surfaces are lit from the same direction as everything else.
+ */
+export const KEY_LIGHT_POSITION: [number, number, number] = [150, 235, 115];

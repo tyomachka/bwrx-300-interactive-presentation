@@ -3,3 +3,5 @@ https://www.gevernova.com/nuclear/carbon-free-power/bwrx-300-small-modular-react
 https://www.opg.com/projects-services/projects/nuclear/smr/darlington-smr/?utm_source=chatgpt.com
 
 https://www.hitachi.com/en/products/energy/portal/highlights/case_047/
+https://www.gevernova.com/content/dam/gevernova-nuclear/global/en_us/documents/uk-smr/en/11.pdf
+(NEDO-34163 Rev B, BWRX-300 UK GDA Chapter 1: kept locally as references/technical/11.pdf)

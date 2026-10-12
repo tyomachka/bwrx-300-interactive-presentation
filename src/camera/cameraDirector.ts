@@ -6,8 +6,9 @@
  * Exactly one authority writes the camera at any time:
  *  - `explore`    OrbitControls owns the camera (user input + damping).
  *  - `transition` a GSAP tween owns `pose`; OrbitControls is disabled.
- *  - `cinematic`  reserved for the Stage 6 presentation timeline; same mechanics as
- *                 `transition`, but user input does not interrupt it.
+ *  - `cinematic`  a shot's pose source (a pure function of its timeline time) writes `pose`
+ *                 every frame (Stage 3 hero shot; the Stage 6 presentation later). User
+ *                 input does not interrupt it.
  *
  * In the non-explore authorities, animation code only writes the plain `pose` object.
  * `update()` copies it to the camera once per frame. Handing back to Explore syncs
@@ -19,7 +20,7 @@ import gsap from 'gsap';
 import '../animation/clock';
 import { MathUtils, PerspectiveCamera, Spherical, Vector3 } from 'three';
 import type { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-import { CAMERA_STATES, CAMERA_TRANSITION, HOME_CAMERA_STATE, type CameraPose, type CameraStateId } from '../config/camera';
+import { CAMERA_STATES, CAMERA_TRANSITION, HOME_CAMERA_STATE, ORBIT, type CameraPose, type CameraStateId } from '../config/camera';
 
 export type CameraAuthority = 'explore' | 'transition' | 'cinematic';
 
@@ -67,6 +68,15 @@ export interface TransitionOptions {
   ease?: string;
 }
 
+/** Writes the cinematic camera pose for the current frame. */
+export type CinematicPoseSource = (out: LivePose) => void;
+
+interface Cinematic {
+  source: CinematicPoseSource;
+  /** Called if another authority (reset, transition, canvas rebuild) takes the camera away. */
+  onLost: () => void;
+}
+
 class CameraDirector {
   authority: CameraAuthority = 'explore';
   /** Live pose written by transitions and (later) the cinematic timeline. */
@@ -76,6 +86,7 @@ class CameraDirector {
   private controls: OrbitControls | null = null;
   private tween: gsap.core.Tween | null = null;
   private settle: (() => void) | null = null;
+  private cinematic: Cinematic | null = null;
   /** Pose saved when the canvas unmounts (e.g. quality change) and restored on remount. */
   private parkedPose: CameraPose | null = null;
 
@@ -90,6 +101,7 @@ class CameraDirector {
   detach(): void {
     if (this.camera) this.parkedPose = this.getPose();
     this.stopTween();
+    this.dropCinematic();
     this.camera = null;
     this.controls = null;
     this.authority = 'explore';
@@ -109,6 +121,7 @@ class CameraDirector {
   /** Instant, deterministic jump. Leaves the camera in Explore mode. */
   snapTo(pose: CameraPose | CameraStateId): void {
     this.stopTween();
+    this.dropCinematic();
     const p = typeof pose === 'string' ? CAMERA_STATES[pose] : pose;
     this.pose.position.fromArray(p.position);
     this.pose.target.fromArray(p.target);
@@ -144,6 +157,27 @@ class CameraDirector {
     return this.transitionTo(HOME_CAMERA_STATE);
   }
 
+  /**
+   * Give the camera to a cinematic pose source until `endCinematic()` (or until another
+   * authority takes it, in which case `onLost` is called). The source runs every frame.
+   */
+  beginCinematic(source: CinematicPoseSource, onLost: () => void): void {
+    if (!this.camera) {
+      onLost();
+      return;
+    }
+    this.takeAuthority('cinematic');
+    this.cinematic = { source, onLost };
+    source(this.pose);
+  }
+
+  /** The shot ended normally: hold its last pose and hand the camera to Explore from there. */
+  endCinematic(): void {
+    if (!this.cinematic) return;
+    this.cinematic = null;
+    this.returnToExplore();
+  }
+
   /** User grabbed the view mid-transition: stop where we are and give them control. */
   interrupt(): void {
     if (this.authority !== 'transition') return;
@@ -154,8 +188,23 @@ class CameraDirector {
   /** Called exactly once per frame, before rendering, by the frame driver. */
   update(): void {
     if (!this.camera || !this.controls) return;
-    if (this.authority === 'explore') this.controls.update();
-    else this.applyPoseToCamera();
+    if (this.authority === 'explore') {
+      this.keepCameraAboveGrade(this.controls);
+      this.controls.update();
+      return;
+    }
+    if (this.authority === 'cinematic') this.cinematic?.source(this.pose);
+    this.applyPoseToCamera();
+  }
+
+  /**
+   * With the target below grade (plant opened up), cap the orbit's polar angle so the camera
+   * stays above ORBIT.minCameraY. With the target above grade this is the normal limit.
+   */
+  private keepCameraAboveGrade(controls: OrbitControls): void {
+    const distance = controls.object.position.distanceTo(controls.target);
+    const cos = MathUtils.clamp((ORBIT.minCameraY - controls.target.y) / Math.max(distance, 1e-6), -1, 1);
+    controls.maxPolarAngle = Math.min(ORBIT.maxPolarAngle, Math.acos(cos));
   }
 
   private applyPoseToCamera(): void {
@@ -171,6 +220,7 @@ class CameraDirector {
 
   private takeAuthority(next: Exclude<CameraAuthority, 'explore'>): void {
     this.stopTween();
+    this.dropCinematic();
     const controls = this.controls;
     if (this.authority === 'explore' && controls) {
       // Flush damping inertia with one undamped update so it cannot resume later.
@@ -199,6 +249,13 @@ class CameraDirector {
     this.tween?.kill();
     this.tween = null;
     this.resolveSettle();
+  }
+
+  /** Someone else is taking the camera from a running cinematic: tell its owner. */
+  private dropCinematic(): void {
+    const cinematic = this.cinematic;
+    this.cinematic = null;
+    cinematic?.onLost();
   }
 
   private resolveSettle(): void {

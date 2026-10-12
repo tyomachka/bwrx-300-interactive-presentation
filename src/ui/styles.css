@@ -232,3 +232,10 @@ button[aria-pressed='true'] {
   font-family: var(--font);
   font-size: 12px;
 }
+
+.diagnostics__scrubber {
+  display: block;
+  width: 100%;
+  margin: 8px 0 0;
+  accent-color: var(--accent);
+}

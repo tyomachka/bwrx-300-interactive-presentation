@@ -36,6 +36,7 @@ export default function FrameProbe() {
       t.worst = 0;
     }
 
+    sample.renderer = gl;
     const { render, memory, programs } = gl.info;
     sample.drawCalls = render.calls;
     sample.triangles = render.triangles;

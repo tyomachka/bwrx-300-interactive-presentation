@@ -22,6 +22,12 @@ export function App() {
     document.documentElement.dataset.sceneStatus = status;
   }, [status]);
 
+  // Review/capture hooks (`window.__bwrx`): dev builds and `?debug` only, loaded lazily.
+  const debugAvailable = useAppStore((s) => s.debugAvailable);
+  useEffect(() => {
+    if (debugAvailable) void import('../debug/automation').then((m) => m.installAutomationApi());
+  }, [debugAvailable]);
+
   if (!caps.webgl2) return <WebGLUnavailable reason={caps.failureReason} />;
 
   return (

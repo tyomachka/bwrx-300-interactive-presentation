@@ -4,7 +4,10 @@
  * Provenance tags:
  *  [GD]     GE Vernova Hitachi, BWRX-300 General Description 005N9751 Rev J
  *           (references/technical/). Section/figure noted.
- *  [BRIEF]  Stage 2 brief, citing a current official design document not in references/.
+ *  [NEDO]   GE Hitachi, BWRX-300 UK GDA Chapter 1, NEDO-34163 Rev B, July 2025
+ *           (references/technical/11.pdf). Where it differs from [GD] it is the more recent
+ *           official source; differences that the massing does not yet follow are noted.
+ *  [BRIEF]  Stage 2 brief (superseded where [NEDO] now confirms the figure).
  *  [PRESS]  Press coverage of the OPG Darlington build (approximate, not a design figure).
  *  [APPROX] Educational approximation: proportions chosen to agree with the official
  *           figures, but no published number exists for it.
@@ -16,6 +19,13 @@
  */
 
 export const GRADE_Y = 0;
+
+/**
+ * Base of context structures that stand on the ground (turbine hall, support buildings).
+ * Just above grade, never on or below it: a cut through the earth is drawn at the earth's
+ * own depth, so anything touching or inside the earth would show through the cut surface.
+ */
+export const ON_GRADE = 0.01;
 
 export const REACTOR_BUILDING = {
   center: [0, 0] as const, // plan position (x, z); the reactor axis is the world origin
@@ -29,7 +39,8 @@ export const REACTOR_BUILDING = {
   /** [APPROX] Shallow radial-segment roof sitting on the wall, as drawn in Fig 2-1 / Fig 18-5. */
   roofRise: 4.2,
   roofOverhang: 0.25,
-  /** [BRIEF] Shaft embedded to ≈ 36 m below grade ([PRESS] reports ~35 m). */
+  /** [NEDO §1.6] "a cylindrical shaped structure embedded in a vertical shaft to a depth of
+   *  approximately 36 m below-grade", with the RPV and SCCV in the deeply embedded portion. */
   shaftDepth: 36,
   /** [APPROX] The shaft reads slightly wider than the superstructure: a grade collar that
    *  shows the cylinder continues into the ground. */
@@ -49,7 +60,8 @@ export const REACTOR_BUILDING = {
 export const CONTAINMENT = {
   /** [GD §3.4] Vertical cylinder ≈ 19 m outside diameter and 38 m high, enclosed in the
    *  deeply embedded RB, on the common basemat. Bottom = basemat underside (-36), so the top
-   *  is at +2: "SCCV and RPV are situated at or below grade" [GD §10]. */
+   *  is at +2: "SCCV and RPV are situated at or below grade" [GD §10].
+   *  [NEDO §1.7.6] gives ≈ 18 m OD x 38 m: not yet applied (approved Stage 2 massing). */
   outerRadius: 9.5,
   height: 38,
   /** [APPROX] Wall and top-slab thicknesses. */
@@ -64,7 +76,9 @@ export const CONTAINMENT = {
 } as const;
 
 export const REACTOR_PRESSURE_VESSEL = {
-  /** [GD §3.1] Minimum ID ≈ 4.2 m, wall ≈ 13.54 cm -> OD ≈ 4.47 m. Inner height ≈ 27.36 m. */
+  /** [GD §3.1] Minimum ID ≈ 4.2 m, wall ≈ 13.54 cm -> OD ≈ 4.47 m. Inner height ≈ 27.36 m.
+   *  [NEDO §1.7.1 / Table 1-1] ID ≈ 4 m, wall ≈ 14 cm, inside height ≈ 26 m: to reconcile when
+   *  Stage 4 replaces this placeholder with the vessel profile. */
   outerRadius: 2.235,
   height: 27.6,
   /** [APPROX] Head at the containment top slab, as in Fig 3-9. */

@@ -4,7 +4,7 @@
  * without mouse movement so it never sits in the projected image.
  */
 import { useEffect, useRef, useState } from 'react';
-import { cameraDirector } from '../camera/cameraDirector';
+import { resetPresentation } from '../animation/heroShot';
 import { QUALITY_PRESETS, type QualityLevel } from '../config/quality';
 import { useAppStore } from '../state/store';
 
@@ -57,7 +57,7 @@ export function SetupControls() {
           </button>
         ))}
       </div>
-      <button type="button" title="Shortcut: R" onClick={() => void cameraDirector.reset()}>
+      <button type="button" title="Shortcut: R" onClick={() => void resetPresentation()}>
         Reset view
       </button>
     </div>

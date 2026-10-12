@@ -3,9 +3,10 @@
  * door. Too small to clutter the hero shot; readable in close and section views.
  */
 import { CapsuleGeometry } from 'three';
+import type { Material } from 'three';
 import { REACTOR_BUILDING as RB, SITE, TURBINE_BUILDING as TB } from './dimensions';
 import { meta, PLANT_IDS } from './ids';
-import { getPlantMaterials } from './materials';
+import { getPlantMaterials, getSectionMaterials } from './materials';
 import { Box } from './primitives';
 import { FrontOfSection, Interior } from './section';
 
@@ -13,8 +14,8 @@ const HUMAN_HEIGHT = 1.8;
 const HUMAN_RADIUS = 0.25;
 const HUMAN = new CapsuleGeometry(HUMAN_RADIUS, HUMAN_HEIGHT - 2 * HUMAN_RADIUS, 4, 10);
 
-function Person({ x, y, z }: { x: number; y: number; z: number }) {
-  return <mesh geometry={HUMAN} material={getPlantMaterials().human} position={[x, y + HUMAN_HEIGHT / 2, z]} castShadow />;
+function Person({ x, y, z, material = getPlantMaterials().human }: { x: number; y: number; z: number; material?: Material }) {
+  return <mesh geometry={HUMAN} material={material} position={[x, y + HUMAN_HEIGHT / 2, z]} castShadow />;
 }
 
 export function ScaleCues() {
@@ -26,12 +27,13 @@ export function ScaleCues() {
 
   return (
     <group name={PLANT_IDS.scaleCues} userData={meta(PLANT_IDS.scaleCues, 'educational-approximation')}>
-      {/* On the refuelling floor, behind the cut: scale against the pools in section review. */}
-      <Interior>
+      {/* On the refuelling floor, behind the cut: scale against the pools once the building is open. */}
+      <Interior level="building">
         <Person x={-3} y={RB.refuelFloorY + RB.refuelFloorThickness} z={-9} />
       </Interior>
+      {/* At the reactor building entrance: stands where the reveal excavates, so it is cut with the ground. */}
+      <Person x={4.5} y={g} z={RB.aboveGradeRadius + 3.5} material={getSectionMaterials().ground.human} />
       <FrontOfSection>
-        <Person x={4.5} y={g} z={RB.aboveGradeRadius + 3.5} />
         <Person x={truckX - 4} y={g} z={trailerZ[0] + 3} />
         <group name="scale.truck">
           <Box x={[truckX - 1.1, truckX + 1.1]} y={[g, g + 1.1]} z={[trailerZ[0] + 1, cabZ[1] - 0.5]} material={m.doorPanel} />

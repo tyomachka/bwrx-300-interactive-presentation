@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { heroShot } from '../animation/heroShot';
 import { cameraDirector } from '../camera/cameraDirector';
 import { showReviewView } from '../camera/reviewViews';
 import { REVIEW_VIEWS } from '../config/reviewViews';
@@ -15,6 +16,7 @@ const fmt = (v: number[]) => `[${v.map((n) => n.toFixed(2)).join(', ')}]`;
  */
 export default function DiagnosticsOverlay() {
   const pre = useRef<HTMLPreElement>(null);
+  const scrubber = useRef<HTMLInputElement>(null);
   const [copied, setCopied] = useState(false);
   const caps = useAppStore((st) => st.caps);
   const quality = useAppStore((st) => st.quality);
@@ -38,7 +40,9 @@ export default function DiagnosticsOverlay() {
         `  pos      ${fmt(pose.position)}`,
         `  target   ${fmt(pose.target)}`,
         `  fov      ${pose.fov.toFixed(1)}`,
+        `shot       ${heroShot.status}  ${heroShot.time.toFixed(2)} / ${heroShot.duration.toFixed(1)} s`,
       ].join('\n');
+      if (scrubber.current && document.activeElement !== scrubber.current) scrubber.current.value = String(heroShot.time);
     };
     draw();
     const id = window.setInterval(draw, REFRESH_MS);
@@ -76,6 +80,32 @@ export default function DiagnosticsOverlay() {
           </button>
         ))}
       </div>
+      <div className="diagnostics__row">
+        <button type="button" title="Shortcut: P (restarts)" onClick={() => playShot()}>
+          Play Stage 3 shot
+        </button>
+        <button type="button" title="Shortcut: K" onClick={() => heroShot.togglePause()}>
+          Pause / resume
+        </button>
+      </div>
+      <input
+        ref={scrubber}
+        className="diagnostics__scrubber"
+        type="range"
+        min={0}
+        max={heroShot.duration}
+        step={1 / 30}
+        defaultValue={0}
+        aria-label="Stage 3 shot time"
+        onInput={(event) => heroShot.seek(Number(event.currentTarget.value))}
+        // Hand keyboard focus back so P / K / R keep working after scrubbing.
+        onPointerUp={(event) => event.currentTarget.blur()}
+      />
     </div>
   );
+}
+
+function playShot() {
+  useAppStore.getState().setSectionReview(false);
+  heroShot.play();
 }

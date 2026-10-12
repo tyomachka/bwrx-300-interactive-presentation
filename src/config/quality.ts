@@ -33,6 +33,11 @@ export interface QualityPreset {
   bloom: boolean;
   /** Geometry detail requested from procedural builders (radial segments etc.). */
   geometryLod: 'low' | 'high';
+  /**
+   * Reveal cut surfaces: earth strata detail. Clip edges are antialiased (alpha-to-coverage)
+   * only when `antialias` is on. Story, timing and camera never depend on the preset.
+   */
+  sectionCapDetail: boolean;
 }
 
 export const QUALITY_PRESETS: Record<QualityLevel, QualityPreset> = {
@@ -51,6 +56,7 @@ export const QUALITY_PRESETS: Record<QualityLevel, QualityPreset> = {
     postprocessing: false,
     bloom: false,
     geometryLod: 'high',
+    sectionCapDetail: true,
   },
   low: {
     level: 'low',
@@ -67,6 +73,7 @@ export const QUALITY_PRESETS: Record<QualityLevel, QualityPreset> = {
     postprocessing: false,
     bloom: false,
     geometryLod: 'low',
+    sectionCapDetail: false,
   },
 };
 

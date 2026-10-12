@@ -12,17 +12,29 @@
  */
 import { ContactShadows } from '@react-three/drei';
 import { useMemo } from 'react';
-import { Path, Shape, ShapeGeometry } from 'three';
+import { Mesh, Path, Shape, ShapeGeometry, type Group, type Material } from 'three';
 import { FLOOR_RADIUS, FOG, PALETTE } from '../config/render';
 import { useAppStore, useQualityPreset } from '../state/store';
 import { SafeLayer } from '../app/ErrorBoundary';
 import { SITE } from './plant/dimensions';
 import { useDisposeOnChange } from './plant/hooks';
 import { getPlantMaterials } from './plant/materials';
+import { SECTION_PLANES } from './section/sectionLayers';
 import { StudioLightEnvironment } from './StudioLightEnvironment';
 
 /** Baked contact-shadow footprint (low preset): the power block plus its apron. */
 const CONTACT_SHADOW = { center: [35, -8] as const, size: [190, 120] as const, height: 14 };
+
+/** The contact-shadow plane lies on grade, so the reveal's excavation must cut it too. */
+function clipWithExcavation(group: Group | null): void {
+  group?.traverse((o) => {
+    if (!(o instanceof Mesh) || Array.isArray(o.material)) return;
+    const material = o.material as Material;
+    material.clippingPlanes = SECTION_PLANES.ground;
+    material.clipIntersection = true;
+    material.needsUpdate = true;
+  });
+}
 
 export function StudioEnvironment() {
   const preset = useQualityPreset();
@@ -57,6 +69,7 @@ export function StudioEnvironment() {
         <SafeLayer name="contact-shadows">
           {/* Baked once: grounding for the low preset, where realtime shadow maps are off. */}
           <ContactShadows
+            ref={clipWithExcavation}
             frames={1}
             position={[CONTACT_SHADOW.center[0], SITE.apron.top + 0.02, CONTACT_SHADOW.center[1]]}
             scale={[CONTACT_SHADOW.size[0], CONTACT_SHADOW.size[1]]}

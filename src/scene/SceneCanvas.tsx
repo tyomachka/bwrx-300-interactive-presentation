@@ -18,6 +18,7 @@ import { SafeLayer } from '../app/ErrorBoundary';
 import { useAppStore, useQualityPreset } from '../state/store';
 import { LightingRig } from './LightingRig';
 import { Plant } from './plant/Plant';
+import { RevealDriver } from './section/RevealDriver';
 import { StudioEnvironment } from './StudioEnvironment';
 
 // Diagnostics are never part of the main bundle; loaded only for dev builds or `?debug`.
@@ -60,6 +61,7 @@ export function SceneCanvas() {
       <ContextLossWatcher />
       <CameraRig />
       <LightingRig />
+      <RevealDriver />
       <Suspense fallback={null}>
         <StudioEnvironment />
         <Plant />
@@ -166,6 +168,9 @@ function ContextLossWatcher() {
  * Hidden content (interior, section-only parts) is compiled too: three only compiles
  * visible objects, and a reveal during the live talk must never stall on a shader.
  * compileAsync collects materials synchronously, so visibility is restored right away.
+ * After compiling, one warm-up frame is rendered (under the loading overlay) with that
+ * content visible: it uploads its geometry and compiles the shadow-pass variants that
+ * compileAsync does not cover.
  */
 function ReadyGate() {
   const gl = useThree((s) => s.gl);
@@ -176,23 +181,22 @@ function ReadyGate() {
 
   useEffect(() => {
     let cancelled = false;
-    const hidden: Object3D[] = [];
-    scene.traverse((o) => {
-      if (!o.visible) {
-        hidden.push(o);
-        o.visible = true;
-      }
-    });
     let compiling: Promise<unknown>;
     try {
-      compiling = gl.compileAsync(scene, camera);
-    } finally {
-      hidden.forEach((o) => (o.visible = false));
+      compiling = withHiddenContentVisible(scene, () => gl.compileAsync(scene, camera));
+    } catch (error) {
+      compiling = Promise.reject(error);
     }
     compiling
       .catch((error: unknown) => console.warn('[BWRX-300] Shader precompile failed; continuing.', error))
       .finally(() => {
-        if (!cancelled) frames.current = 0;
+        if (cancelled) return;
+        try {
+          withHiddenContentVisible(scene, () => gl.render(scene, camera));
+        } catch (error) {
+          console.warn('[BWRX-300] Warm-up render failed; continuing.', error);
+        }
+        frames.current = 0;
       });
     return () => {
       cancelled = true;
@@ -206,4 +210,20 @@ function ReadyGate() {
   });
 
   return null;
+}
+
+/** Run `action` with every hidden object made visible, then restore visibility. */
+function withHiddenContentVisible<T>(scene: Object3D, action: () => T): T {
+  const hidden: Object3D[] = [];
+  scene.traverse((o) => {
+    if (!o.visible) {
+      hidden.push(o);
+      o.visible = true;
+    }
+  });
+  try {
+    return action();
+  } finally {
+    hidden.forEach((o) => (o.visible = false));
+  }
 }

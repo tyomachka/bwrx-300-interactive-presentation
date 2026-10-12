@@ -1,65 +1,51 @@
 /**
  * Site ground: a 48 m deep earth block (not a thin board) whose top is the grade plane.
- * Normally only its top is visible, flush with the studio floor. In section review the
- * front half disappears and the earth cut face shows the full embedded shaft.
+ * Normally only its top is visible, flush with the studio floor. The hero reveal cuts an
+ * excavation into it in front of the reactor building (scene/section/sectionLayers.ts);
+ * the Stage 2 section review cuts away its whole front half. The cut surface, strata and
+ * the accent grade datum are drawn by the section shader.
  */
 import { useMemo } from 'react';
-import { useAppStore } from '../../state/store';
+import { RADIAL_SEGMENTS } from '../../config/quality';
+import { useQualityPreset } from '../../state/store';
 import { REACTOR_BUILDING, SITE } from './dimensions';
-import { createSiteHalfGeometry } from './geometry';
-import { useDisposeOnChange, useHalfSegments } from './hooks';
+import { createSiteGeometry, SECTION_INSET } from './geometry';
+import { useDisposeOnChange } from './hooks';
 import { meta, PLANT_IDS } from './ids';
-import { getPlantMaterials } from './materials';
-import { Box } from './primitives';
-import { FrontOfSection } from './section';
+import { getSectionMaterials } from './materials';
 
-/** Upper earth layer, notched for the shaft, reaches exactly the shaft bottom. */
-const UPPER = { x: SITE.x, z: SITE.z, depth: REACTOR_BUILDING.shaftDepth };
-/** Solid earth under the shaft basemat. */
-const LOWER = { x: SITE.x, z: SITE.z, depth: SITE.depth - REACTOR_BUILDING.shaftDepth };
-const APRON_THICKNESS = 0.4;
-const APRON = { x: SITE.apron.x, z: SITE.apron.z, depth: APRON_THICKNESS };
-const GRADE_LINE = { height: 0.3, depth: 0.12 };
+/** Upper earth layer, holed for the shaft, down to the shaft bottom. */
+const UPPER = { x: SITE.x, z: SITE.z, depth: REACTOR_BUILDING.shaftDepth - SECTION_INSET };
+/** Solid earth under the shaft basemat (kept clear of the layer above by the section inset). */
+const LOWER = { x: SITE.x, z: SITE.z, depth: SITE.depth - REACTOR_BUILDING.shaftDepth - SECTION_INSET };
+/** Paved apron: sits on grade (not in it), so the two never share a face when cut. */
+const APRON = { x: SITE.apron.x, z: SITE.apron.z, depth: SITE.apron.top - SECTION_INSET };
 
 export function SiteGround() {
-  const m = getPlantMaterials();
-  const segments = useHalfSegments();
-  const sectionReview = useAppStore((s) => s.sectionReview);
-  const notch = REACTOR_BUILDING.shaftOuterRadius;
+  const m = getSectionMaterials().ground;
+  // ExtrudeGeometry draws arcs with 2 x curveSegments points: this matches the shaft's tessellation.
+  const curveSegments = RADIAL_SEGMENTS[useQualityPreset().geometryLod] / 2;
+  const hole = REACTOR_BUILDING.shaftOuterRadius + SECTION_INSET;
 
-  const earth = useMemo(
+  const geometries = useMemo(
     () => ({
-      upperBack: createSiteHalfGeometry('back', UPPER, notch, segments),
-      upperFront: createSiteHalfGeometry('front', UPPER, notch, segments),
-      lowerBack: createSiteHalfGeometry('back', LOWER, 0, 1, LOWER.depth),
-      lowerFront: createSiteHalfGeometry('front', LOWER, 0, 1, LOWER.depth),
+      upper: createSiteGeometry(UPPER, hole, curveSegments),
+      lower: createSiteGeometry(LOWER, 0, 1),
+      apron: createSiteGeometry(APRON, hole, curveSegments),
     }),
-    [notch, segments],
+    [hole, curveSegments],
   );
-  const apronBack = useMemo(() => createSiteHalfGeometry('back', APRON, notch, segments), [notch, segments]);
-  const apronFront = useMemo(() => createSiteHalfGeometry('front', APRON, notch, segments), [notch, segments]);
-  useDisposeOnChange(earth.upperBack, earth.upperFront, earth.lowerBack, earth.lowerFront, apronBack, apronFront);
+  useDisposeOnChange(geometries.upper, geometries.lower, geometries.apron);
 
-  const earthMaterials = [m.groundSurface, m.earth];
-  const apronY = SITE.apron.top - APRON_THICKNESS;
+  const earthMaterials = [m.surface, m.earth];
 
   return (
     <group name={PLANT_IDS.siteGround} userData={meta(PLANT_IDS.siteGround, 'educational-approximation')}>
       {/* Extrusions run along local +z; the -90° X rotation stands them up from y = -depth. */}
-      <mesh name="site.earth.back" geometry={earth.upperBack} material={earthMaterials} rotation-x={-Math.PI / 2} position-y={-UPPER.depth} receiveShadow />
-      <mesh name="site.earthBelowShaft.back" geometry={earth.lowerBack} material={earthMaterials} rotation-x={-Math.PI / 2} position-y={-SITE.depth} receiveShadow />
-      <mesh name="site.apron.back" geometry={apronBack} material={m.apron} rotation-x={-Math.PI / 2} position-y={apronY} receiveShadow />
-      <FrontOfSection>
-        <mesh name="site.earth.front" geometry={earth.upperFront} material={earthMaterials} rotation-x={-Math.PI / 2} position-y={-UPPER.depth} receiveShadow />
-        <mesh name="site.earthBelowShaft.front" geometry={earth.lowerFront} material={earthMaterials} rotation-x={-Math.PI / 2} position-y={-SITE.depth} receiveShadow />
-        <mesh name="site.apron.front" geometry={apronFront} material={m.apron} rotation-x={-Math.PI / 2} position-y={apronY} receiveShadow />
-      </FrontOfSection>
-
-      {/* Grade datum on the cut face (section review only), interrupted by the shaft. */}
-      <group name="site.gradeLine" visible={sectionReview}>
-        <Box x={[SITE.x[0], -notch]} y={[-GRADE_LINE.height / 2, GRADE_LINE.height / 2]} z={[0, GRADE_LINE.depth]} material={m.gradeLine} castShadow={false} receiveShadow={false} />
-        <Box x={[notch, SITE.x[1]]} y={[-GRADE_LINE.height / 2, GRADE_LINE.height / 2]} z={[0, GRADE_LINE.depth]} material={m.gradeLine} castShadow={false} receiveShadow={false} />
-      </group>
+      <mesh name="site.earth" geometry={geometries.upper} material={earthMaterials} rotation-x={-Math.PI / 2} position-y={-UPPER.depth} receiveShadow />
+      {/* Its top is the excavation floor the shaft stands on: earth, not ground surface. */}
+      <mesh name="site.earthBelowShaft" geometry={geometries.lower} material={m.earth} rotation-x={-Math.PI / 2} position-y={-SITE.depth} receiveShadow />
+      <mesh name="site.apron" geometry={geometries.apron} material={m.apron} rotation-x={-Math.PI / 2} position-y={SECTION_INSET} receiveShadow />
     </group>
   );
 }

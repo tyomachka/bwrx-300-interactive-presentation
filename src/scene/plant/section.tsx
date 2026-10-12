@@ -1,57 +1,68 @@
-import { useMemo, type ReactNode } from 'react';
-import type { BufferGeometry, Material } from 'three';
-import { useAppStore } from '../../state/store';
-import { createHalfSector, HALVES, type Half, type SectorOptions } from './geometry';
-import { useDisposeOnChange, useHalfSegments } from './hooks';
+import { useLayoutEffect, useMemo, useRef, type ReactNode } from 'react';
+import type { Group, Material } from 'three';
+import { RADIAL_SEGMENTS } from '../../config/quality';
+import { useAppStore, useQualityPreset } from '../../state/store';
+import { registerInterior, type InteriorLevel } from '../section/sectionLayers';
+import { createRevolvedSolid, createSectionSolid, type ProfilePoint, type SectorOptions } from './geometry';
+import { useDisposeOnChange } from './hooks';
 
-/** Children are hidden while the section review is on (they sit in front of z = 0). */
+/** Children are hidden while the Stage 2 section review is on (they sit in front of z = 0). */
 export function FrontOfSection({ children }: { children: ReactNode }) {
   const sectionReview = useAppStore((s) => s.sectionReview);
   return <group visible={!sectionReview}>{children}</group>;
 }
 
 /**
- * Content that can only be seen when something reveals the interior: today the section
- * review, later X-ray and cutaway. In exterior views it stays in the scene graph (still
- * addressable by ID) but is not drawn, which saves about a third of the draw calls,
- * shadow pass included, for geometry hidden inside opaque buildings or under grade.
+ * Content that can only be seen once something opens the plant up: the hero reveal (by
+ * level, see sectionLayers.ts) or the Stage 2 section review. Until then it stays in the
+ * scene graph (addressable by ID, shaders precompiled) but is not drawn, which saves the
+ * draw calls, shadow pass included, of geometry hidden inside opaque buildings or under grade.
  */
-export function Interior({ children }: { children: ReactNode }) {
-  const revealed = useAppStore((s) => s.sectionReview);
-  return <group visible={revealed}>{children}</group>;
+export function Interior({ level = 'review', children }: { level?: InteriorLevel; children: ReactNode }) {
+  const ref = useRef<Group>(null);
+  useLayoutEffect(() => (ref.current ? registerInterior(ref.current, level) : undefined), [level]);
+  return <group ref={ref}>{children}</group>;
 }
 
 type SectorShape = Omit<SectorOptions, 'thetaStart' | 'thetaLength' | 'segments'>;
 
-interface SplitSectorProps extends SectorShape {
+interface SectionSectorProps extends SectorShape {
   name: string;
-  material: Material | Material[];
+  /** A section material (getSectionMaterials) of the layer that cuts this structure. */
+  material: Material;
   castShadow?: boolean;
   receiveShadow?: boolean;
 }
 
 /**
- * A cylindrical sector structure (wall, slab, ring) built as back + front halves. The front
- * half hides during section review, so the cut faces of the back half become the section.
+ * A whole cylindrical structure (wall, slab, ring, disc) that the reveal cuts with its
+ * layer's section planes. Inset by a few millimetres so it never shares a face with the
+ * structure it rests on (see geometry.ts).
  */
-export function SplitSector({ name, material, castShadow = true, receiveShadow = true, ...shape }: SplitSectorProps) {
-  const segments = useHalfSegments();
+interface SectionProfileProps {
+  name: string;
+  /** Closed (r, y) profile, counter-clockwise; already inset where it touches neighbours. */
+  profile: readonly ProfilePoint[];
+  material: Material;
+  castShadow?: boolean;
+  receiveShadow?: boolean;
+}
+
+/** A whole solid of revolution cut by the reveal: one clean cut surface, no internal cracks. */
+export function SectionProfile({ name, profile, material, castShadow = true, receiveShadow = true }: SectionProfileProps) {
+  const segments = RADIAL_SEGMENTS[useQualityPreset().geometryLod];
+  const geometry = useMemo(() => createRevolvedSolid(profile, segments), [profile, segments]);
+  useDisposeOnChange(geometry);
+  return <mesh name={name} geometry={geometry} material={material} castShadow={castShadow} receiveShadow={receiveShadow} />;
+}
+
+export function SectionSector({ name, material, castShadow = true, receiveShadow = true, ...shape }: SectionSectorProps) {
+  const segments = RADIAL_SEGMENTS[useQualityPreset().geometryLod];
   const { innerRadius, outerRadius, y0, height } = shape;
-  const halves = useMemo(
-    () =>
-      Object.fromEntries(
-        HALVES.map((half) => [half, createHalfSector(half, { innerRadius, outerRadius, y0, height, segments })]),
-      ) as Record<Half, BufferGeometry>,
+  const geometry = useMemo(
+    () => createSectionSolid({ innerRadius, outerRadius, y0, height, segments }),
     [innerRadius, outerRadius, y0, height, segments],
   );
-  useDisposeOnChange(halves.back, halves.front);
-
-  return (
-    <>
-      <mesh name={`${name}.back`} geometry={halves.back} material={material} castShadow={castShadow} receiveShadow={receiveShadow} />
-      <FrontOfSection>
-        <mesh name={`${name}.front`} geometry={halves.front} material={material} castShadow={castShadow} receiveShadow={receiveShadow} />
-      </FrontOfSection>
-    </>
-  );
+  useDisposeOnChange(geometry);
+  return <mesh name={name} geometry={geometry} material={material} castShadow={castShadow} receiveShadow={receiveShadow} />;
 }
