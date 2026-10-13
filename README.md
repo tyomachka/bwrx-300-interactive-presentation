@@ -56,10 +56,27 @@ at any time. For automation, `window.__bwrx` (dev / `?debug` only) exposes
 `shot.play() / seek(t) / togglePause()`, `rpvReview.show(id)`, `snapCamera(pose)`, the
 reveal state, the camera pose and per-frame renderer statistics.
 
-Mouse in Explore mode: hover names a part, click selects it (and focuses the camera on it),
-click on empty space clears; left-drag orbit, wheel zoom, right-drag pan (limited).
+Mouse in Explore mode:
+
+| Input | Action |
+|---|---|
+| Hover | Names the part under the pointer |
+| Click | Selects the part and focuses the camera on it; on empty space, clears. Applied 0.3 s after the click, once no second click followed |
+| Double-click a surface | Orbit around that point from now on: the camera stays put and turns to it (0.35 s); no selection change, no marker |
+| Wheel | Zoom towards the point under the pointer (it stays under the pointer); over the background, towards the orbit centre |
+| Left-drag | Orbit |
+| Middle-drag, right-drag, Shift + left-drag | Pan (screen space, damped) |
+
+Where Explore may go depends on what is cut open (`src/camera/exploreBounds.ts`): with the
+plant closed the camera and orbit centre stay above grade; with the plant cut open the orbit
+centre can go down into the reactor (core, guide tubes, bottom head, drives) and the camera
+can stand in the open excavation in front of the cut, down to its floor, looking up a little.
+Below grade it never goes behind the section plane. Reset brings back the closed limits.
+None of this applies while a shot or the master sequence plays, or during a focus or reset move.
+
 `window.__bwrx.explore` exposes `state()`, `select(id)`, `xray()`, `isolate()`, `section()`,
-`pickAt(x, y)` and `settle()` for automation.
+`pickAt(x, y)` and `settle()` for automation; `window.__bwrx.navigation()` the navigation
+context and the limits in force.
 
 ## Plant massing (Stage 2)
 
@@ -156,6 +173,13 @@ click on empty space clears; left-drag orbit, wheel zoom, right-drag pan (limite
   selection's bounds, clamped on screen, hidden behind the camera; hover shows the name only.
 - **Focus**: the camera director's `transition` authority (1.1 s), so OrbitControls never
   fights it. A focus that needs a cut opens it through the same section engine as the panel.
+  Each component's focus is an authored camera state in the registry; the vessel internals
+  that a view from above cannot show (guide tubes, core plate, shroud support, drives, chimney,
+  chimney head, downcomer) have side or low three-quarter compositions (`config/camera.ts`).
+- **Navigation** (`camera/ExploreOrbitControls.ts`, `camera/cameraDirector.ts`): the one
+  OrbitControls, with its wheel step replaced by a cursor-centred zoom (one pick per wheel
+  gesture, eased over a few frames, orbit centre re-seated at the depth of what is under the
+  pointer) and a double-click retarget; limits by cut context (`camera/exploreBounds.ts`).
 - **Presentation safety**: while a cinematic owns the camera, Explore clears its visuals and
   ignores input; it resumes, in sync with the reveal, when the shot hands back.
 

@@ -25,6 +25,7 @@ export type CameraStateId =
   | 'turbineRelationship'
   | 'turbineHallExterior'
   | 'turbineTrain'
+  | ExploreFocusPoseId
   | Stage3ShotPoseId
   | RpvReviewPoseId
   | MasterPoseId;
@@ -53,6 +54,12 @@ export type MasterPoseId =
   | 'masterSafetyHold'
   | 'masterFinal';
 
+/**
+ * Explore focus compositions for vessel internals that no review or cinematic pose frames well
+ * (navigation polish). Each is referenced by the component registry's `focus` (scene/components.ts).
+ */
+export type ExploreFocusPoseId = 'guideTubesCloseup' | 'lowerVesselCloseup' | 'chimneyCutaway' | 'chimneyHeadCloseup';
+
 /** Keyframe poses of the Stage 3 hero shot, in shot order (timing: config/heroShot.ts). */
 export type Stage3ShotPoseId =
   | 'stage3Exterior'
@@ -80,6 +87,21 @@ export const CAMERA_STATES: Record<CameraStateId, CameraPose> = {
   turbineHallExterior: { position: [6, 30, 118], target: [62, 10, -2], fov: 35 },
   /** Explore focus: the turbine-generator train, seen through the hall's south wall (X-ray). */
   turbineTrain: { position: [44, 24, 58], target: [64, 13, 0], fov: 35 },
+
+  // ---- Explore focus: vessel internals (navigation polish) ----
+  // Into the vessel cutaway (quadrant x < 0, z > 0) from the opened excavation. Heights (world y):
+  // bottom-head apex -26.6, guide tubes -26.5..-22.1, core plate -22.1, active fuel -21.4..-17.6,
+  // chimney -17..-10, chimney head -10..-9.4; drive housings below the head down to -31.7.
+  /** Slightly above the core plate, from the side: the guide-tube forest in the lower plenum between
+   *  the bottom head and the core plate, the bottom of the fuel above it for context. */
+  guideTubesCloseup: { position: [-7.63, -21.46, 10.1], target: [-0.2, -23.2, 0.2], fov: 35 },
+  /** From the side and a little below: the bottom head and the drive housings and motors under it,
+   *  with the lower vessel above them. */
+  lowerVesselCloseup: { position: [-11.1, -30.6, 14.4], target: [0, -27.6, 0], fov: 35 },
+  /** The chimney over the core, with the downcomer gap beside it (the Stage 6 architecture framing). */
+  chimneyCutaway: { position: [-12.5, -10.5, 15], target: [0, -14, 0], fov: 35 },
+  /** The chimney head with the separators standing on it. */
+  chimneyHeadCloseup: { position: [-11.5, -5.3, 13.8], target: [0, -8.4, 0], fov: 35 },
 
   // ---- Stage 3 hero shot: plant exterior -> reactor building -> below grade -> RPV ----
   // The camera stays above grade; its sight lines into the excavation the reveal opens
@@ -165,7 +187,11 @@ export const CAMERA_LENS = {
   far: 1600,
 } as const;
 
-/** Explore-mode OrbitControls limits. Tuned for a mouse on a classroom PC and a projector. */
+/**
+ * Explore-mode OrbitControls limits and navigation. Tuned for a mouse on a classroom PC and a
+ * projector. Mouse: left-drag orbit; middle-drag, right-drag or Shift + left-drag pan; wheel zoom
+ * towards the pointer; double-click a surface to orbit around that point.
+ */
 export const ORBIT = {
   dampingFactor: 0.08,
   rotateSpeed: 0.55,
@@ -185,6 +211,32 @@ export const ORBIT = {
   panBounds: { min: [-120, 0.5, -110] as Vec3Tuple, max: [170, 70, 110] as Vec3Tuple },
   /** In section review the target may go below grade, to inspect the shaft. */
   panBoundsSection: { min: [-120, -45, -110] as Vec3Tuple, max: [170, 70, 110] as Vec3Tuple },
+  /**
+   * Wheel zoom: each step eases out over a few frames (rate, 1/s) instead of jumping. Over a
+   * surface the camera moves towards the point under the pointer; over the background it dollies
+   * towards the orbit target (camera/cameraDirector.ts `wheelZoom`). `zoomSpeed` is the wheel's
+   * own (OrbitControls' scale: 0.95 per 100 px, to this power; about 10 % per notch), so a few
+   * notches visibly travel; `zoomSpeed` above stays for pinch zoom.
+   */
+  wheel: { smoothing: 18, zoomSpeed: 2 },
+  /** Double-click retarget: the camera turns to the new orbit point over this time (s). */
+  pivot: { duration: 0.35, ease: 'power2.out' },
+  /**
+   * The plant fully cut open (excavation, building and containment: the Explore section, the end
+   * of the Stage 3 shot). The camera may then stand anywhere in the open excavation in front of
+   * the cut (sectionLayers.ts EXCAVATION: x -40..20, z 0..84, floor y -36; inset 0.5-1 m), down to
+   * its floor, so the lower vessel, bottom head and drives can be seen from the side and below.
+   */
+  openCut: {
+    footprint: { xMin: -39, xMax: 19, zMin: 0.5, zMax: 83 },
+    floorY: -35,
+    /** Below grade in the cut the camera may look up at what is above it (about 29 degrees). */
+    maxPolarAngle: Math.PI / 2 + 0.5,
+    minDistance: 2.5,
+    /** Below grade the orbit target stays in the opened reactor volume: the excavation and the
+     *  containment interior behind the cut plane (containment r 9.5 m). Above grade: `panBounds`. */
+    targetBounds: { min: [-40, -36, -9.5] as Vec3Tuple, max: [20, 0.5, 84] as Vec3Tuple },
+  },
 } as const;
 
 /** Default programmatic transition (e.g. reset): slow in, slow out. */

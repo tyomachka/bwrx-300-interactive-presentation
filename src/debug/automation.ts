@@ -19,6 +19,7 @@ import { RPV_REVIEW_STATES } from '../config/rpvReview';
 import type { CameraPose, RpvReviewPoseId } from '../config/camera';
 import { animationClock } from '../animation/clock';
 import { cameraDirector } from '../camera/cameraDirector';
+import { isPlantCutOpen } from '../camera/exploreBounds';
 import { Vector3 } from 'three';
 import { diagnosticsSample } from './diagnostics';
 
@@ -74,6 +75,11 @@ const api = {
     setBlades: (pattern: BladePattern) => setBladeInsertion(pattern),
   },
   camera: () => ({ ...cameraDirector.getPose(), authority: cameraDirector.authority, allowBelowGrade: cameraDirector.allowBelowGrade }),
+  /** Explore navigation context and the OrbitControls limits currently applied (navigation polish). */
+  navigation: () => {
+    const controls = cameraDirector.controlsForDebug;
+    return { cutOpen: isPlantCutOpen(), minDistance: controls?.minDistance ?? null, maxPolarAngle: controls?.maxPolarAngle ?? null, enabled: controls?.enabled ?? null };
+  },
   /** Stage 5 Explore state, driven like the user would (deterministic captures pass immediate). */
   explore: {
     state: () => ({ ...exploreState(), section: { ...exploreState().section } }),
