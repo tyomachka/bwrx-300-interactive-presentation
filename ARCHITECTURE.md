@@ -14,6 +14,7 @@ Units: 1 world unit = 1 m; grade is y = 0; the reactor axis is x = z = 0; +z fac
 | `animation/operatingFlow.ts` + `config/flow.ts` | Stage 7 normal operating flow state | `presentationFlowAt(t)`, `flowForFrame()` |
 | `animation/reactorControl.ts` + `config/control.ts` | Stage 8 blade insertion and reaction cue | `presentationControlAt(t)`, `advanceControl(dt)`, `CONTROL_HANDOFF`, `CONTROL_SHUTDOWN` (Stage 9 handoff) |
 | `animation/passiveSafety.ts` + `config/safety.ts` | Stage 9 ICS loop state (fronts, channel intensities) | `presentationSafetyAt(t)`, `advanceSafety(dt)`, `safetyForFrame()` |
+| `animation/fissionInset.ts` + `config/fission.ts` | Stage 10 fission inset frame state (zoom, iris, backdrop, fades, labels); particle motion is in the shaders | `fissionAt(t)`, `fissionForFrame()` |
 | `animation/heroShot.ts`, `heroReveal.ts`, `revealTimeline.ts` | Stage 3 hero shot (0–10 s) and the reveal state | `heroReveal` (groundCut … poolsReveal) — **frozen (Stage 3)** |
 | `animation/presentation.ts` | Reset: stops cinematics, clears Explore, snaps control / safety | `resetPresentation()` |
 
@@ -32,6 +33,7 @@ Per-frame order (R3F `useFrame` priorities): FrameDriver (clock) → state drive
 | `scene/flow/*` | Stage 7: `flowMaterials.ts` (two programs: streak particles, pulse tubes), `VesselFlow`, `PowerFlow` |
 | `scene/control/*` | Stage 8: driver + activity glints |
 | `scene/safety/*` | Stage 9: `icsLayout.ts` (routes, IC geometry, plume paths), `IcsEquipment` (in the plant), `PassiveSafety` (driver, ICS flow on the Stage 7 programs, decay-heat tint) |
+| `scene/fission/*` | Stage 10: camera-space inset in the normal pass (renderOrder 900-903): `fissionData.ts` (seeded nuclei, fragments, neutrons), `fissionShaders.ts` (analytic motion from τ, iris, zoom), `buildInset.ts`, `FissionInset.tsx` |
 
 Interior levels (`Interior level=…`): content drawn only when a cut or X-ray opens it
 (`belowGrade`, `building`, `vessel`, `reactor`, `turbineHall`, `steamPath`, `pools`).
@@ -45,7 +47,7 @@ Interior levels (`Interior level=…`): content drawn only when a cut or X-ray o
 | `interaction/exploreVisuals.ts` | Binds the registry to the scene; hover / select / isolate / X-ray / cinematic look uniforms |
 | `camera/cameraDirector.ts` | One camera authority at a time (explore / transition / cinematic) — **frozen** |
 | `ui/ExplorePanel.tsx`, `app/useKeyboardShortcuts.ts` | Panel buttons and keys (X C I L F O S R Esc 1 2) |
-| `debug/automation.ts` | `window.__bwrx` (with `?debug`): master, explore, flow, control, safety, frame stats |
+| `debug/automation.ts` | `window.__bwrx` (with `?debug`): master, explore, flow, control, safety, fission, frame stats |
 
 ## Frozen / approved subsystems
 

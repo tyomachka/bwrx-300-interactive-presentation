@@ -293,6 +293,25 @@ context and the limits in force.
   pools; Flow and Safety exclude each other (the normal power path steps aside); the camera is
   not moved; a selection keeps priority; Reset turns it off.
 
+## Fission inset (Stage 10)
+
+- **Story** (TECHNICAL_FACTS.md FIS-01 to FIS-07; NRC glossary, DOE-HDBK-1019/1-93), 16.0–20.5 s:
+  1. A ring marks one spot on the fuel, and the microscopic view grows out of it.
+  2. A neutron is absorbed by a U-235 nucleus.
+  3. The excited nucleus wobbles, stretches into a dumbbell and splits into two unequal fragments.
+  4. Three neutrons are released; one, slowing, reaches a second nucleus, which starts to deform
+     (the chain).
+  5. The fragments fly apart fast and slow down, leaving heat in the fuel along their paths.
+  6. The view zooms back into the fuel spot, leaving a brief warm spot.
+  7. The Stage 7 flow starts at 20.5 s, unchanged.
+- **[SCHEMATIC — NOT TO SCALE / NOT EXACT NUCLEON COUNT]:** 96 spheres per nucleus, with two tones in
+  the U-235 proportion. No electrons, no glowing nuclei, no radiation drawn.
+- **Labels:** three small ones (U-235, neutron, energy → heat).
+- **Architecture:** a camera-space overlay in the normal pass (`scene/fission/`): no render target, no
+  post-processing, 4 draw calls. Every particle position is an analytic function of master time on
+  the GPU (seeded static data, no physics, no history), so playback, seek and export agree.
+- **Explore:** no Fission replay (deferred).
+
 ## Architecture notes
 
 - **Units:** 1 world unit = 1 metre.

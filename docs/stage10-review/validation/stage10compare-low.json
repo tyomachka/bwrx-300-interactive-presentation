@@ -1,0 +1,1397 @@
+{
+ "quality": "low",
+ "window": [
+  480,
+  489,
+  498,
+  507,
+  516,
+  525,
+  534,
+  543,
+  552,
+  561,
+  570,
+  579,
+  588,
+  597,
+  606,
+  615
+ ],
+ "outside": [
+  0,
+  120,
+  240,
+  360,
+  735,
+  855,
+  975,
+  1095,
+  1197,
+  1243,
+  1263,
+  1290,
+  1338,
+  1440
+ ],
+ "edges": [
+  480,
+  615
+ ],
+ "build": "http://localhost:4200/assets/index-Bw0pkPxp.js",
+ "programsAtReady": 24,
+ "timings": {
+  "duration": 48,
+  "stage3": {
+   "start": 0,
+   "end": 10,
+   "note": "The approved Stage 3 hero shot, its own camera keys and reveal tracks."
+  },
+  "beats": [
+   {
+    "id": "exterior",
+    "label": "Plant exterior",
+    "start": 0,
+    "end": 1.5,
+    "takeaway": "A complete power station.",
+    "events": [],
+    "subjects": [
+     "plant"
+    ]
+   },
+   {
+    "id": "approach",
+    "label": "Reactor building",
+    "start": 1.5,
+    "end": 3.4,
+    "takeaway": "The reactor building beside the turbine hall.",
+    "events": [],
+    "subjects": [
+     "reactor-building-above-grade"
+    ]
+   },
+   {
+    "id": "belowGrade",
+    "label": "Below grade",
+    "start": 3.4,
+    "end": 5.8,
+    "takeaway": "The building continues deep underground.",
+    "events": [],
+    "subjects": [
+     "reactor-building-shaft"
+    ]
+   },
+   {
+    "id": "containment",
+    "label": "Containment",
+    "start": 5.8,
+    "end": 7.6,
+    "takeaway": "A containment vessel inside the shaft.",
+    "events": [],
+    "subjects": [
+     "containment-placeholder"
+    ]
+   },
+   {
+    "id": "rpvHero",
+    "label": "Reactor vessel",
+    "start": 7.6,
+    "end": 10,
+    "takeaway": "The reactor pressure vessel.",
+    "events": [],
+    "subjects": [
+     "reactor-pressure-vessel"
+    ]
+   },
+   {
+    "id": "core",
+    "label": "Core",
+    "start": 10,
+    "end": 16,
+    "takeaway": "This is where the nuclear heat is produced.",
+    "events": [
+     {
+      "id": "coreReveal",
+      "time": 12.4
+     }
+    ],
+    "subjects": [
+     "reactor-core"
+    ]
+   },
+   {
+    "id": "fission",
+    "label": "Fission",
+    "start": 16,
+    "end": 20.5,
+    "takeaway": "Fission in the fuel releases heat (Stage 10 inset).",
+    "events": [
+     {
+      "id": "fissionEnter",
+      "time": 16
+     },
+     {
+      "id": "fissionExit",
+      "time": 20.5
+     }
+    ],
+    "subjects": [
+     "reactor-core"
+    ]
+   },
+   {
+    "id": "flow",
+    "label": "Natural circulation",
+    "start": 20.5,
+    "end": 29,
+    "takeaway": "Water boils in the core; the mixture rises through the chimney; separators and dryer leave dry steam.",
+    "events": [
+     {
+      "id": "flowCore",
+      "time": 20.5
+     },
+     {
+      "id": "flowChimney",
+      "time": 22.4
+     },
+     {
+      "id": "flowSeparators",
+      "time": 24.3
+     },
+     {
+      "id": "flowDryer",
+      "time": 26
+     },
+     {
+      "id": "steamExit",
+      "time": 27.6
+     }
+    ],
+    "subjects": [
+     "reactor-core",
+     "chimney",
+     "steam-separators",
+     "steam-dryer",
+     "main-steam-nozzle"
+    ]
+   },
+   {
+    "id": "turbine",
+    "label": "Turbine and generator",
+    "start": 29,
+    "end": 36.5,
+    "takeaway": "Steam turns the turbine, which drives the generator: electricity.",
+    "events": [
+     {
+      "id": "steamToTurbine",
+      "time": 29
+     },
+     {
+      "id": "turbine",
+      "time": 32.2
+     },
+     {
+      "id": "generator",
+      "time": 34
+     },
+     {
+      "id": "electricityOut",
+      "time": 35.4
+     }
+    ],
+    "subjects": [
+     "main-steam-path-placeholder",
+     "turbine-placeholder",
+     "generator-placeholder"
+    ]
+   },
+   {
+    "id": "control",
+    "label": "Control",
+    "start": 36.5,
+    "end": 41.5,
+    "takeaway": "Control blades between the fuel set the reactor power.",
+    "events": [
+     {
+      "id": "controlEnter",
+      "time": 36.5
+     },
+     {
+      "id": "controlAction",
+      "time": 39.2
+     },
+     {
+      "id": "controlExit",
+      "time": 41.5
+     }
+    ],
+    "subjects": [
+     "control-blades"
+    ]
+   },
+   {
+    "id": "safety",
+    "label": "Passive cooling",
+    "start": 41.5,
+    "end": 46,
+    "takeaway": "Isolation condensers in pools above the reactor can cool it without pumps or operators.",
+    "events": [
+     {
+      "id": "safetyEnter",
+      "time": 41.5
+     },
+     {
+      "id": "isolationCondenser",
+      "time": 44.6
+     },
+     {
+      "id": "safetyExit",
+      "time": 46
+     }
+    ],
+    "subjects": [
+     "isolation-condenser-pools"
+    ]
+   },
+   {
+    "id": "finalPullback",
+    "label": "Final",
+    "start": 46,
+    "end": 48,
+    "takeaway": "The whole plant again: a stable end frame.",
+    "events": [
+     {
+      "id": "finalPullback",
+      "time": 46
+     },
+     {
+      "id": "sequenceComplete",
+      "time": 48
+     }
+    ],
+    "subjects": [
+     "plant"
+    ]
+   }
+  ],
+  "events": [
+   {
+    "id": "coreReveal",
+    "time": 12.4
+   },
+   {
+    "id": "fissionEnter",
+    "time": 16
+   },
+   {
+    "id": "fissionExit",
+    "time": 20.5
+   },
+   {
+    "id": "flowCore",
+    "time": 20.5
+   },
+   {
+    "id": "flowChimney",
+    "time": 22.4
+   },
+   {
+    "id": "flowSeparators",
+    "time": 24.3
+   },
+   {
+    "id": "flowDryer",
+    "time": 26
+   },
+   {
+    "id": "steamExit",
+    "time": 27.6
+   },
+   {
+    "id": "steamToTurbine",
+    "time": 29
+   },
+   {
+    "id": "turbine",
+    "time": 32.2
+   },
+   {
+    "id": "generator",
+    "time": 34
+   },
+   {
+    "id": "electricityOut",
+    "time": 35.4
+   },
+   {
+    "id": "controlEnter",
+    "time": 36.5
+   },
+   {
+    "id": "controlAction",
+    "time": 39.2
+   },
+   {
+    "id": "controlExit",
+    "time": 41.5
+   },
+   {
+    "id": "safetyEnter",
+    "time": 41.5
+   },
+   {
+    "id": "isolationCondenser",
+    "time": 44.6
+   },
+   {
+    "id": "safetyExit",
+    "time": 46
+   },
+   {
+    "id": "finalPullback",
+    "time": 46
+   },
+   {
+    "id": "sequenceComplete",
+    "time": 48
+   }
+  ],
+  "camera": [
+   {
+    "time": 0,
+    "state": "stage3Exterior",
+    "position": [
+     -95,
+     64,
+     150
+    ],
+    "target": [
+     36,
+     5,
+     -8
+    ],
+    "fov": 35
+   },
+   {
+    "time": 1.5,
+    "state": "stage3ExteriorPush",
+    "position": [
+     -92.5,
+     60.5,
+     143.5
+    ],
+    "target": [
+     32,
+     4.5,
+     -6.5
+    ],
+    "fov": 35
+   },
+   {
+    "time": 3.4,
+    "state": "stage3Approach",
+    "position": [
+     -68,
+     40,
+     128
+    ],
+    "target": [
+     10,
+     6,
+     4
+    ],
+    "fov": 35
+   },
+   {
+    "time": 5.8,
+    "state": "stage3BelowGrade",
+    "position": [
+     -64,
+     30,
+     122
+    ],
+    "target": [
+     2,
+     -2,
+     6
+    ],
+    "fov": 35
+   },
+   {
+    "time": 7.6,
+    "state": "stage3Containment",
+    "position": [
+     -34,
+     10,
+     92
+    ],
+    "target": [
+     0,
+     -12,
+     2
+    ],
+    "fov": 35
+   },
+   {
+    "time": 10,
+    "state": "stage3RPVHero",
+    "position": [
+     -24,
+     2,
+     74
+    ],
+    "target": [
+     0,
+     -12,
+     0
+    ],
+    "fov": 35
+   },
+   {
+    "time": 12.8,
+    "state": "masterVesselOpen",
+    "position": [
+     -13,
+     -8,
+     23
+    ],
+    "target": [
+     0,
+     -14.5,
+     0
+    ],
+    "fov": 35
+   },
+   {
+    "time": 15.4,
+    "state": "masterCore",
+    "position": [
+     -5.4,
+     -15.2,
+     6.6
+    ],
+    "target": [
+     -0.3,
+     -19,
+     0.3
+    ],
+    "fov": 35
+   },
+   {
+    "time": 20.5,
+    "state": "masterCoreHold",
+    "position": [
+     -4.9,
+     -15.6,
+     6
+    ],
+    "target": [
+     -0.3,
+     -19.1,
+     0.3
+    ],
+    "fov": 35
+   },
+   {
+    "time": 22.6,
+    "state": "masterArchitecture",
+    "position": [
+     -12.5,
+     -10.5,
+     15
+    ],
+    "target": [
+     0,
+     -14,
+     0
+    ],
+    "fov": 35
+   },
+   {
+    "time": 24.8,
+    "state": "masterSeparators",
+    "position": [
+     -11.5,
+     -4.5,
+     13.8
+    ],
+    "target": [
+     0,
+     -7.6,
+     0
+    ],
+    "fov": 35
+   },
+   {
+    "time": 26.6,
+    "state": "steamRegionCloseup",
+    "position": [
+     -11.2,
+     -1.85,
+     13.4
+    ],
+    "target": [
+     0,
+     -6.2,
+     0
+    ],
+    "fov": 35
+   },
+   {
+    "time": 28.4,
+    "state": "masterSteamExit",
+    "position": [
+     -9.5,
+     -0.5,
+     13.5
+    ],
+    "target": [
+     1.2,
+     -3,
+     0
+    ],
+    "fov": 35
+   },
+   {
+    "time": 30.8,
+    "state": "masterSteamLine",
+    "position": [
+     6,
+     6,
+     38
+    ],
+    "target": [
+     16,
+     -1,
+     0
+    ],
+    "fov": 35
+   },
+   {
+    "time": 32.6,
+    "state": "masterTurbine",
+    "position": [
+     30,
+     19,
+     38
+    ],
+    "target": [
+     60,
+     12.5,
+     0
+    ],
+    "fov": 35
+   },
+   {
+    "time": 35,
+    "state": "masterGenerator",
+    "position": [
+     42,
+     18.5,
+     37
+    ],
+    "target": [
+     72,
+     12.5,
+     0
+    ],
+    "fov": 35
+   },
+   {
+    "time": 37.3,
+    "state": "masterReturn",
+    "position": [
+     -12,
+     16,
+     40
+    ],
+    "target": [
+     0,
+     -12,
+     0
+    ],
+    "fov": 35
+   },
+   {
+    "time": 39.1,
+    "state": "masterBlades",
+    "position": [
+     -3.52,
+     -16.37,
+     3.52
+    ],
+    "target": [
+     -0.65,
+     -19.78,
+     0.65
+    ],
+    "fov": 35
+   },
+   {
+    "time": 41.2,
+    "state": "masterBladesHold",
+    "position": [
+     -3.3,
+     -16.6,
+     3.3
+    ],
+    "target": [
+     -0.65,
+     -19.8,
+     0.65
+    ],
+    "fov": 35
+   },
+   {
+    "time": 42.4,
+    "state": "masterSafetyExit",
+    "position": [
+     -12,
+     -8.5,
+     12.5
+    ],
+    "target": [
+     -0.4,
+     -16,
+     0.4
+    ],
+    "fov": 35
+   },
+   {
+    "time": 43.5,
+    "state": "masterSafetyRise",
+    "position": [
+     -20,
+     1,
+     34
+    ],
+    "target": [
+     0,
+     -1,
+     -3
+    ],
+    "fov": 35
+   },
+   {
+    "time": 44.6,
+    "state": "masterSafety",
+    "position": [
+     -12,
+     9,
+     50
+    ],
+    "target": [
+     0,
+     7,
+     -5
+    ],
+    "fov": 35
+   },
+   {
+    "time": 46,
+    "state": "masterSafetyHold",
+    "position": [
+     -12.5,
+     9.2,
+     52
+    ],
+    "target": [
+     0,
+     6.8,
+     -5
+    ],
+    "fov": 35
+   },
+   {
+    "time": 48,
+    "state": "masterFinal",
+    "position": [
+     -42,
+     23,
+     86
+    ],
+    "target": [
+     9,
+     -2,
+     0
+    ],
+    "fov": 35
+   }
+  ],
+  "reveal": [
+   {
+    "property": "exteriorDim",
+    "from": 0,
+    "to": 1,
+    "start": 2.9,
+    "duration": 2.4,
+    "ease": "sine.inOut"
+   },
+   {
+    "property": "groundCut",
+    "from": 0,
+    "to": 1,
+    "start": 3.3,
+    "duration": 2.5,
+    "ease": "power3.out"
+   },
+   {
+    "property": "shaftReveal",
+    "from": 0,
+    "to": 1,
+    "start": 5.6,
+    "duration": 1.9,
+    "ease": "sine.inOut"
+   },
+   {
+    "property": "containmentReveal",
+    "from": 0,
+    "to": 1,
+    "start": 7.3,
+    "duration": 1.65,
+    "ease": "sine.inOut"
+   },
+   {
+    "property": "rpvEmphasis",
+    "from": 0,
+    "to": 1,
+    "start": 8,
+    "duration": 1.6,
+    "ease": "sine.inOut"
+   },
+   {
+    "property": "vesselCut",
+    "from": 0,
+    "to": 1,
+    "start": 10.5,
+    "duration": 2,
+    "ease": "sine.inOut"
+   },
+   {
+    "property": "rpvEmphasis",
+    "from": 1,
+    "to": 0.4,
+    "start": 11,
+    "duration": 1.8,
+    "ease": "sine.inOut"
+   },
+   {
+    "property": "exteriorDim",
+    "from": 1,
+    "to": 0.25,
+    "start": 30.2,
+    "duration": 1.6,
+    "ease": "sine.inOut"
+   },
+   {
+    "property": "exteriorDim",
+    "from": 0.25,
+    "to": 1,
+    "start": 36.6,
+    "duration": 1.2,
+    "ease": "sine.inOut"
+   },
+   {
+    "property": "bladeEmphasis",
+    "from": 0,
+    "to": 1,
+    "start": 38.3,
+    "duration": 0.8,
+    "ease": "sine.inOut"
+   },
+   {
+    "property": "bladeEmphasis",
+    "from": 1,
+    "to": 0,
+    "start": 41.6,
+    "duration": 0.8,
+    "ease": "sine.inOut"
+   },
+   {
+    "property": "poolsReveal",
+    "from": 0,
+    "to": 1,
+    "start": 41.6,
+    "duration": 0.05,
+    "ease": "none"
+   },
+   {
+    "property": "vesselCut",
+    "from": 1,
+    "to": 0,
+    "start": 43.4,
+    "duration": 1.6,
+    "ease": "sine.inOut"
+   },
+   {
+    "property": "rpvEmphasis",
+    "from": 0.4,
+    "to": 1,
+    "start": 44,
+    "duration": 1.8,
+    "ease": "sine.inOut"
+   }
+  ],
+  "look": {
+   "subjects": [
+    {
+     "ids": [
+      "reactor-core"
+     ],
+     "start": 12,
+     "end": 22.6,
+     "fade": 1
+    },
+    {
+     "ids": [
+      "chimney"
+     ],
+     "start": 21.6,
+     "end": 24.6,
+     "fade": 0.9
+    },
+    {
+     "ids": [
+      "steam-separators"
+     ],
+     "start": 23.6,
+     "end": 26.4,
+     "fade": 0.9
+    },
+    {
+     "ids": [
+      "steam-dryer"
+     ],
+     "start": 25.4,
+     "end": 28.2,
+     "fade": 0.9
+    },
+    {
+     "ids": [
+      "main-steam-nozzle"
+     ],
+     "start": 27,
+     "end": 30,
+     "fade": 0.8
+    },
+    {
+     "ids": [
+      "main-steam-path-placeholder"
+     ],
+     "start": 28.6,
+     "end": 33.4,
+     "fade": 0.9
+    },
+    {
+     "ids": [
+      "turbine-placeholder"
+     ],
+     "start": 31.6,
+     "end": 35.2,
+     "fade": 0.9
+    },
+    {
+     "ids": [
+      "generator-placeholder"
+     ],
+     "start": 33.4,
+     "end": 36.8,
+     "fade": 0.9
+    },
+    {
+     "ids": [
+      "isolation-condenser-pools"
+     ],
+     "start": 42.6,
+     "end": 47.2,
+     "fade": 1,
+     "weight": 1.6
+    }
+   ],
+   "contextDim": [
+    [
+     0,
+     0
+    ],
+    [
+     10,
+     0
+    ],
+    [
+     12,
+     0
+    ],
+    [
+     13.4,
+     0.55
+    ],
+    [
+     28.6,
+     0.55
+    ],
+    [
+     30.4,
+     0
+    ],
+    [
+     36.6,
+     0
+    ],
+    [
+     38.4,
+     0.45
+    ],
+    [
+     41.4,
+     0.45
+    ],
+    [
+     43,
+     0.5
+    ],
+    [
+     46,
+     0.5
+    ],
+    [
+     47.4,
+     0
+    ]
+   ],
+   "ghosts": [
+    {
+     "ids": [
+      "turbine-building"
+     ],
+     "start": 30.4,
+     "end": 36.5,
+     "fade": 1
+    }
+   ],
+   "interior": [
+    {
+     "level": "steamPath",
+     "start": 18,
+     "end": 38.6
+    }
+   ]
+  }
+ },
+ "cameraFunction": "971453be036b9b3d",
+ "lookFunction": "59c92781fc2c31ed",
+ "functionsVsStage9": {
+  "timings": true,
+  "camera": true,
+  "look": true
+ },
+ "fissionSamples": [
+  {
+   "t": 15.9,
+   "active": false,
+   "tau": -0.09999999999999964,
+   "marker": 0,
+   "zoom": 1,
+   "iris": 0,
+   "backdrop": 0,
+   "particles": 0,
+   "heat": 0,
+   "labels": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "t": 16,
+   "active": false,
+   "tau": 0,
+   "marker": 0,
+   "zoom": 1,
+   "iris": 0,
+   "backdrop": 0,
+   "particles": 0,
+   "heat": 0,
+   "labels": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "t": 16.1,
+   "active": true,
+   "tau": 0.10000000000000142,
+   "marker": 0.6033125031753436,
+   "zoom": 0.035,
+   "iris": 0.098,
+   "backdrop": 0,
+   "particles": 0,
+   "heat": 0,
+   "labels": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "t": 16.45,
+   "active": true,
+   "tau": 0.4499999999999993,
+   "marker": 0.10351562500000377,
+   "zoom": 0.5174999999999979,
+   "iris": 1.4489999999999938,
+   "backdrop": 0.4999999999999978,
+   "particles": 0.4999999999999978,
+   "heat": 0.4999999999999978,
+   "labels": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "t": 17.2,
+   "active": true,
+   "tau": 1.1999999999999993,
+   "marker": 0,
+   "zoom": 1,
+   "iris": 2.8,
+   "backdrop": 1,
+   "particles": 1,
+   "heat": 1,
+   "labels": [
+    1,
+    -1.3322676295501878e-15,
+    0
+   ]
+  },
+  {
+   "t": 18,
+   "active": true,
+   "tau": 2,
+   "marker": 0,
+   "zoom": 1,
+   "iris": 2.8,
+   "backdrop": 1,
+   "particles": 1,
+   "heat": 1,
+   "labels": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "t": 18.95,
+   "active": true,
+   "tau": 2.9499999999999993,
+   "marker": 0,
+   "zoom": 1,
+   "iris": 2.8,
+   "backdrop": 1,
+   "particles": 1,
+   "heat": 1,
+   "labels": [
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "t": 19.9,
+   "active": true,
+   "tau": 3.8999999999999986,
+   "marker": 0,
+   "zoom": 0.5175000000000056,
+   "iris": 1.4490000000000156,
+   "backdrop": 0.31744000000000716,
+   "particles": 0.5000000000000083,
+   "heat": 1,
+   "labels": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "t": 20.2,
+   "active": true,
+   "tau": 4.199999999999999,
+   "marker": 0,
+   "zoom": 0.035,
+   "iris": 0.098,
+   "backdrop": 0,
+   "particles": 0,
+   "heat": 0.8781313580246943,
+   "labels": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "t": 20.42,
+   "active": true,
+   "tau": 4.420000000000002,
+   "marker": 0,
+   "zoom": 0.035,
+   "iris": 0.098,
+   "backdrop": 0,
+   "particles": 0,
+   "heat": 0,
+   "labels": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "t": 20.5,
+   "active": false,
+   "tau": 4.5,
+   "marker": 0,
+   "zoom": 1,
+   "iris": 0,
+   "backdrop": 0,
+   "particles": 0,
+   "heat": 0,
+   "labels": [
+    0,
+    0,
+    0
+   ]
+  }
+ ],
+ "stats": {
+  "instances": 196,
+  "nucleonsPerNucleus": 96,
+  "protonTones": 38,
+  "lightFragment": 38,
+  "heavyFragment": 58,
+  "secondNucleusLight": 43,
+  "splitPoint": [
+   -0.48,
+   0.082,
+   0
+  ],
+  "sphereTriangles": 15680
+ },
+ "seek": {
+  "0": "a3f061287e672ba9",
+  "120": "0485fb6ea5221e8c",
+  "240": "4ee988a1f1011c3f",
+  "360": "9772ed9c87a3384b",
+  "480": "41c6b057c09273c6",
+  "489": "f9b1620c86d21ef3",
+  "498": "bc712a2de8b38b4d",
+  "507": "a9f58b03999a76fe",
+  "516": "df7db9331dd87857",
+  "525": "10d00ee21a4b64fb",
+  "534": "7e8a4e7066fa113f",
+  "540": "970da5517d800e46",
+  "543": "9b1d8614e50504bd",
+  "552": "1eec86db03775a7e",
+  "561": "c1a21d9553d71122",
+  "570": "0719e7449f2c3a3f",
+  "579": "d2c3b29ca89b595f",
+  "588": "f6513c471d9cdbff",
+  "597": "c7b8f0f7de02ebc4",
+  "606": "a7a5744826dd826f",
+  "615": "0e02ac445b6894ba",
+  "735": "23cd49a35be5ae0e",
+  "855": "6abe433046aee951",
+  "975": "47c1b022f396729b",
+  "1095": "0eb980534ff11ee1",
+  "1197": "d03bed327001d55b",
+  "1243": "f99f8cd5e14934d7",
+  "1263": "04da6057825ad8ea",
+  "1290": "71b629c7f86ec9ff",
+  "1338": "1d2e3d9ac1600ad9",
+  "1440": "5cf5a07dca7fb690"
+ },
+ "t18forward": "970da5517d800e46",
+ "t18backward": "970da5517d800e46",
+ "t18random": [
+  "970da5517d800e46",
+  "970da5517d800e46",
+  "970da5517d800e46"
+ ],
+ "randomOther": {
+  "30": [
+   "4d854145ad481008"
+  ],
+  "44": [
+   "c6c31cc2277796fb"
+  ],
+  "19.4": [
+   "dbefbb39e4d26fc2"
+  ],
+  "3.5": [
+   "10446944b5f428f9"
+  ],
+  "16.5": [
+   "431d34189c679bbd"
+  ],
+  "20.2": [
+   "a7a5744826dd826f"
+  ],
+  "17.3": [
+   "76279891774cbad3"
+  ]
+ },
+ "randomOtherForward": {
+  "30": "4d854145ad481008",
+  "44": "c6c31cc2277796fb",
+  "19.4": "dbefbb39e4d26fc2",
+  "3.5": "10446944b5f428f9",
+  "16.5": "431d34189c679bbd",
+  "20.2": "a7a5744826dd826f",
+  "17.3": "76279891774cbad3"
+ },
+ "playback": {
+  "hashes": {
+   "0": "a3f061287e672ba9",
+   "120": "47a5c12a82051bc8",
+   "240": "4ee988a1f1011c3f",
+   "360": "9772ed9c87a3384b",
+   "480": "41c6b057c09273c6",
+   "489": "f9b1620c86d21ef3",
+   "498": "bc712a2de8b38b4d",
+   "507": "a9f58b03999a76fe",
+   "516": "df7db9331dd87857",
+   "525": "10d00ee21a4b64fb",
+   "534": "7e8a4e7066fa113f",
+   "540": "970da5517d800e46",
+   "543": "9b1d8614e50504bd",
+   "552": "1eec86db03775a7e",
+   "561": "c1a21d9553d71122",
+   "570": "0719e7449f2c3a3f",
+   "579": "d2c3b29ca89b595f",
+   "588": "f6513c471d9cdbff",
+   "597": "c7b8f0f7de02ebc4",
+   "606": "a7a5744826dd826f",
+   "615": "0e02ac445b6894ba",
+   "735": "23cd49a35be5ae0e",
+   "855": "6abe433046aee951",
+   "975": "47c1b022f396729b",
+   "1095": "0eb980534ff11ee1",
+   "1197": "d03bed327001d55b",
+   "1243": "f99f8cd5e14934d7",
+   "1263": "04da6057825ad8ea",
+   "1290": "71b629c7f86ec9ff",
+   "1338": "1d2e3d9ac1600ad9",
+   "1440": "5cf5a07dca7fb690"
+  },
+  "times": {
+   "0": 0,
+   "120": 4,
+   "240": 8,
+   "360": 12,
+   "480": 16,
+   "489": 16.3,
+   "498": 16.6,
+   "507": 16.9,
+   "516": 17.2,
+   "525": 17.5,
+   "534": 17.8,
+   "540": 18,
+   "543": 18.1,
+   "552": 18.4,
+   "561": 18.7,
+   "570": 19,
+   "579": 19.3,
+   "588": 19.6,
+   "597": 19.9,
+   "606": 20.2,
+   "615": 20.5,
+   "735": 24.5,
+   "855": 28.5,
+   "975": 32.5,
+   "1095": 36.5,
+   "1197": 39.9,
+   "1243": 41.4333333,
+   "1263": 42.1,
+   "1290": 43,
+   "1338": 44.6,
+   "1440": 48
+  },
+  "programs": [
+   24,
+   24
+  ],
+  "events": [
+   "coreReveal",
+   "fissionEnter",
+   "fissionExit",
+   "flowCore",
+   "flowChimney",
+   "flowSeparators",
+   "flowDryer",
+   "steamExit",
+   "steamToTurbine",
+   "turbine",
+   "generator",
+   "electricityOut",
+   "controlEnter",
+   "controlAction",
+   "controlExit",
+   "safetyEnter",
+   "isolationCondenser",
+   "safetyExit",
+   "finalPullback",
+   "sequenceComplete"
+  ]
+ },
+ "verdict": {
+  "windowSeekVsPlayback": [],
+  "outsideVsGolden": [
+   {
+    "f": 120,
+    "t": 4
+   }
+  ],
+  "edgesVsGolden": [
+   [
+    16,
+    true
+   ],
+   [
+    20.5,
+    true
+   ]
+  ],
+  "outsidePlaybackVsSeek": [
+   {
+    "f": 120,
+    "playbackTime": 4
+   }
+  ],
+  "t18": {
+   "forward": true,
+   "backward": true,
+   "random": [
+    true,
+    true,
+    true
+   ],
+   "playback": true
+  },
+  "randomOther": {
+   "30": true,
+   "44": true,
+   "19.4": true,
+   "3.5": true,
+   "16.5": true,
+   "20.2": true,
+   "17.3": true
+  }
+ },
+ "log": {
+  "errors": [],
+  "external": [],
+  "console": [
+   "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.",
+   "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+  ]
+ }
+}

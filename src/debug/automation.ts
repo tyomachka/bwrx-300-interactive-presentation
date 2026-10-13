@@ -25,6 +25,9 @@ import { vesselFlowStats } from '../scene/flow/vesselFlowGeometry';
 import { controlForFrame, createControlState, presentationControlAt } from '../animation/reactorControl';
 import { createSafetyState, presentationSafetyAt, safetyForFrame } from '../animation/passiveSafety';
 import { safetyStats } from '../scene/safety/icsLayout';
+import { createFissionState, fissionAt, fissionForFrame } from '../animation/fissionInset';
+import { fissionStats } from '../scene/fission/fissionData';
+import { insetDebug, lastInset } from '../scene/fission/buildInset';
 import { bladeControlAmount, CONTROL_BLADES } from '../scene/rpv/coreLayout';
 import { activitySlots, STRIPS } from '../scene/control/activityMaterial';
 import { useAppStore } from '../state/store';
@@ -138,6 +141,26 @@ const api = {
       return { ...s, intensity: { ...s.intensity } };
     },
     stats: () => ({ ...safetyStats }),
+  },
+  /** Stage 10 fission inset: the live state, the state at any master time, counts. */
+  fission: {
+    state: () => ({ ...fissionForFrame(), labels: [...fissionForFrame().labels] }),
+    stateAt: (t: number) => {
+      const s = fissionAt(t, createFissionState());
+      return { ...s, labels: [...s.labels] };
+    },
+    stats: () => ({ ...fissionStats(), sphereTriangles: lastInset?.triangles ?? 0 }),
+    /** Diagnostics: hide inset parts by name (backdrop, particles, sprites, labels). */
+    hide: (names: string[]) => void (insetDebug.hide = new Set(names)),
+    /** Live uniform values of the inset materials (scalars and colours only). */
+    uniforms: () => {
+      if (!lastInset) return null;
+      const out: Record<string, Record<string, unknown>> = {};
+      for (const [name, part] of Object.entries(lastInset.parts)) {
+        out[name] = Object.fromEntries(Object.entries(part.material.uniforms).filter(([, u]) => typeof u.value === 'number' || (u.value as { isColor?: boolean })?.isColor).map(([k, u]) => [k, typeof u.value === 'number' ? u.value : (u.value as { getHexString(): string }).getHexString()]));
+      }
+      return out;
+    },
   },
   /** Jump the camera to an explicit pose (scripted review captures). */
   snapCamera: (pose: CameraPose) => cameraDirector.snapTo(pose),

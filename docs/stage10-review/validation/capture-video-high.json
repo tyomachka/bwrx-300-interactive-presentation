@@ -1,0 +1,20 @@
+{
+ "quality": "high",
+ "build": "http://localhost:4200/assets/index-Bw0pkPxp.js",
+ "video": {
+  "first": 0,
+  "frames": 1441,
+  "captureSeconds": 1061.784,
+  "end": {
+   "status": "finished",
+   "time": 48
+  }
+ },
+ "log": {
+  "errors": [],
+  "external": [],
+  "console": [
+   "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+  ]
+ }
+}

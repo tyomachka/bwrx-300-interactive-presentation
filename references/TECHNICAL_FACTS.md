@@ -33,6 +33,26 @@ recorded with their provenance tags next to the numbers in `src/scene/plant/dime
 | ICS-09 | Fig 3-8 labels each IC with a steam distribution header, an upper header (steam), tubes and a lower header (condensate); the IC steam feed line leaves the upper RPV, the IC condensate return line enters lower down. It draws two tube modules per IC and labels inner and outer pools ("IC Inner Pool A", "IC Outer Pool B+C"); §3.10 (p. 47) speaks of "three ICS Cubicle Pools and surrounding Outer Pools". | Fig 3-8, p. 41; §3.10, p. 47 | OFFICIAL (figure) / APPROX (our simplification) | One tube bank per IC; three separate pools without outer pools; steam nozzles at the steam-outlet level (h 24.2 m) |
 | ICS-10 | ICS pool cooling and cleanup (ICC) keeps the pool water below Technical Specification limits in normal operation (frame-and-plate HX to plant cooling water). | §3.10, p. 47 | OFFICIAL | Not shown (normal-operation support system, not part of the passive loop) |
 
+## Fission (Stage 10, verified 2026-10-13)
+
+Sources: **NRC** Glossary, "Fission (fissioning)" (nrc.gov, last reviewed 2023-01-20).
+**DOE-HDBK-1019/1-93**, *DOE Fundamentals Handbook: Nuclear Physics and Reactor Theory*, Vol. 1,
+Module 1 (NP-01) and Module 2 (NP-02), Jan 1993; copy from ncsp.llnl.gov
+(sha256 `7acb55d1…6796`).
+
+| ID | Fact | Source | Status | Project usage |
+|---|---|---|---|---|
+| FIS-01 | "The splitting of an atom, which releases a considerable amount of energy (usually in the form of heat) ... usually caused by the nucleus of an atom becoming unstable ... after capturing or absorbing a neutron ... the heavy nucleus splits into roughly equal parts ... In addition to energy, this reaction usually releases gamma radiation and two or more daughter neutrons." | NRC Glossary | OFFICIAL | The whole causal chain; at least two released neutrons |
+| FIS-02 | Liquid-drop model: the neutron is absorbed, a compound nucleus is formed "in an excited state"; the excitation "may cause it to oscillate and become distorted"; above the critical energy it becomes "dumbbell-shaped"; when the repulsive forces exceed the attractive ones, "nuclear fission occurs". | DOE-HDBK-1019/1-93, NP-01 p. 49, Fig 18 | OFFICIAL | Absorption → wobble → dumbbell with a thinning neck → split |
+| FIS-03 | "The resultant fission fragments have masses that vary widely ... The most probable pair of fission fragments for the thermal fission of the fuel uranium-235 have masses of about 95 and 140." | NP-01 p. 57, Fig 21 | OFFICIAL | Unequal fragments (40 : 60 by sphere count); the second nucleus uses another share |
+| FIS-04 | The handbook's typical fission: U-235 + n → Rb-93 + Cs-140 + 3 n (236 = 93 + 140 + 3). | NP-01 p. 58 | DERIVED | Three released neutrons |
+| FIS-05 | Instantaneous energy: fragment kinetic energy 167 MeV of 187 MeV (fission neutrons 5, prompt γ 5, capture γ 10); about 200 MeV per fission in total. "All of the energy released, with the exception of the neutrino energy, is ultimately transformed into heat ... The fission fragments ... cause ionization ... kinetic energy is transferred to the surrounding atoms of the fuel material, resulting in an increase in temperature." | NP-01 p. 61, Table 6 | OFFICIAL | Heat drawn along the fragments' paths as they slow down; no glow on the nuclei; gamma radiation not drawn |
+| FIS-06 | About 7 % of the 200 MeV is released after the fission (decay); "When a reactor is shut down, fissions essentially cease, but energy is still being released from the decay of fission products." | NP-01 p. 61–62 | OFFICIAL | Supports the Stage 9 shutdown handoff (decay heat) |
+| FIS-07 | Over 99 % of fission neutrons are prompt (released within about 10⁻¹³ s); they are born fast (about 2 MeV on average). | NP-02 p. 29; NP-01 (neutron energies) | OFFICIAL | Neutrons released at the split; the moderation by water before the next fission is not drawn (simplification) |
+
+[SCHEMATIC — NOT TO SCALE / NOT EXACT NUCLEON COUNT] Each nucleus is 96 spheres, not 235. The two
+tones keep U-235's proportion (92 : 143). There are no electrons.
+
 ## Educational approximations used for the ICS (Stage 9)
 
 - Nozzle azimuths, riser positions (the steam riser at the IC's inner end, the return riser at its

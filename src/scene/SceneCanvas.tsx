@@ -21,6 +21,7 @@ import { Plant } from './plant/Plant';
 import { ExploreDriver } from '../interaction/ExploreDriver';
 import { ReactorControl } from './control/ReactorControl';
 import { PassiveSafety } from './safety/PassiveSafety';
+import { FissionInset } from './fission/FissionInset';
 import { OperatingFlow } from './flow/OperatingFlow';
 import { RevealDriver } from './section/RevealDriver';
 import { revealOpaqueSort } from './section/drawOrder';
@@ -75,6 +76,7 @@ export function SceneCanvas() {
         <OperatingFlow />
         <ReactorControl />
         <PassiveSafety />
+        <FissionInset />
         <ExploreDriver />
         <ReadyGate />
       </Suspense>
