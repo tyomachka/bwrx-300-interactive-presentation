@@ -6,6 +6,7 @@
  */
 import { useMemo } from 'react';
 import { CylinderGeometry, type Material } from 'three';
+import { ShaftCouplings } from '../flow/ShaftCouplings';
 import { ON_GRADE, TURBINE_BUILDING as TB, TURBINE_TRAIN as TRAIN } from './dimensions';
 import { splitAtZ0, type BoxExtents, type Range } from './geometry';
 import { useDisposeOnChange, useHalfSegments } from './hooks';
@@ -112,10 +113,13 @@ function TurbineGenerator() {
           <Casing key={i} name={`turbine.lp${i + 1}`} x={l.x} radius={l.radius} material={m.steel} />
         ))}
         <Casing name="turbine.shaft" x={[hp.x[0] - 0.5, generator.x[1] + 3]} radius={0.4} material={m.steel} />
+        {/* Stage 7: the shaft couplings turn while the plant operates; the casings stay still. */}
+        <ShaftCouplings part="turbine" />
       </group>
       <group name={PLANT_IDS.generator} userData={meta(PLANT_IDS.generator, 'educational-approximation')}>
         <Casing name="generator.stator" x={generator.x} radius={generator.radius} material={m.paintedEquipment} />
         <Casing name="generator.exciter" x={[generator.x[1] + 0.5, generator.x[1] + 3]} radius={1.2} material={m.paintedEquipment} />
+        <ShaftCouplings part="generator" />
       </group>
     </>
   );

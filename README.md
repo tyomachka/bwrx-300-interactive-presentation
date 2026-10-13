@@ -39,6 +39,7 @@ Keys are matched by physical position, so they also work on the Lithuanian layou
 | `C` | Section on / off (Reactor context when the selection is inside the vessel) |
 | `I` | Isolate the selection on / off (needs a selection) |
 | `L` | Labels on / off |
+| `F` | Flow on / off: the normal-operation flow, looping (Stage 7) |
 | `1` / `2` | High / low quality |
 | `` ` `` | Toggle diagnostics (dev build, or with `?debug`) |
 | `P` | Review aid: play / restart the Stage 3 hero shot from its first frame (dev / `?debug`) |
@@ -208,6 +209,35 @@ context and the limits in force.
   panel; clicks and Explore keys do nothing) and the setup panel stays hidden during playback.
   At the end it holds the final frame (`finished`, cinematic authority) until Reset, a restart
   or another shot. A quality switch or another shot stops it.
+
+## Normal operating flow (Stage 7)
+
+- **Story** (GD Rev J §3.1.1, §3.1.2, §5.1): water rises through the core by natural
+  circulation and part of it boils; the steam-water mixture rises through the chimney into the
+  separators; separated water returns down the downcomer annulus to the core inlet; the dryer
+  takes out the remaining moisture; dry steam leaves through the main steam line to the HP and
+  LP turbines on one shaft with the generator; electricity leaves the generator. Direct cycle:
+  no steam generator, no recirculation pumps.
+- **One flow state** (`animation/operatingFlow.ts`): a pure function of master time in the
+  presentation (keys in `config/flow.ts`, anchored on the Stage 6 events `flowCore` ..
+  `electricityOut`), the animation clock in Explore Flow, otherwise off (no draw calls). Seek,
+  playback and fixed-step export show the same flow frame.
+- **Vessel** (`scene/flow/VesselFlow.tsx`): every channel in one instanced draw call; particle
+  positions are computed on the GPU from streamlines baked into a float texture
+  (`flowPaths.ts`, `flowMaterials.ts`). Core and downcomer are drawn at the section faces of the
+  quarter cut, the chimney, separators, dryer and dome in the open volumes behind it, so upward
+  (centre) and downward (outer slots) flow never share screen space. Water: blue comet streaks;
+  the mixture turns pale with bubbles; steam: pale, wide, soft; droplets are caught in the dryer.
+- **Steam line, turbine, electricity** (`PowerFlow.tsx`): pulse tubes that light up behind an
+  advancing front; turbine highlights run HP inlet to exhaust, then each double-flow LP from its
+  middle outwards. **Shaft** (`ShaftCouplings.tsx`): the couplings turn (slowed for the eye), the
+  casings never do.
+- **Explore Flow** (`F`, panel): steady and looping. The turbine hall turns X-ray so the steam
+  line, turbine and generator show; the reactor's flow shows through the Reactor section or
+  X-ray (with Flow on, X-ray also ghosts the vessel). A selection keeps priority (the flow dims).
+  Reset turns it off; a quality switch keeps it.
+- **Quality:** `particlesMultiplier` (High 1, Low 0.35) sets the number of streamlines; the
+  channels and story are the same.
 
 ## Architecture notes
 

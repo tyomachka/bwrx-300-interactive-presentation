@@ -20,6 +20,8 @@ import type { CameraPose, RpvReviewPoseId } from '../config/camera';
 import { animationClock } from '../animation/clock';
 import { cameraDirector } from '../camera/cameraDirector';
 import { isPlantCutOpen } from '../camera/exploreBounds';
+import { createFlowState, flowForFrame, presentationFlowAt } from '../animation/operatingFlow';
+import { vesselFlowStats } from '../scene/flow/vesselFlowGeometry';
 import { Vector3 } from 'three';
 import { diagnosticsSample } from './diagnostics';
 
@@ -89,6 +91,7 @@ const api = {
     xray: (on: boolean) => explore.setXray(on),
     isolate: (on: boolean) => explore.setIsolate(on),
     labels: (on: boolean) => explore.setLabels(on),
+    flow: (on: boolean) => explore.setFlow(on),
     section: (patch: Partial<{ on: boolean; context: 'plant' | 'reactor'; position: number }>, immediate = false) => explore.setSection(patch, { immediate }),
     /** Snap every explore visual to its target now. */
     settle: () => updateExploreVisuals(0, true),
@@ -100,6 +103,15 @@ const api = {
       const hit = pickAtClient(x, y);
       return { componentId: hit?.componentId ?? null, selectableId: hit?.selectableId ?? null, instanceId: hit?.instanceId ?? null, point: hit?.point.toArray() ?? null, ms: performance.now() - t0 };
     },
+  },
+  /** Stage 7 operating flow: the live state, the presentation state at any master time, counts. */
+  flow: {
+    state: () => ({ ...flowForFrame(), intensity: { ...flowForFrame().intensity } }),
+    stateAt: (t: number) => {
+      const s = presentationFlowAt(t, createFlowState());
+      return { ...s, intensity: { ...s.intensity } };
+    },
+    stats: () => ({ ...vesselFlowStats, perChannel: { ...vesselFlowStats.perChannel } }),
   },
   /** Jump the camera to an explicit pose (scripted review captures). */
   snapCamera: (pose: CameraPose) => cameraDirector.snapTo(pose),

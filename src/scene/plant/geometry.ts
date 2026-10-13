@@ -9,7 +9,7 @@
  * Context structures that only the Stage 2 section review opens (turbine hall) are still
  * built as halves split at z = 0, with the front half hidden in that review.
  */
-import { BufferGeometry, ExtrudeGeometry, Float32BufferAttribute, Path, Shape } from 'three';
+import { BufferGeometry, CurvePath, ExtrudeGeometry, Float32BufferAttribute, LineCurve3, Path, QuadraticBezierCurve3, Shape, Vector3 } from 'three';
 
 export type Half = 'back' | 'front';
 
@@ -225,4 +225,23 @@ export function createSiteGeometry(
   shape.closePath();
   if (holeRadius > 0) shape.holes.push(new Path().absarc(0, 0, holeRadius, 0, Math.PI * 2, true));
   return new ExtrudeGeometry(shape, { depth: site.depth, bevelEnabled: false, curveSegments });
+}
+
+/** Straight runs joined by rounded corners: the main steam line, and the Stage 7 flow paths along it. */
+export function roundedPath(points: readonly (readonly [number, number, number])[], cornerRadius: number): CurvePath<Vector3> {
+  const path = new CurvePath<Vector3>();
+  const v = points.map((p) => new Vector3(...p));
+  let start = v[0]!.clone();
+  for (let i = 1; i < v.length - 1; i++) {
+    const corner = v[i]!;
+    const inDir = corner.clone().sub(v[i - 1]!).normalize();
+    const outDir = v[i + 1]!.clone().sub(corner).normalize();
+    const before = corner.clone().addScaledVector(inDir, -cornerRadius);
+    const after = corner.clone().addScaledVector(outDir, cornerRadius);
+    path.add(new LineCurve3(start, before));
+    path.add(new QuadraticBezierCurve3(before, corner.clone(), after));
+    start = after;
+  }
+  path.add(new LineCurve3(start, v[v.length - 1]!.clone()));
+  return path;
 }

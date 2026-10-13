@@ -1,6 +1,6 @@
 /**
  * The Explore panel (Stage 5): X-ray, Section (with Plant / Reactor and one cut slider),
- * Isolate, Labels, Reset; and, while something is selected, its name, where it sits ("in ...",
+ * Flow (Stage 7), Isolate, Labels, Reset; and, while something is selected, its name, where it sits ("in ...",
  * one click selects the parent) and Focus / Clear.
  *
  * Same visual language and auto-hide as the setup controls: it fades after a few seconds
@@ -15,6 +15,7 @@ import {
   select,
   setSection,
   setSectionContext,
+  toggleFlow,
   toggleIsolate,
   toggleLabels,
   toggleSection,
@@ -33,6 +34,7 @@ export function ExplorePanel() {
   const xray = useExploreStore((s) => s.xray);
   const isolate = useExploreStore((s) => s.isolate);
   const labels = useExploreStore((s) => s.labels);
+  const flow = useExploreStore((s) => s.flow);
   const section = useExploreStore((s) => s.section);
   const [awake, setAwake] = useState(false);
   const hovered = useRef(false);
@@ -118,6 +120,9 @@ export function ExplorePanel() {
             />
           </div>
         )}
+        <button type="button" aria-pressed={flow} title="Shortcut: F" onClick={() => toggleFlow()}>
+          Flow
+        </button>
         <button type="button" aria-pressed={isolate} disabled={!selected} title="Shortcut: I" onClick={() => toggleIsolate()}>
           Isolate
         </button>

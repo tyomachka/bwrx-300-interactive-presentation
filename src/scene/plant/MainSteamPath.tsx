@@ -7,37 +7,18 @@
  * The route itself is data in routes.ts, so Stage 7 steam flow can travel along it.
  */
 import { useMemo } from 'react';
-import { CurvePath, LineCurve3, QuadraticBezierCurve3, TubeGeometry, Vector3 } from 'three';
+import { TubeGeometry } from 'three';
+import { roundedPath } from './geometry';
 import { useDisposeOnChange } from './hooks';
 import { meta, PLANT_IDS } from './ids';
 import { getPlantMaterials } from './materials';
-import { MAIN_STEAM_ROUTE } from './routes';
+import { MAIN_STEAM_CORNER, MAIN_STEAM_ROUTE } from './routes';
 
 const PIPE_RADIUS = 0.45;
-const CORNER_RADIUS = 2.5;
-
-/** Straight runs joined by rounded corners. */
-function roundedPath(points: readonly (readonly [number, number, number])[], cornerRadius: number): CurvePath<Vector3> {
-  const path = new CurvePath<Vector3>();
-  const v = points.map((p) => new Vector3(...p));
-  let start = v[0]!.clone();
-  for (let i = 1; i < v.length - 1; i++) {
-    const corner = v[i]!;
-    const inDir = corner.clone().sub(v[i - 1]!).normalize();
-    const outDir = v[i + 1]!.clone().sub(corner).normalize();
-    const before = corner.clone().addScaledVector(inDir, -cornerRadius);
-    const after = corner.clone().addScaledVector(outDir, cornerRadius);
-    path.add(new LineCurve3(start, before));
-    path.add(new QuadraticBezierCurve3(before, corner.clone(), after));
-    start = after;
-  }
-  path.add(new LineCurve3(start, v[v.length - 1]!.clone()));
-  return path;
-}
 
 export function MainSteamPath() {
   const m = getPlantMaterials();
-  const geometry = useMemo(() => new TubeGeometry(roundedPath(MAIN_STEAM_ROUTE, CORNER_RADIUS), 200, PIPE_RADIUS, 12, false), []);
+  const geometry = useMemo(() => new TubeGeometry(roundedPath(MAIN_STEAM_ROUTE, MAIN_STEAM_CORNER), 200, PIPE_RADIUS, 12, false), []);
   useDisposeOnChange(geometry);
 
   return (

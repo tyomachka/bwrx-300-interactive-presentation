@@ -16,8 +16,11 @@
  *  - isolation: the component's whole subtree stays; enclosures around it ghost; everything
  *    else dims (one global uniform, so unbound context dims too);
  *  - X-ray: plant enclosures ghost (ground window, buildings, containment, turbine hall); the
- *    vessel ghosts only when the subject is the vessel or inside it. What a ghosted enclosure
- *    holds is drawn (interior override), and ghosted meshes stop casting shadows.
+ *    vessel ghosts only when the subject is the vessel or inside it, or with Flow on (the flow is
+ *    inside it). What a ghosted enclosure holds is drawn (interior override), and ghosted meshes
+ *    stop casting shadows.
+ *  - Flow (Stage 7): the turbine hall ghosts, as in the presentation's turbine chapter, so the
+ *    steam line, turbine and generator show; the flow itself is drawn by scene/flow.
  *  - cinematic look (Stage 6): while a presentation owns the scene, a cinematic may supply its
  *    look as a pure function of its own time; it is applied directly, without easing, so a seek
  *    shows exactly what playback shows. Subjects lift less and take a fainter rim than a
@@ -220,12 +223,14 @@ function computeTargets(): void {
   const keepSet = isolate && selected ? subtree(selected) : EMPTY;
   const subjectInVessel = selected !== null && isDescendantOf(selected, COMPONENT_IDS.rpv);
   const xray = active && s.xray;
+  const flow = active && s.flow;
 
   const ownGhost = (info: ComponentInfo): number => {
     if (!info.enclosure) return 0;
     const openedBy = info.enclosure.openedBy;
     if (openedBy && heroReveal[openedBy] >= 0.99) return 0; // already cut open: nothing to see through
-    if (info.id === COMPONENT_IDS.rpv && !subjectInVessel) return 0; // the vessel ghosts only for its own subject
+    if (info.id === COMPONENT_IDS.rpv && !subjectInVessel && !(flow && xray)) return 0; // the vessel ghosts only for its own subject (or X-ray with the flow)
+    if (flow && info.id === COMPONENT_IDS.turbineBuilding) return 1;
     if (xray) return 1;
     if (isolate && !keepSet.has(info.id)) return 1;
     return 0;

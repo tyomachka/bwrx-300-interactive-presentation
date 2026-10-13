@@ -3,13 +3,13 @@ import { heroShot } from '../animation/heroShot';
 import { masterSequence } from '../animation/masterSequence';
 import { resetPresentation } from '../animation/presentation';
 import { cycleRpvReview } from '../animation/rpvReview';
-import { clearSelection, toggleIsolate, toggleLabels, toggleSection, toggleXray } from '../interaction/exploreActions';
+import { clearSelection, toggleFlow, toggleIsolate, toggleLabels, toggleSection, toggleXray } from '../interaction/exploreActions';
 import { cycleReviewView } from '../camera/reviewViews';
 import { useAppStore } from '../state/store';
 
 /**
  * Global shortcuts (PROJECT.md §11). Explore (Stage 5): Esc clears the selection, X X-ray,
- * C section, I isolate, L labels, R full reset. F and S stay reserved for later stages.
+ * C section, I isolate, L labels, R full reset; F flow (Stage 7). S stays reserved (Stage 9).
  * Master sequence (Stage 6, review controls for now): Space play / pause, Home restart,
  * , / . frame step, [ / ] previous / next beat.
  * Space, Home, comma, period, brackets, V, G, P, K and B are active only in dev builds or with
@@ -30,6 +30,7 @@ const BINDINGS: Record<string, () => void> = {
   KeyC: () => toggleSection(),
   KeyI: () => toggleIsolate(),
   KeyL: () => toggleLabels(),
+  KeyF: () => toggleFlow(),
   Digit1: () => useAppStore.getState().setQuality('high'),
   Numpad1: () => useAppStore.getState().setQuality('high'),
   Digit2: () => useAppStore.getState().setQuality('low'),

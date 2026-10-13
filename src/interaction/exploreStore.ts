@@ -39,6 +39,11 @@ export interface ExploreState {
   xray: boolean;
   section: SectionState;
   labels: boolean;
+  /**
+   * Flow (Stage 7): the normal-operation flow, looping. The turbine hall turns X-ray so the steam
+   * line, turbine and generator show; the reactor's flow shows through the vessel cut (or X-ray).
+   */
+  flow: boolean;
 }
 
 export const EXPLORE_INITIAL: Readonly<ExploreState> = {
@@ -50,6 +55,7 @@ export const EXPLORE_INITIAL: Readonly<ExploreState> = {
   xray: false,
   section: { on: false, context: 'plant', position: 1 },
   labels: true,
+  flow: false,
 };
 
 export const useExploreStore = create<ExploreState>()(() => ({ ...EXPLORE_INITIAL }));

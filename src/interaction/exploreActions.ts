@@ -96,6 +96,13 @@ export function setLabels(on: boolean): void {
 
 export const toggleLabels = () => setLabels(!exploreState().labels);
 
+/** Flow (Stage 7): the normal-operation flow. Off by default; Reset turns it off. */
+export function setFlow(on: boolean): void {
+  if (canAct()) set({ flow: on });
+}
+
+export const toggleFlow = () => setFlow(!exploreState().flow);
+
 // ---- Section ---------------------------------------------------------------------------------------------
 
 /** The reveal a section request means (the one section engine: sectionLayers.applyReveal). */

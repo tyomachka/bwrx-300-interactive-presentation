@@ -19,6 +19,7 @@ import { useAppStore, useQualityPreset } from '../state/store';
 import { LightingRig } from './LightingRig';
 import { Plant } from './plant/Plant';
 import { ExploreDriver } from '../interaction/ExploreDriver';
+import { OperatingFlow } from './flow/OperatingFlow';
 import { RevealDriver } from './section/RevealDriver';
 import { revealOpaqueSort } from './section/drawOrder';
 import { StudioEnvironment } from './StudioEnvironment';
@@ -69,6 +70,7 @@ export function SceneCanvas() {
       <Suspense fallback={null}>
         <StudioEnvironment />
         <Plant />
+        <OperatingFlow />
         <ExploreDriver />
         <ReadyGate />
       </Suspense>
