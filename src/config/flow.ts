@@ -14,7 +14,7 @@
  * animation clock in Explore Flow (animation/operatingFlow.ts). Paths are data
  * (scene/flow/flowPaths.ts); scene components own no timing.
  */
-import { MASTER_EVENTS as E } from './masterSequence';
+import { MASTER_EVENTS as E, MASTER_REVEAL } from './masterSequence';
 
 /** Channels inside the reactor vessel (one particle system, scene/flow/VesselFlow.tsx). */
 export const VESSEL_FLOW_CHANNELS = ['coreWater', 'chimneyMixture', 'downcomerWater', 'separatorWater', 'separatorSteam', 'drySteam', 'steamOutlet'] as const;
@@ -94,6 +94,27 @@ export const SHAFT = { revPerSecond: 0.75, rampUp: 1.2 } as const;
 /** Intensity keys [time s, 0..1], smoothed between keys. */
 export type FlowKeys = readonly (readonly [number, number])[];
 
+/** The Stage 6 reveal track that closes the vessel cut in the safety chapter. */
+const VESSEL_CLOSES = MASTER_REVEAL.find((track) => track.property === 'vesselCut' && track.to === 0)!.start;
+
+/**
+ * Stage 8 control beat: the core water comes back as the camera returns to the core, modest and
+ * steady. The blades reduce the heat made in the fuel, not the water already circulating, so it
+ * keeps flowing through the insertion and after it; only the boiling cue follows the reaction
+ * (animation/operatingFlow.ts `boilShare`). It is still there when Stage 9 takes over and leaves
+ * with the vessel cut (the face streams need the vessel open).
+ */
+export const CONTROL_FLOW = {
+  coreWater: 0.4,
+  downcomerWater: 0.3,
+  keys: (level: number): FlowKeys => [
+    [E.controlEnter + 1.1, 0],
+    [E.controlEnter + 2.0, level],
+    [VESSEL_CLOSES, level],
+    [VESSEL_CLOSES + 0.8, 0],
+  ],
+} as const;
+
 const fadeOut = (t: number, value: number, fade = 1.6): FlowKeys => [
   [t, value],
   [t + fade, 0],
@@ -107,9 +128,9 @@ const fadeOut = (t: number, value: number, fade = 1.6): FlowKeys => [
  */
 export const FLOW_PRESENTATION = {
   intensity: {
-    coreWater: [[E.flowCore, 0], [E.flowCore + 0.9, 1], [E.flowChimney + 0.6, 1], [E.flowSeparators + 0.4, 0.7], ...fadeOut(E.steamToTurbine, 0.7)],
+    coreWater: [[E.flowCore, 0], [E.flowCore + 0.9, 1], [E.flowChimney + 0.6, 1], [E.flowSeparators + 0.4, 0.7], ...fadeOut(E.steamToTurbine, 0.7), ...CONTROL_FLOW.keys(CONTROL_FLOW.coreWater)],
     chimneyMixture: [[E.flowChimney - 0.7, 0], [E.flowChimney + 0.5, 1], [E.flowDryer, 0.8], ...fadeOut(E.steamToTurbine, 0.7)],
-    downcomerWater: [[E.flowChimney + 0.2, 0], [E.flowChimney + 1.2, 1], [E.flowDryer, 0.9], ...fadeOut(E.steamToTurbine, 0.8)],
+    downcomerWater: [[E.flowChimney + 0.2, 0], [E.flowChimney + 1.2, 1], [E.flowDryer, 0.9], ...fadeOut(E.steamToTurbine, 0.8), ...CONTROL_FLOW.keys(CONTROL_FLOW.downcomerWater)],
     separatorWater: [[E.flowSeparators - 0.3, 0], [E.flowSeparators + 0.5, 1], [E.steamExit, 0.8], ...fadeOut(E.steamToTurbine, 0.8)],
     separatorSteam: [[E.flowSeparators - 0.3, 0], [E.flowSeparators + 0.5, 1], [E.steamExit, 0.8], ...fadeOut(E.steamToTurbine, 0.8)],
     drySteam: [[E.flowDryer - 0.2, 0], [E.flowDryer + 0.6, 1], [E.steamToTurbine, 0.85], ...fadeOut(E.steamToTurbine + 0.4, 0.85)],

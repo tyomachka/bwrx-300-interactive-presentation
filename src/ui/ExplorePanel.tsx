@@ -1,6 +1,7 @@
 /**
  * The Explore panel (Stage 5): X-ray, Section (with Plant / Reactor and one cut slider),
- * Flow (Stage 7), Isolate, Labels, Reset; and, while something is selected, its name, where it sits ("in ...",
+ * Flow (Stage 7), Control (Stage 8: one blade slider, withdrawn on the left, inserted on the
+ * right; no numbers, the scene shows the effect), Isolate, Labels, Reset; and, while something is selected, its name, where it sits ("in ...",
  * one click selects the parent) and Focus / Clear.
  *
  * Same visual language and auto-hide as the setup controls: it fades after a few seconds
@@ -13,8 +14,10 @@ import {
   clearSelection,
   focus,
   select,
+  setControlAmount,
   setSection,
   setSectionContext,
+  toggleControl,
   toggleFlow,
   toggleIsolate,
   toggleLabels,
@@ -35,6 +38,8 @@ export function ExplorePanel() {
   const isolate = useExploreStore((s) => s.isolate);
   const labels = useExploreStore((s) => s.labels);
   const flow = useExploreStore((s) => s.flow);
+  const control = useExploreStore((s) => s.control);
+  const controlAmount = useExploreStore((s) => s.controlAmount);
   const section = useExploreStore((s) => s.section);
   const [awake, setAwake] = useState(false);
   const hovered = useRef(false);
@@ -123,6 +128,25 @@ export function ExplorePanel() {
         <button type="button" aria-pressed={flow} title="Shortcut: F" onClick={() => toggleFlow()}>
           Flow
         </button>
+        <button type="button" aria-pressed={control} title="Shortcut: O" onClick={() => toggleControl()}>
+          Control
+        </button>
+        {control && (
+          <div className="explore__control">
+            <input
+              className="explore__slider"
+              type="range"
+              min={0}
+              max={1}
+              step={0.005}
+              value={controlAmount}
+              aria-label="Control blades: withdrawn to inserted"
+              title="Control blades: left withdrawn, right inserted"
+              onChange={(e) => setControlAmount(Number(e.currentTarget.value))}
+              onPointerUp={(e) => e.currentTarget.blur()}
+            />
+          </div>
+        )}
         <button type="button" aria-pressed={isolate} disabled={!selected} title="Shortcut: I" onClick={() => toggleIsolate()}>
           Isolate
         </button>

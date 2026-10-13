@@ -14,6 +14,7 @@
  * Plain data, no rendering: the core renderer instances it, and a later close-up can isolate a
  * single bundle by id without rebuilding the core.
  */
+import { CONTROL_TARGET } from '../../config/control';
 import { CORE } from './rpvData';
 
 /** Figure 3-6, top row first. `C` = control cell (blade + four bundles). */
@@ -47,13 +48,15 @@ export interface FuelBundle {
   cell: string | null;
 }
 
-/** A control blade position and its (static in Stage 4) insertion. */
+/** A control blade position and its insertion. */
 export interface ControlBladeState {
   id: string;
   /** Blade axis in plan (m); the cruciform's wings lie along x and z. */
   position: readonly [x: number, z: number];
-  /** 0 = fully withdrawn below the core, 1 = fully inserted. Data only: Stage 8 animates it. */
+  /** 0 = fully withdrawn below the core, 1 = fully inserted: what is drawn. */
   insertion: number;
+  /** The base pattern's insertion (setBladeInsertion); Stage 8 control moves the blade from it. */
+  base: number;
 }
 
 const cellCentre = (col: number, row: number): [number, number] => [(col - CENTRE) * CORE.cellPitch, (row - CENTRE) * CORE.cellPitch];
@@ -68,7 +71,7 @@ function buildLayout(): { bundles: FuelBundle[]; blades: ControlBladeState[] } {
       if (mark !== 'C') return;
       const [cx, cz] = cellCentre(col, row);
       const id = cellId(col, row);
-      blades.push({ id: `blade-${id.slice(5)}`, position: [cx, cz], insertion: 0 });
+      blades.push({ id: `blade-${id.slice(5)}`, position: [cx, cz], insertion: 0, base: 0 });
       for (const [qx, qz] of [[0, 0], [1, 0], [0, 1], [1, 1]] as const) {
         bundles.push({ id: `bundle-${id.slice(5)}-${qx}${qz}`, x: cx + (qx ? quarter : -quarter), z: cz + (qz ? quarter : -quarter), cell: id });
       }
@@ -90,16 +93,50 @@ if (import.meta.env.DEV && (layout.bundles.length !== 240 || layout.blades.lengt
 export const FUEL_BUNDLES: readonly FuelBundle[] = layout.bundles;
 
 /**
- * The live blade states (mutable insertion). Change insertion with `setBladeInsertion`, which
- * bumps `bladeStateVersion` so the instanced renderer rebuilds its matrices once.
+ * The live blade states (mutable insertion). `setBladeInsertion` sets the base pattern and bumps
+ * `bladePatternVersion`, so the instanced renderer rewrites its matrices once; `setBladeControl`
+ * (Stage 8) moves every blade by the same distance, which the renderer draws as one rigid
+ * translation of the batch (`bladeControlLift`): no instance data changes while blades move.
  */
 export const CONTROL_BLADES: readonly ControlBladeState[] = layout.blades;
 
 let version = 0;
-export const bladeStateVersion = () => version;
+export const bladePatternVersion = () => version;
 
-/** Named insertion patterns for review states (not animated in Stage 4). */
+/** Named base insertion patterns (review states, the presentation's starting state). */
 export type BladePattern = 'withdrawn' | 'operating' | 'partial';
+
+/**
+ * Stage 8 control amount, 0..1 [EDUCATIONAL REPRESENTATIVE MOTION]: every blade moves from its
+ * base insertion towards base + shift (config/control.ts), the same distance for all, so the
+ * base pattern's relative variation is kept exactly. The shift is clamped so that no blade of the
+ * current base pattern passes full insertion.
+ */
+let controlAmount = 0;
+let shift: number = CONTROL_TARGET.shift;
+
+function applyControl(): void {
+  for (let i = 0; i < layout.blades.length; i++) {
+    const blade = layout.blades[i]!;
+    blade.insertion = blade.base + controlAmount * shift;
+  }
+}
+
+/** Stage 8: move every blade from its base towards its target (no-op when unchanged). */
+export function setBladeControl(amount: number): void {
+  const a = Math.min(1, Math.max(0, amount));
+  if (a === controlAmount) return;
+  controlAmount = a;
+  applyControl();
+}
+
+export const bladeControlAmount = () => controlAmount;
+
+/** The deeper target of a blade (control amount 1) in the current base pattern. */
+export const bladeTargetInsertion = (base: number) => base + shift;
+
+/** How far every blade has moved from its base (insertion units: x BLADE.length metres). */
+export const bladeControlLift = () => controlAmount * shift;
 
 /**
  * - withdrawn: every blade below the core (fuel fully exposed).
@@ -113,8 +150,10 @@ export function setBladeInsertion(pattern: BladePattern): void {
     const col = Math.round(x / CORE.cellPitch);
     const row = Math.round(z / CORE.cellPitch);
     const controlGroup = (Math.abs(col) === 2 && Math.abs(row) === 2) || (col === 0 && row === 0) || (Math.abs(col) + Math.abs(row) === 3 && (col === 0 || row === 0));
-    blade.insertion = pattern === 'withdrawn' ? 0 : pattern === 'partial' ? 0.55 : controlGroup ? 0.35 : 0;
+    blade.base = pattern === 'withdrawn' ? 0 : pattern === 'partial' ? 0.55 : controlGroup ? 0.35 : 0;
   }
+  shift = Math.min(CONTROL_TARGET.shift, 1 - Math.max(...layout.blades.map((b) => b.base)));
+  applyControl();
   version++;
 }
 

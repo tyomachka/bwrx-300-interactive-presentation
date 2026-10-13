@@ -331,7 +331,8 @@ button:disabled {
   margin-left: auto;
 }
 
-.explore__section {
+.explore__section,
+.explore__control {
   display: flex;
   align-items: center;
   gap: 0.6rem;

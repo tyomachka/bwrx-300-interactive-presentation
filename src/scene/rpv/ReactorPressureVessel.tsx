@@ -19,7 +19,7 @@ import { boundVariant, getSectionMaterials } from '../plant/materials';
 import { Interior } from '../plant/section';
 import { COMPONENT_IDS as IDS, type ComponentId } from '../components';
 import { heroReveal } from '../../animation/heroReveal';
-import { bladeStateVersion, CONTROL_BLADES, FUEL_BUNDLES } from './coreLayout';
+import { bladeControlLift, bladePatternVersion, CONTROL_BLADES, FUEL_BUNDLES } from './coreLayout';
 import {
   createBladeUnit,
   createBundleUnit,
@@ -211,7 +211,14 @@ function FuelBundles() {
   );
 }
 
-/** 57 cruciform blades, one draw call; heights follow each blade's `insertion` data. */
+/**
+ * 57 cruciform blades, one draw call. The instance matrices hold the base pattern and are
+ * rewritten only when it changes. Stage 8 control moves every blade the same distance
+ * (coreLayout.setBladeControl), drawn as one rigid vertical translation of the whole batch: no
+ * instance data is uploaded while the blades move (re-uploading the 57 matrices every frame
+ * measurably cost frame rate on the High preset), and picking, culling and the section cut follow
+ * through the object matrix.
+ */
 function ControlBlades() {
   const ref = useRef<InstancedMesh>(null);
   const detail = RPV_DETAIL[useQualityPreset().geometryLod];
@@ -220,22 +227,27 @@ function ControlBlades() {
   const applied = useRef(-1);
 
   const update = (mesh: InstancedMesh) => {
-    CONTROL_BLADES.forEach((blade, i) => {
+    for (let i = 0; i < CONTROL_BLADES.length; i++) {
+      const blade = CONTROL_BLADES[i]!;
       // Absorber bottom: at the bottom of active fuel when fully inserted, one blade length
-      // lower (inside its guide tube) when fully withdrawn.
-      const y = CORE.bottomOfActiveFuelH - (1 - blade.insertion) * BLADE.length;
+      // lower (inside its guide tube) when fully withdrawn. Insertion moves it straight up.
+      const y = CORE.bottomOfActiveFuelH - (1 - blade.base) * BLADE.length;
       mesh.setMatrixAt(i, _m.makeTranslation(blade.position[0], y, blade.position[1]));
-    });
+    }
     mesh.instanceMatrix.needsUpdate = true;
     mesh.computeBoundingSphere();
-    applied.current = bladeStateVersion();
+    applied.current = bladePatternVersion();
   };
 
   useLayoutEffect(() => {
     if (ref.current) update(ref.current);
   });
+  // After ControlDriver (-95) has set this frame's control amount.
   useFrame(() => {
-    if (ref.current && applied.current !== bladeStateVersion()) update(ref.current);
+    const mesh = ref.current;
+    if (!mesh) return;
+    if (applied.current !== bladePatternVersion()) update(mesh);
+    mesh.position.y = bladeControlLift() * BLADE.length;
   });
 
   return (

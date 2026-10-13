@@ -22,6 +22,11 @@ import { cameraDirector } from '../camera/cameraDirector';
 import { isPlantCutOpen } from '../camera/exploreBounds';
 import { createFlowState, flowForFrame, presentationFlowAt } from '../animation/operatingFlow';
 import { vesselFlowStats } from '../scene/flow/vesselFlowGeometry';
+import { controlForFrame, createControlState, presentationControlAt } from '../animation/reactorControl';
+import { bladeControlAmount, CONTROL_BLADES } from '../scene/rpv/coreLayout';
+import { activitySlots, STRIPS } from '../scene/control/activityMaterial';
+import { useAppStore } from '../state/store';
+import { QUALITY_PRESETS } from '../config/quality';
 import { Vector3 } from 'three';
 import { diagnosticsSample } from './diagnostics';
 
@@ -92,6 +97,8 @@ const api = {
     isolate: (on: boolean) => explore.setIsolate(on),
     labels: (on: boolean) => explore.setLabels(on),
     flow: (on: boolean) => explore.setFlow(on),
+    control: (on: boolean) => explore.setControl(on),
+    controlAmount: (amount: number) => explore.setControlAmount(amount),
     section: (patch: Partial<{ on: boolean; context: 'plant' | 'reactor'; position: number }>, immediate = false) => explore.setSection(patch, { immediate }),
     /** Snap every explore visual to its target now. */
     settle: () => updateExploreVisuals(0, true),
@@ -112,6 +119,13 @@ const api = {
       return { ...s, intensity: { ...s.intensity } };
     },
     stats: () => ({ ...vesselFlowStats, perChannel: { ...vesselFlowStats.perChannel } }),
+  },
+  /** Stage 8 reactor control: the live state, the presentation state at any master time, blades. */
+  control: {
+    state: () => ({ ...controlForFrame() }),
+    stateAt: (t: number) => ({ ...presentationControlAt(t, createControlState()) }),
+    blades: () => ({ amount: bladeControlAmount(), insertion: CONTROL_BLADES.map((b) => +b.insertion.toFixed(6)), base: CONTROL_BLADES.map((b) => b.base) }),
+    stats: () => ({ slots: activitySlots(QUALITY_PRESETS[useAppStore.getState().quality].particlesMultiplier), strips: STRIPS.length }),
   },
   /** Jump the camera to an explicit pose (scripted review captures). */
   snapCamera: (pose: CameraPose) => cameraDirector.snapTo(pose),

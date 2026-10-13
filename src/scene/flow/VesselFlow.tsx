@@ -49,6 +49,7 @@ export function VesselFlow() {
     if (!any) return;
     u.uTime.value = flow.time;
     u.uBoil.value = flow.boil;
+    u.uBoilShare.value = flow.boilShare;
     // The vessel's removed box: z > cutZ and x < xMax and y > floorY (sectionLayers.setBox).
     const planes = SECTION_PLANES.vessel;
     u.uCut.value.set(planes[0]!.constant, -planes[3]!.constant, planes[4]!.constant, 1);

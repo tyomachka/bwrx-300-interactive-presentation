@@ -24,6 +24,7 @@ uniform sampler2D uPaths;
 uniform float uTime;
 uniform float uIntensity[${VESSEL_FLOW_CHANNELS.length}];
 uniform float uBoil;
+uniform float uBoilShare; // Stage 8: share of the core's boiling cue left (1 = Stage 7)
 uniform vec4 uCut;        // removed box: z > x and x < y and y > z (world), w = 1 while cut
 uniform float uFaceVisible;
 uniform float uPixelWorld; // world size of a pixel at unit distance
@@ -73,9 +74,11 @@ void main() {
 	float roundness;
 	if ( phase < 1.5 ) {
 		float boil = channel == 0 ? uBoil : 1.0;
-		float bubble = step( kind, uBubble.z ) * smoothstep( 0.15, 0.85, phase ) * boil;
+		// Less heat from the fuel: fewer of the core's streaks turn into bubbles, and they pale less.
+		float share = channel == 0 ? uBoilShare : 1.0;
+		float bubble = step( kind, uBubble.z * share ) * smoothstep( 0.15, 0.85, phase ) * boil;
 		float size = uBubble.y * ( 0.7 + 0.6 * aSeed.z );
-		color = mix( mix( uWaterColor, uBubbleColor, uBubble.w * phase * boil ), uBubbleColor, bubble );
+		color = mix( mix( uWaterColor, uBubbleColor, uBubble.w * phase * boil * share ), uBubbleColor, bubble );
 		alpha = mix( uWater.x, uBubble.x, bubble );
 		len = mix( uWater.y + 0.12 * speed, size, bubble );
 		wid = mix( uWater.z, size, bubble );
@@ -146,6 +149,7 @@ export interface StreakUniforms {
   uTime: IUniform<number>;
   uIntensity: IUniform<number[]>;
   uBoil: IUniform<number>;
+  uBoilShare: IUniform<number>;
   uCut: IUniform<Vector4>;
   uFaceVisible: IUniform<number>;
   uPixelWorld: IUniform<number>;
@@ -168,6 +172,7 @@ export function createStreakMaterial(paths: DataTexture): ShaderMaterial & { uni
     uTime: { value: 0 },
     uIntensity: { value: VESSEL_FLOW_CHANNELS.map(() => 0) },
     uBoil: { value: 0 },
+    uBoilShare: { value: 1 },
     uCut: { value: new Vector4(0, 0, 0, 0) },
     uFaceVisible: { value: 0 },
     uPixelWorld: { value: 0.001 },

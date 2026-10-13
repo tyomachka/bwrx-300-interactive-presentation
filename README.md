@@ -40,6 +40,7 @@ Keys are matched by physical position, so they also work on the Lithuanian layou
 | `I` | Isolate the selection on / off (needs a selection) |
 | `L` | Labels on / off |
 | `F` | Flow on / off: the normal-operation flow, looping (Stage 7) |
+| `O` | Control on / off: the control-blade slider and the reaction cue; opens the Reactor section and frames the blades (Stage 8) |
 | `1` / `2` | High / low quality |
 | `` ` `` | Toggle diagnostics (dev build, or with `?debug`) |
 | `P` | Review aid: play / restart the Stage 3 hero shot from its first frame (dev / `?debug`) |
@@ -238,6 +239,31 @@ context and the limits in force.
   Reset turns it off; a quality switch keeps it.
 - **Quality:** `particlesMultiplier` (High 1, Low 0.35) sets the number of streamlines; the
   channels and story are the same.
+
+## Reactor control (Stage 8)
+
+- **Story** (GD Rev J §3.1.1.1, §3.2, §4.2): the cruciform blades rise from the bottom-mounted
+  drives between the four fuel assemblies of their cell; more insertion absorbs more neutrons
+  and the chain reaction becomes weaker. The drive housings stay still (Fig 3-7: only the hollow
+  piston and the blade move).
+- **[EDUCATIONAL REPRESENTATIVE MOTION]:** the GD publishes no rod sequence. From the approved
+  Stage 4 base pattern every blade moves the same half stroke farther in
+  (`insertion = base + amount * 0.5`, clamped below full insertion, `config/control.ts`): 48
+  blades 0 -> 0.5, 9 blades 0.35 -> 0.85, none fully in. In the presentation it runs 38.9-40.6 s
+  around the Stage 6 `controlAction` event and stays in for the safety chapter.
+- **One control state** (`animation/reactorControl.ts`): `bladeControlAmount` (0..1) and
+  `reactionIntensity` (an abstract educational cue: 1 -> 0.3, not power, not %), a pure
+  function of master time in the presentation, the eased slider in Explore Control, otherwise
+  the base pattern. The blades stay one instanced draw call; the move is one rigid translation
+  of the batch (the 57 instance matrices only change with the base pattern).
+- **Reaction cue** (`scene/control/`): sparse, short warm-white glints on the fuel faces the
+  quarter cut exposes, behind the blade wings (one draw call, seeded, time-derived). Fewer flash
+  as the blades go in, and almost none below a blade tip. With the Stage 7 flow the core's
+  boiling follows the same cue; the core water keeps circulating.
+- **Explore Control** (`O`, panel): one slider, withdrawn (left) to inserted (right), no numbers.
+  The blades take the copper emphasis; a selection keeps priority (the cue steps back). With
+  Flow on, the core's boiling follows the slider; the turbine-side flow does not. Off eases the
+  blades back; Reset restores the base pattern at once; a quality switch keeps the state.
 
 ## Architecture notes
 

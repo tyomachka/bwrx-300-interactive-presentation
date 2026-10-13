@@ -8,12 +8,16 @@
  *  - Otherwise off.
  *
  * The flow pulls master time (the Stage 6 contract): nothing here subscribes or keeps history.
+ *
+ * Stage 8: the boiling cue follows the control state's reaction cue (`boilShare`): the blades
+ * reduce the heat made in the fuel, so fewer bubbles form; the water keeps circulating.
  */
-import { MathUtils } from 'three';
-import { FLOW_CHANNELS, FLOW_EXPLORE, FLOW_PRESENTATION, SHAFT, type FlowChannel, type FlowKeys } from '../config/flow';
+import { FLOW_CHANNELS, FLOW_EXPLORE, FLOW_PRESENTATION, SHAFT, type FlowChannel } from '../config/flow';
 import { exploreState } from '../interaction/exploreStore';
 import { animationClock } from './clock';
+import { keyed } from './keys';
 import { masterSequence } from './masterSequence';
+import { controlForFrame, createControlState, presentationControlAt } from './reactorControl';
 
 export type FlowSource = 'off' | 'presentation' | 'explore';
 
@@ -24,6 +28,8 @@ export interface FlowState {
   intensity: Record<FlowChannel, number>;
   /** 0..1: vapour bubbles in the upper core. */
   boil: number;
+  /** 0..1: share of the boiling cue left (Stage 8 reaction cue; 1 with the base blade pattern). */
+  boilShare: number;
   /** How far the steam has got along the main steam line (m; Infinity = all of it). */
   mainSteamFront: number;
   /** How far the steam has got through the turbine casings (m). */
@@ -40,26 +46,12 @@ export function createFlowState(): FlowState {
     time: 0,
     intensity: Object.fromEntries(FLOW_CHANNELS.map((c) => [c, 0])) as Record<FlowChannel, number>,
     boil: 0,
+    boilShare: 1,
     mainSteamFront: 0,
     turbineFront: 0,
     electricityFront: 0,
     shaftAngle: 0,
   };
-}
-
-const smooth = (x: number) => MathUtils.smootherstep(x, 0, 1);
-
-/** Keys -> value at `t`, smoothed between keys (as the Stage 6 look keys). */
-export function keyed(keys: FlowKeys, t: number): number {
-  if (t <= keys[0]![0]) return keys[0]![1];
-  for (let i = 1; i < keys.length; i++) {
-    const k1 = keys[i]!;
-    if (t <= k1[0]) {
-      const k0 = keys[i - 1]!;
-      return k0[1] + (k1[1] - k0[1]) * smooth((t - k0[0]) / (k1[0] - k0[0]));
-    }
-  }
-  return keys[keys.length - 1]![1];
 }
 
 const OMEGA = SHAFT.revPerSecond * Math.PI * 2;
@@ -83,6 +75,8 @@ const front = (t: number, cue: { start: number; speed: number }) => Math.max(0, 
  */
 const quantise = (t: number) => Math.round(t * 1e6) / 1e6;
 
+const controlScratch = createControlState();
+
 /** The presentation flow at master time `t` (pure). */
 export function presentationFlowAt(masterTime: number, out: FlowState = createFlowState()): FlowState {
   const P = FLOW_PRESENTATION;
@@ -92,6 +86,7 @@ export function presentationFlowAt(masterTime: number, out: FlowState = createFl
   // Indexed loops: evaluated every frame, so nothing here allocates.
   for (let i = 0; i < FLOW_CHANNELS.length; i++) out.intensity[FLOW_CHANNELS[i]!] = keyed(P.intensity[FLOW_CHANNELS[i]!], t);
   out.boil = keyed(P.boil, t);
+  out.boilShare = presentationControlAt(t, controlScratch).reactionIntensity;
   out.mainSteamFront = front(t, P.mainSteamFront);
   out.turbineFront = front(t, P.turbineFront);
   out.electricityFront = front(t, P.electricityFront);
@@ -100,12 +95,13 @@ export function presentationFlowAt(masterTime: number, out: FlowState = createFl
 }
 
 /** Explore Flow at animation time `t`: steady, everything flowing (pure). */
-export function exploreFlowAt(t: number, selection: 'none' | 'selected' | 'isolated', out: FlowState = createFlowState()): FlowState {
+export function exploreFlowAt(t: number, selection: 'none' | 'selected' | 'isolated', out: FlowState = createFlowState(), boilShare = 1): FlowState {
   const level = FLOW_EXPLORE.intensity * (selection === 'isolated' ? FLOW_EXPLORE.withIsolation : selection === 'selected' ? FLOW_EXPLORE.withSelection : 1);
   out.source = 'explore';
   out.time = t;
   for (let i = 0; i < FLOW_CHANNELS.length; i++) out.intensity[FLOW_CHANNELS[i]!] = level;
   out.boil = 1;
+  out.boilShare = boilShare;
   out.mainSteamFront = Infinity;
   out.turbineFront = Infinity;
   out.electricityFront = Infinity;
@@ -118,6 +114,7 @@ function offFlow(out: FlowState): FlowState {
   out.time = 0;
   for (let i = 0; i < FLOW_CHANNELS.length; i++) out.intensity[FLOW_CHANNELS[i]!] = 0;
   out.boil = 0;
+  out.boilShare = 1;
   out.mainSteamFront = 0;
   out.turbineFront = 0;
   out.electricityFront = 0;
@@ -127,12 +124,13 @@ function offFlow(out: FlowState): FlowState {
 
 /**
  * The flow for the current frame: the master sequence while it owns the scene, else Explore Flow
- * when it is on, else off. Call after the animation clock has advanced (FrameDriver).
+ * when it is on, else off. Call after the animation clock has advanced (FrameDriver) and the
+ * control state too (ControlDriver): Explore Control's reaction cue sets the boiling.
  */
 export function currentFlowState(out: FlowState): FlowState {
   if (masterSequence.status !== 'idle') return presentationFlowAt(masterSequence.time, out);
   const s = exploreState();
-  if (s.mode === 'explore' && s.flow) return exploreFlowAt(animationClock.time, s.isolate ? 'isolated' : s.selectedId ? 'selected' : 'none', out);
+  if (s.mode === 'explore' && s.flow) return exploreFlowAt(animationClock.time, s.isolate ? 'isolated' : s.selectedId ? 'selected' : 'none', out, controlForFrame().reactionIntensity);
   return offFlow(out);
 }
 

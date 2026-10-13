@@ -188,6 +188,16 @@ const smooth = MathUtils.smoothstep;
 const lerp = MathUtils.lerp;
 
 /**
+ * Stage 8 Explore Control: the same copper blade emphasis as the presentation's `bladeEmphasis`,
+ * from the control state rather than the reveal (a section change must not take it away). The
+ * larger of the two applies; 0 leaves the reveal exactly as before.
+ */
+let controlBladeEmphasis = 0;
+export function setControlBladeEmphasis(value: number): void {
+  controlBladeEmphasis = value;
+}
+
+/**
  * Apply the reveal to the renderer state: section planes, layer uniforms, interior visibility.
  * `state === null` is the Stage 2 section review: a static, full-width cut at z = 0 with no
  * grading, as a development aid. Called once per frame, before rendering.
@@ -211,7 +221,8 @@ export function applyReveal(state: Readonly<HeroRevealState> | null): void {
     return;
   }
 
-  const { groundCut: g, exteriorDim: e, shaftReveal: s, containmentReveal: c, rpvEmphasis: r, vesselCut: v, coreSection: k, bladeEmphasis: b, poolsReveal: p } = state;
+  const { groundCut: g, exteriorDim: e, shaftReveal: s, containmentReveal: c, rpvEmphasis: r, vesselCut: v, coreSection: k, bladeEmphasis: revealBlades, poolsReveal: p } = state;
+  const b = Math.max(revealBlades, controlBladeEmphasis);
 
   // Section planes sweep from in front of each structure to the reactor axis plane.
   setBox(

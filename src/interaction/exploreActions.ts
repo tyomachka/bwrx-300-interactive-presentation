@@ -103,6 +103,31 @@ export function setFlow(on: boolean): void {
 
 export const toggleFlow = () => setFlow(!exploreState().flow);
 
+/** The view Explore Control frames: the Stage 4 / Stage 6 control-blade composition. */
+const CONTROL_VIEW = 'controlBladesCloseup' as const;
+
+/**
+ * Control (Stage 8): the blade slider and the reaction cue. On, it opens the reactor section and
+ * moves the camera to the control-blade view (the blades and the cue are only visible through
+ * the cut); the slider starts at the base pattern. Off, the blades ease back to the base pattern.
+ */
+export function setControl(on: boolean): void {
+  if (!canAct() || exploreState().control === on) return;
+  set({ control: on, controlAmount: 0 });
+  if (!on) return;
+  const section = exploreState().section;
+  if (!(section.on && section.context === 'reactor' && section.position >= 0.99)) setSection({ on: true, context: 'reactor', position: 1 });
+  if (CAMERA_STATES[CONTROL_VIEW].position[1] < ORBIT.minCameraY) cameraDirector.allowBelowGrade = true;
+  void cameraDirector.transitionTo(CONTROL_VIEW, { duration: FOCUS_DURATION });
+}
+
+export const toggleControl = () => setControl(!exploreState().control);
+
+/** The Control slider: 0 = base pattern .. 1 = deeper pattern (ignored while Control is off). */
+export function setControlAmount(amount: number): void {
+  if (canAct() && exploreState().control) set({ controlAmount: clamp01(amount) });
+}
+
 // ---- Section ---------------------------------------------------------------------------------------------
 
 /** The reveal a section request means (the one section engine: sectionLayers.applyReveal). */

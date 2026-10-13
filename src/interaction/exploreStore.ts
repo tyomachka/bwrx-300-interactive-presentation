@@ -44,6 +44,13 @@ export interface ExploreState {
    * line, turbine and generator show; the reactor's flow shows through the vessel cut (or X-ray).
    */
   flow: boolean;
+  /**
+   * Control (Stage 8): the blade slider and the reaction cue. Turning it on opens the reactor
+   * section and frames the blades; off (or Reset) returns the blades to the base pattern.
+   */
+  control: boolean;
+  /** 0 = the base blade pattern (more withdrawn) .. 1 = the deeper pattern (more inserted). */
+  controlAmount: number;
 }
 
 export const EXPLORE_INITIAL: Readonly<ExploreState> = {
@@ -56,6 +63,8 @@ export const EXPLORE_INITIAL: Readonly<ExploreState> = {
   section: { on: false, context: 'plant', position: 1 },
   labels: true,
   flow: false,
+  control: false,
+  controlAmount: 0,
 };
 
 export const useExploreStore = create<ExploreState>()(() => ({ ...EXPLORE_INITIAL }));
