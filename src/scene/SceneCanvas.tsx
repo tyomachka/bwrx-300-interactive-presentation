@@ -20,6 +20,7 @@ import { LightingRig } from './LightingRig';
 import { Plant } from './plant/Plant';
 import { ExploreDriver } from '../interaction/ExploreDriver';
 import { ReactorControl } from './control/ReactorControl';
+import { PassiveSafety } from './safety/PassiveSafety';
 import { OperatingFlow } from './flow/OperatingFlow';
 import { RevealDriver } from './section/RevealDriver';
 import { revealOpaqueSort } from './section/drawOrder';
@@ -73,6 +74,7 @@ export function SceneCanvas() {
         <Plant />
         <OperatingFlow />
         <ReactorControl />
+        <PassiveSafety />
         <ExploreDriver />
         <ReadyGate />
       </Suspense>

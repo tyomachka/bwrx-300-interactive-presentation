@@ -1,0 +1,1657 @@
+{
+ "quality": "high",
+ "outside": [
+  0,
+  60,
+  120,
+  180,
+  240,
+  300,
+  360,
+  420,
+  480,
+  540,
+  615,
+  675,
+  735,
+  795,
+  855,
+  915,
+  975,
+  1035,
+  1095,
+  1155,
+  1197,
+  1215,
+  1231,
+  1243
+ ],
+ "window": [
+  1245,
+  1248,
+  1251,
+  1254,
+  1257,
+  1260,
+  1263,
+  1266,
+  1269,
+  1272,
+  1275,
+  1278,
+  1281,
+  1284,
+  1287,
+  1290,
+  1293,
+  1296,
+  1299,
+  1302,
+  1305,
+  1308,
+  1311,
+  1314,
+  1317,
+  1320,
+  1323,
+  1326,
+  1329,
+  1332,
+  1335,
+  1338,
+  1341,
+  1344,
+  1347,
+  1350,
+  1353,
+  1356,
+  1359,
+  1362,
+  1365,
+  1368,
+  1371,
+  1374,
+  1377,
+  1380,
+  1386,
+  1392,
+  1398,
+  1404,
+  1410,
+  1416,
+  1422,
+  1428,
+  1434,
+  1440
+ ],
+ "programsAtReady": 18,
+ "timings": {
+  "duration": 48,
+  "stage3": {
+   "start": 0,
+   "end": 10,
+   "note": "The approved Stage 3 hero shot, its own camera keys and reveal tracks."
+  },
+  "beats": [
+   {
+    "id": "exterior",
+    "label": "Plant exterior",
+    "start": 0,
+    "end": 1.5,
+    "takeaway": "A complete power station.",
+    "events": [],
+    "subjects": [
+     "plant"
+    ]
+   },
+   {
+    "id": "approach",
+    "label": "Reactor building",
+    "start": 1.5,
+    "end": 3.4,
+    "takeaway": "The reactor building beside the turbine hall.",
+    "events": [],
+    "subjects": [
+     "reactor-building-above-grade"
+    ]
+   },
+   {
+    "id": "belowGrade",
+    "label": "Below grade",
+    "start": 3.4,
+    "end": 5.8,
+    "takeaway": "The building continues deep underground.",
+    "events": [],
+    "subjects": [
+     "reactor-building-shaft"
+    ]
+   },
+   {
+    "id": "containment",
+    "label": "Containment",
+    "start": 5.8,
+    "end": 7.6,
+    "takeaway": "A containment vessel inside the shaft.",
+    "events": [],
+    "subjects": [
+     "containment-placeholder"
+    ]
+   },
+   {
+    "id": "rpvHero",
+    "label": "Reactor vessel",
+    "start": 7.6,
+    "end": 10,
+    "takeaway": "The reactor pressure vessel.",
+    "events": [],
+    "subjects": [
+     "reactor-pressure-vessel"
+    ]
+   },
+   {
+    "id": "core",
+    "label": "Core",
+    "start": 10,
+    "end": 16,
+    "takeaway": "This is where the nuclear heat is produced.",
+    "events": [
+     {
+      "id": "coreReveal",
+      "time": 12.4
+     }
+    ],
+    "subjects": [
+     "reactor-core"
+    ]
+   },
+   {
+    "id": "fission",
+    "label": "Fission",
+    "start": 16,
+    "end": 20.5,
+    "takeaway": "Fission in the fuel releases heat (Stage 10 inset).",
+    "events": [
+     {
+      "id": "fissionEnter",
+      "time": 16
+     },
+     {
+      "id": "fissionExit",
+      "time": 20.5
+     }
+    ],
+    "subjects": [
+     "reactor-core"
+    ]
+   },
+   {
+    "id": "flow",
+    "label": "Natural circulation",
+    "start": 20.5,
+    "end": 29,
+    "takeaway": "Water boils in the core; the mixture rises through the chimney; separators and dryer leave dry steam.",
+    "events": [
+     {
+      "id": "flowCore",
+      "time": 20.5
+     },
+     {
+      "id": "flowChimney",
+      "time": 22.4
+     },
+     {
+      "id": "flowSeparators",
+      "time": 24.3
+     },
+     {
+      "id": "flowDryer",
+      "time": 26
+     },
+     {
+      "id": "steamExit",
+      "time": 27.6
+     }
+    ],
+    "subjects": [
+     "reactor-core",
+     "chimney",
+     "steam-separators",
+     "steam-dryer",
+     "main-steam-nozzle"
+    ]
+   },
+   {
+    "id": "turbine",
+    "label": "Turbine and generator",
+    "start": 29,
+    "end": 36.5,
+    "takeaway": "Steam turns the turbine, which drives the generator: electricity.",
+    "events": [
+     {
+      "id": "steamToTurbine",
+      "time": 29
+     },
+     {
+      "id": "turbine",
+      "time": 32.2
+     },
+     {
+      "id": "generator",
+      "time": 34
+     },
+     {
+      "id": "electricityOut",
+      "time": 35.4
+     }
+    ],
+    "subjects": [
+     "main-steam-path-placeholder",
+     "turbine-placeholder",
+     "generator-placeholder"
+    ]
+   },
+   {
+    "id": "control",
+    "label": "Control",
+    "start": 36.5,
+    "end": 41.5,
+    "takeaway": "Control blades between the fuel set the reactor power.",
+    "events": [
+     {
+      "id": "controlEnter",
+      "time": 36.5
+     },
+     {
+      "id": "controlAction",
+      "time": 39.2
+     },
+     {
+      "id": "controlExit",
+      "time": 41.5
+     }
+    ],
+    "subjects": [
+     "control-blades"
+    ]
+   },
+   {
+    "id": "safety",
+    "label": "Passive cooling",
+    "start": 41.5,
+    "end": 46,
+    "takeaway": "Isolation condensers in pools above the reactor can cool it without pumps or operators.",
+    "events": [
+     {
+      "id": "safetyEnter",
+      "time": 41.5
+     },
+     {
+      "id": "isolationCondenser",
+      "time": 44.6
+     },
+     {
+      "id": "safetyExit",
+      "time": 46
+     }
+    ],
+    "subjects": [
+     "isolation-condenser-pools"
+    ]
+   },
+   {
+    "id": "finalPullback",
+    "label": "Final",
+    "start": 46,
+    "end": 48,
+    "takeaway": "The whole plant again: a stable end frame.",
+    "events": [
+     {
+      "id": "finalPullback",
+      "time": 46
+     },
+     {
+      "id": "sequenceComplete",
+      "time": 48
+     }
+    ],
+    "subjects": [
+     "plant"
+    ]
+   }
+  ],
+  "events": [
+   {
+    "id": "coreReveal",
+    "time": 12.4
+   },
+   {
+    "id": "fissionEnter",
+    "time": 16
+   },
+   {
+    "id": "fissionExit",
+    "time": 20.5
+   },
+   {
+    "id": "flowCore",
+    "time": 20.5
+   },
+   {
+    "id": "flowChimney",
+    "time": 22.4
+   },
+   {
+    "id": "flowSeparators",
+    "time": 24.3
+   },
+   {
+    "id": "flowDryer",
+    "time": 26
+   },
+   {
+    "id": "steamExit",
+    "time": 27.6
+   },
+   {
+    "id": "steamToTurbine",
+    "time": 29
+   },
+   {
+    "id": "turbine",
+    "time": 32.2
+   },
+   {
+    "id": "generator",
+    "time": 34
+   },
+   {
+    "id": "electricityOut",
+    "time": 35.4
+   },
+   {
+    "id": "controlEnter",
+    "time": 36.5
+   },
+   {
+    "id": "controlAction",
+    "time": 39.2
+   },
+   {
+    "id": "controlExit",
+    "time": 41.5
+   },
+   {
+    "id": "safetyEnter",
+    "time": 41.5
+   },
+   {
+    "id": "isolationCondenser",
+    "time": 44.6
+   },
+   {
+    "id": "safetyExit",
+    "time": 46
+   },
+   {
+    "id": "finalPullback",
+    "time": 46
+   },
+   {
+    "id": "sequenceComplete",
+    "time": 48
+   }
+  ],
+  "camera": [
+   {
+    "time": 0,
+    "state": "stage3Exterior",
+    "position": [
+     -95,
+     64,
+     150
+    ],
+    "target": [
+     36,
+     5,
+     -8
+    ],
+    "fov": 35
+   },
+   {
+    "time": 1.5,
+    "state": "stage3ExteriorPush",
+    "position": [
+     -92.5,
+     60.5,
+     143.5
+    ],
+    "target": [
+     32,
+     4.5,
+     -6.5
+    ],
+    "fov": 35
+   },
+   {
+    "time": 3.4,
+    "state": "stage3Approach",
+    "position": [
+     -68,
+     40,
+     128
+    ],
+    "target": [
+     10,
+     6,
+     4
+    ],
+    "fov": 35
+   },
+   {
+    "time": 5.8,
+    "state": "stage3BelowGrade",
+    "position": [
+     -64,
+     30,
+     122
+    ],
+    "target": [
+     2,
+     -2,
+     6
+    ],
+    "fov": 35
+   },
+   {
+    "time": 7.6,
+    "state": "stage3Containment",
+    "position": [
+     -34,
+     10,
+     92
+    ],
+    "target": [
+     0,
+     -12,
+     2
+    ],
+    "fov": 35
+   },
+   {
+    "time": 10,
+    "state": "stage3RPVHero",
+    "position": [
+     -24,
+     2,
+     74
+    ],
+    "target": [
+     0,
+     -12,
+     0
+    ],
+    "fov": 35
+   },
+   {
+    "time": 12.8,
+    "state": "masterVesselOpen",
+    "position": [
+     -13,
+     -8,
+     23
+    ],
+    "target": [
+     0,
+     -14.5,
+     0
+    ],
+    "fov": 35
+   },
+   {
+    "time": 15.4,
+    "state": "masterCore",
+    "position": [
+     -5.4,
+     -15.2,
+     6.6
+    ],
+    "target": [
+     -0.3,
+     -19,
+     0.3
+    ],
+    "fov": 35
+   },
+   {
+    "time": 20.5,
+    "state": "masterCoreHold",
+    "position": [
+     -4.9,
+     -15.6,
+     6
+    ],
+    "target": [
+     -0.3,
+     -19.1,
+     0.3
+    ],
+    "fov": 35
+   },
+   {
+    "time": 22.6,
+    "state": "masterArchitecture",
+    "position": [
+     -12.5,
+     -10.5,
+     15
+    ],
+    "target": [
+     0,
+     -14,
+     0
+    ],
+    "fov": 35
+   },
+   {
+    "time": 24.8,
+    "state": "masterSeparators",
+    "position": [
+     -11.5,
+     -4.5,
+     13.8
+    ],
+    "target": [
+     0,
+     -7.6,
+     0
+    ],
+    "fov": 35
+   },
+   {
+    "time": 26.6,
+    "state": "steamRegionCloseup",
+    "position": [
+     -11.2,
+     -1.85,
+     13.4
+    ],
+    "target": [
+     0,
+     -6.2,
+     0
+    ],
+    "fov": 35
+   },
+   {
+    "time": 28.4,
+    "state": "masterSteamExit",
+    "position": [
+     -9.5,
+     -0.5,
+     13.5
+    ],
+    "target": [
+     1.2,
+     -3,
+     0
+    ],
+    "fov": 35
+   },
+   {
+    "time": 30.8,
+    "state": "masterSteamLine",
+    "position": [
+     6,
+     6,
+     38
+    ],
+    "target": [
+     16,
+     -1,
+     0
+    ],
+    "fov": 35
+   },
+   {
+    "time": 32.6,
+    "state": "masterTurbine",
+    "position": [
+     30,
+     19,
+     38
+    ],
+    "target": [
+     60,
+     12.5,
+     0
+    ],
+    "fov": 35
+   },
+   {
+    "time": 35,
+    "state": "masterGenerator",
+    "position": [
+     42,
+     18.5,
+     37
+    ],
+    "target": [
+     72,
+     12.5,
+     0
+    ],
+    "fov": 35
+   },
+   {
+    "time": 37.3,
+    "state": "masterReturn",
+    "position": [
+     -12,
+     16,
+     40
+    ],
+    "target": [
+     0,
+     -12,
+     0
+    ],
+    "fov": 35
+   },
+   {
+    "time": 39.1,
+    "state": "masterBlades",
+    "position": [
+     -3.52,
+     -16.37,
+     3.52
+    ],
+    "target": [
+     -0.65,
+     -19.78,
+     0.65
+    ],
+    "fov": 35
+   },
+   {
+    "time": 41.2,
+    "state": "masterBladesHold",
+    "position": [
+     -3.3,
+     -16.6,
+     3.3
+    ],
+    "target": [
+     -0.65,
+     -19.8,
+     0.65
+    ],
+    "fov": 35
+   },
+   {
+    "time": 42.4,
+    "state": "masterSafetyExit",
+    "position": [
+     -12,
+     -8.5,
+     12.5
+    ],
+    "target": [
+     -0.4,
+     -16,
+     0.4
+    ],
+    "fov": 35
+   },
+   {
+    "time": 43.5,
+    "state": "masterSafetyRise",
+    "position": [
+     -20,
+     1,
+     34
+    ],
+    "target": [
+     0,
+     -1,
+     -3
+    ],
+    "fov": 35
+   },
+   {
+    "time": 44.6,
+    "state": "masterSafety",
+    "position": [
+     -12,
+     9,
+     50
+    ],
+    "target": [
+     0,
+     7,
+     -5
+    ],
+    "fov": 35
+   },
+   {
+    "time": 46,
+    "state": "masterSafetyHold",
+    "position": [
+     -12.5,
+     9.2,
+     52
+    ],
+    "target": [
+     0,
+     6.8,
+     -5
+    ],
+    "fov": 35
+   },
+   {
+    "time": 48,
+    "state": "masterFinal",
+    "position": [
+     -42,
+     23,
+     86
+    ],
+    "target": [
+     9,
+     -2,
+     0
+    ],
+    "fov": 35
+   }
+  ],
+  "reveal": [
+   {
+    "property": "exteriorDim",
+    "from": 0,
+    "to": 1,
+    "start": 2.9,
+    "duration": 2.4,
+    "ease": "sine.inOut"
+   },
+   {
+    "property": "groundCut",
+    "from": 0,
+    "to": 1,
+    "start": 3.3,
+    "duration": 2.5,
+    "ease": "power3.out"
+   },
+   {
+    "property": "shaftReveal",
+    "from": 0,
+    "to": 1,
+    "start": 5.6,
+    "duration": 1.9,
+    "ease": "sine.inOut"
+   },
+   {
+    "property": "containmentReveal",
+    "from": 0,
+    "to": 1,
+    "start": 7.3,
+    "duration": 1.65,
+    "ease": "sine.inOut"
+   },
+   {
+    "property": "rpvEmphasis",
+    "from": 0,
+    "to": 1,
+    "start": 8,
+    "duration": 1.6,
+    "ease": "sine.inOut"
+   },
+   {
+    "property": "vesselCut",
+    "from": 0,
+    "to": 1,
+    "start": 10.5,
+    "duration": 2,
+    "ease": "sine.inOut"
+   },
+   {
+    "property": "rpvEmphasis",
+    "from": 1,
+    "to": 0.4,
+    "start": 11,
+    "duration": 1.8,
+    "ease": "sine.inOut"
+   },
+   {
+    "property": "exteriorDim",
+    "from": 1,
+    "to": 0.25,
+    "start": 30.2,
+    "duration": 1.6,
+    "ease": "sine.inOut"
+   },
+   {
+    "property": "exteriorDim",
+    "from": 0.25,
+    "to": 1,
+    "start": 36.6,
+    "duration": 1.2,
+    "ease": "sine.inOut"
+   },
+   {
+    "property": "bladeEmphasis",
+    "from": 0,
+    "to": 1,
+    "start": 38.3,
+    "duration": 0.8,
+    "ease": "sine.inOut"
+   },
+   {
+    "property": "bladeEmphasis",
+    "from": 1,
+    "to": 0,
+    "start": 41.6,
+    "duration": 0.8,
+    "ease": "sine.inOut"
+   },
+   {
+    "property": "poolsReveal",
+    "from": 0,
+    "to": 1,
+    "start": 41.6,
+    "duration": 0.05,
+    "ease": "none"
+   },
+   {
+    "property": "vesselCut",
+    "from": 1,
+    "to": 0,
+    "start": 43.4,
+    "duration": 1.6,
+    "ease": "sine.inOut"
+   },
+   {
+    "property": "rpvEmphasis",
+    "from": 0.4,
+    "to": 1,
+    "start": 44,
+    "duration": 1.8,
+    "ease": "sine.inOut"
+   }
+  ],
+  "look": {
+   "subjects": [
+    {
+     "ids": [
+      "reactor-core"
+     ],
+     "start": 12,
+     "end": 22.6,
+     "fade": 1
+    },
+    {
+     "ids": [
+      "chimney"
+     ],
+     "start": 21.6,
+     "end": 24.6,
+     "fade": 0.9
+    },
+    {
+     "ids": [
+      "steam-separators"
+     ],
+     "start": 23.6,
+     "end": 26.4,
+     "fade": 0.9
+    },
+    {
+     "ids": [
+      "steam-dryer"
+     ],
+     "start": 25.4,
+     "end": 28.2,
+     "fade": 0.9
+    },
+    {
+     "ids": [
+      "main-steam-nozzle"
+     ],
+     "start": 27,
+     "end": 30,
+     "fade": 0.8
+    },
+    {
+     "ids": [
+      "main-steam-path-placeholder"
+     ],
+     "start": 28.6,
+     "end": 33.4,
+     "fade": 0.9
+    },
+    {
+     "ids": [
+      "turbine-placeholder"
+     ],
+     "start": 31.6,
+     "end": 35.2,
+     "fade": 0.9
+    },
+    {
+     "ids": [
+      "generator-placeholder"
+     ],
+     "start": 33.4,
+     "end": 36.8,
+     "fade": 0.9
+    },
+    {
+     "ids": [
+      "isolation-condenser-pools"
+     ],
+     "start": 42.6,
+     "end": 47.2,
+     "fade": 1,
+     "weight": 1.6
+    }
+   ],
+   "contextDim": [
+    [
+     0,
+     0
+    ],
+    [
+     10,
+     0
+    ],
+    [
+     12,
+     0
+    ],
+    [
+     13.4,
+     0.55
+    ],
+    [
+     28.6,
+     0.55
+    ],
+    [
+     30.4,
+     0
+    ],
+    [
+     36.6,
+     0
+    ],
+    [
+     38.4,
+     0.45
+    ],
+    [
+     41.4,
+     0.45
+    ],
+    [
+     43,
+     0.5
+    ],
+    [
+     46,
+     0.5
+    ],
+    [
+     47.4,
+     0
+    ]
+   ],
+   "ghosts": [
+    {
+     "ids": [
+      "turbine-building"
+     ],
+     "start": 30.4,
+     "end": 36.5,
+     "fade": 1
+    }
+   ],
+   "interior": [
+    {
+     "level": "steamPath",
+     "start": 18,
+     "end": 38.6
+    }
+   ]
+  }
+ },
+ "cameraFunction": "971453be036b9b3d",
+ "lookFunction": "59c92781fc2c31ed",
+ "controlFunction": "3b7741c3c8f60838",
+ "flowFunction": 172989,
+ "safetySamples": [
+  {
+   "t": 41.5,
+   "source": "presentation",
+   "time": 41.5,
+   "intensity": {
+    "icsSteam": 0,
+    "icsCondensing": 0,
+    "icsCondensate": 0,
+    "poolHeat": 0,
+    "decayHeat": 0
+   },
+   "steamFront": 0,
+   "condensingFront": 0,
+   "condensateFront": 0
+  },
+  {
+   "t": 42.2,
+   "source": "presentation",
+   "time": 42.2,
+   "intensity": {
+    "icsSteam": 0,
+    "icsCondensing": 0,
+    "icsCondensate": 0,
+    "poolHeat": 0,
+    "decayHeat": 0
+   },
+   "steamFront": 0,
+   "condensingFront": 0,
+   "condensateFront": 0
+  },
+  {
+   "t": 42.7,
+   "source": "presentation",
+   "time": 42.7,
+   "intensity": {
+    "icsSteam": 0.2098765432098883,
+    "icsCondensing": 0,
+    "icsCondensate": 0,
+    "poolHeat": 0,
+    "decayHeat": 0.4152411347958089
+   },
+   "steamFront": 0,
+   "condensingFront": 0,
+   "condensateFront": 0
+  },
+  {
+   "t": 43.5,
+   "source": "presentation",
+   "time": 43.5,
+   "intensity": {
+    "icsSteam": 1,
+    "icsCondensing": 0,
+    "icsCondensate": 0,
+    "poolHeat": 0,
+    "decayHeat": 1
+   },
+   "steamFront": 0.5333333333333314,
+   "condensingFront": 0,
+   "condensateFront": 0
+  },
+  {
+   "t": 44.1,
+   "source": "presentation",
+   "time": 44.1,
+   "intensity": {
+    "icsSteam": 1,
+    "icsCondensing": 0.2098765432098883,
+    "icsCondensate": 0,
+    "poolHeat": 0,
+    "decayHeat": 1
+   },
+   "steamFront": 0.9333333333333323,
+   "condensingFront": 0,
+   "condensateFront": 0
+  },
+  {
+   "t": 44.6,
+   "source": "presentation",
+   "time": 44.6,
+   "intensity": {
+    "icsSteam": 1,
+    "icsCondensing": 1,
+    "icsCondensate": 0,
+    "poolHeat": 0.27520751953124634,
+    "decayHeat": 1
+   },
+   "steamFront": 1,
+   "condensingFront": 0.6250000000000022,
+   "condensateFront": 0
+  },
+  {
+   "t": 45,
+   "source": "presentation",
+   "time": 45,
+   "intensity": {
+    "icsSteam": 1,
+    "icsCondensing": 1,
+    "icsCondensate": 1,
+    "poolHeat": 0.9839477539062484,
+    "decayHeat": 1
+   },
+   "steamFront": 1,
+   "condensingFront": 1,
+   "condensateFront": 0.18181818181817888
+  },
+  {
+   "t": 45.9,
+   "source": "presentation",
+   "time": 45.9,
+   "intensity": {
+    "icsSteam": 1,
+    "icsCondensing": 1,
+    "icsCondensate": 1,
+    "poolHeat": 1,
+    "decayHeat": 1
+   },
+   "steamFront": 1,
+   "condensingFront": 1,
+   "condensateFront": 1
+  },
+  {
+   "t": 46,
+   "source": "presentation",
+   "time": 46,
+   "intensity": {
+    "icsSteam": 1,
+    "icsCondensing": 1,
+    "icsCondensate": 1,
+    "poolHeat": 1,
+    "decayHeat": 1
+   },
+   "steamFront": 1,
+   "condensingFront": 1,
+   "condensateFront": 1
+  },
+  {
+   "t": 47.4,
+   "source": "presentation",
+   "time": 47.4,
+   "intensity": {
+    "icsSteam": 0.7,
+    "icsCondensing": 0.7,
+    "icsCondensate": 0.7,
+    "poolHeat": 0.7,
+    "decayHeat": 0.7
+   },
+   "steamFront": 1,
+   "condensingFront": 1,
+   "condensateFront": 1
+  },
+  {
+   "t": 48,
+   "source": "presentation",
+   "time": 48,
+   "intensity": {
+    "icsSteam": 0.7,
+    "icsCondensing": 0.7,
+    "icsCondensate": 0.7,
+    "poolHeat": 0.7,
+    "decayHeat": 0.7
+   },
+   "steamFront": 1,
+   "condensingFront": 1,
+   "condensateFront": 1
+  }
+ ],
+ "functionsVsGolden": {
+  "timings": true,
+  "camera": true,
+  "look": true,
+  "control": true,
+  "flow": true
+ },
+ "seek": {
+  "0": "36daba0e95790e7f",
+  "60": "d16ee780b1f04adc",
+  "120": "9006280e7c6d705c",
+  "180": "2c9206b4206cab36",
+  "240": "81cdc20c5ced88dc",
+  "300": "abda4829744d09a5",
+  "360": "3116c31e8682eaf6",
+  "420": "28e28ed231d45f32",
+  "480": "ded5aa228e218981",
+  "540": "065395053d644731",
+  "615": "4c7c09948b546a4b",
+  "675": "ed2a31c0cee55311",
+  "735": "08fc021a39c5badc",
+  "795": "f2eb18fac8267a56",
+  "855": "6448c7c6dbccc946",
+  "915": "6d84d42aed8e96f9",
+  "975": "cc754b8c22ced3e7",
+  "1035": "fde47670cc7ee0ce",
+  "1095": "29272e3708491cd9",
+  "1155": "92cf11f444a5eb9a",
+  "1197": "cc65709dbe9799b9",
+  "1215": "1827ef5f5ccdbc3f",
+  "1231": "1b2e58a8b0750ab5",
+  "1243": "f5e0d66ef793f165",
+  "1245": "1186eb92f9dc3547",
+  "1248": "2241390e38735c00",
+  "1251": "70c788f2ca4b99a1",
+  "1254": "a7e0883ea9d2e992",
+  "1257": "27ceb9ab69233dfb",
+  "1260": "e06449875ac48358",
+  "1263": "31952b7b31a81b87",
+  "1266": "f1cd7a3c29055270",
+  "1269": "f346db628d4dd31a",
+  "1272": "7da91bf38f0e3917",
+  "1275": "0b92e280f19c90e7",
+  "1278": "daaf9b8330eb0129",
+  "1281": "493e4b2723789763",
+  "1284": "2a15d455764d869f",
+  "1287": "b7f5cd27187738e6",
+  "1290": "f39a14d084b3d696",
+  "1293": "505011e3fd4c4432",
+  "1296": "be2f5022b2d27744",
+  "1299": "f44926dcccd7f1c3",
+  "1302": "18404cf66610f1ce",
+  "1305": "30852faae4cd6311",
+  "1308": "62c0c6c4f8227f08",
+  "1311": "d5c88ab949d0c9bc",
+  "1314": "4768a224f53d34a5",
+  "1317": "5698a034f1a5b89a",
+  "1320": "fd7b44398042b20e",
+  "1323": "8aa62923db490d7a",
+  "1326": "09a644da4a5de5af",
+  "1329": "0ef5cb92fd00cd03",
+  "1332": "654c7365bd2644a7",
+  "1335": "2a302a19ca8851e2",
+  "1338": "c995ba770c6e5cd5",
+  "1341": "4e9c696fc400b17d",
+  "1344": "b0a430928e2b2732",
+  "1347": "574d79c8eb0346ca",
+  "1350": "27a402fc039c0e28",
+  "1353": "f8171b35b95a48de",
+  "1356": "7f3a63ce01452080",
+  "1359": "9a93082da3beee6d",
+  "1362": "ffd775e3bf8576f3",
+  "1365": "b7b35273ad385b7a",
+  "1368": "1658e3b3b0ae92cc",
+  "1371": "f7e31a7361a79429",
+  "1374": "32bc2bd755decedf",
+  "1377": "4de37893e1d4928f",
+  "1380": "d9a17f3c27ec9948",
+  "1386": "2ee0f1a3733ab632",
+  "1392": "821bd7703db54edc",
+  "1398": "bf37957ec8fe1dda",
+  "1404": "c3e9afe85a15b4cd",
+  "1410": "4248cacd5674f38d",
+  "1416": "5b0bfb3be2843f6d",
+  "1422": "4e1dd984c11b6051",
+  "1428": "b8a330c8c86f38af",
+  "1434": "946fbf28c0f03c37",
+  "1440": "c37d1a09b438f57e"
+ },
+ "t446forward": "c995ba770c6e5cd5",
+ "t446backward": "c995ba770c6e5cd5",
+ "t446random": [
+  "c995ba770c6e5cd5",
+  "c995ba770c6e5cd5",
+  "c995ba770c6e5cd5"
+ ],
+ "randomOther": {
+  "30": [
+   "b22f91fcff745cc2"
+  ],
+  "45.4": [
+   "ffd775e3bf8576f3"
+  ],
+  "2.5": [
+   "34f6b4af566137f2"
+  ],
+  "42.9": [
+   "b7f5cd27187738e6"
+  ],
+  "47.1": [
+   "6d1cd45ff77798ff"
+  ],
+  "43.5": [
+   "30852faae4cd6311"
+  ],
+  "46.2": [
+   "2ee0f1a3733ab632"
+  ]
+ },
+ "randomOtherForward": {
+  "30": "b22f91fcff745cc2",
+  "45.4": "ffd775e3bf8576f3",
+  "2.5": "34f6b4af566137f2",
+  "42.9": "b7f5cd27187738e6",
+  "47.1": "6d1cd45ff77798ff",
+  "43.5": "30852faae4cd6311",
+  "46.2": "2ee0f1a3733ab632"
+ },
+ "playback": {
+  "hashes": {
+   "0": "36daba0e95790e7f",
+   "60": "d16ee780b1f04adc",
+   "120": "3753e6b30787bccf",
+   "180": "2c9206b4206cab36",
+   "240": "81cdc20c5ced88dc",
+   "300": "abda4829744d09a5",
+   "360": "3116c31e8682eaf6",
+   "420": "28e28ed231d45f32",
+   "480": "ded5aa228e218981",
+   "540": "065395053d644731",
+   "615": "4c7c09948b546a4b",
+   "675": "ed2a31c0cee55311",
+   "735": "08fc021a39c5badc",
+   "795": "f2eb18fac8267a56",
+   "855": "6448c7c6dbccc946",
+   "915": "6d84d42aed8e96f9",
+   "975": "cc754b8c22ced3e7",
+   "1035": "fde47670cc7ee0ce",
+   "1095": "29272e3708491cd9",
+   "1155": "92cf11f444a5eb9a",
+   "1197": "cc65709dbe9799b9",
+   "1215": "1827ef5f5ccdbc3f",
+   "1231": "1b2e58a8b0750ab5",
+   "1243": "757466eb9c5f2613",
+   "1245": "1186eb92f9dc3547",
+   "1248": "2241390e38735c00",
+   "1251": "70c788f2ca4b99a1",
+   "1254": "a7e0883ea9d2e992",
+   "1257": "27ceb9ab69233dfb",
+   "1260": "e06449875ac48358",
+   "1263": "31952b7b31a81b87",
+   "1266": "f1cd7a3c29055270",
+   "1269": "f346db628d4dd31a",
+   "1272": "7da91bf38f0e3917",
+   "1275": "0b92e280f19c90e7",
+   "1278": "daaf9b8330eb0129",
+   "1281": "493e4b2723789763",
+   "1284": "2a15d455764d869f",
+   "1287": "b7f5cd27187738e6",
+   "1290": "f39a14d084b3d696",
+   "1293": "505011e3fd4c4432",
+   "1296": "be2f5022b2d27744",
+   "1299": "f44926dcccd7f1c3",
+   "1302": "18404cf66610f1ce",
+   "1305": "30852faae4cd6311",
+   "1308": "62c0c6c4f8227f08",
+   "1311": "d5c88ab949d0c9bc",
+   "1314": "4768a224f53d34a5",
+   "1317": "5698a034f1a5b89a",
+   "1320": "fd7b44398042b20e",
+   "1323": "8aa62923db490d7a",
+   "1326": "09a644da4a5de5af",
+   "1329": "0ef5cb92fd00cd03",
+   "1332": "654c7365bd2644a7",
+   "1335": "2a302a19ca8851e2",
+   "1338": "c995ba770c6e5cd5",
+   "1341": "4e9c696fc400b17d",
+   "1344": "b0a430928e2b2732",
+   "1347": "574d79c8eb0346ca",
+   "1350": "27a402fc039c0e28",
+   "1353": "f8171b35b95a48de",
+   "1356": "7f3a63ce01452080",
+   "1359": "9a93082da3beee6d",
+   "1362": "ffd775e3bf8576f3",
+   "1365": "b7b35273ad385b7a",
+   "1368": "1658e3b3b0ae92cc",
+   "1371": "f7e31a7361a79429",
+   "1374": "32bc2bd755decedf",
+   "1377": "4de37893e1d4928f",
+   "1380": "d9a17f3c27ec9948",
+   "1386": "2ee0f1a3733ab632",
+   "1392": "821bd7703db54edc",
+   "1398": "bf37957ec8fe1dda",
+   "1404": "c3e9afe85a15b4cd",
+   "1410": "4248cacd5674f38d",
+   "1416": "5b0bfb3be2843f6d",
+   "1422": "4e1dd984c11b6051",
+   "1428": "b8a330c8c86f38af",
+   "1434": "946fbf28c0f03c37",
+   "1440": "c37d1a09b438f57e"
+  },
+  "times": {
+   "0": 0,
+   "60": 2,
+   "120": 4,
+   "180": 6,
+   "240": 8,
+   "300": 10,
+   "360": 12,
+   "420": 14,
+   "480": 16,
+   "540": 18,
+   "615": 20.5,
+   "675": 22.5,
+   "735": 24.5,
+   "795": 26.5,
+   "855": 28.5,
+   "915": 30.5,
+   "975": 32.5,
+   "1035": 34.5,
+   "1095": 36.5,
+   "1155": 38.5,
+   "1197": 39.9,
+   "1215": 40.5,
+   "1231": 41.0333334,
+   "1243": 41.4333334,
+   "1245": 41.5,
+   "1248": 41.6,
+   "1251": 41.7,
+   "1254": 41.8,
+   "1257": 41.9,
+   "1260": 42,
+   "1263": 42.1,
+   "1266": 42.2,
+   "1269": 42.3,
+   "1272": 42.4,
+   "1275": 42.5,
+   "1278": 42.6,
+   "1281": 42.7,
+   "1284": 42.8,
+   "1287": 42.9,
+   "1290": 43,
+   "1293": 43.1,
+   "1296": 43.2,
+   "1299": 43.3,
+   "1302": 43.4,
+   "1305": 43.5,
+   "1308": 43.6,
+   "1311": 43.7,
+   "1314": 43.8,
+   "1317": 43.9,
+   "1320": 44,
+   "1323": 44.1,
+   "1326": 44.2,
+   "1329": 44.3,
+   "1332": 44.4,
+   "1335": 44.5,
+   "1338": 44.6,
+   "1341": 44.7,
+   "1344": 44.8,
+   "1347": 44.9,
+   "1350": 45,
+   "1353": 45.1,
+   "1356": 45.2,
+   "1359": 45.3,
+   "1362": 45.4,
+   "1365": 45.5,
+   "1368": 45.6,
+   "1371": 45.7,
+   "1374": 45.8,
+   "1377": 45.9,
+   "1380": 46,
+   "1386": 46.2,
+   "1392": 46.4,
+   "1398": 46.6,
+   "1404": 46.8,
+   "1410": 47,
+   "1416": 47.2,
+   "1422": 47.4,
+   "1428": 47.6,
+   "1434": 47.8,
+   "1440": 48
+  },
+  "programs": [
+   18,
+   18
+  ],
+  "end": {
+   "status": "finished",
+   "events": [
+    "coreReveal",
+    "fissionEnter",
+    "fissionExit",
+    "flowCore",
+    "flowChimney",
+    "flowSeparators",
+    "flowDryer",
+    "steamExit",
+    "steamToTurbine",
+    "turbine",
+    "generator",
+    "electricityOut",
+    "controlEnter",
+    "controlAction",
+    "controlExit",
+    "safetyEnter",
+    "isolationCondenser",
+    "safetyExit",
+    "finalPullback",
+    "sequenceComplete"
+   ]
+  }
+ },
+ "verdict": {
+  "outsideVsGolden": [
+   [
+    0,
+    true
+   ],
+   [
+    60,
+    true
+   ],
+   [
+    120,
+    false
+   ],
+   [
+    180,
+    true
+   ],
+   [
+    240,
+    true
+   ],
+   [
+    300,
+    true
+   ],
+   [
+    360,
+    true
+   ],
+   [
+    420,
+    true
+   ],
+   [
+    480,
+    true
+   ],
+   [
+    540,
+    true
+   ],
+   [
+    615,
+    true
+   ],
+   [
+    675,
+    true
+   ],
+   [
+    735,
+    true
+   ],
+   [
+    795,
+    true
+   ],
+   [
+    855,
+    true
+   ],
+   [
+    915,
+    true
+   ],
+   [
+    975,
+    true
+   ],
+   [
+    1035,
+    true
+   ],
+   [
+    1095,
+    true
+   ],
+   [
+    1155,
+    true
+   ],
+   [
+    1197,
+    true
+   ],
+   [
+    1215,
+    true
+   ],
+   [
+    1231,
+    true
+   ],
+   [
+    1243,
+    true
+   ]
+  ],
+  "outsideMismatches": [
+   120
+  ],
+  "windowSeekVsPlayback": [],
+  "outsidePlaybackVsGolden": [
+   {
+    "f": 1243,
+    "playbackTime": 41.4333334
+   }
+  ],
+  "t446": {
+   "seekSample": "c995ba770c6e5cd5",
+   "forward": true,
+   "backward": true,
+   "random": [
+    true,
+    true,
+    true
+   ],
+   "playback": true
+  },
+  "randomOther": {
+   "30": true,
+   "45.4": true,
+   "2.5": true,
+   "42.9": true,
+   "47.1": true,
+   "43.5": true,
+   "46.2": true
+  }
+ },
+ "log": {
+  "errors": [],
+  "external": [],
+  "console": [
+   "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.",
+   "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+  ]
+ }
+}

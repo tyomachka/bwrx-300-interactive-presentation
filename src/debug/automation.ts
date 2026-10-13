@@ -23,6 +23,8 @@ import { isPlantCutOpen } from '../camera/exploreBounds';
 import { createFlowState, flowForFrame, presentationFlowAt } from '../animation/operatingFlow';
 import { vesselFlowStats } from '../scene/flow/vesselFlowGeometry';
 import { controlForFrame, createControlState, presentationControlAt } from '../animation/reactorControl';
+import { createSafetyState, presentationSafetyAt, safetyForFrame } from '../animation/passiveSafety';
+import { safetyStats } from '../scene/safety/icsLayout';
 import { bladeControlAmount, CONTROL_BLADES } from '../scene/rpv/coreLayout';
 import { activitySlots, STRIPS } from '../scene/control/activityMaterial';
 import { useAppStore } from '../state/store';
@@ -99,6 +101,7 @@ const api = {
     flow: (on: boolean) => explore.setFlow(on),
     control: (on: boolean) => explore.setControl(on),
     controlAmount: (amount: number) => explore.setControlAmount(amount),
+    safety: (on: boolean) => explore.setSafety(on),
     section: (patch: Partial<{ on: boolean; context: 'plant' | 'reactor'; position: number }>, immediate = false) => explore.setSection(patch, { immediate }),
     /** Snap every explore visual to its target now. */
     settle: () => updateExploreVisuals(0, true),
@@ -126,6 +129,15 @@ const api = {
     stateAt: (t: number) => ({ ...presentationControlAt(t, createControlState()) }),
     blades: () => ({ amount: bladeControlAmount(), insertion: CONTROL_BLADES.map((b) => +b.insertion.toFixed(6)), base: CONTROL_BLADES.map((b) => b.base) }),
     stats: () => ({ slots: activitySlots(QUALITY_PRESETS[useAppStore.getState().quality].particlesMultiplier), strips: STRIPS.length }),
+  },
+  /** Stage 9 passive safety: the live state, the presentation state at any master time, counts. */
+  safety: {
+    state: () => ({ ...safetyForFrame(), intensity: { ...safetyForFrame().intensity } }),
+    stateAt: (t: number) => {
+      const s = presentationSafetyAt(t, createSafetyState());
+      return { ...s, intensity: { ...s.intensity } };
+    },
+    stats: () => ({ ...safetyStats }),
   },
   /** Jump the camera to an explicit pose (scripted review captures). */
   snapCamera: (pose: CameraPose) => cameraDirector.snapTo(pose),

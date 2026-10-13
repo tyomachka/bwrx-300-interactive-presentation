@@ -1,0 +1,229 @@
+{
+ "quality": "low",
+ "oldBuild": "http://localhost:4201/assets/index-D4LY6R3Q.js",
+ "oldStates": {
+  "safety": "9d3347e27dc27d67",
+  "flow": "b7735e89909d954a",
+  "control": "61a2dfb9702ce0ae"
+ },
+ "oldHandoff": [
+  {
+   "t": 41.5,
+   "reaction": 0.3,
+   "activity": 1,
+   "boilShare": 0.3,
+   "coreWater": 0.4,
+   "decayHeat": 0,
+   "icsSteam": 0
+  },
+  {
+   "t": 41.8,
+   "reaction": 0.3,
+   "activity": 1,
+   "boilShare": 0.3,
+   "coreWater": 0.4,
+   "decayHeat": 0,
+   "icsSteam": 0
+  },
+  {
+   "t": 42.1,
+   "reaction": 0.3,
+   "activity": 0.896,
+   "boilShare": 0.3,
+   "coreWater": 0.4,
+   "decayHeat": 0,
+   "icsSteam": 0
+  },
+  {
+   "t": 42.4,
+   "reaction": 0.3,
+   "activity": 0.275,
+   "boilShare": 0.3,
+   "coreWater": 0.4,
+   "decayHeat": 0.045,
+   "icsSteam": 0
+  },
+  {
+   "t": 42.7,
+   "reaction": 0.3,
+   "activity": 0,
+   "boilShare": 0.3,
+   "coreWater": 0.4,
+   "decayHeat": 0.415,
+   "icsSteam": 0.21
+  },
+  {
+   "t": 43,
+   "reaction": 0.3,
+   "activity": 0,
+   "boilShare": 0.3,
+   "coreWater": 0.4,
+   "decayHeat": 0.871,
+   "icsSteam": 1
+  }
+ ],
+ "build": "http://localhost:4200/assets/index-BLD6NRZ3.js",
+ "newStates": {
+  "safety": "9d3347e27dc27d67",
+  "flow": "8bdb1d695368f797",
+  "control": "61a2dfb9702ce0ae"
+ },
+ "handoff": [
+  {
+   "t": 41.5,
+   "reaction": 0.3,
+   "activity": 1,
+   "boilShare": 0.3,
+   "coreWater": 0.4,
+   "decayHeat": 0,
+   "icsSteam": 0
+  },
+  {
+   "t": 41.8,
+   "reaction": 0.2475,
+   "activity": 1,
+   "boilShare": 0.3,
+   "coreWater": 0.4,
+   "decayHeat": 0.041,
+   "icsSteam": 0
+  },
+  {
+   "t": 42.1,
+   "reaction": 0.1025,
+   "activity": 0.896,
+   "boilShare": 0.3,
+   "coreWater": 0.4,
+   "decayHeat": 0.29,
+   "icsSteam": 0
+  },
+  {
+   "t": 42.4,
+   "reaction": 0.05,
+   "activity": 0.275,
+   "boilShare": 0.3,
+   "coreWater": 0.4,
+   "decayHeat": 0.4,
+   "icsSteam": 0
+  },
+  {
+   "t": 42.7,
+   "reaction": 0.05,
+   "activity": 0,
+   "boilShare": 0.3,
+   "coreWater": 0.4,
+   "decayHeat": 0.415,
+   "icsSteam": 0.21
+  },
+  {
+   "t": 43,
+   "reaction": 0.05,
+   "activity": 0,
+   "boilShare": 0.3,
+   "coreWater": 0.4,
+   "decayHeat": 0.871,
+   "icsSteam": 1
+  }
+ ],
+ "seek": {
+  "1243": "f99f8cd5e14934d7",
+  "1245": "a7c7a726768f3abe",
+  "1254": "b4d3aeb6eafd0484",
+  "1263": "04da6057825ad8ea",
+  "1272": "9ae8fdf5e5a8d19f",
+  "1290": "71b629c7f86ec9ff",
+  "1338": "1d2e3d9ac1600ad9"
+ },
+ "t421forward": "04da6057825ad8ea",
+ "t421backward": "04da6057825ad8ea",
+ "playback": {
+  "1245": "a7c7a726768f3abe",
+  "1254": "b4d3aeb6eafd0484",
+  "1263": "04da6057825ad8ea",
+  "1272": "9ae8fdf5e5a8d19f",
+  "1290": "71b629c7f86ec9ff"
+ },
+ "playbackTime": {
+  "1245": 41.5,
+  "1254": 41.8,
+  "1263": 42.1,
+  "1272": 42.4,
+  "1290": 43
+ },
+ "verdict": {
+  "seekEqualsPlayback": [
+   [
+    41.5,
+    true,
+    41.5
+   ],
+   [
+    41.8,
+    true,
+    41.8
+   ],
+   [
+    42.1,
+    true,
+    42.1
+   ],
+   [
+    42.4,
+    true,
+    42.4
+   ],
+   [
+    43,
+    true,
+    43
+   ]
+  ],
+  "t421": {
+   "forward": true,
+   "backward": true
+  },
+  "storedStage9Unchanged": [
+   [
+    41.43333333333333,
+    true
+   ],
+   [
+    41.5,
+    true
+   ],
+   [
+    43,
+    true
+   ],
+   [
+    44.6,
+    true
+   ]
+  ],
+  "changedVsStage9": [
+   [
+    41.8,
+    true
+   ],
+   [
+    42.1,
+    true
+   ],
+   [
+    42.4,
+    true
+   ]
+  ],
+  "safetyFrom42_7Unchanged": true,
+  "flowUnchanged": false,
+  "controlTo41_5Unchanged": true
+ },
+ "log": {
+  "errors": [],
+  "external": [],
+  "console": [
+   "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.",
+   "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.",
+   "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+  ]
+ }
+}

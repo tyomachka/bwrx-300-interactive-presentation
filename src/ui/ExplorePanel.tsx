@@ -1,7 +1,8 @@
 /**
  * The Explore panel (Stage 5): X-ray, Section (with Plant / Reactor and one cut slider),
  * Flow (Stage 7), Control (Stage 8: one blade slider, withdrawn on the left, inserted on the
- * right; no numbers, the scene shows the effect), Isolate, Labels, Reset; and, while something is selected, its name, where it sits ("in ...",
+ * right; no numbers, the scene shows the effect), Safety (Stage 9: the passive isolation-condenser
+ * loop; no dashboard), Isolate, Labels, Reset; and, while something is selected, its name, where it sits ("in ...",
  * one click selects the parent) and Focus / Clear.
  *
  * Same visual language and auto-hide as the setup controls: it fades after a few seconds
@@ -21,6 +22,7 @@ import {
   toggleFlow,
   toggleIsolate,
   toggleLabels,
+  toggleSafety,
   toggleSection,
   toggleXray,
 } from '../interaction/exploreActions';
@@ -40,6 +42,7 @@ export function ExplorePanel() {
   const flow = useExploreStore((s) => s.flow);
   const control = useExploreStore((s) => s.control);
   const controlAmount = useExploreStore((s) => s.controlAmount);
+  const safety = useExploreStore((s) => s.safety);
   const section = useExploreStore((s) => s.section);
   const [awake, setAwake] = useState(false);
   const hovered = useRef(false);
@@ -147,6 +150,9 @@ export function ExplorePanel() {
             />
           </div>
         )}
+        <button type="button" aria-pressed={safety} title="Passive cooling: isolation condensers. Shortcut: S" onClick={() => toggleSafety()}>
+          Safety
+        </button>
         <button type="button" aria-pressed={isolate} disabled={!selected} title="Shortcut: I" onClick={() => toggleIsolate()}>
           Isolate
         </button>

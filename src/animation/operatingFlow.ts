@@ -12,6 +12,7 @@
  * Stage 8: the boiling cue follows the control state's reaction cue (`boilShare`): the blades
  * reduce the heat made in the fuel, so fewer bubbles form; the water keeps circulating.
  */
+import { CONTROL_SHUTDOWN } from '../config/control';
 import { FLOW_CHANNELS, FLOW_EXPLORE, FLOW_PRESENTATION, SHAFT, type FlowChannel } from '../config/flow';
 import { exploreState } from '../interaction/exploreStore';
 import { animationClock } from './clock';
@@ -86,7 +87,9 @@ export function presentationFlowAt(masterTime: number, out: FlowState = createFl
   // Indexed loops: evaluated every frame, so nothing here allocates.
   for (let i = 0; i < FLOW_CHANNELS.length; i++) out.intensity[FLOW_CHANNELS[i]!] = keyed(P.intensity[FLOW_CHANNELS[i]!], t);
   out.boil = keyed(P.boil, t);
-  out.boilShare = presentationControlAt(t, controlScratch).reactionIntensity;
+  // The boiling follows the reaction down to the residual (decay-heat) level and stays there when
+  // the reaction is shut down (Stage 9 handoff); above it, exactly the Stage 8 value.
+  out.boilShare = Math.max(presentationControlAt(t, controlScratch).reactionIntensity, CONTROL_SHUTDOWN.residualBoil);
   out.mainSteamFront = front(t, P.mainSteamFront);
   out.turbineFront = front(t, P.turbineFront);
   out.electricityFront = front(t, P.electricityFront);

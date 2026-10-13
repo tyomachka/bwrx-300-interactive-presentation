@@ -7,6 +7,7 @@ import { CAMERA_TRANSITION, ORBIT } from '../config/camera';
 import { resetExplore } from '../interaction/exploreActions';
 import { heroShot } from './heroShot';
 import { masterSequence } from './masterSequence';
+import { snapSafetyOff } from './passiveSafety';
 import { snapControlToBase } from './reactorControl';
 
 /**
@@ -19,7 +20,7 @@ import { endRpvReview } from './rpvReview';
 
 /**
  * "Reset view": stop the shot or review, clear every Explore state (selection, hover, X-ray,
- * section, isolation, labels, flow, control), put the blades back to the base pattern at once,
+ * section, isolation, labels, flow, control, safety), put the blades back to the base pattern at once,
  * close the reveal, fly home. Deterministic from any state.
  */
 export function resetPresentation(): Promise<void> {
@@ -32,6 +33,7 @@ export function resetPresentation(): Promise<void> {
   endRpvReview();
   resetExplore();
   snapControlToBase();
+  snapSafetyOff();
   heroShot.closeReveal(CAMERA_TRANSITION.duration, fromBelowGrade ? CAMERA_TRANSITION.duration * 0.55 : 0);
   return cameraDirector.reset(fromBelowGrade ? { exitRadius: RESET_EXIT_RADIUS } : {});
 }

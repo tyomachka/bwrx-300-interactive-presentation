@@ -51,6 +51,12 @@ export interface ExploreState {
   control: boolean;
   /** 0 = the base blade pattern (more withdrawn) .. 1 = the deeper pattern (more inserted). */
   controlAmount: number;
+  /**
+   * Safety (Stage 9): the passive isolation-condenser loop. It shows the pools (see-through) in
+   * the opened building; the camera stays the user's. Flow and Safety exclude each other: the
+   * normal power path and the passive heat-removal path are never drawn at once.
+   */
+  safety: boolean;
 }
 
 export const EXPLORE_INITIAL: Readonly<ExploreState> = {
@@ -65,6 +71,7 @@ export const EXPLORE_INITIAL: Readonly<ExploreState> = {
   flow: false,
   control: false,
   controlAmount: 0,
+  safety: false,
 };
 
 export const useExploreStore = create<ExploreState>()(() => ({ ...EXPLORE_INITIAL }));

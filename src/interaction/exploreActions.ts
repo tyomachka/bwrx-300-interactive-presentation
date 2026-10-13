@@ -96,9 +96,12 @@ export function setLabels(on: boolean): void {
 
 export const toggleLabels = () => setLabels(!exploreState().labels);
 
-/** Flow (Stage 7): the normal-operation flow. Off by default; Reset turns it off. */
+/** Flow (Stage 7): the normal-operation flow. Off by default; Reset turns it off. Turning it on
+ *  turns Safety off (the normal power path and the passive path are never drawn together). */
 export function setFlow(on: boolean): void {
-  if (canAct()) set({ flow: on });
+  if (!canAct()) return;
+  set({ flow: on });
+  if (on && exploreState().safety) setSafety(false);
 }
 
 export const toggleFlow = () => setFlow(!exploreState().flow);
@@ -123,6 +126,22 @@ export function setControl(on: boolean): void {
 
 export const toggleControl = () => setControl(!exploreState().control);
 
+/**
+ * Safety (Stage 9): the passive isolation-condenser loop. On, it opens the building (the plant
+ * section, or keeps the reactor section) with the ICS pools drawn, and turns Flow off: the
+ * normal power path steps aside for the passive one. The camera is not moved. Off, the pools
+ * leave with it; Reset turns it off.
+ */
+export function setSafety(on: boolean): void {
+  if (!canAct() || exploreState().safety === on) return;
+  set(on ? { safety: true, flow: false } : { safety: false });
+  const section = exploreState().section;
+  if (on && !(section.on && (section.context === 'reactor' || section.position >= 0.99))) setSection({ on: true, context: 'plant', position: 1 });
+  else applySection(section, false); // the pools come and go with Safety
+}
+
+export const toggleSafety = () => setSafety(!exploreState().safety);
+
 /** The Control slider: 0 = base pattern .. 1 = deeper pattern (ignored while Control is off). */
 export function setControlAmount(amount: number): void {
   if (canAct() && exploreState().control) set({ controlAmount: clamp01(amount) });
@@ -130,16 +149,20 @@ export function setControlAmount(amount: number): void {
 
 // ---- Section ---------------------------------------------------------------------------------------------
 
-/** The reveal a section request means (the one section engine: sectionLayers.applyReveal). */
-export function revealForSection(s: SectionState): HeroRevealState {
+/**
+ * The reveal a section request means (the one section engine: sectionLayers.applyReveal).
+ * `pools`: Explore Safety draws the ICS pools in the opened building.
+ */
+export function revealForSection(s: SectionState, pools = false): HeroRevealState {
   const closed = { ...HERO_REVEAL_CLOSED };
   if (!s.on) return closed;
   const p = clamp01(s.position);
+  const poolsReveal = pools ? 1 : 0;
   if (s.context === 'plant') {
     const ground = clamp01(p / 0.45);
-    return { ...closed, groundCut: ground, exteriorDim: ground, shaftReveal: clamp01((p - 0.35) / 0.35), containmentReveal: clamp01((p - 0.7) / 0.3) };
+    return { ...closed, groundCut: ground, exteriorDim: ground, shaftReveal: clamp01((p - 0.35) / 0.35), containmentReveal: clamp01((p - 0.7) / 0.3), poolsReveal };
   }
-  return { ...closed, groundCut: 1, exteriorDim: 1, shaftReveal: 1, containmentReveal: 1, vesselCut: p };
+  return { ...closed, groundCut: 1, exteriorDim: 1, shaftReveal: 1, containmentReveal: 1, vesselCut: p, poolsReveal };
 }
 
 let sectionTween: gsap.core.Tween | null = null;
@@ -149,7 +172,7 @@ function applySection(section: SectionState, immediate: boolean): void {
   stopRpvReviewTween();
   sectionTween?.kill();
   sectionTween = null;
-  const target = revealForSection(section);
+  const target = revealForSection(section, exploreState().safety);
   if (immediate) Object.assign(heroReveal, target);
   else sectionTween = gsap.to(heroReveal, { ...target, duration: SECTION_DURATION, ease: 'power2.inOut', onComplete: () => void (sectionTween = null) });
 }

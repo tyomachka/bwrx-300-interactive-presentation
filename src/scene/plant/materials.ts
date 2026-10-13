@@ -28,6 +28,7 @@ import {
   type Texture,
 } from 'three';
 import { FLOOR_RADIUS, PALETTE } from '../../config/render';
+import { SAFETY_LOOK } from '../../config/safety';
 import { LAYER_CLIP, LAYER_UNIFORMS, SECTION_GLOBAL_UNIFORMS, SECTION_PLANES, type RevealLayerId } from '../section/sectionLayers';
 import { REVEAL_DRAW_RANK } from '../section/drawOrder';
 import { createCapUniforms, installSectionShader, type CapStyle, type ExploreUniforms, type SectionUniformMap } from '../section/sectionShader';
@@ -250,6 +251,10 @@ function createSectionMaterials() {
       concreteDark: section('building', SURFACES.concreteDark, CAPS.concrete),
       doorPanel: section('building', SURFACES.doorPanel, CAPS.door),
       water: section('building', SURFACES.water, CAPS.water),
+      /** Stage 9: the ICS pools are see-through (the submerged IC shows); never cut (z < 0). */
+      icsWater: section('building', { ...SURFACES.water, transparent: true, opacity: SAFETY_LOOK.water.opacity, depthWrite: false }, null),
+      /** Stage 9: the isolation condensers and their piping (never cut: all behind z = 0). */
+      icsSteel: section('building', SURFACES.stainless, null),
     },
     containment: {
       wall: section('containment', SURFACES.containment, CAPS.containment),

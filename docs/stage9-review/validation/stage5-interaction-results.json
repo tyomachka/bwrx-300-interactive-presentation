@@ -1,0 +1,177 @@
+{
+  "defaultFrame": "36daba0e9579",
+  "raycast": {
+    "picks": 54,
+    "meanMs": 0.56,
+    "p95Ms": 1.5,
+    "maxMs": 3.1
+  },
+  "hover": {
+    "probe": {
+      "componentId": "rpv-shell",
+      "selectableId": "reactor-pressure-vessel",
+      "instanceId": null,
+      "point": [
+        -0.6893878767424866,
+        -12.510721286024513,
+        2.1256126199562004
+      ],
+      "ms": 3
+    },
+    "hoveredId": "reactor-pressure-vessel",
+    "cursor": "pointer"
+  },
+  "clickDeferred": {
+    "selectedImmediately": null
+  },
+  "click": {
+    "selectedId": "reactor-pressure-vessel",
+    "focusId": "reactor-pressure-vessel",
+    "camera": {
+      "position": [
+        -26.659999999999993,
+        -10.429999999999998,
+        50.140000000000015
+      ],
+      "target": [
+        0,
+        -15.399999999999999,
+        0
+      ],
+      "fov": 35,
+      "authority": "explore",
+      "allowBelowGrade": true
+    }
+  },
+  "escape": null,
+  "keys": {
+    "xOn": true,
+    "xOff": false,
+    "lOff": false,
+    "lOn": true,
+    "isolateWithoutSelection": false,
+    "cAfterOn": false,
+    "cAgain": true
+  },
+  "afterReset": {
+    "state": {
+      "mode": "explore",
+      "hoveredId": "turbine-building",
+      "selectedId": null,
+      "focusId": null,
+      "isolate": false,
+      "xray": false,
+      "section": {
+        "on": false,
+        "context": "plant",
+        "position": 1
+      },
+      "labels": true,
+      "flow": false,
+      "control": false,
+      "controlAmount": 0,
+      "safety": false
+    },
+    "reveal": {
+      "groundCut": 0,
+      "exteriorDim": 0,
+      "shaftReveal": 0,
+      "containmentReveal": 0,
+      "rpvEmphasis": 0,
+      "vesselCut": 0,
+      "coreSection": 0,
+      "bladeEmphasis": 0,
+      "poolsReveal": 0
+    }
+  },
+  "resetFrame": "36daba0e9579",
+  "resetFrameMatchesDefault": true,
+  "programs": {
+    "atReady": 18,
+    "afterAll": 18
+  },
+  "duringShot": {
+    "state": {
+      "mode": "presentation",
+      "hoveredId": null,
+      "selectedId": null,
+      "focusId": null,
+      "isolate": false,
+      "xray": false,
+      "section": {
+        "on": true,
+        "context": "reactor",
+        "position": 1
+      },
+      "labels": true,
+      "flow": false,
+      "control": false,
+      "controlAmount": 0,
+      "safety": false
+    },
+    "authority": "cinematic",
+    "clickIgnored": true
+  },
+  "afterShot": {
+    "state": {
+      "mode": "explore",
+      "hoveredId": "reactor-pressure-vessel",
+      "selectedId": null,
+      "focusId": null,
+      "isolate": false,
+      "xray": false,
+      "section": {
+        "on": true,
+        "context": "plant",
+        "position": 1
+      },
+      "labels": true,
+      "flow": false,
+      "control": false,
+      "controlAmount": 0,
+      "safety": false
+    },
+    "authority": "explore"
+  },
+  "shotFinal": "abda4829744d",
+  "shotFinalReference": "abda4829744d",
+  "shotFinalMatches": true,
+  "qualitySwitch": {
+    "state": {
+      "mode": "explore",
+      "hoveredId": null,
+      "selectedId": "chimney",
+      "focusId": "chimney",
+      "isolate": false,
+      "xray": false,
+      "section": {
+        "on": true,
+        "context": "reactor",
+        "position": 1
+      },
+      "labels": true,
+      "flow": false,
+      "control": false,
+      "controlAmount": 0,
+      "safety": false
+    },
+    "labelVisible": "visible"
+  },
+  "resize": {
+    "left": 662,
+    "top": 271,
+    "right": 1030,
+    "bottom": 391,
+    "w": 1280,
+    "h": 720
+  },
+  "log": {
+    "console": [
+      "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.",
+      "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.",
+      "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+    ],
+    "errors": [],
+    "external": []
+  }
+}

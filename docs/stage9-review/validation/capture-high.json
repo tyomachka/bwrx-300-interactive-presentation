@@ -1,0 +1,123 @@
+{
+ "quality": "high",
+ "build": "http://localhost:4200/assets/index-D4LY6R3Q.js",
+ "video": {
+  "first": 1095,
+  "frames": 346,
+  "captureSeconds": 241.778,
+  "end": {
+   "status": "finished",
+   "time": 48
+  }
+ },
+ "stills": [
+  {
+   "name": "01-control-to-safety-handoff-1080p.png",
+   "t": 43,
+   "beat": "safety",
+   "calls": 72,
+   "safety": {
+    "source": "presentation",
+    "time": 43,
+    "intensity": {
+     "icsSteam": 1,
+     "icsCondensing": 0,
+     "icsCondensate": 0,
+     "poolHeat": 0,
+     "decayHeat": 0.8710781056932235
+    },
+    "steamFront": 0.1999999999999981,
+    "condensingFront": 0,
+    "condensateFront": 0
+   }
+  },
+  {
+   "name": "02-steam-entering-ics-1080p.png",
+   "t": 44.2,
+   "beat": "safety",
+   "calls": 69,
+   "safety": {
+    "source": "presentation",
+    "time": 44.2,
+    "intensity": {
+     "icsSteam": 1,
+     "icsCondensing": 0.7901234567901473,
+     "icsCondensate": 0,
+     "poolHeat": 0,
+     "decayHeat": 1
+    },
+    "steamFront": 1,
+    "condensingFront": 0.12500000000000222,
+    "condensateFront": 0
+   }
+  },
+  {
+   "name": "04-condensate-return-1080p.png",
+   "t": 45.8,
+   "beat": "safety",
+   "calls": 66,
+   "safety": {
+    "source": "presentation",
+    "time": 45.8,
+    "intensity": {
+     "icsSteam": 1,
+     "icsCondensing": 1,
+     "icsCondensate": 1,
+     "poolHeat": 1,
+     "decayHeat": 1
+    },
+    "steamFront": 1,
+    "condensingFront": 1,
+    "condensateFront": 0.9090909090909073
+   }
+  },
+  {
+   "name": "05-final-safety-state-1080p.png",
+   "t": 48,
+   "beat": "finalPullback",
+   "calls": 80,
+   "safety": {
+    "source": "presentation",
+    "time": 48,
+    "intensity": {
+     "icsSteam": 0.7,
+     "icsCondensing": 0.7,
+     "icsCondensate": 0.7,
+     "poolHeat": 0.7,
+     "decayHeat": 0.7
+    },
+    "steamFront": 1,
+    "condensingFront": 1,
+    "condensateFront": 1
+   }
+  },
+  {
+   "name": "03-condenser-pool-heat-transfer-1080p.png",
+   "t": 45.4,
+   "magnified": true,
+   "safety": {
+    "source": "presentation",
+    "time": 45.4,
+    "intensity": {
+     "icsSteam": 1,
+     "icsCondensing": 1,
+     "icsCondensate": 1,
+     "poolHeat": 1,
+     "decayHeat": 1
+    },
+    "steamFront": 1,
+    "condensingFront": 1,
+    "condensateFront": 0.5454545454545431
+   }
+  }
+ ],
+ "log": {
+  "errors": [],
+  "external": [],
+  "console": [
+   "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.",
+   "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.",
+   "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+  ]
+ }
+}

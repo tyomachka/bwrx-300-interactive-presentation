@@ -66,11 +66,22 @@ export const CONTROL_PRESENTATION = {
 } as const;
 
 /**
- * What Stage 9 inherits at `controlExit` (41.5 s) and after: blades at the target pattern
+ * What Stage 9 inherits at `controlExit` (41.5 s): blades at the target pattern
  * (bladeControlAmount 1), reactionIntensity at REACTION.low, core water still circulating at its
- * control-beat level (config/flow.ts). Heat is still being made and still has to be removed.
+ * control-beat level (config/flow.ts). From there CONTROL_SHUTDOWN takes the reaction down.
  */
 export const CONTROL_HANDOFF = { at: E.controlExit, bladeControlAmount: 1, reactionIntensity: REACTION.low } as const;
+
+/**
+ * [EDUCATIONAL REPRESENTATIVE SHUTDOWN HANDOFF] Stage 9 is about decay heat, so the chain reaction
+ * is shown as essentially shut down before the passive cooling starts: over 41.5-42.4 s (camera
+ * backing out of the core) the reaction cue falls smoothly from REACTION.low to `reaction`, with no
+ * further blade motion (the inserted pattern already reads). Not a scram, not a power figure.
+ * The heat does not go with it: the core keeps boiling at `residualBoil` (the decay heat; the
+ * Stage 8 level, so the water and boiling are unchanged), and the vessel's decay-heat warmth
+ * comes up (config/safety.ts).
+ */
+export const CONTROL_SHUTDOWN = { start: E.controlExit, end: E.safetyEnter + 0.9, reaction: 0.05, residualBoil: REACTION.low } as const;
 
 /** Explore Control: the slider eases the blades (1/s rate); a selection keeps priority. */
 export const CONTROL_EXPLORE = {

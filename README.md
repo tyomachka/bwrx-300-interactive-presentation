@@ -41,6 +41,7 @@ Keys are matched by physical position, so they also work on the Lithuanian layou
 | `L` | Labels on / off |
 | `F` | Flow on / off: the normal-operation flow, looping (Stage 7) |
 | `O` | Control on / off: the control-blade slider and the reaction cue; opens the Reactor section and frames the blades (Stage 8) |
+| `S` | Safety on / off: the passive isolation-condenser loop; opens the building with the ICS pools, turns Flow off, leaves the camera alone (Stage 9) |
 | `1` / `2` | High / low quality |
 | `` ` `` | Toggle diagnostics (dev build, or with `?debug`) |
 | `P` | Review aid: play / restart the Stage 3 hero shot from its first frame (dev / `?debug`) |
@@ -264,6 +265,33 @@ context and the limits in force.
   The blades take the copper emphasis; a selection keeps priority (the cue steps back). With
   Flow on, the core's boiling follows the slider; the turbine-side flow does not. Off eases the
   blades back; Reset restores the base pattern at once; a quality switch keeps the state.
+
+## Passive safety (Stage 9)
+
+- **Story** (GD Rev J §2, §3.3, Fig 3-8, §10): even with the blades in, the reactor still makes
+  heat. Three independent isolation-condenser trains, each a heat exchanger submerged in its own
+  pool above the containment: steam from the RPV rises to the IC, condenses in its tubes, gives
+  its heat to the pool water, and the condensate drains back to the RPV in the chimney region.
+  The ICs stand above the steam source, so the loop is natural circulation driven by gravity:
+  no pumps, no AC power. The turbine-generator plays no part; nothing here makes electricity.
+- **[APPROX] Layout** (`config/safety.ts`, `scene/safety/icsLayout.ts`): one tube bank per IC
+  (Fig 3-8 draws two modules), headers broadside to the south cameras, the steam riser at the
+  IC's inner end and the condensate riser at its outer end, so each train reads as a loop.
+- **Shutdown handoff** (41.5-42.4 s, `config/control.ts` CONTROL_SHUTDOWN, [EDUCATIONAL
+  REPRESENTATIVE SHUTDOWN HANDOFF]): with the blades already in, the reaction cue falls from the
+  Stage 8 level to near zero (glints vanish); the core keeps boiling on decay heat and the vessel's
+  warmth comes up early. No further blade motion, no scram, no power figure.
+- **One safety state** (`animation/passiveSafety.ts`): pure function of master time in the
+  presentation (keyed on `safetyEnter` 41.5, `isolationCondenser` 44.6, `safetyExit` 46.0),
+  the same schedule replayed from the toggle in Explore Safety, otherwise off.
+- **Cues** (`scene/safety/`): steam (pale) up the supply lines and along the upper header,
+  condensing steam down the tubes, condensate (the Stage 7 water blue) back to the vessel, all on
+  the Stage 7 pulse-tube shader (one draw call); a slow warm plume from the tubes into the pool
+  (the Stage 7 streak shader, one draw call); a faint warm tint on the vessel, strongest at the
+  core (one draw call). The ICS pool water is see-through; the cavity pool is unchanged.
+- **Explore Safety** (`S`, panel): the same loop; opens the building (plant section) with the
+  pools; Flow and Safety exclude each other (the normal power path steps aside); the camera is
+  not moved; a selection keeps priority; Reset turns it off.
 
 ## Architecture notes
 

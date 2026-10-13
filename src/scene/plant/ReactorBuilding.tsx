@@ -23,6 +23,7 @@ import { meta, PLANT_IDS } from './ids';
 import { getSectionMaterials } from './materials';
 import { Box, InstancedBoxes } from './primitives';
 import { Interior, SectionProfile, SectionSector } from './section';
+import { IcsEquipment } from '../safety/IcsEquipment';
 
 const shaftInner = RB.shaftOuterRadius - RB.shaftWall;
 const rbInner = RB.aboveGradeRadius - RB.aboveGradeWall;
@@ -143,7 +144,9 @@ export function ReactorBuilding() {
         <Interior level="pools">
           <group name={PLANT_IDS.pools} userData={meta(PLANT_IDS.pools, 'educational-approximation')}>
             <Box name="pool.cavity" {...cavityPool} material={m.water} castShadow={false} />
-            <InstancedBoxes name={PLANT_IDS.icsPools} boxes={icsPools} material={m.water} castShadow={false} />
+            <InstancedBoxes name={PLANT_IDS.icsPools} boxes={icsPools} material={m.icsWater} castShadow={false} />
+            {/* Stage 9: the isolation condensers in the pools and their lines to the RPV. */}
+            <IcsEquipment />
           </group>
         </Interior>
 

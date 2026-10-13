@@ -1,0 +1,33 @@
+{
+ "quality": "low",
+ "build": null,
+ "stills": [
+  {
+   "name": "06-low-safety-1080p.png",
+   "t": 45.6,
+   "beat": "safety",
+   "calls": 67,
+   "safety": {
+    "source": "presentation",
+    "time": 45.6,
+    "intensity": {
+     "icsSteam": 1,
+     "icsCondensing": 1,
+     "icsCondensate": 1,
+     "poolHeat": 1,
+     "decayHeat": 1
+    },
+    "steamFront": 1,
+    "condensingFront": 1,
+    "condensateFront": 0.7272727272727284
+   }
+  }
+ ],
+ "log": {
+  "errors": [],
+  "external": [],
+  "console": [
+   "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+  ]
+ }
+}

@@ -13,7 +13,7 @@
  * activity layer.
  */
 import { MathUtils } from 'three';
-import { CONTROL_EXPLORE, CONTROL_PRESENTATION, REACTION } from '../config/control';
+import { CONTROL_EXPLORE, CONTROL_PRESENTATION, CONTROL_SHUTDOWN, REACTION } from '../config/control';
 import { exploreState } from '../interaction/exploreStore';
 import { animationClock } from './clock';
 import { masterSequence } from './masterSequence';
@@ -50,10 +50,13 @@ export function presentationControlAt(masterTime: number, out: ReactorControlSta
   const { insertion, activity } = CONTROL_PRESENTATION;
   const t = quantise(masterTime);
   const amount = MathUtils.smootherstep(t, insertion.start, insertion.end);
+  // Stage 9 shutdown handoff: exactly the Stage 8 value up to controlExit, then down to near zero.
+  const reaction = reactionFor(amount);
+  const shutdown = MathUtils.smootherstep(t, CONTROL_SHUTDOWN.start, CONTROL_SHUTDOWN.end);
   out.source = 'presentation';
   out.time = t;
   out.bladeControlAmount = amount;
-  out.reactionIntensity = reactionFor(amount);
+  out.reactionIntensity = reaction + (CONTROL_SHUTDOWN.reaction - reaction) * shutdown;
   out.activity = keyed(activity, t);
   out.emphasis = 0;
   return out;

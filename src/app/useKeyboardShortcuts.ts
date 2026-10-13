@@ -3,15 +3,15 @@ import { heroShot } from '../animation/heroShot';
 import { masterSequence } from '../animation/masterSequence';
 import { resetPresentation } from '../animation/presentation';
 import { cycleRpvReview } from '../animation/rpvReview';
-import { clearSelection, toggleControl, toggleFlow, toggleIsolate, toggleLabels, toggleSection, toggleXray } from '../interaction/exploreActions';
+import { clearSelection, toggleControl, toggleFlow, toggleIsolate, toggleLabels, toggleSafety, toggleSection, toggleXray } from '../interaction/exploreActions';
 import { cycleReviewView } from '../camera/reviewViews';
 import { useAppStore } from '../state/store';
 
 /**
  * Global shortcuts (PROJECT.md §11). Explore (Stage 5): Esc clears the selection, X X-ray,
  * C section, I isolate, L labels, R full reset; F flow (Stage 7); O control (Stage 8: the blade
- * slider; B stays the Stage 4 review key). S stays reserved (Stage 9). The live presentation never
- * needs any of them.
+ * slider; B stays the Stage 4 review key); S safety (Stage 9: the isolation-condenser loop). The
+ * live presentation never needs any of them.
  * Master sequence (Stage 6, review controls for now): Space play / pause, Home restart,
  * , / . frame step, [ / ] previous / next beat.
  * Space, Home, comma, period, brackets, V, G, P, K and B are active only in dev builds or with
@@ -34,6 +34,7 @@ const BINDINGS: Record<string, () => void> = {
   KeyL: () => toggleLabels(),
   KeyF: () => toggleFlow(),
   KeyO: () => toggleControl(),
+  KeyS: () => toggleSafety(),
   Digit1: () => useAppStore.getState().setQuality('high'),
   Numpad1: () => useAppStore.getState().setQuality('high'),
   Digit2: () => useAppStore.getState().setQuality('low'),
