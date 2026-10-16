@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { heroShot } from '../animation/heroShot';
 import { masterSequence } from '../animation/masterSequence';
-import { resetPresentation } from '../animation/presentation';
+import { resetPresentation, startOrTogglePresentation, startPresentation } from '../animation/presentation';
 import { cycleRpvReview } from '../animation/rpvReview';
 import { clearSelection, toggleControl, toggleFlow, toggleIsolate, toggleLabels, toggleSafety, toggleSection, toggleXray } from '../interaction/exploreActions';
 import { cycleReviewView } from '../camera/reviewViews';
@@ -12,15 +12,20 @@ import { useAppStore } from '../state/store';
  * C section, I isolate, L labels, R full reset; F flow (Stage 7); O control (Stage 8: the blade
  * slider; B stays the Stage 4 review key); S safety (Stage 9: the isolation-condenser loop). The
  * live presentation never needs any of them.
- * Master sequence (Stage 6, review controls for now): Space play / pause, Home restart,
- * , / . frame step, [ / ] previous / next beat.
- * Space, Home, comma, period, brackets, V, G, P, K and B are active only in dev builds or with
- * `?debug`.
+ * Master sequence: Space starts the presentation, then pauses / resumes it (and replays it once
+ * finished); Home restarts it from the first frame; R stops it and returns to the home view.
+ * Review aids, active only in dev builds or with `?debug`: , / . frame step, [ / ] previous /
+ * next beat, V, G, P, K and B.
  *
  * Keys are matched by `event.code` (physical position), not `event.key`. On the
  * Lithuanian layout the number row types ą č ę ė ... without Shift, so `key === '1'`
  * would silently fail on a VILNIUS TECH lectern PC.
  */
+/** A quality change rebuilds the canvas: never in the middle of the playing presentation. */
+const setQualityUnlessPlaying = (level: 'high' | 'low') => {
+  if (masterSequence.status !== 'playing') useAppStore.getState().setQuality(level);
+};
+
 const debugOnly = (action: () => void) => () => {
   if (useAppStore.getState().debugAvailable) action();
 };
@@ -35,10 +40,10 @@ const BINDINGS: Record<string, () => void> = {
   KeyF: () => toggleFlow(),
   KeyO: () => toggleControl(),
   KeyS: () => toggleSafety(),
-  Digit1: () => useAppStore.getState().setQuality('high'),
-  Numpad1: () => useAppStore.getState().setQuality('high'),
-  Digit2: () => useAppStore.getState().setQuality('low'),
-  Numpad2: () => useAppStore.getState().setQuality('low'),
+  Digit1: () => setQualityUnlessPlaying('high'),
+  Numpad1: () => setQualityUnlessPlaying('high'),
+  Digit2: () => setQualityUnlessPlaying('low'),
+  Numpad2: () => setQualityUnlessPlaying('low'),
   Backquote: () => useAppStore.getState().toggleDebug(),
   KeyV: debugOnly(() => void cycleReviewView()),
   KeyG: debugOnly(() => {
@@ -55,12 +60,12 @@ const BINDINGS: Record<string, () => void> = {
   // Stage 4 vessel review states: exterior, cutaway, core, control blades, steam region.
   KeyB: debugOnly(() => void cycleRpvReview()),
   // Stage 6 master sequence.
-  Space: debugOnly(() => {
+  Space: () => {
     // A focused button would also take the key as a click.
     if (document.activeElement instanceof HTMLButtonElement) document.activeElement.blur();
-    masterSequence.togglePause();
-  }),
-  Home: debugOnly(() => masterSequence.play()),
+    startOrTogglePresentation();
+  },
+  Home: () => startPresentation(),
   Comma: debugOnly(() => masterSequence.step(-1)),
   Period: debugOnly(() => masterSequence.step(1)),
   BracketLeft: debugOnly(() => masterSequence.jumpBeat(-1)),

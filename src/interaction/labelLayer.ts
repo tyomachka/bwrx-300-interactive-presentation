@@ -14,11 +14,18 @@ export const labelLayer = {
   primary: null as HTMLElement | null,
   dot: null as HTMLElement | null,
   hover: null as HTMLElement | null,
+  /**
+   * The Explore bar in stage pixels (ui/ExplorePanel.tsx keeps it current): its left and right
+   * edges and how far its top is above the stage's bottom edge. It grows when the bar wraps.
+   */
+  bar: { left: 0, right: 0, fromBottom: 0 },
 };
 
 const MARGIN = 20;
 /** Keep labels clear of the Explore panel along the bottom edge. */
 const BOTTOM_RESERVE = 132;
+/** Space between a label and a wrapped (taller) Explore bar under it. */
+const BAR_GAP = 12;
 const GAP = 22;
 const _v = new Vector3();
 
@@ -58,7 +65,11 @@ export function placePrimaryLabel(camera: Camera, width: number, height: number,
   const h = primary.offsetHeight;
   const right = x < width * 0.6;
   const lx = Math.min(Math.max(right ? x + GAP : x - GAP - w, MARGIN), width - w - MARGIN);
-  const ly = Math.min(Math.max(y - h / 2, MARGIN), height - h - BOTTOM_RESERVE);
+  // Above the bar when it is taller than the usual reserve (wrapped sliders, longer words).
+  const bar = labelLayer.bar;
+  const overBar = lx < bar.right && lx + w > bar.left;
+  const reserve = overBar ? Math.max(BOTTOM_RESERVE, bar.fromBottom + BAR_GAP) : BOTTOM_RESERVE;
+  const ly = Math.min(Math.max(y - h / 2, MARGIN), height - h - reserve);
   show(primary, lx, ly);
 }
 

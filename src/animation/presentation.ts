@@ -17,6 +17,20 @@ import { snapControlToBase } from './reactorControl';
  */
 const RESET_EXIT_RADIUS = 25;
 import { endRpvReview } from './rpvReview';
+import { useAppStore } from '../state/store';
+
+/** The cinematic may only start once the scene is ready (never on a half-built frame). */
+const sceneReady = () => useAppStore.getState().status === 'ready';
+
+/** Home / the Start button: the presentation from its first frame. */
+export function startPresentation(): void {
+  if (sceneReady()) masterSequence.play();
+}
+
+/** Space: start when stopped or finished, otherwise pause / resume. */
+export function startOrTogglePresentation(): void {
+  if (sceneReady()) masterSequence.togglePause();
+}
 
 /**
  * "Reset view": stop the shot or review, clear every Explore state (selection, hover, X-ray,

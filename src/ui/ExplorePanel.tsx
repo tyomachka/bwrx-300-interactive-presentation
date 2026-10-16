@@ -27,7 +27,11 @@ import {
   toggleXray,
 } from '../interaction/exploreActions';
 import { useExploreStore } from '../interaction/exploreStore';
-import { COMPONENTS, selectableParent } from '../scene/components';
+import { labelLayer } from '../interaction/labelLayer';
+import { componentText, insideText } from '../i18n/components';
+import { useLanguageStore } from '../i18n/language';
+import { useStrings } from '../i18n/strings';
+import { selectableParent } from '../scene/components';
 import { useAppStore } from '../state/store';
 
 const IDLE_HIDE_MS = 2500;
@@ -44,8 +48,26 @@ export function ExplorePanel() {
   const controlAmount = useExploreStore((s) => s.controlAmount);
   const safety = useExploreStore((s) => s.safety);
   const section = useExploreStore((s) => s.section);
+  const language = useLanguageStore((s) => s.language);
+  const t = useStrings();
+  const e = t.explore;
   const [awake, setAwake] = useState(false);
   const hovered = useRef(false);
+  const bar = useRef<HTMLDivElement>(null);
+
+  // Tell the label layer where the bar is, so the selection label never sits on it when it wraps.
+  useEffect(() => {
+    const el = bar.current;
+    const stage = el?.closest('.stage');
+    if (!el || !stage) return;
+    const observer = new ResizeObserver(() => {
+      const s = stage.getBoundingClientRect();
+      const b = el.getBoundingClientRect();
+      labelLayer.bar = { left: b.left - s.left, right: b.right - s.left, fromBottom: s.bottom - b.top };
+    });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     let timer = 0;
@@ -68,7 +90,7 @@ export function ExplorePanel() {
   }, []);
 
   const visible = ready && awake && mode === 'explore';
-  const selected = selectedId ? COMPONENTS[selectedId] : null;
+  const selected = selectedId ? { id: selectedId, ...componentText(selectedId, language) } : null;
   const parentId = selectedId ? selectableParent(selectedId) : null;
 
   return (
@@ -83,34 +105,34 @@ export function ExplorePanel() {
             <div className="explore__name">{selected.label}</div>
             {parentId && (
               <button type="button" className="explore__parent" onClick={() => select(parentId)}>
-                in {COMPONENTS[parentId].label}
+                {insideText(parentId, language)}
               </button>
             )}
             {!labels && <div className="explore__description">{selected.description}</div>}
           </div>
           <div className="explore__selection-actions">
             <button type="button" onClick={() => focus(selected.id)}>
-              Focus
+              {e.focus}
             </button>
-            <button type="button" title="Shortcut: Esc" aria-label="Clear selection" onClick={() => clearSelection()}>
+            <button type="button" title={t.shortcut('Esc')} aria-label={e.clearSelection} onClick={() => clearSelection()}>
               ✕
             </button>
           </div>
         </div>
       )}
-      <div className="explore__bar" role="toolbar" aria-label="Explore">
-        <button type="button" aria-pressed={xray} title="Shortcut: X" onClick={() => toggleXray()}>
-          X-ray
+      <div ref={bar} className="explore__bar" role="toolbar" aria-label={e.toolbar}>
+        <button type="button" aria-pressed={xray} title={t.shortcut('X')} onClick={() => toggleXray()}>
+          {e.xray}
         </button>
-        <button type="button" aria-pressed={section.on} title="Shortcut: C" onClick={() => toggleSection()}>
-          Section
+        <button type="button" aria-pressed={section.on} title={t.shortcut('C')} onClick={() => toggleSection()}>
+          {e.section}
         </button>
         {section.on && (
           <div className="explore__section">
-            <div className="explore__segmented" role="group" aria-label="Section context">
+            <div className="segmented" role="group" aria-label={e.sectionContext}>
               {(['plant', 'reactor'] as const).map((context) => (
                 <button key={context} type="button" aria-pressed={section.context === context} onClick={() => setSectionContext(context)}>
-                  {context === 'plant' ? 'Plant' : 'Reactor'}
+                  {context === 'plant' ? e.plant : e.reactor}
                 </button>
               ))}
             </div>
@@ -121,18 +143,18 @@ export function ExplorePanel() {
               max={1}
               step={0.005}
               value={section.position}
-              aria-label="Cut position"
+              aria-label={e.cutPosition}
               onChange={(e) => setSection({ position: Number(e.currentTarget.value) }, { immediate: true })}
               // Hand keyboard focus back so the shortcuts keep working after dragging.
               onPointerUp={(e) => e.currentTarget.blur()}
             />
           </div>
         )}
-        <button type="button" aria-pressed={flow} title="Shortcut: F" onClick={() => toggleFlow()}>
-          Flow
+        <button type="button" aria-pressed={flow} title={t.shortcut('F')} onClick={() => toggleFlow()}>
+          {e.flow}
         </button>
-        <button type="button" aria-pressed={control} title="Shortcut: O" onClick={() => toggleControl()}>
-          Control
+        <button type="button" aria-pressed={control} title={t.shortcut('O')} onClick={() => toggleControl()}>
+          {e.control}
         </button>
         {control && (
           <div className="explore__control">
@@ -143,24 +165,24 @@ export function ExplorePanel() {
               max={1}
               step={0.005}
               value={controlAmount}
-              aria-label="Control blades: withdrawn to inserted"
-              title="Control blades: left withdrawn, right inserted"
+              aria-label={e.controlSlider}
+              title={e.controlSliderTitle}
               onChange={(e) => setControlAmount(Number(e.currentTarget.value))}
               onPointerUp={(e) => e.currentTarget.blur()}
             />
           </div>
         )}
-        <button type="button" aria-pressed={safety} title="Passive cooling: isolation condensers. Shortcut: S" onClick={() => toggleSafety()}>
-          Safety
+        <button type="button" aria-pressed={safety} title={e.safetyTitle} onClick={() => toggleSafety()}>
+          {e.safety}
         </button>
-        <button type="button" aria-pressed={isolate} disabled={!selected} title="Shortcut: I" onClick={() => toggleIsolate()}>
-          Isolate
+        <button type="button" aria-pressed={isolate} disabled={!selected} title={t.shortcut('I')} onClick={() => toggleIsolate()}>
+          {e.isolate}
         </button>
-        <button type="button" aria-pressed={labels} title="Shortcut: L" onClick={() => toggleLabels()}>
-          Labels
+        <button type="button" aria-pressed={labels} title={t.shortcut('L')} onClick={() => toggleLabels()}>
+          {e.labels}
         </button>
-        <button type="button" title="Shortcut: R" onClick={() => void resetPresentation()}>
-          Reset
+        <button type="button" title={t.shortcut('R')} onClick={() => void resetPresentation()}>
+          {e.reset}
         </button>
       </div>
     </div>

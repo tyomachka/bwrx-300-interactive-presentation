@@ -34,12 +34,28 @@ body,
   -webkit-font-smoothing: antialiased;
 }
 
+/* The window: black bars around the 16:9 stage on 16:10 and 4:3 displays. */
 .app {
   position: fixed;
   inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
 }
 
-/* R3F sizes the canvas to its parent; the parent is the full viewport. */
+/* The presentation stage: the largest centred 16:9 rectangle (config/render.ts STAGE_ASPECT).
+   At 1920x1080 it is the whole window. Everything drawn over the picture is placed inside it. */
+.stage {
+  position: relative;
+  width: min(100vw, calc(100vh * 16 / 9));
+  height: min(100vh, calc(100vw * 9 / 16));
+  overflow: hidden;
+  background: var(--bg);
+  container-type: size;
+}
+
+/* R3F sizes the canvas to its parent; the parent is the 16:9 stage. */
 .scene-canvas {
   position: absolute !important;
   inset: 0;
@@ -133,6 +149,56 @@ body,
   margin-top: 0.5rem;
 }
 
+.status__details {
+  max-width: 44rem;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+}
+
+.status__details summary {
+  cursor: pointer;
+}
+
+/* The LT | EN switch on a failure screen (the setup bar is not shown there). */
+.status__lang {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
+/* The backup video player (failure screens) ---------------------------------- */
+.fallback {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+}
+
+.fallback__video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #000;
+}
+
+.fallback__missing {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+.fallback__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(16, 18, 21, 0.82);
+}
+
 /* Buttons ------------------------------------------------------------------- */
 button {
   min-height: 44px;
@@ -163,7 +229,7 @@ button[aria-pressed='true'] {
 
 /* Setup controls (auto-hiding) ------------------------------------------------ */
 .setup {
-  position: fixed;
+  position: absolute;
   right: 20px;
   bottom: 20px;
   display: flex;
@@ -180,6 +246,22 @@ button[aria-pressed='true'] {
 .setup.is-hidden {
   opacity: 0;
   pointer-events: none;
+}
+
+/* The way to start the cinematic, a little more visible than the other setup buttons. */
+.setup__start {
+  border-color: rgba(232, 163, 61, 0.55) !important;
+}
+
+/* A stage narrower than both bars side by side (about 1050 px of Explore bar with the section
+   slider open plus 650 px of setup bar; e.g. 1536x864 at 125 %, 1366x768, 1024x768): the setup bar
+   moves to the top so it never meets the Explore bar along the bottom edge. */
+@container (max-width: 1760px) {
+  .setup {
+    top: 16px;
+    bottom: auto;
+    right: 16px;
+  }
 }
 
 .setup__group {
@@ -258,9 +340,11 @@ button:disabled {
 
 /* Explore panel (auto-hiding, Stage 5) ----------------------------------------- */
 .explore {
-  position: fixed;
+  position: absolute;
   left: 20px;
   bottom: 20px;
+  /* Never wider than the stage: on a small stage (1024x576) the bar wraps onto a second row. */
+  max-width: calc(100cqw - 40px);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -274,9 +358,19 @@ button:disabled {
   pointer-events: none;
 }
 
+/* A wider stage keeps both bars on the bottom edge: the Explore bar wraps before it reaches the
+   setup bar (SetupControls writes its width to --setup-width), in either language and with both
+   sliders open. */
+@container (width > 1760px) {
+  .explore {
+    max-width: calc(100cqw - 60px - var(--setup-width, 0px));
+  }
+}
+
 .explore__bar,
 .explore__selection {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 0.4rem;
   padding: 0.5rem;
@@ -339,12 +433,13 @@ button:disabled {
   padding: 0 0.3rem;
 }
 
-.explore__segmented {
+/* Two or three small choices side by side: the section context, the LT | EN language. */
+.segmented {
   display: flex;
   gap: 0.25rem;
 }
 
-.explore__segmented button {
+.segmented button {
   min-height: 36px;
   padding: 0 0.8rem;
   font-size: 0.88rem;
@@ -357,7 +452,7 @@ button:disabled {
 
 /* Explore labels: one anchored label, one hover tag ----------------------------- */
 .explore-overlay {
-  position: fixed;
+  position: absolute;
   inset: 0;
   pointer-events: none;
   z-index: 9;

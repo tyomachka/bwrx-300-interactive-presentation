@@ -1,0 +1,954 @@
+{
+ "quality": "low",
+ "cases": {
+  "1920x1080-low": {
+   "name": "1920x1080",
+   "w": 1920,
+   "h": 1080,
+   "dpr": 1,
+   "quality": "low",
+   "log": {
+    "errors": [],
+    "external": []
+   },
+   "layout": {
+    "stage": [
+     0,
+     0,
+     1920,
+     1080
+    ],
+    "canvas": [
+     0,
+     0,
+     1920,
+     1080
+    ],
+    "buffer": [
+     1920,
+     1080
+    ],
+    "pixelRatio": 1,
+    "devicePixelRatio": 1
+   },
+   "panels": {
+    "stage": {
+     "x": 0,
+     "y": 0,
+     "w": 1920,
+     "h": 1080,
+     "hidden": false
+    },
+    "explore": {
+     "x": 20,
+     "y": 998,
+     "w": 1045.953125,
+     "h": 62,
+     "hidden": false
+    },
+    "setup": {
+     "x": 1256.28125,
+     "y": 998,
+     "w": 643.71875,
+     "h": 62,
+     "hidden": false
+    },
+    "label": {
+     "x": 982,
+     "y": 310.5168151855469,
+     "w": 368,
+     "h": 97.890625,
+     "hidden": false
+    },
+    "exploreInside": true,
+    "setupInside": true,
+    "labelInside": true,
+    "exploreSetupOverlap": false,
+    "labelFontPx": 19.2
+   },
+   "picking": {
+    "x": 960,
+    "y": 540,
+    "pick": "steam-separators",
+    "clickSelected": "steam-separators",
+    "agrees": true
+   }
+  },
+  "1920x1080-high": {
+   "name": "1920x1080",
+   "w": 1920,
+   "h": 1080,
+   "dpr": 1,
+   "quality": "high",
+   "log": {
+    "errors": [],
+    "external": []
+   },
+   "layout": {
+    "stage": [
+     0,
+     0,
+     1920,
+     1080
+    ],
+    "canvas": [
+     0,
+     0,
+     1920,
+     1080
+    ],
+    "buffer": [
+     1920,
+     1080
+    ],
+    "pixelRatio": 1,
+    "devicePixelRatio": 1
+   },
+   "panels": {
+    "stage": {
+     "x": 0,
+     "y": 0,
+     "w": 1920,
+     "h": 1080,
+     "hidden": false
+    },
+    "explore": {
+     "x": 20,
+     "y": 998,
+     "w": 1045.953125,
+     "h": 62,
+     "hidden": false
+    },
+    "setup": {
+     "x": 1256.28125,
+     "y": 998,
+     "w": 643.71875,
+     "h": 62,
+     "hidden": false
+    },
+    "label": {
+     "x": 982,
+     "y": 310.5168151855469,
+     "w": 368,
+     "h": 97.890625,
+     "hidden": false
+    },
+    "exploreInside": true,
+    "setupInside": true,
+    "labelInside": true,
+    "exploreSetupOverlap": false,
+    "labelFontPx": 19.2
+   },
+   "picking": {
+    "x": 960,
+    "y": 540,
+    "pick": "steam-separators",
+    "clickSelected": "steam-separators",
+    "agrees": true
+   }
+  },
+  "1366x768-low": {
+   "name": "1366x768",
+   "w": 1366,
+   "h": 768,
+   "dpr": 1,
+   "quality": "low",
+   "log": {
+    "errors": [],
+    "external": []
+   },
+   "layout": {
+    "stage": [
+     0.3,
+     0,
+     1365.3,
+     768
+    ],
+    "canvas": [
+     0.3,
+     0,
+     1365.3,
+     768
+    ],
+    "buffer": [
+     1365,
+     768
+    ],
+    "pixelRatio": 1,
+    "devicePixelRatio": 1
+   },
+   "panels": {
+    "stage": {
+     "x": 0.328125,
+     "y": 0,
+     "w": 1365.328125,
+     "h": 768,
+     "hidden": false
+    },
+    "explore": {
+     "x": 20.328125,
+     "y": 686,
+     "w": 1045.953125,
+     "h": 62,
+     "hidden": false
+    },
+    "setup": {
+     "x": 705.9375,
+     "y": 16,
+     "w": 643.71875,
+     "h": 62,
+     "hidden": false
+    },
+    "label": {
+     "x": 704.9921875,
+     "y": 206.65640258789062,
+     "w": 368,
+     "h": 97.890625,
+     "hidden": false
+    },
+    "exploreInside": true,
+    "setupInside": true,
+    "labelInside": true,
+    "exploreSetupOverlap": false,
+    "labelFontPx": 19.2
+   },
+   "picking": {
+    "x": 682.9921875,
+    "y": 384,
+    "pick": "steam-separators",
+    "clickSelected": "steam-separators",
+    "agrees": true
+   }
+  },
+  "1280x720-low": {
+   "name": "1280x720",
+   "w": 1280,
+   "h": 720,
+   "dpr": 1,
+   "quality": "low",
+   "log": {
+    "errors": [],
+    "external": []
+   },
+   "layout": {
+    "stage": [
+     0,
+     0,
+     1280,
+     720
+    ],
+    "canvas": [
+     0,
+     0,
+     1280,
+     720
+    ],
+    "buffer": [
+     1280,
+     720
+    ],
+    "pixelRatio": 1,
+    "devicePixelRatio": 1
+   },
+   "panels": {
+    "stage": {
+     "x": 0,
+     "y": 0,
+     "w": 1280,
+     "h": 720,
+     "hidden": false
+    },
+    "explore": {
+     "x": 20,
+     "y": 638,
+     "w": 1045.953125,
+     "h": 62,
+     "hidden": false
+    },
+    "setup": {
+     "x": 620.28125,
+     "y": 16,
+     "w": 643.71875,
+     "h": 62,
+     "hidden": false
+    },
+    "label": {
+     "x": 662,
+     "y": 190.67787170410156,
+     "w": 368,
+     "h": 97.89060974121094,
+     "hidden": false
+    },
+    "exploreInside": true,
+    "setupInside": true,
+    "labelInside": true,
+    "exploreSetupOverlap": false,
+    "labelFontPx": 19.2
+   },
+   "picking": {
+    "x": 640,
+    "y": 360,
+    "pick": "steam-separators",
+    "clickSelected": "steam-separators",
+    "agrees": true
+   }
+  },
+  "1280x800-low": {
+   "name": "1280x800",
+   "w": 1280,
+   "h": 800,
+   "dpr": 1,
+   "quality": "low",
+   "log": {
+    "errors": [],
+    "external": []
+   },
+   "layout": {
+    "stage": [
+     0,
+     40,
+     1280,
+     720
+    ],
+    "canvas": [
+     0,
+     40,
+     1280,
+     720
+    ],
+    "buffer": [
+     1280,
+     720
+    ],
+    "pixelRatio": 1,
+    "devicePixelRatio": 1
+   },
+   "panels": {
+    "stage": {
+     "x": 0,
+     "y": 40,
+     "w": 1280,
+     "h": 720,
+     "hidden": false
+    },
+    "explore": {
+     "x": 20,
+     "y": 678,
+     "w": 1045.953125,
+     "h": 62,
+     "hidden": false
+    },
+    "setup": {
+     "x": 620.28125,
+     "y": 56,
+     "w": 643.71875,
+     "h": 62,
+     "hidden": false
+    },
+    "label": {
+     "x": 662,
+     "y": 230.67787170410156,
+     "w": 368,
+     "h": 97.89060974121094,
+     "hidden": false
+    },
+    "exploreInside": true,
+    "setupInside": true,
+    "labelInside": true,
+    "exploreSetupOverlap": false,
+    "labelFontPx": 19.2
+   },
+   "picking": {
+    "x": 640,
+    "y": 400,
+    "pick": "steam-separators",
+    "clickSelected": "steam-separators",
+    "agrees": true
+   }
+  },
+  "1024x768-low": {
+   "name": "1024x768",
+   "w": 1024,
+   "h": 768,
+   "dpr": 1,
+   "quality": "low",
+   "log": {
+    "errors": [],
+    "external": []
+   },
+   "layout": {
+    "stage": [
+     0,
+     96,
+     1024,
+     576
+    ],
+    "canvas": [
+     0,
+     96,
+     1024,
+     576
+    ],
+    "buffer": [
+     1024,
+     576
+    ],
+    "pixelRatio": 1,
+    "devicePixelRatio": 1
+   },
+   "panels": {
+    "stage": {
+     "x": 0,
+     "y": 96,
+     "w": 1024,
+     "h": 576,
+     "hidden": false
+    },
+    "explore": {
+     "x": 20,
+     "y": 539.609375,
+     "w": 984,
+     "h": 112.390625,
+     "hidden": false
+    },
+    "setup": {
+     "x": 364.28125,
+     "y": 112,
+     "w": 643.71875,
+     "h": 62,
+     "hidden": false
+    },
+    "label": {
+     "x": 534,
+     "y": 238.74229431152344,
+     "w": 368,
+     "h": 97.89064025878906,
+     "hidden": false
+    },
+    "exploreInside": true,
+    "setupInside": true,
+    "labelInside": true,
+    "exploreSetupOverlap": false,
+    "labelFontPx": 19.2
+   },
+   "picking": {
+    "x": 512,
+    "y": 384,
+    "pick": "steam-separators",
+    "clickSelected": "steam-separators",
+    "agrees": true
+   }
+  },
+  "1536x864@1.25-low": {
+   "name": "1536x864@1.25",
+   "w": 1536,
+   "h": 864,
+   "dpr": 1.25,
+   "quality": "low",
+   "log": {
+    "errors": [],
+    "external": []
+   },
+   "layout": {
+    "stage": [
+     0,
+     0,
+     1536,
+     864
+    ],
+    "canvas": [
+     0,
+     0,
+     1536,
+     864
+    ],
+    "buffer": [
+     1536,
+     864
+    ],
+    "pixelRatio": 1,
+    "devicePixelRatio": 1.25
+   },
+   "panels": {
+    "stage": {
+     "x": 0,
+     "y": 0,
+     "w": 1536,
+     "h": 864,
+     "hidden": false
+    },
+    "explore": {
+     "x": 20,
+     "y": 782,
+     "w": 1045.953125,
+     "h": 62,
+     "hidden": false
+    },
+    "setup": {
+     "x": 876.28125,
+     "y": 16,
+     "w": 643.71875,
+     "h": 62,
+     "hidden": false
+    },
+    "label": {
+     "x": 790,
+     "y": 238.6134490966797,
+     "w": 368,
+     "h": 97.89064025878906,
+     "hidden": false
+    },
+    "exploreInside": true,
+    "setupInside": true,
+    "labelInside": true,
+    "exploreSetupOverlap": false,
+    "labelFontPx": 19.2
+   },
+   "picking": {
+    "x": 768,
+    "y": 432,
+    "pick": "steam-separators",
+    "clickSelected": "steam-separators",
+    "agrees": true
+   }
+  },
+  "1280x720@1.5-low": {
+   "name": "1280x720@1.5",
+   "w": 1280,
+   "h": 720,
+   "dpr": 1.5,
+   "quality": "low",
+   "log": {
+    "errors": [],
+    "external": []
+   },
+   "layout": {
+    "stage": [
+     0,
+     0,
+     1280,
+     720
+    ],
+    "canvas": [
+     0,
+     0,
+     1280,
+     720
+    ],
+    "buffer": [
+     1280,
+     720
+    ],
+    "pixelRatio": 1,
+    "devicePixelRatio": 1.5
+   },
+   "panels": {
+    "stage": {
+     "x": 0,
+     "y": 0,
+     "w": 1280,
+     "h": 720,
+     "hidden": false
+    },
+    "explore": {
+     "x": 20,
+     "y": 638,
+     "w": 1045.953125,
+     "h": 62,
+     "hidden": false
+    },
+    "setup": {
+     "x": 620.28125,
+     "y": 16,
+     "w": 643.71875,
+     "h": 62,
+     "hidden": false
+    },
+    "label": {
+     "x": 662,
+     "y": 190.67787170410156,
+     "w": 368,
+     "h": 97.89060974121094,
+     "hidden": false
+    },
+    "exploreInside": true,
+    "setupInside": true,
+    "labelInside": true,
+    "exploreSetupOverlap": false,
+    "labelFontPx": 19.2
+   },
+   "picking": {
+    "x": 640,
+    "y": 360,
+    "pick": "steam-separators",
+    "clickSelected": "steam-separators",
+    "agrees": true
+   }
+  },
+  "1920x1080@1.5-low": {
+   "name": "1920x1080@1.5",
+   "w": 1920,
+   "h": 1080,
+   "dpr": 1.5,
+   "quality": "low",
+   "log": {
+    "errors": [],
+    "external": []
+   },
+   "layout": {
+    "stage": [
+     0,
+     0,
+     1920,
+     1080
+    ],
+    "canvas": [
+     0,
+     0,
+     1920,
+     1080
+    ],
+    "buffer": [
+     1920,
+     1080
+    ],
+    "pixelRatio": 1,
+    "devicePixelRatio": 1.5
+   },
+   "panels": {
+    "stage": {
+     "x": 0,
+     "y": 0,
+     "w": 1920,
+     "h": 1080,
+     "hidden": false
+    },
+    "explore": {
+     "x": 20,
+     "y": 998,
+     "w": 1045.953125,
+     "h": 62,
+     "hidden": false
+    },
+    "setup": {
+     "x": 1256.28125,
+     "y": 998,
+     "w": 643.71875,
+     "h": 62,
+     "hidden": false
+    },
+    "label": {
+     "x": 982,
+     "y": 310.5168151855469,
+     "w": 368,
+     "h": 97.890625,
+     "hidden": false
+    },
+    "exploreInside": true,
+    "setupInside": true,
+    "labelInside": true,
+    "exploreSetupOverlap": false,
+    "labelFontPx": 19.2
+   },
+   "picking": {
+    "x": 960,
+    "y": 540,
+    "pick": "steam-separators",
+    "clickSelected": "steam-separators",
+    "agrees": true
+   }
+  },
+  "1920x1080@2-low": {
+   "name": "1920x1080@2",
+   "w": 1920,
+   "h": 1080,
+   "dpr": 2,
+   "quality": "low",
+   "log": {
+    "errors": [],
+    "external": []
+   },
+   "layout": {
+    "stage": [
+     0,
+     0,
+     1920,
+     1080
+    ],
+    "canvas": [
+     0,
+     0,
+     1920,
+     1080
+    ],
+    "buffer": [
+     1920,
+     1080
+    ],
+    "pixelRatio": 1,
+    "devicePixelRatio": 2
+   },
+   "panels": {
+    "stage": {
+     "x": 0,
+     "y": 0,
+     "w": 1920,
+     "h": 1080,
+     "hidden": false
+    },
+    "explore": {
+     "x": 20,
+     "y": 998,
+     "w": 1045.953125,
+     "h": 62,
+     "hidden": false
+    },
+    "setup": {
+     "x": 1256.28125,
+     "y": 998,
+     "w": 643.71875,
+     "h": 62,
+     "hidden": false
+    },
+    "label": {
+     "x": 982,
+     "y": 310.5168151855469,
+     "w": 368,
+     "h": 97.890625,
+     "hidden": false
+    },
+    "exploreInside": true,
+    "setupInside": true,
+    "labelInside": true,
+    "exploreSetupOverlap": false,
+    "labelFontPx": 19.2
+   },
+   "picking": {
+    "x": 960,
+    "y": 540,
+    "pick": "steam-separators",
+    "clickSelected": "steam-separators",
+    "agrees": true
+   }
+  },
+  "1920x1080@2-high": {
+   "name": "1920x1080@2",
+   "w": 1920,
+   "h": 1080,
+   "dpr": 2,
+   "quality": "high",
+   "log": {
+    "errors": [],
+    "external": []
+   },
+   "layout": {
+    "stage": [
+     0,
+     0,
+     1920,
+     1080
+    ],
+    "canvas": [
+     0,
+     0,
+     1920,
+     1080
+    ],
+    "buffer": [
+     2560,
+     1440
+    ],
+    "pixelRatio": 1.3333333333333333,
+    "devicePixelRatio": 2
+   },
+   "panels": {
+    "stage": {
+     "x": 0,
+     "y": 0,
+     "w": 1920,
+     "h": 1080,
+     "hidden": false
+    },
+    "explore": {
+     "x": 20,
+     "y": 998,
+     "w": 1045.953125,
+     "h": 62,
+     "hidden": false
+    },
+    "setup": {
+     "x": 1256.28125,
+     "y": 998,
+     "w": 643.71875,
+     "h": 62,
+     "hidden": false
+    },
+    "label": {
+     "x": 982,
+     "y": 310.5168151855469,
+     "w": 368,
+     "h": 97.890625,
+     "hidden": false
+    },
+    "exploreInside": true,
+    "setupInside": true,
+    "labelInside": true,
+    "exploreSetupOverlap": false,
+    "labelFontPx": 19.2
+   },
+   "picking": {
+    "x": 960,
+    "y": 540,
+    "pick": "steam-separators",
+    "clickSelected": "steam-separators",
+    "agrees": true
+   }
+  },
+  "3840x2160@1-low": {
+   "name": "3840x2160@1",
+   "w": 3840,
+   "h": 2160,
+   "dpr": 1,
+   "quality": "low",
+   "log": {
+    "errors": [],
+    "external": []
+   },
+   "layout": {
+    "stage": [
+     0,
+     0,
+     3840,
+     2160
+    ],
+    "canvas": [
+     0,
+     0,
+     3840,
+     2160
+    ],
+    "buffer": [
+     1920,
+     1080
+    ],
+    "pixelRatio": 0.5,
+    "devicePixelRatio": 1
+   },
+   "panels": {
+    "stage": {
+     "x": 0,
+     "y": 0,
+     "w": 3840,
+     "h": 2160,
+     "hidden": false
+    },
+    "explore": {
+     "x": 20,
+     "y": 2078,
+     "w": 1045.953125,
+     "h": 62,
+     "hidden": false
+    },
+    "setup": {
+     "x": 3176.28125,
+     "y": 2078,
+     "w": 643.71875,
+     "h": 62,
+     "hidden": false
+    },
+    "label": {
+     "x": 1942,
+     "y": 670.0336303710938,
+     "w": 368,
+     "h": 97.890625,
+     "hidden": false
+    },
+    "exploreInside": true,
+    "setupInside": true,
+    "labelInside": true,
+    "exploreSetupOverlap": false,
+    "labelFontPx": 19.2
+   },
+   "picking": {
+    "x": 1920,
+    "y": 1080,
+    "pick": "steam-separators",
+    "clickSelected": "steam-separators",
+    "agrees": true
+   }
+  },
+  "3840x2160@1-high": {
+   "name": "3840x2160@1",
+   "w": 3840,
+   "h": 2160,
+   "dpr": 1,
+   "quality": "high",
+   "log": {
+    "errors": [],
+    "external": []
+   },
+   "layout": {
+    "stage": [
+     0,
+     0,
+     3840,
+     2160
+    ],
+    "canvas": [
+     0,
+     0,
+     3840,
+     2160
+    ],
+    "buffer": [
+     2560,
+     1440
+    ],
+    "pixelRatio": 0.6666666666666666,
+    "devicePixelRatio": 1
+   },
+   "panels": {
+    "stage": {
+     "x": 0,
+     "y": 0,
+     "w": 3840,
+     "h": 2160,
+     "hidden": false
+    },
+    "explore": {
+     "x": 20,
+     "y": 2078,
+     "w": 1045.953125,
+     "h": 62,
+     "hidden": false
+    },
+    "setup": {
+     "x": 3176.28125,
+     "y": 2078,
+     "w": 643.71875,
+     "h": 62,
+     "hidden": false
+    },
+    "label": {
+     "x": 1942,
+     "y": 670.0336303710938,
+     "w": 368,
+     "h": 97.890625,
+     "hidden": false
+    },
+    "exploreInside": true,
+    "setupInside": true,
+    "labelInside": true,
+    "exploreSetupOverlap": false,
+    "labelFontPx": 19.2
+   },
+   "picking": {
+    "x": 1920,
+    "y": 1080,
+    "pick": "steam-separators",
+    "clickSelected": "steam-separators",
+    "agrees": true
+   }
+  }
+ }
+}

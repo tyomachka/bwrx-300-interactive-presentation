@@ -97,9 +97,14 @@ export const FISSION_LOOK = {
   label: '#c9ced3',
 } as const;
 
-/** Minimal labels (names only; no paragraphs), each with its τ window [in, out]. */
+/**
+ * Minimal labels (names only; no paragraphs), each with its τ window [in, out]. The words are per
+ * language (i18n/strings.ts `fission`: U-235, neutron / neutronas, energy → heat / energija → šiluma).
+ */
 export const FISSION_LABELS = [
-  { text: 'U-235', window: [0.55, 1.75] },
-  { text: 'neutron', window: [0.55, 1.2] },
-  { text: 'energy → heat', window: [2.75, 3.65] },
+  { key: 'nucleus', window: [0.55, 1.75] },
+  { key: 'neutron', window: [0.55, 1.2] },
+  { key: 'heat', window: [2.75, 3.65] },
 ] as const;
+
+export type FissionLabelKey = (typeof FISSION_LABELS)[number]['key'];

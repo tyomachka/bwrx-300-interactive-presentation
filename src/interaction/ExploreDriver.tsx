@@ -55,7 +55,7 @@ export function ExploreDriver() {
   const camera = useThree((s) => s.camera);
   const size = useThree((s) => s.size);
   const controls = useThree((s) => s.controls) as ExploreOrbitControls | null;
-  const pointer = useRef({ ndc: new Vector2(), clientX: 0, clientY: 0, pending: false, inside: false, held: false, down: null as { x: number; y: number; t: number } | null });
+  const pointer = useRef({ ndc: new Vector2(), clientX: 0, clientY: 0, localX: 0, localY: 0, pending: false, inside: false, held: false, down: null as { x: number; y: number; t: number } | null });
   const clicks = useRef({ pending: null as PendingClick | null, secondPress: false });
   // The camera when the hover was last picked, and last frame: a stationary pointer re-picks
   // once the camera comes to rest somewhere new (after an orbit, a wheel zoom, a focus move).
@@ -70,6 +70,9 @@ export function ExploreDriver() {
       p.ndc.set(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
       p.clientX = e.clientX;
       p.clientY = e.clientY;
+      // The hover tag lives in the 16:9 stage, which the canvas fills (offset in a letterboxed window).
+      p.localX = e.clientX - r.left;
+      p.localY = e.clientY - r.top;
     };
     const onMove = (e: PointerEvent) => {
       toNdc(e);
@@ -185,7 +188,7 @@ export function ExploreDriver() {
       const hoveredId = p.inside ? (pickComponent(p.ndc, camera)?.selectableId ?? null) : null;
       setHovered(hoveredId);
       gl.domElement.style.cursor = hoveredId ? 'pointer' : '';
-      placeHoverTag(p.clientX, p.clientY, hoveredId !== null && hoveredId !== s.selectedId);
+      placeHoverTag(p.localX, p.localY, hoveredId !== null && hoveredId !== s.selectedId);
     }
 
     updateExploreVisuals(animationClock.lastStep);

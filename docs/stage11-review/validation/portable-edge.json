@@ -1,0 +1,76 @@
+{
+ "browser": "edge",
+ "url": "file:///C:/Users/user/Desktop/viesoji_komunikacija/dist-portable/BWRX300/BWRX300.html",
+ "steps": {
+  "startup": {
+   "status": "ready",
+   "seconds": 3.103
+  },
+  "webgl2": {
+   "canvas": true,
+   "webgl2": true,
+   "renderer": "WebKit WebGL",
+   "buffer": [
+    1920,
+    1080
+   ]
+  },
+  "debugUiVisible": false,
+  "setupHiddenWhilePlaying": true,
+  "afterReset": {
+   "status": "ready",
+   "setupVisible": true,
+   "startLabel": "Start presentation"
+  },
+  "fullscreen": {
+   "active": true,
+   "status": "ready"
+  },
+  "log": {
+   "errors": [],
+   "console": [
+    "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+   ],
+   "requests": []
+  },
+  "lowPlayback": {
+   "frames": 2711,
+   "fps": 56.5,
+   "over20": 0,
+   "worst": 19.4,
+   "programs": 24
+  },
+  "switchToHigh": "ready",
+  "switchToLow": "ready",
+  "debugLog": {
+   "errors": [],
+   "console": [
+    "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.",
+    "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.",
+    "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+   ],
+   "requests": []
+  },
+  "fallbackScreen": {
+   "heading": "The 3D view cannot start on this computer",
+   "button": [
+    "Play the backup video"
+   ]
+  },
+  "fallbackVideo": {
+   "video": true,
+   "missingMessage": false,
+   "readyState": 4,
+   "currentTime": 2.79,
+   "paused": false,
+   "duration": 48.03,
+   "muted": true
+  },
+  "fallbackLog": {
+   "errors": [],
+   "console": [],
+   "requests": []
+  }
+ },
+ "version": "Edg/155.0.4283.45"
+}

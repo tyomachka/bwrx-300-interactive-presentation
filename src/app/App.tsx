@@ -34,18 +34,21 @@ export function App() {
 
   return (
     <div className="app">
-      <AppErrorBoundary
-        resetKey={canvasKey}
-        onError={() => useAppStore.getState().setStatus('error')}
-        fallback={(error) => <SceneCrashed error={error} />}
-      >
-        <SceneCanvas />
-      </AppErrorBoundary>
+      {/* The 16:9 presentation stage (config/render.ts STAGE_ASPECT): canvas and in-picture UI. */}
+      <div className="stage">
+        <AppErrorBoundary
+          resetKey={canvasKey}
+          onError={() => useAppStore.getState().setStatus('error')}
+          fallback={(error) => <SceneCrashed error={error} />}
+        >
+          <SceneCanvas />
+        </AppErrorBoundary>
+        <ExploreOverlay />
+        <ExplorePanel />
+        <SetupControls />
+      </div>
       <LoadingOverlay />
       <ContextLostOverlay />
-      <ExploreOverlay />
-      <ExplorePanel />
-      <SetupControls />
       {showDiagnostics && (
         <SafeLayer name="diagnostics-overlay">
           <Suspense fallback={null}>

@@ -1,0 +1,658 @@
+{
+ "quality": "high",
+ "home": {
+  "position": [
+   -95,
+   64,
+   150
+  ],
+  "target": [
+   36,
+   4.999999999999998,
+   -8
+  ],
+  "fov": 35,
+  "authority": "explore",
+  "allowBelowGrade": false
+ },
+ "cutOpened": {
+  "section": {
+   "on": true,
+   "context": "reactor",
+   "position": 1
+  },
+  "nav": {
+   "cutOpen": true,
+   "minDistance": 4,
+   "maxPolarAngle": 1.5307963267948965,
+   "enabled": true
+  }
+ },
+ "zoom": [
+  {
+   "label": "lower vessel, 6 notches from home",
+   "pointer": [
+    760,
+    888
+   ],
+   "hit": "control-rod-drives",
+   "viewTurnDeg": 0,
+   "pointDriftPx": 0,
+   "distanceToPoint": [
+    200.07,
+    108.11
+   ],
+   "targetDepth": 105.259,
+   "pointDepth": 105.259,
+   "selectionUnchanged": true,
+   "hover": [
+    null,
+    "control-rod-drives"
+   ],
+   "camera": {
+    "position": [
+     -51.334,
+     21.779,
+     80.953
+    ],
+    "target": [
+     13.234,
+     -7.301,
+     3.077
+    ]
+   }
+  },
+  {
+   "label": "lower vessel, 8 more",
+   "pointer": [
+    764,
+    884
+   ],
+   "hit": "control-rod-drives",
+   "viewTurnDeg": 0,
+   "pointDriftPx": 0,
+   "distanceToPoint": [
+    107.58,
+    47.35
+   ],
+   "targetDepth": 46.133,
+   "pointDepth": 46.133,
+   "selectionUnchanged": true,
+   "hover": [
+    "control-rod-drives",
+    "control-rod-drives"
+   ],
+   "camera": {
+    "position": [
+     -22.584,
+     -5.763,
+     35.755
+    ],
+    "target": [
+     5.715,
+     -18.508,
+     1.623
+    ]
+   }
+  },
+  {
+   "label": "lower vessel, fast burst of 16 notches",
+   "pointer": [
+    756,
+    876
+   ],
+   "hit": "control-rod-drives",
+   "viewTurnDeg": 0,
+   "pointDriftPx": 0,
+   "distanceToPoint": [
+    47.39,
+    9.18
+   ],
+   "targetDepth": 8.947,
+   "pointDepth": 8.947,
+   "selectionUnchanged": true,
+   "hover": [
+    "control-rod-drives",
+    "control-rod-drives"
+   ],
+   "camera": {
+    "position": [
+     -4.443,
+     -23.073,
+     6.925
+    ],
+    "target": [
+     1.045,
+     -25.545,
+     0.306
+    ]
+   }
+  },
+  {
+   "label": "lower vessel, 10 more",
+   "pointer": [
+    748,
+    604
+   ],
+   "hit": "control-rod-guide-tubes",
+   "viewTurnDeg": 0,
+   "pointDriftPx": 0,
+   "distanceToPoint": [
+    8.77,
+    3.14
+   ],
+   "targetDepth": 3.117,
+   "pointDepth": 3.117,
+   "selectionUnchanged": true,
+   "hover": [
+    "control-rod-drives",
+    "control-rod-guide-tubes"
+   ],
+   "camera": {
+    "position": [
+     -1.59,
+     -24.814,
+     2.402
+    ],
+    "target": [
+     0.323,
+     -25.676,
+     0.096
+    ]
+   }
+  },
+  {
+   "label": "zoom out 6 notches over the same point",
+   "pointer": [
+    748,
+    604
+   ],
+   "hit": "control-rod-guide-tubes",
+   "viewTurnDeg": 0,
+   "pointDriftPx": 0,
+   "distanceToPoint": [
+    3.14,
+    5.82
+   ],
+   "targetDepth": 5.769,
+   "pointDepth": 5.769,
+   "selectionUnchanged": true,
+   "hover": [
+    "control-rod-guide-tubes",
+    "control-rod-guide-tubes"
+   ],
+   "camera": {
+    "position": [
+     -2.946,
+     -23.987,
+     4.552
+    ],
+    "target": [
+     0.593,
+     -25.58,
+     0.284
+    ]
+   }
+  },
+  {
+   "label": "drives, 6 notches",
+   "pointer": [
+    950,
+    670
+   ],
+   "hit": "control-rod-drives",
+   "viewTurnDeg": 1.4472,
+   "pointDriftPx": 1.57,
+   "distanceToPoint": [
+    5.81,
+    3.77
+   ],
+   "targetDepth": 3.767,
+   "pointDepth": 3.756,
+   "selectionUnchanged": true,
+   "hover": [
+    "control-rod-drives",
+    "control-rod-drives"
+   ],
+   "camera": {
+    "position": [
+     -3.226,
+     -25.768,
+     0.5
+    ],
+    "target": [
+     0.173,
+     -27.371,
+     0.246
+    ]
+   }
+  },
+  {
+   "label": "background (sky), 5 notches",
+   "pointer": [
+    960,
+    30
+   ],
+   "hit": null,
+   "viewTurnDeg": 0,
+   "targetMoved": 0,
+   "distanceToTarget": [
+    213.56,
+    127.86
+   ],
+   "selectionUnchanged": true,
+   "hover": [
+    "turbine-building",
+    null
+   ],
+   "camera": {
+    "position": [
+     -42.435,
+     40.325,
+     86.6
+    ],
+    "target": [
+     36,
+     5,
+     -8
+    ]
+   }
+  },
+  {
+   "label": "left edge",
+   "pointer": [
+    40,
+    690
+   ],
+   "hit": "site-ground",
+   "viewTurnDeg": 0,
+   "pointDriftPx": 0,
+   "distanceToPoint": [
+    78.55,
+    42.45
+   ],
+   "targetDepth": 37.282,
+   "pointDepth": 37.282,
+   "selectionUnchanged": true,
+   "hover": [
+    "reactor-building-above-grade",
+    null
+   ],
+   "camera": {
+    "position": [
+     -34.773,
+     16.536,
+     27.117
+    ],
+    "target": [
+     -12.492,
+     3.168,
+     0.381
+    ]
+   }
+  },
+  {
+   "label": "right edge",
+   "pointer": [
+    1870,
+    530
+   ],
+   "hit": "reactor-building-above-grade",
+   "viewTurnDeg": 0,
+   "pointDriftPx": 0,
+   "distanceToPoint": [
+    30.62,
+    16.55
+   ],
+   "targetDepth": 14.613,
+   "pointDepth": 14.613,
+   "selectionUnchanged": true,
+   "hover": [
+    null,
+    "reactor-building-above-grade"
+   ],
+   "camera": {
+    "position": [
+     -22.254,
+     12.147,
+     22.411
+    ],
+    "target": [
+     -13.521,
+     6.907,
+     11.932
+    ]
+   }
+  },
+  {
+   "label": "with a selection",
+   "pointer": [
+    960,
+    600
+   ],
+   "hit": "reactor-building-above-grade",
+   "viewTurnDeg": 0,
+   "pointDriftPx": 0,
+   "distanceToPoint": [
+    14.32,
+    9.5
+   ],
+   "targetDepth": 9.493,
+   "pointDepth": 9.493,
+   "selectionUnchanged": true,
+   "hover": [
+    "reactor-building-above-grade",
+    "reactor-building-above-grade"
+   ],
+   "camera": {
+    "position": [
+     -19.414,
+     10.263,
+     19.004
+    ],
+    "target": [
+     -13.741,
+     6.859,
+     12.196
+    ]
+   }
+  },
+  {
+   "label": "1280x720",
+   "pointer": [
+    670,
+    330
+   ],
+   "hit": "turbine-building",
+   "viewTurnDeg": 0,
+   "pointDriftPx": 0,
+   "distanceToPoint": [
+    181.24,
+    97.93
+   ],
+   "targetDepth": 97.865,
+   "pointDepth": 97.865,
+   "selectionUnchanged": true,
+   "hover": [
+    "turbine-building",
+    "turbine-building"
+   ],
+   "camera": {
+    "position": [
+     -41.866,
+     43.103,
+     89.341
+    ],
+    "target": [
+     18.167,
+     16.066,
+     16.935
+    ]
+   }
+  }
+ ],
+ "navAfterZoom": {
+  "cutOpen": true,
+  "minDistance": 2.5,
+  "maxPolarAngle": 2.0707963267948966,
+  "enabled": true
+ },
+ "pan": {
+  "targetBefore": [
+   0.593,
+   -25.58,
+   0.284
+  ],
+  "targetAfter": [
+   0.451,
+   -26.351,
+   0.454
+  ],
+  "cameraMovedWithTarget": 0
+ },
+ "orbitAfterPan": {
+  "camera": [
+   -5.007,
+   -24.757,
+   0.5
+  ],
+  "target": [
+   0.451,
+   -26.351,
+   0.454
+  ]
+ },
+ "crdSideBelow": {
+  "camera": [
+   -3.289,
+   -29.228,
+   0.5
+  ],
+  "target": [
+   0.173,
+   -27.371,
+   0.246
+  ],
+  "cameraBelowTarget": true,
+  "centrePick": "control-rod-drives",
+  "drivesOnScreen": true
+ },
+ "pivot": {
+  "hit": "control-rod-drives",
+  "targetToHit": 0,
+  "cameraMoved": 0,
+  "transitionSeen": [
+   0,
+   338
+  ],
+  "selectionUnchanged": true,
+  "pivotCentred": [
+   960,
+   540
+  ],
+  "orbitKeepsPivot": 0,
+  "orbitDistanceKept": [
+   3.323,
+   3.663
+  ]
+ },
+ "keepInCut": {
+  "samples": 61,
+  "belowGrade": 61,
+  "minZBelowGrade": 0.5,
+  "minY": -29.444
+ },
+ "reset": {
+  "position": [
+   -95,
+   64,
+   150
+  ],
+  "target": [
+   36,
+   5,
+   -8
+  ],
+  "equalsHome": true,
+  "nav": {
+   "cutOpen": false,
+   "minDistance": 4,
+   "maxPolarAngle": 1.5307963267948965,
+   "enabled": true
+  },
+  "allowBelowGrade": false,
+  "state": {
+   "mode": "explore",
+   "hoveredId": null,
+   "selectedId": null,
+   "focusId": null,
+   "isolate": false,
+   "xray": false,
+   "section": {
+    "on": false,
+    "context": "plant",
+    "position": 1
+   },
+   "labels": true,
+   "flow": false,
+   "control": false,
+   "controlAmount": 0,
+   "safety": false
+  }
+ },
+ "closedPanFloor": {
+  "targetY": 0.499,
+  "cameraY": 59.499
+ },
+ "focus": [
+  {
+   "id": "control-rod-guide-tubes",
+   "ms": 6116,
+   "end": {
+    "position": [
+     -7.63,
+     -21.46,
+     10.1
+    ],
+    "target": [
+     -0.2,
+     -23.2,
+     0.2
+    ]
+   },
+   "idleDrift": 0,
+   "firstOrbitSteps": [
+    0.0438,
+    0.078,
+    0.1045,
+    0.1252,
+    0.1413,
+    0.1539,
+    0.1637,
+    0.1713
+   ],
+   "nav": {
+    "cutOpen": true,
+    "minDistance": 2.5,
+    "maxPolarAngle": 2.0707963267948966,
+    "enabled": true
+   }
+  },
+  {
+   "id": "steam-dryer",
+   "ms": 5994,
+   "end": {
+    "position": [
+     -11.2,
+     -1.85,
+     13.4
+    ],
+    "target": [
+     0,
+     -6.2,
+     0
+    ]
+   },
+   "idleDrift": 0,
+   "firstOrbitSteps": [
+    0.0618,
+    0.11,
+    0.1475,
+    0.1767,
+    0.1994,
+    0.2171,
+    0.2309,
+    0.2416
+   ],
+   "nav": {
+    "cutOpen": true,
+    "minDistance": 2.5,
+    "maxPolarAngle": 2.0707963267948966,
+    "enabled": true
+   }
+  },
+  {
+   "id": "control-rod-guide-tubes",
+   "ms": 6267,
+   "end": {
+    "position": [
+     -7.63,
+     -21.46,
+     10.1
+    ],
+    "target": [
+     -0.2,
+     -23.2,
+     0.2
+    ]
+   },
+   "idleDrift": 0,
+   "firstOrbitSteps": [
+    0.0438,
+    0.078,
+    0.1045,
+    0.1252,
+    0.1413,
+    0.1539,
+    0.1637,
+    0.1713
+   ],
+   "nav": {
+    "cutOpen": true,
+    "minDistance": 2.5,
+    "maxPolarAngle": 2.0707963267948966,
+    "enabled": true
+   }
+  },
+  {
+   "id": "control-rod-drives",
+   "ms": 6169,
+   "end": {
+    "position": [
+     -11.1,
+     -30.6,
+     14.4
+    ],
+    "target": [
+     0,
+     -27.6,
+     0
+    ]
+   },
+   "idleDrift": 0,
+   "firstOrbitSteps": [
+    0.0644,
+    0.1145,
+    0.1535,
+    0.1839,
+    0.2076,
+    0.2897,
+    0.2263,
+    0.2406
+   ],
+   "nav": {
+    "cutOpen": true,
+    "minDistance": 2.5,
+    "maxPolarAngle": 1.9840326826877228,
+    "enabled": true
+   }
+  }
+ ],
+ "singleClick": {
+  "expected": "chimney",
+  "at50ms": null,
+  "at500ms": "chimney"
+ },
+ "doubleClickSelects": null,
+ "programs": [
+  22,
+  22
+ ],
+ "log": {
+  "errors": [],
+  "console": [
+   "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+  ],
+  "external": []
+ }
+}

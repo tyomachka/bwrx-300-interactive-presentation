@@ -1,0 +1,107 @@
+{
+ "afterF": {
+  "explore": {
+   "mode": "explore",
+   "hoveredId": "turbine-building",
+   "selectedId": null,
+   "focusId": null,
+   "isolate": false,
+   "xray": false,
+   "section": {
+    "on": false,
+    "context": "plant",
+    "position": 1
+   },
+   "labels": true,
+   "flow": true,
+   "control": false,
+   "controlAmount": 0,
+   "safety": false
+  },
+  "flow": {
+   "source": "explore",
+   "time": 0.9149666667381922,
+   "intensity": {
+    "coreWater": 0.9,
+    "chimneyMixture": 0.9,
+    "downcomerWater": 0.9,
+    "separatorWater": 0.9,
+    "separatorSteam": 0.9,
+    "drySteam": 0.9,
+    "steamOutlet": 0.9,
+    "mainSteam": 0.9,
+    "turbine": 0.9,
+    "generator": 0.9,
+    "electricity": 0.9
+   },
+   "boil": 1,
+   "boilShare": 1,
+   "mainSteamFront": null,
+   "turbineFront": null,
+   "electricityFront": null,
+   "shaftAngle": 4.311678837756367
+  }
+ },
+ "withSelection": 0.54,
+ "afterReset": {
+  "explore": {
+   "mode": "explore",
+   "hoveredId": null,
+   "selectedId": null,
+   "focusId": null,
+   "isolate": false,
+   "xray": false,
+   "section": {
+    "on": false,
+    "context": "plant",
+    "position": 1
+   },
+   "labels": true,
+   "flow": false,
+   "control": false,
+   "controlAmount": 0,
+   "safety": false
+  },
+  "flow": {
+   "source": "off",
+   "time": 0,
+   "intensity": {
+    "coreWater": 0,
+    "chimneyMixture": 0,
+    "downcomerWater": 0,
+    "separatorWater": 0,
+    "separatorSteam": 0,
+    "drySteam": 0,
+    "steamOutlet": 0,
+    "mainSteam": 0,
+    "turbine": 0,
+    "generator": 0,
+    "electricity": 0
+   },
+   "boil": 0,
+   "boilShare": 1,
+   "mainSteamFront": 0,
+   "turbineFront": 0,
+   "electricityFront": 0,
+   "shaftAngle": 0
+  }
+ },
+ "afterQualitySwitch": {
+  "flow": true,
+  "source": "explore",
+  "stats": {
+   "paths": 156,
+   "particles": 861,
+   "perChannel": {
+    "coreWater": 115,
+    "chimneyMixture": 112,
+    "downcomerWater": 364,
+    "separatorWater": 90,
+    "separatorSteam": 48,
+    "drySteam": 68,
+    "steamOutlet": 64
+   }
+  }
+ },
+ "errors": []
+}

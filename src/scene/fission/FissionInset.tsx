@@ -13,16 +13,23 @@ import { useFrame, useThree } from '@react-three/fiber';
 import { useEffect, useMemo, useRef } from 'react';
 import type { Group, Mesh } from 'three';
 import { fissionForFrame } from '../../animation/fissionInset';
-import { FISSION_TIMING as T } from '../../config/fission';
+import { FISSION_LABELS, FISSION_TIMING as T } from '../../config/fission';
+import { useLanguageStore, type Language } from '../../i18n/language';
+import { UI_STRINGS } from '../../i18n/strings';
 import { useQualityPreset } from '../../state/store';
 import { buildInset, insetDebug } from './buildInset';
+
+/** The label words in the given language, in FISSION_LABELS order. */
+const labelTexts = (language: Language) => FISSION_LABELS.map((l) => UI_STRINGS[language].fission[l.key]);
 
 /** Drawn last, in this order, over everything (the transparent pass sorts by renderOrder first). */
 const ORDER = { backdrop: 900, particles: 901, sprites: 902, labels: 903 } as const;
 
 export function FissionInset() {
   const lod = useQualityPreset().geometryLod;
-  const inset = useMemo(() => buildInset(lod), [lod]);
+  const language = useLanguageStore((s) => s.language);
+  // Built with the language of the moment; a later switch only repaints the labels (no rebuild).
+  const inset = useMemo(() => buildInset(lod, labelTexts(useLanguageStore.getState().language)), [lod]);
   const gl = useThree((s) => s.gl);
   const group = useRef<Group>(null);
   const backdrop = useRef<Mesh>(null);
@@ -31,6 +38,7 @@ export function FissionInset() {
   const labels = useRef<Mesh>(null);
 
   useEffect(() => () => inset.dispose(), [inset]);
+  useEffect(() => inset.setLabels(labelTexts(language)), [inset, language]);
 
   useFrame(() => {
     const s = fissionForFrame();

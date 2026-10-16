@@ -1,0 +1,182 @@
+{
+ "high": {
+  "log": {
+   "errors": [],
+   "external": []
+  },
+  "guideTubes": {
+   "fps": 42.4,
+   "p95": 36.6,
+   "worst": 54.6,
+   "over20": 61,
+   "frames": 213,
+   "calls": [
+    54,
+    54
+   ],
+   "tris": [
+    54997,
+    54997
+   ],
+   "buffer": [
+    1920,
+    1080
+   ],
+   "dpr": 1,
+   "selected": "control-rod-guide-tubes"
+  },
+  "controlRodDrives": {
+   "fps": 46.4,
+   "p95": 36.2,
+   "worst": 41,
+   "over20": 47,
+   "frames": 232,
+   "calls": [
+    52,
+    52
+   ],
+   "tris": [
+    26137,
+    26137
+   ],
+   "buffer": [
+    1920,
+    1080
+   ],
+   "dpr": 1,
+   "selected": "control-rod-drives"
+  },
+  "flowTurbine": {
+   "fps": 55.9,
+   "p95": 18.7,
+   "worst": 19.3,
+   "over20": 0,
+   "frames": 280,
+   "calls": [
+    67,
+    67
+   ],
+   "tris": [
+    31377,
+    31377
+   ],
+   "buffer": [
+    1920,
+    1080
+   ],
+   "dpr": 1,
+   "selected": "turbine-placeholder"
+  },
+  "safetyPools": {
+   "fps": 56.7,
+   "p95": 18.3,
+   "worst": 18.8,
+   "over20": 0,
+   "frames": 284,
+   "calls": [
+    66,
+    66
+   ],
+   "tris": [
+    81825,
+    81825
+   ],
+   "buffer": [
+    1920,
+    1080
+   ],
+   "dpr": 1,
+   "selected": null
+  }
+ },
+ "low": {
+  "log": {
+   "errors": [],
+   "external": []
+  },
+  "guideTubes": {
+   "fps": 56.1,
+   "p95": 18.3,
+   "worst": 18.7,
+   "over20": 0,
+   "frames": 281,
+   "calls": [
+    55,
+    55
+   ],
+   "tris": [
+    35367,
+    35367
+   ],
+   "buffer": [
+    1920,
+    1080
+   ],
+   "dpr": 1,
+   "selected": "control-rod-guide-tubes"
+  },
+  "controlRodDrives": {
+   "fps": 56.3,
+   "p95": 18.3,
+   "worst": 18.9,
+   "over20": 0,
+   "frames": 282,
+   "calls": [
+    53,
+    53
+   ],
+   "tris": [
+    13467,
+    13467
+   ],
+   "buffer": [
+    1920,
+    1080
+   ],
+   "dpr": 1,
+   "selected": "control-rod-drives"
+  },
+  "flowTurbine": {
+   "fps": 56.2,
+   "p95": 18.3,
+   "worst": 18.8,
+   "over20": 0,
+   "frames": 281,
+   "calls": [
+    68,
+    68
+   ],
+   "tris": [
+    29363,
+    29363
+   ],
+   "buffer": [
+    1920,
+    1080
+   ],
+   "dpr": 1,
+   "selected": "turbine-placeholder"
+  },
+  "safetyPools": {
+   "fps": 56.3,
+   "p95": 18.3,
+   "worst": 18.9,
+   "over20": 0,
+   "frames": 281,
+   "calls": [
+    67,
+    67
+   ],
+   "tris": [
+    60623,
+    60623
+   ],
+   "buffer": [
+    1920,
+    1080
+   ],
+   "dpr": 1,
+   "selected": null
+  }
+ }
+}

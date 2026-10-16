@@ -1,5 +1,8 @@
 node_modules
 dist
+dist-portable
+# The backup video is a build input for the portable package (a review copy lives in docs/).
+fallback/
 *.local
 .vite
 

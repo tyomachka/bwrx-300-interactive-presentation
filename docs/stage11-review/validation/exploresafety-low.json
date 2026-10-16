@@ -1,0 +1,261 @@
+{
+ "quality": "low",
+ "steps": [
+  {
+   "label": "initial",
+   "explore": {
+    "flow": false,
+    "safety": false,
+    "control": false,
+    "section": {
+     "on": false,
+     "context": "plant",
+     "position": 1
+    }
+   },
+   "safety": {
+    "source": "off",
+    "intensity": {
+     "icsSteam": 0,
+     "icsCondensing": 0,
+     "icsCondensate": 0,
+     "poolHeat": 0,
+     "decayHeat": 0
+    },
+    "fronts": [
+     1,
+     1,
+     0.6830000000650251
+    ]
+   },
+   "reveal": {
+    "poolsReveal": 0,
+    "shaftReveal": 0,
+    "vesselCut": 0
+   },
+   "camera": null
+  },
+  {
+   "label": "after S with flow on",
+   "explore": {
+    "flow": false,
+    "safety": true,
+    "control": false,
+    "section": {
+     "on": true,
+     "context": "plant",
+     "position": 1
+    }
+   },
+   "safety": {
+    "source": "explore",
+    "intensity": {
+     "icsSteam": 0.7917552612202309,
+     "icsCondensing": 0,
+     "icsCondensate": 0,
+     "poolHeat": 0,
+     "decayHeat": 0.7582680974713116
+    },
+    "fronts": [
+     0.2695999999841045,
+     0,
+     0
+    ]
+   },
+   "reveal": {
+    "poolsReveal": 0.753748,
+    "shaftReveal": 0.753748,
+    "vesselCut": 0
+   },
+   "camera": null
+  },
+  {
+   "label": "safety settled",
+   "explore": {
+    "flow": false,
+    "safety": true,
+    "control": false,
+    "section": {
+     "on": true,
+     "context": "plant",
+     "position": 1
+    }
+   },
+   "safety": {
+    "source": "explore",
+    "intensity": {
+     "icsSteam": 0.9,
+     "icsCondensing": 0.9,
+     "icsCondensate": 0.9,
+     "poolHeat": 0.9,
+     "decayHeat": 0.9
+    },
+    "fronts": [
+     1,
+     1,
+     1
+    ]
+   },
+   "reveal": {
+    "poolsReveal": 1,
+    "shaftReveal": 1,
+    "vesselCut": 0
+   },
+   "camera": null
+  },
+  {
+   "label": "F while safety on",
+   "explore": {
+    "flow": true,
+    "safety": false,
+    "control": false,
+    "section": {
+     "on": true,
+     "context": "plant",
+     "position": 1
+    }
+   },
+   "safety": {
+    "source": "explore",
+    "intensity": {
+     "icsSteam": 0.19410412920848602,
+     "icsCondensing": 0.19410412920848602,
+     "icsCondensate": 0.19410412920848602,
+     "poolHeat": 0.19410412920848602,
+     "decayHeat": 0.19410412920848602
+    },
+    "fronts": [
+     1,
+     1,
+     1
+    ]
+   },
+   "reveal": {
+    "poolsReveal": 0.663231,
+    "shaftReveal": 1,
+    "vesselCut": 0
+   },
+   "camera": null
+  },
+  {
+   "label": "S again (safety on, flow off)",
+   "explore": {
+    "flow": false,
+    "safety": true,
+    "control": false,
+    "section": {
+     "on": true,
+     "context": "plant",
+     "position": 1
+    }
+   },
+   "safety": {
+    "source": "explore",
+    "intensity": {
+     "icsSteam": 0.7561936310586054,
+     "icsCondensing": 0,
+     "icsCondensate": 0,
+     "poolHeat": 0,
+     "decayHeat": 0.6590279889398276
+    },
+    "fronts": [
+     0.20026666665077167,
+     0,
+     0
+    ]
+   },
+   "reveal": {
+    "poolsReveal": 0.789762,
+    "shaftReveal": 1,
+    "vesselCut": 0
+   },
+   "camera": null
+  },
+  {
+   "label": "with selection",
+   "explore": {
+    "flow": false,
+    "safety": true,
+    "control": false,
+    "section": {
+     "on": true,
+     "context": "plant",
+     "position": 1
+    }
+   },
+   "safety": {
+    "source": "explore",
+    "intensity": {
+     "icsSteam": 0.5404964236649935,
+     "icsCondensing": 0.4654378167002568,
+     "icsCondensate": 0,
+     "poolHeat": 0,
+     "decayHeat": 0.5404964236649935
+    },
+    "fronts": [
+     1,
+     0.1446249999105925,
+     0
+    ]
+   },
+   "reveal": {
+    "poolsReveal": 1,
+    "shaftReveal": 1,
+    "vesselCut": 0
+   },
+   "camera": null
+  },
+  {
+   "label": "after reset",
+   "explore": {
+    "flow": false,
+    "safety": false,
+    "control": false,
+    "section": {
+     "on": false,
+     "context": "plant",
+     "position": 1
+    }
+   },
+   "safety": {
+    "source": "off",
+    "intensity": {
+     "icsSteam": 0,
+     "icsCondensing": 0,
+     "icsCondensate": 0,
+     "poolHeat": 0,
+     "decayHeat": 0
+    },
+    "fronts": [
+     1,
+     1,
+     1
+    ]
+   },
+   "reveal": {
+    "poolsReveal": 0,
+    "shaftReveal": 0,
+    "vesselCut": 0
+   },
+   "camera": null
+  }
+ ],
+ "cameraUnchangedBySafety": true,
+ "frame": {
+  "calls": 67,
+  "tris": 60623,
+  "programs": 24
+ },
+ "stats": {
+  "plumeParticles": 102,
+  "plumePaths": 51,
+  "flowVertices": 17658
+ },
+ "log": {
+  "errors": [],
+  "console": [
+   "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+  ],
+  "external": []
+ }
+}

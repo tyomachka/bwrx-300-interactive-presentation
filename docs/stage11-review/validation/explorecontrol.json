@@ -1,0 +1,687 @@
+{
+ "quality": "high",
+ "steps": [
+  {
+   "name": "loaded",
+   "explore": {
+    "control": false,
+    "controlAmount": 0,
+    "flow": false,
+    "section": {
+     "on": false,
+     "context": "plant",
+     "position": 1
+    },
+    "selectedId": null,
+    "isolate": false,
+    "xray": false,
+    "mode": "explore"
+   },
+   "control": {
+    "source": "off",
+    "time": 2.83810000002384,
+    "bladeControlAmount": 0,
+    "reactionIntensity": 1,
+    "activity": 0,
+    "emphasis": 0
+   },
+   "blades": {
+    "amount": 0,
+    "tall": 0.35,
+    "low": 0
+   },
+   "camera": {
+    "position": [
+     -95,
+     64,
+     150
+    ],
+    "target": [
+     36,
+     4.999999999999998,
+     -8
+    ],
+    "fov": 35,
+    "authority": "explore",
+    "allowBelowGrade": false
+   },
+   "calls": 62
+  },
+  {
+   "name": "control on (O)",
+   "explore": {
+    "control": true,
+    "controlAmount": 0,
+    "flow": false,
+    "section": {
+     "on": true,
+     "context": "reactor",
+     "position": 1
+    },
+    "selectedId": null,
+    "isolate": false,
+    "xray": false,
+    "mode": "explore"
+   },
+   "control": {
+    "source": "explore",
+    "time": 4.6918999999761555,
+    "bladeControlAmount": 0,
+    "reactionIntensity": 1,
+    "activity": 1,
+    "emphasis": 1
+   },
+   "blades": {
+    "amount": 0,
+    "tall": 0.35,
+    "low": 0
+   },
+   "camera": {
+    "position": [
+     -3.5199999999999982,
+     -16.37,
+     3.5200000000000005
+    ],
+    "target": [
+     -0.6499999999999987,
+     -19.78,
+     0.6500000000000002
+    ],
+    "fov": 35,
+    "authority": "explore",
+    "allowBelowGrade": true
+   },
+   "calls": 49
+  },
+  {
+   "name": "slider 1",
+   "explore": {
+    "control": true,
+    "controlAmount": 1,
+    "flow": false,
+    "section": {
+     "on": true,
+     "context": "reactor",
+     "position": 1
+    },
+    "selectedId": null,
+    "isolate": false,
+    "xray": false,
+    "mode": "explore"
+   },
+   "control": {
+    "source": "explore",
+    "time": 6.625299999952311,
+    "bladeControlAmount": 0.9995032879122357,
+    "reactionIntensity": 0.30034769846143505,
+    "activity": 1,
+    "emphasis": 1
+   },
+   "blades": {
+    "amount": 0.9995032879122357,
+    "tall": 0.849752,
+    "low": 0.499752
+   },
+   "camera": {
+    "position": [
+     -3.5199999999999982,
+     -16.37,
+     3.5200000000000005
+    ],
+    "target": [
+     -0.6499999999999987,
+     -19.78,
+     0.6500000000000002
+    ],
+    "fov": 35,
+    "authority": "explore",
+    "allowBelowGrade": true
+   },
+   "calls": 49
+  },
+  {
+   "name": "slider 0.5",
+   "explore": {
+    "control": true,
+    "controlAmount": 0.5,
+    "flow": false,
+    "section": {
+     "on": true,
+     "context": "reactor",
+     "position": 1
+    },
+    "selectedId": null,
+    "isolate": false,
+    "xray": false,
+    "mode": "explore"
+   },
+   "control": {
+    "source": "explore",
+    "time": 8.610200000047682,
+    "bladeControlAmount": 0.5002733801663031,
+    "reactionIntensity": 0.6498086338835879,
+    "activity": 1,
+    "emphasis": 1
+   },
+   "blades": {
+    "amount": 0.5002733801663031,
+    "tall": 0.600137,
+    "low": 0.250137
+   },
+   "camera": {
+    "position": [
+     -3.5199999999999982,
+     -16.37,
+     3.5200000000000005
+    ],
+    "target": [
+     -0.6499999999999987,
+     -19.78,
+     0.6500000000000002
+    ],
+    "fov": 35,
+    "authority": "explore",
+    "allowBelowGrade": true
+   },
+   "calls": 49
+  },
+  {
+   "name": "selected blades",
+   "explore": {
+    "control": true,
+    "controlAmount": 1,
+    "flow": true,
+    "section": {
+     "on": true,
+     "context": "reactor",
+     "position": 1
+    },
+    "selectedId": "control-blades",
+    "isolate": false,
+    "xray": false,
+    "mode": "explore"
+   },
+   "control": {
+    "source": "explore",
+    "time": 14.059299999952309,
+    "bladeControlAmount": 1,
+    "reactionIntensity": 0.30000000000000004,
+    "activity": 0.6030031584376332,
+    "emphasis": 1
+   },
+   "blades": {
+    "amount": 1,
+    "tall": 0.85,
+    "low": 0.5
+   },
+   "camera": {
+    "position": [
+     -3.5199999999999982,
+     -16.37,
+     3.5200000000000005
+    ],
+    "target": [
+     -0.6499999999999987,
+     -19.78,
+     0.6500000000000002
+    ],
+    "fov": 35,
+    "authority": "explore",
+    "allowBelowGrade": true
+   },
+   "calls": 52
+  },
+  {
+   "name": "isolated",
+   "explore": {
+    "control": true,
+    "controlAmount": 1,
+    "flow": true,
+    "section": {
+     "on": true,
+     "context": "reactor",
+     "position": 1
+    },
+    "selectedId": "control-blades",
+    "isolate": true,
+    "xray": false,
+    "mode": "explore"
+   },
+   "control": {
+    "source": "explore",
+    "time": 15.657499999999992,
+    "bladeControlAmount": 1,
+    "reactionIntensity": 0.30000000000000004,
+    "activity": 0.35170414056807286,
+    "emphasis": 1
+   },
+   "blades": {
+    "amount": 1,
+    "tall": 0.85,
+    "low": 0.5
+   },
+   "camera": {
+    "position": [
+     -3.5199999999999982,
+     -16.37,
+     3.5200000000000005
+    ],
+    "target": [
+     -0.6499999999999987,
+     -19.78,
+     0.6500000000000002
+    ],
+    "fov": 35,
+    "authority": "explore",
+    "allowBelowGrade": true
+   },
+   "calls": 52
+  },
+  {
+   "name": "xray",
+   "explore": {
+    "control": true,
+    "controlAmount": 1,
+    "flow": true,
+    "section": {
+     "on": true,
+     "context": "reactor",
+     "position": 1
+    },
+    "selectedId": null,
+    "isolate": false,
+    "xray": true,
+    "mode": "explore"
+   },
+   "control": {
+    "source": "explore",
+    "time": 17.35329999995231,
+    "bladeControlAmount": 1,
+    "reactionIntensity": 0.30000000000000004,
+    "activity": 0.9946698874010463,
+    "emphasis": 1
+   },
+   "blades": {
+    "amount": 1,
+    "tall": 0.85,
+    "low": 0.5
+   },
+   "camera": {
+    "position": [
+     -3.5199999999999982,
+     -16.37,
+     3.5200000000000005
+    ],
+    "target": [
+     -0.6499999999999987,
+     -19.78,
+     0.6500000000000002
+    ],
+    "fov": 35,
+    "authority": "explore",
+    "allowBelowGrade": true
+   },
+   "calls": 52
+  },
+  {
+   "name": "before quality switch",
+   "explore": {
+    "control": true,
+    "controlAmount": 0.7,
+    "flow": false,
+    "section": {
+     "on": true,
+     "context": "reactor",
+     "position": 1
+    },
+    "selectedId": null,
+    "isolate": false,
+    "xray": false,
+    "mode": "explore"
+   },
+   "control": {
+    "source": "explore",
+    "time": 20.752799999952302,
+    "bladeControlAmount": 0.7,
+    "reactionIntensity": 0.51,
+    "activity": 1,
+    "emphasis": 1
+   },
+   "blades": {
+    "amount": 0.7,
+    "tall": 0.7,
+    "low": 0.35
+   },
+   "camera": {
+    "position": [
+     -3.5199999999999982,
+     -16.37,
+     3.5200000000000005
+    ],
+    "target": [
+     -0.6499999999999987,
+     -19.78,
+     0.6500000000000002
+    ],
+    "fov": 35,
+    "authority": "explore",
+    "allowBelowGrade": true
+   },
+   "calls": 49
+  },
+  {
+   "name": "after quality switch",
+   "explore": {
+    "control": true,
+    "controlAmount": 0.7,
+    "flow": false,
+    "section": {
+     "on": true,
+     "context": "reactor",
+     "position": 1
+    },
+    "selectedId": null,
+    "isolate": false,
+    "xray": false,
+    "mode": "explore"
+   },
+   "control": {
+    "source": "explore",
+    "time": 22.944333333214097,
+    "bladeControlAmount": 0.7,
+    "reactionIntensity": 0.51,
+    "activity": 1,
+    "emphasis": 1
+   },
+   "blades": {
+    "amount": 0.7,
+    "tall": 0.7,
+    "low": 0.35
+   },
+   "camera": {
+    "position": [
+     -3.5199999999999982,
+     -16.37,
+     3.5200000000000005
+    ],
+    "target": [
+     -0.6499999999999987,
+     -19.78,
+     0.6500000000000002
+    ],
+    "fov": 35,
+    "authority": "explore",
+    "allowBelowGrade": true
+   },
+   "calls": 50
+  },
+  {
+   "name": "control off (O)",
+   "explore": {
+    "control": false,
+    "controlAmount": 0,
+    "flow": false,
+    "section": {
+     "on": true,
+     "context": "reactor",
+     "position": 1
+    },
+    "selectedId": null,
+    "isolate": false,
+    "xray": false,
+    "mode": "explore"
+   },
+   "control": {
+    "source": "explore",
+    "time": 24.460633333285628,
+    "bladeControlAmount": 0.00039065921763002404,
+    "reactionIntensity": 0.999726538547659,
+    "activity": 0.00012474985317514282,
+    "emphasis": 0.00012474985317514282
+   },
+   "blades": {
+    "amount": 0.00039065921763002404,
+    "tall": 0.350195,
+    "low": 0.000195
+   },
+   "camera": {
+    "position": [
+     -3.5199999999999982,
+     -16.37,
+     3.5200000000000005
+    ],
+    "target": [
+     -0.6499999999999987,
+     -19.78,
+     0.6500000000000002
+    ],
+    "fov": 35,
+    "authority": "explore",
+    "allowBelowGrade": true
+   },
+   "calls": 49
+  },
+  {
+   "name": "reset +60ms",
+   "explore": {
+    "control": false,
+    "controlAmount": 0,
+    "flow": false,
+    "section": {
+     "on": false,
+     "context": "plant",
+     "position": 1
+    },
+    "selectedId": null,
+    "isolate": false,
+    "xray": false,
+    "mode": "explore"
+   },
+   "control": {
+    "source": "off",
+    "time": 27.270333333214097,
+    "bladeControlAmount": 0,
+    "reactionIntensity": 1,
+    "activity": 0,
+    "emphasis": 0
+   },
+   "blades": {
+    "amount": 0,
+    "tall": 0.35,
+    "low": 0
+   },
+   "camera": {
+    "position": [
+     -3.5316910751184993,
+     -16.358773700115062,
+     3.532243049908123
+    ],
+    "target": [
+     -0.65,
+     -19.78,
+     0.65
+    ],
+    "fov": 35,
+    "authority": "transition",
+    "allowBelowGrade": false
+   },
+   "calls": 49
+  },
+  {
+   "name": "reset settled",
+   "explore": {
+    "control": false,
+    "controlAmount": 0,
+    "flow": false,
+    "section": {
+     "on": false,
+     "context": "plant",
+     "position": 1
+    },
+    "selectedId": null,
+    "isolate": false,
+    "xray": false,
+    "mode": "explore"
+   },
+   "control": {
+    "source": "off",
+    "time": 29.776633333285623,
+    "bladeControlAmount": 0,
+    "reactionIntensity": 1,
+    "activity": 0,
+    "emphasis": 0
+   },
+   "blades": {
+    "amount": 0,
+    "tall": 0.35,
+    "low": 0
+   },
+   "camera": {
+    "position": [
+     -95,
+     64,
+     150
+    ],
+    "target": [
+     36,
+     4.999999999999998,
+     -8
+    ],
+    "fov": 35,
+    "authority": "explore",
+    "allowBelowGrade": false
+   },
+   "calls": 63
+  },
+  {
+   "name": "master seek 40 + O",
+   "explore": {
+    "control": false,
+    "controlAmount": 0,
+    "flow": false,
+    "section": {
+     "on": false,
+     "context": "plant",
+     "position": 1
+    },
+    "selectedId": null,
+    "isolate": false,
+    "xray": false,
+    "mode": "presentation"
+   },
+   "control": {
+    "source": "presentation",
+    "time": 40,
+    "bladeControlAmount": 0.7602462783223918,
+    "reactionIntensity": 0.46782760517432576,
+    "activity": 1,
+    "emphasis": 0
+   },
+   "blades": {
+    "amount": 0.7602462783223918,
+    "tall": 0.730123,
+    "low": 0.380123
+   },
+   "camera": {
+    "position": [
+     -3.3703042649123267,
+     -16.52657260426686,
+     3.370304264912327
+    ],
+    "target": [
+     -0.6499999999999999,
+     -19.793603400605306,
+     0.6499999999999999
+    ],
+    "fov": 35,
+    "authority": "cinematic",
+    "allowBelowGrade": false
+   },
+   "calls": 51
+  },
+  {
+   "name": "master stopped (eases back)",
+   "explore": {
+    "control": false,
+    "controlAmount": 0,
+    "flow": false,
+    "section": {
+     "on": true,
+     "context": "plant",
+     "position": 1
+    },
+    "selectedId": null,
+    "isolate": false,
+    "xray": false,
+    "mode": "explore"
+   },
+   "control": {
+    "source": "explore",
+    "time": 31.61433333321412,
+    "bladeControlAmount": 0.0017008743310165538,
+    "reactionIntensity": 0.9988093879682884,
+    "activity": 0,
+    "emphasis": 0
+   },
+   "blades": {
+    "amount": 0.0017008743310165538,
+    "tall": 0.35085,
+    "low": 0.00085
+   },
+   "camera": {
+    "position": [
+     -3.370304264912327,
+     -16.52657260426686,
+     3.3703042649123276
+    ],
+    "target": [
+     -0.6499999999999999,
+     -19.793603400605306,
+     0.6499999999999999
+    ],
+    "fov": 35,
+    "authority": "explore",
+    "allowBelowGrade": true
+   },
+   "calls": 49
+  }
+ ],
+ "flow": {
+  "base": {
+   "boilShare": 0.9998116726247488,
+   "coreWater": 0.9,
+   "turbine": 0.9,
+   "source": "explore"
+  },
+  "inserted": {
+   "boilShare": 0.30037552896820197,
+   "coreWater": 0.9,
+   "turbine": 0.9
+  }
+ },
+ "qualitySwitch": {
+  "kept": true,
+  "before": {
+   "amount": 0.7,
+   "tall": 0.7,
+   "low": 0.35
+  },
+  "after": {
+   "amount": 0.7,
+   "tall": 0.7,
+   "low": 0.35
+  },
+  "slots": {
+   "slots": 336,
+   "strips": 18
+  }
+ },
+ "log": {
+  "errors": [],
+  "console": [
+   "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.",
+   "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+  ],
+  "external": []
+ }
+}

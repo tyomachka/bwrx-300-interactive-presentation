@@ -1,0 +1,454 @@
+{
+ "quality": "low",
+ "playbacks": [
+  {
+   "i": 0,
+   "status": "paused",
+   "time25": 25,
+   "finalHash": "5cf5a07dca7fb690",
+   "seek25": "0b8f2bdeddaa3ecd",
+   "heapMB": 18.1,
+   "geometries": 65,
+   "textures": 12,
+   "programs": 24,
+   "calls": 61,
+   "authority": "cinematic",
+   "canvases": 1
+  },
+  {
+   "i": 1,
+   "status": "paused",
+   "time25": 25,
+   "finalHash": "5cf5a07dca7fb690",
+   "seek25": "0b8f2bdeddaa3ecd",
+   "heapMB": 18.3,
+   "geometries": 65,
+   "textures": 12,
+   "programs": 24,
+   "calls": 61,
+   "authority": "cinematic",
+   "canvases": 1
+  },
+  {
+   "i": 2,
+   "status": "paused",
+   "time25": 25,
+   "finalHash": "5cf5a07dca7fb690",
+   "seek25": "0b8f2bdeddaa3ecd",
+   "heapMB": 18.4,
+   "geometries": 65,
+   "textures": 12,
+   "programs": 24,
+   "calls": 61,
+   "authority": "cinematic",
+   "canvases": 1
+  },
+  {
+   "i": 3,
+   "status": "paused",
+   "time25": 25,
+   "finalHash": "5cf5a07dca7fb690",
+   "seek25": "0b8f2bdeddaa3ecd",
+   "heapMB": 18.4,
+   "geometries": 65,
+   "textures": 12,
+   "programs": 24,
+   "calls": 61,
+   "authority": "cinematic",
+   "canvases": 1
+  },
+  {
+   "i": 4,
+   "status": "paused",
+   "time25": 25,
+   "finalHash": "5cf5a07dca7fb690",
+   "seek25": "0b8f2bdeddaa3ecd",
+   "heapMB": 18.4,
+   "geometries": 65,
+   "textures": 12,
+   "programs": 24,
+   "calls": 61,
+   "authority": "cinematic",
+   "canvases": 1
+  },
+  {
+   "i": 5,
+   "status": "paused",
+   "time25": 25,
+   "finalHash": "5cf5a07dca7fb690",
+   "seek25": "0b8f2bdeddaa3ecd",
+   "heapMB": 18.4,
+   "geometries": 65,
+   "textures": 12,
+   "programs": 24,
+   "calls": 61,
+   "authority": "cinematic",
+   "canvases": 1
+  },
+  {
+   "i": 6,
+   "status": "paused",
+   "time25": 25,
+   "finalHash": "5cf5a07dca7fb690",
+   "seek25": "0b8f2bdeddaa3ecd",
+   "heapMB": 18.5,
+   "geometries": 65,
+   "textures": 12,
+   "programs": 24,
+   "calls": 61,
+   "authority": "cinematic",
+   "canvases": 1
+  },
+  {
+   "i": 7,
+   "status": "paused",
+   "time25": 25,
+   "finalHash": "5cf5a07dca7fb690",
+   "seek25": "0b8f2bdeddaa3ecd",
+   "heapMB": 18.5,
+   "geometries": 65,
+   "textures": 12,
+   "programs": 24,
+   "calls": 61,
+   "authority": "cinematic",
+   "canvases": 1
+  },
+  {
+   "i": 8,
+   "status": "paused",
+   "time25": 25,
+   "finalHash": "5cf5a07dca7fb690",
+   "seek25": "0b8f2bdeddaa3ecd",
+   "heapMB": 18.5,
+   "geometries": 65,
+   "textures": 12,
+   "programs": 24,
+   "calls": 61,
+   "authority": "cinematic",
+   "canvases": 1
+  },
+  {
+   "i": 9,
+   "status": "paused",
+   "time25": 25,
+   "finalHash": "5cf5a07dca7fb690",
+   "seek25": "0b8f2bdeddaa3ecd",
+   "heapMB": 18.5,
+   "geometries": 65,
+   "textures": 12,
+   "programs": 24,
+   "calls": 61,
+   "authority": "cinematic",
+   "canvases": 1
+  }
+ ],
+ "toggles": {
+  "playRateWhilePlaying": [
+   1.009,
+   1.007,
+   1.007,
+   1.006,
+   0.999,
+   0.999,
+   1.007,
+   0.977,
+   1.007,
+   1.007,
+   1,
+   1.002,
+   1.006,
+   1.01,
+   1.005,
+   1.003,
+   1,
+   1.005,
+   1.01,
+   0.979
+  ],
+  "endStatus": "playing"
+ },
+ "switches": [
+  {
+   "i": 0,
+   "to": "high",
+   "heapMB": 25.2,
+   "geometries": 62,
+   "textures": 8,
+   "programs": 22,
+   "calls": 62,
+   "status": "idle",
+   "authority": "explore",
+   "canvases": 1
+  },
+  {
+   "i": 1,
+   "to": "low",
+   "heapMB": 23.1,
+   "geometries": 64,
+   "textures": 10,
+   "programs": 24,
+   "calls": 63,
+   "status": "idle",
+   "authority": "explore",
+   "canvases": 1
+  },
+  {
+   "i": 2,
+   "to": "high",
+   "heapMB": 40.5,
+   "geometries": 62,
+   "textures": 8,
+   "programs": 22,
+   "calls": 62,
+   "status": "idle",
+   "authority": "explore",
+   "canvases": 1
+  },
+  {
+   "i": 3,
+   "to": "low",
+   "heapMB": 32.8,
+   "geometries": 64,
+   "textures": 10,
+   "programs": 24,
+   "calls": 63,
+   "status": "idle",
+   "authority": "explore",
+   "canvases": 1
+  },
+  {
+   "i": 4,
+   "to": "high",
+   "heapMB": 41.3,
+   "geometries": 62,
+   "textures": 8,
+   "programs": 22,
+   "calls": 62,
+   "status": "idle",
+   "authority": "explore",
+   "canvases": 1
+  },
+  {
+   "i": 5,
+   "to": "low",
+   "heapMB": 33.4,
+   "geometries": 64,
+   "textures": 10,
+   "programs": 24,
+   "calls": 63,
+   "status": "idle",
+   "authority": "explore",
+   "canvases": 1
+  },
+  {
+   "i": 6,
+   "to": "high",
+   "heapMB": 35.6,
+   "geometries": 62,
+   "textures": 8,
+   "programs": 22,
+   "calls": 62,
+   "status": "idle",
+   "authority": "explore",
+   "canvases": 1
+  },
+  {
+   "i": 7,
+   "to": "low",
+   "heapMB": 34.5,
+   "geometries": 64,
+   "textures": 10,
+   "programs": 24,
+   "calls": 63,
+   "status": "idle",
+   "authority": "explore",
+   "canvases": 1
+  },
+  {
+   "i": 8,
+   "to": "high",
+   "heapMB": 36.1,
+   "geometries": 62,
+   "textures": 8,
+   "programs": 22,
+   "calls": 62,
+   "status": "idle",
+   "authority": "explore",
+   "canvases": 1
+  },
+  {
+   "i": 9,
+   "to": "low",
+   "heapMB": 35.2,
+   "geometries": 64,
+   "textures": 10,
+   "programs": 24,
+   "calls": 63,
+   "status": "idle",
+   "authority": "explore",
+   "canvases": 1
+  }
+ ],
+ "contextLoss": [
+  {
+   "i": 0,
+   "heapMB": 32.9,
+   "geometries": 64,
+   "textures": 10,
+   "programs": 24,
+   "calls": 63,
+   "status": "idle",
+   "authority": "explore",
+   "canvases": 1,
+   "seek25": "0b8f2bdeddaa3ecd"
+  },
+  {
+   "i": 1,
+   "heapMB": 33.5,
+   "geometries": 64,
+   "textures": 10,
+   "programs": 24,
+   "calls": 63,
+   "status": "idle",
+   "authority": "explore",
+   "canvases": 1,
+   "seek25": "0b8f2bdeddaa3ecd"
+  }
+ ],
+ "resize": [
+  {
+   "phase": "idle",
+   "w": 1366,
+   "h": 768,
+   "buffer": [
+    1365,
+    768
+   ],
+   "status": "ready"
+  },
+  {
+   "phase": "idle",
+   "w": 1024,
+   "h": 768,
+   "buffer": [
+    1024,
+    576
+   ],
+   "status": "ready"
+  },
+  {
+   "phase": "idle",
+   "w": 1920,
+   "h": 1080,
+   "buffer": [
+    1920,
+    1080
+   ],
+   "status": "ready"
+  },
+  {
+   "phase": "playing",
+   "w": 1280,
+   "h": 800,
+   "buffer": [
+    1280,
+    720
+   ],
+   "master": [
+    "playing",
+    2.72
+   ]
+  },
+  {
+   "phase": "playing",
+   "w": 1920,
+   "h": 1080,
+   "buffer": [
+    1920,
+    1080
+   ],
+   "master": [
+    "playing",
+    3.95
+   ]
+  }
+ ],
+ "dpr": [
+  {
+   "dpr": 1.25,
+   "buffer": [
+    1920,
+    1080
+   ],
+   "pixelRatio": 1
+  },
+  {
+   "dpr": 1.5,
+   "buffer": [
+    1920,
+    1080
+   ],
+   "pixelRatio": 1
+  },
+  {
+   "dpr": 2,
+   "buffer": [
+    1920,
+    1080
+   ],
+   "pixelRatio": 1
+  },
+  {
+   "dpr": 1,
+   "buffer": [
+    1920,
+    1080
+   ],
+   "pixelRatio": 1
+  }
+ ],
+ "start": {
+  "heapMB": 20.5,
+  "geometries": 65,
+  "textures": 12,
+  "programs": 24,
+  "calls": 63,
+  "status": "idle",
+  "authority": "explore",
+  "canvases": 1
+ },
+ "end": {
+  "heapMB": 27.8,
+  "geometries": 64,
+  "textures": 10,
+  "programs": 24,
+  "calls": 63,
+  "status": "idle",
+  "authority": "explore",
+  "canvases": 1
+ },
+ "endSeek25": "0b8f2bdeddaa3ecd",
+ "log": {
+  "errors": [],
+  "console": [
+   "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.",
+   "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.",
+   "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.",
+   "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.",
+   "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.",
+   "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.",
+   "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.",
+   "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.",
+   "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.",
+   "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.",
+   "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.",
+   "[warn] [BWRX-300] WebGL context lost; rebuilding the scene.",
+   "[warn] WebGL: INVALID_OPERATION: loseContext: context already lost",
+   "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead.",
+   "[warn] [BWRX-300] WebGL context lost; rebuilding the scene.",
+   "[warn] WebGL: INVALID_OPERATION: loseContext: context already lost",
+   "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+  ],
+  "external": []
+ }
+}

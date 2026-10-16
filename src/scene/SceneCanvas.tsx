@@ -7,13 +7,14 @@
  * the pose across the remount.
  */
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { lazy, Suspense, useEffect, useRef } from 'react';
+import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import type { Object3D } from 'three';
 import { animationClock } from '../animation/clock';
 import { cameraDirector } from '../camera/cameraDirector';
 import { CameraRig } from '../camera/CameraRig';
 import { CAMERA_LENS, CAMERA_STATES, HOME_CAMERA_STATE } from '../config/camera';
-import { RENDER } from '../config/render';
+import { canvasPixelRatio, resolveRenderScale, type QualityPreset } from '../config/quality';
+import { RENDER, stageSize } from '../config/render';
 import { SafeLayer } from '../app/ErrorBoundary';
 import { useAppStore, useQualityPreset } from '../state/store';
 import { LightingRig } from './LightingRig';
@@ -39,7 +40,7 @@ export function SceneCanvas() {
     <Canvas
       key={canvasKey}
       className="scene-canvas"
-      dpr={[1, preset.maxPixelRatio]}
+      dpr={initialPixelRatio(preset)}
       // 'percentage' = PCFShadowMap. R3F's default (PCFSoft) was removed in three r186.
       shadows={preset.shadows ? 'percentage' : false}
       camera={{ fov: CAMERA_LENS.fov, near: CAMERA_LENS.near, far: CAMERA_LENS.far, position: CAMERA_STATES[HOME_CAMERA_STATE].position }}
@@ -65,7 +66,7 @@ export function SceneCanvas() {
       }}
     >
       <FrameDriver />
-      <DprWatcher maxPixelRatio={preset.maxPixelRatio} />
+      <DprWatcher preset={preset} />
       <ContextLossWatcher />
       <CameraRig />
       <LightingRig />
@@ -103,17 +104,31 @@ function FrameDriver() {
   return null;
 }
 
+/** Optional `?scale=` render scale (config/quality.ts), read once. */
+const RENDER_SCALE = resolveRenderScale(window.location.search);
+
+/** The pixel ratio for the canvas before it has measured itself (the 16:9 stage in this window). */
+function initialPixelRatio(preset: QualityPreset): number {
+  const { width, height } = stageSize(window.innerWidth, window.innerHeight);
+  return canvasPixelRatio(preset, width, height, window.devicePixelRatio, RENDER_SCALE);
+}
+
 /**
- * R3F samples devicePixelRatio only when the canvas is configured. Dragging the
- * window from a laptop panel (e.g. 1.5x) to a projector (1x) changes it, so re-apply.
+ * Keeps the canvas pixel ratio right (config/quality.ts canvasPixelRatio): when the canvas is
+ * resized (a projector, a window change) and when devicePixelRatio changes (dragging the window
+ * from a 1.5x laptop panel to a 1x projector), which R3F does not watch by itself. The preset's
+ * pixel budget caps the drawing buffer, so a 4K display never multiplies the cost; a 1920x1080
+ * window keeps exactly 1:1.
  */
-function DprWatcher({ maxPixelRatio }: { maxPixelRatio: number }) {
+function DprWatcher({ preset }: { preset: QualityPreset }) {
   const setDpr = useThree((s) => s.setDpr);
+  const size = useThree((s) => s.size);
+  const [deviceRatio, setDeviceRatio] = useState(window.devicePixelRatio);
 
   useEffect(() => {
     let query: MediaQueryList | null = null;
     const onChange = () => {
-      setDpr([1, maxPixelRatio]);
+      setDeviceRatio(window.devicePixelRatio);
       listen();
     };
     const listen = () => {
@@ -123,7 +138,11 @@ function DprWatcher({ maxPixelRatio }: { maxPixelRatio: number }) {
     };
     listen();
     return () => query?.removeEventListener('change', onChange);
-  }, [maxPixelRatio, setDpr]);
+  }, []);
+
+  useEffect(() => {
+    setDpr(canvasPixelRatio(preset, size.width, size.height, deviceRatio, RENDER_SCALE));
+  }, [preset, size.width, size.height, deviceRatio, setDpr]);
 
   return null;
 }

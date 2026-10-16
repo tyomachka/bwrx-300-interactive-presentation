@@ -424,27 +424,46 @@ const ATLAS = { width: 1024, row: 64, font: '500 40px system-ui, "Segoe UI", Rob
 /** Label height in micro units (a ~43 px quad at 1080p; the text cap height is about half). */
 const LABEL_HEIGHT = 0.08;
 
-/** The label atlas: one row per label, white text; returns each label's width share of the atlas. */
-function labelAtlas(): { texture: CanvasTexture; widths: number[] } {
-  const canvas = document.createElement('canvas');
-  canvas.width = ATLAS.width;
-  canvas.height = ATLAS.row * 4;
+/**
+ * Paints the label atlas: one row per label (FISSION_LABELS order), white text. Returns each
+ * label's width share of the atlas.
+ */
+function paintLabelAtlas(canvas: HTMLCanvasElement, texts: readonly string[]): number[] {
   const ctx = canvas.getContext('2d')!;
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.font = ATLAS.font;
   ctx.textBaseline = 'middle';
   ctx.fillStyle = '#ffffff';
-  const widths = FISSION_LABELS.map((label, i) => {
-    ctx.fillText(label.text, 8, ATLAS.row * (i + 0.5));
-    return (ctx.measureText(label.text).width + 16) / ATLAS.width;
+  return texts.map((text, i) => {
+    ctx.fillText(text, 8, ATLAS.row * (i + 0.5));
+    return (ctx.measureText(text).width + 16) / ATLAS.width;
   });
+}
+
+function labelAtlas(texts: readonly string[]): { texture: CanvasTexture; widths: number[] } {
+  const canvas = document.createElement('canvas');
+  canvas.width = ATLAS.width;
+  canvas.height = ATLAS.row * 4;
+  const widths = paintLabelAtlas(canvas, texts);
   const texture = new CanvasTexture(canvas);
   texture.minFilter = LinearMipmapLinearFilter;
   texture.magFilter = LinearFilter;
   return { texture, widths };
 }
 
-export function createLabelMaterial(d: FissionData, shared: InsetUniforms) {
-  const { texture, widths } = labelAtlas();
+/**
+ * A language switch: repaint the atlas in place and re-upload it (one small texture; no new
+ * material, program or remount). Widths are updated in the same uniform array.
+ */
+export function setLabelTexts(material: ReturnType<typeof createLabelMaterial>, texts: readonly string[]): void {
+  const { uAtlas, uWidth } = material.uniforms;
+  const widths = paintLabelAtlas(uAtlas.value.image as HTMLCanvasElement, texts);
+  widths.forEach((w, i) => (uWidth.value[i] = w));
+  uAtlas.value.needsUpdate = true;
+}
+
+export function createLabelMaterial(d: FissionData, shared: InsetUniforms, texts: readonly string[]) {
+  const { texture, widths } = labelAtlas(texts);
   const own = {
     uAtlas: { value: texture },
     uLabelAlpha: { value: FISSION_LABELS.map(() => 0) },

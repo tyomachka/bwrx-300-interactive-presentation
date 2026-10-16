@@ -31,6 +31,7 @@ import { insetDebug, lastInset } from '../scene/fission/buildInset';
 import { bladeControlAmount, CONTROL_BLADES } from '../scene/rpv/coreLayout';
 import { activitySlots, STRIPS } from '../scene/control/activityMaterial';
 import { useAppStore } from '../state/store';
+import { useLanguageStore, type Language } from '../i18n/language';
 import { QUALITY_PRESETS } from '../config/quality';
 import { Vector3 } from 'three';
 import { diagnosticsSample } from './diagnostics';
@@ -161,6 +162,11 @@ const api = {
       }
       return out;
     },
+  },
+  /** Stage 11 localization: the audience language (a switch is refused while the master plays). */
+  language: {
+    get: () => useLanguageStore.getState().language,
+    set: (language: Language) => useLanguageStore.getState().setLanguage(language),
   },
   /** Jump the camera to an explicit pose (scripted review captures). */
   snapCamera: (pose: CameraPose) => cameraDirector.snapTo(pose),

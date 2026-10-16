@@ -33,7 +33,9 @@ Keys are matched by physical position, so they also work on the Lithuanian layou
 
 | Key | Action |
 |---|---|
-| `R` | Reset: stop the shot, clear every Explore state, close the reveal, smooth transition to `plantExterior` |
+| `Space` | Start the presentation; then pause / resume; after the end, play it again (only once the scene is ready) |
+| `Home` | Restart the presentation from its first frame |
+| `R` | Reset: stop the presentation, clear every Explore state, close the reveal, smooth transition to `plantExterior` (the way back after any accidental key) |
 | `Esc` | Clear the selection |
 | `X` | X-ray on / off |
 | `C` | Section on / off (Reactor context when the selection is inside the vessel) |
@@ -42,7 +44,7 @@ Keys are matched by physical position, so they also work on the Lithuanian layou
 | `F` | Flow on / off: the normal-operation flow, looping (Stage 7) |
 | `O` | Control on / off: the control-blade slider and the reaction cue; opens the Reactor section and frames the blades (Stage 8) |
 | `S` | Safety on / off: the passive isolation-condenser loop; opens the building with the ICS pools, turns Flow off, leaves the camera alone (Stage 9) |
-| `1` / `2` | High / low quality |
+| `1` / `2` | High / low quality (ignored while the presentation plays) |
 | `` ` `` | Toggle diagnostics (dev build, or with `?debug`) |
 | `P` | Review aid: play / restart the Stage 3 hero shot from its first frame (dev / `?debug`) |
 | `K` | Review aid: pause / resume the hero shot (dev / `?debug`) |
@@ -306,11 +308,38 @@ context and the limits in force.
   7. The Stage 7 flow starts at 20.5 s, unchanged.
 - **[SCHEMATIC — NOT TO SCALE / NOT EXACT NUCLEON COUNT]:** 96 spheres per nucleus, with two tones in
   the U-235 proportion. No electrons, no glowing nuclei, no radiation drawn.
-- **Labels:** three small ones (U-235, neutron, energy → heat).
+- **Labels:** three small ones (U-235, neutron, energy → heat; in Lithuanian U-235, neutronas,
+  energija → šiluma).
 - **Architecture:** a camera-space overlay in the normal pass (`scene/fission/`): no render target, no
   post-processing, 4 draw calls. Every particle position is an analytic function of master time on
   the GPU (seeded static data, no physics, no history), so playback, seek and export agree.
 - **Explore:** no Fission replay (deferred).
+
+## Presentation build (Stage 11)
+
+- **Portable package** (`npm run build:portable`): `dist-portable/BWRX300/` contains
+  `BWRX300.html` (the whole app in one file: JS and CSS inline, one chunk, no requests),
+  `START-HERE.txt` (Lithuanian, a copy of `START-HERE-LT.txt`) and `START-HERE-EN.txt`. It also
+  holds `BWRX300-fallback-lt.mp4` / `BWRX300-fallback-en.mp4` when they exist in `fallback/` (the
+  48 s 1080p30 H.264 presentation in each language; not in git). It opens from file:// with no
+  server, Node or network. The normal build (`npm run build`, `dist/`) is unchanged.
+- **Language:** Lithuanian by default; LT | EN in the setup controls (and on the failure screens),
+  not while the cinematic plays. The choice is kept across quality changes and Reset, and in
+  `localStorage` across reloads when the browser allows it (otherwise Lithuanian). All audience
+  text is in `src/i18n/` (`strings.ts` UI, `components.ts` component names and descriptions);
+  English is the approved wording. Developer diagnostics stay in English.
+- **16:9 stage:** the canvas and the in-picture UI are the largest centred 16:9 rectangle in the
+  window, with black bars elsewhere. 16:10 and 4:3 projectors show the authored composition; a
+  1920x1080 window is filled edge to edge, pixel for pixel as before.
+- **Internal-resolution guard** (`config/quality.ts`): the drawing buffer is capped at 2560x1440
+  pixels on High and 1920x1080 on Low. A 4K display or high Windows scaling lowers the pixel ratio
+  and the browser upscales. `?scale=0.5..1` lowers the render resolution further on a slow PC.
+- **Start:** Space or the Start button (setup controls, bottom right; top right on small stages),
+  only once "Ready". Full screen: F11, or the Full screen button (needs a click; a refusal is
+  ignored).
+- **Failure screens:** plain words, Restart / Low quality / Reload, and "Play the backup video",
+  which plays the backup video in the current language from next to the page. Technical details
+  are folded.
 
 ## Architecture notes
 

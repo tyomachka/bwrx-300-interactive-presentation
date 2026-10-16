@@ -7,7 +7,7 @@ import { FISSION_LABELS } from '../../config/fission';
 import { REACTOR_PRESSURE_VESSEL as RPV } from '../plant/dimensions';
 import { CORE } from '../rpv/rpvData';
 import { fissionData } from './fissionData';
-import { createBackdropMaterial, createInsetUniforms, createLabelMaterial, createParticleMaterial, createSpriteMaterial, SPRITE_KINDS } from './fissionShaders';
+import { createBackdropMaterial, createInsetUniforms, createLabelMaterial, createParticleMaterial, createSpriteMaterial, setLabelTexts, SPRITE_KINDS } from './fissionShaders';
 
 /**
  * The fuel spot the inset opens from and closes onto: mid-height of the active fuel, on the fuel
@@ -40,7 +40,8 @@ export const insetDebug = { hide: new Set<string>() };
 /** The last built inset (diagnostics: debug/automation.ts reads its live uniforms). */
 export let lastInset: ReturnType<typeof buildInset> | null = null;
 
-export function buildInset(lod: 'high' | 'low') {
+/** `labels`: the label words in FISSION_LABELS order, in the current language. */
+export function buildInset(lod: 'high' | 'low', labels: readonly string[]) {
   const data = fissionData();
   const shared = createInsetUniforms(FISSION_ANCHOR.clone());
 
@@ -59,7 +60,7 @@ export function buildInset(lod: 'high' | 'low') {
     backdrop: { geometry: quad(), material: createBackdropMaterial(data, shared) },
     particles: { geometry: particles as BufferGeometry, material: createParticleMaterial(data, shared) },
     sprites: { geometry: instancedQuad('aKind', Array.from({ length: SPRITE_KINDS }, (_, i) => i)) as BufferGeometry, material: createSpriteMaterial(data, shared) },
-    labels: { geometry: instancedQuad('aLabel', FISSION_LABELS.map((_, i) => i)) as BufferGeometry, material: createLabelMaterial(data, shared) },
+    labels: { geometry: instancedQuad('aLabel', FISSION_LABELS.map((_, i) => i)) as BufferGeometry, material: createLabelMaterial(data, shared, labels) },
   };
   const dispose = () => {
     sphere.dispose();
@@ -69,7 +70,14 @@ export function buildInset(lod: 'high' | 'low') {
     }
     parts.labels.material.uniforms.uAtlas.value.dispose();
   };
-  const inset = { shared, parts, dispose, triangles: (sphere.getAttribute('position').count / 3) * count };
+  let shown = JSON.stringify(labels);
+  /** A language switch: repaint the label words (a no-op when they are unchanged). */
+  const setLabels = (texts: readonly string[]) => {
+    if (JSON.stringify(texts) === shown) return;
+    shown = JSON.stringify(texts);
+    setLabelTexts(parts.labels.material, texts);
+  };
+  const inset = { shared, parts, dispose, setLabels, triangles: (sphere.getAttribute('position').count / 3) * count };
   lastInset = inset;
   return inset;
 }

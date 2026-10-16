@@ -38,6 +38,19 @@ Per-frame order (R3F `useFrame` priorities): FrameDriver (clock) → state drive
 Interior levels (`Interior level=…`): content drawn only when a cut or X-ray opens it
 (`belowGrade`, `building`, `vessel`, `reactor`, `turbineHall`, `steamPath`, `pools`).
 
+## Delivery (Stage 11)
+
+| File | Responsibility |
+|---|---|
+| `config/render.ts` `STAGE_ASPECT`, `stageSize` | The 16:9 presentation stage (CSS `.stage` mirrors it) |
+| `config/quality.ts` `canvasPixelRatio`, `maxRenderPixels`, `?scale` | Pixel ratio: device ratio, capped per preset, scaled, pixel budget |
+| `config/delivery.ts` | The backup-video file name per language, used by the failure screens |
+| `vite.portable.config.ts`, `build-tools/portableSingleFile.ts` | `npm run build:portable`: single-file `BWRX300.html` + START-HERE (LT, EN) + fallback videos (LT, EN) |
+| `i18n/language.ts` | The audience language (LT default, EN): presentation state only, remembered in `localStorage`, refused during playback |
+| `i18n/strings.ts`, `i18n/components.ts` | Every audience-facing string in both languages (typed: a missing one fails the build); English = the registry / approved wording |
+| `ui/LanguageToggle.tsx` | LT \| EN in the setup bar and on the failure screens |
+| `animation/presentation.ts` `startPresentation`, `startOrTogglePresentation` | Space / Home / Start button (only when ready) |
+
 ## Interaction
 
 | File | Responsibility |

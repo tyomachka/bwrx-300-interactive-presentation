@@ -23,6 +23,19 @@ export const RENDER = {
   checkShaderErrors: import.meta.env.DEV,
 } as const;
 
+/**
+ * Stage 11: the presentation is authored for 16:9. The canvas (and the UI drawn over it) is the
+ * largest centred 16:9 rectangle that fits the window, with black bars elsewhere, so 16:10 and 4:3
+ * projectors show exactly the authored composition and no camera logic depends on the aspect. A
+ * 16:9 window (1920x1080) is filled edge to edge. ui/styles.css `.stage` mirrors this.
+ */
+export const STAGE_ASPECT = 16 / 9;
+
+export function stageSize(windowWidth: number, windowHeight: number): { width: number; height: number } {
+  const width = Math.min(windowWidth, windowHeight * STAGE_ASPECT);
+  return { width, height: width / STAGE_ASPECT };
+}
+
 /** Dark neutral palette (PROJECT.md §5, §17). */
 export const PALETTE = {
   background: '#0b0c0e',

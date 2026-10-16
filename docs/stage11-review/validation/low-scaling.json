@@ -1,0 +1,457 @@
+{
+ "change": "src/config/quality.ts: Low maxPixelRatio 1 -> 2; Low budget unchanged at 1920x1080 (2073600 px). High unchanged.",
+ "builds": {
+  "new": "index-C6urVQq8.js",
+  "approved": "index-dE70IHcZ.js"
+ },
+ "browser": "Chrome (puppeteer-core, headless, --use-angle=d3d11), Intel Iris Plus",
+ "buffers": {
+  "1920x1080@1": {
+   "new": {
+    "buffer": [
+     1920,
+     1080
+    ],
+    "pixelRatio": 1,
+    "stageCss": [
+     1920,
+     1080
+    ]
+   },
+   "approved": {
+    "buffer": [
+     1920,
+     1080
+    ],
+    "pixelRatio": 1,
+    "stageCss": [
+     1920,
+     1080
+    ]
+   }
+  },
+  "1536x864@1.25": {
+   "new": {
+    "buffer": [
+     1920,
+     1080
+    ],
+    "pixelRatio": 1.25,
+    "stageCss": [
+     1536,
+     864
+    ]
+   },
+   "approved": {
+    "buffer": [
+     1536,
+     864
+    ],
+    "pixelRatio": 1,
+    "stageCss": [
+     1536,
+     864
+    ]
+   }
+  },
+  "1280x720@1.5": {
+   "new": {
+    "buffer": [
+     1920,
+     1080
+    ],
+    "pixelRatio": 1.5,
+    "stageCss": [
+     1280,
+     720
+    ]
+   },
+   "approved": {
+    "buffer": [
+     1280,
+     720
+    ],
+    "pixelRatio": 1,
+    "stageCss": [
+     1280,
+     720
+    ]
+   }
+  },
+  "1920x1080@2": {
+   "new": {
+    "buffer": [
+     1920,
+     1080
+    ],
+    "pixelRatio": 1,
+    "stageCss": [
+     1920,
+     1080
+    ]
+   },
+   "approved": {
+    "buffer": [
+     1920,
+     1080
+    ],
+    "pixelRatio": 1,
+    "stageCss": [
+     1920,
+     1080
+    ]
+   }
+  },
+  "3840x2160@1": {
+   "new": {
+    "buffer": [
+     1920,
+     1080
+    ],
+    "pixelRatio": 0.5,
+    "stageCss": [
+     3840,
+     2160
+    ]
+   },
+   "approved": {
+    "buffer": [
+     1920,
+     1080
+    ],
+    "pixelRatio": 0.5,
+    "stageCss": [
+     3840,
+     2160
+    ]
+   }
+  }
+ },
+ "masterIdentity1080p": {
+  "low": {
+   "0": {
+    "new": "a3f061287e672ba9",
+    "approved": "a3f061287e672ba9",
+    "stored": "a3f061287e672ba9",
+    "identical": true
+   },
+   "25": {
+    "new": "0b8f2bdeddaa3ecd",
+    "approved": "0b8f2bdeddaa3ecd",
+    "stored": "0b8f2bdeddaa3ecd",
+    "identical": true
+   },
+   "33": {
+    "new": "cc660ae936ec2124",
+    "approved": "cc660ae936ec2124",
+    "stored": "cc660ae936ec2124",
+    "identical": true
+   },
+   "40": {
+    "new": "5359d13df6b3efed",
+    "approved": "5359d13df6b3efed",
+    "stored": "5359d13df6b3efed",
+    "identical": true
+   },
+   "45": {
+    "new": "bee709b914d94cd8",
+    "approved": "bee709b914d94cd8",
+    "stored": "bee709b914d94cd8",
+    "identical": true
+   },
+   "48": {
+    "new": "5cf5a07dca7fb690",
+    "approved": "5cf5a07dca7fb690",
+    "stored": "5cf5a07dca7fb690",
+    "identical": true
+   },
+   "9.5": {
+    "new": "266a05fcf52c0a9e",
+    "approved": "266a05fcf52c0a9e",
+    "stored": "266a05fcf52c0a9e",
+    "identical": true
+   },
+   "18.2": {
+    "new": "6251f9b561597b54",
+    "approved": "6251f9b561597b54",
+    "stored": "6251f9b561597b54",
+    "identical": true
+   }
+  },
+  "high": {
+   "0": {
+    "new": "36daba0e95790e7f",
+    "approved": "36daba0e95790e7f",
+    "stored": "36daba0e95790e7f",
+    "identical": true
+   },
+   "25": {
+    "new": "c333f9bbff064cb8",
+    "approved": "c333f9bbff064cb8",
+    "stored": "c333f9bbff064cb8",
+    "identical": true
+   },
+   "33": {
+    "new": "d50bd1b45bd55066",
+    "approved": "d50bd1b45bd55066",
+    "stored": "d50bd1b45bd55066",
+    "identical": true
+   },
+   "40": {
+    "new": "c38928fbeba3695a",
+    "approved": "c38928fbeba3695a",
+    "stored": "c38928fbeba3695a",
+    "identical": true
+   },
+   "45": {
+    "new": "27a402fc039c0e28",
+    "approved": "27a402fc039c0e28",
+    "stored": "27a402fc039c0e28",
+    "identical": true
+   },
+   "48": {
+    "new": "c37d1a09b438f57e",
+    "approved": "c37d1a09b438f57e",
+    "stored": "c37d1a09b438f57e",
+    "identical": true
+   },
+   "9.5": {
+    "new": "fe6666cd19cd7be2",
+    "approved": "1a7472bbc3cdbb0b",
+    "stored": "1a7472bbc3cdbb0b",
+    "identical": false
+   },
+   "18.2": {
+    "new": "f60d85f47fb71d15",
+    "approved": "f60d85f47fb71d15",
+    "stored": "f60d85f47fb71d15",
+    "identical": true
+   }
+  }
+ },
+ "high9_5Recheck": {
+  "note": "First seek to 9.5 s on one fresh new-build page differed by 1 pixel, 1 level (x 208, y 267); a second seek in the same page and two more fresh pages match the approved hash. Load-time flip, same class as the known Low 3.33/4.0 s flips. High code is untouched by the change.",
+  "runs": [
+   {
+    "name": "new",
+    "round": 0,
+    "atT": [
+     "fe6666cd19cd7be2",
+     "1a7472bbc3cdbb0b"
+    ]
+   },
+   {
+    "name": "old",
+    "round": 0,
+    "atT": [
+     "1a7472bbc3cdbb0b",
+     "1a7472bbc3cdbb0b"
+    ]
+   },
+   {
+    "name": "new",
+    "round": 1,
+    "atT": [
+     "1a7472bbc3cdbb0b",
+     "1a7472bbc3cdbb0b"
+    ]
+   },
+   {
+    "name": "old",
+    "round": 1,
+    "atT": [
+     "1a7472bbc3cdbb0b",
+     "1a7472bbc3cdbb0b"
+    ]
+   },
+   {
+    "name": "new",
+    "round": 2,
+    "atT": [
+     "1a7472bbc3cdbb0b",
+     "1a7472bbc3cdbb0b"
+    ]
+   },
+   {
+    "name": "old",
+    "round": 2,
+    "atT": [
+     "1a7472bbc3cdbb0b",
+     "1a7472bbc3cdbb0b"
+    ]
+   }
+  ]
+ },
+ "scaledEqualsNative": {
+  "1536x864@1.25": {
+   "framesIdenticalTo1920x1080at1": true,
+   "times": [
+    0,
+    9.5,
+    18.2,
+    25,
+    33,
+    40,
+    45,
+    48
+   ]
+  },
+  "1280x720@1.5": {
+   "framesIdenticalTo1920x1080at1": true,
+   "times": [
+    0,
+    9.5,
+    18.2,
+    25,
+    33,
+    40,
+    45,
+    48
+   ]
+  }
+ },
+ "renderScale": {
+  "1920x1080@1-low-scale0.75": {
+   "buffer": [
+    1440,
+    810
+   ],
+   "pixelRatio": 0.75,
+   "play": {
+    "from": 0,
+    "after3s": 3.027,
+    "status": "playing",
+    "fps": 60,
+    "functional": true
+   },
+   "errors": 0
+  },
+  "1536x864@1.25-low-scale0.75": {
+   "buffer": [
+    1440,
+    810
+   ],
+   "pixelRatio": 0.9375,
+   "play": {
+    "from": 0,
+    "after3s": 3.01,
+    "status": "playing",
+    "fps": 59.9,
+    "functional": true
+   },
+   "errors": 0
+  },
+  "1920x1080@1-low-scale0.5": {
+   "buffer": [
+    960,
+    540
+   ],
+   "pixelRatio": 0.5,
+   "play": {
+    "from": 0,
+    "after3s": 3.011,
+    "status": "playing",
+    "fps": 59.9,
+    "functional": true
+   },
+   "errors": 0
+  },
+  "1536x864@1.25-low-scale0.5": {
+   "buffer": [
+    960,
+    540
+   ],
+   "pixelRatio": 0.625,
+   "play": {
+    "from": 0,
+    "after3s": 3.01,
+    "status": "playing",
+    "fps": 59.9,
+    "functional": true
+   },
+   "errors": 0
+  }
+ },
+ "lowRealtime48s": {
+  "1536x864@1.25 (buffer 1920x1080) run 1": {
+   "frames": 2885,
+   "fps": 60.1,
+   "p95Ms": 16.8,
+   "worstMs": 33.2,
+   "over20": 1,
+   "over33": 0,
+   "drawCalls": [
+    51,
+    81
+   ],
+   "triangles": [
+    3171,
+    95689
+   ],
+   "slowSeconds": [
+    {
+     "second": 38,
+     "worstMs": 33.2
+    }
+   ],
+   "programs": [
+    24,
+    24
+   ]
+  },
+  "1536x864@1.25 (buffer 1920x1080) run 2": {
+   "frames": 2886,
+   "fps": 60.1,
+   "p95Ms": 16.8,
+   "worstMs": 17.3,
+   "over20": 0,
+   "over33": 0,
+   "drawCalls": [
+    51,
+    81
+   ],
+   "triangles": [
+    3171,
+    95689
+   ],
+   "slowSeconds": [],
+   "programs": [
+    24,
+    24
+   ]
+  },
+  "1920x1080@1 control run": {
+   "frames": 2883,
+   "fps": 60.1,
+   "p95Ms": 16.8,
+   "worstMs": 33.3,
+   "over20": 3,
+   "over33": 0,
+   "drawCalls": [
+    51,
+    81
+   ],
+   "triangles": [
+    3171,
+    95689
+   ],
+   "slowSeconds": [
+    {
+     "second": 13,
+     "worstMs": 33.3
+    }
+   ],
+   "programs": [
+    24,
+    24
+   ]
+  }
+ },
+ "log": {
+  "errors": 0,
+  "external": 0,
+  "console": [
+   "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+  ]
+ }
+}

@@ -6,11 +6,13 @@
 import { useLayoutEffect, useRef } from 'react';
 import { useExploreStore } from '../interaction/exploreStore';
 import { labelLayer } from '../interaction/labelLayer';
-import { COMPONENTS } from '../scene/components';
+import { componentText } from '../i18n/components';
+import { useLanguageStore } from '../i18n/language';
 
 export function ExploreOverlay() {
   const selectedId = useExploreStore((s) => (s.mode === 'explore' ? s.selectedId : null));
   const hoveredId = useExploreStore((s) => (s.mode === 'explore' ? s.hoveredId : null));
+  const language = useLanguageStore((s) => s.language);
   const primary = useRef<HTMLDivElement>(null);
   const dot = useRef<HTMLDivElement>(null);
   const hover = useRef<HTMLDivElement>(null);
@@ -24,8 +26,8 @@ export function ExploreOverlay() {
     };
   }, []);
 
-  const selected = selectedId ? COMPONENTS[selectedId] : null;
-  const hovered = hoveredId ? COMPONENTS[hoveredId] : null;
+  const selected = selectedId ? componentText(selectedId, language) : null;
+  const hovered = hoveredId ? componentText(hoveredId, language) : null;
 
   return (
     <div className="explore-overlay" aria-live="polite">

@@ -1,0 +1,63 @@
+BWRX-300 interaktyvus pristatymas (48 sekundės)
+===============================================
+
+English instructions: START-HERE-EN.txt
+
+Šis aplankas veikia iš USB atmintinės ar bet kurio kompiuterio aplanko: nereikia nei interneto,
+nei diegimo, nei serverio.
+
+  BWRX300.html               pristatymas (viskas yra šiame viename faile)
+  BWRX300-fallback-lt.mp4    tas pats 48 s pristatymas vaizdo įrašu, lietuviškai (1080p, 30 kadrų/s, be garso)
+  BWRX300-fallback-en.mp4    tas pats vaizdo įrašas angliškai
+  START-HERE.txt             šis failas (START-HERE-LT.txt – toks pat)
+  START-HERE-EN.txt          instrukcija anglų kalba
+
+
+Prieš pristatymą
+----------------
+1. Nukopijuokite visą aplanką BWRX300 į kompiuterį (arba paleiskite tiesiai iš USB atmintinės).
+2. Atverkite BWRX300.html naršykle „Google Chrome“ arba „Microsoft Edge“:
+   dešinysis pelės klavišas > Atidaryti naudojant > Chrome / Edge, arba nuvilkite failą į atvirą
+   naršyklės langą.
+3. Paspauskite F11, kad vaizdas užimtų visą ekraną (arba pajudinkite pelę ir apačioje dešinėje
+   spustelėkite „Visas ekranas“).
+4. Palaukite, kol dings įkėlimo ekranas. Pirmasis elektrinės kadras reiškia, kad viskas paruošta.
+
+Kalba: pristatymas prasideda lietuviškai. Jei reikia anglų kalbos, pajudinkite pelę ir valdiklių
+juostoje spustelėkite EN (LT grąžina lietuvių kalbą). Pasirinkimas šiame kompiuteryje įsimenamas.
+
+
+Pristatymo metu
+---------------
+  Tarpas   pradėti pristatymą; vėliau – pristabdyti / tęsti; pasibaigus – rodyti dar kartą
+  Home     pradėti nuo pirmojo kadro
+  R        sustabdyti ir grįžti į pradinį vaizdą (naudokite, jei netyčia paspaudėte kitą klavišą)
+  F11      visas ekranas / įprastas langas
+
+Valdikliai pasirodo tik pajudinus pelę ir niekada nerodomi, kol vyksta pristatymas.
+Bet kuriame projektoriuje vaizdas išlaiko 16:9 formatą; 4:3 ar 16:10 ekranuose matysite juodas juostas.
+
+
+Jei judesys nesklandus
+----------------------
+Paspauskite R, tada 2 (žema kokybė), palaukite užrašo „Paruošta“ ir paspauskite tarpą. Žema kokybė
+skirta senesniems kompiuteriams; būtent su ja pristatymas ir buvo išbandytas.
+
+Labai lėtame kompiuteryje sumažinkite vaizdo skyrą: adreso juostoje, adreso gale (po BWRX300.html),
+prirašykite
+    ?quality=low&scale=0.8
+ir paspauskite Enter. (scale galima nurodyti nuo 0.5 iki 1.)
+
+
+Jei 3D vaizdas nepasileidžia
+----------------------------
+Puslapyje pasirodys trumpas pranešimas su mygtuku „Rodyti atsarginį vaizdo įrašą“ (įrašas – pasirinkta
+kalba). BWRX300-fallback-lt.mp4 taip pat galite atverti tiesiai bet kuriuo vaizdo grotuvu
+(„Windows Media Player“, VLC, naršykle).
+
+
+Išbandytos naršyklės (Windows 11, „Intel Iris Plus“ grafika, atverta tiesiai iš aplanko)
+---------------------------------------------------------------------------------------
+  Chrome 155   veikia; žema kokybė rodoma sklandžiai (be strigčių)        rekomenduojama
+  Edge 155     veikia; žema kokybė rodoma sklandžiai (be strigčių)        rekomenduojama
+  Firefox 158  veikia, bet mažiau sklandžiai (bandomajame kompiuteryje 35–46 kadrai/s žema kokybe)
