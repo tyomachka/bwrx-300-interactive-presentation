@@ -115,11 +115,30 @@ export type BladePattern = 'withdrawn' | 'operating' | 'partial';
 let controlAmount = 0;
 let shift: number = CONTROL_TARGET.shift;
 
+/**
+ * Presentation v1 shutdown, 0..1: every blade from its pattern position to full insertion (the
+ * talk's "the chain reaction stops"). The control shift fades out with it, so no blade passes full
+ * insertion. 0 (the default, and after any pattern change) leaves everything exactly as before.
+ * While it moves, the 57 matrices are rewritten (a ~1.5 s move, then idle again).
+ */
+let scram = 0;
+const patternBase: number[] = layout.blades.map(() => 0);
+
 function applyControl(): void {
+  const lift = controlAmount * shift * (1 - scram);
   for (let i = 0; i < layout.blades.length; i++) {
     const blade = layout.blades[i]!;
-    blade.insertion = blade.base + controlAmount * shift;
+    blade.insertion = blade.base + lift;
   }
+}
+
+export function setBladeScram(amount: number): void {
+  const s = Math.min(1, Math.max(0, amount));
+  if (s === scram) return;
+  scram = s;
+  layout.blades.forEach((blade, i) => (blade.base = patternBase[i]! + (1 - patternBase[i]!) * s));
+  applyControl();
+  version++;
 }
 
 /** Stage 8: move every blade from its base towards its target (no-op when unchanged). */
@@ -136,7 +155,7 @@ export const bladeControlAmount = () => controlAmount;
 export const bladeTargetInsertion = (base: number) => base + shift;
 
 /** How far every blade has moved from its base (insertion units: x BLADE.length metres). */
-export const bladeControlLift = () => controlAmount * shift;
+export const bladeControlLift = () => controlAmount * shift * (1 - scram);
 
 /**
  * - withdrawn: every blade below the core (fuel fully exposed).
@@ -145,13 +164,15 @@ export const bladeControlLift = () => controlAmount * shift;
  * - partial: every blade half-way in, to show where the blades travel.
  */
 export function setBladeInsertion(pattern: BladePattern): void {
-  for (const blade of layout.blades) {
+  scram = 0;
+  layout.blades.forEach((blade, i) => {
     const [x, z] = blade.position;
     const col = Math.round(x / CORE.cellPitch);
     const row = Math.round(z / CORE.cellPitch);
     const controlGroup = (Math.abs(col) === 2 && Math.abs(row) === 2) || (col === 0 && row === 0) || (Math.abs(col) + Math.abs(row) === 3 && (col === 0 || row === 0));
     blade.base = pattern === 'withdrawn' ? 0 : pattern === 'partial' ? 0.55 : controlGroup ? 0.35 : 0;
-  }
+    patternBase[i] = blade.base;
+  });
   shift = Math.min(CONTROL_TARGET.shift, 1 - Math.max(...layout.blades.map((b) => b.base)));
   applyControl();
   version++;

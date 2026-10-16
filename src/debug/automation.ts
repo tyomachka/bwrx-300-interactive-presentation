@@ -35,6 +35,10 @@ import { useLanguageStore, type Language } from '../i18n/language';
 import { QUALITY_PRESETS } from '../config/quality';
 import { Vector3 } from 'three';
 import { diagnosticsSample } from './diagnostics';
+import { talk, TALK_BEATS, talkOutline, useTalkStore } from '../presentation/talk';
+import { beatTime, dip, overrideTalkCamera } from '../presentation/runtime';
+import { cues, world } from '../presentation/world';
+import type { EntryMode } from '../presentation/types';
 
 const api = {
   shot: {
@@ -151,6 +155,8 @@ const api = {
       return { ...s, labels: [...s.labels] };
     },
     stats: () => ({ ...fissionStats(), sphereTriangles: lastInset?.triangles ?? 0 }),
+    /** The inset's generated shader sources (regression checks: the 48 s inset must not change). */
+    sources: () => (lastInset ? Object.fromEntries(Object.entries(lastInset.parts).map(([k, p]) => [k, { vertex: p.material.vertexShader, fragment: p.material.fragmentShader }])) : null),
     /** Diagnostics: hide inset parts by name (backdrop, particles, sprites, labels). */
     hide: (names: string[]) => void (insetDebug.hide = new Set(names)),
     /** Live uniform values of the inset materials (scalars and colours only). */
@@ -167,6 +173,23 @@ const api = {
   language: {
     get: () => useLanguageStore.getState().language,
     set: (language: Language) => useLanguageStore.getState().setLanguage(language),
+  },
+  /** Presentation v1 (the talk): drive it like the presenter, or jump for captures. */
+  talk: {
+    outline: () => talkOutline(),
+    state: () => ({ ...useTalkStore.getState(), locked: talk.locked, beatTime: beatTime(), dip: dip.value, beat: TALK_BEATS[useTalkStore.getState().flat]!.beat.id, chapter: TALK_BEATS[useTalkStore.getState().flat]!.chapter.id }),
+    world: () => ({ ...world }),
+    cues: () => Object.fromEntries(cues),
+    find: (chapter: string, beat: string) => TALK_BEATS.findIndex((b) => b.chapter.id === chapter && b.beat.id === beat),
+    start: () => talk.start(),
+    next: () => talk.next(),
+    prev: () => talk.prev(),
+    home: () => talk.home(),
+    reset: () => talk.reset(),
+    exit: () => talk.exit(),
+    jump: (flat: number, mode: EntryMode = 'settle') => talk.jump(flat, mode),
+    /** Composition previews: hold a pose inside the talk (null: back to the beat's camera). */
+    previewPose: (pose: CameraPose | null) => overrideTalkCamera(pose),
   },
   /** Jump the camera to an explicit pose (scripted review captures). */
   snapCamera: (pose: CameraPose) => cameraDirector.snapTo(pose),

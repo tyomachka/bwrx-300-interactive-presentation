@@ -70,15 +70,28 @@ const explore = { amount: 0, activity: 0, emphasis: 0 };
 const approach = (value: number, target: number, rate: number, dt: number) =>
   Math.abs(target - value) < 1e-4 ? target : value + (target - value) * (1 - Math.exp(-rate * dt));
 
+/** Presentation v1 (src/presentation) writes the control state while it runs; null: as before. */
+let externalControl: ((dt: number, out: ReactorControlState) => void) | null = null;
+export function setControlSource(source: ((dt: number, out: ReactorControlState) => void) | null): void {
+  externalControl = source;
+}
+
 /**
  * Advance the control state for this frame (once, before anything reads it: ControlDriver).
- * The master owns it while it owns the scene; Explore Control eases towards the slider; with
- * Control off the blades ease back to the base pattern.
+ * The master owns it while it owns the scene, then the talk when it runs; Explore Control eases
+ * towards the slider; with Control off the blades ease back to the base pattern.
  */
 export function advanceControl(dt: number): ReactorControlState {
   if (masterSequence.status !== 'idle') {
     presentationControlAt(masterSequence.time, frame);
     // Handing back to Explore later continues from here (no jump), unless Reset snaps.
+    explore.amount = frame.bladeControlAmount;
+    explore.activity = 0;
+    explore.emphasis = 0;
+    return frame;
+  }
+  if (externalControl) {
+    externalControl(dt, frame);
     explore.amount = frame.bladeControlAmount;
     explore.activity = 0;
     explore.emphasis = 0;

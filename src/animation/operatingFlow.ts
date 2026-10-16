@@ -126,12 +126,23 @@ function offFlow(out: FlowState): FlowState {
 }
 
 /**
- * The flow for the current frame: the master sequence while it owns the scene, else Explore Flow
- * when it is on, else off. Call after the animation clock has advanced (FrameDriver) and the
- * control state too (ControlDriver): Explore Control's reaction cue sets the boiling.
+ * Presentation v1 (the 7-minute talk, src/presentation) supplies the flow while it owns the scene.
+ * Null (the default) leaves everything below exactly as before.
+ */
+let externalFlow: ((out: FlowState) => FlowState) | null = null;
+export function setFlowSource(source: ((out: FlowState) => FlowState) | null): void {
+  externalFlow = source;
+}
+
+/**
+ * The flow for the current frame: the master sequence while it owns the scene, else the talk's
+ * when it runs, else Explore Flow when it is on, else off. Call after the animation clock has
+ * advanced (FrameDriver) and the control state too (ControlDriver): Explore Control's reaction cue
+ * sets the boiling.
  */
 export function currentFlowState(out: FlowState): FlowState {
   if (masterSequence.status !== 'idle') return presentationFlowAt(masterSequence.time, out);
+  if (externalFlow) return externalFlow(out);
   const s = exploreState();
   if (s.mode === 'explore' && s.flow) return exploreFlowAt(animationClock.time, s.isolate ? 'isolated' : s.selectedId ? 'selected' : 'none', out, controlForFrame().reactionIntensity);
   return offFlow(out);

@@ -19,6 +19,11 @@ export interface UiStrings {
     start: string;
     resume: string;
     startTitle: string;
+    /** Presentation v1: back into the talk where it was left (after Esc). */
+    resumeTalk: string;
+    /** The 48 s cinematic (secondary, the backup / reference). */
+    cinematic: string;
+    cinematicTitle: string;
     quality: string;
     qualityGroup: string;
     levels: Record<QualityLevel, string>;
@@ -81,7 +86,10 @@ export const UI_STRINGS: Record<Language, UiStrings> = {
     setup: {
       start: 'Start presentation',
       resume: 'Resume',
-      startTitle: 'Shortcut: Space',
+      startTitle: 'Shortcut: Right arrow or Space',
+      resumeTalk: 'Resume presentation',
+      cinematic: '48 s film',
+      cinematicTitle: 'The 48-second cinematic (the backup video in real time)',
       quality: 'Quality',
       qualityGroup: 'Rendering quality',
       levels: { high: 'High', low: 'Low' },
@@ -139,7 +147,10 @@ export const UI_STRINGS: Record<Language, UiStrings> = {
     setup: {
       start: 'Pradėti pristatymą',
       resume: 'Tęsti',
-      startTitle: 'Klavišas: tarpas',
+      startTitle: 'Klavišas: rodyklė dešinėn arba tarpas',
+      resumeTalk: 'Tęsti pristatymą',
+      cinematic: '48 s filmas',
+      cinematicTitle: '48 sekundžių filmas (atsarginis vaizdo įrašas realiu laiku)',
       quality: 'Kokybė',
       qualityGroup: 'Vaizdo kokybė',
       levels: { high: 'Aukšta', low: 'Žema' },

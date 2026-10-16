@@ -29,6 +29,8 @@ interface AppState {
   /** Diagnostics are compiled in for dev builds and for `?debug` in production. */
   debugAvailable: boolean;
   debugVisible: boolean;
+  /** Presentation v1 debug panel (`?presentationDebug`): beat list, jumps, pose copy. */
+  presentationDebug: boolean;
   /**
    * Stage 2 review aid (dev / `?debug`): hide everything in front of the z = 0 plane so the
    * below-grade shaft, containment and RPV can be inspected. Not the Stage 5 section system.
@@ -44,7 +46,9 @@ interface AppState {
 
 const caps = detectGpuCapabilities();
 const initialQuality = resolveInitialQuality(window.location.search, caps);
-const debugParam = new URLSearchParams(window.location.search).has('debug');
+const query = new URLSearchParams(window.location.search);
+const debugParam = query.has('debug');
+const presentationDebugParam = query.has('presentationDebug');
 
 export const useAppStore = create<AppState>()((set, get) => ({
   caps,
@@ -52,8 +56,9 @@ export const useAppStore = create<AppState>()((set, get) => ({
   qualityReason: initialQuality.reason,
   status: 'loading',
   canvasKey: 0,
-  debugAvailable: import.meta.env.DEV || debugParam,
+  debugAvailable: import.meta.env.DEV || debugParam || presentationDebugParam,
   debugVisible: debugParam,
+  presentationDebug: presentationDebugParam,
   sectionReview: false,
 
   setQuality: (level) => {

@@ -125,14 +125,19 @@ export function isQualityLevel(value: unknown): value is QualityLevel {
 
 export interface InitialQuality {
   level: QualityLevel;
-  reason: 'query' | 'software-renderer' | 'default';
+  reason: 'query' | 'software-renderer' | 'portable' | 'default';
 }
 
-/** `?quality=low|high` wins; otherwise a CPU rasteriser starts in low; otherwise high. */
+/**
+ * `?quality=low|high` wins; otherwise a CPU rasteriser starts in low; the portable single-file
+ * build (the presentation package, `vite build --mode portable`) starts in low, the validated
+ * presentation-safe preset; otherwise high.
+ */
 export function resolveInitialQuality(search: string, caps: GpuCapabilities): InitialQuality {
   const requested = new URLSearchParams(search).get(QUALITY_QUERY_PARAM);
   if (isQualityLevel(requested)) return { level: requested, reason: 'query' };
   if (caps.softwareRenderer) return { level: 'low', reason: 'software-renderer' };
+  if (import.meta.env.MODE === 'portable') return { level: 'low', reason: 'portable' };
   return { level: 'high', reason: 'default' };
 }
 

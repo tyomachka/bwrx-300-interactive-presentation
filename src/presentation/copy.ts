@@ -1,0 +1,282 @@
+/**
+ * Presentation v1 on-screen copy, Lithuanian (default) and English. Short claims, single numbers and
+ * one-to-three-word labels only: the speech carries the explanation, the screen supports it.
+ * Footnotes (`note*`) are the tiny source qualifiers the facts need (presentation/sources.ts).
+ *
+ * `TalkCopy` is the contract: a key missing in either language fails the type check.
+ */
+import { useLanguageStore, type Language } from '../i18n/language';
+
+const LT = {
+  // Chapter labels (tiny, top left; not shown on the title chapters)
+  'chapter.hook': 'BWRX-300',
+  'chapter.lithuania': 'Lietuva',
+  'chapter.scale': 'Mastelis',
+  'chapter.facts': 'Trys faktai',
+  'chapter.projects': 'Projektai',
+  'chapter.handoff': 'Į vidų',
+  'chapter.fission': 'Dalijimasis',
+  'chapter.control': 'Valdymas',
+  'chapter.energy': 'Nuo atomo iki elektros',
+  'chapter.safety': 'Pasyvioji sauga',
+  'chapter.limits': 'Iššūkiai',
+  'chapter.close': 'Klausimai',
+
+  // 1 Hook
+  'hook.kicker': 'Mažieji moduliniai reaktoriai',
+  'hook.title': 'BWRX-300',
+  'hook.qr': 'Interaktyvus modelis',
+  'hook.qrTodo': 'QR kodas bus čia',
+
+  // 2 Lithuania
+  'lt.stat': '50 %',
+  'lt.statCaption': 'Lietuvos elektros poreikio 2025 m. patenkino atsinaujinanti energetika',
+  'lt.note': 'Šaltinis: „Litgrid“, 2026-01-28',
+  'lt.calm': 'O kai nėra vėjo ir saulės?',
+  'lt.calmSub': 'Sistemai reikia ir valdomos gamybos',
+  'lt.imports': 'importas',
+  'lt.mou': 'Lietuva vertina BWRX-300',
+  'lt.mouSub': '2026 m. vasario memorandumas',
+  'lt.mouNote': 'Šaltinis: LR energetikos ministerija, 2026-02-25',
+  'lt.wind': 'vėjas',
+  'lt.sun': 'saulė',
+
+  // 3 Scale
+  'scale.large': '~1 500 MW',
+  'scale.largeSub': 'didelis blokas',
+  'scale.small': '~300 MW',
+  'scale.smallSub': 'BWRX-300',
+  'scale.note': 'Iliustracinis galios palyginimas, ne techninis atitikmuo',
+  'scale.modules': '5 × 300 MW',
+  'scale.modulesSub': 'ta pati fizika – kitas mastelis',
+  'scale.assembly': 'Vienodi blokai – statomi vienas po kito',
+
+  // 4 Facts
+  'facts.power': '~300',
+  'facts.powerUnit': 'MW',
+  'facts.powerCaption': 'elektros galia, vienas blokas',
+  'facts.pitches': '≈ 2',
+  'facts.pitchesUnit': 'futbolo aikštės',
+  'facts.pitchesCaption': 'tiek ploto užima visas energetinis blokas',
+  'facts.pitchesNote': 'Gamintojo (GE Vernova) duomenys: blokas telpa dviejose tarptautinėse futbolo aikštėse',
+  'facts.months': '24–36',
+  'facts.monthsUnit': 'mėn.*',
+  'facts.monthsCaption': 'statyba: nuo pirmojo betono reaktoriaus pastate iki kuro įkrovimo',
+  'facts.monthsNote': '*Gamintojo įvertis serijiniam blokui; be licencijavimo ir finansavimo',
+
+  // 5 Projects
+  'projects.legend.building': 'statoma',
+  'projects.legend.licensing': 'licencijavimas',
+  'projects.legend.planned': 'planuojama',
+  'projects.legend.assessing': 'vertinama',
+  'projects.darlington': 'Darlingtonas, Kanada',
+  'projects.darlingtonSub': 'statoma',
+  'projects.clinch': 'Clinch River, JAV',
+  'projects.clinchSub': 'leidimas statyti, 2026 m.',
+  'projects.poland': 'Lenkija',
+  'projects.polandSub': 'licencijavimas',
+  'projects.estonia': 'Estija',
+  'projects.estoniaSub': 'planuojama',
+  'projects.lithuania': 'Lietuva',
+  'projects.lithuaniaSub': 'vertinama',
+  'projects.note': 'Šaltiniai: CNSC, US NRC, GE Vernova Hitachi, LR energetikos ministerija (2025–2026)',
+  'projects.darlingtonNote': 'CNSC statybos licencija – 2025 m. balandžio 4 d.',
+
+  // 7 Fission
+  'fission.neutron': 'neutronas',
+  'fission.nucleus': 'U-235',
+  'fission.split': 'skilimas',
+  'fission.heat': 'energija → šiluma',
+  'fission.newNeutrons': 'nauji neutronai',
+  'fission.chain': 'grandininė reakcija',
+  'fission.inFuel': 'Tai vyksta kure',
+  'fission.note': 'Schema, ne mastelis',
+
+  // 8 Control
+  'control.blades': 'valdymo mentės',
+  'control.absorb': 'sugeria neutronus',
+  'control.inserted': 'Daugiau įstumta → mažiau reakcijų',
+  'control.withdrawn': 'Mažiau įstumta → daugiau reakcijų',
+  'control.note': 'Iliustracinis judesys',
+
+  // 9 Energy
+  'energy.water': 'vanduo kyla',
+  'energy.boil': 'verda',
+  'energy.separators': 'separatoriai',
+  'energy.dryer': 'džiovintuvas',
+  'energy.drySteam': 'sausi garai',
+  'energy.turbine': 'turbina',
+  'energy.generator': 'generatorius',
+  'energy.condenser': 'kondensatorius',
+  'energy.return': 'vanduo grįžta į reaktorių',
+  'energy.grid': 'į tinklą',
+  'energy.homes': '≈ 300 000',
+  'energy.homesCaption': 'namų ūkių*',
+  'energy.homesNote': '*Gamintojo iliustracinis įvertis; miestas – ne konkreti vieta',
+
+  // 10 Safety
+  'safety.normal': 'Įprastas darbas',
+  'safety.blackout': 'Dingo išorinis elektros tiekimas',
+  'safety.scram': 'Grandininė reakcija sustabdoma',
+  'safety.heat': 'Bet šiluma nedingsta',
+  'safety.fission': 'dalijimasis',
+  'safety.fissionValue': '≈ 0',
+  'safety.decay': 'šiluma',
+  'safety.decayValue': '≠ 0',
+  'safety.ics': 'Pasyvusis aušinimas',
+  'safety.icsSub': 'be siurblių, be išorinės elektros',
+  'safety.steamUp': 'garai kyla',
+  'safety.pool': 'šiluma – į baseiną',
+  'safety.waterBack': 'vanduo grįžta',
+  'safety.days': '7 paros*',
+  'safety.hours': 'h',
+  'safety.daysUnit': 'paros',
+  'safety.daysNote': '*Be operatorių veiksmų; tam pakanka 2 iš 3 kontūrų (GE Vernova Hitachi, GD Rev. J §3.3)',
+
+  // 11 Limits
+  'limits.waste': 'ATLIEKOS',
+  'limits.licensing': 'LICENCIJAVIMAS',
+  'limits.cost': 'PIRMŲJŲ PROJEKTŲ RIZIKA',
+
+  // 12 Close
+  'close.thesis': 'Ta pati fizika. Kitas mastelis.',
+  'close.questions': 'Jūsų klausimai',
+  'close.explore': 'Skenuokite ir tyrinėkite modelį',
+} as const;
+
+export type CopyKey = keyof typeof LT;
+export type TalkCopy = Record<CopyKey, string>;
+
+const EN: TalkCopy = {
+  'chapter.hook': 'BWRX-300',
+  'chapter.lithuania': 'Lithuania',
+  'chapter.scale': 'Scale',
+  'chapter.facts': 'Three facts',
+  'chapter.projects': 'Projects',
+  'chapter.handoff': 'Inside',
+  'chapter.fission': 'Fission',
+  'chapter.control': 'Control',
+  'chapter.energy': 'Atom to electricity',
+  'chapter.safety': 'Passive safety',
+  'chapter.limits': 'Challenges',
+  'chapter.close': 'Questions',
+
+  'hook.kicker': 'Small modular reactors',
+  'hook.title': 'BWRX-300',
+  'hook.qr': 'Interactive model',
+  'hook.qrTodo': 'QR code goes here',
+
+  'lt.stat': '50%',
+  'lt.statCaption': "of Lithuania's electricity demand in 2025 was met by renewables",
+  'lt.note': 'Source: Litgrid, 2026-01-28',
+  'lt.calm': 'And when there is no wind or sun?',
+  'lt.calmSub': 'The system also needs controllable generation',
+  'lt.imports': 'imports',
+  'lt.mou': 'Lithuania is assessing the BWRX-300',
+  'lt.mouSub': 'Memorandum, February 2026',
+  'lt.mouNote': 'Source: Ministry of Energy of Lithuania, 2026-02-25',
+  'lt.wind': 'wind',
+  'lt.sun': 'solar',
+
+  'scale.large': '~1,500 MW',
+  'scale.largeSub': 'large unit',
+  'scale.small': '~300 MW',
+  'scale.smallSub': 'BWRX-300',
+  'scale.note': 'Illustrative capacity comparison, not a technical equivalence',
+  'scale.modules': '5 × 300 MW',
+  'scale.modulesSub': 'same physics, different scale',
+  'scale.assembly': 'Identical units, built one after another',
+
+  'facts.power': '~300',
+  'facts.powerUnit': 'MW',
+  'facts.powerCaption': 'electric output, one unit',
+  'facts.pitches': '≈ 2',
+  'facts.pitchesUnit': 'football pitches',
+  'facts.pitchesCaption': 'the whole power block fits within them',
+  'facts.pitchesNote': 'Vendor (GE Vernova): the power block fits within two international football pitches',
+  'facts.months': '24–36',
+  'facts.monthsUnit': 'months*',
+  'facts.monthsCaption': 'construction: first nuclear concrete to fuel load',
+  'facts.monthsNote': '*Vendor estimate for a series (nth-of-a-kind) unit; excludes licensing and financing',
+
+  'projects.legend.building': 'under construction',
+  'projects.legend.licensing': 'licensing',
+  'projects.legend.planned': 'planned',
+  'projects.legend.assessing': 'assessing',
+  'projects.darlington': 'Darlington, Canada',
+  'projects.darlingtonSub': 'under construction',
+  'projects.clinch': 'Clinch River, USA',
+  'projects.clinchSub': 'construction permit, 2026',
+  'projects.poland': 'Poland',
+  'projects.polandSub': 'licensing',
+  'projects.estonia': 'Estonia',
+  'projects.estoniaSub': 'planned',
+  'projects.lithuania': 'Lithuania',
+  'projects.lithuaniaSub': 'assessing',
+  'projects.note': 'Sources: CNSC, US NRC, GE Vernova Hitachi, Lithuanian Ministry of Energy (2025–2026)',
+  'projects.darlingtonNote': 'CNSC construction licence: 4 April 2025',
+
+  'fission.neutron': 'neutron',
+  'fission.nucleus': 'U-235',
+  'fission.split': 'split',
+  'fission.heat': 'energy → heat',
+  'fission.newNeutrons': 'new neutrons',
+  'fission.chain': 'chain reaction',
+  'fission.inFuel': 'This happens in the fuel',
+  'fission.note': 'Schematic, not to scale',
+
+  'control.blades': 'control blades',
+  'control.absorb': 'absorb neutrons',
+  'control.inserted': 'Further in → fewer reactions',
+  'control.withdrawn': 'Further out → more reactions',
+  'control.note': 'Illustrative motion',
+
+  'energy.water': 'water rises',
+  'energy.boil': 'boils',
+  'energy.separators': 'separators',
+  'energy.dryer': 'dryer',
+  'energy.drySteam': 'dry steam',
+  'energy.turbine': 'turbine',
+  'energy.generator': 'generator',
+  'energy.condenser': 'condenser',
+  'energy.return': 'water returns to the reactor',
+  'energy.grid': 'to the grid',
+  'energy.homes': '≈ 300,000',
+  'energy.homesCaption': 'homes*',
+  'energy.homesNote': '*Vendor scale illustration; the city is not a real place',
+
+  'safety.normal': 'Normal operation',
+  'safety.blackout': 'External power is lost',
+  'safety.scram': 'The chain reaction stops',
+  'safety.heat': 'But the heat does not',
+  'safety.fission': 'fission',
+  'safety.fissionValue': '≈ 0',
+  'safety.decay': 'heat',
+  'safety.decayValue': '≠ 0',
+  'safety.ics': 'Passive cooling',
+  'safety.icsSub': 'no pumps, no external power',
+  'safety.steamUp': 'steam rises',
+  'safety.pool': 'heat goes into the pool',
+  'safety.waterBack': 'water returns',
+  'safety.days': '7 days*',
+  'safety.hours': 'h',
+  'safety.daysUnit': 'days',
+  'safety.daysNote': '*Without operator action; two of the three trains are enough (GE Vernova Hitachi, GD Rev. J §3.3)',
+
+  'limits.waste': 'WASTE',
+  'limits.licensing': 'LICENSING',
+  'limits.cost': 'FIRST-OF-A-KIND RISK',
+
+  'close.thesis': 'Same physics. Different scale.',
+  'close.questions': 'Your questions',
+  'close.explore': 'Scan and explore the model',
+};
+
+export const TALK_COPY: Record<Language, TalkCopy> = { lt: LT, en: EN };
+
+/** The talk copy in the current language (re-renders on a switch). */
+export function useTalkCopy(): TalkCopy {
+  return TALK_COPY[useLanguageStore((s) => s.language)];
+}
+
+export const talkCopy = (language: Language): TalkCopy => TALK_COPY[language];

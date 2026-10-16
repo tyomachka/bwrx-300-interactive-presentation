@@ -81,6 +81,11 @@ export function setCinematicLook(source: (() => CinematicLook) | null): void {
   dirty = true;
 }
 
+/** Withdraw `source` only if it is still the installed look (another cinematic may have replaced it). */
+export function releaseCinematicLook(source: () => CinematicLook): void {
+  if (cinematicLook === source) setCinematicLook(null);
+}
+
 const cinematicActive = () => cinematicLook !== null && exploreState().mode === 'presentation';
 
 const ACCENT = new Color(PALETTE.accent);

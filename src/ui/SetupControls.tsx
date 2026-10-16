@@ -10,6 +10,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useMasterStore } from '../animation/masterSequence';
 import { resetPresentation, startOrTogglePresentation } from '../animation/presentation';
+import { talk, useTalkStore } from '../presentation/talk';
 import { QUALITY_PRESETS, type QualityLevel } from '../config/quality';
 import { useStrings } from '../i18n/strings';
 import { useAppStore } from '../state/store';
@@ -25,7 +26,10 @@ export function SetupControls() {
   // Nothing in the projected image while the master sequence plays (and no accidental quality
   // switch, which would rebuild the canvas mid-sequence).
   const masterStatus = useMasterStore((s) => s.status);
-  const presenting = masterStatus === 'playing';
+  // Nothing in the projected image while the talk runs either (it has no on-screen controls).
+  const talkActive = useTalkStore((s) => s.active);
+  const talkStarted = useTalkStore((s) => s.started);
+  const presenting = masterStatus === 'playing' || talkActive;
   const [awake, setAwake] = useState(false);
   const hovered = useRef(false);
   const bar = useRef<HTMLDivElement>(null);
@@ -76,8 +80,11 @@ export function SetupControls() {
       onPointerEnter={() => (hovered.current = true)}
       onPointerLeave={() => (hovered.current = false)}
     >
-      <button type="button" className="setup__start" title={t.setup.startTitle} onClick={() => startOrTogglePresentation()}>
-        {masterStatus === 'paused' ? t.setup.resume : t.setup.start}
+      <button type="button" className="setup__start" title={t.setup.startTitle} onClick={() => talk.start()}>
+        {talkStarted ? t.setup.resumeTalk : t.setup.start}
+      </button>
+      <button type="button" title={t.setup.cinematicTitle} onClick={() => startOrTogglePresentation()}>
+        {masterStatus === 'paused' ? t.setup.resume : t.setup.cinematic}
       </button>
       <div className="setup__group" role="group" aria-label={t.setup.qualityGroup}>
         <span className="setup__label">{t.setup.quality}</span>

@@ -12,6 +12,8 @@ import { portableSingleFile } from './build-tools/portableSingleFile.ts';
  * The normal build (`npm run build`, dist/) is unchanged.
  */
 export default defineConfig({
+  // `import.meta.env.MODE === 'portable'`: the package opens in the Low preset (config/quality.ts).
+  mode: 'portable',
   base: './',
   plugins: [
     react(),

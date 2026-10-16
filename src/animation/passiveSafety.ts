@@ -74,15 +74,28 @@ const explore = { on: false, level: 0, startedAt: 0 };
 const approach = (value: number, target: number, rate: number, dt: number) =>
   Math.abs(target - value) < 1e-4 ? target : value + (target - value) * (1 - Math.exp(-rate * dt));
 
+/** Presentation v1 (src/presentation) writes the safety state while it runs; null: as before. */
+let externalSafety: ((dt: number, out: SafetyState) => void) | null = null;
+export function setSafetySource(source: ((dt: number, out: SafetyState) => void) | null): void {
+  externalSafety = source;
+}
+
 /**
  * Advance the safety state for this frame (once, before anything reads it: SafetyDriver). The
- * master owns it while it owns the scene; Explore Safety replays the loop from its start.
+ * master owns it while it owns the scene, then the talk when it runs; Explore Safety replays the
+ * loop from its start.
  */
 export function advanceSafety(dt: number): SafetyState {
   if (masterSequence.status !== 'idle') {
     explore.on = false;
     explore.level = 0;
     return presentationSafetyAt(masterSequence.time, frame);
+  }
+  if (externalSafety) {
+    explore.on = false;
+    explore.level = 0;
+    externalSafety(dt, frame);
+    return frame;
   }
   const s = exploreState();
   const on = s.mode === 'explore' && s.safety;

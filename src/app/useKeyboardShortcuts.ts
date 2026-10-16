@@ -5,7 +5,32 @@ import { resetPresentation, startOrTogglePresentation, startPresentation } from 
 import { cycleRpvReview } from '../animation/rpvReview';
 import { clearSelection, toggleControl, toggleFlow, toggleIsolate, toggleLabels, toggleSafety, toggleSection, toggleXray } from '../interaction/exploreActions';
 import { cycleReviewView } from '../camera/reviewViews';
+import { talk } from '../presentation/talk';
 import { useAppStore } from '../state/store';
+
+/**
+ * Presentation v1 (the 7-minute talk, src/presentation): while it runs it owns the keys below and
+ * every other key is ignored, so a stray press cannot toggle an Explore mode on the projector.
+ * Page Down / Page Up are what most presenter clickers send. From Explore, the same "next" keys
+ * (and Home) enter the talk; the 48 s cinematic keeps its own keys while it plays or holds.
+ */
+const TALK_KEYS: Record<string, () => void> = {
+  ArrowRight: () => talk.next(),
+  Space: () => talk.next(),
+  PageDown: () => talk.next(),
+  ArrowLeft: () => talk.prev(),
+  PageUp: () => talk.prev(),
+  Home: () => talk.home(),
+  KeyR: () => talk.reset(),
+  Escape: () => talk.exit(),
+};
+
+const ENTER_TALK: Record<string, () => void> = {
+  ArrowRight: () => talk.start(),
+  Space: () => talk.start(),
+  PageDown: () => talk.start(),
+  Home: () => talk.home(),
+};
 
 /**
  * Global shortcuts (PROJECT.md §11). Explore (Stage 5): Esc clears the selection, X X-ray,
@@ -83,6 +108,23 @@ export function useKeyboardShortcuts(): void {
       // Never swallow browser shortcuts such as Ctrl+R (reload) or Ctrl+1 (tab switch).
       if (event.ctrlKey || event.metaKey || event.altKey || event.repeat) return;
       if (isTypingTarget(event.target)) return;
+      // A focused button would also take Space / Enter as a click.
+      const blurButton = () => document.activeElement instanceof HTMLButtonElement && document.activeElement.blur();
+      if (talk.active) {
+        const quality = event.code.startsWith('Digit') || event.code.startsWith('Numpad') || event.code === 'Backquote';
+        const action = TALK_KEYS[event.code] ?? (quality ? BINDINGS[event.code] : undefined);
+        if (!action) return;
+        event.preventDefault();
+        blurButton();
+        action();
+        return;
+      }
+      if (masterSequence.status === 'idle' && ENTER_TALK[event.code]) {
+        event.preventDefault();
+        blurButton();
+        ENTER_TALK[event.code]!();
+        return;
+      }
       const action = BINDINGS[event.code];
       if (!action) return;
       event.preventDefault();

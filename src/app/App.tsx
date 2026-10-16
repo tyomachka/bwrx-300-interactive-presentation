@@ -6,16 +6,19 @@ import { ExploreOverlay } from '../ui/ExploreOverlay';
 import { ExplorePanel } from '../ui/ExplorePanel';
 import { SetupControls } from '../ui/SetupControls';
 import { ContextLostOverlay, SceneCrashed, WebGLUnavailable } from '../ui/StatusScreens';
+import { TalkOverlay } from '../presentation/ui/TalkOverlay';
 import { AppErrorBoundary, SafeLayer } from './ErrorBoundary';
 import { useKeyboardShortcuts } from './useKeyboardShortcuts';
 
 const DiagnosticsOverlay = lazy(() => import('../debug/DiagnosticsOverlay'));
+const TalkDebug = lazy(() => import('../presentation/ui/TalkDebug').then((m) => ({ default: m.TalkDebug })));
 
 export function App() {
   const caps = useAppStore((s) => s.caps);
   const canvasKey = useAppStore((s) => s.canvasKey);
   const status = useAppStore((s) => s.status);
   const showDiagnostics = useAppStore((s) => s.debugAvailable && s.debugVisible);
+  const showTalkDebug = useAppStore((s) => s.presentationDebug);
 
   useKeyboardShortcuts();
 
@@ -44,11 +47,21 @@ export function App() {
           <SceneCanvas />
         </AppErrorBoundary>
         <ExploreOverlay />
+        <SafeLayer name="talk-overlay">
+          <TalkOverlay />
+        </SafeLayer>
         <ExplorePanel />
         <SetupControls />
       </div>
       <LoadingOverlay />
       <ContextLostOverlay />
+      {showTalkDebug && (
+        <SafeLayer name="talk-debug">
+          <Suspense fallback={null}>
+            <TalkDebug />
+          </Suspense>
+        </SafeLayer>
+      )}
       {showDiagnostics && (
         <SafeLayer name="diagnostics-overlay">
           <Suspense fallback={null}>

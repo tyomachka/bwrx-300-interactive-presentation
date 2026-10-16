@@ -1,0 +1,640 @@
+/*
+ * Presentation v1 (the talk) on-screen copy. Every size, colour and timing is a variable written by
+ * presentation/design.ts onto `.talk` (stage-relative cqh units: `.stage` is a size container), so
+ * 1920x1080, 1280x800 and 1024x768 show the same composition and small print keeps a pixel floor.
+ * System fonts only.
+ */
+.talk {
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  pointer-events: none;
+  font-family: var(--talk-font);
+  color: var(--talk-text);
+  --talk-gutter: 4.8cqw;
+  font-variant-numeric: tabular-nums;
+}
+
+.talk__dip {
+  position: absolute;
+  inset: 0;
+  z-index: 50;
+  background: #050607;
+  pointer-events: none;
+}
+
+/* The tiny chapter label (not on the title compositions). */
+.talk__chapter {
+  position: absolute;
+  left: var(--talk-gutter);
+  top: 4.4cqh;
+  display: flex;
+  align-items: center;
+  gap: 0.9em;
+  font-size: var(--talk-size-chapter);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--talk-qualifier);
+  animation: talk-in var(--talk-in) var(--talk-ease) both;
+}
+
+.talk__chapter::before {
+  content: '';
+  width: 2.4em;
+  height: 2px;
+  background: var(--talk-accent);
+}
+
+.talk-item {
+  position: absolute;
+  animation: talk-in var(--talk-in) var(--talk-ease) both;
+}
+
+.talk-item.is-leaving {
+  animation: talk-out var(--talk-out) ease both;
+}
+
+/* Fades driven by a cue (per frame, overlayLayer.ts): no entrance animation over the inline opacity. */
+.talk-item.is-cued {
+  animation: none;
+}
+
+.talk-item.is-cued.is-leaving {
+  animation: talk-out var(--talk-out) ease both;
+}
+
+@keyframes talk-in {
+  from {
+    opacity: 0;
+    transform: translateY(var(--talk-rise));
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes talk-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.talk-pos--top-left {
+  left: var(--talk-gutter);
+  top: 9.4cqh;
+}
+
+.talk-pos--top-right {
+  right: var(--talk-gutter);
+  top: 9.4cqh;
+  text-align: right;
+}
+
+.talk-pos--left {
+  left: var(--talk-gutter);
+  top: 50%;
+  translate: 0 -50%;
+}
+
+.talk-pos--right {
+  right: var(--talk-gutter);
+  top: 50%;
+  translate: 0 -50%;
+  text-align: right;
+}
+
+.talk-pos--center {
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  text-align: center;
+}
+
+.talk-pos--bottom-left {
+  left: var(--talk-gutter);
+  bottom: 12.5cqh;
+}
+
+.talk-pos--bottom-right {
+  right: var(--talk-gutter);
+  bottom: 7cqh;
+}
+
+/* Titles ------------------------------------------------------------------------------- */
+.talk-title__kicker {
+  font-size: var(--talk-size-kicker);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--talk-accent);
+}
+
+.talk-title__title {
+  margin-top: 1.2cqh;
+  font-weight: 300;
+  line-height: 1.04;
+  letter-spacing: -0.005em;
+  color: var(--talk-text);
+}
+
+.talk-title--hero .talk-title__title {
+  font-size: var(--talk-size-hero);
+}
+
+.talk-title--large .talk-title__title {
+  max-width: 46cqw;
+  font-size: var(--talk-size-headline);
+}
+
+.talk-title__sub {
+  margin-top: 2.4cqh;
+  font-size: var(--talk-size-headline);
+  font-weight: 300;
+  color: var(--talk-accent);
+}
+
+/* Numbers as objects ------------------------------------------------------------------- */
+.talk-stat__value {
+  display: flex;
+  align-items: baseline;
+  gap: 1.1cqh;
+  font-size: var(--talk-size-metric);
+  font-weight: 200;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--talk-text);
+  white-space: nowrap;
+}
+
+.talk-stat__unit {
+  font-size: var(--talk-size-metric-unit);
+  font-weight: 300;
+  letter-spacing: 0;
+  color: var(--talk-accent);
+}
+
+.talk-stat__caption {
+  max-width: 30cqw;
+  margin-top: 2cqh;
+  font-size: var(--talk-size-support);
+  line-height: 1.38;
+  color: var(--talk-text-2);
+}
+
+/* Short claims ---------------------------------------------------------------------------- */
+.talk-caption__text {
+  max-width: 42cqw;
+  font-size: var(--talk-size-headline);
+  font-weight: 300;
+  line-height: 1.14;
+  color: var(--talk-text);
+}
+
+.talk-caption--small .talk-caption__text {
+  font-size: calc(var(--talk-size-headline) * 0.72);
+  font-weight: 400;
+}
+
+.talk-caption__sub {
+  margin-top: 1.4cqh;
+  font-size: var(--talk-size-support);
+  color: var(--talk-text-2);
+}
+
+.talk-caption--alert {
+  padding-left: 1.8cqh;
+  border-left: 3px solid var(--talk-accent);
+}
+
+/* Source qualifiers ------------------------------------------------------------------------- */
+.talk-note {
+  left: var(--talk-gutter);
+  bottom: 4.6cqh;
+  max-width: 64cqw;
+  font-size: var(--talk-size-qualifier);
+  line-height: 1.4;
+  color: var(--talk-qualifier);
+}
+
+/* Labels anchored in the scene (positioned per frame) --------------------------------------- */
+.talk-label {
+  left: 0;
+  top: 0;
+  animation: none;
+  will-change: transform, opacity;
+  display: flex;
+  align-items: center;
+}
+
+.talk-label.is-leaving {
+  animation: talk-out var(--talk-out) ease both;
+}
+
+.talk-label__dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--talk-accent);
+  box-shadow: 0 0 0 3px rgba(232, 163, 61, 0.22);
+}
+
+.talk-label--right .talk-label__dot {
+  left: -18px;
+  top: 50%;
+  margin-top: -4px;
+}
+
+.talk-label--left .talk-label__dot {
+  right: -18px;
+  top: 50%;
+  margin-top: -4px;
+}
+
+.talk-label--up .talk-label__dot {
+  bottom: -18px;
+  left: 50%;
+  margin-left: -4px;
+}
+
+.talk-label--down .talk-label__dot {
+  top: -18px;
+  left: 50%;
+  margin-left: -4px;
+}
+
+.talk-label__body {
+  display: flex;
+  flex-direction: column;
+  white-space: nowrap;
+}
+
+.talk-label--tag .talk-label__body {
+  padding: 0.75cqh 1.3cqh 0.85cqh;
+  border-left: 2px solid var(--talk-accent);
+  border-radius: 0 6px 6px 0;
+  background: var(--talk-panel);
+}
+
+.talk-label--tag .talk-label__text {
+  font-size: var(--talk-size-label);
+  font-weight: 500;
+  color: var(--talk-text);
+}
+
+.talk-label--tag .talk-label__sub {
+  margin-top: 0.3cqh;
+  font-size: var(--talk-size-label-sub);
+  color: var(--talk-text-2);
+}
+
+.talk-label--word .talk-label__dot,
+.talk-label--value .talk-label__dot {
+  display: none;
+}
+
+.talk-label--word .talk-label__text {
+  font-size: var(--talk-size-word);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--talk-text);
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.8);
+}
+
+.talk-label--value .talk-label__body {
+  align-items: center;
+  text-align: center;
+}
+
+.talk-label--value .talk-label__text {
+  font-size: var(--talk-size-value);
+  font-weight: 300;
+  line-height: 1;
+  color: var(--talk-text);
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.65);
+}
+
+.talk-label--value .talk-label__sub {
+  margin-top: 0.8cqh;
+  font-size: var(--talk-size-label-sub);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--talk-accent);
+}
+
+/* Presenters -------------------------------------------------------------------------------- */
+.talk-speakers {
+  left: var(--talk-gutter);
+  bottom: 5.2cqh;
+  display: flex;
+  align-items: flex-end;
+  gap: 2.6cqw;
+  pointer-events: auto;
+}
+
+.talk-speaker {
+  display: flex;
+  align-items: flex-end;
+  gap: 1.2cqw;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.talk-speaker:hover {
+  background: none;
+}
+
+.talk-figure {
+  height: 31cqh;
+  width: auto;
+  flex: none;
+  filter: drop-shadow(0 0.6cqh 1.4cqh rgba(0, 0, 0, 0.5));
+}
+
+.talk-figure--portrait {
+  object-fit: contain;
+}
+
+.talk-speaker__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7cqh;
+  padding-bottom: 1.6cqh;
+}
+
+.talk-speaker__name {
+  font-size: var(--talk-size-speaker-name);
+  font-weight: 500;
+  color: var(--talk-text);
+}
+
+.talk-speaker__email {
+  font-size: var(--talk-size-speaker-email);
+  color: var(--talk-text-2);
+  text-decoration: none;
+  transition: color 200ms ease;
+}
+
+a.talk-speaker__email:hover,
+.talk-speaker.is-focused .talk-speaker__email {
+  color: var(--talk-accent);
+}
+
+.talk-speaker.is-focused .talk-speaker__email {
+  font-size: calc(var(--talk-size-speaker-email) * 1.3);
+}
+
+.talk-speaker__email.is-todo {
+  font-family: var(--mono);
+  color: rgba(232, 163, 61, 0.8);
+}
+
+/* QR ------------------------------------------------------------------------------------------ */
+.talk-qr {
+  right: var(--talk-gutter);
+  bottom: 6cqh;
+  display: flex;
+  align-items: center;
+  gap: 1.6cqh;
+  pointer-events: auto;
+}
+
+.talk-qr__code {
+  display: grid;
+  place-items: center;
+  width: 12.5cqh;
+  height: 12.5cqh;
+  border: 2px dashed rgba(233, 236, 239, 0.4);
+  border-radius: 10px;
+  background: rgba(10, 12, 15, 0.55);
+}
+
+.talk-qr__todo {
+  font-family: var(--mono);
+  font-size: 2.4cqh;
+  letter-spacing: 0.2em;
+  color: var(--talk-qualifier);
+}
+
+.talk-qr__label {
+  font-size: var(--talk-size-label);
+  font-weight: 500;
+  color: var(--talk-text);
+}
+
+.talk-qr__url {
+  margin-top: 0.5cqh;
+  font-family: var(--mono);
+  font-size: var(--talk-size-qualifier);
+  color: var(--talk-qualifier);
+}
+
+/* Passive safety: the time counter and the two quiet indicators ---------------------------------- */
+.talk-counter__value {
+  font-size: var(--talk-size-metric);
+  font-weight: 200;
+  line-height: 1;
+  color: var(--talk-text);
+}
+
+.talk-counter__track {
+  width: 26cqw;
+  height: 3px;
+  margin: 2cqh 0 1.6cqh auto;
+  background: rgba(233, 236, 239, 0.18);
+  overflow: hidden;
+}
+
+.talk-counter__bar {
+  width: 100%;
+  height: 100%;
+  background: var(--talk-accent);
+  transform-origin: left center;
+  transform: scaleX(0);
+}
+
+.talk-counter__note {
+  max-width: 28cqw;
+  margin-left: auto;
+  font-size: var(--talk-size-qualifier);
+  line-height: 1.4;
+  color: var(--talk-qualifier);
+}
+
+.talk-meters {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4cqh;
+}
+
+.talk-meters__row {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 1.6cqh;
+}
+
+.talk-meters__name {
+  font-size: var(--talk-size-label);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--talk-text-2);
+}
+
+.talk-meters__value {
+  min-width: 2.6em;
+  font-size: var(--talk-size-headline);
+  font-weight: 300;
+  color: var(--talk-text);
+}
+
+.talk-meters__row--warm .talk-meters__value {
+  color: #eab27a;
+}
+
+/* World map legend: solid warm = under construction, warm outline = licensing, muted = planned / assessed */
+.talk-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 1cqh;
+  padding: 1.6cqh 2cqh;
+  border-radius: 10px;
+  background: var(--talk-panel);
+  font-size: var(--talk-size-legend);
+  color: var(--talk-text-2);
+}
+
+.talk-legend__row {
+  display: flex;
+  align-items: center;
+  gap: 1.2cqh;
+}
+
+.talk-pin {
+  width: 1.7cqh;
+  height: 1.7cqh;
+  min-width: 10px;
+  min-height: 10px;
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+.talk-pin--building {
+  background: var(--talk-accent);
+  box-shadow: 0 0 0 3px rgba(232, 163, 61, 0.25);
+}
+
+.talk-pin--licensing {
+  border: 3px solid var(--talk-accent);
+}
+
+.talk-pin--planned {
+  background: var(--talk-muted);
+}
+
+.talk-pin--assessing {
+  border: 3px solid var(--talk-muted);
+}
+
+/* Fission micro-view labels (positioned per frame in the chain inset) ------------------------- */
+.talk-micro {
+  inset: 0;
+  animation: none;
+}
+
+.talk-micro__label {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 0.4cqh 0.9cqh;
+  font-size: var(--talk-size-label);
+  font-weight: 500;
+  color: var(--talk-text);
+  white-space: nowrap;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.8);
+  will-change: transform, opacity;
+}
+
+/* Debug panel (?presentationDebug only) --------------------------------------------------------- */
+.talk-debug {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 60;
+  width: 340px;
+  max-height: calc(100vh - 20px);
+  overflow: auto;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.82);
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: 1.45;
+  color: #cfe8d6;
+}
+
+.talk-debug button {
+  min-height: 24px;
+  padding: 0 0.5rem;
+  font-family: var(--font);
+  font-size: 11px;
+}
+
+.talk-debug__head,
+.talk-debug__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.talk-debug__head {
+  justify-content: space-between;
+}
+
+.talk-debug__state {
+  margin: 6px 0;
+}
+
+.talk-debug__note,
+.talk-debug__cues {
+  color: #8fa59a;
+}
+
+.talk-debug__list {
+  margin-top: 6px;
+}
+
+.talk-debug__chapter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.talk-debug__chapter-name {
+  width: 100%;
+  color: #e9ecef;
+}
+
+.talk-debug__chapter-name em {
+  color: #8fa59a;
+}
+
+.talk-debug button.is-current {
+  border-color: var(--accent);
+  color: #fff;
+}

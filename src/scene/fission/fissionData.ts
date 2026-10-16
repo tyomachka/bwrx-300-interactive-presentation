@@ -178,6 +178,29 @@ export function fissionData(): FissionData {
   return cache;
 }
 
+/**
+ * Presentation v1 chain variant (src/presentation): the same two nuclei and neutrons, plus three
+ * neutrons released by the second split (ids 4-6), and the point where it splits. The Stage 10
+ * data above is not touched.
+ */
+export function fissionChainData(): FissionData & { splitPointB: V3 } {
+  const d = fissionData();
+  const extra = 3;
+  const count = d.instances.count + extra;
+  const grow = (src: Float32Array, size: number) => {
+    const out = new Float32Array(count * size);
+    out.set(src);
+    return out;
+  };
+  const home = grow(d.instances.home, 3);
+  const cent = grow(d.instances.cent, 3);
+  const rest = grow(d.instances.rest, 3);
+  const meta = grow(d.instances.meta, 4);
+  for (let i = 0; i < extra; i++) meta.set([ROLE.neutron, 4 + i, 0, 0], (d.instances.count + i) * 4);
+  const splitPointB = add(d.b.center, scale(d.b.axis, d.b.radius * d.b.split));
+  return { ...d, splitPointB, instances: { home, cent, rest, meta, count } };
+}
+
 /** Diagnostics: the counts and derived points (automation, review report). */
 export function fissionStats() {
   const d = fissionData();
