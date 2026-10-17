@@ -1,0 +1,120 @@
+{
+ "dir": "b",
+ "perBeat": [
+  {
+   "beat": "hook/hero",
+   "window": 8.4,
+   "frames": 505,
+   "fps": 59.9,
+   "p95": 16.8,
+   "worst": 49.8,
+   "over20": 1,
+   "over34": 1,
+   "calls": 67,
+   "tris": 11375
+  },
+  {
+   "beat": "lithuania/renewables",
+   "window": 7,
+   "frames": 420,
+   "fps": 60,
+   "p95": 16.9,
+   "worst": 33.2,
+   "over20": 1,
+   "over34": 0,
+   "calls": 10,
+   "tris": 19347
+  },
+  {
+   "beat": "facts/power",
+   "window": 5.1,
+   "frames": 307,
+   "fps": 60.1,
+   "p95": 16.8,
+   "worst": 17.3,
+   "over20": 0,
+   "over34": 0,
+   "calls": 67,
+   "tris": 11375
+  },
+  {
+   "beat": "facts/months",
+   "window": 6.6,
+   "frames": 397,
+   "fps": 60.1,
+   "p95": 16.8,
+   "worst": 17.5,
+   "over20": 0,
+   "over34": 0,
+   "calls": 69,
+   "tris": 11665
+  },
+  {
+   "beat": "fission/micro",
+   "window": 16.4,
+   "frames": 986,
+   "fps": 60.1,
+   "p95": 16.8,
+   "worst": 17.2,
+   "over20": 0,
+   "over34": 0,
+   "calls": 60,
+   "tris": 51163
+  },
+  {
+   "beat": "safety/scram",
+   "window": 3.6,
+   "frames": 217,
+   "fps": 60.1,
+   "p95": 16.8,
+   "worst": 17,
+   "over20": 0,
+   "over34": 0,
+   "calls": 69,
+   "tris": 67805
+  },
+  {
+   "beat": "safety/ics",
+   "window": 8.7,
+   "frames": 523,
+   "fps": 60.1,
+   "p95": 16.8,
+   "worst": 17.2,
+   "over20": 0,
+   "over34": 0,
+   "calls": 67,
+   "tris": 60623
+  },
+  {
+   "beat": "safety/days",
+   "window": 4.4,
+   "frames": 265,
+   "fps": 60.1,
+   "p95": 16.8,
+   "worst": 17.2,
+   "over20": 0,
+   "over34": 0,
+   "calls": 67,
+   "tris": 60623
+  },
+  {
+   "beat": "close/qa",
+   "window": 4.1,
+   "frames": 247,
+   "fps": 60.1,
+   "p95": 16.8,
+   "worst": 17.2,
+   "over20": 0,
+   "over34": 0,
+   "calls": 67,
+   "tris": 11375
+  }
+ ],
+ "log": {
+  "console": [
+   "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+  ],
+  "errors": [],
+  "external": []
+ }
+}

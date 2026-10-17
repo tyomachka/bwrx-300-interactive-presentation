@@ -1,0 +1,195 @@
+{
+ "quality": "low",
+ "size": "1920x1080",
+ "checks": [
+  {
+   "name": "LT is the default language",
+   "ok": true,
+   "detail": "lt"
+  },
+  {
+   "name": "Right arrow enters the talk at the first beat",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 0
+   }
+  },
+  {
+   "name": "No Explore UI, setup bar or debug UI while presenting",
+   "ok": true,
+   "detail": {
+    "exploreHidden": true,
+    "setupHidden": true,
+    "diagnostics": false,
+    "talkDebug": false,
+    "lang": "lt",
+    "chapterLabel": null,
+    "authority": "cinematic",
+    "exploreMode": "presentation",
+    "master": "idle"
+   }
+  },
+  {
+   "name": "The talk owns the camera (cinematic authority, Explore suspended)",
+   "ok": true,
+   "detail": {
+    "exploreHidden": true,
+    "setupHidden": true,
+    "diagnostics": false,
+    "talkDebug": false,
+    "lang": "lt",
+    "chapterLabel": null,
+    "authority": "cinematic",
+    "exploreMode": "presentation",
+    "master": "idle"
+   }
+  },
+  {
+   "name": "A second press inside the transition lock is ignored",
+   "ok": true,
+   "detail": {
+    "flat": 1,
+    "locked": true
+   }
+  },
+  {
+   "name": "Right arrow walks first -> last",
+   "ok": true,
+   "detail": {
+    "flat": 31
+   }
+  },
+  {
+   "name": "The closing composition holds (no wrap to the start)",
+   "ok": true,
+   "detail": {
+    "flat": 31
+   }
+  },
+  {
+   "name": "Left arrow walks last -> first",
+   "ok": true,
+   "detail": {
+    "flat": 0
+   }
+  },
+  {
+   "name": "Random jumps land on their beats",
+   "ok": true,
+   "detail": {
+    "flat": 25
+   }
+  },
+  {
+   "name": "R re-establishes the current beat (dip, same beat)",
+   "ok": true,
+   "detail": {
+    "flat": 25,
+    "dip": 0.31046959689308934
+   }
+  },
+  {
+   "name": "Esc hands the camera to Explore",
+   "ok": true,
+   "detail": {
+    "active": false,
+    "exploreHidden": false,
+    "setupHidden": true,
+    "diagnostics": false,
+    "talkDebug": false,
+    "lang": "lt",
+    "chapterLabel": null,
+    "authority": "explore",
+    "exploreMode": "explore",
+    "master": "idle"
+   }
+  },
+  {
+   "name": "Explore UI comes back after Esc",
+   "ok": true,
+   "detail": {
+    "exploreHidden": false,
+    "setupHidden": false,
+    "diagnostics": false,
+    "talkDebug": false,
+    "lang": "lt",
+    "chapterLabel": null,
+    "authority": "explore",
+    "exploreMode": "explore",
+    "master": "idle"
+   }
+  },
+  {
+   "name": "Right arrow re-enters where the talk was left",
+   "ok": true,
+   "detail": {
+    "flat": 25
+   }
+  },
+  {
+   "name": "Home returns to the first beat",
+   "ok": true,
+   "detail": {
+    "flat": 0
+   }
+  },
+  {
+   "name": "English switch: chapter label in English",
+   "ok": true,
+   "detail": {
+    "exploreHidden": true,
+    "setupHidden": true,
+    "diagnostics": false,
+    "talkDebug": false,
+    "lang": "en",
+    "chapterLabel": "Lithuania",
+    "authority": "cinematic",
+    "exploreMode": "presentation",
+    "master": "idle"
+   }
+  },
+  {
+   "name": "Starting the 48 s cinematic ends the talk cleanly",
+   "ok": true,
+   "detail": {
+    "active": false,
+    "master": "playing"
+   }
+  },
+  {
+   "name": "R in the cinematic resets to Explore as before",
+   "ok": true,
+   "detail": {
+    "exploreHidden": false,
+    "setupHidden": true,
+    "diagnostics": false,
+    "talkDebug": false,
+    "lang": "lt",
+    "chapterLabel": null,
+    "authority": "explore",
+    "exploreMode": "explore",
+    "master": "idle"
+   }
+  },
+  {
+   "name": "No page errors",
+   "ok": true,
+   "detail": []
+  },
+  {
+   "name": "No external requests",
+   "ok": true,
+   "detail": []
+  }
+ ],
+ "perBeat": [],
+ "gpu": "ANGLE (Intel, Intel(R) Iris(R) Plus Graphics (0x00008A52) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+ "log": {
+  "console": [
+   "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+  ],
+  "errors": [],
+  "external": []
+ }
+}

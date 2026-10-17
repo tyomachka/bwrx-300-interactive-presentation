@@ -1,0 +1,19 @@
+portable-final BWRX300.html 1664230 B (baseline 9a30489: 1660936 B)
+designStudy            0
+Study Sans C           0
+Study Inter            0
+QR size test           0
+study-review           0
+study-board            0
+study-tl               0
+study-credit           0
+applyStudy             0
+replaceTalkBeats       0
+particles-study        0
+InterVariable          0
+BWRXStudySansC         0
+Editorial cinematic    0
+--s-font               0
+talk--light-scene      3
+scramApproach          2
+Tai vyksta kure        1

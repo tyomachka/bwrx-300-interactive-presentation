@@ -17,6 +17,7 @@ import { HERO_REVEAL_CLOSED, type HeroRevealState } from '../animation/heroRevea
 import type { CameraPose } from '../config/camera';
 import { FOG } from '../config/render';
 import { COMPONENT_IDS as C } from '../scene/components';
+import { FISSION_ANCHOR } from '../scene/fission/buildInset';
 import { REACTOR_PRESSURE_VESSEL as RPV } from '../scene/plant/dimensions';
 import { masterRevealAt } from './legacy';
 import { ltToWorld, pinPosition } from './scene/mapLayout';
@@ -56,6 +57,8 @@ const P = {
   grid: pose([330, 300, 820], [350, 0, 150]),
   /** Safety overview: the opened plant (reactor, pools, turbine hall). */
   overview: pose([0, 50, 165], [54, -3, -2]),
+  /** Scram: in front of the cut vessel, on the way down to the blades (no fly-through). */
+  scramApproach: pose([-15, -9.5, 34], [0.5, -15.5, 0]),
   decay: pose([-30, -2, 40], [0, -15.5, 0]),
   icsWide: pose([-14, 10, 56], [0, 6.5, -5]),
   /** Limits: wide, the opened plant. */
@@ -68,8 +71,8 @@ const CLOSED: HeroRevealState = { ...HERO_REVEAL_CLOSED };
 /** The master reveal with the vessel open on the core (15.4 s): ground, shaft, containment, vessel. */
 const CORE_OPEN: HeroRevealState = masterRevealAt(15.4);
 
-/** Fuel spot the fission view opens from (the Stage 10 anchor). */
-const FUEL_SPOT: [number, number, number] = [-0.6, RPV.insideBottomY + 2.4, 0.012];
+/** Fuel spot the fission view opens from and closes into: the Stage 10 inset anchor (mid active core). */
+const FUEL_SPOT = FISSION_ANCHOR.toArray() as [number, number, number];
 
 /** The plant as a point on a map table (log10 of its scale). */
 const POINT = -2.6;
@@ -285,7 +288,7 @@ export const CHAPTERS: readonly TalkChapter[] = [
         world: { 'k.show': 0, 'k.large': 0, 'k.largeDim': 0, 'k.modules': 0, 'e.fogNear': FOG.near, 'e.fogFar': FOG.far },
         worldTiming: { 'k.show': { delay: 2.2 }, 'k.large': { duration: 2.0 }, 'k.modules': { duration: 2.0 }, 'e.fogNear': { duration: 3 }, 'e.fogFar': { duration: 3 } },
         cues: { power: { delay: 1.4, duration: 1.6 } },
-        overlay: [{ kind: 'stat', id: 'facts-power', value: 'facts.power', unit: 'facts.powerUnit', caption: 'facts.powerCaption', count: { cue: 'power', to: 300 }, position: 'left' }],
+        overlay: [{ kind: 'stat', id: 'facts-power', value: 'facts.power', unit: 'facts.powerUnit', caption: 'facts.powerCaption', count: { cue: 'power', to: 300 }, position: 'left', cue: 'power' }],
         lock: 2,
       },
       {
@@ -360,6 +363,7 @@ export const CHAPTERS: readonly TalkChapter[] = [
           { kind: 'note', id: 'projects-darlington-note', text: 'projects.darlingtonNote' },
         ],
         lock: 1.8,
+        lightScene: true,
       },
     ],
   },
@@ -452,6 +456,7 @@ export const CHAPTERS: readonly TalkChapter[] = [
           { kind: 'note', id: 'control-note', text: 'control.note' },
         ],
         lock: 2.4,
+        lightScene: true,
       },
       {
         id: 'insert',
@@ -463,6 +468,7 @@ export const CHAPTERS: readonly TalkChapter[] = [
           { kind: 'note', id: 'control-note', text: 'control.note' },
         ],
         lock: 1.8,
+        lightScene: true,
       },
       {
         id: 'withdraw',
@@ -474,6 +480,7 @@ export const CHAPTERS: readonly TalkChapter[] = [
           { kind: 'note', id: 'control-note', text: 'control.note' },
         ],
         lock: 1.8,
+        lightScene: true,
       },
     ],
   },
@@ -496,7 +503,7 @@ export const CHAPTERS: readonly TalkChapter[] = [
         worldTiming: { 'f.chimneyMixture': { delay: 0.8, duration: 1.2 }, 'f.downcomerWater': { delay: 1.4, duration: 1.2 } },
         cues: { boilLabels: { delay: 2.4, duration: 0.8 } },
         overlay: [
-          { kind: 'label', id: 'energy-water', text: 'energy.water', at: [-0.8, RPV.insideBottomY + 6, 1.2], side: 'left', style: 'tag', cue: 'boilLabels' },
+          { kind: 'label', id: 'energy-water', text: 'energy.water', at: [-0.8, RPV.insideBottomY + 7.5, 1.2], side: 'left', style: 'tag', cue: 'boilLabels' },
           { kind: 'label', id: 'energy-boil', text: 'energy.boil', at: [-0.6, RPV.insideBottomY + 10, 0.8], side: 'left', style: 'tag', cue: 'boilLabels' },
         ],
         lock: 2.4,
@@ -510,7 +517,7 @@ export const CHAPTERS: readonly TalkChapter[] = [
         worldTiming: { 'f.drySteam': { delay: 1.6, duration: 1 }, 'f.steamOutlet': { delay: 3.4, duration: 1 } },
         cues: { sepLabel: { delay: 1.6, duration: 0.8 }, dryLabel: { delay: 4.2, duration: 0.8 } },
         overlay: [
-          { kind: 'label', id: 'energy-separators', text: 'energy.separators', at: [-1.2, -7.6, 1.2], side: 'left', style: 'tag', cue: 'sepLabel' },
+          { kind: 'label', id: 'energy-separators', text: 'energy.separators', at: [-1.2, -6.6, 1.2], side: 'left', style: 'tag', cue: 'sepLabel' },
           { kind: 'label', id: 'energy-dryer', text: 'energy.dryer', at: [-0.9, -3.6, 0.9], side: 'left', style: 'tag', cue: 'dryLabel' },
         ],
         lock: 3,
@@ -605,7 +612,8 @@ export const CHAPTERS: readonly TalkChapter[] = [
       {
         id: 'scram',
         note: 'The chain reaction stops: every blade goes in, the glints die out.',
-        camera: { keys: [{ at: 3.2, pose: 'masterBlades' }], drift: 0.3 },
+        // Through the open front of the cut plant, not through the pools and the containment wall.
+        camera: { keys: [{ at: 1.7, pose: P.scramApproach }, { at: 3.2, pose: 'masterBlades' }], drift: 0.3 },
         reveal: { to: { bladeEmphasis: 1, exteriorDim: 1 }, timing: { delay: 1.8, duration: 0.8 } },
         look: { subjects: {}, contextDim: 0.45, ghosts: {}, interior: [] },
         world: {
@@ -624,6 +632,7 @@ export const CHAPTERS: readonly TalkChapter[] = [
         worldTiming: { 'c.activity': { delay: 2.4, duration: 0.6 }, 'c.scram': { delay: 3.4, duration: 1.3, ease: 'power2.in' }, 'g.show': { delay: 2 }, 'y.show': { delay: 2 } },
         overlay: [{ kind: 'caption', id: 'safety-state', text: 'safety.scram', position: 'top-left' }],
         lock: 3,
+        lightScene: true,
       },
       {
         id: 'decay',

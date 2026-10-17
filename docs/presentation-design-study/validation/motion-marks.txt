@@ -1,0 +1,4 @@
+metric 366 12.2 [{'frame': 186, 'segmentEnd': 'scale/modules'}, {'frame': 366, 'segmentEnd': 'facts/pitches'}]
+shared 222 7.4 [{'frame': 222, 'segmentEnd': 'hook/hero'}]
+fission 360 12 [{'frame': 360, 'segmentEnd': 'handoff/descend'}]
+safety 372 12.4 [{'frame': 65, 'press': 2.2, 'beat': 'safety/scram'}, {'frame': 131, 'press': 4.4, 'beat': 'safety/decay'}, {'frame': 197, 'press': 6.6, 'beat': 'safety/ics'}, {'frame': 281, 'press': 9.4, 'beat': 'safety/days'}, {'frame': 372, 'segmentEnd': 'safety/normal'}]

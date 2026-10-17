@@ -1,0 +1,3002 @@
+[
+ {
+  "size": "1920x1080",
+  "state": "hook/hero",
+  "file": "projector-1920x1080/01-hook-hero-1920x1080.png",
+  "stage": {
+   "x": 0,
+   "y": 0,
+   "w": 1920,
+   "h": 1080
+  },
+  "canvas": {
+   "buffer": [
+    1920,
+    1080
+   ],
+   "css": [
+    1920,
+    1080
+   ],
+   "stage": [
+    0,
+    0,
+    1920,
+    1080
+   ],
+   "dpr": 1
+  },
+  "beatTime": 8.513,
+  "ui": {
+   "explore": false,
+   "setup": false,
+   "diagnostics": false,
+   "talkDebug": false,
+   "hoverTag": false,
+   "lang": "lt",
+   "talkActive": true
+  },
+  "outside": [],
+  "overlaps": [],
+  "smallest": {
+   "text": "Mažieji moduliniai reaktoriai",
+   "fontSize": "15.0012px"
+  },
+  "texts": [
+   {
+    "text": "Mažieji moduliniai reaktoriai",
+    "fontSize": "15.0012px",
+    "fontWeight": "600",
+    "x": 92.2,
+    "y": 101.5,
+    "w": 319,
+    "h": 20
+   },
+   {
+    "text": "BWRX-300",
+    "fontSize": "67.9968px",
+    "fontWeight": "300",
+    "x": 92.2,
+    "y": 134.5,
+    "w": 319,
+    "h": 70.7
+   },
+   {
+    "text": "Virgilijus Kiltinavičius",
+    "fontSize": "23.9976px",
+    "fontWeight": "500",
+    "x": 226.8,
+    "y": 947,
+    "w": 229.5,
+    "h": 32
+   },
+   {
+    "text": "VIRGILIJUS_EMAIL_TODO",
+    "fontSize": "16.9992px",
+    "fontWeight": "400",
+    "x": 226.8,
+    "y": 986.6,
+    "w": 229.5,
+    "h": 20
+   },
+   {
+    "text": "Timofej Gaivoronskij",
+    "fontSize": "23.9976px",
+    "fontWeight": "500",
+    "x": 640.9,
+    "y": 945,
+    "w": 292.2,
+    "h": 32
+   },
+   {
+    "text": "timofej.gaivoronskij@stud.vilniustech.lt",
+    "fontSize": "16.9992px",
+    "fontWeight": "400",
+    "x": 640.9,
+    "y": 984.6,
+    "w": 292.2,
+    "h": 22
+   },
+   {
+    "text": "QR",
+    "fontSize": "25.92px",
+    "fontWeight": "400",
+    "x": 1524.4,
+    "y": 932.7,
+    "w": 40.8,
+    "h": 30
+   },
+   {
+    "text": "Interaktyvus modelis",
+    "fontSize": "20.9952px",
+    "fontWeight": "500",
+    "x": 1629.5,
+    "y": 922,
+    "w": 198.3,
+    "h": 28
+   },
+   {
+    "text": "QR kodas bus čia",
+    "fontSize": "15.0012px",
+    "fontWeight": "400",
+    "x": 1629.5,
+    "y": 955.4,
+    "w": 198.3,
+    "h": 18
+   }
+  ]
+ },
+ {
+  "size": "1920x1080",
+  "state": "lithuania/renewables",
+  "file": "projector-1920x1080/02-lithuania-renewables-1920x1080.png",
+  "stage": {
+   "x": 0,
+   "y": 0,
+   "w": 1920,
+   "h": 1080
+  },
+  "canvas": {
+   "buffer": [
+    1920,
+    1080
+   ],
+   "css": [
+    1920,
+    1080
+   ],
+   "stage": [
+    0,
+    0,
+    1920,
+    1080
+   ],
+   "dpr": 1
+  },
+  "beatTime": 7.8,
+  "ui": {
+   "explore": false,
+   "setup": false,
+   "diagnostics": false,
+   "talkDebug": false,
+   "hoverTag": false,
+   "lang": "lt",
+   "talkActive": true
+  },
+  "outside": [],
+  "overlaps": [],
+  "smallest": {
+   "text": "Lietuva",
+   "fontSize": "13.9968px"
+  },
+  "texts": [
+   {
+    "text": "Lietuva",
+    "fontSize": "13.9968px",
+    "fontWeight": "600",
+    "x": 92.2,
+    "y": 47.5,
+    "w": 116.3,
+    "h": 19
+   },
+   {
+    "text": "50 %",
+    "fontSize": "96.0012px",
+    "fontWeight": "200",
+    "x": 92.2,
+    "y": 449.5,
+    "w": 185.3,
+    "h": 96
+   },
+   {
+    "text": "Lietuvos elektros poreikio 2025 m. patenkino atsinaujinanti energetika",
+    "fontSize": "23.004px",
+    "fontWeight": "400",
+    "x": 92.2,
+    "y": 567.1,
+    "w": 576,
+    "h": 63.5
+   },
+   {
+    "text": "Šaltinis: „Litgrid“, 2026-01-28",
+    "fontSize": "15.0012px",
+    "fontWeight": "400",
+    "x": 92.2,
+    "y": 1009.3,
+    "w": 189.6,
+    "h": 21
+   }
+  ]
+ },
+ {
+  "size": "1920x1080",
+  "state": "lithuania/calm",
+  "file": "projector-1920x1080/02-lithuania-calm-1920x1080.png",
+  "stage": {
+   "x": 0,
+   "y": 0,
+   "w": 1920,
+   "h": 1080
+  },
+  "canvas": {
+   "buffer": [
+    1920,
+    1080
+   ],
+   "css": [
+    1920,
+    1080
+   ],
+   "stage": [
+    0,
+    0,
+    1920,
+    1080
+   ],
+   "dpr": 1
+  },
+  "beatTime": 5.6,
+  "ui": {
+   "explore": false,
+   "setup": false,
+   "diagnostics": false,
+   "talkDebug": false,
+   "hoverTag": false,
+   "lang": "lt",
+   "talkActive": true
+  },
+  "outside": [],
+  "overlaps": [],
+  "smallest": {
+   "text": "Lietuva",
+   "fontSize": "13.9968px"
+  },
+  "texts": [
+   {
+    "text": "Lietuva",
+    "fontSize": "13.9968px",
+    "fontWeight": "600",
+    "x": 92.2,
+    "y": 47.5,
+    "w": 116.3,
+    "h": 19
+   },
+   {
+    "text": "O kai nėra vėjo ir saulės?",
+    "fontSize": "43.9992px",
+    "fontWeight": "300",
+    "x": 92.2,
+    "y": 491.9,
+    "w": 434.6,
+    "h": 50.2
+   },
+   {
+    "text": "Sistemai reikia ir valdomos gamybos",
+    "fontSize": "23.004px",
+    "fontWeight": "400",
+    "x": 92.2,
+    "y": 557.1,
+    "w": 434.6,
+    "h": 31
+   },
+   {
+    "text": "importas",
+    "fontSize": "20.9952px",
+    "fontWeight": "500",
+    "x": 398,
+    "y": 139.7,
+    "w": 85.2,
+    "h": 28
+   }
+  ]
+ },
+ {
+  "size": "1920x1080",
+  "state": "lithuania/assessment",
+  "file": "projector-1920x1080/02-lithuania-assessment-1920x1080.png",
+  "stage": {
+   "x": 0,
+   "y": 0,
+   "w": 1920,
+   "h": 1080
+  },
+  "canvas": {
+   "buffer": [
+    1920,
+    1080
+   ],
+   "css": [
+    1920,
+    1080
+   ],
+   "stage": [
+    0,
+    0,
+    1920,
+    1080
+   ],
+   "dpr": 1
+  },
+  "beatTime": 4.6,
+  "ui": {
+   "explore": false,
+   "setup": false,
+   "diagnostics": false,
+   "talkDebug": false,
+   "hoverTag": false,
+   "lang": "lt",
+   "talkActive": true
+  },
+  "outside": [],
+  "overlaps": [],
+  "smallest": {
+   "text": "Lietuva",
+   "fontSize": "13.9968px"
+  },
+  "texts": [
+   {
+    "text": "Lietuva",
+    "fontSize": "13.9968px",
+    "fontWeight": "600",
+    "x": 92.2,
+    "y": 47.5,
+    "w": 116.3,
+    "h": 19
+   },
+   {
+    "text": "Lietuva vertina BWRX-300",
+    "fontSize": "43.9992px",
+    "fontWeight": "300",
+    "x": 92.2,
+    "y": 491.9,
+    "w": 455.2,
+    "h": 50.2
+   },
+   {
+    "text": "2026 m. vasario memorandumas",
+    "fontSize": "23.004px",
+    "fontWeight": "400",
+    "x": 92.2,
+    "y": 557.1,
+    "w": 455.2,
+    "h": 31
+   },
+   {
+    "text": "Šaltinis: LR energetikos ministerija, 2026-02-25",
+    "fontSize": "15.0012px",
+    "fontWeight": "400",
+    "x": 92.2,
+    "y": 1009.3,
+    "w": 304.7,
+    "h": 21
+   }
+  ]
+ },
+ {
+  "size": "1920x1080",
+  "state": "facts/months",
+  "file": "projector-1920x1080/04-facts-months-1920x1080.png",
+  "stage": {
+   "x": 0,
+   "y": 0,
+   "w": 1920,
+   "h": 1080
+  },
+  "canvas": {
+   "buffer": [
+    1920,
+    1080
+   ],
+   "css": [
+    1920,
+    1080
+   ],
+   "stage": [
+    0,
+    0,
+    1920,
+    1080
+   ],
+   "dpr": 1
+  },
+  "beatTime": 5.2,
+  "ui": {
+   "explore": false,
+   "setup": false,
+   "diagnostics": false,
+   "talkDebug": false,
+   "hoverTag": false,
+   "lang": "lt",
+   "talkActive": true
+  },
+  "outside": [],
+  "overlaps": [],
+  "smallest": {
+   "text": "Trys faktai",
+   "fontSize": "13.9968px"
+  },
+  "texts": [
+   {
+    "text": "Trys faktai",
+    "fontSize": "13.9968px",
+    "fontWeight": "600",
+    "x": 92.2,
+    "y": 47.5,
+    "w": 153.4,
+    "h": 19
+   },
+   {
+    "text": "24–36",
+    "fontSize": "96.0012px",
+    "fontWeight": "200",
+    "x": 92.2,
+    "y": 449.5,
+    "w": 233.6,
+    "h": 96
+   },
+   {
+    "text": "mėn.*",
+    "fontSize": "40.0032px",
+    "fontWeight": "300",
+    "x": 337.6,
+    "y": 501.5,
+    "w": 95.5,
+    "h": 40
+   },
+   {
+    "text": "statyba: nuo pirmojo betono reaktoriaus pastate iki kuro įkrovimo",
+    "fontSize": "23.004px",
+    "fontWeight": "400",
+    "x": 92.2,
+    "y": 567.1,
+    "w": 576,
+    "h": 63.5
+   },
+   {
+    "text": "*Gamintojo įvertis serijiniam blokui; be licencijavimo ir finansavimo",
+    "fontSize": "15.0012px",
+    "fontWeight": "400",
+    "x": 92.2,
+    "y": 1009.3,
+    "w": 434.5,
+    "h": 21
+   }
+  ]
+ },
+ {
+  "size": "1920x1080",
+  "state": "projects/world",
+  "file": "projector-1920x1080/05-projects-world-1920x1080.png",
+  "stage": {
+   "x": 0,
+   "y": 0,
+   "w": 1920,
+   "h": 1080
+  },
+  "canvas": {
+   "buffer": [
+    1920,
+    1080
+   ],
+   "css": [
+    1920,
+    1080
+   ],
+   "stage": [
+    0,
+    0,
+    1920,
+    1080
+   ],
+   "dpr": 1
+  },
+  "beatTime": 8.9,
+  "ui": {
+   "explore": false,
+   "setup": false,
+   "diagnostics": false,
+   "talkDebug": false,
+   "hoverTag": false,
+   "lang": "lt",
+   "talkActive": true
+  },
+  "outside": [],
+  "overlaps": [],
+  "smallest": {
+   "text": "Projektai",
+   "fontSize": "13.9968px"
+  },
+  "texts": [
+   {
+    "text": "Projektai",
+    "fontSize": "13.9968px",
+    "fontWeight": "600",
+    "x": 92.2,
+    "y": 47.5,
+    "w": 138,
+    "h": 19
+   },
+   {
+    "text": "statoma",
+    "fontSize": "15.9948px",
+    "fontWeight": "400",
+    "x": 1678.2,
+    "y": 870.8,
+    "w": 128,
+    "h": 21
+   },
+   {
+    "text": "licencijavimas",
+    "fontSize": "15.9948px",
+    "fontWeight": "400",
+    "x": 1678.2,
+    "y": 902.5,
+    "w": 128,
+    "h": 21
+   },
+   {
+    "text": "planuojama",
+    "fontSize": "15.9948px",
+    "fontWeight": "400",
+    "x": 1678.2,
+    "y": 934.3,
+    "w": 128,
+    "h": 21
+   },
+   {
+    "text": "vertinama",
+    "fontSize": "15.9948px",
+    "fontWeight": "400",
+    "x": 1678.2,
+    "y": 966.1,
+    "w": 128,
+    "h": 21
+   },
+   {
+    "text": "Darlingtonas, Kanada",
+    "fontSize": "20.9952px",
+    "fontWeight": "500",
+    "x": 382.9,
+    "y": 552.1,
+    "w": 201.2,
+    "h": 28
+   },
+   {
+    "text": "statoma",
+    "fontSize": "15.9948px",
+    "fontWeight": "400",
+    "x": 382.9,
+    "y": 583.3,
+    "w": 201.2,
+    "h": 21
+   },
+   {
+    "text": "Clinch River, JAV",
+    "fontSize": "20.9952px",
+    "fontWeight": "500",
+    "x": 244.2,
+    "y": 777.8,
+    "w": 167.6,
+    "h": 28
+   },
+   {
+    "text": "leidimas statyti, 2026 m.",
+    "fontSize": "15.9948px",
+    "fontWeight": "400",
+    "x": 244.2,
+    "y": 809,
+    "w": 167.6,
+    "h": 21
+   },
+   {
+    "text": "Lenkija",
+    "fontSize": "20.9952px",
+    "fontWeight": "500",
+    "x": 1508.1,
+    "y": 353.8,
+    "w": 96.7,
+    "h": 28
+   },
+   {
+    "text": "licencijavimas",
+    "fontSize": "15.9948px",
+    "fontWeight": "400",
+    "x": 1508.1,
+    "y": 385,
+    "w": 96.7,
+    "h": 21
+   },
+   {
+    "text": "Estija",
+    "fontSize": "20.9952px",
+    "fontWeight": "500",
+    "x": 1434.6,
+    "y": 173,
+    "w": 81.2,
+    "h": 28
+   },
+   {
+    "text": "planuojama",
+    "fontSize": "15.9948px",
+    "fontWeight": "400",
+    "x": 1434.6,
+    "y": 204.2,
+    "w": 81.2,
+    "h": 21
+   },
+   {
+    "text": "Lietuva",
+    "fontSize": "20.9952px",
+    "fontWeight": "500",
+    "x": 1559.1,
+    "y": 254.7,
+    "w": 69.6,
+    "h": 28
+   },
+   {
+    "text": "vertinama",
+    "fontSize": "15.9948px",
+    "fontWeight": "400",
+    "x": 1559.1,
+    "y": 285.9,
+    "w": 69.6,
+    "h": 21
+   },
+   {
+    "text": "Šaltiniai: CNSC, US NRC, GE Vernova Hitachi, LR energetikos ministerija (2025–2026)",
+    "fontSize": "15.0012px",
+    "fontWeight": "400",
+    "x": 92.2,
+    "y": 1009.3,
+    "w": 548,
+    "h": 21
+   }
+  ]
+ },
+ {
+  "size": "1920x1080",
+  "state": "projects/darlington",
+  "file": "projector-1920x1080/05-projects-darlington-1920x1080.png",
+  "stage": {
+   "x": 0,
+   "y": 0,
+   "w": 1920,
+   "h": 1080
+  },
+  "canvas": {
+   "buffer": [
+    1920,
+    1080
+   ],
+   "css": [
+    1920,
+    1080
+   ],
+   "stage": [
+    0,
+    0,
+    1920,
+    1080
+   ],
+   "dpr": 1
+  },
+  "beatTime": 5.4,
+  "ui": {
+   "explore": false,
+   "setup": false,
+   "diagnostics": false,
+   "talkDebug": false,
+   "hoverTag": false,
+   "lang": "lt",
+   "talkActive": true
+  },
+  "outside": [],
+  "overlaps": [],
+  "smallest": {
+   "text": "Projektai",
+   "fontSize": "13.9968px"
+  },
+  "texts": [
+   {
+    "text": "Projektai",
+    "fontSize": "13.9968px",
+    "fontWeight": "600",
+    "x": 92.2,
+    "y": 47.5,
+    "w": 138,
+    "h": 19
+   },
+   {
+    "text": "statoma",
+    "fontSize": "15.9948px",
+    "fontWeight": "400",
+    "x": 1678.2,
+    "y": 870.8,
+    "w": 128,
+    "h": 21
+   },
+   {
+    "text": "licencijavimas",
+    "fontSize": "15.9948px",
+    "fontWeight": "400",
+    "x": 1678.2,
+    "y": 902.5,
+    "w": 128,
+    "h": 21
+   },
+   {
+    "text": "planuojama",
+    "fontSize": "15.9948px",
+    "fontWeight": "400",
+    "x": 1678.2,
+    "y": 934.3,
+    "w": 128,
+    "h": 21
+   },
+   {
+    "text": "vertinama",
+    "fontSize": "15.9948px",
+    "fontWeight": "400",
+    "x": 1678.2,
+    "y": 966.1,
+    "w": 128,
+    "h": 21
+   },
+   {
+    "text": "Darlingtonas, Kanada",
+    "fontSize": "20.9952px",
+    "fontWeight": "500",
+    "x": 846.7,
+    "y": 328.5,
+    "w": 201.2,
+    "h": 28
+   },
+   {
+    "text": "statoma",
+    "fontSize": "15.9948px",
+    "fontWeight": "400",
+    "x": 846.7,
+    "y": 359.7,
+    "w": 201.2,
+    "h": 21
+   },
+   {
+    "text": "CNSC statybos licencija – 2025 m. balandžio 4 d.",
+    "fontSize": "15.0012px",
+    "fontWeight": "400",
+    "x": 92.2,
+    "y": 1009.3,
+    "w": 317.2,
+    "h": 21
+   }
+  ]
+ },
+ {
+  "size": "1920x1080",
+  "state": "safety/days",
+  "file": "projector-1920x1080/10-safety-days-1920x1080.png",
+  "stage": {
+   "x": 0,
+   "y": 0,
+   "w": 1920,
+   "h": 1080
+  },
+  "canvas": {
+   "buffer": [
+    1920,
+    1080
+   ],
+   "css": [
+    1920,
+    1080
+   ],
+   "stage": [
+    0,
+    0,
+    1920,
+    1080
+   ],
+   "dpr": 1
+  },
+  "beatTime": 8.3,
+  "ui": {
+   "explore": false,
+   "setup": false,
+   "diagnostics": false,
+   "talkDebug": false,
+   "hoverTag": false,
+   "lang": "lt",
+   "talkActive": true
+  },
+  "outside": [],
+  "overlaps": [],
+  "smallest": {
+   "text": "Pasyvioji sauga",
+   "fontSize": "13.9968px"
+  },
+  "texts": [
+   {
+    "text": "Pasyvioji sauga",
+    "fontSize": "13.9968px",
+    "fontWeight": "600",
+    "x": 92.2,
+    "y": 47.5,
+    "w": 199.6,
+    "h": 19
+   },
+   {
+    "text": "Pasyvusis aušinimas",
+    "fontSize": "43.9992px",
+    "fontWeight": "300",
+    "x": 92.2,
+    "y": 101.5,
+    "w": 352.4,
+    "h": 50.2
+   },
+   {
+    "text": "be siurblių, be išorinės elektros",
+    "fontSize": "23.004px",
+    "fontWeight": "400",
+    "x": 92.2,
+    "y": 166.8,
+    "w": 352.4,
+    "h": 31
+   },
+   {
+    "text": "7 paros",
+    "fontSize": "96.0012px",
+    "fontWeight": "200",
+    "x": 1290.3,
+    "y": 101.5,
+    "w": 537.6,
+    "h": 96
+   },
+   {
+    "text": "*Be operatorių veiksmų; tam pakanka 2 iš 3 kontūrų (GE Vernova Hitachi, GD Rev. J §3.3)",
+    "fontSize": "15.0012px",
+    "fontWeight": "400",
+    "x": 1290.3,
+    "y": 239.4,
+    "w": 537.6,
+    "h": 42
+   }
+  ]
+ },
+ {
+  "size": "1920x1080",
+  "state": "close/qa",
+  "file": "projector-1920x1080/12-close-qa-1920x1080.png",
+  "stage": {
+   "x": 0,
+   "y": 0,
+   "w": 1920,
+   "h": 1080
+  },
+  "canvas": {
+   "buffer": [
+    1920,
+    1080
+   ],
+   "css": [
+    1920,
+    1080
+   ],
+   "stage": [
+    0,
+    0,
+    1920,
+    1080
+   ],
+   "dpr": 1
+  },
+  "beatTime": 4.6,
+  "ui": {
+   "explore": false,
+   "setup": false,
+   "diagnostics": false,
+   "talkDebug": false,
+   "hoverTag": false,
+   "lang": "lt",
+   "talkActive": true
+  },
+  "outside": [],
+  "overlaps": [],
+  "smallest": {
+   "text": "QR kodas bus čia",
+   "fontSize": "15.0012px"
+  },
+  "texts": [
+   {
+    "text": "Ta pati fizika. Kitas mastelis.",
+    "fontSize": "43.9992px",
+    "fontWeight": "300",
+    "x": 92.2,
+    "y": 114.5,
+    "w": 468.8,
+    "h": 45.8
+   },
+   {
+    "text": "Jūsų klausimai",
+    "fontSize": "43.9992px",
+    "fontWeight": "300",
+    "x": 92.2,
+    "y": 186.1,
+    "w": 468.8,
+    "h": 58
+   },
+   {
+    "text": "Virgilijus Kiltinavičius",
+    "fontSize": "23.9976px",
+    "fontWeight": "500",
+    "x": 226.8,
+    "y": 947,
+    "w": 229.5,
+    "h": 32
+   },
+   {
+    "text": "VIRGILIJUS_EMAIL_TODO",
+    "fontSize": "16.9992px",
+    "fontWeight": "400",
+    "x": 226.8,
+    "y": 986.6,
+    "w": 229.5,
+    "h": 20
+   },
+   {
+    "text": "Timofej Gaivoronskij",
+    "fontSize": "23.9976px",
+    "fontWeight": "500",
+    "x": 640.9,
+    "y": 945,
+    "w": 292.2,
+    "h": 32
+   },
+   {
+    "text": "timofej.gaivoronskij@stud.vilniustech.lt",
+    "fontSize": "16.9992px",
+    "fontWeight": "400",
+    "x": 640.9,
+    "y": 984.6,
+    "w": 292.2,
+    "h": 22
+   },
+   {
+    "text": "QR",
+    "fontSize": "25.92px",
+    "fontWeight": "400",
+    "x": 1524.4,
+    "y": 932.7,
+    "w": 40.8,
+    "h": 30
+   },
+   {
+    "text": "Interaktyvus modelis",
+    "fontSize": "20.9952px",
+    "fontWeight": "500",
+    "x": 1629.5,
+    "y": 922,
+    "w": 198.3,
+    "h": 28
+   },
+   {
+    "text": "QR kodas bus čia",
+    "fontSize": "15.0012px",
+    "fontWeight": "400",
+    "x": 1629.5,
+    "y": 955.4,
+    "w": 198.3,
+    "h": 18
+   }
+  ]
+ },
+ {
+  "size": "1920x1080",
+  "log": {
+   "console": [
+    "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+   ],
+   "errors": [],
+   "external": []
+  }
+ },
+ {
+  "size": "1280x800",
+  "state": "hook/hero",
+  "file": "projector-1280x800/01-hook-hero-1280x800.png",
+  "stage": {
+   "x": 0,
+   "y": 40,
+   "w": 1280,
+   "h": 720
+  },
+  "canvas": {
+   "buffer": [
+    1280,
+    720
+   ],
+   "css": [
+    1280,
+    720
+   ],
+   "stage": [
+    0,
+    40,
+    1280,
+    720
+   ],
+   "dpr": 1
+  },
+  "beatTime": 8.513,
+  "ui": {
+   "explore": false,
+   "setup": false,
+   "diagnostics": false,
+   "talkDebug": false,
+   "hoverTag": false,
+   "lang": "lt",
+   "talkActive": true
+  },
+  "outside": [],
+  "overlaps": [],
+  "smallest": {
+   "text": "Mažieji moduliniai reaktoriai",
+   "fontSize": "12px"
+  },
+  "texts": [
+   {
+    "text": "Mažieji moduliniai reaktoriai",
+    "fontSize": "12px",
+    "fontWeight": "600",
+    "x": 61.4,
+    "y": 67.7,
+    "w": 255.2,
+    "h": 16
+   },
+   {
+    "text": "BWRX-300",
+    "fontSize": "45.3312px",
+    "fontWeight": "300",
+    "x": 61.4,
+    "y": 92.3,
+    "w": 255.2,
+    "h": 47.1
+   },
+   {
+    "text": "Virgilijus Kiltinavičius",
+    "fontSize": "15.9984px",
+    "fontWeight": "500",
+    "x": 151.2,
+    "y": 631,
+    "w": 153,
+    "h": 21
+   },
+   {
+    "text": "VIRGILIJUS_EMAIL_TODO",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 151.2,
+    "y": 657,
+    "w": 153,
+    "h": 14
+   },
+   {
+    "text": "Timofej Gaivoronskij",
+    "fontSize": "15.9984px",
+    "fontWeight": "500",
+    "x": 427.2,
+    "y": 629,
+    "w": 206.4,
+    "h": 21
+   },
+   {
+    "text": "timofej.gaivoronskij@stud.vilniustech.lt",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 427.2,
+    "y": 655,
+    "w": 206.4,
+    "h": 16
+   },
+   {
+    "text": "QR",
+    "fontSize": "17.28px",
+    "fontWeight": "400",
+    "x": 1016.3,
+    "y": 621.8,
+    "w": 27.2,
+    "h": 20
+   },
+   {
+    "text": "Interaktyvus modelis",
+    "fontSize": "13.9968px",
+    "fontWeight": "500",
+    "x": 1086.4,
+    "y": 613.5,
+    "w": 132.2,
+    "h": 19
+   },
+   {
+    "text": "QR kodas bus čia",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 1086.4,
+    "y": 636.1,
+    "w": 132.2,
+    "h": 14
+   }
+  ]
+ },
+ {
+  "size": "1280x800",
+  "state": "lithuania/renewables",
+  "file": "projector-1280x800/02-lithuania-renewables-1280x800.png",
+  "stage": {
+   "x": 0,
+   "y": 40,
+   "w": 1280,
+   "h": 720
+  },
+  "canvas": {
+   "buffer": [
+    1280,
+    720
+   ],
+   "css": [
+    1280,
+    720
+   ],
+   "stage": [
+    0,
+    40,
+    1280,
+    720
+   ],
+   "dpr": 1
+  },
+  "beatTime": 7.8,
+  "ui": {
+   "explore": false,
+   "setup": false,
+   "diagnostics": false,
+   "talkDebug": false,
+   "hoverTag": false,
+   "lang": "lt",
+   "talkActive": true
+  },
+  "outside": [],
+  "overlaps": [],
+  "smallest": {
+   "text": "Lietuva",
+   "fontSize": "11px"
+  },
+  "texts": [
+   {
+    "text": "Lietuva",
+    "fontSize": "11px",
+    "fontWeight": "600",
+    "x": 61.4,
+    "y": 31.7,
+    "w": 91.4,
+    "h": 15
+   },
+   {
+    "text": "50 %",
+    "fontSize": "64.0008px",
+    "fontWeight": "200",
+    "x": 61.4,
+    "y": 299.6,
+    "w": 123.5,
+    "h": 64
+   },
+   {
+    "text": "Lietuvos elektros poreikio 2025 m. patenkino atsinaujinanti energetika",
+    "fontSize": "15.336px",
+    "fontWeight": "400",
+    "x": 61.4,
+    "y": 378,
+    "w": 384,
+    "h": 42.3
+   },
+   {
+    "text": "Šaltinis: „Litgrid“, 2026-01-28",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 61.4,
+    "y": 670.1,
+    "w": 151.7,
+    "h": 16.8
+   }
+  ]
+ },
+ {
+  "size": "1280x800",
+  "state": "lithuania/calm",
+  "file": "projector-1280x800/02-lithuania-calm-1280x800.png",
+  "stage": {
+   "x": 0,
+   "y": 40,
+   "w": 1280,
+   "h": 720
+  },
+  "canvas": {
+   "buffer": [
+    1280,
+    720
+   ],
+   "css": [
+    1280,
+    720
+   ],
+   "stage": [
+    0,
+    40,
+    1280,
+    720
+   ],
+   "dpr": 1
+  },
+  "beatTime": 5.6,
+  "ui": {
+   "explore": false,
+   "setup": false,
+   "diagnostics": false,
+   "talkDebug": false,
+   "hoverTag": false,
+   "lang": "lt",
+   "talkActive": true
+  },
+  "outside": [],
+  "overlaps": [],
+  "smallest": {
+   "text": "Lietuva",
+   "fontSize": "11px"
+  },
+  "texts": [
+   {
+    "text": "Lietuva",
+    "fontSize": "11px",
+    "fontWeight": "600",
+    "x": 61.4,
+    "y": 31.7,
+    "w": 91.4,
+    "h": 15
+   },
+   {
+    "text": "O kai nėra vėjo ir saulės?",
+    "fontSize": "29.3328px",
+    "fontWeight": "300",
+    "x": 61.4,
+    "y": 327.8,
+    "w": 289.8,
+    "h": 33.4
+   },
+   {
+    "text": "Sistemai reikia ir valdomos gamybos",
+    "fontSize": "15.336px",
+    "fontWeight": "400",
+    "x": 61.4,
+    "y": 371.3,
+    "w": 289.8,
+    "h": 21
+   },
+   {
+    "text": "importas",
+    "fontSize": "13.9968px",
+    "fontWeight": "500",
+    "x": 265.4,
+    "y": 87.5,
+    "w": 56.8,
+    "h": 19
+   }
+  ]
+ },
+ {
+  "size": "1280x800",
+  "state": "lithuania/assessment",
+  "file": "projector-1280x800/02-lithuania-assessment-1280x800.png",
+  "stage": {
+   "x": 0,
+   "y": 40,
+   "w": 1280,
+   "h": 720
+  },
+  "canvas": {
+   "buffer": [
+    1280,
+    720
+   ],
+   "css": [
+    1280,
+    720
+   ],
+   "stage": [
+    0,
+    40,
+    1280,
+    720
+   ],
+   "dpr": 1
+  },
+  "beatTime": 4.6,
+  "ui": {
+   "explore": false,
+   "setup": false,
+   "diagnostics": false,
+   "talkDebug": false,
+   "hoverTag": false,
+   "lang": "lt",
+   "talkActive": true
+  },
+  "outside": [],
+  "overlaps": [],
+  "smallest": {
+   "text": "Lietuva",
+   "fontSize": "11px"
+  },
+  "texts": [
+   {
+    "text": "Lietuva",
+    "fontSize": "11px",
+    "fontWeight": "600",
+    "x": 61.4,
+    "y": 31.7,
+    "w": 91.4,
+    "h": 15
+   },
+   {
+    "text": "Lietuva vertina BWRX-300",
+    "fontSize": "29.3328px",
+    "fontWeight": "300",
+    "x": 61.4,
+    "y": 327.8,
+    "w": 303.5,
+    "h": 33.4
+   },
+   {
+    "text": "2026 m. vasario memorandumas",
+    "fontSize": "15.336px",
+    "fontWeight": "400",
+    "x": 61.4,
+    "y": 371.3,
+    "w": 303.5,
+    "h": 21
+   },
+   {
+    "text": "Šaltinis: LR energetikos ministerija, 2026-02-25",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 61.4,
+    "y": 670.1,
+    "w": 243.8,
+    "h": 16.8
+   }
+  ]
+ },
+ {
+  "size": "1280x800",
+  "state": "facts/months",
+  "file": "projector-1280x800/04-facts-months-1280x800.png",
+  "stage": {
+   "x": 0,
+   "y": 40,
+   "w": 1280,
+   "h": 720
+  },
+  "canvas": {
+   "buffer": [
+    1280,
+    720
+   ],
+   "css": [
+    1280,
+    720
+   ],
+   "stage": [
+    0,
+    40,
+    1280,
+    720
+   ],
+   "dpr": 1
+  },
+  "beatTime": 5.2,
+  "ui": {
+   "explore": false,
+   "setup": false,
+   "diagnostics": false,
+   "talkDebug": false,
+   "hoverTag": false,
+   "lang": "lt",
+   "talkActive": true
+  },
+  "outside": [],
+  "overlaps": [],
+  "smallest": {
+   "text": "Trys faktai",
+   "fontSize": "11px"
+  },
+  "texts": [
+   {
+    "text": "Trys faktai",
+    "fontSize": "11px",
+    "fontWeight": "600",
+    "x": 61.4,
+    "y": 31.7,
+    "w": 120.5,
+    "h": 15
+   },
+   {
+    "text": "24–36",
+    "fontSize": "64.0008px",
+    "fontWeight": "200",
+    "x": 61.4,
+    "y": 299.6,
+    "w": 155.7,
+    "h": 64
+   },
+   {
+    "text": "mėn.*",
+    "fontSize": "26.6688px",
+    "fontWeight": "300",
+    "x": 225.1,
+    "y": 333.6,
+    "w": 63.6,
+    "h": 26.7
+   },
+   {
+    "text": "statyba: nuo pirmojo betono reaktoriaus pastate iki kuro įkrovimo",
+    "fontSize": "15.336px",
+    "fontWeight": "400",
+    "x": 61.4,
+    "y": 378,
+    "w": 384,
+    "h": 42.3
+   },
+   {
+    "text": "*Gamintojo įvertis serijiniam blokui; be licencijavimo ir finansavimo",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 61.4,
+    "y": 670.1,
+    "w": 347.6,
+    "h": 16.8
+   }
+  ]
+ },
+ {
+  "size": "1280x800",
+  "state": "projects/world",
+  "file": "projector-1280x800/05-projects-world-1280x800.png",
+  "stage": {
+   "x": 0,
+   "y": 40,
+   "w": 1280,
+   "h": 720
+  },
+  "canvas": {
+   "buffer": [
+    1280,
+    720
+   ],
+   "css": [
+    1280,
+    720
+   ],
+   "stage": [
+    0,
+    40,
+    1280,
+    720
+   ],
+   "dpr": 1
+  },
+  "beatTime": 8.9,
+  "ui": {
+   "explore": false,
+   "setup": false,
+   "diagnostics": false,
+   "talkDebug": false,
+   "hoverTag": false,
+   "lang": "lt",
+   "talkActive": true
+  },
+  "outside": [],
+  "overlaps": [],
+  "smallest": {
+   "text": "Projektai",
+   "fontSize": "11px"
+  },
+  "texts": [
+   {
+    "text": "Projektai",
+    "fontSize": "11px",
+    "fontWeight": "600",
+    "x": 61.4,
+    "y": 31.7,
+    "w": 108.5,
+    "h": 15
+   },
+   {
+    "text": "statoma",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 1110.7,
+    "y": 572.5,
+    "w": 93.4,
+    "h": 16
+   },
+   {
+    "text": "licencijavimas",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 1110.7,
+    "y": 595.7,
+    "w": 93.4,
+    "h": 16
+   },
+   {
+    "text": "planuojama",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 1110.7,
+    "y": 618.9,
+    "w": 93.4,
+    "h": 16
+   },
+   {
+    "text": "vertinama",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 1110.7,
+    "y": 642.1,
+    "w": 93.4,
+    "h": 16
+   },
+   {
+    "text": "Darlingtonas, Kanada",
+    "fontSize": "13.9968px",
+    "fontWeight": "500",
+    "x": 255.5,
+    "y": 361.1,
+    "w": 134.1,
+    "h": 19
+   },
+   {
+    "text": "statoma",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 255.5,
+    "y": 382.2,
+    "w": 134.1,
+    "h": 16
+   },
+   {
+    "text": "Clinch River, JAV",
+    "fontSize": "13.9968px",
+    "fontWeight": "500",
+    "x": 156.5,
+    "y": 523.2,
+    "w": 125.8,
+    "h": 19
+   },
+   {
+    "text": "leidimas statyti, 2026 m.",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 156.5,
+    "y": 544.3,
+    "w": 125.8,
+    "h": 16
+   },
+   {
+    "text": "Lenkija",
+    "fontSize": "13.9968px",
+    "fontWeight": "500",
+    "x": 1002,
+    "y": 240.6,
+    "w": 72.6,
+    "h": 19
+   },
+   {
+    "text": "licencijavimas",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 1002,
+    "y": 261.7,
+    "w": 72.6,
+    "h": 16
+   },
+   {
+    "text": "Estija",
+    "fontSize": "13.9968px",
+    "fontWeight": "500",
+    "x": 953.1,
+    "y": 108.3,
+    "w": 61,
+    "h": 19
+   },
+   {
+    "text": "planuojama",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 953.1,
+    "y": 129.4,
+    "w": 61,
+    "h": 16
+   },
+   {
+    "text": "Lietuva",
+    "fontSize": "13.9968px",
+    "fontWeight": "500",
+    "x": 1044.8,
+    "y": 168.6,
+    "w": 52.3,
+    "h": 19
+   },
+   {
+    "text": "vertinama",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 1044.8,
+    "y": 189.7,
+    "w": 52.3,
+    "h": 16
+   },
+   {
+    "text": "Šaltiniai: CNSC, US NRC, GE Vernova Hitachi, LR energetikos ministerija (2025–2026)",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 61.4,
+    "y": 670.1,
+    "w": 438.4,
+    "h": 16.8
+   }
+  ]
+ },
+ {
+  "size": "1280x800",
+  "state": "projects/darlington",
+  "file": "projector-1280x800/05-projects-darlington-1280x800.png",
+  "stage": {
+   "x": 0,
+   "y": 40,
+   "w": 1280,
+   "h": 720
+  },
+  "canvas": {
+   "buffer": [
+    1280,
+    720
+   ],
+   "css": [
+    1280,
+    720
+   ],
+   "stage": [
+    0,
+    40,
+    1280,
+    720
+   ],
+   "dpr": 1
+  },
+  "beatTime": 5.4,
+  "ui": {
+   "explore": false,
+   "setup": false,
+   "diagnostics": false,
+   "talkDebug": false,
+   "hoverTag": false,
+   "lang": "lt",
+   "talkActive": true
+  },
+  "outside": [],
+  "overlaps": [],
+  "smallest": {
+   "text": "Projektai",
+   "fontSize": "11px"
+  },
+  "texts": [
+   {
+    "text": "Projektai",
+    "fontSize": "11px",
+    "fontWeight": "600",
+    "x": 61.4,
+    "y": 31.7,
+    "w": 108.5,
+    "h": 15
+   },
+   {
+    "text": "statoma",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 1110.7,
+    "y": 572.5,
+    "w": 93.4,
+    "h": 16
+   },
+   {
+    "text": "licencijavimas",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 1110.7,
+    "y": 595.7,
+    "w": 93.4,
+    "h": 16
+   },
+   {
+    "text": "planuojama",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 1110.7,
+    "y": 618.9,
+    "w": 93.4,
+    "h": 16
+   },
+   {
+    "text": "vertinama",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 1110.7,
+    "y": 642.1,
+    "w": 93.4,
+    "h": 16
+   },
+   {
+    "text": "Darlingtonas, Kanada",
+    "fontSize": "13.9968px",
+    "fontWeight": "500",
+    "x": 564.7,
+    "y": 212,
+    "w": 134.1,
+    "h": 19
+   },
+   {
+    "text": "statoma",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 564.7,
+    "y": 233.1,
+    "w": 134.1,
+    "h": 16
+   },
+   {
+    "text": "CNSC statybos licencija – 2025 m. balandžio 4 d.",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 61.4,
+    "y": 670.1,
+    "w": 253.7,
+    "h": 16.8
+   }
+  ]
+ },
+ {
+  "size": "1280x800",
+  "state": "safety/days",
+  "file": "projector-1280x800/10-safety-days-1280x800.png",
+  "stage": {
+   "x": 0,
+   "y": 40,
+   "w": 1280,
+   "h": 720
+  },
+  "canvas": {
+   "buffer": [
+    1280,
+    720
+   ],
+   "css": [
+    1280,
+    720
+   ],
+   "stage": [
+    0,
+    40,
+    1280,
+    720
+   ],
+   "dpr": 1
+  },
+  "beatTime": 8.3,
+  "ui": {
+   "explore": false,
+   "setup": false,
+   "diagnostics": false,
+   "talkDebug": false,
+   "hoverTag": false,
+   "lang": "lt",
+   "talkActive": true
+  },
+  "outside": [],
+  "overlaps": [],
+  "smallest": {
+   "text": "Pasyvioji sauga",
+   "fontSize": "11px"
+  },
+  "texts": [
+   {
+    "text": "Pasyvioji sauga",
+    "fontSize": "11px",
+    "fontWeight": "600",
+    "x": 61.4,
+    "y": 31.7,
+    "w": 156.9,
+    "h": 15
+   },
+   {
+    "text": "Pasyvusis aušinimas",
+    "fontSize": "29.3328px",
+    "fontWeight": "300",
+    "x": 61.4,
+    "y": 67.7,
+    "w": 234.9,
+    "h": 33.4
+   },
+   {
+    "text": "be siurblių, be išorinės elektros",
+    "fontSize": "15.336px",
+    "fontWeight": "400",
+    "x": 61.4,
+    "y": 111.2,
+    "w": 234.9,
+    "h": 21
+   },
+   {
+    "text": "7 paros",
+    "fontSize": "64.0008px",
+    "fontWeight": "200",
+    "x": 860.2,
+    "y": 67.7,
+    "w": 358.4,
+    "h": 64
+   },
+   {
+    "text": "*Be operatorių veiksmų; tam pakanka 2 iš 3 kontūrų (GE Vernova Hitachi, GD Rev. J §3.3)",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 860.2,
+    "y": 160.6,
+    "w": 358.4,
+    "h": 33.6
+   }
+  ]
+ },
+ {
+  "size": "1280x800",
+  "state": "close/qa",
+  "file": "projector-1280x800/12-close-qa-1280x800.png",
+  "stage": {
+   "x": 0,
+   "y": 40,
+   "w": 1280,
+   "h": 720
+  },
+  "canvas": {
+   "buffer": [
+    1280,
+    720
+   ],
+   "css": [
+    1280,
+    720
+   ],
+   "stage": [
+    0,
+    40,
+    1280,
+    720
+   ],
+   "dpr": 1
+  },
+  "beatTime": 4.6,
+  "ui": {
+   "explore": false,
+   "setup": false,
+   "diagnostics": false,
+   "talkDebug": false,
+   "hoverTag": false,
+   "lang": "lt",
+   "talkActive": true
+  },
+  "outside": [],
+  "overlaps": [],
+  "smallest": {
+   "text": "VIRGILIJUS_EMAIL_TODO",
+   "fontSize": "12px"
+  },
+  "texts": [
+   {
+    "text": "Ta pati fizika. Kitas mastelis.",
+    "fontSize": "29.3328px",
+    "fontWeight": "300",
+    "x": 61.4,
+    "y": 76.3,
+    "w": 312.5,
+    "h": 30.5
+   },
+   {
+    "text": "Jūsų klausimai",
+    "fontSize": "29.3328px",
+    "fontWeight": "300",
+    "x": 61.4,
+    "y": 124.1,
+    "w": 312.5,
+    "h": 39
+   },
+   {
+    "text": "Virgilijus Kiltinavičius",
+    "fontSize": "15.9984px",
+    "fontWeight": "500",
+    "x": 151.2,
+    "y": 631,
+    "w": 153,
+    "h": 21
+   },
+   {
+    "text": "VIRGILIJUS_EMAIL_TODO",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 151.2,
+    "y": 657,
+    "w": 153,
+    "h": 14
+   },
+   {
+    "text": "Timofej Gaivoronskij",
+    "fontSize": "15.9984px",
+    "fontWeight": "500",
+    "x": 427.2,
+    "y": 629,
+    "w": 206.4,
+    "h": 21
+   },
+   {
+    "text": "timofej.gaivoronskij@stud.vilniustech.lt",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 427.2,
+    "y": 655,
+    "w": 206.4,
+    "h": 16
+   },
+   {
+    "text": "QR",
+    "fontSize": "17.28px",
+    "fontWeight": "400",
+    "x": 1016.3,
+    "y": 621.8,
+    "w": 27.2,
+    "h": 20
+   },
+   {
+    "text": "Interaktyvus modelis",
+    "fontSize": "13.9968px",
+    "fontWeight": "500",
+    "x": 1086.4,
+    "y": 613.5,
+    "w": 132.2,
+    "h": 19
+   },
+   {
+    "text": "QR kodas bus čia",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 1086.4,
+    "y": 636.1,
+    "w": 132.2,
+    "h": 14
+   }
+  ]
+ },
+ {
+  "size": "1280x800",
+  "log": {
+   "console": [
+    "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+   ],
+   "errors": [],
+   "external": []
+  }
+ },
+ {
+  "size": "1024x768",
+  "state": "hook/hero",
+  "file": "projector-1024x768/01-hook-hero-1024x768.png",
+  "stage": {
+   "x": 0,
+   "y": 96,
+   "w": 1024,
+   "h": 576
+  },
+  "canvas": {
+   "buffer": [
+    1024,
+    576
+   ],
+   "css": [
+    1024,
+    576
+   ],
+   "stage": [
+    0,
+    96,
+    1024,
+    576
+   ],
+   "dpr": 1
+  },
+  "beatTime": 8.513,
+  "ui": {
+   "explore": false,
+   "setup": false,
+   "diagnostics": false,
+   "talkDebug": false,
+   "hoverTag": false,
+   "lang": "lt",
+   "talkActive": true
+  },
+  "outside": [],
+  "overlaps": [],
+  "smallest": {
+   "text": "Mažieji moduliniai reaktoriai",
+   "fontSize": "12px"
+  },
+  "texts": [
+   {
+    "text": "Mažieji moduliniai reaktoriai",
+    "fontSize": "12px",
+    "fontWeight": "600",
+    "x": 49.1,
+    "y": 54.1,
+    "w": 255.2,
+    "h": 16
+   },
+   {
+    "text": "BWRX-300",
+    "fontSize": "36.265px",
+    "fontWeight": "300",
+    "x": 49.1,
+    "y": 77,
+    "w": 255.2,
+    "h": 37.7
+   },
+   {
+    "text": "Virgilijus Kiltinavičius",
+    "fontSize": "13px",
+    "fontWeight": "500",
+    "x": 120.9,
+    "y": 501.8,
+    "w": 147.7,
+    "h": 17
+   },
+   {
+    "text": "VIRGILIJUS_EMAIL_TODO",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 120.9,
+    "y": 522.9,
+    "w": 147.7,
+    "h": 14
+   },
+   {
+    "text": "Timofej Gaivoronskij",
+    "fontSize": "13px",
+    "fontWeight": "500",
+    "x": 367,
+    "y": 499.8,
+    "w": 206.4,
+    "h": 17
+   },
+   {
+    "text": "timofej.gaivoronskij@stud.vilniustech.lt",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 367,
+    "y": 520.9,
+    "w": 206.4,
+    "h": 16
+   },
+   {
+    "text": "QR",
+    "fontSize": "13.824px",
+    "fontWeight": "400",
+    "x": 796,
+    "y": 497.5,
+    "w": 21.7,
+    "h": 16
+   },
+   {
+    "text": "Interaktyvus modelis",
+    "fontSize": "13px",
+    "fontWeight": "500",
+    "x": 852,
+    "y": 488.5,
+    "w": 122.8,
+    "h": 17
+   },
+   {
+    "text": "QR kodas bus čia",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 852,
+    "y": 508.4,
+    "w": 122.8,
+    "h": 14
+   }
+  ]
+ },
+ {
+  "size": "1024x768",
+  "state": "lithuania/renewables",
+  "file": "projector-1024x768/02-lithuania-renewables-1024x768.png",
+  "stage": {
+   "x": 0,
+   "y": 96,
+   "w": 1024,
+   "h": 576
+  },
+  "canvas": {
+   "buffer": [
+    1024,
+    576
+   ],
+   "css": [
+    1024,
+    576
+   ],
+   "stage": [
+    0,
+    96,
+    1024,
+    576
+   ],
+   "dpr": 1
+  },
+  "beatTime": 7.8,
+  "ui": {
+   "explore": false,
+   "setup": false,
+   "diagnostics": false,
+   "talkDebug": false,
+   "hoverTag": false,
+   "lang": "lt",
+   "talkActive": true
+  },
+  "outside": [],
+  "overlaps": [],
+  "smallest": {
+   "text": "Lietuva",
+   "fontSize": "11px"
+  },
+  "texts": [
+   {
+    "text": "Lietuva",
+    "fontSize": "11px",
+    "fontWeight": "600",
+    "x": 49.1,
+    "y": 25.3,
+    "w": 91.4,
+    "h": 15
+   },
+   {
+    "text": "50 %",
+    "fontSize": "51.2006px",
+    "fontWeight": "200",
+    "x": 49.1,
+    "y": 237.3,
+    "w": 98.8,
+    "h": 51.2
+   },
+   {
+    "text": "Lietuvos elektros poreikio 2025 m. patenkino atsinaujinanti energetika",
+    "fontSize": "14px",
+    "fontWeight": "400",
+    "x": 49.1,
+    "y": 300,
+    "w": 307.2,
+    "h": 38.6
+   },
+   {
+    "text": "Šaltinis: „Litgrid“, 2026-01-28",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 49.1,
+    "y": 532.7,
+    "w": 151.7,
+    "h": 16.8
+   }
+  ]
+ },
+ {
+  "size": "1024x768",
+  "state": "lithuania/calm",
+  "file": "projector-1024x768/02-lithuania-calm-1024x768.png",
+  "stage": {
+   "x": 0,
+   "y": 96,
+   "w": 1024,
+   "h": 576
+  },
+  "canvas": {
+   "buffer": [
+    1024,
+    576
+   ],
+   "css": [
+    1024,
+    576
+   ],
+   "stage": [
+    0,
+    96,
+    1024,
+    576
+   ],
+   "dpr": 1
+  },
+  "beatTime": 5.6,
+  "ui": {
+   "explore": false,
+   "setup": false,
+   "diagnostics": false,
+   "talkDebug": false,
+   "hoverTag": false,
+   "lang": "lt",
+   "talkActive": true
+  },
+  "outside": [],
+  "overlaps": [],
+  "smallest": {
+   "text": "Lietuva",
+   "fontSize": "11px"
+  },
+  "texts": [
+   {
+    "text": "Lietuva",
+    "fontSize": "11px",
+    "fontWeight": "600",
+    "x": 49.1,
+    "y": 25.3,
+    "w": 91.4,
+    "h": 15
+   },
+   {
+    "text": "O kai nėra vėjo ir saulės?",
+    "fontSize": "23.4662px",
+    "fontWeight": "300",
+    "x": 49.1,
+    "y": 261.1,
+    "w": 231.8,
+    "h": 26.8
+   },
+   {
+    "text": "Sistemai reikia ir valdomos gamybos",
+    "fontSize": "14px",
+    "fontWeight": "400",
+    "x": 49.1,
+    "y": 295.9,
+    "w": 231.8,
+    "h": 19
+   },
+   {
+    "text": "importas",
+    "fontSize": "13px",
+    "fontWeight": "500",
+    "x": 208.9,
+    "y": 66,
+    "w": 52.8,
+    "h": 17
+   }
+  ]
+ },
+ {
+  "size": "1024x768",
+  "state": "lithuania/assessment",
+  "file": "projector-1024x768/02-lithuania-assessment-1024x768.png",
+  "stage": {
+   "x": 0,
+   "y": 96,
+   "w": 1024,
+   "h": 576
+  },
+  "canvas": {
+   "buffer": [
+    1024,
+    576
+   ],
+   "css": [
+    1024,
+    576
+   ],
+   "stage": [
+    0,
+    96,
+    1024,
+    576
+   ],
+   "dpr": 1
+  },
+  "beatTime": 4.6,
+  "ui": {
+   "explore": false,
+   "setup": false,
+   "diagnostics": false,
+   "talkDebug": false,
+   "hoverTag": false,
+   "lang": "lt",
+   "talkActive": true
+  },
+  "outside": [],
+  "overlaps": [],
+  "smallest": {
+   "text": "Lietuva",
+   "fontSize": "11px"
+  },
+  "texts": [
+   {
+    "text": "Lietuva",
+    "fontSize": "11px",
+    "fontWeight": "600",
+    "x": 49.1,
+    "y": 25.3,
+    "w": 91.4,
+    "h": 15
+   },
+   {
+    "text": "Lietuva vertina BWRX-300",
+    "fontSize": "23.4662px",
+    "fontWeight": "300",
+    "x": 49.1,
+    "y": 261.1,
+    "w": 242.8,
+    "h": 26.8
+   },
+   {
+    "text": "2026 m. vasario memorandumas",
+    "fontSize": "14px",
+    "fontWeight": "400",
+    "x": 49.1,
+    "y": 295.9,
+    "w": 242.8,
+    "h": 19
+   },
+   {
+    "text": "Šaltinis: LR energetikos ministerija, 2026-02-25",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 49.1,
+    "y": 532.7,
+    "w": 243.8,
+    "h": 16.8
+   }
+  ]
+ },
+ {
+  "size": "1024x768",
+  "state": "facts/months",
+  "file": "projector-1024x768/04-facts-months-1024x768.png",
+  "stage": {
+   "x": 0,
+   "y": 96,
+   "w": 1024,
+   "h": 576
+  },
+  "canvas": {
+   "buffer": [
+    1024,
+    576
+   ],
+   "css": [
+    1024,
+    576
+   ],
+   "stage": [
+    0,
+    96,
+    1024,
+    576
+   ],
+   "dpr": 1
+  },
+  "beatTime": 5.2,
+  "ui": {
+   "explore": false,
+   "setup": false,
+   "diagnostics": false,
+   "talkDebug": false,
+   "hoverTag": false,
+   "lang": "lt",
+   "talkActive": true
+  },
+  "outside": [],
+  "overlaps": [],
+  "smallest": {
+   "text": "Trys faktai",
+   "fontSize": "11px"
+  },
+  "texts": [
+   {
+    "text": "Trys faktai",
+    "fontSize": "11px",
+    "fontWeight": "600",
+    "x": 49.1,
+    "y": 25.3,
+    "w": 120.5,
+    "h": 15
+   },
+   {
+    "text": "24–36",
+    "fontSize": "51.2006px",
+    "fontWeight": "200",
+    "x": 49.1,
+    "y": 237.3,
+    "w": 124.6,
+    "h": 51.2
+   },
+   {
+    "text": "mėn.*",
+    "fontSize": "21.335px",
+    "fontWeight": "300",
+    "x": 180.1,
+    "y": 264.3,
+    "w": 50.9,
+    "h": 21.3
+   },
+   {
+    "text": "statyba: nuo pirmojo betono reaktoriaus pastate iki kuro įkrovimo",
+    "fontSize": "14px",
+    "fontWeight": "400",
+    "x": 49.1,
+    "y": 300,
+    "w": 307.2,
+    "h": 38.6
+   },
+   {
+    "text": "*Gamintojo įvertis serijiniam blokui; be licencijavimo ir finansavimo",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 49.1,
+    "y": 532.7,
+    "w": 347.6,
+    "h": 16.8
+   }
+  ]
+ },
+ {
+  "size": "1024x768",
+  "state": "projects/world",
+  "file": "projector-1024x768/05-projects-world-1024x768.png",
+  "stage": {
+   "x": 0,
+   "y": 96,
+   "w": 1024,
+   "h": 576
+  },
+  "canvas": {
+   "buffer": [
+    1024,
+    576
+   ],
+   "css": [
+    1024,
+    576
+   ],
+   "stage": [
+    0,
+    96,
+    1024,
+    576
+   ],
+   "dpr": 1
+  },
+  "beatTime": 8.9,
+  "ui": {
+   "explore": false,
+   "setup": false,
+   "diagnostics": false,
+   "talkDebug": false,
+   "hoverTag": false,
+   "lang": "lt",
+   "talkActive": true
+  },
+  "outside": [],
+  "overlaps": [],
+  "smallest": {
+   "text": "Projektai",
+   "fontSize": "11px"
+  },
+  "texts": [
+   {
+    "text": "Projektai",
+    "fontSize": "11px",
+    "fontWeight": "600",
+    "x": 49.1,
+    "y": 25.3,
+    "w": 108.5,
+    "h": 15
+   },
+   {
+    "text": "statoma",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 873.9,
+    "y": 445.2,
+    "w": 89.5,
+    "h": 16
+   },
+   {
+    "text": "licencijavimas",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 873.9,
+    "y": 467,
+    "w": 89.5,
+    "h": 16
+   },
+   {
+    "text": "planuojama",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 873.9,
+    "y": 488.7,
+    "w": 89.5,
+    "h": 16
+   },
+   {
+    "text": "vertinama",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 873.9,
+    "y": 510.5,
+    "w": 89.5,
+    "h": 16
+   },
+   {
+    "text": "Darlingtonas, Kanada",
+    "fontSize": "13px",
+    "fontWeight": "500",
+    "x": 195.8,
+    "y": 281.2,
+    "w": 124.6,
+    "h": 17
+   },
+   {
+    "text": "statoma",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 195.8,
+    "y": 299.9,
+    "w": 124.6,
+    "h": 16
+   },
+   {
+    "text": "Clinch River, JAV",
+    "fontSize": "13px",
+    "fontWeight": "500",
+    "x": 112.5,
+    "y": 421.4,
+    "w": 125.8,
+    "h": 17
+   },
+   {
+    "text": "leidimas statyti, 2026 m.",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 112.5,
+    "y": 440.1,
+    "w": 125.8,
+    "h": 16
+   },
+   {
+    "text": "Lenkija",
+    "fontSize": "13px",
+    "fontWeight": "500",
+    "x": 794.2,
+    "y": 195.2,
+    "w": 72.6,
+    "h": 17
+   },
+   {
+    "text": "licencijavimas",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 794.2,
+    "y": 213.9,
+    "w": 72.6,
+    "h": 16
+   },
+   {
+    "text": "Estija",
+    "fontSize": "13px",
+    "fontWeight": "500",
+    "x": 756.7,
+    "y": 79,
+    "w": 61,
+    "h": 17
+   },
+   {
+    "text": "planuojama",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 756.7,
+    "y": 97.7,
+    "w": 61,
+    "h": 16
+   },
+   {
+    "text": "Lietuva",
+    "fontSize": "13px",
+    "fontWeight": "500",
+    "x": 839,
+    "y": 132.5,
+    "w": 52.3,
+    "h": 17
+   },
+   {
+    "text": "vertinama",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 839,
+    "y": 151.2,
+    "w": 52.3,
+    "h": 16
+   },
+   {
+    "text": "Šaltiniai: CNSC, US NRC, GE Vernova Hitachi, LR energetikos ministerija (2025–2026)",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 49.1,
+    "y": 532.7,
+    "w": 438.4,
+    "h": 16.8
+   }
+  ]
+ },
+ {
+  "size": "1024x768",
+  "state": "projects/darlington",
+  "file": "projector-1024x768/05-projects-darlington-1024x768.png",
+  "stage": {
+   "x": 0,
+   "y": 96,
+   "w": 1024,
+   "h": 576
+  },
+  "canvas": {
+   "buffer": [
+    1024,
+    576
+   ],
+   "css": [
+    1024,
+    576
+   ],
+   "stage": [
+    0,
+    96,
+    1024,
+    576
+   ],
+   "dpr": 1
+  },
+  "beatTime": 5.4,
+  "ui": {
+   "explore": false,
+   "setup": false,
+   "diagnostics": false,
+   "talkDebug": false,
+   "hoverTag": false,
+   "lang": "lt",
+   "talkActive": true
+  },
+  "outside": [],
+  "overlaps": [],
+  "smallest": {
+   "text": "Projektai",
+   "fontSize": "11px"
+  },
+  "texts": [
+   {
+    "text": "Projektai",
+    "fontSize": "11px",
+    "fontWeight": "600",
+    "x": 49.1,
+    "y": 25.3,
+    "w": 108.5,
+    "h": 15
+   },
+   {
+    "text": "statoma",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 873.9,
+    "y": 445.2,
+    "w": 89.5,
+    "h": 16
+   },
+   {
+    "text": "licencijavimas",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 873.9,
+    "y": 467,
+    "w": 89.5,
+    "h": 16
+   },
+   {
+    "text": "planuojama",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 873.9,
+    "y": 488.7,
+    "w": 89.5,
+    "h": 16
+   },
+   {
+    "text": "vertinama",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 873.9,
+    "y": 510.5,
+    "w": 89.5,
+    "h": 16
+   },
+   {
+    "text": "Darlingtonas, Kanada",
+    "fontSize": "13px",
+    "fontWeight": "500",
+    "x": 443.1,
+    "y": 162,
+    "w": 124.6,
+    "h": 17
+   },
+   {
+    "text": "statoma",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 443.1,
+    "y": 180.7,
+    "w": 124.6,
+    "h": 16
+   },
+   {
+    "text": "CNSC statybos licencija – 2025 m. balandžio 4 d.",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 49.1,
+    "y": 532.7,
+    "w": 253.7,
+    "h": 16.8
+   }
+  ]
+ },
+ {
+  "size": "1024x768",
+  "state": "safety/days",
+  "file": "projector-1024x768/10-safety-days-1024x768.png",
+  "stage": {
+   "x": 0,
+   "y": 96,
+   "w": 1024,
+   "h": 576
+  },
+  "canvas": {
+   "buffer": [
+    1024,
+    576
+   ],
+   "css": [
+    1024,
+    576
+   ],
+   "stage": [
+    0,
+    96,
+    1024,
+    576
+   ],
+   "dpr": 1
+  },
+  "beatTime": 8.3,
+  "ui": {
+   "explore": false,
+   "setup": false,
+   "diagnostics": false,
+   "talkDebug": false,
+   "hoverTag": false,
+   "lang": "lt",
+   "talkActive": true
+  },
+  "outside": [],
+  "overlaps": [],
+  "smallest": {
+   "text": "Pasyvioji sauga",
+   "fontSize": "11px"
+  },
+  "texts": [
+   {
+    "text": "Pasyvioji sauga",
+    "fontSize": "11px",
+    "fontWeight": "600",
+    "x": 49.1,
+    "y": 25.3,
+    "w": 156.9,
+    "h": 15
+   },
+   {
+    "text": "Pasyvusis aušinimas",
+    "fontSize": "23.4662px",
+    "fontWeight": "300",
+    "x": 49.1,
+    "y": 54.1,
+    "w": 188.6,
+    "h": 26.8
+   },
+   {
+    "text": "be siurblių, be išorinės elektros",
+    "fontSize": "14px",
+    "fontWeight": "400",
+    "x": 49.1,
+    "y": 89,
+    "w": 188.6,
+    "h": 19
+   },
+   {
+    "text": "7 paros",
+    "fontSize": "51.2006px",
+    "fontWeight": "200",
+    "x": 688.1,
+    "y": 54.1,
+    "w": 286.7,
+    "h": 51.2
+   },
+   {
+    "text": "*Be operatorių veiksmų; tam pakanka 2 iš 3 kontūrų (GE Vernova Hitachi, GD Rev. J §3.3)",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 688.1,
+    "y": 129.1,
+    "w": 286.7,
+    "h": 33.6
+   }
+  ]
+ },
+ {
+  "size": "1024x768",
+  "state": "close/qa",
+  "file": "projector-1024x768/12-close-qa-1024x768.png",
+  "stage": {
+   "x": 0,
+   "y": 96,
+   "w": 1024,
+   "h": 576
+  },
+  "canvas": {
+   "buffer": [
+    1024,
+    576
+   ],
+   "css": [
+    1024,
+    576
+   ],
+   "stage": [
+    0,
+    96,
+    1024,
+    576
+   ],
+   "dpr": 1
+  },
+  "beatTime": 4.6,
+  "ui": {
+   "explore": false,
+   "setup": false,
+   "diagnostics": false,
+   "talkDebug": false,
+   "hoverTag": false,
+   "lang": "lt",
+   "talkActive": true
+  },
+  "outside": [],
+  "overlaps": [],
+  "smallest": {
+   "text": "VIRGILIJUS_EMAIL_TODO",
+   "fontSize": "12px"
+  },
+  "texts": [
+   {
+    "text": "Ta pati fizika. Kitas mastelis.",
+    "fontSize": "23.4662px",
+    "fontWeight": "300",
+    "x": 49.1,
+    "y": 61,
+    "w": 250,
+    "h": 24.4
+   },
+   {
+    "text": "Jūsų klausimai",
+    "fontSize": "23.4662px",
+    "fontWeight": "300",
+    "x": 49.1,
+    "y": 99.3,
+    "w": 250,
+    "h": 31
+   },
+   {
+    "text": "Virgilijus Kiltinavičius",
+    "fontSize": "13px",
+    "fontWeight": "500",
+    "x": 120.9,
+    "y": 501.8,
+    "w": 147.7,
+    "h": 17
+   },
+   {
+    "text": "VIRGILIJUS_EMAIL_TODO",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 120.9,
+    "y": 522.9,
+    "w": 147.7,
+    "h": 14
+   },
+   {
+    "text": "Timofej Gaivoronskij",
+    "fontSize": "13px",
+    "fontWeight": "500",
+    "x": 367,
+    "y": 499.8,
+    "w": 206.4,
+    "h": 17
+   },
+   {
+    "text": "timofej.gaivoronskij@stud.vilniustech.lt",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 367,
+    "y": 520.9,
+    "w": 206.4,
+    "h": 16
+   },
+   {
+    "text": "QR",
+    "fontSize": "13.824px",
+    "fontWeight": "400",
+    "x": 796,
+    "y": 497.5,
+    "w": 21.7,
+    "h": 16
+   },
+   {
+    "text": "Interaktyvus modelis",
+    "fontSize": "13px",
+    "fontWeight": "500",
+    "x": 852,
+    "y": 488.5,
+    "w": 122.8,
+    "h": 17
+   },
+   {
+    "text": "QR kodas bus čia",
+    "fontSize": "12px",
+    "fontWeight": "400",
+    "x": 852,
+    "y": 508.4,
+    "w": 122.8,
+    "h": 14
+   }
+  ]
+ },
+ {
+  "size": "1024x768",
+  "log": {
+   "console": [
+    "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+   ],
+   "errors": [],
+   "external": []
+  }
+ }
+]

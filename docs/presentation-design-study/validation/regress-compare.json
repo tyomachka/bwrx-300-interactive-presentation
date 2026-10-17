@@ -1,0 +1,547 @@
+{
+ "beats": [
+  {
+   "beat": "00-hook-hero",
+   "webglDiffPx": 0,
+   "diffBox": null,
+   "cameraMaxDelta": 0.0,
+   "timeEqual": true,
+   "worldDiff": {},
+   "textAdded": [],
+   "textRemoved": [],
+   "textMoved": [],
+   "haloAdded": []
+  },
+  {
+   "beat": "01-lithuania-renewables",
+   "webglDiffPx": 0,
+   "diffBox": null,
+   "cameraMaxDelta": 0.0,
+   "timeEqual": true,
+   "worldDiff": {},
+   "textAdded": [],
+   "textRemoved": [],
+   "textMoved": [],
+   "haloAdded": [
+    "Lietuva",
+    "Šaltinis: „Litgrid“, 2026-01-28"
+   ]
+  },
+  {
+   "beat": "02-lithuania-calm",
+   "webglDiffPx": 0,
+   "diffBox": null,
+   "cameraMaxDelta": 0.0,
+   "timeEqual": true,
+   "worldDiff": {},
+   "textAdded": [],
+   "textRemoved": [],
+   "textMoved": [],
+   "haloAdded": [
+    "Lietuva"
+   ]
+  },
+  {
+   "beat": "03-lithuania-assessment",
+   "webglDiffPx": 0,
+   "diffBox": null,
+   "cameraMaxDelta": 0.0,
+   "timeEqual": true,
+   "worldDiff": {},
+   "textAdded": [],
+   "textRemoved": [],
+   "textMoved": [],
+   "haloAdded": [
+    "Lietuva",
+    "Šaltinis: LR energetikos ministerija, 2026-02-25"
+   ]
+  },
+  {
+   "beat": "04-scale-large",
+   "webglDiffPx": 0,
+   "diffBox": null,
+   "cameraMaxDelta": 0.0,
+   "timeEqual": true,
+   "worldDiff": {},
+   "textAdded": [],
+   "textRemoved": [],
+   "textMoved": [],
+   "haloAdded": [
+    "Iliustracinis galios palyginimas, ne techninis atitikmuo",
+    "Mastelis"
+   ]
+  },
+  {
+   "beat": "05-scale-modules",
+   "webglDiffPx": 0,
+   "diffBox": null,
+   "cameraMaxDelta": 0.0,
+   "timeEqual": true,
+   "worldDiff": {},
+   "textAdded": [],
+   "textRemoved": [],
+   "textMoved": [],
+   "haloAdded": [
+    "Iliustracinis galios palyginimas, ne techninis atitikmuo",
+    "Mastelis"
+   ]
+  },
+  {
+   "beat": "06-facts-power",
+   "webglDiffPx": 0,
+   "diffBox": null,
+   "cameraMaxDelta": 0.0,
+   "timeEqual": true,
+   "worldDiff": {},
+   "textAdded": [],
+   "textRemoved": [],
+   "textMoved": [],
+   "haloAdded": [
+    "Trys faktai"
+   ]
+  },
+  {
+   "beat": "07-facts-pitches",
+   "webglDiffPx": 0,
+   "diffBox": null,
+   "cameraMaxDelta": 0.0,
+   "timeEqual": true,
+   "worldDiff": {},
+   "textAdded": [],
+   "textRemoved": [],
+   "textMoved": [],
+   "haloAdded": [
+    "Gamintojo (GE Vernova) duomenys: blokas telpa dviejose tarptautinėse futbolo aikštėse",
+    "Trys faktai"
+   ]
+  },
+  {
+   "beat": "08-facts-months",
+   "webglDiffPx": 0,
+   "diffBox": null,
+   "cameraMaxDelta": 0.0,
+   "timeEqual": true,
+   "worldDiff": {},
+   "textAdded": [],
+   "textRemoved": [],
+   "textMoved": [],
+   "haloAdded": [
+    "*Gamintojo įvertis serijiniam blokui; be licencijavimo ir finansavimo",
+    "Trys faktai"
+   ]
+  },
+  {
+   "beat": "09-projects-world",
+   "webglDiffPx": 0,
+   "diffBox": null,
+   "cameraMaxDelta": 0.0,
+   "timeEqual": true,
+   "worldDiff": {},
+   "textAdded": [],
+   "textRemoved": [],
+   "textMoved": [],
+   "haloAdded": [
+    "Projektai",
+    "Šaltiniai: CNSC, US NRC, GE Vernova Hitachi, LR energetikos ministerija (2025–2026)"
+   ]
+  },
+  {
+   "beat": "10-projects-darlington",
+   "webglDiffPx": 0,
+   "diffBox": null,
+   "cameraMaxDelta": 0.0,
+   "timeEqual": true,
+   "worldDiff": {},
+   "textAdded": [],
+   "textRemoved": [],
+   "textMoved": [
+    "CNSC statybos licencija – 2025 m. balandžio 4 d.",
+    "Projektai"
+   ],
+   "haloAdded": [
+    "CNSC statybos licencija – 2025 m. balandžio 4 d.",
+    "Projektai"
+   ]
+  },
+  {
+   "beat": "11-handoff-land",
+   "webglDiffPx": 0,
+   "diffBox": null,
+   "cameraMaxDelta": 0,
+   "timeEqual": true,
+   "worldDiff": {},
+   "textAdded": [],
+   "textRemoved": [],
+   "textMoved": [],
+   "haloAdded": []
+  },
+  {
+   "beat": "12-handoff-descend",
+   "webglDiffPx": 0,
+   "diffBox": null,
+   "cameraMaxDelta": 0.0,
+   "timeEqual": true,
+   "worldDiff": {},
+   "textAdded": [],
+   "textRemoved": [],
+   "textMoved": [],
+   "haloAdded": []
+  },
+  {
+   "beat": "13-fission-micro",
+   "webglDiffPx": 0,
+   "diffBox": null,
+   "cameraMaxDelta": 0.0,
+   "timeEqual": true,
+   "worldDiff": {},
+   "textAdded": [],
+   "textRemoved": [],
+   "textMoved": [],
+   "haloAdded": [
+    "Dalijimasis",
+    "Schema, ne mastelis"
+   ]
+  },
+  {
+   "beat": "14-fission-inFuel",
+   "webglDiffPx": 7987,
+   "diffBox": [
+    881,
+    589,
+    1141,
+    631
+   ],
+   "cameraMaxDelta": 0.0,
+   "timeEqual": true,
+   "worldDiff": {},
+   "textAdded": [],
+   "textRemoved": [],
+   "textMoved": [
+    "Tai vyksta kure"
+   ],
+   "haloAdded": [
+    "Dalijimasis"
+   ]
+  },
+  {
+   "beat": "15-control-blades",
+   "webglDiffPx": 0,
+   "diffBox": null,
+   "cameraMaxDelta": 0.0,
+   "timeEqual": true,
+   "worldDiff": {},
+   "textAdded": [],
+   "textRemoved": [],
+   "textMoved": [
+    "Iliustracinis judesys",
+    "Valdymas"
+   ],
+   "haloAdded": [
+    "Iliustracinis judesys",
+    "Valdymas"
+   ]
+  },
+  {
+   "beat": "16-control-insert",
+   "webglDiffPx": 0,
+   "diffBox": null,
+   "cameraMaxDelta": 0.0,
+   "timeEqual": true,
+   "worldDiff": {},
+   "textAdded": [],
+   "textRemoved": [],
+   "textMoved": [
+    "Iliustracinis judesys",
+    "Valdymas"
+   ],
+   "haloAdded": [
+    "Iliustracinis judesys",
+    "Valdymas"
+   ]
+  },
+  {
+   "beat": "17-control-withdraw",
+   "webglDiffPx": 0,
+   "diffBox": null,
+   "cameraMaxDelta": 0.0,
+   "timeEqual": true,
+   "worldDiff": {},
+   "textAdded": [],
+   "textRemoved": [],
+   "textMoved": [
+    "Iliustracinis judesys",
+    "Valdymas"
+   ],
+   "haloAdded": [
+    "Iliustracinis judesys",
+    "Valdymas"
+   ]
+  },
+  {
+   "beat": "18-energy-boil",
+   "webglDiffPx": 6971,
+   "diffBox": [
+    815,
+    975,
+    980,
+    1021
+   ],
+   "cameraMaxDelta": 0.0,
+   "timeEqual": true,
+   "worldDiff": {},
+   "textAdded": [],
+   "textRemoved": [],
+   "textMoved": [
+    "vanduo kyla"
+   ],
+   "haloAdded": [
+    "Nuo atomo iki elektros"
+   ]
+  },
+  {
+   "beat": "19-energy-steam",
+   "webglDiffPx": 10953,
+   "diffBox": [
+    677,
+    948,
+    842,
+    1079
+   ],
+   "cameraMaxDelta": 0.0,
+   "timeEqual": true,
+   "worldDiff": {},
+   "textAdded": [],
+   "textRemoved": [],
+   "textMoved": [
+    "separatoriai"
+   ],
+   "haloAdded": [
+    "Nuo atomo iki elektros"
+   ]
+  },
+  {
+   "beat": "20-energy-turbine",
+   "webglDiffPx": 0,
+   "diffBox": null,
+   "cameraMaxDelta": 0.0,
+   "timeEqual": true,
+   "worldDiff": {},
+   "textAdded": [],
+   "textRemoved": [],
+   "textMoved": [],
+   "haloAdded": [
+    "Nuo atomo iki elektros"
+   ]
+  },
+  {
+   "beat": "21-energy-condenser",
+   "webglDiffPx": 0,
+   "diffBox": null,
+   "cameraMaxDelta": 0.0,
+   "timeEqual": true,
+   "worldDiff": {},
+   "textAdded": [],
+   "textRemoved": [],
+   "textMoved": [],
+   "haloAdded": [
+    "Nuo atomo iki elektros"
+   ]
+  },
+  {
+   "beat": "22-energy-grid",
+   "webglDiffPx": 0,
+   "diffBox": null,
+   "cameraMaxDelta": 0.0,
+   "timeEqual": true,
+   "worldDiff": {},
+   "textAdded": [],
+   "textRemoved": [],
+   "textMoved": [],
+   "haloAdded": [
+    "*Gamintojo iliustracinis įvertis; miestas – ne konkreti vieta",
+    "Nuo atomo iki elektros"
+   ]
+  },
+  {
+   "beat": "23-safety-normal",
+   "webglDiffPx": 0,
+   "diffBox": null,
+   "cameraMaxDelta": 0.0,
+   "timeEqual": true,
+   "worldDiff": {},
+   "textAdded": [],
+   "textRemoved": [],
+   "textMoved": [],
+   "haloAdded": [
+    "Pasyvioji sauga"
+   ]
+  },
+  {
+   "beat": "24-safety-blackout",
+   "webglDiffPx": 0,
+   "diffBox": null,
+   "cameraMaxDelta": 0.0,
+   "timeEqual": true,
+   "worldDiff": {},
+   "textAdded": [],
+   "textRemoved": [],
+   "textMoved": [],
+   "haloAdded": [
+    "Pasyvioji sauga"
+   ]
+  },
+  {
+   "beat": "25-safety-scram",
+   "webglDiffPx": 0,
+   "diffBox": null,
+   "cameraMaxDelta": 0.0,
+   "timeEqual": true,
+   "worldDiff": {},
+   "textAdded": [],
+   "textRemoved": [],
+   "textMoved": [
+    "Pasyvioji sauga"
+   ],
+   "haloAdded": [
+    "Pasyvioji sauga"
+   ]
+  },
+  {
+   "beat": "26-safety-decay",
+   "webglDiffPx": 0,
+   "diffBox": null,
+   "cameraMaxDelta": 0.0,
+   "timeEqual": true,
+   "worldDiff": {},
+   "textAdded": [],
+   "textRemoved": [],
+   "textMoved": [],
+   "haloAdded": [
+    "Pasyvioji sauga"
+   ]
+  },
+  {
+   "beat": "27-safety-ics",
+   "webglDiffPx": 0,
+   "diffBox": null,
+   "cameraMaxDelta": 0.0,
+   "timeEqual": true,
+   "worldDiff": {},
+   "textAdded": [],
+   "textRemoved": [],
+   "textMoved": [],
+   "haloAdded": [
+    "Pasyvioji sauga"
+   ]
+  },
+  {
+   "beat": "28-safety-days",
+   "webglDiffPx": 0,
+   "diffBox": null,
+   "cameraMaxDelta": 0.0,
+   "timeEqual": true,
+   "worldDiff": {},
+   "textAdded": [
+    "7 paros*"
+   ],
+   "textRemoved": [
+    "7 paros"
+   ],
+   "textMoved": [],
+   "haloAdded": [
+    "*Be operatorių veiksmų; tam pakanka 2 iš 3 kontūrų (GE Vernova Hitachi, GD Rev. J §3.3)",
+    "Pasyvioji sauga"
+   ]
+  },
+  {
+   "beat": "29-limits-limits",
+   "webglDiffPx": 0,
+   "diffBox": null,
+   "cameraMaxDelta": 0.0,
+   "timeEqual": true,
+   "worldDiff": {},
+   "textAdded": [],
+   "textRemoved": [],
+   "textMoved": [],
+   "haloAdded": [
+    "Iššūkiai"
+   ]
+  },
+  {
+   "beat": "30-close-return",
+   "webglDiffPx": 0,
+   "diffBox": null,
+   "cameraMaxDelta": 0.0,
+   "timeEqual": true,
+   "worldDiff": {},
+   "textAdded": [],
+   "textRemoved": [],
+   "textMoved": [],
+   "haloAdded": []
+  },
+  {
+   "beat": "31-close-qa",
+   "webglDiffPx": 0,
+   "diffBox": null,
+   "cameraMaxDelta": 0.0,
+   "timeEqual": true,
+   "worldDiff": {},
+   "textAdded": [],
+   "textRemoved": [],
+   "textMoved": [],
+   "haloAdded": []
+  }
+ ],
+ "film": [
+  {
+   "film": "film-00.5",
+   "diffPx": 0,
+   "box": null
+  },
+  {
+   "film": "film-05.8",
+   "diffPx": 0,
+   "box": null
+  },
+  {
+   "film": "film-10.0",
+   "diffPx": 0,
+   "box": null
+  },
+  {
+   "film": "film-15.4",
+   "diffPx": 0,
+   "box": null
+  },
+  {
+   "film": "film-20.0",
+   "diffPx": 0,
+   "box": null
+  },
+  {
+   "film": "film-26.0",
+   "diffPx": 0,
+   "box": null
+  },
+  {
+   "film": "film-32.0",
+   "diffPx": 0,
+   "box": null
+  },
+  {
+   "film": "film-38.0",
+   "diffPx": 0,
+   "box": null
+  },
+  {
+   "film": "film-44.0",
+   "diffPx": 0,
+   "box": null
+  },
+  {
+   "film": "film-47.9",
+   "diffPx": 0,
+   "box": null
+  }
+ ]
+}

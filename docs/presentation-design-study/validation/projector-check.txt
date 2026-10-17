@@ -1,0 +1,28 @@
+a-01-hook-hero                     stage 1920x1080@y0  smallest 16.0px ('Mažieji moduliniai reaktor')  outside 0  overlaps 0 
+a-02-lithuania-renewables          stage 1920x1080@y0  smallest 16.0px ('Lietuva')  outside 0  overlaps 0 
+a-04-facts-months                  stage 1920x1080@y0  smallest 16.0px ('Trys faktai')  outside 0  overlaps 0 
+a-10-safety-days                   stage 1920x1080@y0  smallest 16.0px ('Pasyvioji sauga')  outside 0  overlaps 0 
+a-12-close-qa                      stage 1920x1080@y0  smallest 17.0px ('VIRGILIJUS_EMAIL_TODO')  outside 0  overlaps 0 
+a-05-projects-world                stage 1920x1080@y0  smallest 16.0px ('Projektai')  outside 0  overlaps 0 
+b-01-hook-hero                     stage 1920x1080@y0  smallest 16.0px ('Mažieji moduliniai reaktor')  outside 0  overlaps 0 
+b-02-lithuania-renewables          stage 1920x1080@y0  smallest 16.0px ('Lietuva')  outside 0  overlaps 0 
+b-04-facts-months                  stage 1920x1080@y0  smallest 16.0px ('Trys faktai')  outside 0  overlaps 0 
+b-10-safety-days                   stage 1920x1080@y0  smallest 16.0px ('Pasyvioji sauga')  outside 0  overlaps 0 
+b-12-close-qa                      stage 1920x1080@y0  smallest 17.0px ('VIRGILIJUS_EMAIL_TODO')  outside 0  overlaps 0 
+b-05-projects-world                stage 1920x1080@y0  smallest 16.0px ('Projektai')  outside 0  overlaps 0 
+c-01-hook-hero                     stage 1920x1080@y0  smallest 16.0px ('Mažieji moduliniai reaktor')  outside 0  overlaps 0 
+c-02-lithuania-renewables          stage 1920x1080@y0  smallest 16.0px ('Lietuva')  outside 0  overlaps 0 
+c-04-facts-months                  stage 1920x1080@y0  smallest 16.0px ('Trys faktai')  outside 0  overlaps 0 
+c-10-safety-days                   stage 1920x1080@y0  smallest 16.0px ('Pasyvioji sauga')  outside 0  overlaps 0 
+c-12-close-qa                      stage 1920x1080@y0  smallest 16.0px ('VIRGILIJUS_EMAIL_TODO')  outside 0  overlaps 0 
+c-05-projects-world                stage 1920x1080@y0  smallest 16.0px ('Projektai')  outside 0  overlaps 0 
+b-01-hook-hero                     stage 1280x720@y40  smallest 12.0px ('Mažieji moduliniai reaktor')  outside 0  overlaps 0 
+b-02-lithuania-renewables          stage 1280x720@y40  smallest 12.0px ('Lietuva')  outside 0  overlaps 0 
+b-04-facts-months                  stage 1280x720@y40  smallest 12.0px ('Trys faktai')  outside 0  overlaps 0 
+b-10-safety-days                   stage 1280x720@y40  smallest 12.0px ('Pasyvioji sauga')  outside 0  overlaps 0 
+b-12-close-qa                      stage 1280x720@y40  smallest 12.0px ('VIRGILIJUS_EMAIL_TODO')  outside 0  overlaps 0 
+b-01-hook-hero                     stage 1024x576@y96  smallest 12.0px ('Mažieji moduliniai reaktor')  outside 0  overlaps 0 
+b-02-lithuania-renewables          stage 1024x576@y96  smallest 12.0px ('Lietuva')  outside 0  overlaps 0 
+b-04-facts-months                  stage 1024x576@y96  smallest 12.0px ('Trys faktai')  outside 0  overlaps 0 
+b-10-safety-days                   stage 1024x576@y96  smallest 12.0px ('Pasyvioji sauga')  outside 0  overlaps 0 
+b-12-close-qa                      stage 1024x576@y96  smallest 12.0px ('VIRGILIJUS_EMAIL_TODO')  outside 0  overlaps 0 

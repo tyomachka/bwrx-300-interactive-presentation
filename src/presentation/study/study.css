@@ -1,0 +1,911 @@
+/*
+ * Design study (`?study=a|b|c` only; loaded on demand, never in the lecture or the portable build).
+ * Three directions over the same overlay markup: every value comes from the --s-* variables
+ * (presentation/study/tokens.ts). 1 cqh = 10.8 px and 1 cqw = 19.2 px on the 1080p stage.
+ *
+ * Roles: display, metric, h1, h2, body, label, source, micro (8 sizes instead of ~15).
+ * Labels: 1 anchored technical label (dot + leader), 2 claim text (no card), 3 source/qualifier,
+ * 4 metric (number + quiet unit + one supporting line).
+ */
+@font-face {
+  font-family: 'Study Inter';
+  src: url('./fonts/InterVariable-study.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'Study Sans C';
+  src: url('./fonts/BWRXStudySansC.woff2') format('woff2');
+  font-weight: 100 700;
+  font-stretch: 75% 100%;
+  font-style: normal;
+  font-display: block;
+}
+
+.talk[data-study] {
+  font-family: var(--s-font);
+  color: var(--s-text);
+  /* Tabular figures only where numbers change (counters); elsewhere Inter's tnum also spaces hyphens. */
+  font-variant-numeric: normal;
+  font-optical-sizing: auto;
+  --s-line: rgba(236, 239, 242, 0.62);
+  --s-halo: 0 0 2px rgba(6, 7, 9, 0.55), 0 1px 14px rgba(6, 7, 9, 0.8);
+  --s-gx: 5cqw;
+  --s-col: 66cqw;
+}
+
+.talk[data-study='b'] {
+  --s-gx: 6.25cqw;
+}
+
+/* ---- Roles ------------------------------------------------------------------------------------ */
+.talk[data-study] .talk-title__kicker,
+.talk[data-study] .talk__chapter {
+  font-size: var(--s-micro);
+  font-weight: var(--s-micro-w);
+  letter-spacing: var(--s-micro-ls);
+  line-height: var(--s-micro-lh);
+  text-transform: uppercase;
+}
+
+.talk[data-study] .talk-title__title {
+  margin-top: 1.6cqh;
+  font-size: var(--s-display);
+  font-weight: var(--s-display-w);
+  letter-spacing: var(--s-display-ls);
+  line-height: var(--s-display-lh);
+  color: var(--s-text);
+}
+
+.talk[data-study] .talk-title__sub {
+  margin-top: 2.6cqh;
+  font-size: var(--s-h2);
+  font-weight: var(--s-h2-w);
+  letter-spacing: var(--s-h2-ls);
+  color: var(--s-amber);
+}
+
+.talk[data-study] .talk-stat__value,
+.talk[data-study] .talk-counter__value {
+  font-size: var(--s-metric);
+  font-weight: var(--s-metric-w);
+  letter-spacing: var(--s-metric-ls);
+  line-height: var(--s-metric-lh);
+  color: var(--s-text);
+}
+
+/* Tabular figures only on a number that counts up (no jitter); Inter's tnum also re-spaces "*" and ".". */
+.talk[data-study] .talk-stat__value {
+  gap: 0.9cqh;
+  font-variant-numeric: tabular-nums;
+}
+
+.talk[data-study] .talk-stat__unit {
+  font-variant-numeric: normal;
+}
+
+.talk[data-study] .talk-stat__unit {
+  font-size: var(--s-h2);
+  font-weight: var(--s-h2-w);
+  letter-spacing: var(--s-h2-ls);
+  color: var(--s-text2);
+}
+
+.talk[data-study] .talk-stat__caption,
+.talk[data-study] .talk-caption__sub {
+  max-width: 28cqw;
+  margin-top: 2.2cqh;
+  font-size: var(--s-body);
+  font-weight: var(--s-body-w);
+  letter-spacing: var(--s-body-ls);
+  line-height: var(--s-body-lh);
+  color: var(--s-text2);
+  text-wrap: balance;
+}
+
+.talk[data-study] .talk-caption__sub {
+  margin-top: 1.4cqh;
+}
+
+.talk[data-study] .talk-caption__text {
+  max-width: 30cqw;
+  font-size: var(--s-h1);
+  font-weight: var(--s-h1-w);
+  letter-spacing: var(--s-h1-ls);
+  line-height: var(--s-h1-lh);
+  color: var(--s-text);
+}
+
+.talk[data-study] .talk-caption--alert {
+  padding-left: 0;
+  border-left: 0;
+}
+
+/* Role 3: source / qualifier, set under what it qualifies, readable on any background. */
+.talk[data-study] .talk-stat__source,
+.talk[data-study] .talk-counter__note,
+.talk[data-study] .talk-note {
+  max-width: 30cqw;
+  margin-top: 1.8cqh;
+  font-size: var(--s-source);
+  font-weight: var(--s-source-w);
+  letter-spacing: var(--s-source-ls);
+  line-height: var(--s-source-lh);
+  color: var(--s-source-ink);
+  text-shadow: var(--s-halo);
+  text-wrap: pretty;
+}
+
+.talk[data-study] .talk__chapter {
+  left: var(--s-gx);
+  top: 4.6cqh;
+  color: var(--s-source-ink);
+  text-shadow: var(--s-halo);
+}
+
+.talk[data-study='a'] .talk__chapter::before {
+  width: 2.2em;
+  height: 1px;
+  background: var(--s-steel);
+}
+
+.talk[data-study='b'] .talk__chapter::before {
+  display: none;
+}
+
+.talk[data-study='b'] .talk__chapter {
+  color: var(--s-text2);
+  opacity: 0.8;
+}
+
+.talk[data-study='c'] .talk__chapter {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+.talk[data-study='c'] .talk__chapter::before {
+  width: 6cqw;
+  height: 1px;
+  background: var(--s-line);
+}
+
+/* ---- Titles ------------------------------------------------------------------------------------ */
+.talk[data-study] [data-id='hook-title'],
+.talk[data-study] [data-id='close-thesis'] {
+  left: var(--s-gx);
+  top: 9.6cqh;
+  max-width: 52cqw;
+}
+
+.talk[data-study='a'] .talk-title__kicker {
+  color: var(--s-amber);
+}
+
+.talk[data-study='b'] .talk-title__kicker {
+  color: var(--s-text2);
+}
+
+.talk[data-study='b'] [data-id='hook-title'],
+.talk[data-study='b'] [data-id='close-thesis'] {
+  top: 13cqh;
+}
+
+.talk[data-study='c'] .talk-title__kicker {
+  display: flex;
+  align-items: center;
+  gap: 1.4cqh;
+  color: var(--s-text2);
+}
+
+.talk[data-study='c'] .talk-title__kicker::before {
+  content: '';
+  width: 4.4cqh;
+  height: 1px;
+  background: var(--s-amber);
+}
+
+/* The closing thesis is the talk's last statement: display size, two balanced lines. */
+.talk[data-study] [data-id='close-thesis'] .talk-title__title {
+  max-width: 44cqw;
+  text-wrap: balance;
+}
+
+/* ---- Scrims (legibility without a card) ------------------------------------------------------------ */
+.talk[data-study] .study-scrim {
+  inset: 0;
+  animation: none;
+}
+
+.talk[data-study='a'] .study-scrim,
+.talk[data-study='c'] .study-scrim {
+  display: none;
+}
+
+.talk[data-study='b'] .study-scrim {
+  background: linear-gradient(90deg, rgba(7, 8, 10, 0.82) 0%, rgba(7, 8, 10, 0.55) 26%, rgba(7, 8, 10, 0) 52%);
+}
+
+.talk[data-study='b'] [data-id='scrim-hook'],
+.talk[data-study='b'] [data-id='scrim-close'] {
+  background:
+    linear-gradient(180deg, rgba(7, 8, 10, 0.55) 0%, rgba(7, 8, 10, 0) 38%),
+    linear-gradient(0deg, rgba(7, 8, 10, 0.7) 0%, rgba(7, 8, 10, 0) 26%);
+}
+
+/* ---- Credits (presenters) --------------------------------------------------------------------------- */
+.talk[data-study] .study-credits {
+  left: var(--s-gx);
+  bottom: 7cqh;
+  display: flex;
+  align-items: flex-end;
+  gap: 3.4cqw;
+}
+
+.talk[data-study] .study-credit {
+  display: flex;
+  align-items: center;
+  gap: 1.6cqh;
+}
+
+.talk[data-study] .study-credit__avatar {
+  width: 5.6cqh;
+  height: 5.6cqh;
+  flex: none;
+}
+
+.talk[data-study] .study-credit__avatar-bg {
+  fill: rgba(236, 239, 242, 0.08);
+  stroke: rgba(236, 239, 242, 0.28);
+  stroke-width: 1.2;
+}
+
+.talk[data-study] .study-credit__avatar-fg {
+  fill: rgba(236, 239, 242, 0.32);
+}
+
+.talk[data-study] .study-credit__name {
+  font-size: var(--s-body);
+  font-weight: 600;
+  letter-spacing: var(--s-body-ls);
+  color: var(--s-text);
+}
+
+.talk[data-study] .study-credit__email {
+  margin-top: 0.5cqh;
+  font-size: var(--s-source);
+  font-weight: var(--s-source-w);
+  color: var(--s-text2);
+}
+
+.talk[data-study] .study-credit__email.is-todo {
+  color: var(--s-steel);
+}
+
+.talk[data-study='b'] .study-credit__avatar {
+  display: none;
+}
+
+.talk[data-study='b'] .study-credits {
+  gap: 0;
+}
+
+.talk[data-study='b'] .study-credit + .study-credit {
+  margin-left: 2.4cqw;
+  padding-left: 2.4cqw;
+  border-left: 1px solid rgba(236, 239, 242, 0.24);
+}
+
+.talk[data-study='c'] .study-credits {
+  padding-top: 2cqh;
+  border-top: 1px solid rgba(236, 239, 242, 0.22);
+}
+
+.talk[data-study='c'] .study-credit__avatar-bg {
+  rx: 6;
+}
+
+.talk[data-study] [data-id='credits'] {
+  text-shadow: var(--s-halo);
+}
+
+/* ---- QR ------------------------------------------------------------------------------------------------ */
+.talk[data-study] .study-qr {
+  right: var(--s-gx);
+  bottom: 7cqh;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-end;
+  gap: 2cqh;
+}
+
+.talk[data-study] .study-qr__code {
+  width: 18.5cqh;
+  height: 18.5cqh;
+  border-radius: 0.6cqh;
+  flex: none;
+}
+
+.talk[data-study] .study-qr--outro .study-qr__code {
+  width: 25cqh;
+  height: 25cqh;
+}
+
+.talk[data-study='b'] .study-qr--intro .study-qr__code {
+  width: 16cqh;
+  height: 16cqh;
+}
+
+.talk[data-study] .study-qr__paper {
+  fill: #f4f4f1;
+}
+
+.talk[data-study] .study-qr__ink {
+  fill: #101215;
+}
+
+.talk[data-study] .study-qr__text {
+  text-align: right;
+  text-shadow: var(--s-halo);
+}
+
+.talk[data-study] .study-qr__label {
+  font-size: var(--s-label);
+  font-weight: 600;
+  color: var(--s-text);
+}
+
+.talk[data-study] .study-qr__sub {
+  margin-top: 0.6cqh;
+  font-size: var(--s-source);
+  color: var(--s-text2);
+}
+
+/* ---- Lithuania ----------------------------------------------------------------------------------------- */
+.talk[data-study] [data-id='lt-stat'] {
+  left: var(--s-gx);
+  top: 36cqh;
+  translate: none;
+}
+
+.talk[data-study='b'] [data-id='lt-stat'] {
+  top: 33cqh;
+}
+
+/* ---- Facts / months: metric + construction timeline ----------------------------------------------------- */
+.talk[data-study] [data-id='facts-months'] {
+  left: var(--s-gx);
+  top: 12cqh;
+  translate: none;
+}
+
+.talk[data-study] [data-id='timeline'] {
+  left: var(--s-gx);
+  top: 51cqh;
+  width: 30cqw;
+}
+
+.talk[data-study='b'] [data-id='timeline'] {
+  top: auto;
+  bottom: 11cqh;
+  width: 52cqw;
+}
+
+.talk[data-study] .study-tl__track {
+  position: relative;
+  height: 0.7cqh;
+  border-radius: 0.35cqh;
+  background: rgba(236, 239, 242, 0.14);
+}
+
+.talk[data-study] .study-tl__fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: calc(min(var(--p, 0), 1) * 66.667%);
+  border-radius: inherit;
+  background: var(--s-steel);
+}
+
+.talk[data-study] .study-tl__band {
+  position: absolute;
+  inset: -0.5cqh 0 -0.5cqh 66.667%;
+  border-radius: 0.4cqh;
+  background: var(--s-amber);
+  opacity: clamp(0, calc((var(--p, 0) - 0.88) * 8.4), 1);
+}
+
+.talk[data-study='b'] .study-tl__fill {
+  background: rgba(247, 248, 248, 0.5);
+}
+
+.talk[data-study='b'] .study-tl__band {
+  background: var(--s-text);
+}
+
+.talk[data-study] .study-tl__ticks {
+  position: relative;
+  height: 4cqh;
+  margin-top: 1.2cqh;
+}
+
+.talk[data-study] .study-tl__tick {
+  position: absolute;
+  top: 0;
+  translate: -50% 0;
+  font-size: var(--s-source);
+  font-variant-numeric: tabular-nums;
+  color: var(--s-source-ink);
+  text-shadow: var(--s-halo);
+}
+
+.talk[data-study] .study-tl__tick:first-child {
+  translate: 0 0;
+}
+
+.talk[data-study] .study-tl__tick:last-child {
+  translate: -100% 0;
+}
+
+.talk[data-study] .study-tl__tick.is-band {
+  color: var(--s-text);
+  font-weight: 600;
+}
+
+.talk[data-study='c'] .study-tl__track {
+  height: 1px;
+  border-radius: 0;
+  background: var(--s-line);
+  background-image: repeating-linear-gradient(90deg, rgba(236, 239, 242, 0.7) 0 1px, transparent 1px calc(100% / 6));
+  background-size: 100% 1.2cqh;
+  background-repeat: no-repeat;
+  background-position: 0 -0.6cqh;
+}
+
+.talk[data-study='c'] .study-tl__fill {
+  inset: -0.25cqh auto -0.25cqh 0;
+  height: auto;
+}
+
+/* ---- Safety: one eye path, reactor -> condenser -> conclusion (right column) -------------------------- */
+.talk[data-study] [data-id='safety-state'] {
+  left: var(--s-col);
+  top: 10cqh;
+  right: auto;
+  bottom: auto;
+  translate: none;
+  width: 29cqw;
+}
+
+.talk[data-study] [data-id='safety-state'] .talk-caption__text,
+.talk[data-study] [data-id='safety-state'] .talk-caption__sub {
+  max-width: 29cqw;
+  text-shadow: var(--s-halo);
+}
+
+.talk[data-study] [data-id='safety-days'] {
+  left: var(--s-col);
+  right: auto;
+  top: 33cqh;
+  width: 29cqw;
+  text-align: left;
+}
+
+.talk[data-study] [data-id='safety-meters'] {
+  left: var(--s-col);
+  right: auto;
+  top: 22cqh;
+  text-align: left;
+}
+
+.talk[data-study] .talk-meters__row {
+  justify-content: flex-start;
+}
+
+.talk[data-study] .talk-meters__name {
+  min-width: 9em;
+  font-size: var(--s-micro);
+  font-weight: var(--s-micro-w);
+  letter-spacing: var(--s-micro-ls);
+  color: var(--s-text2);
+}
+
+.talk[data-study] .talk-meters__value {
+  font-size: var(--s-h1);
+  font-weight: var(--s-h1-w);
+  color: var(--s-text);
+}
+
+.talk[data-study] .talk-meters__row--warm .talk-meters__value {
+  color: var(--s-copper);
+}
+
+.talk[data-study] .talk-counter__track {
+  width: 100%;
+  height: 2px;
+  margin: 2.2cqh 0 0;
+  background: rgba(236, 239, 242, 0.16);
+}
+
+.talk[data-study] .talk-counter__note {
+  max-width: 29cqw;
+  margin-left: 0;
+}
+
+.talk[data-study='a'] .talk-counter__bar {
+  background: var(--s-amber);
+}
+
+.talk[data-study='b'] .talk-counter__bar {
+  background: var(--s-text);
+}
+
+.talk[data-study='c'] .talk-counter__bar {
+  background: var(--s-cool);
+}
+
+/* ---- Role 1: anchored technical labels (dot on the thing, fine leader, text beyond it) ---------------- */
+.talk[data-study] .talk-label--leader {
+  width: 0;
+  height: 0;
+}
+
+.talk[data-study] .talk-label--leader .talk-label__dot {
+  left: -0.45cqh;
+  top: -0.45cqh;
+  width: 0.9cqh;
+  height: 0.9cqh;
+  margin: 0;
+  background: var(--s-text);
+  box-shadow: 0 0 0 2px rgba(6, 7, 9, 0.5);
+}
+
+.talk[data-study] .talk-label__line {
+  position: absolute;
+  left: 0;
+  top: -0.5px;
+  width: var(--len);
+  height: 1px;
+  background: var(--s-line);
+  transform-origin: 0 50%;
+  transform: rotate(var(--angle));
+}
+
+.talk[data-study] .talk-label--leader .talk-label__body {
+  position: absolute;
+  left: var(--dx);
+  top: var(--dy);
+  padding: 0.5cqh 1cqh;
+  transform: translate(var(--bx), var(--by));
+}
+
+.talk[data-study] .talk-label--anchor .talk-label__text {
+  font-size: var(--s-label);
+  font-weight: var(--s-label-w);
+  letter-spacing: var(--s-label-ls);
+  color: var(--s-text);
+  text-shadow: var(--s-halo);
+}
+
+.talk[data-study='c'] .talk-label--anchor .talk-label__body {
+  border-radius: 0.4cqh;
+  background: var(--s-panel);
+}
+
+.talk[data-study='c'] .talk-label--anchor .talk-label__text {
+  text-shadow: none;
+}
+
+/* C: process colours on the dots (steam white, heat copper, water cool). */
+.talk[data-study='c'] [data-id='loop-steam'] .talk-label__dot {
+  background: var(--s-steam);
+}
+
+.talk[data-study='c'] [data-id='loop-pool'] .talk-label__dot {
+  background: var(--s-copper);
+}
+
+.talk[data-study='c'] [data-id='loop-back'] .talk-label__dot {
+  background: var(--s-cool);
+}
+
+/* A leader with no text: the anchor line from a place on the map to the metric it describes. */
+.talk[data-study] [data-id='lt-link'] .talk-label__body {
+  display: none;
+}
+
+.talk[data-study] [data-id='lt-link'] .talk-label__dot {
+  background: var(--s-amber);
+}
+
+/* ==== Review mode (`?designStudy=1`): the temporary panel ============================================ */
+.study-review {
+  position: fixed;
+  left: 10px;
+  top: 10px;
+  z-index: 70;
+  max-width: calc(100vw - 20px);
+  padding: 8px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  background: rgba(8, 9, 11, 0.86);
+  font: 12px/1.35 system-ui, 'Segoe UI', sans-serif;
+  color: #d6dbe0;
+  pointer-events: auto;
+}
+
+.study-review__title {
+  margin-bottom: 6px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #e8a33d;
+}
+
+.study-review__title span {
+  margin-left: 8px;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: #8a939c;
+}
+
+.study-review__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  margin: 3px 0;
+}
+
+.study-review__head {
+  width: 64px;
+  color: #8a939c;
+}
+
+.study-review button {
+  min-height: 24px;
+  padding: 2px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.04);
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.study-review button.is-on {
+  border-color: #e8a33d;
+  background: rgba(232, 163, 61, 0.16);
+  color: #fff;
+}
+
+.study-review kbd {
+  padding: 0 4px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.12);
+  font: 11px/1.4 ui-monospace, Consolas, monospace;
+}
+
+.study-review__hint {
+  margin-left: 6px;
+  color: #8a939c;
+}
+
+.study-review__now {
+  margin-top: 6px;
+  color: #aab2ba;
+}
+
+.study-review__now code {
+  color: #e8edf0;
+}
+
+/* ==== Typography A/B/C board (T): identical content, each column in its own direction's tokens ======= */
+.study-board {
+  position: absolute;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background: #0d0f12;
+  color: #eef1f4;
+}
+
+.study-board__col {
+  display: grid;
+  grid-template-rows: 6.5cqh 13.5cqh 22.5cqh 13cqh 29.5cqh 15cqh;
+  padding: 0 2.2cqw;
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  font-family: var(--s-font);
+  color: var(--s-text);
+  overflow: hidden;
+}
+
+.study-board__col:first-child {
+  border-left: 0;
+}
+
+.study-board__head {
+  align-self: end;
+  padding-bottom: 1.2cqh;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  font: 1.15cqh/1.35 system-ui, 'Segoe UI', sans-serif;
+  color: #8a939c;
+}
+
+.study-board__dir {
+  font-size: 1.7cqh;
+  font-weight: 700;
+  color: #e8edf0;
+}
+
+.study-board__cell {
+  padding-top: 1.2cqh;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+
+.study-board__note {
+  margin-bottom: 0.8cqh;
+  font: 1.1cqh/1.3 system-ui, 'Segoe UI', sans-serif;
+  color: #6f7880;
+}
+
+.sb-kicker {
+  font-size: var(--s-micro);
+  font-weight: var(--s-micro-w);
+  letter-spacing: var(--s-micro-ls);
+  text-transform: uppercase;
+  color: var(--s-text2);
+}
+
+.study-board__col:first-child .sb-kicker {
+  color: var(--s-amber);
+}
+
+.sb-display {
+  margin-top: 0.8cqh;
+  font-size: var(--s-display);
+  font-weight: var(--s-display-w);
+  letter-spacing: var(--s-display-ls);
+  line-height: var(--s-display-lh);
+}
+
+.sb-metric {
+  display: flex;
+  align-items: baseline;
+  gap: 0.9cqh;
+  font-size: var(--s-metric);
+  font-weight: var(--s-metric-w);
+  letter-spacing: var(--s-metric-ls);
+  line-height: 0.98;
+}
+
+.sb-unit {
+  font-size: var(--s-h2);
+  font-weight: var(--s-h2-w);
+  letter-spacing: var(--s-h2-ls);
+  color: var(--s-text2);
+}
+
+.sb-metric--days {
+  margin-top: 1.4cqh;
+}
+
+.sb-pin {
+  position: relative;
+  height: 5.5cqh;
+  margin-left: 0.6cqh;
+}
+
+.sb-pin__dot {
+  position: absolute;
+  left: 0;
+  top: 2.6cqh;
+  width: 0.9cqh;
+  height: 0.9cqh;
+  border-radius: 50%;
+  background: var(--s-amber);
+}
+
+.sb-pin__line {
+  position: absolute;
+  left: 0.9cqh;
+  top: 3.05cqh;
+  width: 3cqh;
+  height: 1px;
+  background: var(--s-line, rgba(236, 239, 242, 0.62));
+}
+
+.sb-pin__body {
+  position: absolute;
+  left: 4.6cqh;
+  top: 0.6cqh;
+  display: flex;
+  flex-direction: column;
+}
+
+.sb-label {
+  font-size: var(--s-label);
+  font-weight: var(--s-label-w);
+  letter-spacing: var(--s-label-ls);
+}
+
+.sb-pin__sub,
+.sb-source,
+.sb-email {
+  font-size: var(--s-source);
+  font-weight: var(--s-source-w);
+  line-height: var(--s-source-lh);
+  color: var(--s-source-ink);
+}
+
+.sb-source {
+  margin-top: 1cqh;
+  max-width: 28cqw;
+}
+
+.sb-h1 {
+  font-size: var(--s-h1);
+  font-weight: var(--s-h1-w);
+  letter-spacing: var(--s-h1-ls);
+  line-height: var(--s-h1-lh);
+}
+
+.sb-body {
+  margin-top: 0.8cqh;
+  font-size: var(--s-body);
+  font-weight: var(--s-body-w);
+  line-height: var(--s-body-lh);
+  color: var(--s-text2);
+}
+
+.sb-credit + .sb-credit {
+  margin-top: 1.4cqh;
+}
+
+.sb-name {
+  font-size: var(--s-body);
+  font-weight: 600;
+}
+
+.sb-email.is-todo {
+  color: var(--s-steel);
+}
+
+/* ---- Role 1 on the maps: pin tags without the amber rule (a quiet backing, the dot carries status) ---- */
+.talk[data-study] .talk-label--tag .talk-label__body {
+  padding: 0.6cqh 1.1cqh 0.7cqh;
+  border-left: 0;
+  border-radius: 0.5cqh;
+  background: var(--s-panel);
+}
+
+.talk[data-study] .talk-label--tag .talk-label__text {
+  font-size: var(--s-label);
+  font-weight: var(--s-label-w);
+  letter-spacing: var(--s-label-ls);
+  color: var(--s-text);
+}
+
+.talk[data-study] .talk-label--tag .talk-label__sub {
+  font-size: var(--s-source);
+  color: var(--s-text2);
+}
+
+.talk[data-study] .talk-label--tag .talk-label__dot {
+  width: 0.9cqh;
+  height: 0.9cqh;
+  background: var(--s-text);
+  box-shadow: 0 0 0 2px rgba(6, 7, 9, 0.5);
+}
+
+.talk[data-study] .talk-legend {
+  font-size: var(--s-source);
+  color: var(--s-text2);
+  background: var(--s-panel);
+}
+
+.talk[data-study] .talk-legend .talk-pin {
+  width: 1.4cqh;
+  height: 1.4cqh;
+}

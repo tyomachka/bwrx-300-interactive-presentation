@@ -17,7 +17,15 @@ import { CHAIN_LABELS } from '../scene/chainConfig';
 import { TALK_BEATS, useTalkStore } from '../talk';
 import type { OverlayItem } from '../types';
 import { PresenterFigure } from './PresenterFigure';
+import { STUDY_ENABLED, useStudyStore } from '../study/studyMode';
+import { studyVariables } from '../study/tokens';
+import { StudyBlock } from '../study/StudyBlocks';
 import './talk.css';
+
+// Design study (`?study=` / `?designStudy=1`): its stylesheet and fonts load only then; the
+// portable build compiles every study path out.
+const STUDY_ON = import.meta.env.MODE !== 'portable' && STUDY_ENABLED;
+if (STUDY_ON) void import('../study/study.css');
 
 const LEAVE_MS = 400;
 
@@ -55,7 +63,8 @@ export function TalkOverlay() {
   const items = active ? beat.overlay : EMPTY;
   const shown = useShownItems(items);
   const dip = useRef<HTMLDivElement>(null);
-  const style = useMemo(() => designVariables() as CSSProperties, []);
+  const study = useStudyStore((s) => (STUDY_ON ? s.direction : null));
+  const style = useMemo(() => ({ ...designVariables(), ...(STUDY_ON && study ? studyVariables(study) : {}) }) as CSSProperties, [study]);
 
   useLayoutEffect(() => {
     overlayLayer.dip = dip.current;
@@ -65,7 +74,7 @@ export function TalkOverlay() {
   const label = active && !beat.chapter.hideLabel ? copy[beat.chapter.label] : null;
 
   return (
-    <div className={`talk${active ? ' is-active' : ''}`} lang={language} style={style}>
+    <div className={`talk${active ? ' is-active' : ''}${active && beat.beat.lightScene ? ' talk--light-scene' : ''}`} lang={language} style={style} data-study={study ?? undefined}>
       <div ref={dip} className="talk__dip" style={{ opacity: 0 }} />
       {label && (
         <div key={beat.chapter.id} className="talk__chapter">
@@ -94,7 +103,7 @@ function Item({ item, leaving, copy, language }: { item: OverlayItem; leaving: b
     );
   }
   const wrap = (cls: string, position: string | undefined, children: ReactNode) => (
-    <Cued id={item.id} cue={item.cue} className={base(cls, position)}>
+    <Cued id={item.id} cue={item.cue} className={base(cls, position)} studyId={STUDY_ON ? item.id : undefined}>
       {children}
     </Cued>
   );
@@ -143,6 +152,8 @@ function Item({ item, leaving, copy, language }: { item: OverlayItem; leaving: b
           </div>
         </>,
       );
+    case 'study':
+      return STUDY_ON ? wrap(`study-${item.block} study-${item.block}--${item.variant ?? 'default'}`, item.position, <StudyBlock item={item} copy={copy} />) : null;
     case 'legend':
       return wrap(
         'talk-legend',
@@ -158,7 +169,7 @@ function Item({ item, leaving, copy, language }: { item: OverlayItem; leaving: b
 }
 
 /** A cue-driven fade (per frame, overlayLayer.ts), or the plain entrance animation without a cue. */
-function Cued({ id, cue, className, children }: { id: string; cue?: string; className: string; children: ReactNode }) {
+function Cued({ id, cue, className, children, studyId }: { id: string; cue?: string; className: string; children: ReactNode; studyId?: string }) {
   const ref = useRef<HTMLDivElement>(null);
   useLayoutEffect(() => {
     if (!cue || !ref.current) return;
@@ -166,7 +177,7 @@ function Cued({ id, cue, className, children }: { id: string; cue?: string; clas
     return () => void overlayLayer.cued.delete(id);
   }, [id, cue]);
   return (
-    <div ref={ref} className={cue ? `${className} is-cued` : className} style={cue ? { opacity: 0 } : undefined}>
+    <div ref={ref} className={cue ? `${className} is-cued` : className} style={cue ? { opacity: 0 } : undefined} data-id={studyId}>
       {children}
     </div>
   );
@@ -206,6 +217,7 @@ function Stat({ item, copy, language }: { item: Extract<OverlayItem, { kind: 'st
         {item.unit && <span className="talk-stat__unit">{copy[item.unit]}</span>}
       </div>
       {item.caption && <div className="talk-stat__caption">{copy[item.caption]}</div>}
+      {item.source && <div className="talk-stat__source">{copy[item.source]}</div>}
     </>
   );
 }
@@ -214,11 +226,13 @@ function Anchored({ item, className, copy }: { item: Extract<OverlayItem, { kind
   const ref = useRef<HTMLDivElement>(null);
   useLayoutEffect(() => {
     if (!ref.current) return;
-    overlayLayer.anchors.set(item.id, { el: ref.current, at: new Vector3(...item.at), side: item.side ?? 'right', cue: item.cue });
+    overlayLayer.anchors.set(item.id, { el: ref.current, at: new Vector3(...item.at), side: item.side ?? 'right', cue: item.cue, leader: item.leader, leaderTo: item.leaderTo });
     return () => void overlayLayer.anchors.delete(item.id);
   }, [item]);
+  const leader = !!(item.leader || item.leaderTo);
   return (
-    <div ref={ref} className={className} style={{ visibility: 'hidden' }}>
+    <div ref={ref} className={leader ? `${className} talk-label--leader` : className} style={{ visibility: 'hidden' }} data-id={STUDY_ON ? item.id : undefined}>
+      {leader && <span className="talk-label__line" aria-hidden="true" />}
       <span className="talk-label__dot" aria-hidden="true" />
       <span className="talk-label__body">
         <span className="talk-label__text">{copy[item.text]}</span>
@@ -251,11 +265,14 @@ const COUNTER_STEPS: Record<Language, readonly string[]> = {
 function Counter({ id, cue, copy, language }: { id: string; cue: string; copy: TalkCopy; language: Language }) {
   const value = useRef<HTMLDivElement>(null);
   const bar = useRef<HTMLDivElement>(null);
+  // The last step is the copy's own "7 paros*": its footnote marker ties it to the note below.
+  const final = copy['safety.days'];
   useLayoutEffect(() => {
     if (!value.current) return;
-    overlayLayer.counters.set(id, { el: value.current, bar: bar.current, cue, steps: COUNTER_STEPS[language], shown: -1 });
+    const steps = [...COUNTER_STEPS[language].slice(0, -1), final];
+    overlayLayer.counters.set(id, { el: value.current, bar: bar.current, cue, steps, shown: -1 });
     return () => void overlayLayer.counters.delete(id);
-  }, [id, cue, language]);
+  }, [id, cue, language, final]);
   return (
     <>
       <div ref={value} className="talk-counter__value" />

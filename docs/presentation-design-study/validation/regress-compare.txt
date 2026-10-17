@@ -1,0 +1,42 @@
+00-hook-hero                 identical
+01-lithuania-renewables      identical  [halo: 2]
+02-lithuania-calm            identical  [halo: 1]
+03-lithuania-assessment      identical  [halo: 2]
+04-scale-large               identical  [halo: 2]
+05-scale-modules             identical  [halo: 2]
+06-facts-power               identical  [halo: 1]
+07-facts-pitches             identical  [halo: 2]
+08-facts-months              identical  [halo: 2]
+09-projects-world            identical  [halo: 2]
+10-projects-darlington       moved ['CNSC statybos licencija – 2025 m. balandžio 4 d.', 'Projektai']  [halo: 2]
+11-handoff-land              identical
+12-handoff-descend           identical
+13-fission-micro             identical  [halo: 2]
+14-fission-inFuel            webgl 7987 px [881, 589, 1141, 631]; moved ['Tai vyksta kure']  [halo: 1]
+15-control-blades            moved ['Iliustracinis judesys', 'Valdymas']  [halo: 2]
+16-control-insert            moved ['Iliustracinis judesys', 'Valdymas']  [halo: 2]
+17-control-withdraw          moved ['Iliustracinis judesys', 'Valdymas']  [halo: 2]
+18-energy-boil               webgl 6971 px [815, 975, 980, 1021]; moved ['vanduo kyla']  [halo: 1]
+19-energy-steam              webgl 10953 px [677, 948, 842, 1079]; moved ['separatoriai']  [halo: 1]
+20-energy-turbine            identical  [halo: 1]
+21-energy-condenser          identical  [halo: 1]
+22-energy-grid               identical  [halo: 2]
+23-safety-normal             identical  [halo: 1]
+24-safety-blackout           identical  [halo: 1]
+25-safety-scram              moved ['Pasyvioji sauga']  [halo: 1]
+26-safety-decay              identical  [halo: 1]
+27-safety-ics                identical  [halo: 1]
+28-safety-days               text +['7 paros*'] -['7 paros']  [halo: 2]
+29-limits-limits             identical  [halo: 1]
+30-close-return              identical
+31-close-qa                  identical
+film-00.5    identical
+film-05.8    identical
+film-10.0    identical
+film-15.4    identical
+film-20.0    identical
+film-26.0    identical
+film-32.0    identical
+film-38.0    identical
+film-44.0    identical
+film-47.9    identical

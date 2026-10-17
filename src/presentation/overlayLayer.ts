@@ -15,6 +15,12 @@ export interface AnchorEntry {
   at: Vector3;
   side: 'left' | 'right' | 'up' | 'down';
   cue?: string;
+  /** Design study: the element's origin sits on the anchor; the text is offset by this (px at 1080p) along a leader. */
+  leader?: readonly [number, number];
+  /** Design study: the leader runs from the anchor to this fixed stage point (px at 1080p). */
+  leaderTo?: readonly [number, number];
+  /** Last leader geometry written (dx, dy in stage px). */
+  drawn?: [number, number];
 }
 
 export interface CountEntry {
@@ -53,6 +59,8 @@ export const overlayLayer = {
   counters: new Map<string, CounterEntry>(),
   /** Elements whose opacity follows a cue (fade in once). */
   cued: new Map<string, { el: HTMLElement; cue: string }>(),
+  /** Design study: elements that read a cue's progress as the CSS variable --p (timeline fills). */
+  progress: new Map<string, { el: HTMLElement; cue: string; shown: string }>(),
   dip: null as HTMLElement | null,
 };
 
@@ -88,6 +96,10 @@ export function updateOverlay(camera: Camera, width: number, height: number): vo
     _v.copy(a.at).project(camera);
     const x = ((_v.x + 1) / 2) * width;
     const y = ((1 - _v.y) / 2) * height;
+    if (a.leader || a.leaderTo) {
+      placeLeader(a, x, y, height, fade);
+      continue;
+    }
     const w = a.el.offsetWidth;
     const h = a.el.offsetHeight;
     let lx: number;
@@ -155,8 +167,41 @@ export function updateOverlay(camera: Camera, width: number, height: number): vo
     if (c.bar) c.bar.style.transform = `scaleX(${p.toFixed(4)})`;
   }
 
+  for (const c of layer.progress.values()) {
+    const p = cue(c.cue).toFixed(4);
+    if (p !== c.shown) {
+      c.el.style.setProperty('--p', p);
+      c.shown = p;
+    }
+  }
+
   for (const c of layer.cued.values()) {
     const o = Math.min(1, cue(c.cue) * 1.5).toFixed(3);
     if (c.el.style.opacity !== o) c.el.style.opacity = o;
   }
+}
+
+/**
+ * Design study: a label whose origin is the anchor point itself. CSS draws the dot at the origin, the
+ * leader along (--dx, --dy) and the text beyond its end; only the geometry is written here.
+ */
+function placeLeader(a: AnchorEntry, x: number, y: number, height: number, fade: number): void {
+  const k = height / 1080;
+  const dx = a.leaderTo ? a.leaderTo[0] * k - x : a.leader![0] * k;
+  const dy = a.leaderTo ? a.leaderTo[1] * k - y : a.leader![1] * k;
+  if (!a.drawn || Math.abs(a.drawn[0] - dx) > 0.05 || Math.abs(a.drawn[1] - dy) > 0.05) {
+    const style = a.el.style;
+    style.setProperty('--dx', `${dx.toFixed(2)}px`);
+    style.setProperty('--dy', `${dy.toFixed(2)}px`);
+    style.setProperty('--len', `${Math.hypot(dx, dy).toFixed(2)}px`);
+    style.setProperty('--angle', `${Math.atan2(dy, dx).toFixed(4)}rad`);
+    // The text sits beyond the leader's end: beside it for a mostly horizontal leader, above / below otherwise.
+    const horizontal = Math.abs(dx) >= Math.abs(dy) * 0.5;
+    style.setProperty('--bx', horizontal ? (dx >= 0 ? '0%' : '-100%') : '-50%');
+    style.setProperty('--by', horizontal ? '-50%' : dy < 0 ? '-100%' : '0%');
+    a.drawn = [dx, dy];
+  }
+  a.el.style.transform = `translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, 0)`;
+  a.el.style.opacity = fade.toFixed(3);
+  if (a.el.style.visibility !== 'visible') a.el.style.visibility = 'visible';
 }

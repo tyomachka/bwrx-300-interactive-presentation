@@ -30,8 +30,23 @@ import { installTalkEffects, removeTalkEffects } from './effects';
 import { resolveTalk, type ResolvedBeat } from './resolve';
 import { clearRuntime, enterBeat, talkCameraSource, talkLook, type EntryOptions } from './runtime';
 import type { EntryMode } from './types';
+import { applyStudy } from './study/studyChapters';
+import { studyDirection } from './study/studyMode';
 
-export const TALK_BEATS: readonly ResolvedBeat[] = resolveTalk(CHAPTERS);
+const study = import.meta.env.MODE !== 'portable' ? studyDirection() : null;
+
+/**
+ * The script, resolved. With the design study (`?study=` / `?designStudy=1`, never in the portable
+ * build) five states and four motion prototypes are patched in, and the review mode swaps the
+ * direction in place (replaceTalkBeats): same length, same order, so every index stays valid.
+ */
+export const TALK_BEATS: ResolvedBeat[] = resolveTalk(study ? applyStudy(CHAPTERS, study) : CHAPTERS);
+
+/** Design study review only: the beats of another direction (the current beat is re-entered by the caller). */
+export function replaceTalkBeats(beats: readonly ResolvedBeat[]): void {
+  if (beats.length !== TALK_BEATS.length) throw new Error('[study] a direction must keep the beat list');
+  TALK_BEATS.splice(0, TALK_BEATS.length, ...beats);
+}
 
 export interface TalkUiState {
   /** The talk owns the scene. */
@@ -117,11 +132,18 @@ class TalkController {
     this.enter(this.flat, 'settle', { cut: true, live });
   }
 
-  /** Debug / automation: any beat, settled or with its own choreography (ignores the input lock). */
-  jump(flat: number, mode: EntryMode = 'settle'): void {
+  /**
+   * Debug / automation: any beat, settled or with its own choreography (ignores the input lock).
+   * `instant` (design-study review): the beat's resting state this frame, with no move and no dip.
+   */
+  jump(flat: number, mode: EntryMode = 'settle', instant = false): void {
     if (!sceneReady()) return;
     const target = Math.min(Math.max(0, Math.round(flat)), TALK_BEATS.length - 1);
     const live = this.activate();
+    if (instant) {
+      this.enter(target, 'settle', { instant: true, live: TALK_BEATS[target]!.finalPose });
+      return;
+    }
     if (mode === 'play' && target > 0) {
       // The beat's own entry, from the settled state of the beat before it.
       const before = TALK_BEATS[target - 1]!;

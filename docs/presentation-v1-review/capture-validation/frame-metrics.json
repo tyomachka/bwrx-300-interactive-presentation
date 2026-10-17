@@ -1,0 +1,894 @@
+[
+ {
+  "offscreen": [],
+  "below_4_5": [],
+  "partly_outside": [],
+  "min_contrast": {
+   "ratio": 5.47,
+   "text": "VIRGILIJUS_EMAIL_TODO",
+   "fontSize": "17 px",
+   "background": "#1c1d1d"
+  },
+  "name": "00-hook-hero",
+  "beat": "hook/hero",
+  "dark_pct": 30.4,
+  "empty_dark_pct": 71.8,
+  "mean_luma": 35.5,
+  "text_area_pct": 3.4,
+  "text_items": 9,
+  "font_sizes_px": [
+   15.0,
+   17.0,
+   21.0,
+   24.0,
+   25.9,
+   68.0
+  ]
+ },
+ {
+  "offscreen": [],
+  "below_4_5": [],
+  "partly_outside": [],
+  "min_contrast": {
+   "ratio": 6.48,
+   "text": "Šaltinis: „Litgrid“, 2026-01-28",
+   "fontSize": "15 px",
+   "background": "#23292f"
+  },
+  "name": "01-lithuania-renewables",
+  "beat": "lithuania/renewables",
+  "dark_pct": 22.6,
+  "empty_dark_pct": 68.8,
+  "mean_luma": 47.9,
+  "text_area_pct": 3.0,
+  "text_items": 4,
+  "font_sizes_px": [
+   14.0,
+   15.0,
+   23.0,
+   96.0
+  ]
+ },
+ {
+  "offscreen": [],
+  "below_4_5": [],
+  "partly_outside": [],
+  "min_contrast": {
+   "ratio": 8.62,
+   "text": "LIETUVA",
+   "fontSize": "14 px",
+   "background": "#010d18"
+  },
+  "name": "02-lithuania-calm",
+  "beat": "lithuania/calm",
+  "dark_pct": 19.8,
+  "empty_dark_pct": 66.6,
+  "mean_luma": 49.4,
+  "text_area_pct": 2.0,
+  "text_items": 4,
+  "font_sizes_px": [
+   14.0,
+   21.0,
+   23.0,
+   44.0
+  ]
+ },
+ {
+  "offscreen": [],
+  "below_4_5": [],
+  "partly_outside": [],
+  "min_contrast": {
+   "ratio": 6.49,
+   "text": "Šaltinis: LR energetikos ministerija, 2026-02-25",
+   "fontSize": "15 px",
+   "background": "#22292f"
+  },
+  "name": "03-lithuania-assessment",
+  "beat": "lithuania/assessment",
+  "dark_pct": 24.1,
+  "empty_dark_pct": 63.6,
+  "mean_luma": 52.8,
+  "text_area_pct": 2.3,
+  "text_items": 4,
+  "font_sizes_px": [
+   14.0,
+   15.0,
+   23.0,
+   44.0
+  ]
+ },
+ {
+  "offscreen": [],
+  "below_4_5": [],
+  "partly_outside": [],
+  "min_contrast": {
+   "ratio": 7.21,
+   "text": "BWRX-300",
+   "fontSize": "16 px",
+   "background": "#232323"
+  },
+  "name": "04-scale-large",
+  "beat": "scale/large",
+  "dark_pct": 38.3,
+  "empty_dark_pct": 81.6,
+  "mean_luma": 31.6,
+  "text_area_pct": 1.9,
+  "text_items": 6,
+  "font_sizes_px": [
+   14.0,
+   15.0,
+   16.0,
+   52.0
+  ]
+ },
+ {
+  "offscreen": [],
+  "below_4_5": [],
+  "partly_outside": [],
+  "min_contrast": {
+   "ratio": 8.18,
+   "text": "Iliustracinis galios palyginimas, ne techninis a",
+   "fontSize": "15 px",
+   "background": "#131313"
+  },
+  "name": "05-scale-modules",
+  "beat": "scale/modules",
+  "dark_pct": 62.6,
+  "empty_dark_pct": 81.1,
+  "mean_luma": 25.2,
+  "text_area_pct": 4.4,
+  "text_items": 5,
+  "font_sizes_px": [
+   14.0,
+   15.0,
+   23.0,
+   31.7,
+   96.0
+  ]
+ },
+ {
+  "offscreen": [],
+  "below_4_5": [],
+  "partly_outside": [],
+  "min_contrast": {
+   "ratio": 5.51,
+   "text": "MW",
+   "fontSize": "40 px",
+   "background": "#313740"
+  },
+  "name": "06-facts-power",
+  "beat": "facts/power",
+  "dark_pct": 25.9,
+  "empty_dark_pct": 73.5,
+  "mean_luma": 37.1,
+  "text_area_pct": 1.7,
+  "text_items": 4,
+  "font_sizes_px": [
+   14.0,
+   23.0,
+   40.0,
+   96.0
+  ]
+ },
+ {
+  "offscreen": [],
+  "below_4_5": [],
+  "partly_outside": [],
+  "min_contrast": {
+   "ratio": 8.37,
+   "text": "TRYS FAKTAI",
+   "fontSize": "14 px",
+   "background": "#101010"
+  },
+  "name": "07-facts-pitches",
+  "beat": "facts/pitches",
+  "dark_pct": 73.3,
+  "empty_dark_pct": 79.3,
+  "mean_luma": 24.8,
+  "text_area_pct": 2.4,
+  "text_items": 5,
+  "font_sizes_px": [
+   14.0,
+   15.0,
+   23.0,
+   40.0,
+   96.0
+  ]
+ },
+ {
+  "offscreen": [],
+  "below_4_5": [],
+  "partly_outside": [],
+  "min_contrast": {
+   "ratio": 5.38,
+   "text": "mėn.*",
+   "fontSize": "40 px",
+   "background": "#34393f"
+  },
+  "name": "08-facts-months",
+  "beat": "facts/months",
+  "dark_pct": 30.2,
+  "empty_dark_pct": 61.4,
+  "mean_luma": 39.2,
+  "text_area_pct": 3.7,
+  "text_items": 5,
+  "font_sizes_px": [
+   14.0,
+   15.0,
+   23.0,
+   40.0,
+   96.0
+  ]
+ },
+ {
+  "offscreen": [],
+  "below_4_5": [],
+  "partly_outside": [],
+  "min_contrast": {
+   "ratio": 8.53,
+   "text": "PROJEKTAI",
+   "fontSize": "14 px",
+   "background": "#010f1c"
+  },
+  "name": "09-projects-world",
+  "beat": "projects/world",
+  "dark_pct": 58.2,
+  "empty_dark_pct": 47.4,
+  "mean_luma": 43.6,
+  "text_area_pct": 2.8,
+  "text_items": 16,
+  "font_sizes_px": [
+   14.0,
+   15.0,
+   16.0,
+   21.0
+  ]
+ },
+ {
+  "offscreen": [],
+  "below_4_5": [
+   {
+    "ratio": 2.17,
+    "text": "PROJEKTAI",
+    "fontSize": "14 px",
+    "background": "#6a717a"
+   },
+   {
+    "ratio": 2.55,
+    "text": "CNSC statybos licencija – 2025 m. balandžio 4 d.",
+    "fontSize": "15 px",
+    "background": "#5e666e"
+   }
+  ],
+  "partly_outside": [],
+  "min_contrast": {
+   "ratio": 2.17,
+   "text": "PROJEKTAI",
+   "fontSize": "14 px",
+   "background": "#6a717a"
+  },
+  "name": "10-projects-darlington",
+  "beat": "projects/darlington",
+  "dark_pct": 37.3,
+  "empty_dark_pct": 31.2,
+  "mean_luma": 71.8,
+  "text_area_pct": 1.5,
+  "text_items": 8,
+  "font_sizes_px": [
+   14.0,
+   15.0,
+   16.0,
+   21.0
+  ]
+ },
+ {
+  "offscreen": [],
+  "below_4_5": [],
+  "partly_outside": [],
+  "min_contrast": null,
+  "name": "11-handoff-land",
+  "beat": "handoff/land",
+  "dark_pct": 25.7,
+  "empty_dark_pct": 74.8,
+  "mean_luma": 36.8,
+  "text_area_pct": 0.0,
+  "text_items": 0,
+  "font_sizes_px": []
+ },
+ {
+  "offscreen": [],
+  "below_4_5": [],
+  "partly_outside": [],
+  "min_contrast": null,
+  "name": "12-handoff-descend",
+  "beat": "handoff/descend",
+  "dark_pct": 0.0,
+  "empty_dark_pct": 20.4,
+  "mean_luma": 75.3,
+  "text_area_pct": 0.0,
+  "text_items": 0,
+  "font_sizes_px": []
+ },
+ {
+  "offscreen": [],
+  "below_4_5": [],
+  "partly_outside": [],
+  "min_contrast": {
+   "ratio": 8.92,
+   "text": "DALIJIMASIS",
+   "fontSize": "14 px",
+   "background": "#03070c"
+  },
+  "name": "13-fission-micro-a-before-absorption",
+  "beat": "fission/micro",
+  "dark_pct": 91.9,
+  "empty_dark_pct": 89.3,
+  "mean_luma": 19.2,
+  "text_area_pct": 0.6,
+  "text_items": 4,
+  "font_sizes_px": [
+   14.0,
+   15.0,
+   21.0
+  ]
+ },
+ {
+  "offscreen": [],
+  "below_4_5": [],
+  "partly_outside": [],
+  "min_contrast": {
+   "ratio": 8.92,
+   "text": "DALIJIMASIS",
+   "fontSize": "14 px",
+   "background": "#03070c"
+  },
+  "name": "13-fission-micro-b-first-split",
+  "beat": "fission/micro",
+  "dark_pct": 87.4,
+  "empty_dark_pct": 84.6,
+  "mean_luma": 21.7,
+  "text_area_pct": 0.6,
+  "text_items": 3,
+  "font_sizes_px": [
+   14.0,
+   15.0,
+   21.0
+  ]
+ },
+ {
+  "offscreen": [],
+  "below_4_5": [],
+  "partly_outside": [],
+  "min_contrast": {
+   "ratio": 8.92,
+   "text": "DALIJIMASIS",
+   "fontSize": "14 px",
+   "background": "#03070c"
+  },
+  "name": "13-fission-micro-c-chain-reaction",
+  "beat": "fission/micro",
+  "dark_pct": 77.9,
+  "empty_dark_pct": 82.4,
+  "mean_luma": 25.6,
+  "text_area_pct": 1.0,
+  "text_items": 4,
+  "font_sizes_px": [
+   14.0,
+   15.0,
+   21.0
+  ]
+ },
+ {
+  "offscreen": [],
+  "below_4_5": [],
+  "partly_outside": [],
+  "min_contrast": {
+   "ratio": 8.92,
+   "text": "DALIJIMASIS",
+   "fontSize": "14 px",
+   "background": "#03070c"
+  },
+  "name": "13-fission-micro",
+  "beat": "fission/micro",
+  "dark_pct": 73.1,
+  "empty_dark_pct": 81.9,
+  "mean_luma": 27.2,
+  "text_area_pct": 0.7,
+  "text_items": 3,
+  "font_sizes_px": [
+   14.0,
+   15.0,
+   21.0
+  ]
+ },
+ {
+  "offscreen": [],
+  "below_4_5": [],
+  "partly_outside": [],
+  "min_contrast": {
+   "ratio": 8.92,
+   "text": "DALIJIMASIS",
+   "fontSize": "14 px",
+   "background": "#03070c"
+  },
+  "name": "13-fission-micro-e-loop-seam",
+  "beat": "fission/micro",
+  "dark_pct": 99.9,
+  "empty_dark_pct": 99.4,
+  "mean_luma": 10.2,
+  "text_area_pct": 0.3,
+  "text_items": 2,
+  "font_sizes_px": [
+   14.0,
+   15.0
+  ]
+ },
+ {
+  "offscreen": [
+   {
+    "text": "Tai vyksta kure",
+    "x": 905.1,
+    "y": 1268.9,
+    "w": 249.6,
+    "h": 35
+   }
+  ],
+  "below_4_5": [],
+  "partly_outside": [],
+  "min_contrast": {
+   "ratio": 5.09,
+   "text": "DALIJIMASIS",
+   "fontSize": "14 px",
+   "background": "#333940"
+  },
+  "name": "14-fission-inFuel",
+  "beat": "fission/inFuel",
+  "dark_pct": 0.0,
+  "empty_dark_pct": 18.3,
+  "mean_luma": 80.3,
+  "text_area_pct": 0.2,
+  "text_items": 1,
+  "font_sizes_px": [
+   14.0
+  ]
+ },
+ {
+  "offscreen": [],
+  "below_4_5": [
+   {
+    "ratio": 3.72,
+    "text": "VALDYMAS",
+    "fontSize": "14 px",
+    "background": "#4c4d50"
+   },
+   {
+    "ratio": 4.15,
+    "text": "Iliustracinis judesys",
+    "fontSize": "15 px",
+    "background": "#44464a"
+   }
+  ],
+  "partly_outside": [],
+  "min_contrast": {
+   "ratio": 3.72,
+   "text": "VALDYMAS",
+   "fontSize": "14 px",
+   "background": "#4c4d50"
+  },
+  "name": "15-control-blades",
+  "beat": "control/blades",
+  "dark_pct": 0.4,
+  "empty_dark_pct": 7.8,
+  "mean_luma": 83.2,
+  "text_area_pct": 0.7,
+  "text_items": 4,
+  "font_sizes_px": [
+   14.0,
+   15.0,
+   16.0,
+   21.0
+  ]
+ },
+ {
+  "offscreen": [],
+  "below_4_5": [
+   {
+    "ratio": 3.81,
+    "text": "VALDYMAS",
+    "fontSize": "14 px",
+    "background": "#4a4b4f"
+   },
+   {
+    "ratio": 4.15,
+    "text": "Iliustracinis judesys",
+    "fontSize": "15 px",
+    "background": "#44464a"
+   }
+  ],
+  "partly_outside": [],
+  "min_contrast": {
+   "ratio": 3.81,
+   "text": "VALDYMAS",
+   "fontSize": "14 px",
+   "background": "#4a4b4f"
+  },
+  "name": "16-control-insert",
+  "beat": "control/insert",
+  "dark_pct": 0.3,
+  "empty_dark_pct": 7.6,
+  "mean_luma": 83.5,
+  "text_area_pct": 1.2,
+  "text_items": 3,
+  "font_sizes_px": [
+   14.0,
+   15.0,
+   31.7
+  ]
+ },
+ {
+  "offscreen": [],
+  "below_4_5": [
+   {
+    "ratio": 3.75,
+    "text": "VALDYMAS",
+    "fontSize": "14 px",
+    "background": "#4b4c50"
+   },
+   {
+    "ratio": 4.15,
+    "text": "Iliustracinis judesys",
+    "fontSize": "15 px",
+    "background": "#44464a"
+   }
+  ],
+  "partly_outside": [],
+  "min_contrast": {
+   "ratio": 3.75,
+   "text": "VALDYMAS",
+   "fontSize": "14 px",
+   "background": "#4b4c50"
+  },
+  "name": "17-control-withdraw",
+  "beat": "control/withdraw",
+  "dark_pct": 0.3,
+  "empty_dark_pct": 7.6,
+  "mean_luma": 83.8,
+  "text_area_pct": 1.1,
+  "text_items": 3,
+  "font_sizes_px": [
+   14.0,
+   15.0,
+   31.7
+  ]
+ },
+ {
+  "offscreen": [
+   {
+    "text": "vanduo kyla",
+    "x": 831.1,
+    "y": 1107,
+    "w": 113.8,
+    "h": 28
+   }
+  ],
+  "below_4_5": [],
+  "partly_outside": [],
+  "min_contrast": {
+   "ratio": 5.34,
+   "text": "NUO ATOMO IKI ELEKTROS",
+   "fontSize": "14 px",
+   "background": "#30363c"
+  },
+  "name": "18-energy-boil",
+  "beat": "energy/boil",
+  "dark_pct": 8.6,
+  "empty_dark_pct": 27.8,
+  "mean_luma": 55.5,
+  "text_area_pct": 0.3,
+  "text_items": 2,
+  "font_sizes_px": [
+   14.0,
+   21.0
+  ]
+ },
+ {
+  "offscreen": [],
+  "below_4_5": [],
+  "partly_outside": [
+   "separatoriai"
+  ],
+  "min_contrast": {
+   "ratio": 5.06,
+   "text": "NUO ATOMO IKI ELEKTROS",
+   "fontSize": "14 px",
+   "background": "#2f3b45"
+  },
+  "name": "19-energy-steam",
+  "beat": "energy/steam",
+  "dark_pct": 9.7,
+  "empty_dark_pct": 30.9,
+  "mean_luma": 57.5,
+  "text_area_pct": 0.5,
+  "text_items": 3,
+  "font_sizes_px": [
+   14.0,
+   21.0
+  ]
+ },
+ {
+  "offscreen": [],
+  "below_4_5": [],
+  "partly_outside": [],
+  "min_contrast": {
+   "ratio": 8.77,
+   "text": "NUO ATOMO IKI ELEKTROS",
+   "fontSize": "14 px",
+   "background": "#09090a"
+  },
+  "name": "20-energy-turbine",
+  "beat": "energy/turbine",
+  "dark_pct": 41.8,
+  "empty_dark_pct": 19.8,
+  "mean_luma": 42.5,
+  "text_area_pct": 0.4,
+  "text_items": 2,
+  "font_sizes_px": [
+   14.0,
+   21.0
+  ]
+ },
+ {
+  "offscreen": [],
+  "below_4_5": [],
+  "partly_outside": [],
+  "min_contrast": {
+   "ratio": 5.66,
+   "text": "NUO ATOMO IKI ELEKTROS",
+   "fontSize": "14 px",
+   "background": "#313232"
+  },
+  "name": "21-energy-condenser",
+  "beat": "energy/condenser",
+  "dark_pct": 17.7,
+  "empty_dark_pct": 33.6,
+  "mean_luma": 45.1,
+  "text_area_pct": 0.8,
+  "text_items": 3,
+  "font_sizes_px": [
+   14.0,
+   21.0
+  ]
+ },
+ {
+  "offscreen": [],
+  "below_4_5": [],
+  "partly_outside": [],
+  "min_contrast": {
+   "ratio": 8.44,
+   "text": "*Gamintojo iliustracinis įvertis; miestas – ne k",
+   "fontSize": "15 px",
+   "background": "#0f0f0f"
+  },
+  "name": "22-energy-grid",
+  "beat": "energy/grid",
+  "dark_pct": 78.2,
+  "empty_dark_pct": 84.3,
+  "mean_luma": 21.8,
+  "text_area_pct": 3.0,
+  "text_items": 5,
+  "font_sizes_px": [
+   14.0,
+   15.0,
+   21.0,
+   40.0,
+   96.0
+  ]
+ },
+ {
+  "offscreen": [],
+  "below_4_5": [],
+  "partly_outside": [],
+  "min_contrast": {
+   "ratio": 8.64,
+   "text": "PASYVIOJI SAUGA",
+   "fontSize": "14 px",
+   "background": "#0b0c0e"
+  },
+  "name": "23-safety-normal",
+  "beat": "safety/normal",
+  "dark_pct": 47.0,
+  "empty_dark_pct": 62.6,
+  "mean_luma": 30.4,
+  "text_area_pct": 0.9,
+  "text_items": 2,
+  "font_sizes_px": [
+   14.0,
+   44.0
+  ]
+ },
+ {
+  "offscreen": [],
+  "below_4_5": [],
+  "partly_outside": [],
+  "min_contrast": {
+   "ratio": 8.64,
+   "text": "PASYVIOJI SAUGA",
+   "fontSize": "14 px",
+   "background": "#0b0c0e"
+  },
+  "name": "24-safety-blackout",
+  "beat": "safety/blackout",
+  "dark_pct": 74.0,
+  "empty_dark_pct": 68.7,
+  "mean_luma": 21.3,
+  "text_area_pct": 1.5,
+  "text_items": 2,
+  "font_sizes_px": [
+   14.0,
+   44.0
+  ]
+ },
+ {
+  "offscreen": [],
+  "below_4_5": [
+   {
+    "ratio": 2.88,
+    "text": "PASYVIOJI SAUGA",
+    "fontSize": "14 px",
+    "background": "#5c5d61"
+   }
+  ],
+  "partly_outside": [],
+  "min_contrast": {
+   "ratio": 2.88,
+   "text": "PASYVIOJI SAUGA",
+   "fontSize": "14 px",
+   "background": "#5c5d61"
+  },
+  "name": "25-safety-scram",
+  "beat": "safety/scram",
+  "dark_pct": 0.4,
+  "empty_dark_pct": 7.7,
+  "mean_luma": 82.5,
+  "text_area_pct": 1.6,
+  "text_items": 2,
+  "font_sizes_px": [
+   14.0,
+   44.0
+  ]
+ },
+ {
+  "offscreen": [],
+  "below_4_5": [],
+  "partly_outside": [],
+  "min_contrast": {
+   "ratio": 7.3,
+   "text": "PASYVIOJI SAUGA",
+   "fontSize": "14 px",
+   "background": "#231e17"
+  },
+  "name": "26-safety-decay",
+  "beat": "safety/decay",
+  "dark_pct": 30.5,
+  "empty_dark_pct": 53.4,
+  "mean_luma": 38.2,
+  "text_area_pct": 2.1,
+  "text_items": 6,
+  "font_sizes_px": [
+   14.0,
+   21.0,
+   44.0
+  ]
+ },
+ {
+  "offscreen": [],
+  "below_4_5": [],
+  "partly_outside": [],
+  "min_contrast": {
+   "ratio": 8.64,
+   "text": "PASYVIOJI SAUGA",
+   "fontSize": "14 px",
+   "background": "#0b0c0e"
+  },
+  "name": "27-safety-ics",
+  "beat": "safety/ics",
+  "dark_pct": 30.5,
+  "empty_dark_pct": 63.8,
+  "mean_luma": 34.7,
+  "text_area_pct": 1.8,
+  "text_items": 4,
+  "font_sizes_px": [
+   14.0,
+   21.0,
+   23.0,
+   44.0
+  ]
+ },
+ {
+  "offscreen": [],
+  "below_4_5": [],
+  "partly_outside": [],
+  "min_contrast": {
+   "ratio": 8.17,
+   "text": "*Be operatorių veiksmų; tam pakanka 2 iš 3 kontū",
+   "fontSize": "15 px",
+   "background": "#0a141d"
+  },
+  "name": "28-safety-days",
+  "beat": "safety/days",
+  "dark_pct": 35.2,
+  "empty_dark_pct": 63.0,
+  "mean_luma": 33.9,
+  "text_area_pct": 5.2,
+  "text_items": 5,
+  "font_sizes_px": [
+   14.0,
+   15.0,
+   23.0,
+   44.0,
+   96.0
+  ]
+ },
+ {
+  "offscreen": [],
+  "below_4_5": [],
+  "partly_outside": [],
+  "min_contrast": {
+   "ratio": 8.64,
+   "text": "IŠŠŪKIAI",
+   "fontSize": "14 px",
+   "background": "#0b0c0e"
+  },
+  "name": "29-limits-limits",
+  "beat": "limits/limits",
+  "dark_pct": 78.5,
+  "empty_dark_pct": 74.7,
+  "mean_luma": 18.1,
+  "text_area_pct": 1.6,
+  "text_items": 4,
+  "font_sizes_px": [
+   14.0,
+   26.0
+  ]
+ },
+ {
+  "offscreen": [],
+  "below_4_5": [],
+  "partly_outside": [],
+  "min_contrast": null,
+  "name": "30-close-return",
+  "beat": "close/return",
+  "dark_pct": 29.7,
+  "empty_dark_pct": 78.7,
+  "mean_luma": 34.2,
+  "text_area_pct": 0.0,
+  "text_items": 0,
+  "font_sizes_px": []
+ },
+ {
+  "offscreen": [],
+  "below_4_5": [],
+  "partly_outside": [],
+  "min_contrast": {
+   "ratio": 5.47,
+   "text": "VIRGILIJUS_EMAIL_TODO",
+   "fontSize": "17 px",
+   "background": "#1c1d1d"
+  },
+  "name": "31-close-qa",
+  "beat": "close/qa",
+  "dark_pct": 30.9,
+  "empty_dark_pct": 71.5,
+  "mean_luma": 35.3,
+  "text_area_pct": 4.3,
+  "text_items": 9,
+  "font_sizes_px": [
+   15.0,
+   17.0,
+   21.0,
+   24.0,
+   25.9,
+   44.0
+  ]
+ }
+]

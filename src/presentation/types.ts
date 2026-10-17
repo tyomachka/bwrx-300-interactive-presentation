@@ -93,6 +93,8 @@ export type OverlayItem = ItemBase &
         /** Count the number up once (driven by a cue); the text around the number comes from the copy. */
         count?: { cue: string; to: number; from?: number; decimals?: number; group?: boolean };
         position?: OverlayPosition;
+        /** Design study only: the source / qualifier set directly under the metric (not a page footer). */
+        source?: CopyKey;
       }
     | { kind: 'caption'; text: CopyKey; sub?: CopyKey; position?: OverlayPosition; tone?: 'plain' | 'alert'; size?: 'large' | 'small' }
     | { kind: 'note'; text: CopyKey }
@@ -103,8 +105,14 @@ export type OverlayItem = ItemBase &
         /** World anchor (m). */
         at: Vec3Tuple;
         side?: 'left' | 'right' | 'up' | 'down';
-        style?: 'tag' | 'word' | 'value';
+        style?: 'tag' | 'word' | 'value' | 'anchor';
+        /** Design study only: the text sits this far from the anchor (px at 1080p), joined by a fine leader line. */
+        leader?: readonly [number, number];
+        /** Design study only: a leader from the anchor to this fixed stage point (px at 1080p); no text box. */
+        leaderTo?: readonly [number, number];
       }
+    /** Design study only (`?study=`, presentation/study): blocks the study compositions add. */
+    | { kind: 'study'; block: 'scrim' | 'timeline' | 'credits' | 'qr'; variant?: string; position?: OverlayPosition; progress?: string }
     | { kind: 'speakers'; layout: 'intro' | 'outro' }
     | { kind: 'qr' }
     | { kind: 'counter' }
@@ -130,6 +138,8 @@ export interface TalkBeat {
   overlayInherit?: boolean;
   /** Seconds a second forward press is ignored (the important transition). */
   lock?: number;
+  /** The scene behind the small print is light (map land, a lit vessel wall): give it a dark backing. */
+  lightScene?: boolean;
 }
 
 export interface TalkChapter {

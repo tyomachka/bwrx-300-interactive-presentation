@@ -1,0 +1,572 @@
+{
+ "mode": "transitions",
+ "stepsPerSecond": 15,
+ "encodeFps": 30,
+ "speed": 2,
+ "preRoll": 8,
+ "frames": 2698,
+ "beats": [
+  {
+   "flat": 0,
+   "beat": "hook/hero",
+   "startFrame": 8,
+   "settle": 6.92,
+   "lock": 1.5,
+   "runFor": 7.133
+  },
+  {
+   "flat": 1,
+   "beat": "lithuania/renewables",
+   "startFrame": 115,
+   "settle": 5.8,
+   "lock": 2.2,
+   "runFor": 6
+  },
+  {
+   "flat": 2,
+   "beat": "lithuania/calm",
+   "startFrame": 205,
+   "settle": 3.6,
+   "lock": 1.8,
+   "runFor": 3.8
+  },
+  {
+   "flat": 3,
+   "beat": "lithuania/assessment",
+   "startFrame": 262,
+   "settle": 2.6,
+   "lock": 1.2,
+   "runFor": 2.8
+  },
+  {
+   "flat": 4,
+   "beat": "scale/large",
+   "startFrame": 304,
+   "settle": 7,
+   "lock": 3,
+   "runFor": 7.2
+  },
+  {
+   "flat": 5,
+   "beat": "scale/modules",
+   "startFrame": 412,
+   "settle": 7.7,
+   "lock": 2.5,
+   "runFor": 7.933
+  },
+  {
+   "flat": 6,
+   "beat": "facts/power",
+   "startFrame": 531,
+   "settle": 3.6,
+   "lock": 2,
+   "runFor": 3.8
+  },
+  {
+   "flat": 7,
+   "beat": "facts/pitches",
+   "startFrame": 588,
+   "settle": 3.4,
+   "lock": 2,
+   "runFor": 3.6
+  },
+  {
+   "flat": 8,
+   "beat": "facts/months",
+   "startFrame": 642,
+   "settle": 3.2,
+   "lock": 1.6,
+   "runFor": 3.4
+  },
+  {
+   "flat": 9,
+   "beat": "projects/world",
+   "startFrame": 693,
+   "settle": 6.9,
+   "lock": 2.4,
+   "runFor": 7.133
+  },
+  {
+   "flat": 10,
+   "beat": "projects/darlington",
+   "startFrame": 800,
+   "settle": 3.4,
+   "lock": 1.8,
+   "runFor": 3.6
+  },
+  {
+   "flat": 11,
+   "beat": "handoff/land",
+   "startFrame": 854,
+   "settle": 4.4,
+   "lock": 3,
+   "runFor": 4.6
+  },
+  {
+   "flat": 12,
+   "beat": "handoff/descend",
+   "startFrame": 923,
+   "settle": 15.7,
+   "lock": 5,
+   "runFor": 15.867
+  },
+  {
+   "flat": 13,
+   "beat": "fission/micro",
+   "startFrame": 1161,
+   "settle": 1.9,
+   "lock": 2,
+   "runFor": 2.133
+  },
+  {
+   "flat": 14,
+   "beat": "fission/inFuel",
+   "startFrame": 1193,
+   "settle": 1.8,
+   "lock": 1.2,
+   "runFor": 2
+  },
+  {
+   "flat": 15,
+   "beat": "control/blades",
+   "startFrame": 1223,
+   "settle": 4.8,
+   "lock": 2.4,
+   "runFor": 5
+  },
+  {
+   "flat": 16,
+   "beat": "control/insert",
+   "startFrame": 1298,
+   "settle": 2,
+   "lock": 1.8,
+   "runFor": 2.2
+  },
+  {
+   "flat": 17,
+   "beat": "control/withdraw",
+   "startFrame": 1331,
+   "settle": 2,
+   "lock": 1.8,
+   "runFor": 2.2
+  },
+  {
+   "flat": 18,
+   "beat": "energy/boil",
+   "startFrame": 1364,
+   "settle": 3.2,
+   "lock": 2.4,
+   "runFor": 3.4
+  },
+  {
+   "flat": 19,
+   "beat": "energy/steam",
+   "startFrame": 1415,
+   "settle": 5.2,
+   "lock": 3,
+   "runFor": 5.4
+  },
+  {
+   "flat": 20,
+   "beat": "energy/turbine",
+   "startFrame": 1496,
+   "settle": 7.4,
+   "lock": 3.4,
+   "runFor": 7.6
+  },
+  {
+   "flat": 21,
+   "beat": "energy/condenser",
+   "startFrame": 1610,
+   "settle": 8.8,
+   "lock": 3,
+   "runFor": 9
+  },
+  {
+   "flat": 22,
+   "beat": "energy/grid",
+   "startFrame": 1745,
+   "settle": 10,
+   "lock": 3,
+   "runFor": 10.2
+  },
+  {
+   "flat": 23,
+   "beat": "safety/normal",
+   "startFrame": 1898,
+   "settle": 4.2,
+   "lock": 2.6,
+   "runFor": 4.4
+  },
+  {
+   "flat": 24,
+   "beat": "safety/blackout",
+   "startFrame": 1964,
+   "settle": 7.3,
+   "lock": 1.6,
+   "runFor": 7.533
+  },
+  {
+   "flat": 25,
+   "beat": "safety/scram",
+   "startFrame": 2077,
+   "settle": 4.7,
+   "lock": 3,
+   "runFor": 4.933
+  },
+  {
+   "flat": 26,
+   "beat": "safety/decay",
+   "startFrame": 2151,
+   "settle": 3,
+   "lock": 2,
+   "runFor": 3.2
+  },
+  {
+   "flat": 27,
+   "beat": "safety/ics",
+   "startFrame": 2199,
+   "settle": 7.2,
+   "lock": 3.6,
+   "runFor": 7.4
+  },
+  {
+   "flat": 28,
+   "beat": "safety/days",
+   "startFrame": 2310,
+   "settle": 6.3,
+   "lock": 2,
+   "runFor": 6.533
+  },
+  {
+   "flat": 29,
+   "beat": "limits/limits",
+   "startFrame": 2408,
+   "settle": 5.3,
+   "lock": 2,
+   "runFor": 5.533
+  },
+  {
+   "flat": 30,
+   "beat": "close/return",
+   "startFrame": 2491,
+   "settle": 10,
+   "lock": 4,
+   "runFor": 10.2
+  },
+  {
+   "flat": 31,
+   "beat": "close/qa",
+   "startFrame": 2644,
+   "settle": 2.6,
+   "lock": 1,
+   "runFor": 3.6
+  }
+ ],
+ "stills": [],
+ "fontsSeen": {},
+ "cssAnimations": 77,
+ "vtimers": [
+  {
+   "id": 1000000001,
+   "delay": 2500,
+   "at": 4.047
+  },
+  {
+   "id": 1000000002,
+   "delay": 2500,
+   "at": 11.18
+  },
+  {
+   "id": 1000000003,
+   "delay": 400,
+   "at": 11.18
+  },
+  {
+   "id": 1000000004,
+   "delay": 2500,
+   "at": 17.18
+  },
+  {
+   "id": 1000000005,
+   "delay": 400,
+   "at": 17.18
+  },
+  {
+   "id": 1000000006,
+   "delay": 2500,
+   "at": 20.98
+  },
+  {
+   "id": 1000000007,
+   "delay": 400,
+   "at": 20.98
+  },
+  {
+   "id": 1000000008,
+   "delay": 2500,
+   "at": 23.78
+  },
+  {
+   "id": 1000000009,
+   "delay": 400,
+   "at": 23.78
+  },
+  {
+   "id": 1000000010,
+   "delay": 2500,
+   "at": 30.98
+  },
+  {
+   "id": 1000000011,
+   "delay": 400,
+   "at": 30.98
+  },
+  {
+   "id": 1000000012,
+   "delay": 2500,
+   "at": 38.913
+  },
+  {
+   "id": 1000000013,
+   "delay": 400,
+   "at": 38.913
+  },
+  {
+   "id": 1000000014,
+   "delay": 2500,
+   "at": 42.713
+  },
+  {
+   "id": 1000000015,
+   "delay": 400,
+   "at": 42.713
+  },
+  {
+   "id": 1000000016,
+   "delay": 2500,
+   "at": 46.313
+  },
+  {
+   "id": 1000000017,
+   "delay": 400,
+   "at": 46.313
+  },
+  {
+   "id": 1000000018,
+   "delay": 2500,
+   "at": 49.713
+  },
+  {
+   "id": 1000000019,
+   "delay": 400,
+   "at": 49.713
+  },
+  {
+   "id": 1000000020,
+   "delay": 2500,
+   "at": 56.847
+  },
+  {
+   "id": 1000000021,
+   "delay": 400,
+   "at": 56.847
+  },
+  {
+   "id": 1000000022,
+   "delay": 2500,
+   "at": 60.447
+  },
+  {
+   "id": 1000000023,
+   "delay": 400,
+   "at": 60.447
+  },
+  {
+   "id": 1000000024,
+   "delay": 2500,
+   "at": 65.047
+  },
+  {
+   "id": 1000000025,
+   "delay": 2500,
+   "at": 80.913
+  },
+  {
+   "id": 1000000026,
+   "delay": 2500,
+   "at": 83.047
+  },
+  {
+   "id": 1000000027,
+   "delay": 400,
+   "at": 83.047
+  },
+  {
+   "id": 1000000028,
+   "delay": 2500,
+   "at": 85.047
+  },
+  {
+   "id": 1000000029,
+   "delay": 400,
+   "at": 85.047
+  },
+  {
+   "id": 1000000030,
+   "delay": 2500,
+   "at": 90.047
+  },
+  {
+   "id": 1000000031,
+   "delay": 400,
+   "at": 90.047
+  },
+  {
+   "id": 1000000032,
+   "delay": 2500,
+   "at": 92.247
+  },
+  {
+   "id": 1000000033,
+   "delay": 400,
+   "at": 92.247
+  },
+  {
+   "id": 1000000034,
+   "delay": 2500,
+   "at": 94.447
+  },
+  {
+   "id": 1000000035,
+   "delay": 400,
+   "at": 94.447
+  },
+  {
+   "id": 1000000036,
+   "delay": 2500,
+   "at": 97.847
+  },
+  {
+   "id": 1000000037,
+   "delay": 400,
+   "at": 97.847
+  },
+  {
+   "id": 1000000038,
+   "delay": 2500,
+   "at": 103.247
+  },
+  {
+   "id": 1000000039,
+   "delay": 400,
+   "at": 103.247
+  },
+  {
+   "id": 1000000040,
+   "delay": 2500,
+   "at": 110.847
+  },
+  {
+   "id": 1000000041,
+   "delay": 400,
+   "at": 110.847
+  },
+  {
+   "id": 1000000042,
+   "delay": 2500,
+   "at": 119.847
+  },
+  {
+   "id": 1000000043,
+   "delay": 400,
+   "at": 119.847
+  },
+  {
+   "id": 1000000044,
+   "delay": 2500,
+   "at": 130.047
+  },
+  {
+   "id": 1000000045,
+   "delay": 400,
+   "at": 130.047
+  },
+  {
+   "id": 1000000046,
+   "delay": 2500,
+   "at": 134.447
+  },
+  {
+   "id": 1000000047,
+   "delay": 2500,
+   "at": 141.98
+  },
+  {
+   "id": 1000000048,
+   "delay": 2500,
+   "at": 146.913
+  },
+  {
+   "id": 1000000049,
+   "delay": 2500,
+   "at": 150.113
+  },
+  {
+   "id": 1000000050,
+   "delay": 400,
+   "at": 150.113
+  },
+  {
+   "id": 1000000051,
+   "delay": 2500,
+   "at": 157.513
+  },
+  {
+   "id": 1000000052,
+   "delay": 400,
+   "at": 157.513
+  },
+  {
+   "id": 1000000053,
+   "delay": 2500,
+   "at": 164.047
+  },
+  {
+   "id": 1000000054,
+   "delay": 400,
+   "at": 164.047
+  },
+  {
+   "id": 1000000055,
+   "delay": 2500,
+   "at": 169.58
+  },
+  {
+   "id": 1000000056,
+   "delay": 400,
+   "at": 169.58
+  },
+  {
+   "id": 1000000057,
+   "delay": 2500,
+   "at": 179.78
+  }
+ ],
+ "uiBefore": {
+  "explore": false,
+  "setup": false,
+  "diagnostics": false,
+  "talkDebug": false,
+  "hoverTag": false,
+  "lang": "lt",
+  "talkActive": false
+ },
+ "log": {
+  "console": [
+   "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+  ],
+  "errors": [],
+  "external": []
+ }
+}

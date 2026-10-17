@@ -66,8 +66,13 @@ interface RevealUniforms {
 const REVEAL_VERTEX_PARS = /* glsl */ `
 varying vec2 vMapXZ;
 `;
+// Instanced glyphs (turbines, solar fields, cities) reveal where each instance stands, not at the origin.
 const REVEAL_VERTEX = /* glsl */ `
+#ifdef USE_INSTANCING
+vMapXZ = ( modelMatrix * instanceMatrix * vec4( transformed, 1.0 ) ).xz;
+#else
 vMapXZ = ( modelMatrix * vec4( transformed, 1.0 ) ).xz;
+#endif
 `;
 const REVEAL_FRAGMENT_PARS = /* glsl */ `
 uniform float uReveal;
@@ -426,10 +431,13 @@ export function Maps() {
     if (worldOn > 0.001) {
       const p = cue('pins');
       const focus = world['w.focus'];
+      // Pins leave with the map: they shrink away early in the close (the plant regrows at
+      // Darlington), and are untouched while the map is open (they only appear once it is).
+      const mapShown = MathUtils.smoothstep(worldOn, 0.5, 0.85);
       atlantic.pins.forEach((pin, i) => {
         const g = pinGroups.current[i];
         if (!g) return;
-        const local = MathUtils.clamp((p - i * 0.18) / 0.22, 0, 1);
+        const local = MathUtils.clamp((p - i * 0.18) / 0.22, 0, 1) * mapShown;
         const s = local <= 0 ? 0.001 : 1 - Math.pow(1 - local, 3);
         g.scale.setScalar(Math.max(s, 0.001));
         g.visible = local > 0;
@@ -439,7 +447,7 @@ export function Maps() {
       if (focusRing.current) {
         const r = 2.4 + 8 * phase;
         focusRing.current.scale.set(r, 1, r);
-        focusRing.current.visible = p > 0.18;
+        focusRing.current.visible = p > 0.18 && mapShown > 0.01;
       }
       atlantic.ringMaterial.opacity = 0.75 * (1 - phase);
     }

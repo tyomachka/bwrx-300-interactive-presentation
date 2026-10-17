@@ -39,6 +39,30 @@
   animation: talk-in var(--talk-in) var(--talk-ease) both;
 }
 
+/* Small print sits on whatever the scene shows (light vessel walls, map land): a soft dark halo
+   keeps it readable there and is invisible on the dark frames it was tuned for. */
+.talk__chapter,
+.talk-note,
+.talk-counter__note {
+  text-shadow:
+    0 0 2px rgba(5, 6, 7, 0.6),
+    0 1px 12px rgba(5, 6, 7, 0.85);
+}
+
+/* On a light scene (beats marked lightScene) a halo is not enough: a quiet dark backing (0.72). */
+.talk__chapter,
+.talk-note {
+  transition: background-color 400ms ease;
+}
+
+.talk--light-scene .talk__chapter,
+.talk--light-scene .talk-note {
+  margin: -0.5cqh 0 0 -0.9cqh;
+  padding: 0.5cqh 0.9cqh;
+  border-radius: 0.5cqh;
+  background: rgba(10, 12, 15, 0.72);
+}
+
 .talk__chapter::before {
   content: '';
   width: 2.4em;

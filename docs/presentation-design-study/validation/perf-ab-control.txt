@@ -1,0 +1,16 @@
+{"label":"base","beat":"control/blades","fps":59,"over20":2,"worst":116.4}
+{"label":"base","beat":"control/insert","fps":60.1,"over20":0,"worst":17.3}
+{"label":"base","beat":"control/withdraw","fps":60.1,"over20":0,"worst":16.9}
+{"label":"base","beat":"energy/boil","fps":59.9,"over20":1,"worst":33.4}
+{"label":"new","beat":"control/blades","fps":60.1,"over20":0,"worst":17.4}
+{"label":"new","beat":"control/insert","fps":60.1,"over20":0,"worst":17}
+{"label":"new","beat":"control/withdraw","fps":60.1,"over20":0,"worst":17.1}
+{"label":"new","beat":"energy/boil","fps":60.1,"over20":0,"worst":17.1}
+{"label":"base","beat":"control/blades","fps":59.5,"over20":1,"worst":83.2}
+{"label":"base","beat":"control/insert","fps":60.1,"over20":0,"worst":17}
+{"label":"base","beat":"control/withdraw","fps":60.1,"over20":0,"worst":17.1}
+{"label":"base","beat":"energy/boil","fps":59.9,"over20":1,"worst":33.4}
+{"label":"new","beat":"control/blades","fps":60.1,"over20":0,"worst":16.9}
+{"label":"new","beat":"control/insert","fps":60.1,"over20":0,"worst":16.9}
+{"label":"new","beat":"control/withdraw","fps":60.1,"over20":0,"worst":17}
+{"label":"new","beat":"energy/boil","fps":60.1,"over20":0,"worst":17.2}
