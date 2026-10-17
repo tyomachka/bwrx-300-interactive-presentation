@@ -1,12 +1,12 @@
-BWRX-300 interactive presentation (48 seconds)
-==============================================
+BWRX-300 interactive presentation (the ~7-minute talk, plus the 48 s film)
+==========================================================================
 
 Lithuanian instructions (the main ones): START-HERE.txt / START-HERE-LT.txt
 
 This folder runs from a USB drive or any local folder: no internet, no installation, no server.
 
   BWRX300.html               the presentation (everything is inside this one file)
-  BWRX300-fallback-lt.mp4    the same 48 s presentation as a video, in Lithuanian (1080p, 30 fps, no sound)
+  BWRX300-fallback-lt.mp4    the 48 s film as a video, in Lithuanian (1080p, 30 fps, no sound)
   BWRX300-fallback-en.mp4    the same video in English
   START-HERE.txt             instructions in Lithuanian (START-HERE-LT.txt is the same file)
   START-HERE-EN.txt          this file
@@ -19,28 +19,35 @@ Before the talk
    right-click > Open with > Chrome / Edge, or drag the file onto an open browser window.
 3. Press F11 for full screen (or move the mouse and click "Full screen", bottom right).
 4. Wait until the loading screen has gone. The first frame of the plant is the "ready" picture.
+   The page opens in Low quality: the setting the talk was tested with.
 
 Language: the presentation starts in Lithuanian. For English, move the mouse and click EN in the
-controls (LT switches back). The choice is remembered on this computer.
+controls before starting (LT switches back). The choice is remembered on this computer.
 
 
 During the talk
 ---------------
-  Space   start the presentation; then pause / resume; after the end, play it again
-  Home    restart from the first frame
-  R       stop and go back to the start view (use this after any accidental key)
-  F11     full screen on / off
+  Right arrow / Space / Page Down   next step (the first press starts the talk)
+  Left arrow / Page Up              previous step
+  Home                              back to the opening picture
+  R                                 re-establish the current step (use this after any accidental key)
+  Esc                               leave the talk for free exploration; Right arrow returns to the same step
+  F11                               full screen on / off
 
-The controls only appear when the mouse moves, and never while the presentation plays.
+Presenter clickers work: most send Page Down / Page Up.
+Every step waits for the next key; nothing moves on by itself, and a second press while the picture
+is still moving is ignored. The closing picture stays on screen for the questions.
+The controls only appear when the mouse moves, and never during the talk.
 The picture keeps its 16:9 shape on any projector; 4:3 or 16:10 screens show black bars.
+
+The 48 s film is still there: move the mouse and click "48 s film" in the controls. While it plays,
+Space pauses / resumes, Home restarts it, and R stops it and goes back to the start view.
 
 
 If the motion is not smooth
 ---------------------------
-Press R, then 2 (Low quality), wait for "ready", then Space. Low is the setting for older computers
-and is the one the presentation was tested with.
-
-On a very slow computer, lower the render resolution: in the address bar, add
+The page already opens in Low quality. On a very slow computer, lower the render resolution: in the
+address bar, add
     ?quality=low&scale=0.8
 to the end of the address (after BWRX300.html) and press Enter. (scale accepts 0.5 to 1.)
 
@@ -49,10 +56,13 @@ If the 3D view does not start
 -----------------------------
 The page shows a short message with "Play the backup video" (in the chosen language). You can also
 open BWRX300-fallback-en.mp4 directly with any video player (Windows Media Player, VLC, the browser).
+The backup video is the 48 s film, not the whole talk.
 
 
 Browsers tested (Windows 11, Intel Iris Plus graphics, opened directly from the folder)
 ---------------------------------------------------------------------------------------
-  Chrome 155   works; Low quality plays smoothly (no slow frames)    recommended
-  Edge 155     works; Low quality plays smoothly (no slow frames)    recommended
-  Firefox 158  works, but plays less smoothly (35 to 46 fps in Low on the test machine)
+  The talk:    Chrome 155   Low quality: 60 frames per second on every step     recommended
+  The 48 s film (earlier test):
+               Chrome 155   works; Low quality plays smoothly (no slow frames)    recommended
+               Edge 155     works; Low quality plays smoothly (no slow frames)    recommended
+               Firefox 158  works, but plays less smoothly (35 to 46 fps in Low on the test machine)

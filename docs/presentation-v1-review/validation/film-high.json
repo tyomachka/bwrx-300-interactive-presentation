@@ -1,0 +1,124 @@
+{
+ "quality": "high",
+ "rows": [
+  {
+   "window": "0-3s",
+   "beat": "exterior",
+   "fps": 60.1,
+   "p95": 16.8,
+   "worst": 17.1
+  },
+  {
+   "window": "3-6s",
+   "beat": "approach",
+   "fps": 60.1,
+   "p95": 16.8,
+   "worst": 17.6
+  },
+  {
+   "window": "6-9s",
+   "beat": "containment",
+   "fps": 60.1,
+   "p95": 16.8,
+   "worst": 17.2
+  },
+  {
+   "window": "9-12s",
+   "beat": "rpvHero",
+   "fps": 58.8,
+   "p95": 17,
+   "worst": 33.9
+  },
+  {
+   "window": "12-15s",
+   "beat": "core",
+   "fps": 51.5,
+   "p95": 33.3,
+   "worst": 34.2
+  },
+  {
+   "window": "15-18s",
+   "beat": "core",
+   "fps": 60.1,
+   "p95": 16.9,
+   "worst": 17.1
+  },
+  {
+   "window": "18-21s",
+   "beat": "fission",
+   "fps": 58.8,
+   "p95": 17.1,
+   "worst": 33.4
+  },
+  {
+   "window": "21-24s",
+   "beat": "flow",
+   "fps": 50.8,
+   "p95": 33.4,
+   "worst": 50.4
+  },
+  {
+   "window": "24-27s",
+   "beat": "flow",
+   "fps": 50.8,
+   "p95": 33.3,
+   "worst": 33.4
+  },
+  {
+   "window": "27-30s",
+   "beat": "flow",
+   "fps": 53.2,
+   "p95": 33.2,
+   "worst": 33.6
+  },
+  {
+   "window": "30-33s",
+   "beat": "turbine",
+   "fps": 52.8,
+   "p95": 33.3,
+   "worst": 33.7
+  },
+  {
+   "window": "33-36s",
+   "beat": "turbine",
+   "fps": 54.1,
+   "p95": 33.2,
+   "worst": 33.6
+  },
+  {
+   "window": "36-39s",
+   "beat": "turbine",
+   "fps": 45.5,
+   "p95": 33.5,
+   "worst": 66.2
+  },
+  {
+   "window": "39-42s",
+   "beat": "control",
+   "fps": 41.6,
+   "p95": 33.5,
+   "worst": 66.4
+  },
+  {
+   "window": "42-45s",
+   "beat": "safety",
+   "fps": 51.5,
+   "p95": 33.3,
+   "worst": 33.6
+  },
+  {
+   "window": "45-48s",
+   "beat": "safety",
+   "fps": 60.1,
+   "p95": 16.9,
+   "worst": 17
+  }
+ ],
+ "log": {
+  "console": [
+   "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+  ],
+  "errors": [],
+  "external": []
+ }
+}

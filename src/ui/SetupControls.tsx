@@ -72,6 +72,8 @@ export function SetupControls() {
   }, []);
 
   const visible = ready && awake && !presenting;
+  // A paused 48 s film keeps "resume" as the primary action, exactly as before the talk existed.
+  const filmPaused = masterStatus === 'paused';
 
   return (
     <div
@@ -80,10 +82,10 @@ export function SetupControls() {
       onPointerEnter={() => (hovered.current = true)}
       onPointerLeave={() => (hovered.current = false)}
     >
-      <button type="button" className="setup__start" title={t.setup.startTitle} onClick={() => talk.start()}>
+      <button type="button" className={filmPaused ? undefined : 'setup__start'} title={t.setup.startTitle} onClick={() => talk.start()}>
         {talkStarted ? t.setup.resumeTalk : t.setup.start}
       </button>
-      <button type="button" title={t.setup.cinematicTitle} onClick={() => startOrTogglePresentation()}>
+      <button type="button" className={filmPaused ? 'setup__start' : undefined} title={t.setup.cinematicTitle} onClick={() => startOrTogglePresentation()}>
         {masterStatus === 'paused' ? t.setup.resume : t.setup.cinematic}
       </button>
       <div className="setup__group" role="group" aria-label={t.setup.qualityGroup}>

@@ -29,7 +29,7 @@ interface AppState {
   /** Diagnostics are compiled in for dev builds and for `?debug` in production. */
   debugAvailable: boolean;
   debugVisible: boolean;
-  /** Presentation v1 debug panel (`?presentationDebug`): beat list, jumps, pose copy. */
+  /** Presentation v1 debug panel (`?presentationDebug`, or T in dev / `?debug`): beat list, jumps, pose copy. */
   presentationDebug: boolean;
   /**
    * Stage 2 review aid (dev / `?debug`): hide everything in front of the z = 0 plane so the
@@ -41,6 +41,7 @@ interface AppState {
   setStatus: (status: SceneStatus) => void;
   remountCanvas: () => void;
   toggleDebug: () => void;
+  togglePresentationDebug: () => void;
   setSectionReview: (on: boolean) => void;
 }
 
@@ -71,6 +72,9 @@ export const useAppStore = create<AppState>()((set, get) => ({
   remountCanvas: () => set((s) => ({ status: 'loading', canvasKey: s.canvasKey + 1 })),
   toggleDebug: () => {
     if (get().debugAvailable) set((s) => ({ debugVisible: !s.debugVisible }));
+  },
+  togglePresentationDebug: () => {
+    if (get().debugAvailable) set((s) => ({ presentationDebug: !s.presentationDebug }));
   },
   setSectionReview: (on) => set({ sectionReview: on }),
 }));

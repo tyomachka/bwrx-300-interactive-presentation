@@ -37,8 +37,9 @@ const ENTER_TALK: Record<string, () => void> = {
  * C section, I isolate, L labels, R full reset; F flow (Stage 7); O control (Stage 8: the blade
  * slider; B stays the Stage 4 review key); S safety (Stage 9: the isolation-condenser loop). The
  * live presentation never needs any of them.
- * Master sequence: Space starts the presentation, then pauses / resumes it (and replays it once
- * finished); Home restarts it from the first frame; R stops it and returns to the home view.
+ * Master sequence (the 48 s film, started from the setup bar; from idle these keys enter the talk):
+ * Space pauses / resumes it (and replays it once finished); Home restarts it from the first frame;
+ * R stops it and returns to the home view.
  * Review aids, active only in dev builds or with `?debug`: , / . frame step, [ / ] previous /
  * next beat, V, G, P, K and B.
  *
@@ -70,6 +71,8 @@ const BINDINGS: Record<string, () => void> = {
   Digit2: () => setQualityUnlessPlaying('low'),
   Numpad2: () => setQualityUnlessPlaying('low'),
   Backquote: () => useAppStore.getState().toggleDebug(),
+  // Presentation v1 debug panel (dev / `?debug`; `?presentationDebug` opens it from the start).
+  KeyT: () => useAppStore.getState().togglePresentationDebug(),
   KeyV: debugOnly(() => void cycleReviewView()),
   KeyG: debugOnly(() => {
     const { sectionReview, setSectionReview } = useAppStore.getState();
@@ -111,8 +114,9 @@ export function useKeyboardShortcuts(): void {
       // A focused button would also take Space / Enter as a click.
       const blurButton = () => document.activeElement instanceof HTMLButtonElement && document.activeElement.blur();
       if (talk.active) {
-        const quality = event.code.startsWith('Digit') || event.code.startsWith('Numpad') || event.code === 'Backquote';
-        const action = TALK_KEYS[event.code] ?? (quality ? BINDINGS[event.code] : undefined);
+        // Operator keys outside the story: quality, and (dev / `?debug` only) diagnostics and the talk's debug panel.
+        const operator = event.code.startsWith('Digit') || event.code.startsWith('Numpad') || event.code === 'Backquote' || event.code === 'KeyT';
+        const action = TALK_KEYS[event.code] ?? (operator ? BINDINGS[event.code] : undefined);
         if (!action) return;
         event.preventDefault();
         blurButton();

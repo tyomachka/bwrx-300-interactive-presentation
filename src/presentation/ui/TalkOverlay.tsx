@@ -172,11 +172,19 @@ function Cued({ id, cue, className, children }: { id: string; cue?: string; clas
   );
 }
 
+/** The copy's own text around its number ("50 %" / "50%", "≈ 300 000", "~300"), so a count-up ends on exactly the copy. */
+function affixes(text: string): { prefix: string; suffix: string } {
+  const m = /^(\D*)[\d\s.,]*\d(\D*)$/.exec(text);
+  return { prefix: m?.[1] ?? '', suffix: m?.[2] ?? '' };
+}
+
 function Stat({ item, copy, language }: { item: Extract<OverlayItem, { kind: 'stat' }>; copy: TalkCopy; language: Language }) {
   const value = useRef<HTMLSpanElement>(null);
   const count = item.count;
+  const text = copy[item.value];
   useLayoutEffect(() => {
     if (!count || !value.current) return;
+    const { prefix, suffix } = affixes(text);
     overlayLayer.counts.set(item.id, {
       el: value.current,
       cue: count.cue,
@@ -184,13 +192,13 @@ function Stat({ item, copy, language }: { item: Extract<OverlayItem, { kind: 'st
       to: count.to,
       decimals: count.decimals ?? 0,
       group: count.group ?? false,
-      prefix: count.prefix ?? '',
-      suffix: count.suffix ?? '',
+      prefix,
+      suffix,
       language,
       shown: '',
     });
     return () => void overlayLayer.counts.delete(item.id);
-  }, [item.id, count, language]);
+  }, [item.id, count, language, text]);
   return (
     <>
       <div className="talk-stat__value">

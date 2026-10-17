@@ -10,6 +10,7 @@
  * (condenser and feedwater), g grid and city, p plant lights, x fission chain inset, m maps, lt
  * Lithuania map, w world map, k scale comparison, q football pitches, e environment.
  */
+import { FOG } from '../config/render';
 
 interface ChannelSpec {
   rest: number;
@@ -105,9 +106,9 @@ export const WORLD_CHANNELS = {
   'q.pitches': { rest: 0, duration: 1.6 },
 
   // ---- Environment ----
-  /** Fog distances (m): pushed out for the wide comparison views. */
-  'e.fogNear': { rest: 300, duration: 2.0 },
-  'e.fogFar': { rest: 820, duration: 2.0 },
+  /** Fog distances (m): the studio's own fog at rest, pushed out for the wide views. */
+  'e.fogNear': { rest: FOG.near, duration: 2.0 },
+  'e.fogFar': { rest: FOG.far, duration: 2.0 },
 } satisfies Record<string, ChannelSpec>;
 
 export type WorldChannel = keyof typeof WORLD_CHANNELS;

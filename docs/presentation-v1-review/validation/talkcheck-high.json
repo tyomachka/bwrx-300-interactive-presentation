@@ -1,0 +1,522 @@
+{
+ "quality": "high",
+ "size": "1920x1080",
+ "checks": [
+  {
+   "name": "LT is the default language",
+   "ok": true,
+   "detail": "lt"
+  },
+  {
+   "name": "Right arrow enters the talk at the first beat",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 0
+   }
+  },
+  {
+   "name": "No Explore UI, setup bar or debug UI while presenting",
+   "ok": true,
+   "detail": {
+    "exploreHidden": true,
+    "setupHidden": true,
+    "diagnostics": false,
+    "talkDebug": false,
+    "lang": "lt",
+    "chapterLabel": null,
+    "authority": "cinematic",
+    "exploreMode": "presentation",
+    "master": "idle"
+   }
+  },
+  {
+   "name": "The talk owns the camera (cinematic authority, Explore suspended)",
+   "ok": true,
+   "detail": {
+    "exploreHidden": true,
+    "setupHidden": true,
+    "diagnostics": false,
+    "talkDebug": false,
+    "lang": "lt",
+    "chapterLabel": null,
+    "authority": "cinematic",
+    "exploreMode": "presentation",
+    "master": "idle"
+   }
+  },
+  {
+   "name": "A second press inside the transition lock is ignored",
+   "ok": true,
+   "detail": {
+    "flat": 1,
+    "locked": true
+   }
+  },
+  {
+   "name": "Right arrow walks first -> last",
+   "ok": true,
+   "detail": {
+    "flat": 31
+   }
+  },
+  {
+   "name": "The closing composition holds (no wrap to the start)",
+   "ok": true,
+   "detail": {
+    "flat": 31
+   }
+  },
+  {
+   "name": "Left arrow walks last -> first",
+   "ok": true,
+   "detail": {
+    "flat": 0
+   }
+  },
+  {
+   "name": "Random jumps land on their beats",
+   "ok": true,
+   "detail": {
+    "flat": 25
+   }
+  },
+  {
+   "name": "R re-establishes the current beat (dip, same beat)",
+   "ok": true,
+   "detail": {
+    "flat": 25,
+    "dip": 0.3133339368428758
+   }
+  },
+  {
+   "name": "Esc hands the camera to Explore",
+   "ok": true,
+   "detail": {
+    "active": false,
+    "exploreHidden": false,
+    "setupHidden": true,
+    "diagnostics": false,
+    "talkDebug": false,
+    "lang": "lt",
+    "chapterLabel": null,
+    "authority": "explore",
+    "exploreMode": "explore",
+    "master": "idle"
+   }
+  },
+  {
+   "name": "Explore UI comes back after Esc",
+   "ok": true,
+   "detail": {
+    "exploreHidden": false,
+    "setupHidden": false,
+    "diagnostics": false,
+    "talkDebug": false,
+    "lang": "lt",
+    "chapterLabel": null,
+    "authority": "explore",
+    "exploreMode": "explore",
+    "master": "idle"
+   }
+  },
+  {
+   "name": "Right arrow re-enters where the talk was left",
+   "ok": true,
+   "detail": {
+    "flat": 25
+   }
+  },
+  {
+   "name": "Home returns to the first beat",
+   "ok": true,
+   "detail": {
+    "flat": 0
+   }
+  },
+  {
+   "name": "English switch: chapter label in English",
+   "ok": true,
+   "detail": {
+    "exploreHidden": true,
+    "setupHidden": true,
+    "diagnostics": false,
+    "talkDebug": false,
+    "lang": "en",
+    "chapterLabel": "Lithuania",
+    "authority": "cinematic",
+    "exploreMode": "presentation",
+    "master": "idle"
+   }
+  },
+  {
+   "name": "Starting the 48 s cinematic ends the talk cleanly",
+   "ok": true,
+   "detail": {
+    "active": false,
+    "master": "playing"
+   }
+  },
+  {
+   "name": "R in the cinematic resets to Explore as before",
+   "ok": true,
+   "detail": {
+    "exploreHidden": false,
+    "setupHidden": true,
+    "diagnostics": false,
+    "talkDebug": false,
+    "lang": "lt",
+    "chapterLabel": null,
+    "authority": "explore",
+    "exploreMode": "explore",
+    "master": "idle"
+   }
+  },
+  {
+   "name": "No page errors",
+   "ok": true,
+   "detail": []
+  },
+  {
+   "name": "No external requests",
+   "ok": true,
+   "detail": []
+  }
+ ],
+ "perBeat": [
+  {
+   "flat": 1,
+   "beat": "lithuania/renewables",
+   "frames": 409,
+   "fps": 60.1,
+   "p95": 16.8,
+   "worst": 17.5,
+   "over33": 0
+  },
+  {
+   "flat": 2,
+   "beat": "lithuania/calm",
+   "frames": 277,
+   "fps": 60.1,
+   "p95": 16.8,
+   "worst": 17.3,
+   "over33": 0
+  },
+  {
+   "flat": 3,
+   "beat": "lithuania/assessment",
+   "frames": 216,
+   "fps": 60.1,
+   "p95": 16.8,
+   "worst": 17.3,
+   "over33": 0
+  },
+  {
+   "flat": 4,
+   "beat": "scale/large",
+   "frames": 481,
+   "fps": 60.1,
+   "p95": 16.8,
+   "worst": 17.3,
+   "over33": 0
+  },
+  {
+   "flat": 5,
+   "beat": "scale/modules",
+   "frames": 523,
+   "fps": 60.1,
+   "p95": 16.8,
+   "worst": 16.9,
+   "over33": 0
+  },
+  {
+   "flat": 6,
+   "beat": "facts/power",
+   "frames": 276,
+   "fps": 60.1,
+   "p95": 16.8,
+   "worst": 16.9,
+   "over33": 0
+  },
+  {
+   "flat": 7,
+   "beat": "facts/pitches",
+   "frames": 264,
+   "fps": 60.1,
+   "p95": 16.8,
+   "worst": 17.2,
+   "over33": 0
+  },
+  {
+   "flat": 8,
+   "beat": "facts/months",
+   "frames": 253,
+   "fps": 60.1,
+   "p95": 16.8,
+   "worst": 17,
+   "over33": 0
+  },
+  {
+   "flat": 9,
+   "beat": "projects/world",
+   "frames": 475,
+   "fps": 60.1,
+   "p95": 16.8,
+   "worst": 17.8,
+   "over33": 0
+  },
+  {
+   "flat": 10,
+   "beat": "projects/darlington",
+   "frames": 265,
+   "fps": 60.1,
+   "p95": 16.8,
+   "worst": 17.3,
+   "over33": 0
+  },
+  {
+   "flat": 11,
+   "beat": "handoff/land",
+   "frames": 325,
+   "fps": 60.1,
+   "p95": 16.8,
+   "worst": 17.2,
+   "over33": 0
+  },
+  {
+   "flat": 12,
+   "beat": "handoff/descend",
+   "frames": 975,
+   "fps": 58.4,
+   "p95": 17,
+   "worst": 33.7,
+   "over33": 0
+  },
+  {
+   "flat": 13,
+   "beat": "fission/micro",
+   "frames": 165,
+   "fps": 57,
+   "p95": 33.2,
+   "worst": 33.7,
+   "over33": 0
+  },
+  {
+   "flat": 14,
+   "beat": "fission/inFuel",
+   "frames": 154,
+   "fps": 54.8,
+   "p95": 33.3,
+   "worst": 33.7,
+   "over33": 0
+  },
+  {
+   "flat": 15,
+   "beat": "control/blades",
+   "frames": 286,
+   "fps": 49.3,
+   "p95": 33.5,
+   "worst": 33.8,
+   "over33": 0
+  },
+  {
+   "flat": 16,
+   "beat": "control/insert",
+   "frames": 130,
+   "fps": 43.4,
+   "p95": 33.5,
+   "worst": 34,
+   "over33": 0
+  },
+  {
+   "flat": 17,
+   "beat": "control/withdraw",
+   "frames": 131,
+   "fps": 43.5,
+   "p95": 33.5,
+   "worst": 33.7,
+   "over33": 0
+  },
+  {
+   "flat": 18,
+   "beat": "energy/boil",
+   "frames": 217,
+   "fps": 51.8,
+   "p95": 33.3,
+   "worst": 50,
+   "over33": 2
+  },
+  {
+   "flat": 19,
+   "beat": "energy/steam",
+   "frames": 343,
+   "fps": 55.3,
+   "p95": 33.2,
+   "worst": 49.8,
+   "over33": 1
+  },
+  {
+   "flat": 20,
+   "beat": "energy/turbine",
+   "frames": 433,
+   "fps": 51.5,
+   "p95": 33.4,
+   "worst": 50.3,
+   "over33": 2
+  },
+  {
+   "flat": 21,
+   "beat": "energy/condenser",
+   "frames": 509,
+   "fps": 52,
+   "p95": 33.3,
+   "worst": 49.9,
+   "over33": 1
+  },
+  {
+   "flat": 22,
+   "beat": "energy/grid",
+   "frames": 634,
+   "fps": 57.8,
+   "p95": 17,
+   "worst": 33.5,
+   "over33": 0
+  },
+  {
+   "flat": 23,
+   "beat": "safety/normal",
+   "frames": 313,
+   "fps": 60.1,
+   "p95": 16.9,
+   "worst": 17.7,
+   "over33": 0
+  },
+  {
+   "flat": 24,
+   "beat": "safety/blackout",
+   "frames": 499,
+   "fps": 60.1,
+   "p95": 16.8,
+   "worst": 17.1,
+   "over33": 0
+  },
+  {
+   "flat": 25,
+   "beat": "safety/scram",
+   "frames": 269,
+   "fps": 47.2,
+   "p95": 33.4,
+   "worst": 83.1,
+   "over33": 3
+  },
+  {
+   "flat": 26,
+   "beat": "safety/decay",
+   "frames": 173,
+   "fps": 43,
+   "p95": 33.5,
+   "worst": 66.6,
+   "over33": 4
+  },
+  {
+   "flat": 27,
+   "beat": "safety/ics",
+   "frames": 474,
+   "fps": 57.8,
+   "p95": 17.1,
+   "worst": 34,
+   "over33": 0
+  },
+  {
+   "flat": 28,
+   "beat": "safety/days",
+   "frames": 436,
+   "fps": 59.7,
+   "p95": 16.8,
+   "worst": 66.6,
+   "over33": 1
+  },
+  {
+   "flat": 29,
+   "beat": "limits/limits",
+   "frames": 379,
+   "fps": 60.1,
+   "p95": 16.8,
+   "worst": 17,
+   "over33": 0
+  },
+  {
+   "flat": 30,
+   "beat": "close/return",
+   "frames": 658,
+   "fps": 59.8,
+   "p95": 16.9,
+   "worst": 33.7,
+   "over33": 0
+  },
+  {
+   "flat": 31,
+   "beat": "close/qa",
+   "frames": 247,
+   "fps": 60.1,
+   "p95": 16.8,
+   "worst": 16.9,
+   "over33": 0
+  }
+ ],
+ "gpu": "ANGLE (Intel, Intel(R) Iris(R) Plus Graphics (0x00008A52) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+ "log": {
+  "console": [
+   "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+  ],
+  "errors": [],
+  "external": []
+ },
+ "worstBeats": [
+  {
+   "flat": 26,
+   "beat": "safety/decay",
+   "frames": 173,
+   "fps": 43,
+   "p95": 33.5,
+   "worst": 66.6,
+   "over33": 4
+  },
+  {
+   "flat": 16,
+   "beat": "control/insert",
+   "frames": 130,
+   "fps": 43.4,
+   "p95": 33.5,
+   "worst": 34,
+   "over33": 0
+  },
+  {
+   "flat": 17,
+   "beat": "control/withdraw",
+   "frames": 131,
+   "fps": 43.5,
+   "p95": 33.5,
+   "worst": 33.7,
+   "over33": 0
+  },
+  {
+   "flat": 25,
+   "beat": "safety/scram",
+   "frames": 269,
+   "fps": 47.2,
+   "p95": 33.4,
+   "worst": 83.1,
+   "over33": 3
+  },
+  {
+   "flat": 15,
+   "beat": "control/blades",
+   "frames": 286,
+   "fps": 49.3,
+   "p95": 33.5,
+   "worst": 33.8,
+   "over33": 0
+  }
+ ]
+}

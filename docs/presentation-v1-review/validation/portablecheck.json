@@ -1,0 +1,67 @@
+{
+ "fileUrl": "file:///C:/Users/user/Desktop/viesoji_komunikacija/dist-portable/BWRX300/BWRX300.html",
+ "checks": [
+  {
+   "name": "Opens from file:// (scene ready)",
+   "ok": true
+  },
+  {
+   "name": "Default quality is Low (\"Žema\")",
+   "ok": true,
+   "detail": "Žema"
+  },
+  {
+   "name": "Default language is Lithuanian",
+   "ok": true
+  },
+  {
+   "name": "Right arrow starts the talk (opening overlay present)",
+   "ok": true,
+   "detail": {
+    "items": 3,
+    "text": "Mažieji moduliniai reaktoriaiBWRX-300Virgilijus KiltinavičiusVIRGILIJUS_EMAIL_TODOTimofej Gaivoronskijtimofej.gaivoronsk"
+   }
+  },
+  {
+   "name": "Talk advances without debug tooling (chapter label shown)",
+   "ok": true,
+   "detail": "Lietuva"
+  },
+  {
+   "name": "No requests other than file:/data:/blob:",
+   "ok": true,
+   "detail": []
+  },
+  {
+   "name": "No page errors",
+   "ok": true,
+   "detail": []
+  },
+  {
+   "name": "Every beat reachable from file:// (debug jumps)",
+   "ok": true,
+   "detail": {
+    "flat": 31,
+    "beats": 32
+   }
+  },
+  {
+   "name": "No requests other than file:/data:/blob: (debug walk)",
+   "ok": true,
+   "detail": []
+  },
+  {
+   "name": "No page errors (debug walk)",
+   "ok": true,
+   "detail": []
+  }
+ ],
+ "noQuery": {
+  "requests": 1,
+  "consoleErrors": []
+ },
+ "debug": {
+  "requests": 1,
+  "consoleErrors": []
+ }
+}

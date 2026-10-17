@@ -136,6 +136,7 @@
 
 .talk-title__title {
   margin-top: 1.2cqh;
+  text-wrap: balance;
   font-weight: 300;
   line-height: 1.04;
   letter-spacing: -0.005em;
@@ -153,6 +154,7 @@
 
 .talk-title__sub {
   margin-top: 2.4cqh;
+  text-wrap: balance;
   font-size: var(--talk-size-headline);
   font-weight: 300;
   color: var(--talk-accent);
@@ -180,6 +182,8 @@
 
 .talk-stat__caption {
   max-width: 30cqw;
+  /* Even lines: no one-word widow, and a two-line caption stays clear of the scene beside it. */
+  text-wrap: balance;
   margin-top: 2cqh;
   font-size: var(--talk-size-support);
   line-height: 1.38;
@@ -189,6 +193,7 @@
 /* Short claims ---------------------------------------------------------------------------- */
 .talk-caption__text {
   max-width: 42cqw;
+  text-wrap: balance;
   font-size: var(--talk-size-headline);
   font-weight: 300;
   line-height: 1.14;
@@ -202,6 +207,7 @@
 
 .talk-caption__sub {
   margin-top: 1.4cqh;
+  text-wrap: balance;
   font-size: var(--talk-size-support);
   color: var(--talk-text-2);
 }
@@ -214,6 +220,7 @@
 /* Source qualifiers ------------------------------------------------------------------------- */
 .talk-note {
   left: var(--talk-gutter);
+  text-wrap: pretty;
   bottom: 4.6cqh;
   max-width: 64cqw;
   font-size: var(--talk-size-qualifier);
@@ -466,6 +473,7 @@ a.talk-speaker__email:hover,
 
 .talk-counter__note {
   max-width: 28cqw;
+  text-wrap: balance;
   margin-left: auto;
   font-size: var(--talk-size-qualifier);
   line-height: 1.4;

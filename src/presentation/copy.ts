@@ -57,7 +57,7 @@ const LT = {
   'facts.powerCaption': 'elektros galia, vienas blokas',
   'facts.pitches': '≈ 2',
   'facts.pitchesUnit': 'futbolo aikštės',
-  'facts.pitchesCaption': 'tiek ploto užima visas energetinis blokas',
+  'facts.pitchesCaption': 'jose telpa visas energetinis blokas',
   'facts.pitchesNote': 'Gamintojo (GE Vernova) duomenys: blokas telpa dviejose tarptautinėse futbolo aikštėse',
   'facts.months': '24–36',
   'facts.monthsUnit': 'mėn.*',
@@ -85,7 +85,7 @@ const LT = {
   // 7 Fission
   'fission.neutron': 'neutronas',
   'fission.nucleus': 'U-235',
-  'fission.split': 'skilimas',
+  'fission.split': 'dalijimasis',
   'fission.heat': 'energija → šiluma',
   'fission.newNeutrons': 'nauji neutronai',
   'fission.chain': 'grandininė reakcija',

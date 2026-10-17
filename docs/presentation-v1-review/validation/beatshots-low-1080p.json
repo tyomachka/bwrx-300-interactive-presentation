@@ -1,0 +1,235 @@
+{
+ "results": [
+  {
+   "name": "00-hook-hero.png",
+   "flat": 0,
+   "beatTime": 8.01,
+   "calls": 67,
+   "tris": 11375
+  },
+  {
+   "name": "01-lithuania-renewables.png",
+   "flat": 1,
+   "beatTime": 7.3,
+   "calls": 10,
+   "tris": 19347
+  },
+  {
+   "name": "02-lithuania-calm.png",
+   "flat": 2,
+   "beatTime": 5.1,
+   "calls": 13,
+   "tris": 19643
+  },
+  {
+   "name": "03-lithuania-assessment.png",
+   "flat": 3,
+   "beatTime": 4.1,
+   "calls": 13,
+   "tris": 19643
+  },
+  {
+   "name": "04-scale-large.png",
+   "flat": 4,
+   "beatTime": 8.5,
+   "calls": 67,
+   "tris": 4569
+  },
+  {
+   "name": "05-scale-modules.png",
+   "flat": 5,
+   "beatTime": 9.2,
+   "calls": 79,
+   "tris": 5777
+  },
+  {
+   "name": "06-facts-power.png",
+   "flat": 6,
+   "beatTime": 5.1,
+   "calls": 63,
+   "tris": 3171
+  },
+  {
+   "name": "07-facts-pitches.png",
+   "flat": 7,
+   "beatTime": 4.9,
+   "calls": 65,
+   "tris": 3175
+  },
+  {
+   "name": "08-facts-months.png",
+   "flat": 8,
+   "beatTime": 4.7,
+   "calls": 63,
+   "tris": 3171
+  },
+  {
+   "name": "09-projects-world.png",
+   "flat": 9,
+   "beatTime": 8.4,
+   "calls": 29,
+   "tris": 25067
+  },
+  {
+   "name": "10-projects-darlington.png",
+   "flat": 10,
+   "beatTime": 4.9,
+   "calls": 19,
+   "tris": 23819
+  },
+  {
+   "name": "11-handoff-land.png",
+   "flat": 11,
+   "beatTime": 5.9,
+   "calls": 63,
+   "tris": 3171
+  },
+  {
+   "name": "12-handoff-descend.png",
+   "flat": 12,
+   "beatTime": 17.2,
+   "calls": 57,
+   "tris": 35223
+  },
+  {
+   "name": "13-fission-micro.png",
+   "flat": 13,
+   "beatTime": 3.4,
+   "calls": 60,
+   "tris": 51163
+  },
+  {
+   "name": "14-fission-inFuel.png",
+   "flat": 14,
+   "beatTime": 3.3,
+   "calls": 58,
+   "tris": 35241
+  },
+  {
+   "name": "15-control-blades.png",
+   "flat": 15,
+   "beatTime": 6.3,
+   "calls": 51,
+   "tris": 39561
+  },
+  {
+   "name": "16-control-insert.png",
+   "flat": 16,
+   "beatTime": 3.5,
+   "calls": 51,
+   "tris": 39561
+  },
+  {
+   "name": "17-control-withdraw.png",
+   "flat": 17,
+   "beatTime": 3.5,
+   "calls": 51,
+   "tris": 39561
+  },
+  {
+   "name": "18-energy-boil.png",
+   "flat": 18,
+   "beatTime": 4.7,
+   "calls": 61,
+   "tris": 34425
+  },
+  {
+   "name": "19-energy-steam.png",
+   "flat": 19,
+   "beatTime": 6.7,
+   "calls": 61,
+   "tris": 33617
+  },
+  {
+   "name": "20-energy-turbine.png",
+   "flat": 20,
+   "beatTime": 8.9,
+   "calls": 60,
+   "tris": 31037
+  },
+  {
+   "name": "21-energy-condenser.png",
+   "flat": 21,
+   "beatTime": 10.3,
+   "calls": 110,
+   "tris": 103601
+  },
+  {
+   "name": "22-energy-grid.png",
+   "flat": 22,
+   "beatTime": 11.5,
+   "calls": 117,
+   "tris": 112717
+  },
+  {
+   "name": "23-safety-normal.png",
+   "flat": 23,
+   "beatTime": 5.7,
+   "calls": 119,
+   "tris": 125773
+  },
+  {
+   "name": "24-safety-blackout.png",
+   "flat": 24,
+   "beatTime": 8.8,
+   "calls": 115,
+   "tris": 94605
+  },
+  {
+   "name": "25-safety-scram.png",
+   "flat": 25,
+   "beatTime": 6.2,
+   "calls": 51,
+   "tris": 39561
+  },
+  {
+   "name": "26-safety-decay.png",
+   "flat": 26,
+   "beatTime": 4.5,
+   "calls": 84,
+   "tris": 78073
+  },
+  {
+   "name": "27-safety-ics.png",
+   "flat": 27,
+   "beatTime": 8.7,
+   "calls": 67,
+   "tris": 60623
+  },
+  {
+   "name": "28-safety-days.png",
+   "flat": 28,
+   "beatTime": 7.8,
+   "calls": 67,
+   "tris": 60623
+  },
+  {
+   "name": "29-limits-limits.png",
+   "flat": 29,
+   "beatTime": 6.8,
+   "calls": 86,
+   "tris": 69347
+  },
+  {
+   "name": "30-close-return.png",
+   "flat": 30,
+   "beatTime": 11.5,
+   "calls": 67,
+   "tris": 11375
+  },
+  {
+   "name": "31-close-qa.png",
+   "flat": 31,
+   "beatTime": 4.1,
+   "calls": 67,
+   "tris": 11375
+  }
+ ],
+ "log": {
+  "console": [
+   "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+  ],
+  "errors": [],
+  "external": []
+ }
+}

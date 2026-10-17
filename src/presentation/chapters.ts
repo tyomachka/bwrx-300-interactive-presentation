@@ -15,6 +15,7 @@
  */
 import { HERO_REVEAL_CLOSED, type HeroRevealState } from '../animation/heroReveal';
 import type { CameraPose } from '../config/camera';
+import { FOG } from '../config/render';
 import { COMPONENT_IDS as C } from '../scene/components';
 import { REACTOR_PRESSURE_VESSEL as RPV } from '../scene/plant/dimensions';
 import { masterRevealAt } from './legacy';
@@ -52,7 +53,7 @@ const P = {
   condenser: pose([88, 7.5, 34], [60, 5.5, 0]),
   cycleWide: pose([-4, 30, 104], [30, -4, 0]),
   gridMid: pose([118, 46, 132], [170, 12, 34]),
-  grid: pose([360, 260, 760], [420, 0, 130]),
+  grid: pose([330, 300, 820], [350, 0, 150]),
   /** Safety overview: the opened plant (reactor, pools, turbine hall). */
   overview: pose([0, 50, 165], [54, -3, -2]),
   decay: pose([-30, -2, 40], [0, -15.5, 0]),
@@ -178,7 +179,7 @@ export const CHAPTERS: readonly TalkChapter[] = [
         },
         cues: { stat: { delay: 4.0, duration: 1.8 }, statIn: { delay: 3.8, duration: 0.5 } },
         overlay: [
-          { kind: 'stat', id: 'lt-stat', value: 'lt.stat', caption: 'lt.statCaption', count: { cue: 'stat', to: 50, suffix: ' %' }, position: 'left', cue: 'statIn' },
+          { kind: 'stat', id: 'lt-stat', value: 'lt.stat', caption: 'lt.statCaption', count: { cue: 'stat', to: 50 }, position: 'left', cue: 'statIn' },
           { kind: 'note', id: 'lt-note', text: 'lt.note', cue: 'statIn' },
         ],
         lock: 2.2,
@@ -281,10 +282,10 @@ export const CHAPTERS: readonly TalkChapter[] = [
         id: 'power',
         note: 'The comparison falls away; our plant remains. "~300 MW" counts up once.',
         camera: { keys: [{ at: 3.6, pose: P.factsPower }], drift: 1 },
-        world: { 'k.show': 0, 'k.large': 0, 'k.largeDim': 0, 'k.modules': 0, 'e.fogNear': 300, 'e.fogFar': 820 },
+        world: { 'k.show': 0, 'k.large': 0, 'k.largeDim': 0, 'k.modules': 0, 'e.fogNear': FOG.near, 'e.fogFar': FOG.far },
         worldTiming: { 'k.show': { delay: 2.2 }, 'k.large': { duration: 2.0 }, 'k.modules': { duration: 2.0 }, 'e.fogNear': { duration: 3 }, 'e.fogFar': { duration: 3 } },
         cues: { power: { delay: 1.4, duration: 1.6 } },
-        overlay: [{ kind: 'stat', id: 'facts-power', value: 'facts.power', unit: 'facts.powerUnit', caption: 'facts.powerCaption', count: { cue: 'power', to: 300, prefix: '~' }, position: 'left' }],
+        overlay: [{ kind: 'stat', id: 'facts-power', value: 'facts.power', unit: 'facts.powerUnit', caption: 'facts.powerCaption', count: { cue: 'power', to: 300 }, position: 'left' }],
         lock: 2,
       },
       {
@@ -545,7 +546,7 @@ export const CHAPTERS: readonly TalkChapter[] = [
         note: 'The generator sends electricity out of the hall, through the transformer, along the line: the city lights up (scale illustration).',
         camera: { keys: [{ at: 2.6, pose: 'masterGenerator' }, { at: 5.4, pose: P.gridMid }, { at: 9.0, pose: P.grid }], drift: 0.8 },
         look: { subjects: { [C.generator]: 1 }, ghosts: { [C.turbineBuilding]: 1 }, contextDim: 0, interior: ['steamPath', 'turbineHall'] },
-        world: { 'f.electricity': 1, 'f.generator': 1, 'g.show': 1, 'g.power': 1, 'g.city': 1, 'e.fogNear': 700, 'e.fogFar': 1300 },
+        world: { 'f.electricity': 1, 'f.generator': 1, 'g.show': 1, 'g.power': 1, 'g.city': 1, 'e.fogNear': 900, 'e.fogFar': 1500 },
         worldTiming: {
           'f.electricity': { delay: 1.4, duration: 0.6 },
           'g.power': { delay: 3.4, duration: 0.6 },
@@ -556,7 +557,7 @@ export const CHAPTERS: readonly TalkChapter[] = [
         cues: { power: { delay: 1.4, duration: 2.4 }, grid: { delay: 3.4, duration: 3.4 }, homes: { delay: 8.4, duration: 1.6 }, homesIn: { delay: 8.2, duration: 0.5 }, genLabel: { delay: 1.2, duration: 0.8 } },
         overlay: [
           { kind: 'label', id: 'energy-generator', text: 'energy.generator', at: [80, 18.5, 0], side: 'up', style: 'tag', cue: 'genLabel' },
-          { kind: 'stat', id: 'energy-homes', value: 'energy.homes', unit: 'energy.homesCaption', count: { cue: 'homes', to: 300000, prefix: '≈ ', group: true }, position: 'top-left', cue: 'homesIn' },
+          { kind: 'stat', id: 'energy-homes', value: 'energy.homes', unit: 'energy.homesCaption', count: { cue: 'homes', to: 300000, group: true }, position: 'top-left', cue: 'homesIn' },
           { kind: 'note', id: 'energy-homes-note', text: 'energy.homesNote', cue: 'homesIn' },
         ],
         lock: 3,
@@ -578,7 +579,7 @@ export const CHAPTERS: readonly TalkChapter[] = [
         camera: { keys: [{ at: 4.2, pose: P.overview }], drift: 0.6 },
         reveal: { to: { ...CORE_OPEN, exteriorDim: 0.6, poolsReveal: 1 }, timing: { delay: 0.5, duration: 2.0 } },
         look: { subjects: {}, ghosts: { [C.turbineBuilding]: 1 }, contextDim: 0, interior: ['steamPath', 'turbineHall'] },
-        world: { ...POWER_ON, 'f.coreWater': 0.8, 'e.fogNear': 300, 'e.fogFar': 820 },
+        world: { ...POWER_ON, 'f.coreWater': 0.8, 'e.fogNear': FOG.near, 'e.fogFar': FOG.far },
         worldTiming: { 'e.fogNear': { duration: 3 }, 'e.fogFar': { duration: 3 } },
         overlay: [{ kind: 'caption', id: 'safety-state', text: 'safety.normal', position: 'top-left' }],
         lock: 2.6,

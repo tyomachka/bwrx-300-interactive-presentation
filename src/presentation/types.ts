@@ -90,8 +90,8 @@ export type OverlayItem = ItemBase &
         value: CopyKey;
         unit?: CopyKey;
         caption?: CopyKey;
-        /** Count the number up once (driven by a cue). */
-        count?: { cue: string; to: number; from?: number; prefix?: string; suffix?: string; decimals?: number; group?: boolean };
+        /** Count the number up once (driven by a cue); the text around the number comes from the copy. */
+        count?: { cue: string; to: number; from?: number; decimals?: number; group?: boolean };
         position?: OverlayPosition;
       }
     | { kind: 'caption'; text: CopyKey; sub?: CopyKey; position?: OverlayPosition; tone?: 'plain' | 'alert'; size?: 'large' | 'small' }

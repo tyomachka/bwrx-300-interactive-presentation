@@ -6,10 +6,11 @@ references are `references/technical/005N9751-BWRX-300-General-Description.pdf` 
 `references/technical/11.pdf` (UK GDA Chapter 1, NEDO-34163 Rev B). They are kept locally
 and not committed; see `references/links.txt`.
 
-**Current state: Stage 6 (master presentation timeline, ~48 s skeleton)**, awaiting review.
-Stages 1-5 (renderer foundation, plant massing, the 10 s hero shot, the reactor vessel and
-internals, Explore mode) are committed checkpoints. Review material is in
-`docs/stage1-review/` to `docs/stage6-review/`.
+**Current state: Presentation v1 (the ~7-minute talk), branch `presentation-v1`, a working draft
+awaiting owner review: not final, not approved.** Stages 1-10 are approved checkpoints (the 48 s
+film and its subsystems). Stage 11 (portable delivery, LT/EN) is preserved as WIP (`c672112`), not
+approved. Review material is in `docs/stage1-review/` to `docs/stage11-review/` and
+`docs/presentation-v1-review/`.
 
 ## Commands
 
@@ -26,16 +27,37 @@ npm run preview    # serve dist/ locally
 |---|---|
 | `?quality=low` / `?quality=high` | Choose the rendering preset (otherwise: high, or low on a software renderer) |
 | `?debug` | Show the diagnostics panel and enable the review keys (works in production builds too) |
+| `?presentationDebug` | Open the talk's debug panel: beat list with direct jumps, beat inspection, "copy camera pose". With `?debug` (or in dev) `T` toggles it. Never part of the audience view |
 
 ## Keyboard
 
 Keys are matched by physical position, so they also work on the Lithuanian layout.
 
+**The talk (Presentation v1).** While it runs it owns these keys and ignores every other key
+except the operator's quality (`1` / `2`) and, in dev / `?debug` only, the diagnostics (`` ` ``) and
+debug-panel (`T`) keys, so a stray press cannot toggle an Explore mode on the projector:
+
 | Key | Action |
 |---|---|
-| `Space` | Start the presentation; then pause / resume; after the end, play it again (only once the scene is ready) |
-| `Home` | Restart the presentation from its first frame |
-| `R` | Reset: stop the presentation, clear every Explore state, close the reveal, smooth transition to `plantExterior` (the way back after any accidental key) |
+| `→` / `Space` / `Page Down` | Next beat. From Explore (film idle) the same keys start the talk, or resume it where it was left. A press during a beat's transition lock is ignored |
+| `←` / `Page Up` | Previous beat (settles straight into it) |
+| `Home` | Back to the opening beat (from Explore too) |
+| `R` | Safe reset: the current beat re-established behind a short dip |
+| `Esc` | Leave to Explore; `→` returns to the same beat |
+
+**The 48 s film** starts from the setup bar ("48 s filmas" / "48 s film"). While it plays or holds
+its final frame, the keys below keep their film meaning:
+
+| Key | Action |
+|---|---|
+| `Space` | Pause / resume the film; after the end, play it again |
+| `Home` | Restart the film from its first frame |
+| `R` | Reset: stop the film, clear every Explore state, close the reveal, smooth transition to `plantExterior` (the way back after any accidental key) |
+
+**Explore and review keys:**
+
+| Key | Action |
+|---|---|
 | `Esc` | Clear the selection |
 | `X` | X-ray on / off |
 | `C` | Section on / off (Reactor context when the selection is inside the vessel) |
@@ -44,15 +66,14 @@ Keys are matched by physical position, so they also work on the Lithuanian layou
 | `F` | Flow on / off: the normal-operation flow, looping (Stage 7) |
 | `O` | Control on / off: the control-blade slider and the reaction cue; opens the Reactor section and frames the blades (Stage 8) |
 | `S` | Safety on / off: the passive isolation-condenser loop; opens the building with the ICS pools, turns Flow off, leaves the camera alone (Stage 9) |
-| `1` / `2` | High / low quality (ignored while the presentation plays) |
+| `1` / `2` | High / low quality (ignored while the 48 s film plays) |
 | `` ` `` | Toggle diagnostics (dev build, or with `?debug`) |
+| `T` | Toggle the talk's debug panel (dev build, or with `?debug` / `?presentationDebug`; also during the talk) |
 | `P` | Review aid: play / restart the Stage 3 hero shot from its first frame (dev / `?debug`) |
 | `K` | Review aid: pause / resume the hero shot (dev / `?debug`) |
 | `V` | Review aid: cycle the four Stage 2 review views (dev / `?debug`) |
 | `G` | Review aid: toggle the section review (dev / `?debug`) |
 | `B` | Review aid: cycle the Stage 4 vessel review states: exterior, cutaway, core, control blades, steam region (dev / `?debug`) |
-| `Space` | Master sequence: play / pause; from idle or the held final frame, play from the start (dev / `?debug`) |
-| `Home` | Master sequence: restart from frame 0 (dev / `?debug`) |
 | `,` / `.` | Master sequence: one frame back / forward, paused (dev / `?debug`) |
 | `[` / `]` | Master sequence: previous / next beat (dev / `?debug`) |
 
@@ -334,12 +355,59 @@ context and the limits in force.
 - **Internal-resolution guard** (`config/quality.ts`): the drawing buffer is capped at 2560x1440
   pixels on High and 1920x1080 on Low. A 4K display or high Windows scaling lowers the pixel ratio
   and the browser upscales. `?scale=0.5..1` lowers the render resolution further on a slow PC.
-- **Start:** Space or the Start button (setup controls, bottom right; top right on small stages),
-  only once "Ready". Full screen: F11, or the Full screen button (needs a click; a refusal is
-  ignored).
+- **Start:** "Pradėti pristatymą" in the setup controls (bottom right; top right on small stages),
+  or `→` / Space, starts the talk once "Ready"; the 48 s film is the "48 s filmas" button. Full
+  screen: F11, or the Full screen button (needs a click; a refusal is ignored).
+- **Portable quality:** the portable package opens in Low (`import.meta.env.MODE === 'portable'`,
+  quality reason `portable`); `?quality=high` still overrides it. The normal build keeps its High
+  default.
 - **Failure screens:** plain words, Restart / Low quality / Reload, and "Play the backup video",
   which plays the backup video in the current language from next to the page. Technical details
   are folded.
+
+## Presentation v1: the ~7-minute talk (`src/presentation/`)
+
+A chapter / beat controller for the live university talk, separate from the frozen 48 s master
+sequence. The story, speakers and sources are in `docs/presentation-v1-review/PRESENTATION-STORY.md`.
+
+- **Script:** `chapters.ts` holds 12 chapters and 32 beats: Hook, Lithuania, Scale, Three facts,
+  Projects, Handoff dive, Fission, Control blades, Atom to electricity, Passive safety, Limits,
+  Closing. Each beat declares its camera keys, reveal, look, world targets, timed cues, overlay
+  items and input lock. Target times are speaking guides; every beat waits for a key. Camera
+  poses are presentation-only, and the frozen Stage 3 / Stage 6 poses are referenced by name, never
+  edited.
+- **Determinism:** a beat's state is a function of (the snapshot taken when it was entered, the
+  resolved beat, the time since entry) on the one `animationClock`. Forward steps play the beat's
+  choreography. Backward steps, jumps and R settle into it. A move whose look-at point travels more
+  than 600 m uses a short dip instead of a fly-through (`runtime.ts`, `config.ts`).
+- **World channels** (`world.ts`): every scalar the talk drives besides camera, reveal and look:
+  flows, control, safety, water cycle, grid, plant lights and zoom, maps, comparison, pitches, fog.
+  Each has a resting value. With the talk inactive everything rests, and the existing scene is
+  exactly as before: the 48 s film's WebGL frames are pixel-identical.
+- **Hooks into the existing scene (additive):** `setFlowSource`, `setControlSource`,
+  `setSafetySource` (consulted only while the master is idle), `setBladeScram`, the fission
+  shader's optional `chain` variant (legacy GLSL generated byte-identical), and
+  `releaseCinematicLook`. The plant root's scale (`p.zoom`) lets the plant shrink into a point on
+  a map and grow back.
+- **New scene parts** (`presentation/scene/`, talk only):
+  - the looping chain fission;
+  - the condenser, hotwells and feedwater return;
+  - the transformer, power line and instanced city;
+  - the generic large unit and the BWRX-300 row;
+  - the Lithuania and North Atlantic map tables from Natural Earth (public domain): countries via
+    world-atlas 2.0.2 (ISC), lakes from ne_50m_lakes, inlined in `data/geo.ts`;
+  - the football pitches.
+- **Copy and sources:** `copy.ts` holds the LT (default) and EN on-screen text; a key missing in
+  either language fails the type check. `sources.ts` holds every public number with its
+  organization, document, date, what it supports and its status (OFFICIAL / VENDOR / DERIVED /
+  ILLUSTRATIVE).
+- **Design system:** `design.ts` holds the type scale, colours and motion. The overlay gets them
+  as CSS variables; sizes are stage-relative with pixel floors for small print.
+- **Placeholders, by design:** `config.ts` keeps `VIRGILIJUS_EMAIL_TODO` and
+  `PUBLIC_PRESENTATION_URL_TODO`. The overlay shows them as placeholders, never as real values.
+- **Automation** (`?debug`): `window.__bwrx.talk` exposes `outline()`, `state()`, `world()`,
+  `cues()`, `start()`, `next()`, `prev()`, `home()`, `reset()`, `exit()`, `jump(flat, mode)`,
+  `find(chapter, beat)` and `previewPose(pose)`.
 
 ## Architecture notes
 

@@ -1,0 +1,157 @@
+{
+ "quality": "high",
+ "times": [
+  2,
+  5,
+  8,
+  12.5,
+  16.8,
+  18.4,
+  22,
+  26,
+  31,
+  35,
+  39.5,
+  43,
+  45.5,
+  48
+ ],
+ "builds": {
+  "old": {
+   "url": "http://localhost:4311/",
+   "hashes": {
+    "2": {
+     "full": "8095ca31da5665bb",
+     "gl": "8d53d52b87488134"
+    },
+    "5": {
+     "full": "0e8f05c20c847f67",
+     "gl": "bcdcc5c332937117"
+    },
+    "8": {
+     "full": "acd23ced53c13b12",
+     "gl": "e682a4ada2f68aa8"
+    },
+    "22": {
+     "full": "597debf5012ec532",
+     "gl": "597debf5012ec532"
+    },
+    "26": {
+     "full": "c7d78e4edd44d713",
+     "gl": "c7d78e4edd44d713"
+    },
+    "31": {
+     "full": "8a38de94db4d6dc0",
+     "gl": "8a38de94db4d6dc0"
+    },
+    "35": {
+     "full": "2c4e061ee60f0ba8",
+     "gl": "2c4e061ee60f0ba8"
+    },
+    "43": {
+     "full": "d09ed779266c2665",
+     "gl": "d09ed779266c2665"
+    },
+    "48": {
+     "full": "d290f68f467d80b1",
+     "gl": "d290f68f467d80b1"
+    },
+    "12.5": {
+     "full": "9a6f92f1a5bf7e68",
+     "gl": "9a6f92f1a5bf7e68"
+    },
+    "16.8": {
+     "full": "45893c292f9ecee5",
+     "gl": "45893c292f9ecee5"
+    },
+    "18.4": {
+     "full": "48ee733c3462b6c9",
+     "gl": "48ee733c3462b6c9"
+    },
+    "39.5": {
+     "full": "2a18e2d3e6fccddb",
+     "gl": "2a18e2d3e6fccddb"
+    },
+    "45.5": {
+     "full": "d882eb5b61432dc2",
+     "gl": "d882eb5b61432dc2"
+    }
+   },
+   "log": {
+    "console": [
+     "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+    ],
+    "errors": [],
+    "external": []
+   }
+  },
+  "new": {
+   "url": "http://localhost:4310/",
+   "hashes": {
+    "2": {
+     "full": "2ab3e90bfd2119c8",
+     "gl": "6ef9282c2264780d"
+    },
+    "5": {
+     "full": "7ea217204d7b9f0a",
+     "gl": "bcdcc5c332937117"
+    },
+    "8": {
+     "full": "8f186dda5b407acd",
+     "gl": "e682a4ada2f68aa8"
+    },
+    "22": {
+     "full": "597debf5012ec532",
+     "gl": "597debf5012ec532"
+    },
+    "26": {
+     "full": "c7d78e4edd44d713",
+     "gl": "c7d78e4edd44d713"
+    },
+    "31": {
+     "full": "8a38de94db4d6dc0",
+     "gl": "8a38de94db4d6dc0"
+    },
+    "35": {
+     "full": "2c4e061ee60f0ba8",
+     "gl": "2c4e061ee60f0ba8"
+    },
+    "43": {
+     "full": "d09ed779266c2665",
+     "gl": "d09ed779266c2665"
+    },
+    "48": {
+     "full": "d290f68f467d80b1",
+     "gl": "d290f68f467d80b1"
+    },
+    "12.5": {
+     "full": "df75dc88a15a8c42",
+     "gl": "9a6f92f1a5bf7e68"
+    },
+    "16.8": {
+     "full": "45893c292f9ecee5",
+     "gl": "45893c292f9ecee5"
+    },
+    "18.4": {
+     "full": "48ee733c3462b6c9",
+     "gl": "48ee733c3462b6c9"
+    },
+    "39.5": {
+     "full": "2a18e2d3e6fccddb",
+     "gl": "2a18e2d3e6fccddb"
+    },
+    "45.5": {
+     "full": "d882eb5b61432dc2",
+     "gl": "d882eb5b61432dc2"
+    }
+   },
+   "log": {
+    "console": [
+     "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+    ],
+    "errors": [],
+    "external": []
+   }
+  }
+ }
+}

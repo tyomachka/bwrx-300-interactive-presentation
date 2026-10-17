@@ -1,5 +1,5 @@
 /**
- * Presentation v1 debug panel (`?presentationDebug`, or `?debug` / dev with the T key): jump to any
+ * Presentation v1 debug panel (`?presentationDebug`, or T in dev / with `?debug`): jump to any
  * chapter or beat (settled, or replaying its entry), step, inspect the current beat and copy the
  * camera pose. Never part of the audience view: it only exists with those flags.
  */
