@@ -69,12 +69,15 @@ it reads frozen poses and reveal states by name and drives the scene through add
 | `effects.ts` | Installs the talk as the source for flow / control / safety (consulted only while the master is idle) | `installTalkEffects`, `removeTalkEffects`, through the additive hooks `setFlowSource`, `setControlSource`, `setSafetySource` (animation/*) and `setBladeScram` (rpv/coreLayout) |
 | `legacy.ts` | The frozen reveal at any master time | `masterRevealAt(t)` |
 | `config.ts` | Presenters, placeholders (`*_TODO`), timing constants | `PRESENTERS`, `PUBLIC_PRESENTATION_URL`, `TALK` |
+| `qrCode.ts` | The opening / closing QR: a scannable SIZE TEST (version 3-M, plain text, never a link) until the public URL is approved | `QR_CODE` |
 | `copy.ts`, `sources.ts` | On-screen text LT / EN (typed); every public number with its source and status | `useTalkCopy()`, `FACTS` |
-| `design.ts`, `ui/talk.css` | Type scale, colours, motion → CSS variables; the overlay only reads `var(--talk-…)` | `TYPE`, `COLOR`, `MOTION`, `designVariables()` |
-| `overlayLayer.ts`, `ui/TalkOverlay.tsx` | The HTML overlay in the 16:9 stage: anchored labels, count-ups, the day counter, dip; per-frame DOM writes | `updateOverlay(camera, w, h)` |
+| `design.ts`, `ui/talk.css`, `fonts/` | Stage 2 design system (B, editorial cinematic): 8 type roles, the semantic palette (amber = the one current concept), the composition grid, motion → CSS variables; the overlay only reads `var(--talk-…)`. Inter Variable bundled (`fonts/README.md`), registered and loaded by `loadTalkFont()`, which the scene's ready gate awaits | `TYPE`, `COLOR`, `GRID`, `MOTION`, `designVariables()`, `loadTalkFont()` |
+| `overlayLayer.ts`, `ui/TalkOverlay.tsx` | The HTML overlay in the 16:9 stage, four label roles: anchored labels (dot + leader, tone = process / status colour), claims, sources under what they qualify, metrics; count-ups, the day counter, the construction timeline, credits, QR, scrims, dip; per-frame DOM writes | `updateOverlay(camera, w, h)` |
 | `ui/TalkDebug.tsx` | Debug panel (`?presentationDebug`, or T in dev / `?debug`) | — |
 | `scene/TalkScene.tsx` | Mounts the talk's scene parts; TalkDriver (−97), PlantSwitches (−96: lights, `p.zoom` plant scale) | — |
-| `scene/ChainFission.tsx`, `chainConfig.ts` | The looping chain fission (Stage 10 shaders with the optional `chain` variant) | `CHAIN_LOOP`, `CHAIN_LABELS` |
+| Design study (Stage 1) | Removed from the source in Stage 2; its record stays in `docs/presentation-design-study/` | — |
+| `scene/ChainFission.tsx`, `chainConfig.ts` | The looping chain fission (Stage 10 shaders with the optional `chain` variant); consecutive chains overlap (a second particle / sprite pair, same programs), so there is no dark seam | `CHAIN_LOOP`, `CHAIN_LABELS` |
+| `scene/LimitsCues.tsx`, `limitsLayout.ts` | Chapter 11: a generic spent-fuel cask pad beside the reactor building (`l.casks`), one instanced draw | `LIMITS_PAD` |
 | `scene/WaterCycle.tsx`, `GridCity.tsx`, `Comparison.tsx`, `Pitches.tsx`, `Maps.tsx` | Condenser and feedwater; transformer, line, city; large unit and module row; pitches; LT and North Atlantic map tables (radial reveal at the plant) | — |
 | `scene/mapLayout.ts`, `data/geo.ts` | Map projections (LT 0.75 m/km; North Atlantic LAEA, Darlington at the origin), pins; Natural Earth rings (inlined) | `ltToWorld`, `worldToMap`, `pinPosition` |
 

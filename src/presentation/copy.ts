@@ -26,7 +26,7 @@ const LT = {
   'hook.kicker': 'Mažieji moduliniai reaktoriai',
   'hook.title': 'BWRX-300',
   'hook.qr': 'Interaktyvus modelis',
-  'hook.qrTodo': 'QR kodas bus čia',
+  'hook.qrTodo': 'QR dydžio bandymas – nuoroda bus vėliau',
 
   // 2 Lithuania
   'lt.stat': '50 %',
@@ -63,6 +63,7 @@ const LT = {
   'facts.monthsUnit': 'mėn.*',
   'facts.monthsCaption': 'statyba: nuo pirmojo betono reaktoriaus pastate iki kuro įkrovimo',
   'facts.monthsNote': '*Gamintojo įvertis serijiniam blokui; be licencijavimo ir finansavimo',
+  'facts.seriesUnit': 'serijinis blokas',
 
   // 5 Projects
   'projects.legend.building': 'statoma',
@@ -135,8 +136,11 @@ const LT = {
 
   // 11 Limits
   'limits.waste': 'ATLIEKOS',
+  'limits.wasteSub': 'panaudotą kurą reikia saugoti',
   'limits.licensing': 'LICENCIJAVIMAS',
+  'limits.licensingSub': 'kiekviena šalis vertina atskirai',
   'limits.cost': 'PIRMŲJŲ PROJEKTŲ RIZIKA',
+  'limits.costSub': 'kaina ir terminai dar tikslinami',
 
   // 12 Close
   'close.thesis': 'Ta pati fizika. Kitas mastelis.',
@@ -164,7 +168,7 @@ const EN: TalkCopy = {
   'hook.kicker': 'Small modular reactors',
   'hook.title': 'BWRX-300',
   'hook.qr': 'Interactive model',
-  'hook.qrTodo': 'QR code goes here',
+  'hook.qrTodo': 'QR size test – link to follow',
 
   'lt.stat': '50%',
   'lt.statCaption': "of Lithuania's electricity demand in 2025 was met by renewables",
@@ -198,6 +202,7 @@ const EN: TalkCopy = {
   'facts.monthsUnit': 'months*',
   'facts.monthsCaption': 'construction: first nuclear concrete to fuel load',
   'facts.monthsNote': '*Vendor estimate for a series (nth-of-a-kind) unit; excludes licensing and financing',
+  'facts.seriesUnit': 'series unit',
 
   'projects.legend.building': 'under construction',
   'projects.legend.licensing': 'licensing',
@@ -264,8 +269,11 @@ const EN: TalkCopy = {
   'safety.daysNote': '*Without operator action; two of the three trains are enough (GE Vernova Hitachi, GD Rev. J §3.3)',
 
   'limits.waste': 'WASTE',
+  'limits.wasteSub': 'spent fuel must be stored',
   'limits.licensing': 'LICENSING',
+  'limits.licensingSub': 'each country assesses it separately',
   'limits.cost': 'FIRST-OF-A-KIND RISK',
+  'limits.costSub': 'cost and schedule still being refined',
 
   'close.thesis': 'Same physics. Different scale.',
   'close.questions': 'Your questions',

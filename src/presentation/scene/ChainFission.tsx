@@ -15,15 +15,14 @@ import { useQualityPreset } from '../../state/store';
 import { talk } from '../talk';
 import { world } from '../world';
 import { CHAIN_LOOP, CHAIN_OPTIONS, chainData, microView } from './chainConfig';
-import { STUDY_ENABLED } from '../study/studyMode';
 
 /**
- * Design study, motion prototype C (`?study=` / `?designStudy=1` only): no dark seam. Each loop
- * starts `overlap` tau before the previous one ends; the new nuclei fade in while the old fragments
- * fade out, drawn by a second particle / sprite pair on its own tau (same programs, no new compile).
+ * No dark seam between loops (the Stage 1 blocker fix, proven as motion prototype C in
+ * docs/presentation-design-study): each loop starts `OVERLAP` τ before the previous one ends; the
+ * new nuclei fade in while the old fragments fade out, drawn by a second particle / sprite pair on
+ * its own τ (same programs, no new compile). The chapter's beats and timing are unchanged.
  */
-const SEAMLESS = import.meta.env.MODE !== 'portable' && STUDY_ENABLED;
-const SEAMLESS_OVERLAP = 1.6;
+const OVERLAP = 1.6;
 
 /** Drawn last, as the Stage 10 inset (the transparent pass sorts by renderOrder first). */
 const ORDER = { backdrop: 900, particles: 901, sprites: 902 } as const;
@@ -60,17 +59,17 @@ function build(lod: 'high' | 'low') {
     particles: { geometry: particles as BufferGeometry, material: createParticleMaterial(chainData, shared, CHAIN_OPTIONS) },
     sprites: { geometry: sprites as BufferGeometry, material: createSpriteMaterial(chainData, shared, CHAIN_OPTIONS) },
   };
-  // Study only: the overlapping loop's own tau (the geometry is shared).
-  const shared2 = SEAMLESS ? createInsetUniforms(FISSION_ANCHOR.clone()) : null;
-  const second = shared2 ? { particles: createParticleMaterial(chainData, shared2, CHAIN_OPTIONS), sprites: createSpriteMaterial(chainData, shared2, CHAIN_OPTIONS) } : null;
+  // The overlapping loop's own τ (the geometry is shared).
+  const shared2 = createInsetUniforms(FISSION_ANCHOR.clone());
+  const second = { particles: createParticleMaterial(chainData, shared2, CHAIN_OPTIONS), sprites: createSpriteMaterial(chainData, shared2, CHAIN_OPTIONS) };
   const dispose = () => {
     sphere.dispose();
     for (const p of Object.values(parts)) {
       p.geometry.dispose();
       p.material.dispose();
     }
-    second?.particles.dispose();
-    second?.sprites.dispose();
+    second.particles.dispose();
+    second.sprites.dispose();
   };
   return { shared, parts, shared2, second, dispose };
 }
@@ -105,31 +104,22 @@ export function ChainFission() {
     if (open > 0.001 && openedAt.current === null) openedAt.current = animationClock.time;
     if (open <= 0.001) openedAt.current = null;
     const elapsed = openedAt.current === null ? 0 : (animationClock.time - openedAt.current) * CHAIN_LOOP.speed;
-    let tau = elapsed % CHAIN_LOOP.period;
-    const loopFade = MathUtils.smoothstep(tau, CHAIN_LOOP.fadeIn[0], CHAIN_LOOP.fadeIn[1]) * (1 - MathUtils.smoothstep(tau, CHAIN_LOOP.fadeOut[0], CHAIN_LOOP.fadeOut[1]));
+    // Loop k starts every period - overlap; while it fades in, loop k - 1 fades out (a short
+    // cross-dissolve, both half-transparent for ~0.8 s, never an empty frame).
+    const start = CHAIN_LOOP.period - OVERLAP;
+    const k = Math.floor(elapsed / start);
+    const tau = elapsed - k * start;
     // The very first loop starts with the iris opening: no extra fade-in.
-    let fade = elapsed < CHAIN_LOOP.period ? 1 - MathUtils.smoothstep(tau, CHAIN_LOOP.fadeOut[0], CHAIN_LOOP.fadeOut[1]) : loopFade;
-    // Study (motion C): loop k starts every period - overlap; while it fades in, loop k - 1 fades out.
-    let tauOld = 0;
-    let fadeOld = 0;
-    let newerIsSecond = false;
-    if (SEAMLESS) {
-      const start = CHAIN_LOOP.period - SEAMLESS_OVERLAP;
-      const k = Math.floor(elapsed / start);
-      tau = elapsed - k * start;
-      // A short cross-dissolve (both half-transparent for ~0.8 s), never an empty frame.
-      fade = k === 0 ? 1 : MathUtils.smoothstep(tau, 0.25, 0.85);
-      if (k > 0 && tau < SEAMLESS_OVERLAP) {
-        tauOld = tau + start;
-        fadeOld = 1 - MathUtils.smoothstep(tau, 0.35, 1.0);
-      }
-      newerIsSecond = k % 2 === 1;
-    }
+    const fade = k === 0 ? 1 : MathUtils.smoothstep(tau, 0.25, 0.85);
+    const old = k > 0 && tau < OVERLAP;
+    const tauOld = old ? tau + start : 0;
+    const fadeOld = old ? 1 - MathUtils.smoothstep(tau, 0.35, 1.0) : 0;
+    const newerIsSecond = k % 2 === 1;
     const o = ease(open);
     const zoom = MathUtils.lerp(SPOT_ZOOM, 1, o);
 
     const { shared, parts } = inset;
-    // Study: the two pairs alternate between the newer and the older loop (no state is swapped).
+    // The two pairs alternate between the newer and the older loop (no state is swapped).
     const [tau1, fade1, tau2, fade2] = newerIsSecond ? [tauOld, fadeOld, tau, fade] : [tau, fade, tauOld, fadeOld];
     shared.uTau.value = tau1;
     shared.uIris.value = IRIS_FULL * zoom;
@@ -144,24 +134,22 @@ export function ChainFission() {
     if (backdrop.current) backdrop.current.visible = o > 0.002;
     if (particles.current) particles.current.visible = o * fade1 > 0.002;
     if (sprites.current) sprites.current.visible = o * fade1 > 0.002 || spot > 0.002;
-    if (inset.shared2 && inset.second) {
-      inset.shared2.uTau.value = tau2;
-      inset.shared2.uIris.value = IRIS_FULL * zoom;
-      inset.shared2.uZoom.value = zoom;
-      inset.shared2.uResolution.value.copy(shared.uResolution.value);
-      inset.second.particles.uniforms.uAlpha.value = o * fade2;
-      inset.second.sprites.uniforms.uAlpha.value = o * fade2;
-      inset.second.sprites.uniforms.uSpot.value = 0;
-      if (particles2.current) particles2.current.visible = o * fade2 > 0.002;
-      if (sprites2.current) sprites2.current.visible = o * fade2 > 0.002;
-    }
+    inset.shared2.uTau.value = tau2;
+    inset.shared2.uIris.value = IRIS_FULL * zoom;
+    inset.shared2.uZoom.value = zoom;
+    inset.shared2.uResolution.value.copy(shared.uResolution.value);
+    inset.second.particles.uniforms.uAlpha.value = o * fade2;
+    inset.second.sprites.uniforms.uAlpha.value = o * fade2;
+    inset.second.sprites.uniforms.uSpot.value = 0;
+    if (particles2.current) particles2.current.visible = o * fade2 > 0.002;
+    if (sprites2.current) sprites2.current.visible = o * fade2 > 0.002;
 
     // Labels (HTML) follow the same micro-to-screen mapping as the shaders.
     _anchor.copy(FISSION_ANCHOR).project(camera);
     microView.spot[0] = _anchor.x;
     microView.spot[1] = _anchor.y;
     microView.zoom = zoom;
-    // Labels follow the dominant loop (during a study overlap, the old one until the new one is stronger).
+    // Labels follow the dominant loop (during an overlap, the old one until the new one is stronger).
     const labelsOld = fadeOld > fade;
     microView.alpha = o * (labelsOld ? fadeOld : fade);
     microView.tau = labelsOld ? tauOld : tau;
@@ -173,12 +161,8 @@ export function ChainFission() {
       <mesh ref={backdrop} name="talk-fission-chain.backdrop" geometry={parts.backdrop.geometry} material={parts.backdrop.material} renderOrder={ORDER.backdrop} frustumCulled={false} />
       <mesh ref={particles} name="talk-fission-chain.particles" geometry={parts.particles.geometry} material={parts.particles.material} renderOrder={ORDER.particles} frustumCulled={false} />
       <mesh ref={sprites} name="talk-fission-chain.sprites" geometry={parts.sprites.geometry} material={parts.sprites.material} renderOrder={ORDER.sprites} frustumCulled={false} />
-      {SEAMLESS && inset.second && (
-        <>
-          <mesh ref={particles2} name="talk-fission-chain.particles-study" geometry={parts.particles.geometry} material={inset.second.particles} renderOrder={ORDER.particles} frustumCulled={false} visible={false} />
-          <mesh ref={sprites2} name="talk-fission-chain.sprites-study" geometry={parts.sprites.geometry} material={inset.second.sprites} renderOrder={ORDER.sprites} frustumCulled={false} visible={false} />
-        </>
-      )}
+      <mesh ref={particles2} name="talk-fission-chain.particles-overlap" geometry={parts.particles.geometry} material={inset.second.particles} renderOrder={ORDER.particles} frustumCulled={false} visible={false} />
+      <mesh ref={sprites2} name="talk-fission-chain.sprites-overlap" geometry={parts.sprites.geometry} material={inset.second.sprites} renderOrder={ORDER.sprites} frustumCulled={false} visible={false} />
     </group>
   );
 }

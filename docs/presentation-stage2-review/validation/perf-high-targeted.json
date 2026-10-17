@@ -1,0 +1,134 @@
+{
+ "gpu": "ANGLE (Intel, Intel(R) Iris(R) Plus Graphics (0x00008A52) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+ "quality": "high",
+ "size": "1920x1080",
+ "results": [
+  {
+   "beat": "hook/hero",
+   "window": 8.42,
+   "frames": 506,
+   "fps": 60.1,
+   "p95": 16.8,
+   "worst": 17.2,
+   "over20": 0,
+   "over34": 0,
+   "calls": 66,
+   "tris": 13293
+  },
+  {
+   "beat": "control/blades",
+   "window": 6.3,
+   "frames": 318,
+   "fps": 50.5,
+   "p95": 33.5,
+   "worst": 33.9,
+   "over20": 61,
+   "over34": 0,
+   "calls": 50,
+   "tris": 63485
+  },
+  {
+   "beat": "control/insert",
+   "window": 3.5,
+   "frames": 145,
+   "fps": 41.3,
+   "p95": 33.7,
+   "worst": 50.1,
+   "over20": 64,
+   "over34": 3,
+   "calls": 50,
+   "tris": 63485
+  },
+  {
+   "beat": "control/withdraw",
+   "window": 3.5,
+   "frames": 156,
+   "fps": 44.5,
+   "p95": 33.5,
+   "worst": 50,
+   "over20": 53,
+   "over34": 2,
+   "calls": 50,
+   "tris": 63485
+  },
+  {
+   "beat": "safety/normal",
+   "window": 5.7,
+   "frames": 343,
+   "fps": 60.1,
+   "p95": 16.9,
+   "worst": 17.3,
+   "over20": 0,
+   "over34": 0,
+   "calls": 118,
+   "tris": 176201
+  },
+  {
+   "beat": "safety/blackout",
+   "window": 8.8,
+   "frames": 530,
+   "fps": 60.1,
+   "p95": 16.9,
+   "worst": 17.1,
+   "over20": 0,
+   "over34": 0,
+   "calls": 114,
+   "tris": 145033
+  },
+  {
+   "beat": "safety/scram",
+   "window": 6.2,
+   "frames": 263,
+   "fps": 42.6,
+   "p95": 33.6,
+   "worst": 83.1,
+   "over20": 104,
+   "over34": 2,
+   "calls": 50,
+   "tris": 63485
+  },
+  {
+   "beat": "safety/decay",
+   "window": 4.5,
+   "frames": 192,
+   "fps": 42.8,
+   "p95": 33.7,
+   "worst": 66.4,
+   "over20": 67,
+   "over34": 9,
+   "calls": 83,
+   "tris": 126101
+  },
+  {
+   "beat": "safety/ics",
+   "window": 8.7,
+   "frames": 488,
+   "fps": 56.1,
+   "p95": 33.1,
+   "worst": 49.6,
+   "over20": 34,
+   "over34": 1,
+   "calls": 66,
+   "tris": 81825
+  },
+  {
+   "beat": "safety/days",
+   "window": 7.8,
+   "frames": 469,
+   "fps": 60.1,
+   "p95": 16.9,
+   "worst": 17.4,
+   "over20": 0,
+   "over34": 0,
+   "calls": 66,
+   "tris": 81825
+  }
+ ],
+ "log": {
+  "console": [
+   "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+  ],
+  "errors": [],
+  "external": []
+ }
+}

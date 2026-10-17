@@ -11,6 +11,7 @@ import type { CameraPose, CameraStateId, Vec3Tuple } from '../config/camera';
 import type { ComponentId } from '../scene/components';
 import type { InteriorLevel } from '../scene/section/sectionLayers';
 import type { CopyKey } from './copy';
+import type { Tone } from './design';
 import type { FactId } from './sources';
 import type { WorldChannel } from './world';
 
@@ -74,6 +75,11 @@ export interface CueSpec {
   duration: number;
 }
 
+/**
+ * Where an editorial item sits on the composition grid (presentation/design.ts GRID): the left or
+ * the right editorial column, top / middle / bottom; `y` (px at 1080p) sets the top edge instead of
+ * the default, so a metric can line up with what it describes.
+ */
 export type OverlayPosition = 'left' | 'right' | 'center' | 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
 
 /** Every overlay item may fade in on a cue (one-shot) instead of entering with the beat. */
@@ -82,42 +88,78 @@ interface ItemBase {
   cue?: string;
 }
 
+interface Placed {
+  position?: OverlayPosition;
+  /** Top edge (px at 1080p), overriding the position's default. */
+  y?: number;
+}
+
+/**
+ * The four label roles (docs/presentation-design-study/DESIGN-STUDY.md §7):
+ *  1 anchored technical label  `label`: a dot on the thing, a fine leader, short text beyond it;
+ *                              the dot carries the process / status colour (`tone`), never a border
+ *  2 chapter / claim text      `caption`, `title`: editorial placement, no card, no rule
+ *  3 source / qualifier        `source` on the item it qualifies (directly under it), or a `note`
+ *                              under the chapter label when it qualifies the whole picture
+ *  4 metric                    `stat`: number + quiet unit + one supporting line + its source
+ */
 export type OverlayItem = ItemBase &
   (
-    | { kind: 'title'; kicker?: CopyKey; title: CopyKey; sub?: CopyKey; position?: OverlayPosition; size?: 'hero' | 'large' }
-    | {
+    | ({
+        kind: 'title';
+        kicker?: CopyKey;
+        title: CopyKey;
+        sub?: CopyKey;
+        size?: 'display' | 'h1';
+        /** Line length (px at 1080p): the closing thesis breaks into two balanced lines. */
+        measure?: number;
+      } & Placed)
+    | ({
         kind: 'stat';
         value: CopyKey;
         unit?: CopyKey;
         caption?: CopyKey;
+        source?: CopyKey;
         /** Count the number up once (driven by a cue); the text around the number comes from the copy. */
         count?: { cue: string; to: number; from?: number; decimals?: number; group?: boolean };
-        position?: OverlayPosition;
-        /** Design study only: the source / qualifier set directly under the metric (not a page footer). */
-        source?: CopyKey;
-      }
-    | { kind: 'caption'; text: CopyKey; sub?: CopyKey; position?: OverlayPosition; tone?: 'plain' | 'alert'; size?: 'large' | 'small' }
+        /** `h1`: a secondary confirmation, not the frame's main idea. */
+        size?: 'metric' | 'h1';
+      } & Placed)
+    | ({ kind: 'caption'; text: CopyKey; sub?: CopyKey; source?: CopyKey; size?: 'h1' | 'h2' } & Placed)
+    /** A qualifier of the whole picture ("Schema, ne mastelis"), set under the chapter label. */
     | { kind: 'note'; text: CopyKey }
     | {
         kind: 'label';
         text: CopyKey;
         sub?: CopyKey;
-        /** World anchor (m). */
+        /** A source line under the label (map tags). */
+        source?: CopyKey;
+        /** World anchor (m): the dot sits on it. */
         at: Vec3Tuple;
-        side?: 'left' | 'right' | 'up' | 'down';
-        style?: 'tag' | 'word' | 'value' | 'anchor';
-        /** Design study only: the text sits this far from the anchor (px at 1080p), joined by a fine leader line. */
+        /** The text's offset from the anchor along a fine leader (px at 1080p). */
         leader?: readonly [number, number];
-        /** Design study only: a leader from the anchor to this fixed stage point (px at 1080p); no text box. */
+        /** Or: a leader from the anchor to this fixed stage point (px at 1080p), with the text there. */
         leaderTo?: readonly [number, number];
+        /** The dot's colour (process / status). */
+        tone?: Tone;
+        /** A hollow dot (a status still in progress: licensing, assessing). */
+        ring?: boolean;
+        /** A quiet dark backing behind the text (light 3D behind it). Light-scene beats get one anyway. */
+        panel?: boolean;
+        /** `value`: a number-sized label (the scale comparison); default the label role. */
+        size?: 'label' | 'value';
+        /** A small drawn cue beside the text (chapter 11). */
+        glyph?: 'layers' | 'schedule';
       }
-    /** Design study only (`?study=`, presentation/study): blocks the study compositions add. */
-    | { kind: 'study'; block: 'scrim' | 'timeline' | 'credits' | 'qr'; variant?: string; position?: OverlayPosition; progress?: string }
+    /** Legibility without a card: a soft gradient behind editorial type. */
+    | { kind: 'scrim'; side: 'left' | 'right' | 'bottom-left' | 'hero' }
+    /** 0-36 months with the 24-36 band; the fill follows a cue (`progress`). */
+    | ({ kind: 'timeline'; progress?: string } & Placed)
     | { kind: 'speakers'; layout: 'intro' | 'outro' }
-    | { kind: 'qr' }
+    | { kind: 'qr'; layout: 'intro' | 'outro' }
     | { kind: 'counter' }
     | { kind: 'meters' }
-    | { kind: 'legend' }
+    | { kind: 'legend'; source?: CopyKey }
     | { kind: 'pins'; focus?: 'darlington' | 'lithuania' }
     /** The fission chain's labels, placed in the micro view (presentation/scene/chainConfig.ts). */
     | { kind: 'microLabels' }

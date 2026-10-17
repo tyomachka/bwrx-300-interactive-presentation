@@ -1,0 +1,435 @@
+{
+ "mode": "full",
+ "stepsPerSecond": 30,
+ "frames": 8548,
+ "beats": [
+  {
+   "flat": 0,
+   "beat": "hook/hero",
+   "startFrame": 30,
+   "settle": 6.92,
+   "lock": 1.5,
+   "runFor": 10.933
+  },
+  {
+   "flat": 1,
+   "beat": "lithuania/renewables",
+   "startFrame": 358,
+   "settle": 5.8,
+   "lock": 2.2,
+   "runFor": 9.8
+  },
+  {
+   "flat": 2,
+   "beat": "lithuania/calm",
+   "startFrame": 652,
+   "settle": 3.6,
+   "lock": 1.8,
+   "runFor": 6.1
+  },
+  {
+   "flat": 3,
+   "beat": "lithuania/assessment",
+   "startFrame": 835,
+   "settle": 2.6,
+   "lock": 1.2,
+   "runFor": 5.1
+  },
+  {
+   "flat": 4,
+   "beat": "scale/large",
+   "startFrame": 988,
+   "settle": 7,
+   "lock": 3,
+   "runFor": 11
+  },
+  {
+   "flat": 5,
+   "beat": "scale/modules",
+   "startFrame": 1318,
+   "settle": 7.7,
+   "lock": 2.5,
+   "runFor": 10.2
+  },
+  {
+   "flat": 6,
+   "beat": "facts/power",
+   "startFrame": 1624,
+   "settle": 3.6,
+   "lock": 2,
+   "runFor": 7.6
+  },
+  {
+   "flat": 7,
+   "beat": "facts/pitches",
+   "startFrame": 1852,
+   "settle": 3.4,
+   "lock": 2,
+   "runFor": 5.9
+  },
+  {
+   "flat": 8,
+   "beat": "facts/months",
+   "startFrame": 2029,
+   "settle": 5.1,
+   "lock": 1.6,
+   "runFor": 7.6
+  },
+  {
+   "flat": 9,
+   "beat": "projects/world",
+   "startFrame": 2257,
+   "settle": 6.9,
+   "lock": 2.4,
+   "runFor": 10.9
+  },
+  {
+   "flat": 10,
+   "beat": "projects/darlington",
+   "startFrame": 2584,
+   "settle": 3.4,
+   "lock": 1.8,
+   "runFor": 5.9
+  },
+  {
+   "flat": 11,
+   "beat": "handoff/land",
+   "startFrame": 2761,
+   "settle": 4.4,
+   "lock": 3,
+   "runFor": 8.4
+  },
+  {
+   "flat": 12,
+   "beat": "handoff/descend",
+   "startFrame": 3013,
+   "settle": 15.7,
+   "lock": 5,
+   "runFor": 18.2
+  },
+  {
+   "flat": 13,
+   "beat": "fission/micro",
+   "startFrame": 3559,
+   "settle": 1.9,
+   "lock": 2,
+   "runFor": 14.5
+  },
+  {
+   "flat": 14,
+   "beat": "fission/inFuel",
+   "startFrame": 3994,
+   "settle": 1.8,
+   "lock": 1.2,
+   "runFor": 4.3
+  },
+  {
+   "flat": 15,
+   "beat": "control/blades",
+   "startFrame": 4123,
+   "settle": 4.8,
+   "lock": 2.4,
+   "runFor": 8.8
+  },
+  {
+   "flat": 16,
+   "beat": "control/insert",
+   "startFrame": 4387,
+   "settle": 2,
+   "lock": 1.8,
+   "runFor": 4.5
+  },
+  {
+   "flat": 17,
+   "beat": "control/withdraw",
+   "startFrame": 4522,
+   "settle": 2,
+   "lock": 1.8,
+   "runFor": 4.5
+  },
+  {
+   "flat": 18,
+   "beat": "energy/boil",
+   "startFrame": 4657,
+   "settle": 3.2,
+   "lock": 2.4,
+   "runFor": 7.2
+  },
+  {
+   "flat": 19,
+   "beat": "energy/steam",
+   "startFrame": 4873,
+   "settle": 5.2,
+   "lock": 3,
+   "runFor": 7.7
+  },
+  {
+   "flat": 20,
+   "beat": "energy/turbine",
+   "startFrame": 5104,
+   "settle": 7.4,
+   "lock": 3.4,
+   "runFor": 9.9
+  },
+  {
+   "flat": 21,
+   "beat": "energy/condenser",
+   "startFrame": 5401,
+   "settle": 8.8,
+   "lock": 3,
+   "runFor": 11.3
+  },
+  {
+   "flat": 22,
+   "beat": "energy/grid",
+   "startFrame": 5740,
+   "settle": 10,
+   "lock": 3,
+   "runFor": 12.5
+  },
+  {
+   "flat": 23,
+   "beat": "safety/normal",
+   "startFrame": 6115,
+   "settle": 4.2,
+   "lock": 2.6,
+   "runFor": 8.2
+  },
+  {
+   "flat": 24,
+   "beat": "safety/blackout",
+   "startFrame": 6361,
+   "settle": 7.3,
+   "lock": 1.6,
+   "runFor": 9.8
+  },
+  {
+   "flat": 25,
+   "beat": "safety/scram",
+   "startFrame": 6655,
+   "settle": 4.7,
+   "lock": 3,
+   "runFor": 7.2
+  },
+  {
+   "flat": 26,
+   "beat": "safety/decay",
+   "startFrame": 6871,
+   "settle": 3,
+   "lock": 2,
+   "runFor": 5.5
+  },
+  {
+   "flat": 27,
+   "beat": "safety/ics",
+   "startFrame": 7036,
+   "settle": 7.2,
+   "lock": 3.6,
+   "runFor": 9.7
+  },
+  {
+   "flat": 28,
+   "beat": "safety/days",
+   "startFrame": 7327,
+   "settle": 6.3,
+   "lock": 2,
+   "runFor": 8.8
+  },
+  {
+   "flat": 29,
+   "beat": "limits/limits",
+   "startFrame": 7591,
+   "settle": 5.3,
+   "lock": 2,
+   "runFor": 9.3
+  },
+  {
+   "flat": 30,
+   "beat": "close/return",
+   "startFrame": 7870,
+   "settle": 10,
+   "lock": 4,
+   "runFor": 14
+  },
+  {
+   "flat": 31,
+   "beat": "close/qa",
+   "startFrame": 8290,
+   "settle": 2.6,
+   "lock": 1,
+   "runFor": 8.6
+  }
+ ],
+ "fontsSeen": {
+  "talk-item talk-title talk-title--display talk-pos--top-left is-cued": [
+   "Inter (Inter-28pt-Medium) x14",
+   "Inter (Inter-28pt-SemiBold) x30"
+  ],
+  "talk-title__kicker": [
+   "Inter (Inter-16pt-SemiBold) x29"
+  ],
+  "talk-title__title": [
+   "Inter (Inter-28pt-SemiBold) x30"
+  ],
+  "talk-credit__text": [
+   "Inter (Inter-24pt-SemiBold) x20",
+   "Inter (Inter-17pt) x40"
+  ],
+  "talk-credit__name": [
+   "Inter (Inter-24pt-SemiBold) x20"
+  ],
+  "talk-credit__email": [
+   "Inter (Inter-17pt) x40"
+  ],
+  "talk-qr__text": [
+   "Inter (Inter-18pt-SemiBold) x20",
+   "Inter (Inter-17pt) x39"
+  ],
+  "talk-qr__label": [
+   "Inter (Inter-18pt-SemiBold) x20"
+  ],
+  "talk-qr__sub is-todo": [
+   "Inter (Inter-17pt) x39"
+  ],
+  "talk__chapter": [
+   "Inter (Inter-16pt-SemiBold) x8"
+  ],
+  "talk-item talk-stat talk-stat--metric talk-pos--left is-cued": [
+   "Inter (Inter-24pt) x69",
+   "Inter (Inter-17pt) x31"
+  ],
+  "talk-stat__value": [
+   "Inter (Inter-28pt-Medium) x19"
+  ],
+  "talk-stat__number is-counting": [
+   "Inter (Inter-28pt-Medium) x9"
+  ],
+  "talk-stat__caption": [
+   "Inter (Inter-24pt) x64"
+  ],
+  "talk-source": [
+   "Inter (Inter-17pt) x86"
+  ],
+  "talk-item talk-caption talk-caption--h1 talk-pos--left": [
+   "Inter (Inter-17pt) x48",
+   "Inter (Inter-24pt) x28",
+   "Inter (Inter-28pt-SemiBold) x23"
+  ],
+  "talk-caption__text": [
+   "Inter (Inter-28pt-SemiBold) x19"
+  ],
+  "talk-caption__sub": [
+   "Inter (Inter-24pt) x33"
+  ],
+  "talk-label__words": [
+   "Inter (Inter-16pt-SemiBold) x23",
+   "Inter (Inter-18pt) x32"
+  ],
+  "talk-label__text": [
+   "Inter (Inter-16pt-SemiBold) x23"
+  ],
+  "talk-label__sub": [
+   "Inter (Inter-18pt) x32"
+  ],
+  "talk-item talk-note is-cued": [
+   "Inter (Inter-17pt) x56"
+  ],
+  "talk-item talk-caption talk-caption--h1 talk-pos--top-left is-cued": [
+   "Inter (Inter-24pt) x31",
+   "Inter (Inter-28pt-SemiBold) x38"
+  ],
+  "talk-item talk-note is-shown": [
+   "Inter (Inter-17pt) x56"
+  ],
+  "talk-item talk-stat talk-stat--metric talk-pos--right is-cued": [
+   "Inter (Inter-24pt) x29"
+  ],
+  "talk-stat__unit": [
+   "Inter (Inter-28pt-Medium) x10"
+  ],
+  "talk-item talk-stat talk-stat--metric talk-pos--left": [
+   "Inter (Inter-24pt) x35",
+   "Inter (Inter-17pt) x84"
+  ],
+  "talk-stat__number": [
+   "Inter (Inter-28pt-Medium) x5"
+  ],
+  "talk-item talk-stat talk-stat--metric talk-pos--top-left is-cued": [
+   "Inter (Inter-24pt) x64",
+   "Inter (Inter-17pt) x68"
+  ],
+  "talk-timeline__ticks": [
+   "Inter (Inter-17pt-SemiBold) x4",
+   "Inter (Inter-17pt) x3"
+  ],
+  "talk-timeline__tick": [
+   "Inter (Inter-17pt) x2"
+  ],
+  "talk-timeline__tick is-band": [
+   "Inter (Inter-17pt-SemiBold) x2"
+  ],
+  "talk-item talk-legend talk-pos--bottom-right is-cued": [
+   "Inter (Inter-17pt) x82"
+  ],
+  "talk-legend__row": [
+   "Inter (Inter-17pt) x9"
+  ],
+  "talk-label__source": [
+   "Inter (Inter-17pt) x48"
+  ],
+  "talk-item talk-note": [
+   "Inter (Inter-17pt) x21"
+  ],
+  "talk-item talk-caption talk-caption--h2 talk-pos--bottom-left": [
+   "Inter (Inter-28pt-Medium) x33"
+  ],
+  "talk-item talk-stat talk-stat--metric talk-pos--top-right is-cued": [
+   "Inter (Inter-17pt) x61"
+  ],
+  "talk-item talk-caption talk-caption--h1 talk-pos--top-right": [
+   "Inter (Inter-24pt) x33",
+   "Inter (Inter-28pt-SemiBold) x19"
+  ],
+  "talk-meters__row": [
+   "Inter (Inter-16pt-SemiBold) x11",
+   "Inter (Inter-28pt-SemiBold) x3"
+  ],
+  "talk-meters__name": [
+   "Inter (Inter-16pt-SemiBold) x6"
+  ],
+  "talk-meters__value": [
+   "Inter (Inter-28pt-SemiBold) x3"
+  ],
+  "talk-meters__row talk-meters__row--heat": [
+   "Inter (Inter-16pt-SemiBold) x6",
+   "Inter (Inter-28pt-SemiBold) x3"
+  ],
+  "talk-item talk-counter talk-pos--right is-cued": [
+   "Inter (Inter-28pt-Medium) x8",
+   "Inter (Inter-17pt) x86"
+  ],
+  "talk-counter__value": [
+   "Inter (Inter-28pt-Medium) x8"
+  ],
+  "talk-title__sub": [
+   "Inter (Inter-28pt-Medium) x14"
+  ]
+ },
+ "cssAnimations": 81,
+ "uiBefore": {
+  "explore": false,
+  "setup": false,
+  "diagnostics": false,
+  "talkDebug": false,
+  "hoverTag": false,
+  "lang": "lt",
+  "talkActive": false
+ },
+ "log": {
+  "console": [
+   "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+  ],
+  "errors": [],
+  "external": []
+ }
+}

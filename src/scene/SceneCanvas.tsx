@@ -24,6 +24,7 @@ import { ReactorControl } from './control/ReactorControl';
 import { PassiveSafety } from './safety/PassiveSafety';
 import { FissionInset } from './fission/FissionInset';
 import { TalkScene } from '../presentation/scene/TalkScene';
+import { loadTalkFont } from '../presentation/design';
 import { OperatingFlow } from './flow/OperatingFlow';
 import { RevealDriver } from './section/RevealDriver';
 import { revealOpaqueSort } from './section/drawOrder';
@@ -204,7 +205,8 @@ function ContextLossWatcher() {
  * compileAsync collects materials synchronously, so visibility is restored right away.
  * After compiling, one warm-up frame is rendered (under the loading overlay) with that
  * content visible: it uploads its geometry and compiles the shadow-pass variants that
- * compileAsync does not cover.
+ * compileAsync does not cover. The presentation's bundled face is loaded in parallel and waited
+ * for too, so the talk's opening never flashes a fallback font (presentation/design.ts).
  */
 function ReadyGate() {
   const gl = useThree((s) => s.gl);
@@ -221,8 +223,10 @@ function ReadyGate() {
     } catch (error) {
       compiling = Promise.reject(error);
     }
+    const font = loadTalkFont();
     compiling
       .catch((error: unknown) => console.warn('[BWRX-300] Shader precompile failed; continuing.', error))
+      .then(() => font)
       .finally(() => {
         if (cancelled) return;
         try {

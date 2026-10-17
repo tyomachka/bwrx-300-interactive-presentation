@@ -7,14 +7,11 @@ import { ExplorePanel } from '../ui/ExplorePanel';
 import { SetupControls } from '../ui/SetupControls';
 import { ContextLostOverlay, SceneCrashed, WebGLUnavailable } from '../ui/StatusScreens';
 import { TalkOverlay } from '../presentation/ui/TalkOverlay';
-import { STUDY_REVIEW } from '../presentation/study/studyMode';
 import { AppErrorBoundary, SafeLayer } from './ErrorBoundary';
 import { useKeyboardShortcuts } from './useKeyboardShortcuts';
 
 const DiagnosticsOverlay = lazy(() => import('../debug/DiagnosticsOverlay'));
 const TalkDebug = lazy(() => import('../presentation/ui/TalkDebug').then((m) => ({ default: m.TalkDebug })));
-/** Design study review (`?designStudy=1`): temporary, never part of the portable build. */
-const StudyReview = import.meta.env.MODE !== 'portable' && STUDY_REVIEW ? lazy(() => import('../presentation/study/StudyReview')) : null;
 
 export function App() {
   const caps = useAppStore((s) => s.caps);
@@ -62,13 +59,6 @@ export function App() {
         <SafeLayer name="talk-debug">
           <Suspense fallback={null}>
             <TalkDebug />
-          </Suspense>
-        </SafeLayer>
-      )}
-      {StudyReview && (
-        <SafeLayer name="design-study-review">
-          <Suspense fallback={null}>
-            <StudyReview />
           </Suspense>
         </SafeLayer>
       )}

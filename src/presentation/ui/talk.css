@@ -1,8 +1,12 @@
 /*
- * Presentation v1 (the talk) on-screen copy. Every size, colour and timing is a variable written by
- * presentation/design.ts onto `.talk` (stage-relative cqh units: `.stage` is a size container), so
- * 1920x1080, 1280x800 and 1024x768 show the same composition and small print keeps a pixel floor.
- * System fonts only.
+ * Presentation v1 (the talk) on-screen copy: design B, "editorial cinematic". Every size, weight,
+ * colour, grid line and timing is a variable written by presentation/design.ts onto `.talk`
+ * (stage-relative cqh / cqw units: `.stage` is a size container), so 1920x1080, 1280x800 and
+ * 1024x768 show the same composition and small print keeps a pixel floor. 1 cqh = 10.8 px and
+ * 1 cqw = 19.2 px on the 1080p stage. One face: Inter Variable (bundled, loaded before the scene opens).
+ *
+ * Four label roles: 1 anchored technical label (dot + leader), 2 claim text (no card, no rule),
+ * 3 source / qualifier (under what it qualifies), 4 metric (number + quiet unit + one line).
  */
 .talk {
   position: absolute;
@@ -10,9 +14,12 @@
   z-index: 8;
   pointer-events: none;
   font-family: var(--talk-font);
-  color: var(--talk-text);
-  --talk-gutter: 4.8cqw;
-  font-variant-numeric: tabular-nums;
+  font-optical-sizing: auto;
+  font-kerning: normal;
+  /* Tabular figures only where numbers change (count-ups, the counter): Inter's tnum also re-spaces "-", "." and "*". */
+  font-variant-numeric: normal;
+  color: var(--talk-c-text);
+  --talk-halo: 0 0 2px rgba(6, 7, 9, 0.55), 0 1px 14px rgba(6, 7, 9, 0.8);
 }
 
 .talk__dip {
@@ -23,33 +30,53 @@
   pointer-events: none;
 }
 
-/* The tiny chapter label (not on the title compositions). */
+/* Role mixins (repeated by selector below: CSS has no mixins) ------------------------------------ */
+.talk__chapter,
+.talk-title__kicker,
+.talk-meters__name,
+.talk-label--value .talk-label__sub {
+  font-size: var(--talk-micro);
+  font-weight: var(--talk-micro-w);
+  letter-spacing: var(--talk-micro-ls);
+  line-height: var(--talk-micro-lh);
+  text-transform: uppercase;
+}
+
+.talk-source,
+.talk-note,
+.talk-label__source,
+.talk-credit__email,
+.talk-qr__sub,
+.talk-legend,
+.talk-timeline__tick {
+  font-size: var(--talk-source);
+  font-weight: var(--talk-source-w);
+  letter-spacing: var(--talk-source-ls);
+  line-height: var(--talk-source-lh);
+}
+
+/* The chapter label (not on the title compositions): quiet, no rule. ----------------------------- */
 .talk__chapter {
   position: absolute;
-  left: var(--talk-gutter);
-  top: 4.4cqh;
-  display: flex;
-  align-items: center;
-  gap: 0.9em;
-  font-size: var(--talk-size-chapter);
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--talk-qualifier);
+  left: var(--talk-left);
+  top: var(--talk-kicker);
+  color: rgba(209, 213, 217, 0.86);
+  text-shadow: var(--talk-halo);
   animation: talk-in var(--talk-in) var(--talk-ease) both;
 }
 
-/* Small print sits on whatever the scene shows (light vessel walls, map land): a soft dark halo
-   keeps it readable there and is invisible on the dark frames it was tuned for. */
-.talk__chapter,
-.talk-note,
-.talk-counter__note {
-  text-shadow:
-    0 0 2px rgba(5, 6, 7, 0.6),
-    0 1px 12px rgba(5, 6, 7, 0.85);
+/* Role 3 for the whole picture ("Schema, ne mastelis"): directly under the chapter label. */
+.talk-note {
+  left: var(--talk-left);
+  /* A floor keeps it clear of the chapter label's backing on small stages. */
+  top: calc(var(--talk-kicker) + max(3.2cqh, 24px));
+  max-width: 40cqw;
+  color: var(--talk-c-source);
+  text-shadow: var(--talk-halo);
+  text-wrap: pretty;
 }
 
-/* On a light scene (beats marked lightScene) a halo is not enough: a quiet dark backing (0.72). */
+/* Small print over light 3D (beats marked lightScene): a quiet dark backing, not a card. */
 .talk__chapter,
 .talk-note {
   transition: background-color 400ms ease;
@@ -57,17 +84,10 @@
 
 .talk--light-scene .talk__chapter,
 .talk--light-scene .talk-note {
-  margin: -0.5cqh 0 0 -0.9cqh;
-  padding: 0.5cqh 0.9cqh;
+  margin: -0.5cqh 0 0 -1cqh;
+  padding: 0.5cqh 1cqh;
   border-radius: 0.5cqh;
-  background: rgba(10, 12, 15, 0.72);
-}
-
-.talk__chapter::before {
-  content: '';
-  width: 2.4em;
-  height: 2px;
-  background: var(--talk-accent);
+  background: var(--talk-c-panel);
 }
 
 .talk-item {
@@ -85,6 +105,15 @@
 }
 
 .talk-item.is-cued.is-leaving {
+  animation: talk-out var(--talk-out) ease both;
+}
+
+/* Faded in on a cue in an earlier beat and kept: already on screen, no second entrance. */
+.talk-item.is-shown {
+  animation: none;
+}
+
+.talk-item.is-shown.is-leaving {
   animation: talk-out var(--talk-out) ease both;
 }
 
@@ -108,27 +137,39 @@
   }
 }
 
+/* The grid: left and right editorial columns (presentation/design.ts GRID) ------------------------ */
 .talk-pos--top-left {
-  left: var(--talk-gutter);
-  top: 9.4cqh;
-}
-
-.talk-pos--top-right {
-  right: var(--talk-gutter);
-  top: 9.4cqh;
-  text-align: right;
+  left: var(--talk-left);
+  top: var(--talk-top);
 }
 
 .talk-pos--left {
-  left: var(--talk-gutter);
+  left: var(--talk-left);
   top: 50%;
   translate: 0 -50%;
 }
 
+.talk-pos--bottom-left {
+  left: var(--talk-left);
+  bottom: var(--talk-bottom);
+}
+
+.talk-pos--top-right {
+  left: var(--talk-right);
+  top: var(--talk-top);
+  width: var(--talk-column);
+}
+
 .talk-pos--right {
-  right: var(--talk-gutter);
+  left: var(--talk-right);
   top: 50%;
   translate: 0 -50%;
+  width: var(--talk-column);
+}
+
+.talk-pos--bottom-right {
+  right: var(--talk-left);
+  bottom: var(--talk-bottom);
   text-align: right;
 }
 
@@ -139,463 +180,634 @@
   text-align: center;
 }
 
-.talk-pos--bottom-left {
-  left: var(--talk-gutter);
-  bottom: 12.5cqh;
+/* Scrims: legibility without a card (behind every text, inside the overlay) ----------------------- */
+.talk-scrim {
+  inset: 0;
+  z-index: -1;
 }
 
-.talk-pos--bottom-right {
-  right: var(--talk-gutter);
-  bottom: 7cqh;
+.talk-scrim--left {
+  background: linear-gradient(90deg, rgba(7, 8, 10, 0.8) 0%, rgba(7, 8, 10, 0.52) 25%, rgba(7, 8, 10, 0) 50%);
 }
 
-/* Titles ------------------------------------------------------------------------------- */
+.talk-scrim--right {
+  background: linear-gradient(270deg, rgba(7, 8, 10, 0.8) 0%, rgba(7, 8, 10, 0.55) 30%, rgba(7, 8, 10, 0) 52%);
+}
+
+.talk-scrim--bottom-left {
+  background: radial-gradient(ellipse 62% 58% at 0% 100%, rgba(7, 8, 10, 0.82) 0%, rgba(7, 8, 10, 0.5) 45%, rgba(7, 8, 10, 0) 100%);
+}
+
+.talk-scrim--hero {
+  background:
+    linear-gradient(180deg, rgba(7, 8, 10, 0.55) 0%, rgba(7, 8, 10, 0) 38%),
+    linear-gradient(0deg, rgba(7, 8, 10, 0.72) 0%, rgba(7, 8, 10, 0) 27%);
+}
+
+/* Role 2: titles and claims ----------------------------------------------------------------------- */
+.talk-title {
+  max-width: 52cqw;
+}
+
 .talk-title__kicker {
-  font-size: var(--talk-size-kicker);
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--talk-accent);
+  color: var(--talk-c-text2);
+  text-shadow: var(--talk-halo);
 }
 
 .talk-title__title {
-  margin-top: 1.2cqh;
+  margin-top: 1.6cqh;
   text-wrap: balance;
-  font-weight: 300;
-  line-height: 1.04;
-  letter-spacing: -0.005em;
-  color: var(--talk-text);
+  font-size: var(--talk-display);
+  font-weight: var(--talk-display-w);
+  letter-spacing: var(--talk-display-ls);
+  line-height: var(--talk-display-lh);
 }
 
-.talk-title--hero .talk-title__title {
-  font-size: var(--talk-size-hero);
+.talk-title--h1 .talk-title__title {
+  font-size: var(--talk-h1);
+  font-weight: var(--talk-h1-w);
+  letter-spacing: var(--talk-h1-ls);
+  line-height: var(--talk-h1-lh);
 }
 
-.talk-title--large .talk-title__title {
-  max-width: 46cqw;
-  font-size: var(--talk-size-headline);
-}
-
+/* "Jūsų klausimai": the closing's one current concept. */
 .talk-title__sub {
-  margin-top: 2.4cqh;
-  text-wrap: balance;
-  font-size: var(--talk-size-headline);
-  font-weight: 300;
-  color: var(--talk-accent);
+  margin-top: 2.8cqh;
+  font-size: var(--talk-h2);
+  font-weight: var(--talk-h2-w);
+  letter-spacing: var(--talk-h2-ls);
+  line-height: var(--talk-h2-lh);
+  color: var(--talk-c-amber);
 }
 
-/* Numbers as objects ------------------------------------------------------------------- */
+.talk-caption__text {
+  max-width: 30cqw;
+  text-wrap: balance;
+  font-size: var(--talk-h1);
+  font-weight: var(--talk-h1-w);
+  letter-spacing: var(--talk-h1-ls);
+  line-height: var(--talk-h1-lh);
+  text-shadow: var(--talk-halo);
+}
+
+.talk-caption--h2 .talk-caption__text {
+  font-size: var(--talk-h2);
+  font-weight: var(--talk-h2-w);
+  letter-spacing: var(--talk-h2-ls);
+  line-height: var(--talk-h2-lh);
+}
+
+.talk-caption__sub,
+.talk-stat__caption {
+  max-width: 28cqw;
+  margin-top: 1.6cqh;
+  text-wrap: balance;
+  font-size: var(--talk-body);
+  font-weight: var(--talk-body-w);
+  letter-spacing: var(--talk-body-ls);
+  line-height: var(--talk-body-lh);
+  color: var(--talk-c-text2);
+  text-shadow: var(--talk-halo);
+}
+
+.talk-pos--right .talk-caption__text,
+.talk-pos--top-right .talk-caption__text,
+.talk-pos--right .talk-caption__sub,
+.talk-pos--top-right .talk-caption__sub {
+  max-width: none;
+}
+
+/* Role 4: metrics ----------------------------------------------------------------------------------- */
 .talk-stat__value {
   display: flex;
   align-items: baseline;
-  gap: 1.1cqh;
-  font-size: var(--talk-size-metric);
-  font-weight: 200;
-  line-height: 1;
-  letter-spacing: -0.02em;
-  color: var(--talk-text);
+  gap: 1cqh;
   white-space: nowrap;
+  font-size: var(--talk-metric);
+  font-weight: var(--talk-metric-w);
+  letter-spacing: var(--talk-metric-ls);
+  line-height: var(--talk-metric-lh);
+  text-shadow: var(--talk-halo);
+}
+
+.talk-stat--h1 .talk-stat__value {
+  font-size: var(--talk-h1);
+  font-weight: var(--talk-h1-w);
+  letter-spacing: var(--talk-h1-ls);
+  line-height: var(--talk-h1-lh);
+}
+
+/* A number that counts up: tabular figures, so the width never jitters. */
+.talk-stat__number.is-counting,
+.talk-counter__value {
+  font-variant-numeric: tabular-nums;
 }
 
 .talk-stat__unit {
-  font-size: var(--talk-size-metric-unit);
-  font-weight: 300;
-  letter-spacing: 0;
-  color: var(--talk-accent);
+  font-size: var(--talk-h2);
+  font-weight: var(--talk-h2-w);
+  letter-spacing: var(--talk-h2-ls);
+  color: var(--talk-c-text2);
 }
 
 .talk-stat__caption {
-  max-width: 30cqw;
-  /* Even lines: no one-word widow, and a two-line caption stays clear of the scene beside it. */
-  text-wrap: balance;
-  margin-top: 2cqh;
-  font-size: var(--talk-size-support);
-  line-height: 1.38;
-  color: var(--talk-text-2);
+  margin-top: 2.2cqh;
 }
 
-/* Short claims ---------------------------------------------------------------------------- */
-.talk-caption__text {
-  max-width: 42cqw;
-  text-wrap: balance;
-  font-size: var(--talk-size-headline);
-  font-weight: 300;
-  line-height: 1.14;
-  color: var(--talk-text);
-}
-
-.talk-caption--small .talk-caption__text {
-  font-size: calc(var(--talk-size-headline) * 0.72);
-  font-weight: 400;
-}
-
-.talk-caption__sub {
-  margin-top: 1.4cqh;
-  text-wrap: balance;
-  font-size: var(--talk-size-support);
-  color: var(--talk-text-2);
-}
-
-.talk-caption--alert {
-  padding-left: 1.8cqh;
-  border-left: 3px solid var(--talk-accent);
-}
-
-/* Source qualifiers ------------------------------------------------------------------------- */
-.talk-note {
-  left: var(--talk-gutter);
+/* Role 3: the source directly under what it qualifies ------------------------------------------------- */
+.talk-source {
+  max-width: 25cqw;
+  margin-top: 1.6cqh;
+  color: var(--talk-c-source);
+  text-shadow: var(--talk-halo);
   text-wrap: pretty;
-  bottom: 4.6cqh;
-  max-width: 64cqw;
-  font-size: var(--talk-size-qualifier);
-  line-height: 1.4;
-  color: var(--talk-qualifier);
 }
 
-/* Labels anchored in the scene (positioned per frame) --------------------------------------- */
+.talk-pos--right .talk-source,
+.talk-pos--top-right .talk-source {
+  max-width: none;
+}
+
+/* In the right column a long number keeps its unit on the next line rather than leave the stage. */
+.talk-pos--right .talk-stat__value,
+.talk-pos--top-right .talk-stat__value {
+  flex-wrap: wrap;
+  row-gap: 0.6cqh;
+}
+
+/* Role 1: anchored labels (positioned per frame: the origin is the anchor) ------------------------------ */
 .talk-label {
   left: 0;
   top: 0;
+  width: 0;
+  height: 0;
   animation: none;
   will-change: transform, opacity;
-  display: flex;
-  align-items: center;
+  --dot-size: max(7px, 0.95cqh);
 }
 
 .talk-label.is-leaving {
   animation: talk-out var(--talk-out) ease both;
 }
 
-.talk-label__dot {
+.talk-label__line {
   position: absolute;
-  width: 8px;
-  height: 8px;
+  left: 0;
+  top: -0.5px;
+  width: var(--len, 0);
+  height: 1px;
+  background: var(--talk-c-line);
+  transform-origin: 0 50%;
+  transform: rotate(var(--angle, 0rad));
+}
+
+.talk-dot {
+  position: absolute;
+  left: calc(var(--dot-size) / -2);
+  top: calc(var(--dot-size) / -2);
+  width: var(--dot-size);
+  height: var(--dot-size);
   border-radius: 50%;
-  background: var(--talk-accent);
-  box-shadow: 0 0 0 3px rgba(232, 163, 61, 0.22);
+  background: var(--dot);
+  box-shadow: 0 0 0 2px rgba(6, 7, 9, 0.55);
+  box-sizing: border-box;
 }
 
-.talk-label--right .talk-label__dot {
-  left: -18px;
-  top: 50%;
-  margin-top: -4px;
+.talk-dot.is-ring {
+  background: rgba(6, 7, 9, 0.35);
+  border: 2px solid var(--dot);
 }
 
-.talk-label--left .talk-label__dot {
-  right: -18px;
-  top: 50%;
-  margin-top: -4px;
+.talk-dot--neutral {
+  --dot: var(--talk-c-text);
 }
 
-.talk-label--up .talk-label__dot {
-  bottom: -18px;
-  left: 50%;
-  margin-left: -4px;
+.talk-dot--amber {
+  --dot: var(--talk-c-amber);
 }
 
-.talk-label--down .talk-label__dot {
-  top: -18px;
-  left: 50%;
-  margin-left: -4px;
+.talk-dot--cool {
+  --dot: var(--talk-c-cool);
+}
+
+.talk-dot--steam {
+  --dot: var(--talk-c-steam);
+}
+
+.talk-dot--copper {
+  --dot: var(--talk-c-copper);
+}
+
+.talk-dot--steel {
+  --dot: var(--talk-c-steel);
+}
+
+.talk-dot--power {
+  --dot: var(--talk-c-power);
 }
 
 .talk-label__body {
+  position: absolute;
+  left: var(--dx, 0);
+  top: var(--dy, 0);
+  display: flex;
+  align-items: center;
+  gap: 1.3cqh;
+  padding: 0.5cqh 1cqh;
+  white-space: nowrap;
+  transform: translate(var(--bx, 0), var(--by, -50%));
+  transition: background-color 400ms ease;
+}
+
+.talk-label__words {
   display: flex;
   flex-direction: column;
-  white-space: nowrap;
 }
 
-.talk-label--tag .talk-label__body {
-  padding: 0.75cqh 1.3cqh 0.85cqh;
-  border-left: 2px solid var(--talk-accent);
-  border-radius: 0 6px 6px 0;
-  background: var(--talk-panel);
+.talk-label__text {
+  font-size: var(--talk-label);
+  font-weight: var(--talk-label-w);
+  letter-spacing: var(--talk-label-ls);
+  line-height: var(--talk-label-lh);
+  color: var(--talk-c-text);
+  text-shadow: var(--talk-halo);
 }
 
-.talk-label--tag .talk-label__text {
-  font-size: var(--talk-size-label);
-  font-weight: 500;
-  color: var(--talk-text);
-}
-
-.talk-label--tag .talk-label__sub {
+.talk-label__sub {
   margin-top: 0.3cqh;
-  font-size: var(--talk-size-label-sub);
-  color: var(--talk-text-2);
+  font-size: var(--talk-source);
+  font-weight: var(--talk-source-w);
+  line-height: var(--talk-source-lh);
+  color: var(--talk-c-text2);
+  text-shadow: var(--talk-halo);
 }
 
-.talk-label--word .talk-label__dot,
-.talk-label--value .talk-label__dot {
-  display: none;
+.talk-label__source {
+  margin-top: 0.5cqh;
+  color: var(--talk-c-source);
+  text-shadow: var(--talk-halo);
 }
 
-.talk-label--word .talk-label__text {
-  font-size: var(--talk-size-word);
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  color: var(--talk-text);
-  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.8);
+/* A backing only where the 3D behind is light (map land, a lit vessel): no border, no accent. */
+.talk-label.has-panel .talk-label__body,
+.talk--light-scene .talk-label__body {
+  border-radius: 0.5cqh;
+  background: var(--talk-c-panel);
 }
 
-.talk-label--value .talk-label__body {
-  align-items: center;
-  text-align: center;
+.talk-label.has-panel .talk-label__body *,
+.talk--light-scene .talk-label__body * {
+  text-shadow: none;
 }
 
+/* The scale comparison: a value-sized label (number + its quiet caps name). */
 .talk-label--value .talk-label__text {
-  font-size: var(--talk-size-value);
-  font-weight: 300;
+  font-size: var(--talk-h1);
+  font-weight: var(--talk-h1-w);
+  letter-spacing: var(--talk-h1-ls);
   line-height: 1;
-  color: var(--talk-text);
-  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.65);
 }
 
 .talk-label--value .talk-label__sub {
-  margin-top: 0.8cqh;
-  font-size: var(--talk-size-label-sub);
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--talk-accent);
+  margin-top: 0.9cqh;
+  color: var(--talk-c-text2);
 }
 
-/* Presenters -------------------------------------------------------------------------------- */
-.talk-speakers {
-  left: var(--talk-gutter);
-  bottom: 5.2cqh;
-  display: flex;
-  align-items: flex-end;
-  gap: 2.6cqw;
-  pointer-events: auto;
+/* Chapter 11: a tracked caps word with its one calm line and its drawn cue. */
+.talk-label.has-glyph .talk-label__text {
+  font-size: var(--talk-micro);
+  font-weight: var(--talk-micro-w);
+  letter-spacing: var(--talk-micro-ls);
 }
 
-.talk-speaker {
-  display: flex;
-  align-items: flex-end;
-  gap: 1.2cqw;
-  min-height: 0;
-  padding: 0;
-  border: 0;
-  background: none;
-  color: inherit;
-  text-align: left;
-  cursor: pointer;
+.talk-label.has-glyph .talk-label__sub {
+  font-size: var(--talk-label);
+  font-weight: 400;
+  color: var(--talk-c-text2);
 }
 
-.talk-speaker:hover {
-  background: none;
-}
-
-.talk-figure {
-  height: 31cqh;
-  width: auto;
+.talk-glyph {
   flex: none;
-  filter: drop-shadow(0 0.6cqh 1.4cqh rgba(0, 0, 0, 0.5));
+  height: 4.2cqh;
+  width: auto;
+  overflow: visible;
 }
 
-.talk-figure--portrait {
-  object-fit: contain;
+.talk-glyph--schedule {
+  height: 3.6cqh;
 }
 
-.talk-speaker__text {
+.talk-glyph rect,
+.talk-glyph path {
+  vector-effect: non-scaling-stroke;
+  stroke-width: 1.5;
+}
+
+.talk-glyph__back,
+.talk-glyph__mid,
+.talk-glyph__front {
+  fill: rgba(13, 15, 18, 0.85);
+  stroke: var(--talk-c-text2);
+}
+
+.talk-glyph__back {
+  stroke: var(--talk-c-steel);
+}
+
+.talk-glyph__ink {
+  fill: none;
+  stroke: var(--talk-c-steel);
+}
+
+.talk-glyph__axis {
+  fill: none;
+  stroke: var(--talk-c-steel);
+}
+
+.talk-glyph__plan,
+.talk-glyph__risk {
+  fill: var(--talk-c-text2);
+  stroke: none;
+}
+
+/* Fission micro-view labels (positioned per frame in the chain inset) */
+.talk-micro {
+  inset: 0;
+  animation: none;
+}
+
+.talk-micro .talk-label {
+  position: absolute;
+}
+
+/* The construction timeline (facts / 24-36 months) ------------------------------------------------- */
+.talk-timeline {
+  width: 52cqw;
+}
+
+.talk-timeline__track {
+  position: relative;
+  height: 0.6cqh;
+  border-radius: 0.3cqh;
+  background: rgba(236, 239, 242, 0.16);
+}
+
+.talk-timeline__fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: calc(min(var(--p, 0), 1) * 66.667%);
+  border-radius: inherit;
+  background: rgba(247, 248, 248, 0.55);
+}
+
+/* The claim's window: the frame's one current concept. */
+.talk-timeline__band {
+  position: absolute;
+  inset: -0.45cqh 0 -0.45cqh 66.667%;
+  border-radius: 0.4cqh;
+  background: var(--talk-c-amber);
+  opacity: clamp(0, calc((var(--p, 0) - 0.88) * 8.4), 1);
+}
+
+.talk-timeline__ticks {
+  position: relative;
+  height: 3.6cqh;
+  margin-top: 1.3cqh;
+}
+
+.talk-timeline__tick {
+  position: absolute;
+  top: 0;
+  translate: -50% 0;
+  color: var(--talk-c-source);
+  text-shadow: var(--talk-halo);
+}
+
+.talk-timeline__tick:first-child {
+  translate: 0 0;
+}
+
+.talk-timeline__tick:last-child {
+  translate: -100% 0;
+}
+
+.talk-timeline__tick.is-band {
+  color: var(--talk-c-text);
+  font-weight: 600;
+}
+
+/* Presenters: names and e-mails, divided by a hairline ------------------------------------------- */
+.talk-credits {
+  left: var(--talk-left);
+  bottom: var(--talk-bottom);
   display: flex;
-  flex-direction: column;
-  gap: 0.7cqh;
-  padding-bottom: 1.6cqh;
+  align-items: flex-end;
+  pointer-events: auto;
+  text-shadow: var(--talk-halo);
 }
 
-.talk-speaker__name {
-  font-size: var(--talk-size-speaker-name);
-  font-weight: 500;
-  color: var(--talk-text);
-}
-
-.talk-speaker__email {
-  font-size: var(--talk-size-speaker-email);
-  color: var(--talk-text-2);
-  text-decoration: none;
-  transition: color 200ms ease;
-}
-
-a.talk-speaker__email:hover,
-.talk-speaker.is-focused .talk-speaker__email {
-  color: var(--talk-accent);
-}
-
-.talk-speaker.is-focused .talk-speaker__email {
-  font-size: calc(var(--talk-size-speaker-email) * 1.3);
-}
-
-.talk-speaker__email.is-todo {
-  font-family: var(--mono);
-  color: rgba(232, 163, 61, 0.8);
-}
-
-/* QR ------------------------------------------------------------------------------------------ */
-.talk-qr {
-  right: var(--talk-gutter);
-  bottom: 6cqh;
+.talk-credit {
   display: flex;
   align-items: center;
   gap: 1.6cqh;
+}
+
+.talk-credit + .talk-credit {
+  margin-left: 2.4cqw;
+  padding-left: 2.4cqw;
+  border-left: 1px solid rgba(236, 239, 242, 0.24);
+}
+
+.talk-credit__portrait {
+  width: 5.6cqh;
+  height: 5.6cqh;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.talk-credit__name {
+  font-size: var(--talk-body);
+  font-weight: 600;
+  letter-spacing: var(--talk-body-ls);
+  line-height: 1.25;
+}
+
+.talk-credit__email {
+  display: block;
+  margin-top: 0.5cqh;
+  color: var(--talk-c-text2);
+  text-decoration: none;
+}
+
+a.talk-credit__email:hover {
+  color: var(--talk-c-text);
+}
+
+/* A TODO token, deliberately muted (presentation/config.ts). */
+.talk-credit__email.is-todo {
+  color: var(--talk-c-steel);
+}
+
+/* QR: a scannable size test until the public URL is approved (presentation/qrCode.ts) ----------------- */
+.talk-qr {
+  right: var(--talk-left);
+  bottom: var(--talk-bottom);
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-end;
+  gap: 2cqh;
   pointer-events: auto;
 }
 
 .talk-qr__code {
-  display: grid;
-  place-items: center;
-  width: 12.5cqh;
-  height: 12.5cqh;
-  border: 2px dashed rgba(233, 236, 239, 0.4);
-  border-radius: 10px;
-  background: rgba(10, 12, 15, 0.55);
+  flex: none;
+  width: 16cqh;
+  height: 16cqh;
+  border-radius: 0.6cqh;
 }
 
-.talk-qr__todo {
-  font-family: var(--mono);
-  font-size: 2.4cqh;
-  letter-spacing: 0.2em;
-  color: var(--talk-qualifier);
+.talk-qr--outro .talk-qr__code {
+  width: 25cqh;
+  height: 25cqh;
+}
+
+.talk-qr__paper {
+  fill: #f4f4f1;
+}
+
+.talk-qr__ink {
+  fill: #101215;
+}
+
+.talk-qr__text {
+  text-align: right;
+  text-shadow: var(--talk-halo);
 }
 
 .talk-qr__label {
-  font-size: var(--talk-size-label);
-  font-weight: 500;
-  color: var(--talk-text);
+  font-size: var(--talk-label);
+  font-weight: 600;
+  line-height: var(--talk-label-lh);
 }
 
-.talk-qr__url {
-  margin-top: 0.5cqh;
-  font-family: var(--mono);
-  font-size: var(--talk-size-qualifier);
-  color: var(--talk-qualifier);
+.talk-qr__sub {
+  margin-top: 0.6cqh;
+  color: var(--talk-c-text2);
 }
 
-/* Passive safety: the time counter and the two quiet indicators ---------------------------------- */
+.talk-qr__sub.is-todo {
+  color: var(--talk-c-source);
+}
+
+/* Passive safety: the day counter and the two quiet indicators (right column) ------------------------ */
 .talk-counter__value {
-  font-size: var(--talk-size-metric);
-  font-weight: 200;
-  line-height: 1;
-  color: var(--talk-text);
+  font-size: var(--talk-metric);
+  font-weight: var(--talk-metric-w);
+  letter-spacing: var(--talk-metric-ls);
+  line-height: var(--talk-metric-lh);
+  white-space: nowrap;
+  text-shadow: var(--talk-halo);
 }
 
 .talk-counter__track {
-  width: 26cqw;
-  height: 3px;
-  margin: 2cqh 0 1.6cqh auto;
-  background: rgba(233, 236, 239, 0.18);
+  width: 100%;
+  height: 2px;
+  margin-top: 2.2cqh;
+  background: rgba(236, 239, 242, 0.16);
   overflow: hidden;
 }
 
 .talk-counter__bar {
   width: 100%;
   height: 100%;
-  background: var(--talk-accent);
+  background: rgba(247, 248, 248, 0.85);
   transform-origin: left center;
   transform: scaleX(0);
-}
-
-.talk-counter__note {
-  max-width: 28cqw;
-  text-wrap: balance;
-  margin-left: auto;
-  font-size: var(--talk-size-qualifier);
-  line-height: 1.4;
-  color: var(--talk-qualifier);
 }
 
 .talk-meters {
   display: flex;
   flex-direction: column;
-  gap: 1.4cqh;
+  gap: 1.2cqh;
 }
 
 .talk-meters__row {
   display: flex;
   align-items: baseline;
-  justify-content: flex-end;
   gap: 1.6cqh;
 }
 
 .talk-meters__name {
-  font-size: var(--talk-size-label);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--talk-text-2);
+  min-width: 9em;
+  color: var(--talk-c-text2);
+  text-shadow: var(--talk-halo);
 }
 
 .talk-meters__value {
-  min-width: 2.6em;
-  font-size: var(--talk-size-headline);
-  font-weight: 300;
-  color: var(--talk-text);
+  font-size: var(--talk-h1);
+  font-weight: var(--talk-h1-w);
+  letter-spacing: var(--talk-h1-ls);
+  line-height: 1.1;
+  text-shadow: var(--talk-halo);
 }
 
-.talk-meters__row--warm .talk-meters__value {
-  color: #eab27a;
+/* Heat that remains: copper (heat meaning). */
+.talk-meters__row--heat .talk-meters__value {
+  color: var(--talk-c-copper);
 }
 
-/* World map legend: solid warm = under construction, warm outline = licensing, muted = planned / assessed */
+/* World map legend + its sources: solid amber = under construction (the one current concept); a
+   ring = in progress; steel = planned / assessed. */
 .talk-legend {
   display: flex;
   flex-direction: column;
-  gap: 1cqh;
-  padding: 1.6cqh 2cqh;
-  border-radius: 10px;
-  background: var(--talk-panel);
-  font-size: var(--talk-size-legend);
-  color: var(--talk-text-2);
+  align-items: flex-start;
+  gap: 0.9cqh;
+  max-width: 30cqw;
+  text-align: left;
+  color: var(--talk-c-text2);
+  text-shadow: var(--talk-halo);
+  transition: background-color 400ms ease;
+}
+
+.talk-legend .talk-source {
+  margin-top: 1.2cqh;
+}
+
+.talk--light-scene .talk-legend {
+  margin: 0 -1.2cqh -1cqh 0;
+  padding: 1.2cqh 1.4cqh;
+  border-radius: 0.6cqh;
+  background: var(--talk-c-panel);
 }
 
 .talk-legend__row {
   display: flex;
   align-items: center;
-  gap: 1.2cqh;
+  gap: 1.1cqh;
 }
 
 .talk-pin {
-  width: 1.7cqh;
-  height: 1.7cqh;
-  min-width: 10px;
-  min-height: 10px;
+  width: max(9px, 1.3cqh);
+  height: max(9px, 1.3cqh);
   border-radius: 50%;
   box-sizing: border-box;
 }
 
 .talk-pin--building {
-  background: var(--talk-accent);
-  box-shadow: 0 0 0 3px rgba(232, 163, 61, 0.25);
+  background: var(--talk-c-amber);
 }
 
 .talk-pin--licensing {
-  border: 3px solid var(--talk-accent);
+  border: 2px solid var(--talk-c-text);
 }
 
 .talk-pin--planned {
-  background: var(--talk-muted);
+  background: var(--talk-c-steel);
 }
 
 .talk-pin--assessing {
-  border: 3px solid var(--talk-muted);
-}
-
-/* Fission micro-view labels (positioned per frame in the chain inset) ------------------------- */
-.talk-micro {
-  inset: 0;
-  animation: none;
-}
-
-.talk-micro__label {
-  position: absolute;
-  left: 0;
-  top: 0;
-  padding: 0.4cqh 0.9cqh;
-  font-size: var(--talk-size-label);
-  font-weight: 500;
-  color: var(--talk-text);
-  white-space: nowrap;
-  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.8);
-  will-change: transform, opacity;
+  border: 2px solid var(--talk-c-steel);
 }
 
 /* Debug panel (?presentationDebug only) --------------------------------------------------------- */

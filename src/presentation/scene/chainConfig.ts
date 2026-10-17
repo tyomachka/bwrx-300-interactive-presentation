@@ -3,16 +3,17 @@
  * (scene/fission/fissionShaders.ts ChainOptions) and looped while the presenter explains:
  *
  *   neutron -> U-235 -> excited, dumbbell -> split -> two fragments, heat, 3 neutrons
- *   -> one neutron -> a second U-235 -> it splits too -> heat, 3 more neutrons -> fade -> again
+ *   -> one neutron -> a second U-235 -> it splits too -> heat, 3 more neutrons -> the next chain fades in over it
  *
  * Two fissions, then it stops and starts over: enough to show "chain", never an exponential burst.
  * [SCHEMATIC - NOT TO SCALE / NOT EXACT NUCLEON COUNT] as in Stage 10 (TECHNICAL_FACTS FIS-01..07).
  * Positions are micro units: screen half-heights at the inset depth (y -1..1, x +-aspect).
  */
-import { FISSION_LAYOUT as L } from '../../config/fission';
+import { FISSION_LAYOUT as L, FISSION_TIMING } from '../../config/fission';
 import { fissionChainData } from '../../scene/fission/fissionData';
 import type { ChainOptions } from '../../scene/fission/fissionShaders';
 import type { CopyKey } from '../copy';
+import type { Tone } from '../design';
 
 const data = fissionChainData();
 
@@ -28,20 +29,56 @@ export const CHAIN_OPTIONS: ChainOptions = {
   splitPoint: data.splitPointB,
 };
 
-/** The loop (τ seconds): played at `speed` τ per second, faded out at its end and in at its start. */
-export const CHAIN_LOOP = { period: 8.6, speed: 0.78, fadeIn: [0, 0.35] as const, fadeOut: [7.7, 8.4] as const } as const;
+/**
+ * The loop (τ seconds): one chain lasts `period` τ, played at `speed` τ per second. The next chain
+ * starts before this one has faded (ChainFission.tsx OVERLAP): a cross-dissolve, never a dark seam.
+ */
+export const CHAIN_LOOP = { period: 8.6, speed: 0.78 } as const;
 
 const [ax, ay] = L.a.center;
 const [bx, by] = L.b.center;
 const [sx, sy] = data.splitPoint;
 
-/** Labels in micro units, each with its τ window (shown once per loop). */
-export const CHAIN_LABELS: readonly { key: CopyKey; at: readonly [number, number]; window: readonly [number, number]; side: 'up' | 'down' | 'left' | 'right' }[] = [
-  { key: 'fission.neutron', at: [L.neutronStart[0] + 1.0, L.neutronStart[1] + 0.1], window: [0.45, 1.35], side: 'up' },
-  { key: 'fission.nucleus', at: [ax, ay + L.a.radius + 0.06], window: [0.3, 2.05], side: 'up' },
-  { key: 'fission.heat', at: [sx + 0.22, sy - 0.42], window: [2.6, 4.4], side: 'right' },
-  { key: 'fission.newNeutrons', at: [sx - 0.3, sy + 0.5], window: [2.25, 3.6], side: 'left' },
-  { key: 'fission.chain', at: [bx + 0.18, by + L.b.radius + 0.12], window: [3.4, 7.6], side: 'right' },
+/** A label that rides on a moving particle: the shader's own path (fissionShaders.ts neutron()). */
+export interface MicroPath {
+  from: readonly [number, number];
+  to: readonly [number, number];
+  /** τ window of the move; before / after it the dot rests at `from` / `to`. */
+  t: readonly [number, number];
+  /** 1 linear; > 1 the shader's ease-out 1 - (1 - x)^power. */
+  power: number;
+}
+
+export interface MicroLabel {
+  key: CopyKey;
+  /** The dot (micro units): a fixed point, or offset from a moving particle (`path`). */
+  at: readonly [number, number];
+  path?: MicroPath;
+  window: readonly [number, number];
+  leader: readonly [number, number];
+  tone: Tone;
+}
+
+const T = FISSION_TIMING;
+const xy = (v: readonly number[]) => [v[0]!, v[1]!] as const;
+/** Just above a free neutron's sphere (micro units). */
+const ABOVE_NEUTRON = [0, 0.09] as const;
+
+/**
+ * Labels in micro units, each with its τ window (shown once per loop): role-1 anchored labels, the
+ * dot on the thing, the text along a fine leader (px at 1080p). A neutron's label rides with it.
+ * Neutrons and nuclei neutral, heat copper (heat / fission meaning), the chain itself the one
+ * current concept (amber).
+ */
+export const CHAIN_LABELS: readonly MicroLabel[] = [
+  // The incoming neutron, while it crosses the view (absorbed at the end of T.neutronIn).
+  { key: 'fission.neutron', at: ABOVE_NEUTRON, path: { from: xy(L.neutronStart), to: xy(data.n0.point), t: T.neutronIn, power: 1 }, window: [0.45, 1.12], leader: [-12, -44], tone: 'neutral' },
+  { key: 'fission.nucleus', at: [ax, ay + L.a.radius + 0.03], window: [0.3, 2.05], leader: [0, -40], tone: 'neutral' },
+  // In the heat that the first split leaves along its fragments' paths.
+  { key: 'fission.heat', at: [sx + 0.06, sy + 0.01], window: [2.4, 4.2], leader: [70, 64], tone: 'copper' },
+  // The released neutron that goes on to the second U-235 (the chain).
+  { key: 'fission.newNeutrons', at: ABOVE_NEUTRON, path: { from: xy(data.splitPoint), to: xy(data.n1.point), t: [T.split, T.chainAbsorb], power: 2.2 }, window: [2.1, 2.85], leader: [-24, -44], tone: 'neutral' },
+  { key: 'fission.chain', at: [bx + 0.1, by + L.b.radius + 0.04], window: [3.4, 7.6], leader: [40, -34], tone: 'amber' },
 ];
 
 /** What the overlay needs to place the labels this frame (written by ChainFission). */

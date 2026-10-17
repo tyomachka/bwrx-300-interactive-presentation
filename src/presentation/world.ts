@@ -8,7 +8,7 @@
  *
  * Prefixes: f flow (Stage 7 channels), c control (Stage 8), s safety (Stage 9), y water cycle
  * (condenser and feedwater), g grid and city, p plant lights, x fission chain inset, m maps, lt
- * Lithuania map, w world map, k scale comparison, q football pitches, e environment.
+ * Lithuania map, w world map, k scale comparison, q football pitches, l limits, e environment.
  */
 import { FOG } from '../config/render';
 
@@ -104,6 +104,10 @@ export const WORLD_CHANNELS = {
 
   // ---- Football pitches (talk only) ----
   'q.pitches': { rest: 0, duration: 1.6 },
+
+  // ---- Limits (talk only) ----
+  /** The spent-fuel cask pad beside the reactor building rises (0..1, staggered; 0 = not drawn). */
+  'l.casks': { rest: 0, duration: 1.6 },
 
   // ---- Environment ----
   /** Fog distances (m): the studio's own fog at rest, pushed out for the wide views. */

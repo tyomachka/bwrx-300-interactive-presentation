@@ -15,7 +15,7 @@ export interface Presenter {
 }
 
 export const PRESENTERS: readonly [Presenter, Presenter] = [
-  { id: 'virgilijus', name: 'Virgilijus Kiltinavičius', email: 'VIRGILIJUS_EMAIL_TODO', portrait: null },
+  { id: 'virgilijus', name: 'Virgilijus Kiltinavičius', email: 'virgilijus.kiltinavicius@stud.vilniustech.lt', portrait: null },
   { id: 'timofej', name: 'Timofej Gaivoronskij', email: 'timofej.gaivoronskij@stud.vilniustech.lt', portrait: null },
 ];
 

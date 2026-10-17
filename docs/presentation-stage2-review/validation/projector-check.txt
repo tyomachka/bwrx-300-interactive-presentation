@@ -1,0 +1,27 @@
+none-01-hook-hero                  stage 1920x1080@y0  smallest 16.0px ('Mažieji moduliniai reaktor')  outside 0  overlaps 0 
+none-02-lithuania-renewables       stage 1920x1080@y0  smallest 16.0px ('Lietuva')  outside 0  overlaps 0 
+none-04-facts-months               stage 1920x1080@y0  smallest 16.0px ('Trys faktai')  outside 0  overlaps 0 
+none-05-projects-world             stage 1920x1080@y0  smallest 16.0px ('Projektai')  outside 0  overlaps 0 
+none-08-control-blades             stage 1920x1080@y0  smallest 16.0px ('Valdymas')  outside 0  overlaps 0 
+none-09-energy-grid                stage 1920x1080@y0  smallest 16.0px ('Nuo atomo iki elektros')  outside 0  overlaps 0 
+none-10-safety-days                stage 1920x1080@y0  smallest 16.0px ('Pasyvioji sauga')  outside 0  overlaps 0 
+none-11-limits-limits              stage 1920x1080@y0  smallest 16.0px ('Iššūkiai')  outside 0  overlaps 0 
+none-12-close-qa                   stage 1920x1080@y0  smallest 17.0px ('virgilijus.kiltinavicius@s')  outside 0  overlaps 0 
+none-01-hook-hero-1280x800         stage 1280x720@y40  smallest 12.0px ('Mažieji moduliniai reaktor')  outside 0  overlaps 0 
+none-02-lithuania-renewables-1280x800 stage 1280x720@y40  smallest 12.0px ('Lietuva')  outside 0  overlaps 0 
+none-04-facts-months-1280x800      stage 1280x720@y40  smallest 12.0px ('Trys faktai')  outside 0  overlaps 0 
+none-05-projects-world-1280x800    stage 1280x720@y40  smallest 12.0px ('Projektai')  outside 0  overlaps 0 
+none-08-control-blades-1280x800    stage 1280x720@y40  smallest 12.0px ('Valdymas')  outside 0  overlaps 0 
+none-09-energy-grid-1280x800       stage 1280x720@y40  smallest 12.0px ('Nuo atomo iki elektros')  outside 0  overlaps 0 
+none-10-safety-days-1280x800       stage 1280x720@y40  smallest 12.0px ('Pasyvioji sauga')  outside 0  overlaps 0 
+none-11-limits-limits-1280x800     stage 1280x720@y40  smallest 12.0px ('Iššūkiai')  outside 0  overlaps 0 
+none-12-close-qa-1280x800          stage 1280x720@y40  smallest 12.0px ('virgilijus.kiltinavicius@s')  outside 0  overlaps 0 
+none-01-hook-hero-1024x768         stage 1024x576@y96  smallest 12.0px ('Mažieji moduliniai reaktor')  outside 0  overlaps 0 
+none-02-lithuania-renewables-1024x768 stage 1024x576@y96  smallest 12.0px ('Lietuva')  outside 0  overlaps 0 
+none-04-facts-months-1024x768      stage 1024x576@y96  smallest 12.0px ('Trys faktai')  outside 0  overlaps 0 
+none-05-projects-world-1024x768    stage 1024x576@y96  smallest 12.0px ('Projektai')  outside 0  overlaps 0 
+none-08-control-blades-1024x768    stage 1024x576@y96  smallest 12.0px ('Valdymas')  outside 0  overlaps 0 
+none-09-energy-grid-1024x768       stage 1024x576@y96  smallest 12.0px ('Nuo atomo iki elektros')  outside 0  overlaps 0 
+none-10-safety-days-1024x768       stage 1024x576@y96  smallest 12.0px ('Pasyvioji sauga')  outside 0  overlaps 0 
+none-11-limits-limits-1024x768     stage 1024x576@y96  smallest 12.0px ('Iššūkiai')  outside 0  overlaps 0 
+none-12-close-qa-1024x768          stage 1024x576@y96  smallest 12.0px ('virgilijus.kiltinavicius@s')  outside 0  overlaps 0 

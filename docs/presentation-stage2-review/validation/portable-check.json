@@ -1,0 +1,42 @@
+{
+ "bytes": 1815784,
+ "fontDataUri": 1,
+ "interFamily": true,
+ "studyMarkers": {
+  "designStudy": 0,
+  "Study Sans": 0,
+  "Study Inter": 0,
+  "study-": 0,
+  "QR size test - BWRX-300 study": 0,
+  "StudyReview": 0,
+  "BWRXStudySansC": 0
+ },
+ "externalUrlsInHtml": [
+  "http://www.w3.org",
+  "https://react.dev",
+  "https://jcgt.org",
+  "https://docs.pmnd.rs",
+  "https://github.com",
+  "https://opencollective.com",
+  "https://gsap.com"
+ ],
+ "openingTitleFont": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+ "readyMs": 3806,
+ "fontsAtReady": [
+  "\"Inter Variable\" 100 900 loaded"
+ ],
+ "quality": "Pradėti pristatymą48 s filmasKokybėAukštaŽemaAtkurti vaizdąVisas ekranasLTEN",
+ "beats": 32,
+ "reachable": 32,
+ "external": [],
+ "log": {
+  "console": [
+   "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+  ],
+  "errors": [],
+  "requests": [
+   "file:///C:/Users/user/AppData/Local/Temp/claude/C--Users-user-Desktop-viesoji-komunikacija/e493b838-287b-4d6a-a2fc-6a391b589c63/scratchpad/portable/BWRX300.html",
+   "data:font/woff2;base64,d09GMgA"
+  ]
+ }
+}

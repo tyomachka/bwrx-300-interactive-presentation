@@ -1,5 +1,11 @@
 # Presentation V1 / Stage 1: design direction study
 
+> **Stage 2 update:** the owner selected **B, editorial cinematic**, with C's anchored technical labels
+> in chapters 7–10 and Inter Variable. Stage 2 applied it to the whole talk
+> (`docs/presentation-stage2-review/STAGE2-REPORT.md`) and removed the study code
+> (`src/presentation/study/`, `?designStudy` / `?study`): the live review mode of §1 no longer exists.
+> This document and its captures are kept as the Stage 1 record.
+
 **Status:** design study only. Not final, not approved, not committed. Nothing here is applied to the
 lecture beyond the eight blocker fixes (and one map-reveal fix) of §3. Owner + external reviewer choose the direction before
 Stage 2.

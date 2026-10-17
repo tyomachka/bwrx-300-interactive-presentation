@@ -286,11 +286,12 @@ function buildLithuania(uniforms: RevealUniforms) {
 const EMPHASIS = new Set(['Canada', 'United States of America', 'Poland', 'Estonia', 'Lithuania']);
 const WORLD_TOP = BASE_Y + 1.1;
 
+// Amber only for the one under construction (the chapter's current concept); in progress = a ring.
 const PIN_STYLE = {
   building: { color: '#e8a33d', solid: true, stem: 7 },
-  licensing: { color: '#e8a33d', solid: false, stem: 4.5 },
-  planned: { color: '#9aa1a8', solid: true, stem: 0 },
-  assessing: { color: '#9aa1a8', solid: false, stem: 0 },
+  licensing: { color: '#e9ecef', solid: false, stem: 4.5 },
+  planned: { color: '#8a939c', solid: true, stem: 0 },
+  assessing: { color: '#8a939c', solid: false, stem: 0 },
 } as const;
 
 function buildWorld(uniforms: RevealUniforms) {

@@ -20,6 +20,7 @@ import { GridCity } from './GridCity';
 import { Comparison } from './Comparison';
 import { Maps } from './Maps';
 import { Pitches } from './Pitches';
+import { LimitsCues } from './LimitsCues';
 
 /** The talk's per-frame evaluation: after the clock and camera (-100), before the effects' drivers (-95). */
 function TalkDriver() {
@@ -106,6 +107,7 @@ export function TalkScene() {
       <Comparison />
       <Maps />
       <Pitches />
+      <LimitsCues />
       <OverlayDriver />
     </>
   );

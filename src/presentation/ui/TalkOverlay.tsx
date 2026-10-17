@@ -3,29 +3,21 @@
  * items (presentation/types.ts OverlayItem); items keep their element across beats when the id
  * stays (no re-animation), new ones enter, removed ones fade out. An item with a `cue` fades in
  * once on that cue instead. Everything that moves per frame (anchored labels, count-ups, the time
- * counter, micro labels, the dip) is positioned by presentation/overlayLayer.ts.
- * Typography, colour and motion come from presentation/design.ts (CSS variables on the root).
+ * counter, micro labels, progress, the dip) is positioned by presentation/overlayLayer.ts.
+ * Typography, colour, grid and motion come from presentation/design.ts (CSS variables on the root).
  */
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import { Vector3 } from 'three';
 import { useLanguageStore, type Language } from '../../i18n/language';
-import { isPlaceholder, PRESENTERS, PUBLIC_PRESENTATION_URL, type Presenter } from '../config';
+import { isPlaceholder, PRESENTERS, PUBLIC_PRESENTATION_URL } from '../config';
 import { useTalkCopy, type TalkCopy } from '../copy';
-import { designVariables } from '../design';
+import { designVariables, stageX, stageY, type Tone } from '../design';
 import { overlayLayer } from '../overlayLayer';
+import { QR_CODE } from '../qrCode';
 import { CHAIN_LABELS } from '../scene/chainConfig';
 import { TALK_BEATS, useTalkStore } from '../talk';
 import type { OverlayItem } from '../types';
-import { PresenterFigure } from './PresenterFigure';
-import { STUDY_ENABLED, useStudyStore } from '../study/studyMode';
-import { studyVariables } from '../study/tokens';
-import { StudyBlock } from '../study/StudyBlocks';
 import './talk.css';
-
-// Design study (`?study=` / `?designStudy=1`): its stylesheet and fonts load only then; the
-// portable build compiles every study path out.
-const STUDY_ON = import.meta.env.MODE !== 'portable' && STUDY_ENABLED;
-if (STUDY_ON) void import('../study/study.css');
 
 const LEAVE_MS = 400;
 
@@ -63,8 +55,7 @@ export function TalkOverlay() {
   const items = active ? beat.overlay : EMPTY;
   const shown = useShownItems(items);
   const dip = useRef<HTMLDivElement>(null);
-  const study = useStudyStore((s) => (STUDY_ON ? s.direction : null));
-  const style = useMemo(() => ({ ...designVariables(), ...(STUDY_ON && study ? studyVariables(study) : {}) }) as CSSProperties, [study]);
+  const style = useMemo(() => designVariables() as CSSProperties, []);
 
   useLayoutEffect(() => {
     overlayLayer.dip = dip.current;
@@ -74,7 +65,7 @@ export function TalkOverlay() {
   const label = active && !beat.chapter.hideLabel ? copy[beat.chapter.label] : null;
 
   return (
-    <div className={`talk${active ? ' is-active' : ''}${active && beat.beat.lightScene ? ' talk--light-scene' : ''}`} lang={language} style={style} data-study={study ?? undefined}>
+    <div className={`talk${active ? ' is-active' : ''}${active && beat.beat.lightScene ? ' talk--light-scene' : ''}`} lang={language} style={style}>
       <div ref={dip} className="talk__dip" style={{ opacity: 0 }} />
       {label && (
         <div key={beat.chapter.id} className="talk__chapter">
@@ -88,10 +79,13 @@ export function TalkOverlay() {
   );
 }
 
+/** An item's top edge on the grid when the beat sets one (`y`, px at 1080p). */
+const placedTop = (y?: number): CSSProperties | undefined => (y === undefined ? undefined : { top: stageY(y), bottom: 'auto', translate: 'none' });
+
 function Item({ item, leaving, copy, language }: { item: OverlayItem; leaving: boolean; copy: TalkCopy; language: Language }) {
   const base = (cls: string, position?: string) => `talk-item ${cls}${position ? ` talk-pos--${position}` : ''}${leaving ? ' is-leaving' : ''}`;
   // Anchored items position themselves per frame; their cue drives their opacity there.
-  if (item.kind === 'label') return <Anchored item={item} className={base(`talk-label talk-label--${item.style ?? 'tag'} talk-label--${item.side ?? 'right'}`)} copy={copy} />;
+  if (item.kind === 'label') return <Anchored item={item} className={base('talk-label')} copy={copy} />;
   if (item.kind === 'pins') return null; // the world map draws its pins in 3D; the names are labels
   if (item.kind === 'microLabels') {
     return (
@@ -102,82 +96,99 @@ function Item({ item, leaving, copy, language }: { item: OverlayItem; leaving: b
       </div>
     );
   }
-  const wrap = (cls: string, position: string | undefined, children: ReactNode) => (
-    <Cued id={item.id} cue={item.cue} className={base(cls, position)} studyId={STUDY_ON ? item.id : undefined}>
+  const wrap = (cls: string, position: string | undefined, children: ReactNode, style?: CSSProperties) => (
+    <Cued id={item.id} cue={item.cue} className={base(cls, position)} style={style}>
       {children}
     </Cued>
   );
   switch (item.kind) {
     case 'title':
       return wrap(
-        `talk-title talk-title--${item.size ?? 'hero'}`,
+        `talk-title talk-title--${item.size ?? 'display'}`,
         item.position ?? 'top-left',
         <>
           {item.kicker && <div className="talk-title__kicker">{copy[item.kicker]}</div>}
-          <div className="talk-title__title">{copy[item.title]}</div>
+          <div className="talk-title__title" style={item.measure ? { maxWidth: stageX(item.measure) } : undefined}>
+            {copy[item.title]}
+          </div>
           {item.sub && <div className="talk-title__sub">{copy[item.sub]}</div>}
         </>,
+        placedTop(item.y),
       );
     case 'stat':
-      return wrap('talk-stat', item.position ?? 'left', <Stat item={item} copy={copy} language={language} />);
+      return wrap(`talk-stat talk-stat--${item.size ?? 'metric'}`, item.position ?? 'left', <Stat item={item} copy={copy} language={language} />, placedTop(item.y));
     case 'caption':
       return wrap(
-        `talk-caption talk-caption--${item.tone ?? 'plain'} talk-caption--${item.size ?? 'large'}`,
-        item.position ?? 'bottom-left',
+        `talk-caption talk-caption--${item.size ?? 'h1'}`,
+        item.position ?? 'top-left',
         <>
           <div className="talk-caption__text">{copy[item.text]}</div>
           {item.sub && <div className="talk-caption__sub">{copy[item.sub]}</div>}
+          {item.source && <div className="talk-source">{copy[item.source]}</div>}
         </>,
+        placedTop(item.y),
       );
     case 'note':
       return wrap('talk-note', undefined, copy[item.text]);
+    case 'scrim':
+      return wrap(`talk-scrim talk-scrim--${item.side}`, undefined, null);
+    case 'timeline':
+      return wrap('talk-timeline', item.position ?? 'bottom-left', <Timeline id={item.id} progress={item.progress} />, placedTop(item.y));
     case 'speakers':
-      return wrap(`talk-speakers talk-speakers--${item.layout}`, undefined, <Speakers />);
+      return wrap(`talk-credits talk-credits--${item.layout}`, undefined, <Credits />);
     case 'qr':
-      return wrap('talk-qr', undefined, <Qr copy={copy} />);
+      return wrap(`talk-qr talk-qr--${item.layout}`, undefined, <Qr copy={copy} />);
     case 'counter':
-      return wrap('talk-counter', 'top-right', <Counter id={item.id} cue={item.cue ?? ''} copy={copy} language={language} />);
+      return wrap('talk-counter', 'right', <Counter id={item.id} cue={item.cue ?? ''} copy={copy} language={language} />);
     case 'meters':
       return wrap(
         'talk-meters',
-        'top-right',
+        'right',
         <>
           <div className="talk-meters__row">
             <span className="talk-meters__name">{copy['safety.fission']}</span>
             <span className="talk-meters__value">{copy['safety.fissionValue']}</span>
           </div>
-          <div className="talk-meters__row talk-meters__row--warm">
+          <div className="talk-meters__row talk-meters__row--heat">
             <span className="talk-meters__name">{copy['safety.decay']}</span>
             <span className="talk-meters__value">{copy['safety.decayValue']}</span>
           </div>
         </>,
       );
-    case 'study':
-      return STUDY_ON ? wrap(`study-${item.block} study-${item.block}--${item.variant ?? 'default'}`, item.position, <StudyBlock item={item} copy={copy} />) : null;
     case 'legend':
       return wrap(
         'talk-legend',
         'bottom-right',
-        (['building', 'licensing', 'planned', 'assessing'] as const).map((status) => (
-          <div key={status} className="talk-legend__row">
-            <span className={`talk-pin talk-pin--${status}`} aria-hidden="true" />
-            {copy[`projects.legend.${status}`]}
-          </div>
-        )),
+        <>
+          {(['building', 'licensing', 'planned', 'assessing'] as const).map((status) => (
+            <div key={status} className="talk-legend__row">
+              <span className={`talk-pin talk-pin--${status}`} aria-hidden="true" />
+              {copy[`projects.legend.${status}`]}
+            </div>
+          ))}
+          {item.source && <div className="talk-source">{copy[item.source]}</div>}
+        </>,
       );
   }
 }
 
-/** A cue-driven fade (per frame, overlayLayer.ts), or the plain entrance animation without a cue. */
-function Cued({ id, cue, className, children, studyId }: { id: string; cue?: string; className: string; children: ReactNode; studyId?: string }) {
+/**
+ * A cue-driven fade (per frame, overlayLayer.ts), or the plain entrance animation without a cue. An
+ * item that faded in on a cue and stays into the next beat without one (same id) simply stays: it
+ * must not replay its entrance (a blink on the press).
+ */
+function Cued({ id, cue, className, children, style }: { id: string; cue?: string; className: string; children: ReactNode; style?: CSSProperties }) {
   const ref = useRef<HTMLDivElement>(null);
+  const [wasCued, setWasCued] = useState(!!cue);
+  if (cue && !wasCued) setWasCued(true);
   useLayoutEffect(() => {
     if (!cue || !ref.current) return;
     overlayLayer.cued.set(id, { el: ref.current, cue });
     return () => void overlayLayer.cued.delete(id);
   }, [id, cue]);
+  const cls = cue ? `${className} is-cued` : wasCued ? `${className} is-shown` : className;
   return (
-    <div ref={ref} className={cue ? `${className} is-cued` : className} style={cue ? { opacity: 0 } : undefined} data-id={studyId}>
+    <div ref={ref} className={cls} style={cue ? { ...style, opacity: 0 } : style}>
       {children}
     </div>
   );
@@ -213,12 +224,45 @@ function Stat({ item, copy, language }: { item: Extract<OverlayItem, { kind: 'st
   return (
     <>
       <div className="talk-stat__value">
-        <span ref={value}>{count ? '' : copy[item.value]}</span>
+        <span ref={value} className={count ? 'talk-stat__number is-counting' : 'talk-stat__number'}>
+          {count ? '' : copy[item.value]}
+        </span>
         {item.unit && <span className="talk-stat__unit">{copy[item.unit]}</span>}
       </div>
       {item.caption && <div className="talk-stat__caption">{copy[item.caption]}</div>}
-      {item.source && <div className="talk-stat__source">{copy[item.source]}</div>}
+      {item.source && <div className="talk-source">{copy[item.source]}</div>}
     </>
+  );
+}
+
+function Dot({ tone, ring }: { tone: Tone; ring?: boolean }) {
+  return <span className={`talk-dot talk-dot--${tone}${ring ? ' is-ring' : ''}`} aria-hidden="true" />;
+}
+
+/** Small drawn cues for chapter 11 (stroke only, the label's colours). */
+function Glyph({ glyph }: { glyph: 'layers' | 'schedule' }) {
+  if (glyph === 'layers') {
+    // Layered approvals: three offset sheets.
+    return (
+      <svg className="talk-glyph talk-glyph--layers" viewBox="0 0 44 40" aria-hidden="true">
+        <rect x="13" y="1" width="26" height="30" rx="2" className="talk-glyph__back" />
+        <rect x="8" y="5" width="26" height="30" rx="2" className="talk-glyph__mid" />
+        <rect x="3" y="9" width="26" height="30" rx="2" className="talk-glyph__front" />
+        <path d="M8 18h16M8 23h16M8 28h10" className="talk-glyph__ink" />
+      </svg>
+    );
+  }
+  // A schedule with an uncertain end: a solid bar, then dashes fading out.
+  return (
+    <svg className="talk-glyph talk-glyph--schedule" viewBox="0 0 120 40" aria-hidden="true">
+      <path d="M2 30h116" className="talk-glyph__axis" />
+      <path d="M2 26v8M40 26v8M78 26v8" className="talk-glyph__axis" />
+      <rect x="2" y="9" width="52" height="9" rx="1.5" className="talk-glyph__plan" />
+      <rect x="56" y="9" width="10" height="9" rx="1.5" className="talk-glyph__risk" opacity="0.7" />
+      <rect x="69" y="9" width="10" height="9" rx="1.5" className="talk-glyph__risk" opacity="0.45" />
+      <rect x="82" y="9" width="10" height="9" rx="1.5" className="talk-glyph__risk" opacity="0.25" />
+      <rect x="95" y="9" width="10" height="9" rx="1.5" className="talk-glyph__risk" opacity="0.12" />
+    </svg>
   );
 }
 
@@ -226,17 +270,21 @@ function Anchored({ item, className, copy }: { item: Extract<OverlayItem, { kind
   const ref = useRef<HTMLDivElement>(null);
   useLayoutEffect(() => {
     if (!ref.current) return;
-    overlayLayer.anchors.set(item.id, { el: ref.current, at: new Vector3(...item.at), side: item.side ?? 'right', cue: item.cue, leader: item.leader, leaderTo: item.leaderTo });
+    overlayLayer.anchors.set(item.id, { el: ref.current, at: new Vector3(...item.at), cue: item.cue, leader: item.leader, leaderTo: item.leaderTo });
     return () => void overlayLayer.anchors.delete(item.id);
   }, [item]);
-  const leader = !!(item.leader || item.leaderTo);
+  const cls = `${className} talk-label--${item.size ?? 'label'}${item.panel ? ' has-panel' : ''}${item.glyph ? ' has-glyph' : ''}`;
   return (
-    <div ref={ref} className={leader ? `${className} talk-label--leader` : className} style={{ visibility: 'hidden' }} data-id={STUDY_ON ? item.id : undefined}>
-      {leader && <span className="talk-label__line" aria-hidden="true" />}
-      <span className="talk-label__dot" aria-hidden="true" />
+    <div ref={ref} className={cls} style={{ visibility: 'hidden' }}>
+      <span className="talk-label__line" aria-hidden="true" />
+      <Dot tone={item.tone ?? 'neutral'} ring={item.ring} />
       <span className="talk-label__body">
-        <span className="talk-label__text">{copy[item.text]}</span>
-        {item.sub && <span className="talk-label__sub">{copy[item.sub]}</span>}
+        {item.glyph && <Glyph glyph={item.glyph} />}
+        <span className="talk-label__words">
+          <span className="talk-label__text">{copy[item.text]}</span>
+          {item.sub && <span className="talk-label__sub">{copy[item.sub]}</span>}
+          {item.source && <span className="talk-label__source">{copy[item.source]}</span>}
+        </span>
       </span>
     </div>
   );
@@ -246,12 +294,45 @@ function MicroLabel({ id, label, copy }: { id: string; label: (typeof CHAIN_LABE
   const ref = useRef<HTMLDivElement>(null);
   useLayoutEffect(() => {
     if (!ref.current) return;
-    overlayLayer.micro.set(id, { el: ref.current, at: label.at, window: label.window, side: label.side });
+    overlayLayer.micro.set(id, { el: ref.current, at: label.at, path: label.path, window: label.window, leader: label.leader });
     return () => void overlayLayer.micro.delete(id);
   }, [id, label]);
   return (
-    <div ref={ref} className={`talk-micro__label talk-micro__label--${label.side}`} style={{ visibility: 'hidden' }}>
-      {copy[label.key]}
+    <div ref={ref} className="talk-label talk-label--label talk-label--micro" style={{ visibility: 'hidden' }}>
+      <span className="talk-label__line" aria-hidden="true" />
+      <Dot tone={label.tone} />
+      <span className="talk-label__body">
+        <span className="talk-label__words">
+          <span className="talk-label__text">{copy[label.key]}</span>
+        </span>
+      </span>
+    </div>
+  );
+}
+
+/** 0-36 months: the fill runs to 24 with its cue, then the 24-36 band (the claim) lights. */
+const MONTHS = [0, 12, 24, 36] as const;
+
+function Timeline({ id, progress }: { id: string; progress?: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  useLayoutEffect(() => {
+    if (!progress || !ref.current) return;
+    overlayLayer.progress.set(id, { el: ref.current, cue: progress, shown: '' });
+    return () => void overlayLayer.progress.delete(id);
+  }, [id, progress]);
+  return (
+    <div ref={ref} className="talk-timeline__body" style={progress ? undefined : ({ '--p': 1 } as CSSProperties)}>
+      <div className="talk-timeline__track">
+        <div className="talk-timeline__fill" />
+        <div className="talk-timeline__band" />
+      </div>
+      <div className="talk-timeline__ticks">
+        {MONTHS.map((m) => (
+          <span key={m} className={`talk-timeline__tick${m >= 24 ? ' is-band' : ''}`} style={{ left: `${(m / 36) * 100}%` }}>
+            {m}
+          </span>
+        ))}
+      </div>
     </div>
   );
 }
@@ -279,44 +360,49 @@ function Counter({ id, cue, copy, language }: { id: string; cue: string; copy: T
       <div className="talk-counter__track">
         <div ref={bar} className="talk-counter__bar" />
       </div>
-      <div className="talk-counter__note">{copy['safety.daysNote']}</div>
+      <div className="talk-source">{copy['safety.daysNote']}</div>
     </>
   );
 }
 
-function Speakers() {
-  const [focused, setFocused] = useState<Presenter['id'] | null>(null);
+/**
+ * The presenters: names and e-mails, divided by a hairline (no figures). A photo-based likeness
+ * (presentation/config.ts `portrait`) appears as a small round mark once it exists.
+ */
+function Credits() {
   return (
     <>
-      {PRESENTERS.map((p, i) => (
-        <button key={p.id} type="button" className={`talk-speaker${focused === p.id ? ' is-focused' : ''}`} style={{ '--i': i } as CSSProperties} onClick={() => setFocused((f) => (f === p.id ? null : p.id))}>
-          <PresenterFigure presenter={p} variant={i} />
-          <span className="talk-speaker__text">
-            <span className="talk-speaker__name">{p.name}</span>
+      {PRESENTERS.map((p) => (
+        <div key={p.id} className="talk-credit">
+          {p.portrait && <img className="talk-credit__portrait" src={p.portrait} alt="" />}
+          <div className="talk-credit__text">
+            <div className="talk-credit__name">{p.name}</div>
             {isPlaceholder(p.email) ? (
-              <span className="talk-speaker__email is-todo">{p.email}</span>
+              <div className="talk-credit__email is-todo">{p.email}</div>
             ) : (
-              <a className="talk-speaker__email" href={`mailto:${p.email}`} onClick={(e) => e.stopPropagation()}>
+              <a className="talk-credit__email" href={`mailto:${p.email}`}>
                 {p.email}
               </a>
             )}
-          </span>
-        </button>
+          </div>
+        </div>
       ))}
     </>
   );
 }
 
 function Qr({ copy }: { copy: TalkCopy }) {
-  const todo = isPlaceholder(PUBLIC_PRESENTATION_URL);
+  const n = QR_CODE.modules + 8; // a 4-module quiet zone on each side
+  const todo = QR_CODE.test || isPlaceholder(PUBLIC_PRESENTATION_URL);
   return (
     <>
-      <div className="talk-qr__code" aria-hidden="true">
-        {todo ? <span className="talk-qr__todo">QR</span> : null}
-      </div>
+      <svg className="talk-qr__code" viewBox={`-4 -4 ${n} ${n}`} shapeRendering="crispEdges" role="img" aria-label="QR">
+        <rect x={-4} y={-4} width={n} height={n} className="talk-qr__paper" />
+        <path d={QR_CODE.path} className="talk-qr__ink" />
+      </svg>
       <div className="talk-qr__text">
         <div className="talk-qr__label">{copy['hook.qr']}</div>
-        <div className="talk-qr__url">{todo ? copy['hook.qrTodo'] : PUBLIC_PRESENTATION_URL}</div>
+        <div className={`talk-qr__sub${todo ? ' is-todo' : ''}`}>{todo ? copy['hook.qrTodo'] : copy['close.explore']}</div>
       </div>
     </>
   );
