@@ -1,0 +1,5 @@
+c02: 211 frames, frames with any flashing pixel 40, most pixels 340 px (f143, densest tile 5%), densest tile 5% at f135 (325 px), solid pops (> 200 px and a tile >= 50 %): 0
+c03: 241 frames, frames with any flashing pixel 65, most pixels 5013 px (f42, densest tile 22%), densest tile 27% at f43 (4350 px), solid pops (> 200 px and a tile >= 50 %): 0
+c05: 181 frames, frames with any flashing pixel 74, most pixels 94 px (f20, densest tile 2%), densest tile 2% at f20 (94 px), solid pops (> 200 px and a tile >= 50 %): 0
+c06: 601 frames, frames with any flashing pixel 131, most pixels 3265 px (f26, densest tile 15%), densest tile 15% at f26 (3265 px), solid pops (> 200 px and a tile >= 50 %): 0
+frames over 200 flashing px: 0

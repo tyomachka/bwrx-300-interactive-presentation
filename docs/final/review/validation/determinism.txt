@@ -1,0 +1,8 @@
+2:press    Lithuania                    60 / 60 identical
+3:press    scale / vessels              60 / 60 identical
+4:press    facts / footprint            60 / 60 identical
+5:press    project map                  60 / 60 identical
+6:press    handoff / ground / descent   60 / 60 identical
+7:press    fission to steady state      90 / 90 identical
+12:press   closing                      60 / 60 identical
+total 450 / 450 identical (two independent browser sessions, clock pinned, real presses, Low, full frame)

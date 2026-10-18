@@ -1,0 +1,55 @@
+{
+ "rows": [
+  {
+   "window": "2:press",
+   "name": "Lithuania",
+   "samples": 60,
+   "identical": 60,
+   "mismatchIdx": []
+  },
+  {
+   "window": "3:press",
+   "name": "scale / vessels",
+   "samples": 60,
+   "identical": 60,
+   "mismatchIdx": []
+  },
+  {
+   "window": "4:press",
+   "name": "facts / footprint",
+   "samples": 60,
+   "identical": 60,
+   "mismatchIdx": []
+  },
+  {
+   "window": "5:press",
+   "name": "project map",
+   "samples": 60,
+   "identical": 60,
+   "mismatchIdx": []
+  },
+  {
+   "window": "6:press",
+   "name": "handoff / ground / descent",
+   "samples": 60,
+   "identical": 60,
+   "mismatchIdx": []
+  },
+  {
+   "window": "7:press",
+   "name": "fission to steady state",
+   "samples": 90,
+   "identical": 90,
+   "mismatchIdx": []
+  },
+  {
+   "window": "12:press",
+   "name": "closing",
+   "samples": 60,
+   "identical": 60,
+   "mismatchIdx": []
+  }
+ ],
+ "identical": 450,
+ "total": 450
+}

@@ -123,7 +123,21 @@ bright core interiors, as before). Not optimised further: Low is the delivery pr
 
 ## 8. Determinism (`validation/determinism-*.json`)
 
-Targeted windows (Lithuania, scale / footprint, map, handoff, fission steady state, closing), two independent sessions, full frame and WebGL-only: recorded in §12 (running at the time of the release commit).
+Two independent browser sessions, clock pinned, real presses (previous chapter settled, then →), Low, **full frame
+(WebGL + HTML overlay)**, SHA-256 per sample:
+
+| Window | Samples identical |
+|---|---|
+| Lithuania (chapter 2, 30 s) | 60 / 60 |
+| Scale / vessels (3, 36 s) | 60 / 60 |
+| Facts / footprint / 24–36 (4, 34 s) | 60 / 60 |
+| Project map (5, 28 s) | 60 / 60 |
+| Handoff / ground switch / descent (6, 20 s) | 60 / 60 |
+| Fission to the steady state (7, 45 s) | 90 / 90 |
+| Closing (12, 26 s) | 60 / 60 |
+| **Total** | **450 / 450** |
+
+Full-frame identity already includes the overlay, so the WebGL-only repeat was not needed.
 
 ## 9. Other gates
 
@@ -136,7 +150,7 @@ Targeted windows (Lithuania, scale / footprint, map, handoff, fission steady sta
 | QR | decodes to the live URL from 1920×1080 screenshots down to a quarter-size, blurred copy (~2 px / module) |
 | Language | LT by default; EN from the setup bar outside the talk (the bar is hidden while the talk runs) |
 | Console / network | 0 page errors, only the known `THREE.Clock` deprecation warning; 0 external requests in every run |
-| Rehearsal simulation | the 6:55 capture with presses at the narration times is recorded in §12 and `review/` |
+| Rehearsal simulation | the 6:55 talk with presses at the narration times: `review/final-presentation-rehearsal-1080p.mp4` (§12) |
 
 ## 10. Review package (`docs/final/review/`)
 
@@ -167,4 +181,5 @@ Targeted windows (Lithuania, scale / footprint, map, handoff, fission steady sta
 | Repository | stays **private** (Pages public) |
 | Portable (`validation/portable/`) | rebuilt from the release source; opened from `file://`: ready in 12 s, 12 chapters by 11 presses, 0 external requests, 0 errors, QR decodes |
 | Projectors (`validation/projector.txt`) | full re-run on the final build: **96 stills** (24 moments × LT 1920×1080, 1280×800, 1024×768 + EN 1920×1080): **0** texts outside the stage, **0** overlaps, **0** outside the 4 % safe zone; `review/final-projector-sheet.png` |
-| Determinism, rehearsal video | added by the next commit (captures still running at this commit) |
+| Determinism | **450 / 450** identical samples (§8) |
+| Rehearsal video | `review/final-presentation-rehearsal-1080p.mp4`: 6:56 (1 s pre-roll + the 12 narration windows 25 / 30 / 40 / 40 / 35 / 25 / 40 / 25 / 50 / 50 / 25 / 30 s), presses at the planned narration times, 1×, 12 480 frames at 30 fps stepped deterministically, H.264 High 1080p30 BT.709. Chapters 1-8 in one continuous session; to finish sooner, chapters 9, 10 and 11-12 were captured by parallel sessions, each entering its first chapter by a real press from the previous chapter settled — exactly the frame the continuous run holds at that press; the junction frames were checked (mean frame-to-frame change at the joins 0.25-2.8 levels, the same as their neighbours). 0 errors, 0 external requests |
