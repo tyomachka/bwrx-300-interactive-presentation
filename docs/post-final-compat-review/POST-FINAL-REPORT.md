@@ -1,6 +1,6 @@
 # Post-final compatibility polish — report
 
-**Status: VALIDATED** (all required checks below pass on the final build). Commit, Pages run and live checks: §8.
+**Status: RELEASED** — validated, committed `e818a32`, deployed to Pages and checked live (§8).
 
 | | |
 |---|---|
@@ -224,4 +224,20 @@ inside its folder, and none of the verdicts depends on the camera). No desktop f
 
 ## 8. Release record
 
-See §8 in the follow-up commit.
+| | |
+|---|---|
+| Change commit | **`e818a32`** *post-final: phone explore mode, startup gate and fallback, QR to ?mode=explore* on `presentation-v1`; `main` fast-forwarded from `18cd9e5`, both pushed without force |
+| Pages workflow | the push did not start it (as for every earlier deploy), so it was dispatched on `main`: run **39164162294**, head `e818a32`, **success** (build 24 s, deploy 11 s) — https://github.com/tyomachka/bwrx-300-interactive-presentation/actions/runs/39164162294 |
+| Live site | https://tyomachka.github.io/bwrx-300-interactive-presentation/ serves **`index-D5zpMWe9.js`**, the validated build (`npm run check` rebuilt it byte-identical) |
+| Repository | stays **private** (Pages public) |
+
+Live checks (Chrome, `validation/live/`): **12 / 12**
+
+| Check | Result |
+|---|---|
+| base URL on a computer | lecture set-up ("Pradėti pristatymą", "48 s filmas"), ready 3.5 s; start + 11 presses reach the Q&A |
+| opening / closing QR (`live-opening.png`, `live-closing.png`) | both decode to exactly `https://tyomachka.github.io/bwrx-300-interactive-presentation/?mode=explore` |
+| `?mode=explore` on a computer | the interactive model directly, no set-up bar (`live-explore-desktop.png`) |
+| `?forceFallback=1` | the HTML fallback, no canvas, poster loaded, no video button on Pages (`live-fallback.png`) |
+| phone portrait 390×844 @3, base URL and `?mode=explore` | model only, no lecture UI, no overflow, canvas 390×844 CSS / 585×1266 buffer (`live-phone-portrait.png`) |
+| every page | 0 page errors, 0 requests outside the site; console: only the known `THREE.Clock` warning |

@@ -1,0 +1,127 @@
+[
+  {
+    "name": "live page serves the new build",
+    "ok": true,
+    "detail": {
+      "bundle": "index-D5zpMWe9.js"
+    }
+  },
+  {
+    "name": "desktop base URL → presentation set-up",
+    "ok": true,
+    "detail": {
+      "explore": false,
+      "start": [
+        "Pradėti pristatymą",
+        "48 s filmas",
+        "Aukšta",
+        "Žema",
+        "Atkurti vaizdą",
+        "Visas ekranas",
+        "LT",
+        "EN"
+      ],
+      "readyMs": 3486
+    }
+  },
+  {
+    "name": "desktop: start + 11 presses reach the Q&A",
+    "ok": true,
+    "detail": {
+      "stop": 11,
+      "presses": 11
+    }
+  },
+  {
+    "name": "desktop: no page errors, no external requests",
+    "ok": true,
+    "detail": {
+      "errors": [],
+      "external": [],
+      "console": [
+        "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+      ]
+    }
+  },
+  {
+    "name": "?mode=explore → the interactive model directly",
+    "ok": true,
+    "detail": {
+      "explore": true,
+      "setup": false,
+      "sheet": true
+    }
+  },
+  {
+    "name": "?mode=explore: no errors, no external requests",
+    "ok": true,
+    "detail": {
+      "errors": [],
+      "external": []
+    }
+  },
+  {
+    "name": "?forceFallback=1 → the HTML fallback (no WebGL), poster loaded, no video button on Pages",
+    "ok": true,
+    "detail": {
+      "reason": "failed/forced",
+      "canvas": false,
+      "poster": 1280,
+      "video": false
+    }
+  },
+  {
+    "name": "fallback: no errors, no external requests",
+    "ok": true,
+    "detail": {
+      "errors": [],
+      "external": []
+    }
+  },
+  {
+    "name": "phone portrait base URL → model only, no lecture UI",
+    "ok": true,
+    "detail": {
+      "explore": true,
+      "lecture": false,
+      "overflow": false,
+      "canvas": [
+        390,
+        844,
+        585,
+        1266
+      ]
+    }
+  },
+  {
+    "name": "phone: no errors, no external requests",
+    "ok": true,
+    "detail": {
+      "errors": [],
+      "external": []
+    }
+  },
+  {
+    "name": "phone portrait ?mode=explore → model only, no lecture UI",
+    "ok": true,
+    "detail": {
+      "explore": true,
+      "lecture": false,
+      "overflow": false,
+      "canvas": [
+        390,
+        844,
+        585,
+        1266
+      ]
+    }
+  },
+  {
+    "name": "phone: no errors, no external requests",
+    "ok": true,
+    "detail": {
+      "errors": [],
+      "external": []
+    }
+  }
+]
