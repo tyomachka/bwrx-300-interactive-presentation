@@ -1,0 +1,55 @@
+# Publishes the web build (`npm run build`, dist/) to GitHub Pages.
+# The portable / offline package (`npm run build:portable`) is not touched.
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # The build needs the root files, src/ and build-tools/ only; docs/ (~640 MB of review media)
+      # is never downloaded.
+      - uses: actions/checkout@v7
+        with:
+          sparse-checkout: |
+            src
+            build-tools
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      # The public site serves the compiled app only: the source maps (the full TypeScript source)
+      # stay out of the Pages artifact. Local `dist/` builds keep them.
+      - name: Strip source maps
+        run: |
+          find dist -name '*.map' -delete
+          find dist -name '*.js' -exec sed -i '/^\/\/# sourceMappingURL=/d' {} +
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5
