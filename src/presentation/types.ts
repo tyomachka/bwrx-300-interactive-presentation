@@ -115,6 +115,8 @@ export type OverlayItem = ItemBase &
         kicker?: CopyKey;
         title: CopyKey;
         sub?: CopyKey;
+        /** The sub-line fades in on its own cue (later than the title). */
+        subCue?: string;
         size?: 'display' | 'h1';
         /** Line length (px at 1080p): the closing thesis breaks into two balanced lines. */
         measure?: number;
@@ -129,6 +131,8 @@ export type OverlayItem = ItemBase &
         count?: { cue: string; to: number; from?: number; decimals?: number; group?: boolean };
         /** `h1`: a secondary confirmation, not the frame's main idea. */
         size?: 'metric' | 'h1';
+        /** A secondary figure under the caption, fading in on its own cue (Lithuania: local generation). */
+        detail?: { text: CopyKey; cue: string };
       } & Placed)
     | ({ kind: 'caption'; text: CopyKey; sub?: CopyKey; source?: CopyKey; size?: 'h1' | 'h2' } & Placed)
     /** A qualifier of the whole picture ("Schema, ne mastelis"), set under the chapter label. */

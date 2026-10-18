@@ -7,7 +7,7 @@
  *  - DERIVED       computed by us from official figures (the arithmetic is in `supports`);
  *  - ILLUSTRATIVE  a visual comparison, not a technical equivalence.
  *
- * Accessed 2026-10-17 unless stated. Reference documents are kept locally in references/technical/
+ * Accessed 2026-10-17 / 2026-10-18 unless stated (statuses current on 2026-10-18). Reference documents are kept locally in references/technical/
  * (git-ignored); TECHNICAL_FACTS.md holds the verified Stage 1-10 facts these build on.
  */
 
@@ -43,42 +43,42 @@ export const FACTS = {
     status: 'OFFICIAL',
   },
   footprint: {
-    claim: 'The BWRX-300 power block covers about 1.6 international football pitches of area (about 148 x 78 m)',
-    organization: 'GE Hitachi Nuclear Energy',
-    document: 'GE-Hitachi, BWRX-300 General Description, 005N9751 Revision F (Released for Information); copy filed with the CNSC as CMD 24-H3 Ref R1-9',
-    where: '§9 (plant layout), p. 63 of 95; https://api.cnsc-ccsn.gc.ca/dms/digital-medias/CMD-24-H3-Ref-R1-9-GEH-005N9751-BWRX-300-General-Description-Rev-F.pdf/object',
-    date: 'December 2023 (downloaded 2026-10-17, sha256 dd6b9dd0...c11f)',
+    claim: 'The BWRX-300 power block covers ≈ 9,800 m2: about 1.4 football pitches of area (105 x 68 m = 7,140 m2)',
+    organization: 'GE Vernova Hitachi',
+    document: GD,
+    where: 'Table 21-2 "Plant Powerblock Footprint", p. 123',
+    date: GD_DATE,
     supports:
-      '"The power block is comprised of the RB, TB, CB, RWB, and the Turbine Maintenance Building. The footprint of the power block is approximately 148 m x 78 m." 148 x 78 = 11,544 m2 = 1.62 x 7,140 m2 (one 105 x 68 m pitch). The current Rev J (June 2026) no longer states the sides: Table 21-2 (p. 123) gives "Plant Powerblock Footprint 9,800 m2 (rectangular building envelope)" (= 1.37 pitches) and §10 (p. 77) lists the same buildings. GE Vernova\'s product page: "small enough to fit within two international football pitches" (area; the 148 x 78 m rectangle does not nest in two 105 x 68 m rectangles).',
-    status: 'DERIVED',
+      '"Plant Powerblock Footprint 9,800 m2 (rectangular building envelope)". 9,800 / 7,140 = 1.37 -> "≈ 1,4 futbolo aikštės ploto" (DERIVED ratio). Rev J gives no side lengths, so the rectangle on screen is an area-equivalent schematic with the pitch\'s width (68 x 144.1 m), labelled "plotui lygiavertė schema". Superseded on screen: the older GD Rev F (Dec 2023, p. 63) "approximately 148 m x 78 m" (11,544 m2, 1.6 pitches), used in Stage 3. GE Vernova\'s product page: "small enough to fit within two international football pitches" (not used).',
+    status: 'OFFICIAL',
   },
   pitch: {
-    claim: 'An international-size pitch is 105 x 68 m; the National Stadium being built in Vilnius is a UEFA category IV project',
+    claim: 'A 105 x 68 m pitch (7,140 m2) is what UEFA requires of category 3 and 4 stadiums; the National Stadium being built in Vilnius is a UEFA category IV project',
     organization: 'UEFA; LRT (Lithuanian National Radio and Television)',
     document: 'UEFA Stadium Infrastructure Regulations (in force 1 June 2025), Article 5.01 "Field of play"; LRT, "Nacionalinis stadionas pamažu kyla" (2025-09-03)',
     where: 'https://documents.uefa.com/r/PxVtjcYr9Ntgwd0wYgq2xw/snbCQQ1y5eRWxnjVf4WgnQ ; https://www.lrt.lt/naujienos/verslas/4/2662517/nacionalinis-stadionas-pamazu-kyla-pasizvalgykite-kaip-vyksta-darbai',
-    date: 'accessed 2026-10-17',
+    date: 'accessed 2026-10-17 / 2026-10-18',
     supports:
-      'UEFA art. 5.01: categories 3 and 4, field of play length "105m", width "68m". LRT: piles drilled for a "UEFA IV kategorijos stadiono" in Šeškinė, 18,000 seats, a football-only stadium (no running track), completion planned for the end of 2027. No published construction drawing with the pitch size was found: the screen shows an international-size 105 x 68 m pitch and names the stadium only as the category it is built to.',
+      'UEFA art. 5.01: categories 3 and 4, field of play length "105m", width "68m". LRT: piles drilled for a "UEFA IV kategorijos stadiono" in Šeškinė, 18,000 seats, completion planned for the end of 2027. The screen names the stadium only as a UEFA category IV project ("Vilniaus Nacionalinis stadionas — UEFA IV kategorijos projektas"); the 105 x 68 m size comes from the UEFA rule, not from a stadium drawing (none was found).',
     status: 'OFFICIAL',
   },
   constructionTime: {
-    claim: '24-36 months, nth-of-a-kind, first nuclear concrete to ready for fuel load',
+    claim: '24-36 months*: the vendor target for later (nth-of-a-kind) units, first nuclear concrete to ready for fuel load; not the whole licensing and project time',
     organization: 'GE Vernova',
     document: GEV_PAGE,
     where: GEV_URL,
     date: 'accessed 2026-10-17',
     supports:
-      '"can be built in approximately 24-36 months from first nuclear concrete pour to ready for fuel load" (nth-of-a-kind units). The newer GD Rev J says "30-36 months from the time of first safety-related concrete to ready to load fuel" (§18, p. 101) and "<30 months" nth-of-a-kind (Table 21-2, p. 125). Excludes licensing, financing and site preparation.',
+      '"can be built in approximately 24-36 months from first nuclear concrete pour to ready for fuel load" (nth-of-a-kind units). The newer GD Rev J says "30-36 months from the time of first safety-related concrete to ready to load fuel" (§18, p. 101) and "<30 months" nth-of-a-kind (Table 21-2, p. 125). A vendor target, not a demonstrated industry average; excludes licensing, financing and site preparation (the qualifier on screen).',
     status: 'VENDOR',
   },
   homes: {
-    claim: '~300,000 homes (scale illustration)',
+    claim: '≈ 300,000 homes* (a manufacturer illustrative comparison)',
     organization: 'GE Vernova',
     document: GEV_PAGE,
     where: GEV_URL,
     date: 'accessed 2026-10-17',
-    supports: '"enough to power approximately 300,000 homes". A vendor figure; depends on the household consumption assumed.',
+    supports: '"enough to power approximately 300,000 homes". On screen with "*GE Vernova iliustracinis palyginimas; faktinis skaičius priklauso nuo vartojimo"; not in the narration.',
     status: 'VENDOR',
   },
   coreCounts: {
@@ -91,12 +91,12 @@ export const FACTS = {
     status: 'OFFICIAL',
   },
   naturalCirculation: {
-    claim: 'Water circulates through the core without recirculation pumps',
+    claim: 'Normal flow through the core needs no large recirculation pumps: natural circulation (direct-cycle BWR)',
     organization: 'GE Vernova Hitachi',
     document: GD,
     where: 'Table 2-1 p. 28; §3.1.1',
     date: GD_DATE,
-    supports: 'Reactor coolant recirculation: "Natural Circulation" (ABWR: internal pumps)',
+    supports: 'Reactor coolant recirculation: "Natural Circulation" (ABWR: internal pumps). Worded as "normaliai cirkuliacijai per aktyviąją zoną nereikia didelių recirkuliacinių siurblių", never "no pumps in the reactor" (the plant has feedwater, condensate and other pumps).',
     status: 'OFFICIAL',
   },
   condenserLoop: {
@@ -165,13 +165,13 @@ export const FACTS = {
     status: 'OFFICIAL',
   },
   largeUnit: {
-    claim: 'One ~1,500 MW unit ~ five 300 MW modules (capacity illustration); the large plant drawn at matched scale with an illustrative layout',
-    organization: 'GE Vernova Hitachi (reference values)',
+    claim: 'One ~1,535 MW (net) unit ≈ five 300 MW modules in total output (capacity illustration, not a one-to-one substitute); the large plant drawn at matched scale with an illustrative layout',
+    organization: 'GE Vernova Hitachi (reference values); U.S. NRC',
     document: GD,
     where: 'Table 2-1, p. 28',
     date: GD_DATE,
     supports:
-      'Large BWRs of the same family: ABWR ~1,350 MWe and ESBWR ~1,600 MWe gross, vs BWRX-300 ~316 MWe gross. ~1,535 / ~300 net = 5.1. Capacity only: not a claim that five SMRs equal one large unit in cost, output profile or site. The large plant\'s buildings are a simplified BWR massing (no public drawing gives the ESBWR building sides); on screen: "Mastelis suderintas; pastatų išdėstymas iliustracinis".',
+      'Large BWRs of the same family: ABWR ~1,350 MWe and ESBWR ~1,600 MWe gross, vs BWRX-300 ~316 MWe gross. NRC ESBWR ~1,535 MWe net / ~300 net = 5.1. Capacity only: not a claim that five SMRs equal one large unit in cost, output profile or site ("ne vienas prie vieno pakaitalas" on screen). The large plant\'s buildings are a simplified BWR massing, mirrored so the reactor buildings stand side by side (no public drawing gives the ESBWR building sides); on screen: "Pastatų išdėstymas iliustracinis; mastelis suderintas".',
     status: 'ILLUSTRATIVE',
   },
   esbwr: {
@@ -214,22 +214,23 @@ export const FACTS = {
     status: 'OFFICIAL',
   },
   poland: {
-    claim: 'Poland (OSGE): development and licensing; first site Włocławek',
-    organization: 'GE Vernova Hitachi; ORLEN',
-    document: `${GD} §1 p. 8; ORLEN press release "ORLEN and Synthos reach agreement paving the way for Poland's first SMR nuclear power plant in Włocławek"`,
-    where: 'https://www.orlen.pl/en/about-the-company/media/press-releases/current/2025/August-2025/',
-    date: 'GD June 2026; ORLEN August 2025',
-    supports: 'GD: "in Poland with decisions in principle to construct issued to ORLEN Synthos Green Energy (OSGE)". ORLEN: the first plant is planned in Włocławek. Not under construction.',
+    claim: 'Poland (ORLEN Synthos Green Energy): the national generic BWRX-300 design is being developed; first site Włocławek; not under construction',
+    organization: 'GE Vernova Hitachi; ORLEN Synthos Green Energy; ORLEN',
+    document: 'NucNet, "GE Vernova And OSGE Sign Polish Generic Design Agreement For BWRX-300" (2026-02-25); GD Rev J §1 p. 8; ORLEN press release (August 2025)',
+    where: 'https://www.nucnet.org/news/ge-vernova-and-osge-sign-polish-generic-design-agreement-for-bwrx-300-2-3-2026 ; https://www.orlen.pl/en/about-the-company/media/press-releases/current/2025/August-2025/',
+    date: '2026-02-25 (agreement); accessed 2026-10-18',
+    supports:
+      'The Poland Generic Design Agreement (signed in Washington): OSGE funds a detailed BWRX-300 design as the reference model for SMR projects in Poland, compliant with Polish regulations. Decisions in principle (2023) for up to 24 SMRs at six sites; the first plant planned in Włocławek. No construction licence: map status "kuriamas bendrasis BWRX-300 projektas", legend "rengiamas projektas".',
     status: 'OFFICIAL',
   },
   estonia: {
-    claim: 'Estonia (Fermi Energia): BWRX-300 planned',
-    organization: 'GE Vernova',
-    document: GEV_PAGE,
-    where: GEV_URL,
-    date: 'accessed 2026-10-17',
-    supports: 'Fermi Energia, Estonia: BWRX-300 project, "600 MWe" proposed total output. Planning stage (site selection); no licence.',
-    status: 'VENDOR',
+    claim: 'Estonia (Fermi Energia): BWRX-300 selected, plant planned (site selection); no licence',
+    organization: 'Fermi Energia; GE Vernova',
+    document: `${GEV_PAGE}; NucNet, "Fermi Energia focused on site selection for Estonia SMR project, says CEO" (2026-03-04)`,
+    where: `${GEV_URL} ; https://www.nucnet.org/news/fermi-energia-focused-on-site-selection-for-estonia-smr-project-says-ceo-4-3-2026`,
+    date: 'accessed 2026-10-18',
+    supports: 'Fermi Energia selected the BWRX-300 (February 2023) for a proposed two-unit plant; in 2026 the company is focused on site selection. Map status "pasirinkta, planuojama"; nothing implies construction.',
+    status: 'OFFICIAL',
   },
   lithuaniaMou: {
     claim: 'Lithuania is assessing the BWRX-300 (memorandum, Feb 2026)',
@@ -244,12 +245,13 @@ export const FACTS = {
 
   // ---- Lithuania's electricity -------------------------------------------------------------------
   ltRenewables2025: {
-    claim: 'In 2025 wind, solar and other renewables produced 50 % of Lithuania\'s electricity demand',
+    claim: "In 2025 renewable generation equalled 49.9 % of Lithuania's total electricity demand ('50 %'); all local generation 73.3 % of demand",
     organization: 'Litgrid (Lithuanian transmission system operator)',
-    document: '"Litgrid metų apžvalga: Lietuvos atsinaujinančių išteklių elektrinės pirmą kartą užtikrino pusę šalies elektros poreikio"',
-    where: 'https://www.litgrid.eu/naujienos/litgrid-metu-apzvalga-lietuvos-atsinaujinanciu-istekliu-elektrines-pirma-karta-uztikrino-puse-salies-elektros-poreikio',
-    date: '2026-01-28',
-    supports: '"vien tik vėjo, saulės ir kitų atsinaujinančių išteklių elektrinės per metus pagamino 50 proc." of annual demand; local plants 73 %; wind 4.293 TWh, solar 1.79 TWh; imports 6.071 TWh; total demand 13.261 TWh.',
+    document: 'Litgrid, "Elektros gamybos ir vartojimo balanso duomenys" (national annual balance, 2025); Litgrid annual review (2026-01-28)',
+    where: 'https://www.litgrid.eu/sistema/elektros-energetikos-sistema/elektros-gamybos-ir-vartojimo-balanso-duomenys ; https://www.litgrid.eu/naujienos/litgrid-metu-apzvalga-lietuvos-atsinaujinanciu-istekliu-elektrines-pirma-karta-uztikrino-puse-salies-elektros-poreikio',
+    date: '2025 annual balance, accessed 2026-10-18',
+    supports:
+      '2025: "Elektros energijos gamyba (Neto)" 9.718 TWh; "Bendras elektros energijos poreikis Lietuvoje" 13.261 TWh; "Bendras elektros energijos suvartojimas Lietuvoje" 12.576 TWh; "AEI gamybos dalis vietos generacijoje" 68.1 %; "AEI gamybos dalis tenkanti poreikiui" 49.9 %; "Visos gamybos rodiklis nuo poreikio" 73.3 %; imports 6.071 TWh, exports 2.468 TWh. The denominator on screen is demand ("poreikio"), never consumption; 68.1 % (share of local generation) is not shown.',
     status: 'OFFICIAL',
   },
 } satisfies Record<string, Fact>;

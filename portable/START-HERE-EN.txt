@@ -27,16 +27,18 @@ controls before starting (LT switches back). The choice is remembered on this co
 
 During the talk
 ---------------
-  Right arrow / Space / Page Down   next step (the first press starts the talk)
-  Left arrow / Page Up              previous step
+  Right arrow / Space / Page Down   next chapter (the first press starts the talk)
+  Left arrow / Page Up              previous chapter (straight to its final picture)
   Home                              back to the opening picture
-  R                                 re-establish the current step (use this after any accidental key)
-  Esc                               leave the talk for free exploration; Right arrow returns to the same step
+  R                                 re-establish the current chapter's final picture (after any accidental key)
+  Esc                               leave the talk for free exploration; Right arrow returns to the same chapter
   F11                               full screen on / off
 
 Presenter clickers work: most send Page Down / Page Up.
-Every step waits for the next key; nothing moves on by itself, and a second press while the picture
-is still moving is ignored. The closing picture stays on screen for the questions.
+The talk has 12 chapters: 11 presses from the opening to the questions. A press enters a chapter, which
+plays its own animations in time with the narration and then waits (the processes on screen keep moving);
+it never moves on to the next chapter by itself. A second press within 1.2 s is ignored; after that a
+press goes straight to the next chapter. The closing picture (QR code, contacts) stays on for the questions.
 The controls only appear when the mouse moves, and never during the talk.
 The picture keeps its 16:9 shape on any projector; 4:3 or 16:10 screens show black bars.
 
@@ -61,7 +63,7 @@ The backup video is the 48 s film, not the whole talk.
 
 Browsers tested (Windows 11, Intel Iris Plus graphics, opened directly from the folder)
 ---------------------------------------------------------------------------------------
-  The talk:    Chrome 155   Low quality: 60 frames per second on every step     recommended
+  The talk:    Chrome 155   Low quality: 60 frames per second in every chapter  recommended
   The 48 s film (earlier test):
                Chrome 155   works; Low quality plays smoothly (no slow frames)    recommended
                Edge 155     works; Low quality plays smoothly (no slow frames)    recommended

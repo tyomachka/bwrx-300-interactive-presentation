@@ -14,14 +14,19 @@ import { FISSION_LAYOUT as L, FISSION_LOOK as K } from '../../config/fission';
 import { fissionData, type NucleusData } from '../../scene/fission/fissionData';
 import { seededRandom } from '../../scene/flow/flowPaths';
 import type { InsetUniforms } from '../../scene/fission/fissionShaders';
+import { COLOR } from '../design';
 import { A_LOST_ANGLE, FIELD_CYCLE as C, FIELD_IDLE, FIELD_MOTION as M, FIELD_RINGS, FIELD_VIEW } from './fieldConfig';
 
 const f = (x: number) => Number(x).toFixed(6);
+
+/** The chain-carrying neutron's tint and trail (design.ts amber: the frame's one current concept). */
+const CHAIN_TINT = COLOR.amber;
 type V2 = readonly [number, number];
 
 interface Site {
   posA: V2;
   posB: V2;
+  posC: V2;
   phase: number;
   period: number;
   flight: number;
@@ -44,15 +49,21 @@ function buildSites(): Site[] {
     const first = sites.length;
     firstOfRing.push(first);
     const n = ring.sites.length;
+    const period = ring.steps.reduce((a, b) => a + b, 0);
+    let offset = 0;
     ring.sites.forEach((p, k) => {
-      const jitter = 0.13 + 0.07 * rnd();
+      // Three positions in turn for the nucleus that replaces a split one (a fresh U-235 near the spot).
       const ja = rnd() * Math.PI * 2;
+      const jb = ja + 2.1 + 0.8 * rnd();
+      const ra = 0.18 + 0.1 * rnd();
+      const rb = 0.22 + 0.12 * rnd();
       sites.push({
         posA: p,
-        posB: [p[0] + Math.cos(ja) * jitter, p[1] + Math.sin(ja) * jitter],
-        phase: ring.start + k * ring.step,
-        period: n * ring.step,
-        flight: ring.step - C.excite,
+        posB: [p[0] + Math.cos(ja) * ra, p[1] + Math.sin(ja) * ra],
+        posC: [p[0] + Math.cos(jb) * rb, p[1] + Math.sin(jb) * rb],
+        phase: ring.start + offset,
+        period,
+        flight: ring.steps[k]! - C.excite,
         next: first + ((k + 1) % n),
         seed: -1,
         seedFlight: 0,
@@ -62,6 +73,7 @@ function buildSites(): Site[] {
       });
       const s = sites[sites.length - 1]!;
       s.lost[1] = s.lost[0] + 2.1 + 0.6 * rnd();
+      offset += ring.steps[k]!;
     });
   });
   // The growth: A (ring 0, first) seeds ring 1; B (ring 0, second) seeds ring 2.
@@ -74,7 +86,7 @@ function buildSites(): Site[] {
   B.seed = r2;
   B.seedFlight = sites[r2]!.phase - (B.phase + C.excite);
   for (const p of FIELD_IDLE) {
-    sites.push({ posA: p, posB: p, phase: NEVER, period: NEVER, flight: 1, next: 0, seed: -1, seedFlight: 0, lost: [0, 0], template: sites.length % 2 ? b : a, angle: rnd() * Math.PI * 2 });
+    sites.push({ posA: p, posB: p, posC: p, phase: NEVER, period: NEVER, flight: 1, next: 0, seed: -1, seedFlight: 0, lost: [0, 0], template: sites.length % 2 ? b : a, angle: rnd() * Math.PI * 2 });
   }
   return sites;
 }
@@ -90,6 +102,7 @@ const heavyRatio = (n: NucleusData) => n.lightShare / (1 - n.lightShare);
 
 function siteTable(): string {
   const P: string[] = [];
+  const Q: string[] = [];
   const T: string[] = [];
   const N: string[] = [];
   const D: string[] = [];
@@ -101,13 +114,14 @@ function siteTable(): string {
     const cl = rot(s.template.centLight, c, sn);
     const ch = rot(s.template.centHeavy, c, sn);
     P.push(`vec4( ${f(s.posA[0])}, ${f(s.posA[1])}, ${f(s.posB[0])}, ${f(s.posB[1])} )`);
+    Q.push(`vec2( ${f(s.posC[0])}, ${f(s.posC[1])} )`);
     T.push(`vec4( ${f(s.phase)}, ${f(s.period)}, ${f(s.flight)}, ${f(s.next)} )`);
     N.push(`vec4( ${f(s.seed)}, ${f(s.seedFlight)}, ${f(s.lost[0])}, ${f(s.lost[1])} )`);
     D.push(`vec4( ${f(axis[0])}, ${f(axis[1])}, ${f(s.template.split)}, ${f(heavyRatio(s.template))} )`);
     F.push(`vec4( ${f(cl[0])}, ${f(cl[1])}, ${f(ch[0])}, ${f(ch[1])} )`);
   }
-  const arr = (name: string, rows: string[]) => `const vec4 ${name}[ NS ] = vec4[ NS ](\n\t${rows.join(',\n\t')}\n);`;
-  return [arr('SITE_P', P), arr('SITE_T', T), arr('SITE_N', N), arr('SITE_D', D), arr('SITE_F', F)].join('\n');
+  const arr = (name: string, rows: string[], type = 'vec4') => `const ${type} ${name}[ NS ] = ${type}[ NS ](\n\t${rows.join(',\n\t')}\n);`;
+  return [arr('SITE_P', P), arr('SITE_Q', Q, 'vec2'), arr('SITE_T', T), arr('SITE_N', N), arr('SITE_D', D), arr('SITE_F', F)].join('\n');
 }
 
 const [vx0, vy0, vs0] = FIELD_VIEW.start;
@@ -170,26 +184,70 @@ vec3 microToView( vec3 m ) {
 
 float travel( float v, float dt ) { return v * ( 1.0 - exp( -DRAG * dt ) ) / DRAG; }
 
-/** A site's position in its cycle c (two alternating spots; before its first cycle, the first). */
+/** A site's position in its cycle c (three spots in turn; before its first cycle, the first). */
 vec2 sitePos( int i, int c ) {
+	int k = max( c, 0 ) % 3;
 	vec4 p = SITE_P[ i ];
-	return ( ( max( c, 0 ) & 1 ) == 0 ) ? p.xy : p.zw;
+	return k == 0 ? p.xy : ( k == 1 ? p.zw : SITE_Q[ i ] );
 }
 
-/** The cycle (floor) and the time into it, for site i at τ. */
-int siteCycle( int i, out float u ) {
+/** The cycle (floor) and the time into it, for site i at chain time tau (siteCycle: now). */
+int siteCycleAt( int i, float tau, out float u ) {
 	vec4 t = SITE_T[ i ];
-	float rel = uTau - t.x;
+	float rel = tau - t.x;
 	int c = int( floor( rel / t.y ) );
 	u = rel - float( c ) * t.y;
 	return c;
 }
+
+int siteCycle( int i, out float u ) { return siteCycleAt( i, uTau, u ); }
 
 /** The split point of site i in cycle c (between the two lobes; close enough to the centre at this scale). */
 vec2 splitPoint( int i, int c ) {
 	vec4 d = SITE_D[ i ];
 	return sitePos( i, c ) + d.xy * ( R * d.z );
 }
+
+/**
+ * Neutron k of site i: xy, z = 1 when it carries the chain on (it will be absorbed by the next site and
+ * split it), w visibility. Absorbed-without-fission neutrons slow down and fade.
+ */
+vec4 neutronAt( int i, int k, float tau ) {
+	if ( k == 3 ) {
+		// Generation 0: crosses the view and is absorbed by A (site 0) at its first cycle.
+		if ( i != 0 || tau < IN_T.x || tau > IN_T.y ) return vec4( 0.0 );
+		vec2 a = sitePos( 0, 0 );
+		vec2 dir = normalize( a - IN_START );
+		return vec4( mix( IN_START, a - dir * R * 0.55, ( tau - IN_T.x ) / ( IN_T.y - IN_T.x ) ), 0.0, ease01( ( tau - IN_T.x ) / 0.12 ) );
+	}
+	float u;
+	int c = siteCycleAt( i, tau, u );
+	float dt = u - E;
+	if ( c < 0 || dt < 0.0 ) return vec4( 0.0 );
+	vec2 S = splitPoint( i, c );
+	vec4 nn = SITE_N[ i ];
+	bool seeding = k == 1 && c == 0 && nn.x >= 0.0;
+	if ( k == 0 || seeding ) {
+		int s = seeding ? int( nn.x ) : int( SITE_T[ i ].w );
+		float F = seeding ? nn.y : SITE_T[ i ].z;
+		if ( dt > F ) return vec4( 0.0 );
+		// The target's cycle whose absorption this neutron makes.
+		float arrive = SITE_T[ i ].x + float( c ) * SITE_T[ i ].y + E + F;
+		int cs = int( floor( ( arrive - SITE_T[ s ].x ) / SITE_T[ s ].y + 0.5 ) );
+		vec2 T = sitePos( s, cs );
+		vec2 dir = normalize( T - S );
+		vec2 end = T - dir * R * 0.55;
+		float x = dt / F;
+		return vec4( mix( S, end, 1.0 - pow( 1.0 - x, 1.6 ) ), 1.0, ease01( dt / 0.1 ) );
+	}
+	// Absorbed without a fission: slows down and fades.
+	float ang = ( k == 1 ? nn.z : nn.w ) + ( c == 0 ? 0.0 : float( c & 1 ) * 0.7 );
+	vec2 dir = vec2( cos( ang ), sin( ang ) );
+	float r = LOST_SPEED * ( 1.0 - exp( -1.2 * dt ) ) / 1.2;
+	return vec4( S + dir * r, 0.0, ease01( dt / 0.1 ) * ( 1.0 - smoothstep( LOST_FADE.x * 0.85, LOST_FADE.y * 0.85, dt ) ) );
+}
+
+vec4 neutron( int i, int k ) { return neutronAt( i, k, uTau ); }
 `;
 
 /** Fragment side iris mask (Stage 10). */
@@ -255,7 +313,7 @@ export function spriteInstances() {
   const site: number[] = [];
   FIELD_SITES.forEach((s, i) => {
     if (s.phase >= NEVER) return;
-    for (const kind of [0, 1, 2]) {
+    for (const kind of [0, 1, 2, 5]) {
       kinds.push(kind);
       site.push(i);
     }
@@ -279,6 +337,8 @@ export function createFieldParticles(shared: InsetUniforms) {
     uProton: { value: new Color(K.proton) },
     uNeutron: { value: new Color(K.neutron) },
     uFree: { value: new Color(K.freeNeutron) },
+    /** The chain-carrying neutron's tint (the talk's amber, the one current concept). */
+    uChain: { value: new Color(CHAIN_TINT) },
   };
   const vertex = /* glsl */ `
 ${MOTION}
@@ -286,6 +346,7 @@ uniform float uAlpha;
 uniform vec3 uProton;
 uniform vec3 uNeutron;
 uniform vec3 uFree;
+uniform vec3 uChain;
 attribute vec3 aHome;
 attribute vec3 aCent;
 attribute vec3 aRest;
@@ -321,58 +382,28 @@ vec3 nucleon( int i, out float vis ) {
 	return vec3( sitePos( i, c ), 0.0 ) + R * local + D * side * ( LOBE * ex + travel( side > 0.0 ? VL : VL * d.w, t ) );
 }
 
-/** Neutron k of site i: xy, z unused, w visibility; free (lighter) until absorbed. */
-vec4 neutron( int i, int k ) {
-	if ( k == 3 ) {
-		// Generation 0: crosses the view and is absorbed by A (site 0) at its first cycle.
-		if ( i != 0 || uTau < IN_T.x || uTau > IN_T.y ) return vec4( 0.0 );
-		vec2 a = sitePos( 0, 0 );
-		vec2 dir = normalize( a - IN_START );
-		return vec4( mix( IN_START, a - dir * R * 0.55, ( uTau - IN_T.x ) / ( IN_T.y - IN_T.x ) ), 0.0, ease01( ( uTau - IN_T.x ) / 0.12 ) );
-	}
-	float u;
-	int c = siteCycle( i, u );
-	float dt = u - E;
-	if ( c < 0 || dt < 0.0 ) return vec4( 0.0 );
-	vec2 S = splitPoint( i, c );
-	vec4 nn = SITE_N[ i ];
-	bool seeding = k == 1 && c == 0 && nn.x >= 0.0;
-	if ( k == 0 || seeding ) {
-		int s = seeding ? int( nn.x ) : int( SITE_T[ i ].w );
-		float F = seeding ? nn.y : SITE_T[ i ].z;
-		if ( dt > F ) return vec4( 0.0 );
-		// The target's cycle whose absorption this neutron makes.
-		float arrive = SITE_T[ i ].x + float( c ) * SITE_T[ i ].y + E + F;
-		int cs = int( floor( ( arrive - SITE_T[ s ].x ) / SITE_T[ s ].y + 0.5 ) );
-		vec2 T = sitePos( s, cs );
-		vec2 dir = normalize( T - S );
-		vec2 end = T - dir * R * 0.55;
-		float x = dt / F;
-		return vec4( mix( S, end, 1.0 - pow( 1.0 - x, 1.6 ) ), 0.0, ease01( dt / 0.1 ) );
-	}
-	// Absorbed without a fission: slows down and fades.
-	float ang = ( k == 1 ? nn.z : nn.w ) + ( c == 0 ? 0.0 : float( c & 1 ) * 0.7 );
-	vec2 dir = vec2( cos( ang ), sin( ang ) );
-	float r = LOST_SPEED * ( 1.0 - exp( -1.2 * dt ) ) / 1.2;
-	return vec4( S + dir * r, 0.0, ease01( dt / 0.1 ) * ( 1.0 - smoothstep( LOST_FADE.x, LOST_FADE.y, dt ) ) );
-}
-
 void main() {
 	int i = int( aMeta.x + 0.5 );
 	vec3 m;
 	float vis;
+	float neutronSize = 1.0;
 	vec3 col = mix( uNeutron, uProton, aMeta.z );
 	if ( aMeta.w < 0.5 ) {
 		m = nucleon( i, vis );
 	} else {
-		vec4 n = neutron( i, int( aMeta.y + 0.5 ) );
-		m = n.xyz;
+		int k = int( aMeta.y + 0.5 );
+		vec4 n = neutron( i, k );
+		m = vec3( n.xy, 0.0 );
 		vis = n.w;
-		col = uFree;
+		// The neutron that carries the chain on reads a touch larger and warmer; the generation-0 one too.
+		bool carries = n.z > 0.5 || k == 3;
+		col = carries ? mix( uFree, uChain, 0.45 ) : uFree;
+		vis *= carries ? 1.0 : 0.62;
+		neutronSize = carries ? 1.22 : 0.85;
 	}
 	// Nuclei appear and dissolve by size (a half-transparent cluster would read as a dark silhouette);
 	// free neutrons fade.
-	float size = aMeta.w < 0.5 ? vis : 1.0;
+	float size = aMeta.w < 0.5 ? vis : neutronSize;
 	vAlpha = ( aMeta.w < 0.5 ? min( vis * 4.0, 1.0 ) : vis ) * uAlpha;
 	if ( vAlpha < 0.002 || size < 0.01 ) {
 		gl_Position = vec4( 2.0, 2.0, 2.0, 1.0 );
@@ -410,6 +441,7 @@ export function createFieldSprites(shared: InsetUniforms) {
     uAlpha: { value: 0 },
     uEnergy: { value: new Color(K.energy) },
     uHeat: { value: new Color(K.heat) },
+    uChainTrail: { value: new Color(CHAIN_TINT) },
     uSpot: { value: 0 },
   };
   const vertex = /* glsl */ `
@@ -417,8 +449,9 @@ ${MOTION}
 uniform float uAlpha;
 uniform vec3 uEnergy;
 uniform vec3 uHeat;
+uniform vec3 uChainTrail;
 uniform float uSpot;
-attribute float aKind; // 0 heat (light fragment), 1 heat (heavy fragment), 2 energy swell, 3 the gathering warmth, 4 warm spot
+attribute float aKind; // 0 heat (light fragment), 1 heat (heavy fragment), 2 energy swell, 3 the gathering warmth, 4 warm spot, 5 chain neutron's trail
 attribute float aSite;
 varying vec2 vLocal;
 varying vec3 vShape; // half length, half width, feather
@@ -432,7 +465,21 @@ void main() {
 	float alpha = 0.0;
 	vec3 col = uHeat;
 	float view = 1.0;
-	if ( aKind < 2.5 ) {
+	if ( aKind > 4.5 ) {
+		// The chain-carrying neutron's short trail: where it was a quarter second ago -> where it is.
+		int i = int( aSite + 0.5 );
+		vec4 now = neutron( i, 0 );
+		if ( now.w > 0.0 && now.z > 0.5 ) {
+			vec4 before = neutronAt( i, 0, uTau - 0.22 );
+			if ( before.w <= 0.0 ) before = now;
+			p0 = vec3( before.xy, -0.05 );
+			p1 = vec3( now.xy, -0.05 );
+			w = 0.018;
+			feather = 0.05;
+			alpha = 0.42 * now.w;
+			col = uChainTrail;
+		}
+	} else if ( aKind < 2.5 ) {
 		int i = int( aSite + 0.5 );
 		float u;
 		int c = siteCycle( i, u );

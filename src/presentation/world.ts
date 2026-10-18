@@ -101,9 +101,17 @@ export const WORLD_CHANNELS = {
   'k.largeDim': { rest: 0, duration: 1.4 },
   /** BWRX-300 copies assembled beside ours (0..4, staggered). */
   'k.modules': { rest: 0, duration: 5.5 },
+  /**
+   * The comparison leaves by dissolving where it stands (0 solid .. 1 gone), never by sinking into the
+   * ground: `k.fade` the whole comparison (large unit and copies), `k.modulesFade` the copies alone.
+   */
+  'k.fade': { rest: 0, duration: 1.2 },
+  'k.modulesFade': { rest: 0, duration: 1.2 },
+  /** The two reactor vessels as amber outlines on grade in front of their reactor buildings, matched scale (0..1). */
+  'k.vessels': { rest: 0, duration: 1.4 },
 
   // ---- Footprint (talk only) ----
-  /** The BWRX-300 power block's ~148 x 78 m outline on the ground around our plant (0..1, drawn on). */
+  /** The power block's 9,800 m2 as an area-equivalent rectangle (the pitch's width) around our plant (0..1, drawn on). */
   'q.block': { rest: 0, duration: 1.6 },
   /** An international-size 105 x 68 m pitch in a schematic stadium, at the same ground scale (0..1). */
   'q.stadium': { rest: 0, duration: 1.6 },

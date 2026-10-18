@@ -16,6 +16,7 @@ import { evaluateTalkFrame } from '../runtime';
 import { updateOverlay } from '../overlayLayer';
 import { talk } from '../talk';
 import { world } from '../world';
+import { GRADE_MARKERS, groundOwner } from './groundOwner';
 import { FissionField } from './FissionField';
 import { WaterCycle } from './WaterCycle';
 import { GridCity } from './GridCity';
@@ -63,9 +64,15 @@ function OverlayDriver() {
 /** Emissive intensity of each glazing material as the plant built it (Explore binds clones later). */
 const glazingBase = new WeakMap<Material, number>();
 
+const _marker = new Vector3();
+
+/** The plant counts as scaled (stands on the filler) below this scale. */
+const FULL_SIZE = 0.9999;
+
 function PlantSwitches() {
   const scene = useThree((s) => s.scene);
-  const found = useRef<{ glazing: Mesh[]; deck: Mesh; plant: Object3D; earth: Object3D[]; shadow: { object: Object3D; base: Vector3 } | null } | null>(null);
+  const found = useRef<{ glazing: Mesh[]; deck: Mesh; plant: Object3D; earth: Object3D[]; filler: Object3D | null; shadow: { object: Object3D; base: Vector3 } | null } | null>(null);
+  const applied = useRef(false);
 
   useEffect(() => () => void (found.current = null), [scene]);
 
@@ -82,7 +89,10 @@ function PlantSwitches() {
       const plant = scene.getObjectByName(COMPONENT_IDS.plant);
       if (!deck || !plant) return; // the plant is not mounted yet
       const contact = scene.getObjectByName('env.contactShadows'); // Low only
-      found.current = { glazing, deck, plant, earth, shadow: contact ? { object: contact, base: contact.position.clone() } : null };
+      const filler = scene.getObjectByName('talk-ground-filler') ?? null;
+      found.current = { glazing, deck, plant, earth, filler, shadow: contact ? { object: contact, base: contact.position.clone() } : null };
+      // A rebuilt scene starts with its own defaults: apply the ground owner below whatever it was.
+      applied.current = false;
     }
     const f = found.current;
     for (const mesh of f.glazing) {
@@ -97,19 +107,38 @@ function PlantSwitches() {
     if (f.deck.visible !== deckVisible) f.deck.visible = deckVisible;
     // Map transitions: the plant shrinks into its point on the table (about the reactor axis); its
     // baked contact shadow shrinks with it (it would otherwise stay behind, full size, on empty ground).
+    // Scaled about the plant's own origin, which is on grade at the reactor axis: every above-grade
+    // part stays on grade at any scale (never a vertical move).
     const scale = Math.pow(10, world['p.zoom']);
+    const scaled = talk.active && scale < FULL_SIZE;
+    groundOwner.scale = scale;
+    if (groundOwner.scaled !== scaled || !applied.current) {
+      applied.current = true;
+      // Scaled down, the plant stands on the filled ground (GroundFiller): its own 48 m earth block would
+      // read as a plinth. At full size the block is back, the same surface where the filler was. Both
+      // switch here, in the same frame.
+      groundOwner.scaled = scaled;
+      for (const o of f.earth) o.visible = !scaled;
+      if (f.filler) f.filler.visible = scaled;
+      groundOwner.earthVisible = f.earth.length > 0 && f.earth.every((o) => o.visible);
+      groundOwner.fillerVisible = !!f.filler?.visible;
+      requestShadowUpdate();
+    }
     if (f.plant.scale.x !== scale) {
       f.plant.scale.setScalar(scale);
       f.plant.visible = scale > 0.004;
-      // Scaled down, the plant stands on the filled ground (GroundFiller): its own 48 m earth block would
-      // read as a plinth. At full size the block is back, the same surface where the filler was.
-      for (const o of f.earth) o.visible = scale >= 0.9999;
       if (f.shadow) {
         f.shadow.object.scale.setScalar(scale);
         f.shadow.object.position.copy(f.shadow.base).multiplyScalar(scale);
         f.shadow.object.visible = scale > 0.004;
       }
       requestShadowUpdate();
+    }
+    if (talk.active) {
+      f.plant.updateMatrixWorld();
+      let err = 0;
+      for (const m of GRADE_MARKERS) err = Math.max(err, Math.abs(_marker.copy(m).applyMatrix4(f.plant.matrixWorld).y));
+      groundOwner.gradeError = err;
     }
   }, -96);
   return null;
@@ -124,7 +153,6 @@ function PlantSwitches() {
  * then, so nothing sees it from inside the earth).
  */
 function GroundFiller() {
-  const mesh = useRef<Mesh>(null);
   const geometry = useMemo(() => {
     const shape = new Shape();
     // Shape space (x, y) becomes world (x, -z) after the -90° X rotation, as the floor's hole.
@@ -136,10 +164,8 @@ function GroundFiller() {
     return new ShapeGeometry(shape, 1);
   }, []);
   useEffect(() => () => geometry.dispose(), [geometry]);
-  useFrame(() => {
-    if (mesh.current) mesh.current.visible = talk.active && world['p.zoom'] < -0.001;
-  }, -96);
-  return <mesh ref={mesh} name="talk-ground-filler" geometry={geometry} material={getPlantMaterials().groundSurface} rotation-x={-Math.PI / 2} position-y={-0.05} visible={false} receiveShadow />;
+  // Its visibility is switched by PlantSwitches together with the earth block (groundOwner).
+  return <mesh name="talk-ground-filler" geometry={geometry} material={getPlantMaterials().groundSurface} rotation-x={-Math.PI / 2} position-y={-0.05} visible={false} receiveShadow />;
 }
 
 export function TalkScene() {

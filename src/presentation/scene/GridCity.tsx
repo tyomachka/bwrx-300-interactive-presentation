@@ -25,6 +25,8 @@ import {
   UniformsLib,
   UniformsUtils,
   Vector3,
+  MeshBasicMaterial,
+  PlaneGeometry,
   type BufferGeometry,
   type Group,
   type Mesh,
@@ -35,7 +37,6 @@ import { createPulseMaterial } from '../../scene/flow/flowMaterials';
 import { ELECTRICITY_ROUTE } from '../../scene/plant/routes';
 import { getPlantMaterials } from '../../scene/plant/materials';
 import { requestShadowUpdate } from '../../scene/section/sectionLayers';
-import { useQualityPreset } from '../../state/store';
 import { cue, talkClock, world } from '../world';
 import { line, mergeTubes, pulseTube } from './pulse';
 
@@ -191,33 +192,64 @@ void main() {
 }
 `;
 
-function buildCity(lod: 'high' | 'low') {
-  const rnd = seededRandom('talk-city');
+/**
+ * [ILLUSTRATIVE] A coherent urban load, not a scatter: an orthogonal street grid with a wider boulevard
+ * each way, buildings set along their block edges, a dense core of a few towers, a mid-rise ring and
+ * low houses at the edges; the streets light up with the windows. Not a real city (no Vilnius claim).
+ */
+const CITY = { block: [44, 38] as const, street: 10, boulevard: 20 } as const;
+
+function buildCity() {
+  const rnd = seededRandom('talk-city-final');
   const { center, size } = GRID.city;
   const items: { x: number; z: number; w: number; d: number; h: number }[] = [];
-  const blockW = 46;
-  const blockD = 40;
-  const street = 12;
-  const nx = Math.floor(size[0] / (blockW + street));
-  const nz = Math.floor(size[1] / (blockD + street));
-  for (let i = 0; i < nx; i++) {
-    for (let j = 0; j < nz; j++) {
-      const bx = center[0] - size[0] / 2 + i * (blockW + street);
-      const bz = center[2] - size[1] / 2 + j * (blockD + street);
-      // Taller towards the centre (a skyline), lower at the edges.
-      const dist = Math.hypot(i - (nx - 1) / 2, j - (nz - 1) / 2) / Math.hypot(nx / 2, nz / 2);
-      const per = lod === 'high' ? 4 : 3;
-      for (let k = 0; k < per; k++) {
-        const w = 12 + rnd() * 14;
-        const d = 10 + rnd() * 12;
-        const x = bx + (k % 2) * (blockW / 2) + rnd() * (blockW / 2 - w) + w / 2;
-        const z = bz + Math.floor(k / 2) * (blockD / 2) + rnd() * (blockD / 2 - d) + d / 2;
-        const tall = rnd() < 0.12 * (1 - dist) ? 2.4 : 1;
-        const h = (9 + rnd() * 26 * (1.2 - dist)) * tall;
-        items.push({ x, z, w, d, h });
-      }
+  // Column / row edges: blocks separated by streets, the middle street each way a boulevard.
+  const lanes = (extent: number, block: number) => {
+    const n = Math.max(3, Math.floor((extent + CITY.street) / (block + CITY.street)));
+    const mid = Math.floor(n / 2);
+    const widths = Array.from({ length: n - 1 }, (_, i) => (i === mid - 1 ? CITY.boulevard : CITY.street));
+    const total = n * block + widths.reduce((a, b) => a + b, 0);
+    const starts: number[] = [];
+    let at = -total / 2;
+    for (let i = 0; i < n; i++) {
+      starts.push(at);
+      at += block + (widths[i] ?? 0);
     }
-  }
+    return { starts, total, widths };
+  };
+  const cols = lanes(size[0], CITY.block[0]);
+  const rows = lanes(size[1], CITY.block[1]);
+  const half = [cols.total / 2, rows.total / 2] as const;
+  cols.starts.forEach((bx0) => {
+    rows.starts.forEach((bz0) => {
+      const cx = bx0 + CITY.block[0] / 2;
+      const cz = bz0 + CITY.block[1] / 2;
+      // 0 in the core .. 1 at the edge (an ellipse fitted to the grid).
+      const dist = Math.min(1, Math.hypot(cx / half[0], cz / half[1]));
+      const core = dist < 0.38;
+      const edge = dist > 0.78;
+      // Parcels: towers on big lots in the core, mid-rise in a 2 x 2, houses in a 3 x 3 at the edge.
+      const n = core ? 2 : edge ? 3 : 2;
+      const pw = CITY.block[0] / n;
+      const pd = CITY.block[1] / n;
+      for (let i = 0; i < n; i++) {
+        for (let j = 0; j < n; j++) {
+          if (edge && rnd() < 0.22) continue; // gardens between the houses
+          const inset = edge ? 2.2 : 1.6;
+          const w = pw - 2 * inset - rnd() * (edge ? 2 : 4);
+          const d = pd - 2 * inset - rnd() * (edge ? 2 : 4);
+          let h: number;
+          if (core) h = rnd() < 0.35 ? 46 + rnd() * 30 : 24 + rnd() * 14;
+          else if (edge) h = 6 + rnd() * 6;
+          else h = 13 + rnd() * 13 * (1 - dist);
+          // Set to the block edge on the outer side of the parcel (street frontage), not floating inside.
+          const x = bx0 + i * pw + (i === 0 ? inset + w / 2 : i === n - 1 ? pw - inset - w / 2 : pw / 2);
+          const z = bz0 + j * pd + (j === 0 ? inset + d / 2 : j === n - 1 ? pd - inset - d / 2 : pd / 2);
+          items.push({ x: center[0] + x, z: center[2] + z, w, d, h });
+        }
+      }
+    });
+  });
   const geometry = new BoxGeometry(1, 1, 1).translate(0, 0.5, 0);
   const material = new ShaderMaterial({
     name: 'talk-city',
@@ -235,14 +267,36 @@ function buildCity(lod: 'high' | 'low') {
   });
   geometry.setAttribute('aSeed', new InstancedBufferAttribute(seeds, 1));
   mesh.computeBoundingSphere();
-  return { mesh, geometry, material, count: items.length };
+
+  // Street lights: a thin warm strip down every street and boulevard, lit with the windows.
+  const strips: BufferGeometry[] = [];
+  const along = (x0: number, z0: number, x1: number, z1: number, width: number) =>
+    strips.push(new PlaneGeometry(Math.abs(x1 - x0) || width, Math.abs(z1 - z0) || width).rotateX(-Math.PI / 2).translate(center[0] + (x0 + x1) / 2, 0.35, center[2] + (z0 + z1) / 2));
+  cols.starts.slice(1).forEach((bx, i) => {
+    const x = bx - cols.widths[i]! / 2;
+    along(x, -half[1], x, half[1], cols.widths[i]! > CITY.street ? 1.6 : 1.0);
+  });
+  rows.starts.slice(1).forEach((bz, i) => {
+    const z = bz - rows.widths[i]! / 2;
+    along(-half[0], z, half[0], z, rows.widths[i]! > CITY.street ? 1.6 : 1.0);
+  });
+  const streets = mergeGeometries(strips.map((g) => g.toNonIndexed()), false)!;
+  strips.forEach((g) => g.dispose());
+  const streetMaterial = new MeshBasicMaterial({ color: new Color('#ffcf8a'), transparent: true, opacity: 0, depthWrite: false, fog: true });
+
+  // The line arrives at a substation on the city's edge.
+  const [lx, , lz] = GRID.lineEnd;
+  const substation = mergeGeometries(
+    [new BoxGeometry(16, 0.4, 12).translate(lx + 6, 0.2, lz + 4), new BoxGeometry(4, 4.2, 3).translate(lx + 2, 2.1, lz + 2), new BoxGeometry(4, 4.2, 3).translate(lx + 9, 2.1, lz + 2), new BoxGeometry(9, 3.2, 3).translate(lx + 6, 1.6, lz + 8)].map((g) => g.toNonIndexed()),
+    false,
+  )!;
+  return { mesh, geometry, material, count: items.length, streets, streetMaterial, substation };
 }
 
 export function GridCity() {
-  const lod = useQualityPreset().geometryLod;
   const grid = useMemo(() => buildLine(), []);
   const power = useMemo(() => createPulseMaterial([ELECTRICITY]), []);
-  const city = useMemo(() => buildCity(lod), [lod]);
+  const city = useMemo(() => buildCity(), []);
   const group = useRef<Group>(null);
   const powerMesh = useRef<Mesh>(null);
   const m = getPlantMaterials();
@@ -261,6 +315,9 @@ export function GridCity() {
     () => () => {
       city.geometry.dispose();
       city.material.dispose();
+      city.streets.dispose();
+      city.streetMaterial.dispose();
+      city.substation.dispose();
     },
     [city],
   );
@@ -279,6 +336,7 @@ export function GridCity() {
     u.uState.value[0]!.set(world['g.power'], front, ELECTRICITY.alpha, 0);
     if (powerMesh.current) powerMesh.current.visible = world['g.power'] > 0.001;
     city.material.uniforms.uLights!.value = world['g.city'];
+    city.streetMaterial.opacity = 0.5 * world['g.city'];
   }, -80);
 
   return (
@@ -288,6 +346,8 @@ export function GridCity() {
       <mesh name="talk-grid.transformer" geometry={grid.transformer} material={m.paintedEquipment} />
       <mesh ref={powerMesh} name="talk-grid.power" geometry={grid.power} material={power} visible={false} />
       <primitive object={city.mesh} name="talk-grid.city" />
+      <mesh name="talk-grid.streets" geometry={city.streets} material={city.streetMaterial} renderOrder={-1} />
+      <mesh name="talk-grid.substation" geometry={city.substation} material={m.paintedEquipment} />
     </group>
   );
 }

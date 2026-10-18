@@ -314,6 +314,18 @@
   margin-top: 2.2cqh;
 }
 
+/* A secondary figure under the caption (its own cue): quieter than the claim, louder than the source. */
+.talk-stat__detail {
+  max-width: 28cqw;
+  margin-top: 1.4cqh;
+  font-size: var(--talk-body);
+  font-weight: 600;
+  letter-spacing: var(--talk-body-ls);
+  line-height: var(--talk-body-lh);
+  color: var(--talk-c-text);
+  text-shadow: var(--talk-halo);
+}
+
 /* Role 3: the source directly under what it qualifies ------------------------------------------------- */
 .talk-source {
   max-width: 25cqw;
@@ -661,14 +673,14 @@ a.talk-credit__email:hover {
 
 .talk-qr__code {
   flex: none;
-  width: 16cqh;
-  height: 16cqh;
+  width: 18cqh;
+  height: 18cqh;
   border-radius: 0.6cqh;
 }
 
 .talk-qr--outro .talk-qr__code {
-  width: 25cqh;
-  height: 25cqh;
+  width: 30cqh;
+  height: 30cqh;
 }
 
 .talk-qr__paper {
@@ -693,10 +705,6 @@ a.talk-credit__email:hover {
 .talk-qr__sub {
   margin-top: 0.6cqh;
   color: var(--talk-c-text2);
-}
-
-.talk-qr__sub.is-todo {
-  color: var(--talk-c-source);
 }
 
 /* Passive safety: the day counter and the two quiet indicators (right column) ------------------------ */
@@ -796,6 +804,10 @@ a.talk-credit__email:hover {
 
 .talk-pin--building {
   background: var(--talk-c-amber);
+}
+
+.talk-pin--permitted {
+  background: var(--talk-c-text);
 }
 
 .talk-pin--licensing {

@@ -31,18 +31,20 @@ ir valdiklių juostoje spustelėkite EN (LT grąžina lietuvių kalbą). Pasirin
 
 Pristatymo metu
 ---------------
-  Rodyklė dešinėn / tarpas / Page Down   kitas žingsnis (pirmas paspaudimas pradeda pristatymą)
-  Rodyklė kairėn / Page Up               ankstesnis žingsnis
+  Rodyklė dešinėn / tarpas / Page Down   kitas skyrius (pirmas paspaudimas pradeda pristatymą)
+  Rodyklė kairėn / Page Up               ankstesnis skyrius (iškart jo galutinis vaizdas)
   Home                                   grįžti į pradinį vaizdą
-  R                                      iš naujo parodyti dabartinį žingsnį (naudokite, jei netyčia
-                                         paspaudėte kitą klavišą)
+  R                                      atkurti dabartinio skyriaus galutinį vaizdą (naudokite, jei
+                                         netyčia paspaudėte kitą klavišą)
   Esc                                    išeiti iš pristatymo į laisvą apžiūrą; rodyklė dešinėn
-                                         grąžina į tą patį žingsnį
+                                         grąžina į tą patį skyrių
   F11                                    visas ekranas / įprastas langas
 
 Pristatymo pulteliai veikia: dauguma jų siunčia Page Down / Page Up.
-Kiekvienas žingsnis laukia kito paspaudimo – niekas nepersijungia savaime, o antras paspaudimas, kol
-vaizdas dar juda, nepaisomas. Paskutinis vaizdas lieka ekrane klausimų metu.
+Pristatymą sudaro 12 skyrių: nuo įžangos iki klausimų – 11 paspaudimų. Paspaudus skyrius pats parodo
+savo animacijas pagal pranešimo tekstą ir laukia kito paspaudimo (procesai ekrane toliau juda); į kitą
+skyrių savaime nepereinama. Antras paspaudimas per pirmąsias 1,2 s nepaisomas; vėliau paspaudimas
+iškart pereina į kitą skyrių. Paskutinis vaizdas (QR kodas, kontaktai) lieka ekrane klausimų metu.
 Valdikliai pasirodo tik pajudinus pelę ir niekada nerodomi pristatymo metu.
 Bet kuriame projektoriuje vaizdas išlaiko 16:9 formatą; 4:3 ar 16:10 ekranuose matysite juodas juostas.
 
@@ -69,7 +71,7 @@ pristatymas.
 
 Išbandytos naršyklės (Windows 11, „Intel Iris Plus“ grafika, atverta tiesiai iš aplanko)
 ---------------------------------------------------------------------------------------
-  Pristatymas:   Chrome 155   žema kokybė: 60 kadrų/s kiekviename žingsnyje        rekomenduojama
+  Pristatymas:   Chrome 155   žema kokybė: 60 kadrų/s kiekviename skyriuje         rekomenduojama
   48 s filmas (ankstesnis bandymas):
                  Chrome 155   veikia; žema kokybė rodoma sklandžiai (be strigčių)   rekomenduojama
                  Edge 155     veikia; žema kokybė rodoma sklandžiai (be strigčių)   rekomenduojama

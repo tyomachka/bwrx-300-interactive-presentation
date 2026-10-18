@@ -1,15 +1,18 @@
 /**
  * Presentation v1, "how much ground the power block takes" (talk only), at the plant's own ground
  * scale (presentation/scene/footprintLayout.ts has the numbers and their sources):
- *  - q.block    a dashed outline of the ~148 x 78 m power block draws on around our plant;
- *  - q.stadium  an international-size 105 x 68 m pitch in a schematic stadium wipes on beside it.
+ *  - q.block    the power block's 9,800 m2 as an area-equivalent rectangle with the pitch's width: a
+ *               dashed amber outline draws on around our plant, then a quiet amber fill (an area,
+ *               not a building outline: the screen labels it a schematic);
+ *  - q.stadium  a 105 x 68 m pitch (UEFA category 3-4) in a schematic stadium wipes on beside it.
  *
  * Restrained and schematic: a muted turf, white pitch lines (thicker than real so they read from
- * this height), the stands as a quiet band; the outline in the label colour. Fogged like the ground.
+ * this height), the stands as a quiet band; the area in amber (the one current concept). Fogged.
  */
 import { useFrame } from '@react-three/fiber';
 import { useEffect, useMemo, useRef } from 'react';
-import { BufferGeometry, CanvasTexture, Color, DoubleSide, Float32BufferAttribute, LinearMipmapLinearFilter, PlaneGeometry, ShaderMaterial, SRGBColorSpace, UniformsLib, UniformsUtils, type Group } from 'three';
+import { BufferGeometry, CanvasTexture, Color, DoubleSide, Float32BufferAttribute, LinearMipmapLinearFilter, MeshBasicMaterial, PlaneGeometry, ShaderMaterial, SRGBColorSpace, UniformsLib, UniformsUtils, type Group } from 'three';
+import { COLOR } from '../design';
 import { world } from '../world';
 import { FOOTPRINT as F } from './footprintLayout';
 
@@ -157,9 +160,11 @@ void main() {
     stadiumMaterial.uniforms.uMap!.value = stadium.texture;
 
     const outline = outlineGeometry(F.block.x, F.block.z, 1.4);
+    const fillGeometry = new PlaneGeometry(F.block.x[1] - F.block.x[0], F.block.z[1] - F.block.z[0]).rotateX(-Math.PI / 2);
+    const fillMaterial = new MeshBasicMaterial({ color: new Color(COLOR.amber), transparent: true, opacity: 0, depthWrite: false, fog: true });
     const outlineMaterial = new ShaderMaterial({
       name: 'talk-block-outline',
-      uniforms: UniformsUtils.merge([UniformsLib.fog, { uDrawn: { value: 0 }, uColor: { value: new Color('#e6eaee') } }]),
+      uniforms: UniformsUtils.merge([UniformsLib.fog, { uDrawn: { value: 0 }, uColor: { value: new Color(COLOR.amber) } }]),
       vertexShader: /* glsl */ `
 attribute float aAlong;
 varying float vAlong;
@@ -189,7 +194,7 @@ void main() {
       side: DoubleSide,
       fog: true,
     });
-    return { stadium, stadiumGeometry, stadiumMaterial, outline, outlineMaterial };
+    return { stadium, stadiumGeometry, stadiumMaterial, outline, outlineMaterial, fillGeometry, fillMaterial };
   }, []);
   const stadiumGroup = useRef<Group>(null);
   const blockGroup = useRef<Group>(null);
@@ -201,6 +206,8 @@ void main() {
       assets.stadiumMaterial.dispose();
       assets.outline.geometry.dispose();
       assets.outlineMaterial.dispose();
+      assets.fillGeometry.dispose();
+      assets.fillMaterial.dispose();
     },
     [assets],
   );
@@ -210,13 +217,16 @@ void main() {
     const stadium = world['q.stadium'];
     if (blockGroup.current) blockGroup.current.visible = block > 0.001;
     if (stadiumGroup.current) stadiumGroup.current.visible = stadium > 0.001;
-    assets.outlineMaterial.uniforms.uDrawn!.value = block * (assets.outline.perimeter + 2);
+    // The outline draws on over the first 70 %, the area fills in over the rest.
+    assets.outlineMaterial.uniforms.uDrawn!.value = Math.min(block / 0.7, 1) * (assets.outline.perimeter + 2);
+    assets.fillMaterial.opacity = 0.2 * Math.min(Math.max((block - 0.55) / 0.45, 0), 1);
     assets.stadiumMaterial.uniforms.uReveal!.value = stadium;
   }, -80);
 
   return (
     <>
       <group ref={blockGroup} name="talk-block-outline" visible={false}>
+        <mesh geometry={assets.fillGeometry} material={assets.fillMaterial} position={[(F.block.x[0] + F.block.x[1]) / 2, F.y.fill, (F.block.z[0] + F.block.z[1]) / 2]} renderOrder={-2} />
         <mesh geometry={assets.outline.geometry} material={assets.outlineMaterial} position-y={F.y.block} renderOrder={-1} />
       </group>
       <group ref={stadiumGroup} name="talk-stadium" visible={false}>

@@ -39,11 +39,11 @@ debug-panel (`T`) keys, so a stray press cannot toggle an Explore mode on the pr
 
 | Key | Action |
 |---|---|
-| `→` / `Space` / `Page Down` | Next beat. From Explore (film idle) the same keys start the talk, or resume it where it was left. A press during a beat's transition lock is ignored |
-| `←` / `Page Up` | Previous beat (settles straight into it) |
-| `Home` | Back to the opening beat (from Explore too) |
-| `R` | Safe reset: the current beat re-established behind a short dip |
-| `Esc` | Leave to Explore; `→` returns to the same beat |
+| `→` / `Space` / `Page Down` | Next chapter (12 chapters, 11 presses from the opening to the questions; each chapter plays its own cues and then holds). From Explore (film idle) the same keys start the talk, or resume it where it was left. A second press within the 1.2 s guard is ignored; after it a press goes straight to the next chapter |
+| `←` / `Page Up` | Previous chapter, settled at its final state |
+| `Home` | Back to the opening (from Explore too) |
+| `R` | Safe reset: the current chapter re-established at its final state behind a short dip |
+| `Esc` | Leave to Explore; `→` returns to the same chapter |
 
 **The 48 s film** starts from the setup bar ("48 s filmas" / "48 s film"). While it plays or holds
 its final frame, the keys below keep their film meaning:
@@ -390,24 +390,28 @@ sequence. The story, speakers and sources are in `docs/presentation-v1-review/PR
   `releaseCinematicLook`. The plant root's scale (`p.zoom`) lets the plant shrink into a point on
   a map and grow back.
 - **New scene parts** (`presentation/scene/`, talk only):
-  - the looping chain fission;
+  - the branching, then steady, chain fission field;
   - the condenser, hotwells and feedwater return;
   - the transformer, power line and instanced city;
   - the generic large unit and the BWRX-300 row;
   - the Lithuania and North Atlantic map tables from Natural Earth (public domain): countries via
     world-atlas 2.0.2 (ISC), lakes from ne_50m_lakes, inlined in `data/geo.ts`;
-  - the football pitches.
+  - the 9,800 m² area-equivalent rectangle and the 105 x 68 m pitch in a schematic stadium.
 - **Copy and sources:** `copy.ts` holds the LT (default) and EN on-screen text; a key missing in
   either language fails the type check. `sources.ts` holds every public number with its
   organization, document, date, what it supports and its status (OFFICIAL / VENDOR / DERIVED /
   ILLUSTRATIVE).
 - **Design system:** `design.ts` holds the type scale, colours and motion. The overlay gets them
   as CSS variables; sizes are stage-relative with pixel floors for small print.
-- **Placeholders, by design:** `config.ts` keeps `VIRGILIJUS_EMAIL_TODO` and
-  `PUBLIC_PRESENTATION_URL_TODO`. The overlay shows them as placeholders, never as real values.
+- **People and link:** `config.ts` holds both presenters' names and e-mails and the public Pages URL;
+  `qrCode.ts` encodes that URL (version 4-M, verified by decoding). No presenter likenesses.
+- **Final stage:** the 12-chapter script is timed to `docs/final/FINAL_SPEECH_LT.md` (cue sheet
+  `docs/final/PRESENTER_CUES_LT.md`, every on-screen claim in `docs/final/FACT_AUDIT.md`, report
+  `docs/final/FINAL-REPORT.md`).
 - **Automation** (`?debug`): `window.__bwrx.talk` exposes `outline()`, `state()`, `world()`,
   `cues()`, `start()`, `next()`, `prev()`, `home()`, `reset()`, `exit()`, `jump(flat, mode)`,
-  `find(chapter, beat)` and `previewPose(pose)`.
+  `find(chapter, beat)`, `stops()`, `jumpStop(stop, mode)`, `probe()` (ground ownership and
+  grade-marker error) and `previewPose(pose)`.
 
 ## Architecture notes
 

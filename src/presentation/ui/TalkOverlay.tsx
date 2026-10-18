@@ -15,6 +15,7 @@ import { designVariables, stageX, stageY, type Tone } from '../design';
 import { overlayLayer } from '../overlayLayer';
 import { QR_CODE } from '../qrCode';
 import { FIELD_LABELS } from '../scene/fieldConfig';
+import { PROJECT_STATUSES } from '../scene/mapLayout';
 import { TALK_BEATS, useTalkStore } from '../talk';
 import type { OverlayItem } from '../types';
 import './talk.css';
@@ -111,7 +112,14 @@ function Item({ item, leaving, copy, language }: { item: OverlayItem; leaving: b
           <div className="talk-title__title" style={item.measure ? { maxWidth: stageX(item.measure) } : undefined}>
             {copy[item.title]}
           </div>
-          {item.sub && <div className="talk-title__sub">{copy[item.sub]}</div>}
+          {item.sub &&
+            (item.subCue ? (
+              <Cued id={`${item.id}:sub`} cue={item.subCue} className="talk-title__sub">
+                {copy[item.sub]}
+              </Cued>
+            ) : (
+              <div className="talk-title__sub">{copy[item.sub]}</div>
+            ))}
         </>,
         placedTop(item.y),
       );
@@ -162,7 +170,7 @@ function Item({ item, leaving, copy, language }: { item: OverlayItem; leaving: b
         'talk-legend',
         'bottom-right',
         <>
-          {(['building', 'licensing', 'planned', 'assessing'] as const).map((status) => (
+          {PROJECT_STATUSES.map((status) => (
             <div key={status} className="talk-legend__row">
               <span className={`talk-pin talk-pin--${status}`} aria-hidden="true" />
               {copy[`projects.legend.${status}`]}
@@ -233,6 +241,11 @@ function Stat({ item, copy, language }: { item: Extract<OverlayItem, { kind: 'st
         {item.unit && <span className="talk-stat__unit">{copy[item.unit]}</span>}
       </div>
       {item.caption && <div className="talk-stat__caption">{copy[item.caption]}</div>}
+      {item.detail && (
+        <Cued id={`${item.id}:detail`} cue={item.detail.cue} className="talk-stat__detail">
+          {copy[item.detail.text]}
+        </Cued>
+      )}
       {item.source && <div className="talk-source">{copy[item.source]}</div>}
     </>
   );
@@ -454,18 +467,21 @@ function Credits() {
   );
 }
 
+/**
+ * The public page's QR code (presentation/qrCode.ts). Not a link: a click during the talk must never
+ * navigate away; the audience scans it.
+ */
 function Qr({ copy }: { copy: TalkCopy }) {
   const n = QR_CODE.modules + 8; // a 4-module quiet zone on each side
-  const todo = QR_CODE.test || isPlaceholder(PUBLIC_PRESENTATION_URL);
   return (
     <>
-      <svg className="talk-qr__code" viewBox={`-4 -4 ${n} ${n}`} shapeRendering="crispEdges" role="img" aria-label="QR">
+      <svg className="talk-qr__code" viewBox={`-4 -4 ${n} ${n}`} shapeRendering="crispEdges" role="img" aria-label={`QR: ${PUBLIC_PRESENTATION_URL}`}>
         <rect x={-4} y={-4} width={n} height={n} className="talk-qr__paper" />
         <path d={QR_CODE.path} className="talk-qr__ink" />
       </svg>
       <div className="talk-qr__text">
         <div className="talk-qr__label">{copy['hook.qr']}</div>
-        <div className={`talk-qr__sub${todo ? ' is-todo' : ''}`}>{todo ? copy['hook.qrTodo'] : copy['close.explore']}</div>
+        <div className="talk-qr__sub">{copy['close.explore']}</div>
       </div>
     </>
   );

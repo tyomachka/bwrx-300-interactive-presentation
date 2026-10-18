@@ -6,7 +6,8 @@
  *    them, imports arriving over the interconnections (lt.imports), and one controllable node
  *    (lt.node) at the point the plant shrank into / grows out of. lt.highlight warms the country.
  *  - North Atlantic (m.world): land and the large lakes, BWRX-300 projects as pins whose style is
- *    the status (solid warm: under construction; warm outline: licensing; muted: planned or assessed).
+ *    the status (solid amber: under construction; solid light: construction permit; light outline: design
+ *    and licensing in development; muted: planned or assessed).
  *
  * A table opens as a circle around the origin (its channel 0..1 -> the reveal radius), on opaque
  * materials with a dithered edge (no transparency sorting), while the plant scales down into the
@@ -289,6 +290,7 @@ const WORLD_TOP = BASE_Y + 1.1;
 // Amber only for the one under construction (the chapter's current concept); in progress = a ring.
 const PIN_STYLE = {
   building: { color: '#e8a33d', solid: true, stem: 7 },
+  permitted: { color: '#e9ecef', solid: true, stem: 5.5 },
   licensing: { color: '#e9ecef', solid: false, stem: 4.5 },
   planned: { color: '#8a939c', solid: true, stem: 0 },
   assessing: { color: '#8a939c', solid: false, stem: 0 },
@@ -430,7 +432,6 @@ export function Maps() {
     }
 
     if (worldOn > 0.001) {
-      const p = cue('pins');
       const focus = world['w.focus'];
       // Pins leave with the map: they shrink away early in the close (the plant regrows at
       // Darlington), and are untouched while the map is open (they only appear once it is).
@@ -438,7 +439,8 @@ export function Maps() {
       atlantic.pins.forEach((pin, i) => {
         const g = pinGroups.current[i];
         if (!g) return;
-        const local = MathUtils.clamp((p - i * 0.18) / 0.22, 0, 1) * mapShown;
+        // Each pin appears with its own cue (when the speaker names it), its label beside it.
+        const local = cue(`pin.${pin.pin.id}`) * mapShown;
         const s = local <= 0 ? 0.001 : 1 - Math.pow(1 - local, 3);
         g.scale.setScalar(Math.max(s, 0.001));
         g.visible = local > 0;
@@ -448,7 +450,7 @@ export function Maps() {
       if (focusRing.current) {
         const r = 2.4 + 8 * phase;
         focusRing.current.scale.set(r, 1, r);
-        focusRing.current.visible = p > 0.18 && mapShown > 0.01;
+        focusRing.current.visible = cue('pin.darlington') > 0.8 && mapShown > 0.01;
       }
       atlantic.ringMaterial.opacity = 0.75 * (1 - phase);
     }

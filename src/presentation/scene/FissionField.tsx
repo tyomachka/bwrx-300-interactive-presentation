@@ -17,7 +17,8 @@ import { createBackdropMaterial, createInsetUniforms } from '../../scene/fission
 import { useQualityPreset } from '../../state/store';
 import { talk } from '../talk';
 import { world } from '../world';
-import { chainTime, fieldView, microView } from './fieldConfig';
+import { currentEntry } from '../runtime';
+import { chainTime, fieldView, FIELD_TIMING, microView } from './fieldConfig';
 import { createFieldParticles, createFieldSprites, particleInstances, spriteInstances } from './fieldShaders';
 
 /** Drawn last, as the Stage 10 inset (the transparent pass sorts by renderOrder first). */
@@ -90,8 +91,9 @@ export function FissionField() {
       openedAt.current = null;
       return;
     }
-    // The chain's clock: from the first frame the view is opening; it keeps running while it closes.
-    if (open > 0.001 && openedAt.current === null) openedAt.current = animationClock.time;
+    // The chain's clock: from the first frame the view is opening; it keeps running while it closes. A
+    // settled entry (back, jump, reset) opens on the steady state, as the chapter's final state.
+    if (open > 0.001 && openedAt.current === null) openedAt.current = animationClock.time - (currentEntry()?.mode === 'settle' ? FIELD_TIMING.settledAt : 0);
     if (open <= 0.001 && spot <= 0.001) openedAt.current = null;
     const tau = chainTime(openedAt.current === null ? 0 : animationClock.time - openedAt.current);
     const o = ease(open);

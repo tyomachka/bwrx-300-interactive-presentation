@@ -10,10 +10,15 @@
  *                 chain reaction. It runs indefinitely: no restart, no blank, no growth without bound.
  *
  * Built as 15 sites on three closed rings plus 7 nuclei that never split. Every site repeats one cycle
- * forever (absorb -> excite -> split -> fragments fade -> a fresh nucleus appears next to the old spot
- * -> the next neutron arrives); along a ring, each site's neutron reaches the next site exactly when
- * that site's cycle absorbs it. Two first fissions also seed the second and third rings: that is the
- * growth. Everything is a function of the chain time τ (no history): any seek shows the same frame.
+ * forever (absorb -> excite -> split -> fragments fade -> a fresh nucleus appears near the old spot, at
+ * one of three positions in turn -> the next neutron arrives); along a ring, each site's neutron reaches
+ * the next site exactly when that site's cycle absorbs it. Two first fissions also seed the second and
+ * third rings: that is the growth. The visiting order hops across each ring and the steps are uneven,
+ * so a long hold shows no procession and no beat (the three ring periods, 8.0 / 8.75 / 7.25 s, and the
+ * three positions per site put the whole field's repeat beyond any talk). The neutron that carries a
+ * chain on is drawn a touch larger and warmer, with a short trail; the absorbed ones are quieter
+ * (k = 1 made visible: one successful neutron per fission). Everything is a function of the chain time
+ * τ (no history): any seek shows the same frame.
  *
  * [SCHEMATIC — NOT TO SCALE / NOT EXACT NUCLEON COUNT] 96 spheres per nucleus (Stage 10 nuclei),
  * no electrons, no gamma rays, neutron moderation not drawn; not every neutron causes a fission, the
@@ -56,22 +61,28 @@ export const FIELD_MOTION = {
 interface Ring {
   /** Absorption time of the first site's first cycle (τ). */
   start: number;
-  /** Time between consecutive sites' absorptions (τ); the flight is step − excite. */
-  step: number;
+  /**
+   * Time from each site's absorption to the next site's (τ); the flight is step − excite. Uneven on
+   * purpose (the period is their sum), so a long hold never shows a regular beat.
+   */
+  steps: readonly number[];
+  /** In the order the chain visits them: deliberately not around the ring, so it never reads as a procession. */
   sites: readonly V2[];
 }
+
+const RING0_STEPS = [1.5, 1.75, 1.45, 1.7, 1.6] as const;
 
 /**
  * The three rings. Ring 0 starts with the generation-0 nucleus (A); A's first split also sends a
  * neutron to ring 1's first site (C), and B's (ring 0, second site) to ring 2's first site (E).
  */
 export const FIELD_RINGS: readonly Ring[] = [
-  // A, B, D, G, H
-  { start: 1.5, step: 1.6, sites: [[-0.85, 0.1], [0.3, 0.6], [1.3, 1.1], [0.1, 1.85], [-1.25, 1.25]] },
-  // C, F, I, J, K: C absorbs A's second neutron 1.1 s after A splits
-  { start: 1.5 + 0.7 + 1.1, step: 1.75, sites: [[0.2, -0.7], [1.25, -1.15], [0.75, -2.2], [-0.65, -2.0], [-1.15, -1.05]] },
-  // E, L, M, N, O: E absorbs B's second neutron 1.0 s after B splits
-  { start: 1.5 + 1.6 + 0.7 + 1.0, step: 1.45, sites: [[1.55, 0.0], [2.55, 0.75], [3.45, -0.1], [2.95, -1.25], [2.1, -1.35]] },
+  // A, B, H, D, G
+  { start: 1.5, steps: RING0_STEPS, sites: [[-0.85, 0.1], [0.3, 0.6], [-1.25, 1.25], [1.3, 1.1], [0.1, 1.85]] },
+  // C, I, K, F, J: C absorbs A's second neutron 1.1 s after A splits
+  { start: 1.5 + 0.7 + 1.1, steps: [1.6, 1.9, 1.7, 1.85, 1.7], sites: [[0.2, -0.7], [0.75, -2.2], [-1.15, -1.05], [1.25, -1.15], [-0.65, -2.0]] },
+  // E, M, O, L, N: E absorbs B's second neutron 1.0 s after B splits
+  { start: 1.5 + RING0_STEPS[0] + 0.7 + 1.0, steps: [1.35, 1.55, 1.4, 1.5, 1.45], sites: [[1.55, 0.0], [3.45, -0.1], [2.1, -1.35], [2.55, 0.75], [2.95, -1.25]] },
 ];
 
 /** Nuclei in the fuel that do not split while we watch. */
@@ -95,17 +106,26 @@ export const FIELD_VIEW = {
 };
 
 /**
- * Real seconds after the view opens -> chain time τ: generation 0 plays at 3/4 speed so it can be
- * followed, easing to full speed by the steady state (τ = 8.0 at 10 s, then 1:1).
+ * Real seconds after the view opens -> chain time τ, paced to the narration (docs/final/FINAL_SPEECH_LT.md
+ * chapter 7): the first fission at 0.3 x speed so each step is said while it happens (absorbed ~5 s,
+ * split ~7 s, heat ~8-13 s), easing to full speed over 18 s through the branching (two fissions ~12.5 s,
+ * three ~16-17 s, the steady state from ~21 s), then 1:1.
  */
+const CHAIN_PACE = { slow: 0.3, slowUntil: 11, ramp: 18 } as const;
+
 export function chainTime(t: number): number {
-  if (t <= 6) return 0.75 * Math.max(t, 0);
-  if (t <= 10) return 4.5 + 0.75 * (t - 6) + 0.03125 * (t - 6) ** 2;
-  return 8 + (t - 10);
+  const { slow, slowUntil, ramp } = CHAIN_PACE;
+  if (t <= slowUntil) return slow * Math.max(t, 0);
+  const x = Math.min(t - slowUntil, ramp);
+  const tau = slow * slowUntil + slow * x + ((1 - slow) / (2 * ramp)) * x * x;
+  return tau + Math.max(t - slowUntil - ramp, 0);
 }
 
-/** Seconds after the view opens when the steady state reads (the "controlled" claim fades in). */
-export const FIELD_TIMING = { steadyLabel: 10.6 } as const;
+/**
+ * Seconds after the view opens when the steady state reads (the "controlled" claim fades in), and the
+ * chain time a settled entry (back, jump, reset) opens on: well inside the steady state.
+ */
+export const FIELD_TIMING = { steadyLabel: 26, settledAt: 40 } as const;
 
 const smoother = (x: number) => {
   const t = Math.min(Math.max(x, 0), 1);
@@ -167,7 +187,7 @@ export const FIELD_LABELS: readonly FieldLabel[] = [
   { key: 'fission.neutron', anchor: (t) => { const p = incomingAt(t); return [p[0], p[1] + ABOVE]; }, window: [C.incoming[0] - 0.1, C.incoming[1] - 0.05], leader: [-12, -44], tone: 'neutral' },
   { key: 'fission.nucleus', anchor: () => [A[0], A[1] + R + 0.04], window: [0.3, split0], leader: [0, -40], tone: 'neutral' },
   { key: 'fission.heat', anchor: () => [A[0] + 0.12, A[1] - 0.04], window: [split0 + 0.4, split0 + 2.3], leader: [70, 64], tone: 'copper' },
-  { key: 'fission.lost', anchor: (t) => { const p = lostAt(t); return [p[0], p[1] + ABOVE]; }, window: [split0 + 0.15, split0 + 1.05], leader: [-30, -40], tone: 'neutral' },
+  { key: 'fission.lost', anchor: (t) => { const p = lostAt(t); return [p[0], p[1] + ABOVE]; }, window: [split0 + 0.15, split0 + 0.9], leader: [-30, -40], tone: 'neutral' },
   { key: 'fission.chain', anchor: () => [0.95, 0.3], window: [FIELD_RINGS[2]!.start - 0.2, 8.4], leader: [44, -40], tone: 'amber' },
 ];
 

@@ -38,6 +38,7 @@ import { diagnosticsSample } from './diagnostics';
 import { stopOutline, talk, TALK_BEATS, talkOutline, useTalkStore } from '../presentation/talk';
 import { beatTime, dip, overrideTalkCamera } from '../presentation/runtime';
 import { cues, world } from '../presentation/world';
+import { groundOwner } from '../presentation/scene/groundOwner';
 import type { EntryMode } from '../presentation/types';
 
 const api = {
@@ -184,6 +185,8 @@ const api = {
     /** The presenter stops: what each press plays (beats with their `after`), settle times. */
     stops: () => stopOutline(),
     world: () => ({ ...world }),
+    /** Ground ownership and grade contact this frame (final-stage transition validation). */
+    probe: () => ({ ...groundOwner }),
     cues: () => Object.fromEntries(cues),
     find: (chapter: string, beat: string) => TALK_BEATS.findIndex((b) => b.chapter.id === chapter && b.beat.id === beat),
     start: () => talk.start(),

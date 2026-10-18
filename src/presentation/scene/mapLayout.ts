@@ -42,12 +42,19 @@ export function worldToMap(lon: number, lat: number, y = 0): Vec3Tuple {
   return [(x - OX) * WORLD_MAP.scale, y, -(yy - OY) * WORLD_MAP.scale];
 }
 
-/** BWRX-300 projects on the world table (status per presentation/sources.ts). */
-export type ProjectStatus = 'building' | 'licensing' | 'planned' | 'assessing';
+/**
+ * BWRX-300 projects on the world table, status as of 2026-10-18 (presentation/sources.ts):
+ * building = under construction; permitted = construction permit issued; licensing = design / licensing
+ * in development (Poland's generic design); planned = selected, planned; assessing = being assessed.
+ */
+export type ProjectStatus = 'building' | 'permitted' | 'licensing' | 'planned' | 'assessing';
+
+/** The legend's order (most advanced first). */
+export const PROJECT_STATUSES: readonly ProjectStatus[] = ['building', 'permitted', 'licensing', 'planned', 'assessing'];
 
 export const PROJECT_PINS = [
   { id: 'darlington', lon: -78.72, lat: 43.873, status: 'building' },
-  { id: 'clinch', lon: -84.38, lat: 35.89, status: 'licensing' },
+  { id: 'clinch', lon: -84.38, lat: 35.89, status: 'permitted' },
   { id: 'poland', lon: 19.07, lat: 52.65, status: 'licensing' },
   // Estonia and Lithuania have no site: the pin marks the country, not a plant.
   { id: 'estonia', lon: 25.6, lat: 58.75, status: 'planned' },

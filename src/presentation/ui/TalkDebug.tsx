@@ -1,7 +1,7 @@
 /**
  * Presentation v1 debug panel (`?presentationDebug`, or T in dev / with `?debug`): the presenter
- * stop list with the press counter (stop k of N; click a stop to settle on it, shift-click to play
- * it), the beats inside the current stop, step, inspect, copy the camera pose. Never part of the
+ * chapter list with the press counter (chapter k / 12: one presenter stop per chapter; click one to
+ * settle on it, shift-click to play it), the beats inside the current chapter, step, inspect, copy the camera pose. Never part of the
  * audience view: it only exists with those flags.
  */
 import { useEffect, useState } from 'react';
@@ -45,7 +45,7 @@ export function TalkDebug() {
         </button>
       </div>
       <div className="talk-debug__state">
-        stop {beat.stop + 1} / {TALK_STOPS.length} · presses {presses} · {beat.chapter.id} / {beat.beat.id}
+        chapter {beat.stop + 1} / {TALK_STOPS.length} · presses {presses} · {beat.chapter.id} / {beat.beat.id}
         {beat.auto ? ' (auto)' : ''} · {mode} · t {beatTime().toFixed(1)} s{talk.locked ? ' · locked' : ''}
         <br />
         <span className="talk-debug__note">{beat.beat.note}</span>

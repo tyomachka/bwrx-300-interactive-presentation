@@ -1,8 +1,8 @@
 /**
  * Presentation v1 (the ~7-minute university talk): people, links and controller constants.
  *
- * Placeholders are deliberate. Nothing here is guessed: an unknown e-mail or URL stays a visible
- * TODO token until the owners provide it (see docs/presentation-v1-review/PRESENTATION-STORY.md).
+ * Nothing here is guessed: the e-mails and the public URL are the owners' own. No presenter photos
+ * were supplied, so the credits show names and e-mails only (no invented likeness).
  */
 
 export interface Presenter {
@@ -19,8 +19,8 @@ export const PRESENTERS: readonly [Presenter, Presenter] = [
   { id: 'timofej', name: 'Timofej Gaivoronskij', email: 'timofej.gaivoronskij@stud.vilniustech.lt', portrait: null },
 ];
 
-/** The public interactive page the QR code will open (likely GitHub Pages). Not published yet. */
-export const PUBLIC_PRESENTATION_URL = 'PUBLIC_PRESENTATION_URL_TODO';
+/** The public interactive page the QR code opens (GitHub Pages; presentation/qrCode.ts encodes it). */
+export const PUBLIC_PRESENTATION_URL = 'https://tyomachka.github.io/bwrx-300-interactive-presentation/';
 
 /** A value that is still a placeholder (never linked, never encoded into a QR code). */
 export const isPlaceholder = (value: string) => /_TODO$/.test(value);
