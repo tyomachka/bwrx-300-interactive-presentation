@@ -35,7 +35,7 @@ import { useLanguageStore, type Language } from '../i18n/language';
 import { QUALITY_PRESETS } from '../config/quality';
 import { Vector3 } from 'three';
 import { diagnosticsSample } from './diagnostics';
-import { talk, TALK_BEATS, talkOutline, useTalkStore } from '../presentation/talk';
+import { stopOutline, talk, TALK_BEATS, talkOutline, useTalkStore } from '../presentation/talk';
 import { beatTime, dip, overrideTalkCamera } from '../presentation/runtime';
 import { cues, world } from '../presentation/world';
 import type { EntryMode } from '../presentation/types';
@@ -177,7 +177,12 @@ const api = {
   /** Presentation v1 (the talk): drive it like the presenter, or jump for captures. */
   talk: {
     outline: () => talkOutline(),
-    state: () => ({ ...useTalkStore.getState(), locked: talk.locked, beatTime: beatTime(), dip: dip.value, beat: TALK_BEATS[useTalkStore.getState().flat]!.beat.id, chapter: TALK_BEATS[useTalkStore.getState().flat]!.chapter.id }),
+    state: () => {
+      const b = TALK_BEATS[useTalkStore.getState().flat]!;
+      return { ...useTalkStore.getState(), locked: talk.locked, beatTime: beatTime(), dip: dip.value, beat: b.beat.id, chapter: b.chapter.id, stop: b.stop, auto: b.auto };
+    },
+    /** The presenter stops: what each press plays (beats with their `after`), settle times. */
+    stops: () => stopOutline(),
     world: () => ({ ...world }),
     cues: () => Object.fromEntries(cues),
     find: (chapter: string, beat: string) => TALK_BEATS.findIndex((b) => b.chapter.id === chapter && b.beat.id === beat),
@@ -188,6 +193,8 @@ const api = {
     reset: () => talk.reset(),
     exit: () => talk.exit(),
     jump: (flat: number, mode: EntryMode = 'settle') => talk.jump(flat, mode),
+    /** A presenter stop (0-based) with its choreography from the previous stop settled, or settled. */
+    jumpStop: (stop: number, mode: EntryMode = 'play') => talk.jumpStop(stop, mode),
     /** Composition previews: hold a pose inside the talk (null: back to the beat's camera). */
     previewPose: (pose: CameraPose | null) => overrideTalkCamera(pose),
   },

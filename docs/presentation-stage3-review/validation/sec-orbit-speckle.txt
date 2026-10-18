@@ -1,0 +1,6 @@
+low-wide: 90 frames, speckle px mean 3.9 max 349, frames with speckle 1, crawl 7.8 px/frame
+low-far: 90 frames, speckle px mean 2555.2 max 15091, frames with speckle 80, crawl 3510.8 px/frame
+high-wide: 90 frames, speckle px mean 0.0 max 0, frames with speckle 0, crawl 0.0 px/frame
+high-far: 90 frames, speckle px mean 552.3 max 8505, frames with speckle 50, crawl 807.7 px/frame
+proj-wide: 90 frames, speckle px mean 1.8 max 162, frames with speckle 1, crawl 3.6 px/frame
+proj-far: 90 frames, speckle px mean 732.3 max 4321, frames with speckle 75, crawl 1036.7 px/frame

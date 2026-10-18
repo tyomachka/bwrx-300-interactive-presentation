@@ -1,0 +1,692 @@
+{
+ "outline": [
+  {
+   "flat": 0,
+   "chapter": "hook",
+   "chapterIndex": 0,
+   "beat": "hero",
+   "beatIndex": 0,
+   "stop": 0,
+   "auto": false,
+   "after": null,
+   "note": "Stop 1. Fade in low on the reactor building; the camera rises into the low hero view, the plant right of centre. Then the presenters, the title in the dark sky, the QR.",
+   "lock": 1.5,
+   "settle": 6.92
+  },
+  {
+   "flat": 1,
+   "chapter": "lithuania",
+   "chapterIndex": 1,
+   "beat": "renewables",
+   "beatIndex": 0,
+   "stop": 1,
+   "auto": false,
+   "after": null,
+   "note": "Stop 2. The camera rises; the plant shrinks into a point on a filled ground while Lithuania opens around it: wind turns, solar shines, power flows to the cities. \"50 %\" counts up once.",
+   "lock": 2.2,
+   "settle": 5.8
+  },
+  {
+   "flat": 2,
+   "chapter": "lithuania",
+   "chapterIndex": 1,
+   "beat": "calm",
+   "beatIndex": 1,
+   "stop": 2,
+   "auto": false,
+   "after": null,
+   "note": "Stop 3. A calm night: the turbines slow, the sun sets, local flows fade, imports grow; a controllable node lights up. \"And when there is no wind or sun?\"",
+   "lock": 1.8,
+   "settle": 3.6
+  },
+  {
+   "flat": 3,
+   "chapter": "lithuania",
+   "chapterIndex": 1,
+   "beat": "assessment",
+   "beatIndex": 2,
+   "stop": 3,
+   "auto": false,
+   "after": null,
+   "note": "Stop 4. Lithuania warms up: the country is assessing the BWRX-300 (memorandum, February 2026).",
+   "lock": 1.2,
+   "settle": 2.6
+  },
+  {
+   "flat": 4,
+   "chapter": "scale",
+   "chapterIndex": 2,
+   "beat": "large",
+   "beatIndex": 0,
+   "stop": 4,
+   "auto": false,
+   "after": null,
+   "note": "Stop 5. Down into the node: the plant grows back as the map closes; beside it, at the same scale, a large ESBWR-class plant rises (~1,500 MW vs ~300 MW). The two reactor vessels appear side by side at one scale: as tall, much wider. Then (automatically) the large plant steps back and four more BWRX-300 units are built one after another: 5 x 300 MW.",
+   "lock": 3,
+   "settle": 7.6
+  },
+  {
+   "flat": 5,
+   "chapter": "scale",
+   "chapterIndex": 2,
+   "beat": "modules",
+   "beatIndex": 1,
+   "stop": 4,
+   "auto": true,
+   "after": 12.5,
+   "note": "Four more BWRX-300 units assemble one after another behind ours: 5 x 300 MW. The large unit steps back.",
+   "lock": 0,
+   "settle": 7.7
+  },
+  {
+   "flat": 6,
+   "chapter": "facts",
+   "chapterIndex": 3,
+   "beat": "power",
+   "beatIndex": 0,
+   "stop": 5,
+   "auto": false,
+   "after": null,
+   "note": "Stop 6. The comparison falls away; one unit remains, its hall lit, its line carrying power out. \"~300 MW\" counts up once it reads, beside the line it leaves by.",
+   "lock": 2,
+   "settle": 4
+  },
+  {
+   "flat": 7,
+   "chapter": "facts",
+   "chapterIndex": 3,
+   "beat": "footprint",
+   "beatIndex": 1,
+   "stop": 6,
+   "auto": false,
+   "after": null,
+   "note": "Stop 7. From above, at one ground scale: the power block's ~148 x 78 m outline draws around our plant; beside it an international-size 105 x 68 m pitch in a schematic stadium (the National Stadium being built in Vilnius is a UEFA category 4 project: 105 x 68 m). \"~1.6 football pitches of area\" with its sources.",
+   "lock": 2,
+   "settle": 5.1
+  },
+  {
+   "flat": 8,
+   "chapter": "facts",
+   "chapterIndex": 3,
+   "beat": "months",
+   "beatIndex": 2,
+   "stop": 7,
+   "auto": false,
+   "after": null,
+   "note": "Stop 8. A second, identical unit goes up beside ours while a 0-36 month timeline fills; the 24-36 band lights and \"24-36 months*\" lands with its qualifier (vendor estimate, series unit, first nuclear concrete to fuel load). Illustrative: one unit's construction window, not two plants built together.",
+   "lock": 1.6,
+   "settle": 5.1
+  },
+  {
+   "flat": 9,
+   "chapter": "projects",
+   "chapterIndex": 4,
+   "beat": "world",
+   "beatIndex": 0,
+   "stop": 8,
+   "auto": false,
+   "after": null,
+   "note": "Stop 9. Up into geography: the plant becomes the Darlington pin as the North Atlantic opens; the other pins appear one by one, styled by status. Then (automatically) the camera glides to Canada: Darlington, under construction (CNSC licence April 2025); the other pins step back.",
+   "lock": 2.4,
+   "settle": 6.9
+  },
+  {
+   "flat": 10,
+   "chapter": "projects",
+   "chapterIndex": 4,
+   "beat": "darlington",
+   "beatIndex": 1,
+   "stop": 8,
+   "auto": true,
+   "after": 8.4,
+   "note": "The camera glides to Canada: Darlington, under construction (CNSC licence April 2025); the other pins step back.",
+   "lock": 0,
+   "settle": 3.4
+  },
+  {
+   "flat": 11,
+   "chapter": "handoff",
+   "chapterIndex": 5,
+   "beat": "land",
+   "beatIndex": 0,
+   "stop": 9,
+   "auto": false,
+   "after": null,
+   "note": "Stop 10. Into the Darlington pin: the plant grows out of it as the map closes, the camera arriving on the approved descent where it starts to push in; then (automatically, no exterior stop) the descent itself: ground, shaft, containment; the vessel opens on the core.",
+   "lock": 3,
+   "settle": 3.6
+  },
+  {
+   "flat": 12,
+   "chapter": "handoff",
+   "chapterIndex": 5,
+   "beat": "descend",
+   "beatIndex": 1,
+   "stop": 9,
+   "auto": true,
+   "after": 3.6,
+   "note": "The approved Stage 3 descent from its push-in (master 1.5-15.4 s at 1.45x): ground, shaft, containment; the vessel opens on the core.",
+   "lock": 0,
+   "settle": 9.59
+  },
+  {
+   "flat": 13,
+   "chapter": "fission",
+   "chapterIndex": 6,
+   "beat": "chain",
+   "beatIndex": 0,
+   "stop": 10,
+   "auto": false,
+   "after": null,
+   "note": "Stop 11. From a spot on the fuel the micro view opens: neutron -> U-235 -> split -> heat, three neutrons (one absorbed) -> two more splits -> a handful -> the view widens into a steady field of fissions in the fuel, held indefinitely (no restart).",
+   "lock": 2,
+   "settle": 12
+  },
+  {
+   "flat": 14,
+   "chapter": "control",
+   "chapterIndex": 7,
+   "beat": "inFuel",
+   "beatIndex": 0,
+   "stop": 11,
+   "auto": false,
+   "after": null,
+   "note": "Stop 12. The micro view collapses into the fuel spot as warmth (this happens in the fuel); then (automatically) out to the control blades, one illustrative insert / withdraw cycle, and a hold with both statements.",
+   "lock": 1.6,
+   "settle": 2
+  },
+  {
+   "flat": 15,
+   "chapter": "control",
+   "chapterIndex": 7,
+   "beat": "blades",
+   "beatIndex": 1,
+   "stop": 11,
+   "auto": true,
+   "after": 2.8,
+   "note": "From the warm spot back out: the fuel, the bundles, then the control blades, copper; the reaction cue (glints) at full. The blades are the subject; the bright fuel stays a step back.",
+   "lock": 0,
+   "settle": 4
+  },
+  {
+   "flat": 16,
+   "chapter": "control",
+   "chapterIndex": 7,
+   "beat": "insert",
+   "beatIndex": 2,
+   "stop": 11,
+   "auto": true,
+   "after": 5,
+   "note": "The blades move in; the glints thin out.",
+   "lock": 0,
+   "settle": 2
+  },
+  {
+   "flat": 17,
+   "chapter": "control",
+   "chapterIndex": 7,
+   "beat": "withdraw",
+   "beatIndex": 3,
+   "stop": 11,
+   "auto": true,
+   "after": 3.6,
+   "note": "The blades move back out; the glints return. Both statements stay for the hold.",
+   "lock": 0,
+   "settle": 2
+  },
+  {
+   "flat": 18,
+   "chapter": "energy",
+   "chapterIndex": 8,
+   "beat": "boil",
+   "beatIndex": 0,
+   "stop": 12,
+   "auto": false,
+   "after": null,
+   "note": "Stop 13. Reactor -> dry steam. The control demo settles; water rises through the core and boils; the mixture rises through the chimney; cooler water returns down the sides. Then (automatically) separators throw the water out, the dryer catches the last drops: dry steam leaves the vessel.",
+   "lock": 2.4,
+   "settle": 3
+  },
+  {
+   "flat": 19,
+   "chapter": "energy",
+   "chapterIndex": 8,
+   "beat": "steam",
+   "beatIndex": 1,
+   "stop": 12,
+   "auto": true,
+   "after": 5.2,
+   "note": "Separators throw the water out, the dryer catches the last drops: dry steam leaves the vessel.",
+   "lock": 0,
+   "settle": 5
+  },
+  {
+   "flat": 20,
+   "chapter": "energy",
+   "chapterIndex": 8,
+   "beat": "turbine",
+   "beatIndex": 2,
+   "stop": 13,
+   "auto": false,
+   "after": null,
+   "note": "Stop 14. Steam -> turbine -> condenser. Steam runs along the main steam line to the turbine; the shaft starts turning. Then (automatically) under the turbine the condenser turns exhaust steam back into water; pumps send it back to the reactor. The water cycle closes.",
+   "lock": 3,
+   "settle": 6.8
+  },
+  {
+   "flat": 21,
+   "chapter": "energy",
+   "chapterIndex": 8,
+   "beat": "condenser",
+   "beatIndex": 3,
+   "stop": 13,
+   "auto": true,
+   "after": 6.6,
+   "note": "Under the turbine the condenser turns exhaust steam back into water; pumps send it back to the reactor. The water cycle closes.",
+   "lock": 0,
+   "settle": 7.6
+  },
+  {
+   "flat": 22,
+   "chapter": "energy",
+   "chapterIndex": 8,
+   "beat": "grid",
+   "beatIndex": 4,
+   "stop": 14,
+   "auto": false,
+   "after": null,
+   "note": "Stop 15. Grid -> homes. The generator sends electricity out of the hall, through the transformer, along the line: the city lights up (scale illustration), \"~300,000 homes*\".",
+   "lock": 3,
+   "settle": 8.2
+  },
+  {
+   "flat": 23,
+   "chapter": "safety",
+   "chapterIndex": 9,
+   "beat": "normal",
+   "beatIndex": 0,
+   "stop": 15,
+   "auto": false,
+   "after": null,
+   "note": "Stop 16. Normal -> power loss -> scram -> decay heat. Back from the city to the plant, still running; then (automatically) external power is lost, the reaction stops, but the heat remains; hold.",
+   "lock": 2.6,
+   "settle": 4
+  },
+  {
+   "flat": 24,
+   "chapter": "safety",
+   "chapterIndex": 9,
+   "beat": "blackout",
+   "beatIndex": 1,
+   "stop": 15,
+   "auto": true,
+   "after": 5.4,
+   "note": "External power is lost: the line goes dark, the hall lights go out, the site dims, steam stops, the turbine winds down.",
+   "lock": 0,
+   "settle": 7.3
+  },
+  {
+   "flat": 25,
+   "chapter": "safety",
+   "chapterIndex": 9,
+   "beat": "scram",
+   "beatIndex": 2,
+   "stop": 15,
+   "auto": true,
+   "after": 3.2,
+   "note": "The chain reaction stops: every blade goes in, the glints die out.",
+   "lock": 0,
+   "settle": 4.5
+  },
+  {
+   "flat": 26,
+   "chapter": "safety",
+   "chapterIndex": 9,
+   "beat": "decay",
+   "beatIndex": 3,
+   "stop": 15,
+   "auto": true,
+   "after": 5.2,
+   "note": "But the heat does not go away: the vessel stays warm (decay heat). Fission ≈ 0, heat ≠ 0.",
+   "lock": 0,
+   "settle": 3
+  },
+  {
+   "flat": 27,
+   "chapter": "safety",
+   "chapterIndex": 9,
+   "beat": "ics",
+   "beatIndex": 4,
+   "stop": 16,
+   "auto": false,
+   "after": null,
+   "note": "Stop 17. The isolation condenser loop: steam rises to the submerged condensers, heat goes into the pool, water returns by gravity. No pump. Then (automatically) time runs once: 0 h -> 7 days*, and stops; the passive loop keeps running; hold.",
+   "lock": 3.6,
+   "settle": 7.2
+  },
+  {
+   "flat": 28,
+   "chapter": "safety",
+   "chapterIndex": 9,
+   "beat": "days",
+   "beatIndex": 5,
+   "stop": 16,
+   "auto": true,
+   "after": 6.4,
+   "note": "Time runs once: 0 h -> 1 day -> ... -> 7 days, then stops; the passive loop keeps running. One eye path: reactor -> loop -> the right column.",
+   "lock": 0,
+   "settle": 5.9
+  },
+  {
+   "flat": 29,
+   "chapter": "limits",
+   "chapterIndex": 10,
+   "beat": "limits",
+   "beatIndex": 0,
+   "stop": 17,
+   "auto": false,
+   "after": null,
+   "note": "Stop 18. The rhythm slows: wide over the plant, calmly lit again. Three honest limits, each tied to a place: spent fuel in casks beside the reactor; licensing, layered approvals on the reactor building; first-of-a-kind risk, a schedule with an uncertain end, on the site.",
+   "lock": 2,
+   "settle": 5.2
+  },
+  {
+   "flat": 30,
+   "chapter": "close",
+   "chapterIndex": 11,
+   "beat": "return",
+   "beatIndex": 0,
+   "stop": 18,
+   "auto": false,
+   "after": null,
+   "note": "Stop 19 (the last press). The limits text clears; vessel, containment, shaft and ground close while the camera glides through open space back to the opening view; the grid reconnects; then (automatically) the thesis, \"Your questions\" in amber, the presenters, the larger QR. Holds for Q&A.",
+   "lock": 3,
+   "settle": 6
+  },
+  {
+   "flat": 31,
+   "chapter": "close",
+   "chapterIndex": 11,
+   "beat": "qa",
+   "beatIndex": 1,
+   "stop": 18,
+   "auto": true,
+   "after": 5,
+   "note": "The opening composition again (same low hero camera): the thesis at display size, \"Your questions\" in amber, the presenters, the larger QR. Holds for Q&A.",
+   "lock": 0,
+   "settle": 2.6
+  }
+ ],
+ "stops": [
+  {
+   "stop": 0,
+   "first": 0,
+   "last": 0,
+   "chapter": "hook",
+   "chapterIndex": 0,
+   "id": "hook/hero",
+   "beats": [
+    "hook/hero"
+   ],
+   "lock": 1.5,
+   "settle": 6.92
+  },
+  {
+   "stop": 1,
+   "first": 1,
+   "last": 1,
+   "chapter": "lithuania",
+   "chapterIndex": 1,
+   "id": "lithuania/renewables",
+   "beats": [
+    "lithuania/renewables"
+   ],
+   "lock": 2.2,
+   "settle": 5.8
+  },
+  {
+   "stop": 2,
+   "first": 2,
+   "last": 2,
+   "chapter": "lithuania",
+   "chapterIndex": 1,
+   "id": "lithuania/calm",
+   "beats": [
+    "lithuania/calm"
+   ],
+   "lock": 1.8,
+   "settle": 3.6
+  },
+  {
+   "stop": 3,
+   "first": 3,
+   "last": 3,
+   "chapter": "lithuania",
+   "chapterIndex": 1,
+   "id": "lithuania/assessment",
+   "beats": [
+    "lithuania/assessment"
+   ],
+   "lock": 1.2,
+   "settle": 2.6
+  },
+  {
+   "stop": 4,
+   "first": 4,
+   "last": 5,
+   "chapter": "scale",
+   "chapterIndex": 2,
+   "id": "scale/large",
+   "beats": [
+    "scale/large",
+    "scale/modules@12.5"
+   ],
+   "lock": 3,
+   "settle": 20.2
+  },
+  {
+   "stop": 5,
+   "first": 6,
+   "last": 6,
+   "chapter": "facts",
+   "chapterIndex": 3,
+   "id": "facts/power",
+   "beats": [
+    "facts/power"
+   ],
+   "lock": 2,
+   "settle": 4
+  },
+  {
+   "stop": 6,
+   "first": 7,
+   "last": 7,
+   "chapter": "facts",
+   "chapterIndex": 3,
+   "id": "facts/footprint",
+   "beats": [
+    "facts/footprint"
+   ],
+   "lock": 2,
+   "settle": 5.1
+  },
+  {
+   "stop": 7,
+   "first": 8,
+   "last": 8,
+   "chapter": "facts",
+   "chapterIndex": 3,
+   "id": "facts/months",
+   "beats": [
+    "facts/months"
+   ],
+   "lock": 1.6,
+   "settle": 5.1
+  },
+  {
+   "stop": 8,
+   "first": 9,
+   "last": 10,
+   "chapter": "projects",
+   "chapterIndex": 4,
+   "id": "projects/world",
+   "beats": [
+    "projects/world",
+    "projects/darlington@8.4"
+   ],
+   "lock": 2.4,
+   "settle": 11.8
+  },
+  {
+   "stop": 9,
+   "first": 11,
+   "last": 12,
+   "chapter": "handoff",
+   "chapterIndex": 5,
+   "id": "handoff/land",
+   "beats": [
+    "handoff/land",
+    "handoff/descend@3.6"
+   ],
+   "lock": 3,
+   "settle": 13.19
+  },
+  {
+   "stop": 10,
+   "first": 13,
+   "last": 13,
+   "chapter": "fission",
+   "chapterIndex": 6,
+   "id": "fission/chain",
+   "beats": [
+    "fission/chain"
+   ],
+   "lock": 2,
+   "settle": 12
+  },
+  {
+   "stop": 11,
+   "first": 14,
+   "last": 17,
+   "chapter": "control",
+   "chapterIndex": 7,
+   "id": "control/inFuel",
+   "beats": [
+    "control/inFuel",
+    "control/blades@2.8",
+    "control/insert@5",
+    "control/withdraw@3.6"
+   ],
+   "lock": 1.6,
+   "settle": 13.4
+  },
+  {
+   "stop": 12,
+   "first": 18,
+   "last": 19,
+   "chapter": "energy",
+   "chapterIndex": 8,
+   "id": "energy/boil",
+   "beats": [
+    "energy/boil",
+    "energy/steam@5.2"
+   ],
+   "lock": 2.4,
+   "settle": 10.2
+  },
+  {
+   "stop": 13,
+   "first": 20,
+   "last": 21,
+   "chapter": "energy",
+   "chapterIndex": 8,
+   "id": "energy/turbine",
+   "beats": [
+    "energy/turbine",
+    "energy/condenser@6.6"
+   ],
+   "lock": 3,
+   "settle": 14.2
+  },
+  {
+   "stop": 14,
+   "first": 22,
+   "last": 22,
+   "chapter": "energy",
+   "chapterIndex": 8,
+   "id": "energy/grid",
+   "beats": [
+    "energy/grid"
+   ],
+   "lock": 3,
+   "settle": 8.2
+  },
+  {
+   "stop": 15,
+   "first": 23,
+   "last": 26,
+   "chapter": "safety",
+   "chapterIndex": 9,
+   "id": "safety/normal",
+   "beats": [
+    "safety/normal",
+    "safety/blackout@5.4",
+    "safety/scram@3.2",
+    "safety/decay@5.2"
+   ],
+   "lock": 2.6,
+   "settle": 16.8
+  },
+  {
+   "stop": 16,
+   "first": 27,
+   "last": 28,
+   "chapter": "safety",
+   "chapterIndex": 9,
+   "id": "safety/ics",
+   "beats": [
+    "safety/ics",
+    "safety/days@6.4"
+   ],
+   "lock": 3.6,
+   "settle": 12.3
+  },
+  {
+   "stop": 17,
+   "first": 29,
+   "last": 29,
+   "chapter": "limits",
+   "chapterIndex": 10,
+   "id": "limits/limits",
+   "beats": [
+    "limits/limits"
+   ],
+   "lock": 2,
+   "settle": 5.2
+  },
+  {
+   "stop": 18,
+   "first": 30,
+   "last": 31,
+   "chapter": "close",
+   "chapterIndex": 11,
+   "id": "close/return",
+   "beats": [
+    "close/return",
+    "close/qa@5"
+   ],
+   "lock": 3,
+   "settle": 7.6
+  }
+ ],
+ "bundle": [
+  "http://localhost:4430/assets/index-BH3Ur5LW.js"
+ ],
+ "log": {
+  "console": [
+   "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+  ],
+  "errors": [],
+  "external": []
+ }
+}

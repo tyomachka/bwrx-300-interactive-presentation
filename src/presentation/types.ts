@@ -69,7 +69,7 @@ export interface LookSpec {
   duration?: number;
 }
 
-/** One-shot progress (0..1) that runs once on a forward step (count-ups, pins, fronts). */
+/** One-shot progress (0..1) that runs once on a forward step (count-ups, pins, fronts, text fades). */
 export interface CueSpec {
   delay?: number;
   duration: number;
@@ -82,10 +82,15 @@ export interface CueSpec {
  */
 export type OverlayPosition = 'left' | 'right' | 'center' | 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
 
-/** Every overlay item may fade in on a cue (one-shot) instead of entering with the beat. */
+/**
+ * Every overlay item fades in on a cue (one-shot). An item new in a beat without its own cue gets one
+ * at the beat's `textAt` (presentation/resolve.ts), so text never arrives before its picture and never
+ * crosses the outgoing text in place. `out` fades the item away on another cue inside the same stop.
+ */
 interface ItemBase {
   id: string;
   cue?: string;
+  out?: string;
 }
 
 interface Placed {
@@ -161,14 +166,24 @@ export type OverlayItem = ItemBase &
     | { kind: 'meters' }
     | { kind: 'legend'; source?: CopyKey }
     | { kind: 'pins'; focus?: 'darlington' | 'lithuania' }
-    /** The fission chain's labels, placed in the micro view (presentation/scene/chainConfig.ts). */
+    /** The fission chain's labels, placed in the micro view (presentation/scene/fieldConfig.ts). */
     | { kind: 'microLabels' }
+    /** Chapter 3: the two reactor vessels side by side at one scale (sourced inside dimensions). */
+    | ({ kind: 'vessels' } & Placed)
   );
 
 export interface TalkBeat {
   id: string;
   /** What happens on this press (review document and debug panel; English). */
   note: string;
+  /**
+   * An automatic continuation: entered this many seconds after the beat before it (no press). A beat
+   * without `after` is a presenter stop; the stop's continuations play on from it, and the next press
+   * goes to the next stop (presentation/talk.ts).
+   */
+  after?: number;
+  /** When this beat's new text may appear (s after entry, default TALK.textAt): once its picture reads. */
+  textAt?: number;
   camera?: CameraShot;
   reveal?: RevealSpec;
   look?: LookSpec;
@@ -178,7 +193,7 @@ export interface TalkBeat {
   /** On-screen copy for this beat (replaces the previous beat's; `inherit` keeps it and adds these). */
   overlay?: readonly OverlayItem[];
   overlayInherit?: boolean;
-  /** Seconds a second forward press is ignored (the important transition). */
+  /** Seconds a second forward press is ignored (the important transition); a stop's first beat only. */
   lock?: number;
   /** The scene behind the small print is light (map land, a lit vessel wall): give it a dark backing. */
   lightScene?: boolean;

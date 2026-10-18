@@ -28,6 +28,13 @@ export const isPlaceholder = (value: string) => /_TODO$/.test(value);
 export const TALK = {
   /** Default input lock after a forward step (s): a second press inside it is ignored. */
   lock: 0.7,
+  /**
+   * Text follows the picture: a beat's new text fades in this long after the beat starts (s) unless
+   * the beat says otherwise, over `textIn`. The outgoing text has faded by then (design.ts
+   * MOTION.textOut, 0.35 s, is shorter than textAt).
+   */
+  textAt: 0.6,
+  textIn: 0.5,
   /** Backward and direct steps: a short settle move instead of the beat's choreography. */
   settle: { camera: 1.6, reveal: 1.2, world: 1.0, lock: 0.45 },
   /** Dip to dark between places too far apart to fly between (s). */

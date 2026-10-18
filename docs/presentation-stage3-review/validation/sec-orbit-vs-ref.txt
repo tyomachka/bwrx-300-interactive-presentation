@@ -1,0 +1,4 @@
+base-vs-ref-far: 90 frames, speckle px mean 59610.0 max 74355, frames with speckle 90, crawl 3641.7 px/frame
+fix-vs-ref-far: 90 frames, speckle px mean 56937.6 max 58607, frames with speckle 90, crawl 45.4 px/frame
+base-vs-ref-wide: 90 frames, speckle px mean 439486.5 max 441455, frames with speckle 90, crawl 78.0 px/frame
+fix-vs-ref-wide: 90 frames, speckle px mean 439482.6 max 441455, frames with speckle 90, crawl 72.0 px/frame

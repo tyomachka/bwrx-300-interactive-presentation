@@ -229,6 +229,23 @@ function section(layer: RevealLayerId, params: MeshStandardMaterialParameters, c
   return material;
 }
 
+/**
+ * The earth under the shaft basemat. Its top (the excavation floor) lies 1 cm under the bottom of the
+ * earth above it and under the basemat. Seen through a cut, those bottoms are back faces shaded as the
+ * cut surface at their own depth (sectionShader.ts FRAGMENT_CAP), and 1 cm is finer than the 24-bit
+ * depth buffer resolves at the talk's and Explore's distances (about 5 mm at 200 m, 1 cm at 300 m, with
+ * near 0.5 m): the two z-fought in streaks and speckle that crawled whenever the cut or the camera
+ * moved. This solid is only ever seen where nothing lies on it, so it always yields in depth to
+ * whatever is within that hair above it (a constant depth offset; no geometry or colour changes).
+ */
+function earthBelowShaft(): MeshStandardMaterial {
+  const material = section('ground', SURFACES.earth, CAPS.earth);
+  material.polygonOffset = true;
+  material.polygonOffsetFactor = 1;
+  material.polygonOffsetUnits = 4;
+  return material;
+}
+
 /** A region proxy: picked like a part, drawn only while its component is selected. */
 function regionHighlight(material: MeshStandardMaterial): MeshStandardMaterial {
   material.visible = false;
@@ -240,6 +257,7 @@ function createSectionMaterials() {
     ground: {
       surface: section('ground', { ...SURFACES.groundSurface, map: getLightPool() }, CAPS.earth),
       earth: section('ground', SURFACES.earth, CAPS.earth),
+      earthBelowShaft: earthBelowShaft(),
       apron: section('ground', { ...SURFACES.apron, map: getLightPool() }, CAPS.earth),
       human: section('ground', SURFACES.human, CAPS.human),
     },

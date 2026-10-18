@@ -1,0 +1,24 @@
+Section / ground stability (Stage 3)
+
+Static (60 consecutive stepped frames per config):
+  base-low: [{'pose': 'exterior', 'section': 0.5, 'frames': 60, 'distinct': 2}]
+  fix-low: every static config: 1 distinct frame in 60
+  base-high: [{'pose': 'exterior', 'section': 0.5, 'frames': 60, 'distinct': 2}]
+  fix-high: [{'pose': 'exterior', 'section': 0.5, 'frames': 60, 'distinct': 2}]
+  base-proj: every static config: 1 distinct frame in 60
+  fix-proj: every static config: 1 distinct frame in 60
+  ref-low: every static config: 1 distinct frame in 60
+
+Orbit, same frame Stage 2 vs Stage 3 (the speckle the fix removes):
+  low-wide: mean 3.9 px, max 349 px, frames with speckle 1/90, crawl 7.8 px/frame
+  low-far: mean 2555.2 px, max 15091 px, frames with speckle 80/90, crawl 3510.8 px/frame
+  high-wide: mean 0.0 px, max 0 px, frames with speckle 0/90, crawl 0.0 px/frame
+  high-far: mean 552.3 px, max 8505 px, frames with speckle 50/90, crawl 807.7 px/frame
+  proj-wide: mean 1.8 px, max 162 px, frames with speckle 1/90, crawl 3.6 px/frame
+  proj-far: mean 732.3 px, max 4321 px, frames with speckle 75/90, crawl 1036.7 px/frame
+
+Orbit vs log-depth reference (crawl of the difference, px/frame):
+  base-vs-ref-far: crawl 3641.7
+  fix-vs-ref-far: crawl 45.4
+  base-vs-ref-wide: crawl 78.0
+  fix-vs-ref-wide: crawl 72.0

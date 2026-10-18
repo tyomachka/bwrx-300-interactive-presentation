@@ -21,86 +21,8 @@ import { glslVec3, type FissionData } from './fissionData';
 
 const f = (x: number) => Number(x).toFixed(6);
 
-/**
- * Presentation v1 chain variant (src/presentation): the second nucleus completes its split, releases
- * its own neutrons and leaves heat, like the first. Undefined (the Stage 10 inset) generates exactly
- * the shaders it always did.
- */
-export interface ChainOptions {
-  /** τ of the second split. */
-  split: number;
-  /** The second nucleus' light-fragment launch speed (micro units/s); the heavy one keeps equal momentum. */
-  fragmentSpeed: number;
-  /** The second split's released neutrons (micro xy directions). */
-  neutrons: readonly (readonly [number, number, number])[];
-  /** τ window of the heat along the second split's fragments. */
-  heat: readonly [number, number];
-  /** Micro-space point of the second split (fissionData splitPointB). */
-  splitPoint: readonly number[];
-}
-
-function chainConstants(d: FissionData, c: ChainOptions): string {
-  const { b } = d;
-  const vHeavy = (c.fragmentSpeed * b.lightShare) / (1 - b.lightShare);
-  return `const float B_TS = ${f(c.split)};
-const float B_VL = ${f(c.fragmentSpeed)};
-const float B_VH = ${f(vHeavy)};
-const vec3 B_CL = ${glslVec3(b.centLight)};
-const vec3 B_CH = ${glslVec3(b.centHeavy)};
-const vec3 SPLIT_B = ${glslVec3(c.splitPoint)};
-const vec3 NB_DIR0 = ${glslVec3(c.neutrons[0]!)};
-const vec3 NB_DIR1 = ${glslVec3(c.neutrons[1]!)};
-const vec3 NB_DIR2 = ${glslVec3(c.neutrons[2]!)};
-const float HEATB0 = ${f(c.heat[0])};
-const float HEATB1 = ${f(c.heat[1])};
-uniform float uSpot;
-`;
-}
-
-/** Chain variant: the second nucleus' fragment centres, like fragmentA. */
-const CHAIN_FRAGMENT_B = /* glsl */ `
-vec3 fragmentB( float side ) {
-	float dt = max( uTau - B_TS, 0.0 );
-	return B_C + B_R * ( side > 0.0 ? B_CL : B_CH ) + B_D * side * ( LOBE * ease01( ( uTau - B_TE ) / ( B_TX - B_TE ) ) + travel( side > 0.0 ? B_VL : B_VH, dt ) );
-}
-`;
-
-/** Chain variant: neutrons 4-6 are released by the second split and leave the view. */
-const CHAIN_NEUTRONS = /* glsl */ `if ( id > 3.5 ) {
-		if ( uTau < B_TS ) return vec4( SPLIT_B, 0.0 );
-		float db = uTau - B_TS;
-		vec3 dirB = id < 4.5 ? NB_DIR0 : ( id < 5.5 ? NB_DIR1 : NB_DIR2 );
-		return vec4( SPLIT_B + dirB * N_SPEED * ( 1.0 - exp( -0.35 * db ) ) / 0.35, 1.0 - smoothstep( 1.2, 1.8, db ) );
-	}
-	`;
-
-/** Chain variant sprites: 5-6 heat along the second split's fragments, 7-8 its energy swell. */
-const CHAIN_SPRITES = /* glsl */ `if ( aKind > 4.5 ) {
-		float db = uTau - B_TS;
-		p0 = SPLIT_B;
-		p1 = SPLIT_B;
-		if ( aKind < 6.5 ) {
-			p1 = fragmentB( aKind < 5.5 ? 1.0 : -1.0 );
-			float h = ease01( ( uTau - HEATB0 ) / ( HEATB1 - HEATB0 ) );
-			w = 0.05 + 0.16 * h;
-			feather = 0.1 + 0.14 * h;
-			alpha = 0.27 * ease01( ( db - 0.08 ) / 0.4 ) * ( 1.0 - 0.15 * h );
-			col = uHeat;
-		} else if ( aKind < 7.5 ) {
-			float x = clamp( db / 0.55, 0.0, 1.0 );
-			w = 0.08 + 0.22 * ( 1.0 - pow( 1.0 - x, 2.0 ) );
-			feather = 0.18;
-			alpha = step( 0.0, db ) * 0.16 * pow( 1.0 - x, 1.4 );
-		} else {
-			float x = clamp( db / 0.35, 0.0, 1.0 );
-			w = 0.06 + 0.1 * x;
-			feather = 0.12;
-			alpha = step( 0.0, db ) * 0.3 * ( 1.0 - x );
-		}
-	} else `;
-
 /** Constants and motion functions shared by every inset shader (vertex side). */
-function motionGlsl(d: FissionData, chain?: ChainOptions): string {
+function motionGlsl(d: FissionData): string {
   const { a, b } = d;
   const vHeavy = (n: typeof a) => (L.fragmentSpeed * n.lightShare) / (1 - n.lightShare);
   const n0Mid = d.n0.point.map((v, i) => v * 0.45 + L.neutronStart[i]! * 0.55);
@@ -134,7 +56,7 @@ const vec3 B_D = ${glslVec3(b.axis)};
 const float B_SPLIT = ${f(b.split)};
 const float B_TE = ${f(T.chainExcite[0])};
 const float B_TX = ${f(T.chainExcite[1])};
-${chain ? chainConstants(d, chain) : ''}
+
 const vec3 N0_START = ${glslVec3(L.neutronStart)};
 const vec3 N0_END = ${glslVec3(d.n0.point)};
 const vec3 N0_LABEL = ${glslVec3(n0Mid)};
@@ -194,9 +116,9 @@ vec3 nucleonA( vec3 home, vec3 cent, vec3 rest, float side ) {
 }
 
 vec3 nucleonB( vec3 home, vec3 cent, vec3 rest, float side ) {
-	return nucleon( B_C, B_R, B_D, B_SPLIT, B_TE, B_TX, ${chain ? 'B_TS, B_VL, B_VH' : '1.0e4, 0.0, 0.0'}, home, cent, rest, side );
+	return nucleon( B_C, B_R, B_D, B_SPLIT, B_TE, B_TX, 1.0e4, 0.0, 0.0, home, cent, rest, side );
 }
-${chain ? CHAIN_FRAGMENT_B : ''}
+
 /** A first-nucleus fragment's centre (side +1 light, -1 heavy). */
 vec3 fragmentA( float side ) {
 	float dt = max( uTau - A_TS, 0.0 );
@@ -208,7 +130,7 @@ vec3 fragmentA( float side ) {
  * joins the second; 2 and 3 are released and leave the view. xyz micro position, w visibility.
  */
 vec4 neutron( float id, vec3 home, vec3 cent, vec3 rest, float side ) {
-	${chain ? CHAIN_NEUTRONS : ''}if ( id < 0.5 ) {
+	if ( id < 0.5 ) {
 		if ( uTau < T_IN1 ) return vec4( mix( N0_START, N0_END, clamp( ( uTau - T_IN0 ) / ( T_IN1 - T_IN0 ), 0.0, 1.0 ) ), step( T_IN0, uTau ) );
 		return vec4( nucleonA( home, cent, rest, side ), 1.0 );
 	}
@@ -335,7 +257,7 @@ void main() {
 
 // ---- Particles (nucleons and neutrons) --------------------------------------------------------------------------
 
-export function createParticleMaterial(d: FissionData, shared: InsetUniforms, chain?: ChainOptions) {
+export function createParticleMaterial(d: FissionData, shared: InsetUniforms) {
   const own = {
     uAlpha: { value: 0 },
     uProton: { value: new Color(K.proton) },
@@ -343,7 +265,7 @@ export function createParticleMaterial(d: FissionData, shared: InsetUniforms, ch
     uFree: { value: new Color(K.freeNeutron) },
   };
   const vertex = /* glsl */ `
-${motionGlsl(d, chain)}
+${motionGlsl(d)}
 uniform float uAlpha;
 uniform vec3 uProton;
 uniform vec3 uNeutron;
@@ -411,15 +333,14 @@ void main() {
 
 export const SPRITE_KINDS = 5;
 
-export function createSpriteMaterial(d: FissionData, shared: InsetUniforms, chain?: ChainOptions) {
+export function createSpriteMaterial(d: FissionData, shared: InsetUniforms) {
   const own = {
     uAlpha: { value: 0 },
     uEnergy: { value: new Color(K.energy) },
     uHeat: { value: new Color(K.heat) },
-    uSpot: { value: 0 },
   };
   const vertex = /* glsl */ `
-${motionGlsl(d, chain)}
+${motionGlsl(d)}
 uniform float uAlpha;
 uniform vec3 uEnergy;
 uniform vec3 uHeat;
@@ -436,7 +357,7 @@ void main() {
 	float feather;
 	float alpha;
 	vec3 col = uEnergy;
-	${chain ? CHAIN_SPRITES : ''}if ( aKind < 0.5 ) {
+	if ( aKind < 0.5 ) {
 		// A soft, modest swell of energy at the split (no ring, no shockwave).
 		float x = clamp( dt / 0.55, 0.0, 1.0 );
 		w = 0.08 + 0.22 * ( 1.0 - pow( 1.0 - x, 2.0 ) );
@@ -456,7 +377,7 @@ void main() {
 		float z = max( uZoom, 0.02 );
 		w = 0.035 / z;
 		feather = 0.07 / z;
-		alpha = 0.34 * ${chain ? 'uSpot' : 'ease01( ( uTau - 3.85 ) / 0.3 )'};
+		alpha = 0.34 * ease01( ( uTau - 3.85 ) / 0.3 );
 		col = uHeat;
 	} else {
 		// Heat left in the fuel along each fragment's path as it slows: widening, warm, soft.
@@ -476,7 +397,7 @@ void main() {
 	gl_Position = projectionMatrix * vec4( microToView( m ), 1.0 );
 	vLocal = local;
 	vShape = vec3( len * 0.5, w, feather );
-	vColor = vec4( col, alpha * ${chain ? '( aKind > 3.5 && aKind < 4.5 ? 1.0 : uAlpha )' : 'uAlpha'} );
+	vColor = vec4( col, alpha * uAlpha );
 	vIris = irisCenter();
 }
 `;

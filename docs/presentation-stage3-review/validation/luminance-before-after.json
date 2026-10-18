@@ -1,0 +1,275 @@
+{
+ "metric": "mean Rec.709 luma (0-255) per 0.2 s frame, real presses, Low 1920x1080",
+ "before": {
+  "fissionControlEnergy": {
+   "perStop": [
+    {
+     "stop": 11,
+     "id": "fission/chain",
+     "min": 21.83,
+     "max": 80.38,
+     "end": 24.03
+    },
+    {
+     "stop": 12,
+     "id": "control/inFuel",
+     "min": 23.22,
+     "max": 87.89,
+     "end": 77.8
+    },
+    {
+     "stop": 13,
+     "id": "energy/boil",
+     "min": 55.21,
+     "max": 85.27,
+     "end": 57.9
+    }
+   ],
+   "largestJumps": [
+    {
+     "frame": 74,
+     "t": 14.8,
+     "delta": 35.69
+    },
+    {
+     "frame": 7,
+     "t": 1.4,
+     "delta": -33.65
+    },
+    {
+     "frame": 75,
+     "t": 15.0,
+     "delta": 16.5
+    },
+    {
+     "frame": 6,
+     "t": 1.2,
+     "delta": -12.57
+    },
+    {
+     "frame": 8,
+     "t": 1.6,
+     "delta": -5.92
+    },
+    {
+     "frame": 145,
+     "t": 29.0,
+     "delta": 5.41
+    },
+    {
+     "frame": 150,
+     "t": 30.0,
+     "delta": -5.38
+    },
+    {
+     "frame": 73,
+     "t": 14.6,
+     "delta": 4.93
+    }
+   ]
+  },
+  "gridSafety": {
+   "perStop": [
+    {
+     "stop": 15,
+     "id": "energy/grid",
+     "min": 26.87,
+     "max": 46.89,
+     "end": 28.55
+    },
+    {
+     "stop": 16,
+     "id": "safety/normal",
+     "min": 19.13,
+     "max": 81.66,
+     "end": 35.59
+    },
+    {
+     "stop": 17,
+     "id": "safety/ics",
+     "min": 33.87,
+     "max": 40.56,
+     "end": 36.91
+    }
+   ],
+   "largestJumps": [
+    {
+     "frame": 109,
+     "t": 21.8,
+     "delta": -7.5
+    },
+    {
+     "frame": 106,
+     "t": 21.2,
+     "delta": 7.45
+    },
+    {
+     "frame": 107,
+     "t": 21.4,
+     "delta": 6.9
+    },
+    {
+     "frame": 100,
+     "t": 20.0,
+     "delta": 6.62
+    },
+    {
+     "frame": 110,
+     "t": 22.0,
+     "delta": -5.87
+    },
+    {
+     "frame": 105,
+     "t": 21.0,
+     "delta": 5.63
+    },
+    {
+     "frame": 103,
+     "t": 20.6,
+     "delta": 5.55
+    },
+    {
+     "frame": 101,
+     "t": 20.2,
+     "delta": 5.4
+    }
+   ]
+  }
+ },
+ "after": {
+  "fissionControlEnergy": {
+   "perStop": [
+    {
+     "stop": 11,
+     "id": "fission/chain",
+     "min": 21.17,
+     "max": 75.42,
+     "end": 23.37
+    },
+    {
+     "stop": 12,
+     "id": "control/inFuel",
+     "min": 22.62,
+     "max": 79.34,
+     "end": 71.65
+    },
+    {
+     "stop": 13,
+     "id": "energy/boil",
+     "min": 55.2,
+     "max": 81.83,
+     "end": 57.91
+    }
+   ],
+   "largestJumps": [
+    {
+     "frame": 75,
+     "t": 15.0,
+     "delta": 13.63
+    },
+    {
+     "frame": 74,
+     "t": 14.8,
+     "delta": 12.26
+    },
+    {
+     "frame": 7,
+     "t": 1.4,
+     "delta": -9.88
+    },
+    {
+     "frame": 8,
+     "t": 1.6,
+     "delta": -8.84
+    },
+    {
+     "frame": 76,
+     "t": 15.2,
+     "delta": 7.51
+    },
+    {
+     "frame": 6,
+     "t": 1.2,
+     "delta": -6.35
+    },
+    {
+     "frame": 73,
+     "t": 14.6,
+     "delta": 5.74
+    },
+    {
+     "frame": 10,
+     "t": 2.0,
+     "delta": -5.52
+    }
+   ]
+  },
+  "gridSafety": {
+   "perStop": [
+    {
+     "stop": 15,
+     "id": "energy/grid",
+     "min": 26.87,
+     "max": 46.95,
+     "end": 28.55
+    },
+    {
+     "stop": 16,
+     "id": "safety/normal",
+     "min": 19.14,
+     "max": 74.81,
+     "end": 35.59
+    },
+    {
+     "stop": 17,
+     "id": "safety/ics",
+     "min": 33.86,
+     "max": 40.56,
+     "end": 36.91
+    }
+   ],
+   "largestJumps": [
+    {
+     "frame": 106,
+     "t": 21.2,
+     "delta": 7.35
+    },
+    {
+     "frame": 107,
+     "t": 21.4,
+     "delta": 7.01
+    },
+    {
+     "frame": 109,
+     "t": 21.8,
+     "delta": -6.17
+    },
+    {
+     "frame": 105,
+     "t": 21.0,
+     "delta": 5.19
+    },
+    {
+     "frame": 110,
+     "t": 22.0,
+     "delta": -5.14
+    },
+    {
+     "frame": 100,
+     "t": 20.0,
+     "delta": 5.1
+    },
+    {
+     "frame": 108,
+     "t": 21.6,
+     "delta": 4.33
+    },
+    {
+     "frame": 103,
+     "t": 20.6,
+     "delta": 4.04
+    }
+   ]
+  }
+ }
+}

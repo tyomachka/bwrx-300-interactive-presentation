@@ -43,8 +43,9 @@ export function SiteGround() {
     <group name={PLANT_IDS.siteGround} userData={meta(PLANT_IDS.siteGround, 'educational-approximation')}>
       {/* Extrusions run along local +z; the -90° X rotation stands them up from y = -depth. */}
       <mesh name="site.earth" geometry={geometries.upper} material={earthMaterials} rotation-x={-Math.PI / 2} position-y={-UPPER.depth} receiveShadow />
-      {/* Its top is the excavation floor the shaft stands on: earth, not ground surface. */}
-      <mesh name="site.earthBelowShaft" geometry={geometries.lower} material={m.earth} rotation-x={-Math.PI / 2} position-y={-SITE.depth} receiveShadow />
+      {/* Its top is the excavation floor the shaft stands on: earth, not ground surface. Its own
+          material yields in depth to the earth and basemat 1 cm above it (materials.ts earthBelowShaft). */}
+      <mesh name="site.earthBelowShaft" geometry={geometries.lower} material={m.earthBelowShaft} rotation-x={-Math.PI / 2} position-y={-SITE.depth} receiveShadow />
       <mesh name="site.apron" geometry={geometries.apron} material={m.apron} rotation-x={-Math.PI / 2} position-y={SECTION_INSET} receiveShadow />
     </group>
   );

@@ -70,6 +70,7 @@ export function StudioEnvironment() {
           {/* Baked once: grounding for the low preset, where realtime shadow maps are off. */}
           <ContactShadows
             ref={clipWithExcavation}
+            name="env.contactShadows"
             frames={1}
             position={[CONTACT_SHADOW.center[0], SITE.apron.top + 0.02, CONTACT_SHADOW.center[1]]}
             scale={[CONTACT_SHADOW.size[0], CONTACT_SHADOW.size[1]]}

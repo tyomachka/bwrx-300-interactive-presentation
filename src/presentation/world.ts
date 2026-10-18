@@ -8,7 +8,7 @@
  *
  * Prefixes: f flow (Stage 7 channels), c control (Stage 8), s safety (Stage 9), y water cycle
  * (condenser and feedwater), g grid and city, p plant lights, x fission chain inset, m maps, lt
- * Lithuania map, w world map, k scale comparison, q football pitches, l limits, e environment.
+ * Lithuania map, w world map, k scale comparison, q footprint (block outline, stadium), l limits, e environment.
  */
 import { FOG } from '../config/render';
 
@@ -102,8 +102,11 @@ export const WORLD_CHANNELS = {
   /** BWRX-300 copies assembled beside ours (0..4, staggered). */
   'k.modules': { rest: 0, duration: 5.5 },
 
-  // ---- Football pitches (talk only) ----
-  'q.pitches': { rest: 0, duration: 1.6 },
+  // ---- Footprint (talk only) ----
+  /** The BWRX-300 power block's ~148 x 78 m outline on the ground around our plant (0..1, drawn on). */
+  'q.block': { rest: 0, duration: 1.6 },
+  /** An international-size 105 x 68 m pitch in a schematic stadium, at the same ground scale (0..1). */
+  'q.stadium': { rest: 0, duration: 1.6 },
 
   // ---- Limits (talk only) ----
   /** The spent-fuel cask pad beside the reactor building rises (0..1, staggered; 0 = not drawn). */

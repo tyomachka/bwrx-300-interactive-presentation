@@ -14,7 +14,7 @@ import { useTalkCopy, type TalkCopy } from '../copy';
 import { designVariables, stageX, stageY, type Tone } from '../design';
 import { overlayLayer } from '../overlayLayer';
 import { QR_CODE } from '../qrCode';
-import { CHAIN_LABELS } from '../scene/chainConfig';
+import { FIELD_LABELS } from '../scene/fieldConfig';
 import { TALK_BEATS, useTalkStore } from '../talk';
 import type { OverlayItem } from '../types';
 import './talk.css';
@@ -90,14 +90,14 @@ function Item({ item, leaving, copy, language }: { item: OverlayItem; leaving: b
   if (item.kind === 'microLabels') {
     return (
       <div className={base('talk-micro')}>
-        {CHAIN_LABELS.map((l, i) => (
+        {FIELD_LABELS.map((l, i) => (
           <MicroLabel key={l.key} id={`${item.id}:${i}`} label={l} copy={copy} />
         ))}
       </div>
     );
   }
   const wrap = (cls: string, position: string | undefined, children: ReactNode, style?: CSSProperties) => (
-    <Cued id={item.id} cue={item.cue} className={base(cls, position)} style={style}>
+    <Cued id={item.id} cue={item.cue} out={item.out} className={base(cls, position)} style={style}>
       {children}
     </Cued>
   );
@@ -155,6 +155,8 @@ function Item({ item, leaving, copy, language }: { item: OverlayItem; leaving: b
           </div>
         </>,
       );
+    case 'vessels':
+      return wrap('talk-vessels', item.position ?? 'bottom-right', <VesselDiagram copy={copy} />, placedTop(item.y));
     case 'legend':
       return wrap(
         'talk-legend',
@@ -173,20 +175,21 @@ function Item({ item, leaving, copy, language }: { item: OverlayItem; leaving: b
 }
 
 /**
- * A cue-driven fade (per frame, overlayLayer.ts), or the plain entrance animation without a cue. An
- * item that faded in on a cue and stays into the next beat without one (same id) simply stays: it
- * must not replay its entrance (a blink on the press).
+ * A cue-driven fade (per frame, overlayLayer.ts): in on `cue`, away on `out`. An item that faded in on a
+ * cue and stays into the next beat without one (same id) simply stays: it must not replay its entrance
+ * (a blink on the press).
  */
-function Cued({ id, cue, className, children, style }: { id: string; cue?: string; className: string; children: ReactNode; style?: CSSProperties }) {
+function Cued({ id, cue, out, className, children, style }: { id: string; cue?: string; out?: string; className: string; children: ReactNode; style?: CSSProperties }) {
   const ref = useRef<HTMLDivElement>(null);
   const [wasCued, setWasCued] = useState(!!cue);
   if (cue && !wasCued) setWasCued(true);
+  const driven = !!(cue || out);
   useLayoutEffect(() => {
-    if (!cue || !ref.current) return;
-    overlayLayer.cued.set(id, { el: ref.current, cue });
+    if (!driven || !ref.current) return;
+    overlayLayer.cued.set(id, { el: ref.current, cue, out });
     return () => void overlayLayer.cued.delete(id);
-  }, [id, cue]);
-  const cls = cue ? `${className} is-cued` : wasCued ? `${className} is-shown` : className;
+  }, [id, cue, out, driven]);
+  const cls = driven ? `${className} is-cued` : wasCued ? `${className} is-shown` : className;
   return (
     <div ref={ref} className={cls} style={cue ? { ...style, opacity: 0 } : style}>
       {children}
@@ -270,7 +273,7 @@ function Anchored({ item, className, copy }: { item: Extract<OverlayItem, { kind
   const ref = useRef<HTMLDivElement>(null);
   useLayoutEffect(() => {
     if (!ref.current) return;
-    overlayLayer.anchors.set(item.id, { el: ref.current, at: new Vector3(...item.at), cue: item.cue, leader: item.leader, leaderTo: item.leaderTo });
+    overlayLayer.anchors.set(item.id, { el: ref.current, at: new Vector3(...item.at), cue: item.cue, out: item.out, leader: item.leader, leaderTo: item.leaderTo });
     return () => void overlayLayer.anchors.delete(item.id);
   }, [item]);
   const cls = `${className} talk-label--${item.size ?? 'label'}${item.panel ? ' has-panel' : ''}${item.glyph ? ' has-glyph' : ''}`;
@@ -290,11 +293,11 @@ function Anchored({ item, className, copy }: { item: Extract<OverlayItem, { kind
   );
 }
 
-function MicroLabel({ id, label, copy }: { id: string; label: (typeof CHAIN_LABELS)[number]; copy: TalkCopy }) {
+function MicroLabel({ id, label, copy }: { id: string; label: (typeof FIELD_LABELS)[number]; copy: TalkCopy }) {
   const ref = useRef<HTMLDivElement>(null);
   useLayoutEffect(() => {
     if (!ref.current) return;
-    overlayLayer.micro.set(id, { el: ref.current, at: label.at, path: label.path, window: label.window, leader: label.leader });
+    overlayLayer.micro.set(id, { el: ref.current, anchor: label.anchor, window: label.window, leader: label.leader });
     return () => void overlayLayer.micro.delete(id);
   }, [id, label]);
   return (
@@ -307,6 +310,66 @@ function MicroLabel({ id, label, copy }: { id: string; label: (typeof CHAIN_LABE
         </span>
       </span>
     </div>
+  );
+}
+
+/**
+ * Chapter 3: the two reactor vessels at one scale (inside dimensions, presentation/sources.ts vessels):
+ * about as tall, the large one far wider. The core bands are DERIVED widths: each vessel's fuel
+ * bundles on the same 15.24 cm lattice (scene/rpv/rpvData.ts), as an equivalent circle; their height is
+ * schematic (the BWRX-300's 3.8 m active core for both), not a claim about the ESBWR's fuel length.
+ */
+const VESSELS = [
+  { name: 'scale.vesselLarge', dims: 'scale.vesselLargeDims', fuel: 'scale.vesselLargeFuel', x: 9.5, id: 7.1, h: 27.6, bundles: 1132 },
+  { name: 'scale.vesselSmall', dims: 'scale.vesselSmallDims', fuel: 'scale.vesselSmallFuel', x: 21.5, id: 4.2, h: 27.36, bundles: 240 },
+] as const;
+const VESSEL_VIEW = { w: 30, h: 29, ground: 28.6, bundlePitch: 0.1524, coreBottom: 5.12, coreHeight: 3.8 } as const;
+
+/** A vessel's inside outline: a cylinder with rounded heads (m, SVG y down from the ground line). */
+function vesselPath(cx: number, id: number, h: number): string {
+  const r = id / 2;
+  const head = r * 0.62;
+  const bottom = VESSEL_VIEW.ground;
+  const top = bottom - h;
+  return `M ${cx - r} ${bottom - head} L ${cx - r} ${top + head} Q ${cx - r} ${top} ${cx} ${top} Q ${cx + r} ${top} ${cx + r} ${top + head} L ${cx + r} ${bottom - head} Q ${cx + r} ${bottom} ${cx} ${bottom} Q ${cx - r} ${bottom} ${cx - r} ${bottom - head} Z`;
+}
+
+function VesselDiagram({ copy }: { copy: TalkCopy }) {
+  const { w, h, ground, bundlePitch, coreBottom, coreHeight } = VESSEL_VIEW;
+  return (
+    <>
+      <div className="talk-vessels__title">{copy['scale.vessels']}</div>
+      <div className="talk-vessels__figure">
+        <svg viewBox={`0 0 ${w} ${h}`} preserveAspectRatio="xMidYMax meet" aria-hidden="true">
+          <path d={`M 0 ${ground} H ${w}`} className="talk-vessels__ground" />
+          {/* 10 m scale bar */}
+          <path d={`M 1 ${ground} V ${ground - 10} M 0.4 ${ground - 10} H 1.6 M 0.4 ${ground - 5} H 1.2`} className="talk-vessels__scale" />
+          {VESSELS.map((v) => {
+            const core = Math.sqrt((v.bundles * bundlePitch * bundlePitch * 4) / Math.PI);
+            return (
+              <g key={v.name}>
+                <rect x={v.x - core / 2} y={ground - coreBottom - coreHeight} width={core} height={coreHeight} className="talk-vessels__core" />
+                <path d={vesselPath(v.x, v.id, v.h)} className="talk-vessels__vessel" />
+              </g>
+            );
+          })}
+        </svg>
+        <span className="talk-vessels__tick" style={{ bottom: `${(10 / h) * 100}%` }}>
+          10 m
+        </span>
+      </div>
+      <div className="talk-vessels__captions">
+        {VESSELS.map((v) => (
+          <div key={v.name} className="talk-vessels__caption" style={{ left: `${(v.x / w) * 100}%` }}>
+            <div className="talk-vessels__name">{copy[v.name]}</div>
+            <div className="talk-vessels__dims">{copy[v.dims]}</div>
+            <div className="talk-vessels__dims">{copy[v.fuel]}</div>
+          </div>
+        ))}
+      </div>
+      <div className="talk-vessels__point">{copy['scale.vesselsPoint']}</div>
+      <div className="talk-source">{copy['scale.vesselsNote']}</div>
+    </>
   );
 }
 

@@ -43,14 +43,24 @@ export const FACTS = {
     status: 'OFFICIAL',
   },
   footprint: {
-    claim: 'The power block fits within two (international) football pitches',
-    organization: 'GE Vernova',
-    document: GEV_PAGE,
-    where: GEV_URL,
+    claim: 'The BWRX-300 power block covers about 1.6 international football pitches of area (about 148 x 78 m)',
+    organization: 'GE Hitachi Nuclear Energy',
+    document: 'GE-Hitachi, BWRX-300 General Description, 005N9751 Revision F (Released for Information); copy filed with the CNSC as CMD 24-H3 Ref R1-9',
+    where: '§9 (plant layout), p. 63 of 95; https://api.cnsc-ccsn.gc.ca/dms/digital-medias/CMD-24-H3-Ref-R1-9-GEH-005N9751-BWRX-300-General-Description-Rev-F.pdf/object',
+    date: 'December 2023 (downloaded 2026-10-17, sha256 dd6b9dd0...c11f)',
+    supports:
+      '"The power block is comprised of the RB, TB, CB, RWB, and the Turbine Maintenance Building. The footprint of the power block is approximately 148 m x 78 m." 148 x 78 = 11,544 m2 = 1.62 x 7,140 m2 (one 105 x 68 m pitch). The current Rev J (June 2026) no longer states the sides: Table 21-2 (p. 123) gives "Plant Powerblock Footprint 9,800 m2 (rectangular building envelope)" (= 1.37 pitches) and §10 (p. 77) lists the same buildings. GE Vernova\'s product page: "small enough to fit within two international football pitches" (area; the 148 x 78 m rectangle does not nest in two 105 x 68 m rectangles).',
+    status: 'DERIVED',
+  },
+  pitch: {
+    claim: 'An international-size pitch is 105 x 68 m; the National Stadium being built in Vilnius is a UEFA category IV project',
+    organization: 'UEFA; LRT (Lithuanian National Radio and Television)',
+    document: 'UEFA Stadium Infrastructure Regulations (in force 1 June 2025), Article 5.01 "Field of play"; LRT, "Nacionalinis stadionas pamažu kyla" (2025-09-03)',
+    where: 'https://documents.uefa.com/r/PxVtjcYr9Ntgwd0wYgq2xw/snbCQQ1y5eRWxnjVf4WgnQ ; https://www.lrt.lt/naujienos/verslas/4/2662517/nacionalinis-stadionas-pamazu-kyla-pasizvalgykite-kaip-vyksta-darbai',
     date: 'accessed 2026-10-17',
     supports:
-      '"The BWRX-300 power block is small enough to fit within two international football pitches." Consistent with GD Rev J Table 21-2 (p. 123): Plant Powerblock Footprint 9,800 m2 (rectangular building envelope); site 27,100 m2 (fenced). 9,800 m2 = 1.37 x a 105 x 68 m pitch (7,140 m2).',
-    status: 'VENDOR',
+      'UEFA art. 5.01: categories 3 and 4, field of play length "105m", width "68m". LRT: piles drilled for a "UEFA IV kategorijos stadiono" in Šeškinė, 18,000 seats, a football-only stadium (no running track), completion planned for the end of 2027. No published construction drawing with the pitch size was found: the screen shows an international-size 105 x 68 m pitch and names the stadium only as the category it is built to.',
+    status: 'OFFICIAL',
   },
   constructionTime: {
     claim: '24-36 months, nth-of-a-kind, first nuclear concrete to ready for fuel load',
@@ -155,14 +165,33 @@ export const FACTS = {
     status: 'OFFICIAL',
   },
   largeUnit: {
-    claim: 'One ~1,500 MW class unit ~ five 300 MW modules (capacity illustration)',
+    claim: 'One ~1,500 MW unit ~ five 300 MW modules (capacity illustration); the large plant drawn at matched scale with an illustrative layout',
     organization: 'GE Vernova Hitachi (reference values)',
     document: GD,
     where: 'Table 2-1, p. 28',
     date: GD_DATE,
     supports:
-      'Large BWRs of the same family: ABWR ~1,350 MWe and ESBWR ~1,600 MWe gross, vs BWRX-300 ~316 MWe gross. 1,500 / 300 = 5. Capacity only: not a claim that five SMRs equal one large unit in cost, output profile or site.',
+      'Large BWRs of the same family: ABWR ~1,350 MWe and ESBWR ~1,600 MWe gross, vs BWRX-300 ~316 MWe gross. ~1,535 / ~300 net = 5.1. Capacity only: not a claim that five SMRs equal one large unit in cost, output profile or site. The large plant\'s buildings are a simplified BWR massing (no public drawing gives the ESBWR building sides); on screen: "Mastelis suderintas; pastatų išdėstymas iliustracinis".',
     status: 'ILLUSTRATIVE',
+  },
+  esbwr: {
+    claim: 'ESBWR: ~1,500 MW (net), a large boiling-water reactor of the same family',
+    organization: 'U.S. Nuclear Regulatory Commission',
+    document: 'NRC, "ESBWR" design certification page; final rule (design certified 2014-10-15)',
+    where: 'https://www.nrc.gov/reactors/new-reactors/large-lwr/design-cert/esbwr.html',
+    date: 'accessed 2026-10-17',
+    supports: 'Rated up to 4,500 MWt; "rated gross electrical power output of 1,594 megawatts electric (MWe)" and "a net estimated electrical power output of approximately 1,535 MWe" (can vary by up to 50 MWe with the turbine island and site). GD Rev J Table 2-1 (p. 28): ~1,600 MWe gross, 4,500 MWth, natural circulation (the BWRX-300 is its scaled-down successor, §1).',
+    status: 'OFFICIAL',
+  },
+  vessels: {
+    claim: 'Reactor vessels: ESBWR 7.1 m x 27.6 m inside, 1,132 fuel bundles; BWRX-300 ~4.2 m x ~27.4 m inside, 240 bundles',
+    organization: 'GE Vernova Hitachi',
+    document: GD,
+    where: 'Table 2-1 "Comparison of Key Features", pp. 28-29; §3.1.2 (RPV), p. 30',
+    date: GD_DATE,
+    supports:
+      'Table 2-1: ESBWR "RPV Diameter (ID) 7.1 m", "RPV Height (Inside) 27.6 m", 1,132 bundles; BWRX-300 "4 m", "27 m", 240 bundles. §3.1.2: "The RPV has a minimum inside diameter of approximately 4.2 m ... and a nominal inner height of approximately 27.36 m." The diagram uses 4.2 m and 27.36 m (the more precise text values; the model\'s vessel, scene/plant/dimensions.ts, uses the same) and draws both vessels at one scale.',
+    status: 'OFFICIAL',
   },
 
   // ---- Projects --------------------------------------------------------------------------------------

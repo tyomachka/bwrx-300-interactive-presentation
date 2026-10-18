@@ -1,0 +1,1 @@
+index-eKJbD0x3.js (final; walkthrough, transitions, stills of stop 5, performance). Earlier parts of the chain ran on index-BH3Ur5LW.js, identical except one label offset in stop 5 (chapters.ts / comparisonLayout.ts).

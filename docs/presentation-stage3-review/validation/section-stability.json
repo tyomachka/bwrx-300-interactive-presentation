@@ -1,0 +1,752 @@
+{
+ "rootCause": "Two earth solids 1 cm apart (above / below the shaft bottom, y = -35.995 / -36.005). Through a cut, the upper solid's bottom is a back face shaded as the cut surface at its own depth (sectionShader.ts FRAGMENT_CAP) and the lower solid's top a lit front face 1 cm under it: closer than the 24-bit depth buffer resolves at the talk's / Explore's distances (near 0.5 m: ~5 mm at 200 m, ~1 cm at 300 m, ~2.4 cm at 450 m). The two z-fought in streaks that crawled as the cut or the camera moved. Also the basemat bottom over the same face.",
+ "fix": "scene/plant/materials.ts earthBelowShaft: the lower earth has its own material with polygonOffset (factor 1, units 4), so it always yields in depth to the surfaces 1 cm above it. No geometry, colour, shader or draw-order change.",
+ "evidenceForRootCause": "Hiding the lower earth block removed the streaks (diagnosis run); the fix changes pixels only in the excavation where they were (static diffs below) and the 48 s film frames are unchanged.",
+ "staticFrameIdentity": {
+  "base-low": [
+   {
+    "pose": "exterior",
+    "section": 0.5,
+    "frames": 60,
+    "distinct": 2
+   }
+  ],
+  "fix-low": "every static config: 1 distinct frame in 60",
+  "base-high": [
+   {
+    "pose": "exterior",
+    "section": 0.5,
+    "frames": 60,
+    "distinct": 2
+   }
+  ],
+  "fix-high": [
+   {
+    "pose": "exterior",
+    "section": 0.5,
+    "frames": 60,
+    "distinct": 2
+   }
+  ],
+  "base-proj": "every static config: 1 distinct frame in 60",
+  "fix-proj": "every static config: 1 distinct frame in 60",
+  "ref-low": "every static config: 1 distinct frame in 60"
+ },
+ "staticOneStepSettle": {
+  "config": "exterior pose, section 0.5, High (both builds)",
+  "changes": [
+   3
+  ],
+  "note": "one change 0.1 s after the section snap, then 57 identical frames: a one-time settle, never alternating"
+ },
+ "staticDiffBaseVsFix": {
+  "low": [
+   {
+    "name": "static-exterior-0.5.png",
+    "status": "differs",
+    "changedPixels": 0,
+    "bbox": [
+     107,
+     688,
+     108,
+     689
+    ]
+   },
+   {
+    "name": "static-exterior-1.png",
+    "status": "identical"
+   },
+   {
+    "name": "static-far-0.5.png",
+    "status": "differs",
+    "changedPixels": 1705,
+    "bbox": [
+     811,
+     552,
+     1163,
+     661
+    ]
+   },
+   {
+    "name": "static-far-1.png",
+    "status": "differs",
+    "changedPixels": 1899,
+    "bbox": [
+     811,
+     552,
+     1163,
+     661
+    ]
+   },
+   {
+    "name": "static-high-0.5.png",
+    "status": "differs",
+    "changedPixels": 497,
+    "bbox": [
+     1009,
+     705,
+     1170,
+     785
+    ]
+   },
+   {
+    "name": "static-high-1.png",
+    "status": "differs",
+    "changedPixels": 501,
+    "bbox": [
+     959,
+     705,
+     1170,
+     785
+    ]
+   },
+   {
+    "name": "static-wide-0.5.png",
+    "status": "identical"
+   },
+   {
+    "name": "static-wide-1.png",
+    "status": "identical"
+   }
+  ],
+  "high": [
+   {
+    "name": "static-exterior-0.5.png",
+    "status": "identical"
+   },
+   {
+    "name": "static-exterior-1.png",
+    "status": "identical"
+   },
+   {
+    "name": "static-far-0.5.png",
+    "status": "differs",
+    "changedPixels": 3101,
+    "bbox": [
+     807,
+     553,
+     1177,
+     661
+    ]
+   },
+   {
+    "name": "static-far-1.png",
+    "status": "differs",
+    "changedPixels": 6163,
+    "bbox": [
+     818,
+     551,
+     1177,
+     661
+    ]
+   },
+   {
+    "name": "static-high-0.5.png",
+    "status": "differs",
+    "changedPixels": 2283,
+    "bbox": [
+     689,
+     679,
+     1189,
+     816
+    ]
+   },
+   {
+    "name": "static-high-1.png",
+    "status": "differs",
+    "changedPixels": 2328,
+    "bbox": [
+     689,
+     679,
+     1189,
+     816
+    ]
+   },
+   {
+    "name": "static-wide-0.5.png",
+    "status": "identical"
+   },
+   {
+    "name": "static-wide-1.png",
+    "status": "identical"
+   }
+  ],
+  "proj": [
+   {
+    "name": "static-exterior-0.5.png",
+    "status": "identical"
+   },
+   {
+    "name": "static-exterior-1.png",
+    "status": "identical"
+   },
+   {
+    "name": "static-far-0.5.png",
+    "status": "differs",
+    "changedPixels": 813,
+    "bbox": [
+     518,
+     396,
+     617,
+     442
+    ]
+   },
+   {
+    "name": "static-far-1.png",
+    "status": "differs",
+    "changedPixels": 912,
+    "bbox": [
+     511,
+     396,
+     617,
+     442
+    ]
+   },
+   {
+    "name": "static-high-0.5.png",
+    "status": "differs",
+    "changedPixels": 82,
+    "bbox": [
+     551,
+     468,
+     597,
+     491
+    ]
+   },
+   {
+    "name": "static-high-1.png",
+    "status": "differs",
+    "changedPixels": 87,
+    "bbox": [
+     547,
+     468,
+     597,
+     491
+    ]
+   },
+   {
+    "name": "static-wide-0.5.png",
+    "status": "identical"
+   },
+   {
+    "name": "static-wide-1.png",
+    "status": "identical"
+   }
+  ]
+ },
+ "orbitSpeckleRemoved": [
+  {
+   "label": "low-wide",
+   "base": "sec-base-low/orbit-wide",
+   "fix": "sec-fix-low/orbit-wide",
+   "frames": 90,
+   "speckleMean": 3.9,
+   "speckleMax": 349,
+   "framesWithSpeckle": 1,
+   "crawlMean": 7.8
+  },
+  {
+   "label": "low-far",
+   "base": "sec-base-low/orbit-far",
+   "fix": "sec-fix-low/orbit-far",
+   "frames": 90,
+   "speckleMean": 2555.2,
+   "speckleMax": 15091,
+   "framesWithSpeckle": 80,
+   "crawlMean": 3510.8
+  },
+  {
+   "label": "high-wide",
+   "base": "sec-base-high/orbit-wide",
+   "fix": "sec-fix-high/orbit-wide",
+   "frames": 90,
+   "speckleMean": 0.0,
+   "speckleMax": 0,
+   "framesWithSpeckle": 0,
+   "crawlMean": 0.0
+  },
+  {
+   "label": "high-far",
+   "base": "sec-base-high/orbit-far",
+   "fix": "sec-fix-high/orbit-far",
+   "frames": 90,
+   "speckleMean": 552.3,
+   "speckleMax": 8505,
+   "framesWithSpeckle": 50,
+   "crawlMean": 807.7
+  },
+  {
+   "label": "proj-wide",
+   "base": "sec-base-proj/orbit-wide",
+   "fix": "sec-fix-proj/orbit-wide",
+   "frames": 90,
+   "speckleMean": 1.8,
+   "speckleMax": 162,
+   "framesWithSpeckle": 1,
+   "crawlMean": 3.6
+  },
+  {
+   "label": "proj-far",
+   "base": "sec-base-proj/orbit-far",
+   "fix": "sec-fix-proj/orbit-far",
+   "frames": 90,
+   "speckleMean": 732.3,
+   "speckleMax": 4321,
+   "framesWithSpeckle": 75,
+   "crawlMean": 1036.7
+  }
+ ],
+ "orbitVsLogDepthReference": {
+  "note": "A temporary build with logarithmicDepthBuffer (never shipped) as the precision reference; its frames differ systematically everywhere, so only the crawl (frame-to-frame change of the difference) is meaningful: the fixed build is stable like views that never z-fought.",
+  "rows": [
+   {
+    "label": "base-vs-ref-far",
+    "base": "sec-ref-low/orbit-far",
+    "fix": "sec-base-low/orbit-far",
+    "frames": 90,
+    "speckleMean": 59610.0,
+    "speckleMax": 74355,
+    "framesWithSpeckle": 90,
+    "crawlMean": 3641.7
+   },
+   {
+    "label": "fix-vs-ref-far",
+    "base": "sec-ref-low/orbit-far",
+    "fix": "sec-fix-low/orbit-far",
+    "frames": 90,
+    "speckleMean": 56937.6,
+    "speckleMax": 58607,
+    "framesWithSpeckle": 90,
+    "crawlMean": 45.4
+   },
+   {
+    "label": "base-vs-ref-wide",
+    "base": "sec-ref-low/orbit-wide",
+    "fix": "sec-base-low/orbit-wide",
+    "frames": 90,
+    "speckleMean": 439486.5,
+    "speckleMax": 441455,
+    "framesWithSpeckle": 90,
+    "crawlMean": 78.0
+   },
+   {
+    "label": "fix-vs-ref-wide",
+    "base": "sec-ref-low/orbit-wide",
+    "fix": "sec-fix-low/orbit-wide",
+    "frames": 90,
+    "speckleMean": 439482.6,
+    "speckleMax": 441455,
+    "framesWithSpeckle": 90,
+    "crawlMean": 72.0
+   }
+  ]
+ },
+ "runs": {
+  "base-low": {
+   "quality": "low",
+   "size": "1920x1080",
+   "static": [
+    {
+     "pose": "exterior",
+     "section": 0.5,
+     "frames": 60,
+     "distinct": 2
+    },
+    {
+     "pose": "exterior",
+     "section": 1,
+     "frames": 60,
+     "distinct": 1
+    },
+    {
+     "pose": "wide",
+     "section": 0.5,
+     "frames": 60,
+     "distinct": 1
+    },
+    {
+     "pose": "wide",
+     "section": 1,
+     "frames": 60,
+     "distinct": 1
+    },
+    {
+     "pose": "high",
+     "section": 0.5,
+     "frames": 60,
+     "distinct": 1
+    },
+    {
+     "pose": "high",
+     "section": 1,
+     "frames": 60,
+     "distinct": 1
+    },
+    {
+     "pose": "far",
+     "section": 0.5,
+     "frames": 60,
+     "distinct": 1
+    },
+    {
+     "pose": "far",
+     "section": 1,
+     "frames": 60,
+     "distinct": 1
+    }
+   ],
+   "errors": [],
+   "console": [
+    "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+   ]
+  },
+  "fix-low": {
+   "quality": "low",
+   "size": "1920x1080",
+   "static": [
+    {
+     "pose": "exterior",
+     "section": 0.5,
+     "frames": 60,
+     "distinct": 1
+    },
+    {
+     "pose": "exterior",
+     "section": 1,
+     "frames": 60,
+     "distinct": 1
+    },
+    {
+     "pose": "wide",
+     "section": 0.5,
+     "frames": 60,
+     "distinct": 1
+    },
+    {
+     "pose": "wide",
+     "section": 1,
+     "frames": 60,
+     "distinct": 1
+    },
+    {
+     "pose": "high",
+     "section": 0.5,
+     "frames": 60,
+     "distinct": 1
+    },
+    {
+     "pose": "high",
+     "section": 1,
+     "frames": 60,
+     "distinct": 1
+    },
+    {
+     "pose": "far",
+     "section": 0.5,
+     "frames": 60,
+     "distinct": 1
+    },
+    {
+     "pose": "far",
+     "section": 1,
+     "frames": 60,
+     "distinct": 1
+    }
+   ],
+   "errors": [],
+   "console": [
+    "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+   ]
+  },
+  "base-high": {
+   "quality": "high",
+   "size": "1920x1080",
+   "static": [
+    {
+     "pose": "exterior",
+     "section": 0.5,
+     "frames": 60,
+     "distinct": 2
+    },
+    {
+     "pose": "exterior",
+     "section": 1,
+     "frames": 60,
+     "distinct": 1
+    },
+    {
+     "pose": "wide",
+     "section": 0.5,
+     "frames": 60,
+     "distinct": 1
+    },
+    {
+     "pose": "wide",
+     "section": 1,
+     "frames": 60,
+     "distinct": 1
+    },
+    {
+     "pose": "high",
+     "section": 0.5,
+     "frames": 60,
+     "distinct": 1
+    },
+    {
+     "pose": "high",
+     "section": 1,
+     "frames": 60,
+     "distinct": 1
+    },
+    {
+     "pose": "far",
+     "section": 0.5,
+     "frames": 60,
+     "distinct": 1
+    },
+    {
+     "pose": "far",
+     "section": 1,
+     "frames": 60,
+     "distinct": 1
+    }
+   ],
+   "errors": [],
+   "console": [
+    "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+   ]
+  },
+  "fix-high": {
+   "quality": "high",
+   "size": "1920x1080",
+   "static": [
+    {
+     "pose": "exterior",
+     "section": 0.5,
+     "frames": 60,
+     "distinct": 2
+    },
+    {
+     "pose": "exterior",
+     "section": 1,
+     "frames": 60,
+     "distinct": 1
+    },
+    {
+     "pose": "wide",
+     "section": 0.5,
+     "frames": 60,
+     "distinct": 1
+    },
+    {
+     "pose": "wide",
+     "section": 1,
+     "frames": 60,
+     "distinct": 1
+    },
+    {
+     "pose": "high",
+     "section": 0.5,
+     "frames": 60,
+     "distinct": 1
+    },
+    {
+     "pose": "high",
+     "section": 1,
+     "frames": 60,
+     "distinct": 1
+    },
+    {
+     "pose": "far",
+     "section": 0.5,
+     "frames": 60,
+     "distinct": 1
+    },
+    {
+     "pose": "far",
+     "section": 1,
+     "frames": 60,
+     "distinct": 1
+    }
+   ],
+   "errors": [],
+   "console": [
+    "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+   ]
+  },
+  "base-proj": {
+   "quality": "low",
+   "size": "1024x768",
+   "static": [
+    {
+     "pose": "exterior",
+     "section": 0.5,
+     "frames": 60,
+     "distinct": 1
+    },
+    {
+     "pose": "exterior",
+     "section": 1,
+     "frames": 60,
+     "distinct": 1
+    },
+    {
+     "pose": "wide",
+     "section": 0.5,
+     "frames": 60,
+     "distinct": 1
+    },
+    {
+     "pose": "wide",
+     "section": 1,
+     "frames": 60,
+     "distinct": 1
+    },
+    {
+     "pose": "high",
+     "section": 0.5,
+     "frames": 60,
+     "distinct": 1
+    },
+    {
+     "pose": "high",
+     "section": 1,
+     "frames": 60,
+     "distinct": 1
+    },
+    {
+     "pose": "far",
+     "section": 0.5,
+     "frames": 60,
+     "distinct": 1
+    },
+    {
+     "pose": "far",
+     "section": 1,
+     "frames": 60,
+     "distinct": 1
+    }
+   ],
+   "errors": [],
+   "console": [
+    "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+   ]
+  },
+  "fix-proj": {
+   "quality": "low",
+   "size": "1024x768",
+   "static": [
+    {
+     "pose": "exterior",
+     "section": 0.5,
+     "frames": 60,
+     "distinct": 1
+    },
+    {
+     "pose": "exterior",
+     "section": 1,
+     "frames": 60,
+     "distinct": 1
+    },
+    {
+     "pose": "wide",
+     "section": 0.5,
+     "frames": 60,
+     "distinct": 1
+    },
+    {
+     "pose": "wide",
+     "section": 1,
+     "frames": 60,
+     "distinct": 1
+    },
+    {
+     "pose": "high",
+     "section": 0.5,
+     "frames": 60,
+     "distinct": 1
+    },
+    {
+     "pose": "high",
+     "section": 1,
+     "frames": 60,
+     "distinct": 1
+    },
+    {
+     "pose": "far",
+     "section": 0.5,
+     "frames": 60,
+     "distinct": 1
+    },
+    {
+     "pose": "far",
+     "section": 1,
+     "frames": 60,
+     "distinct": 1
+    }
+   ],
+   "errors": [],
+   "console": [
+    "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+   ]
+  },
+  "ref-low": {
+   "quality": "low",
+   "size": "1920x1080",
+   "static": [
+    {
+     "pose": "exterior",
+     "section": 0.5,
+     "frames": 60,
+     "distinct": 1
+    },
+    {
+     "pose": "exterior",
+     "section": 1,
+     "frames": 60,
+     "distinct": 1
+    },
+    {
+     "pose": "wide",
+     "section": 0.5,
+     "frames": 60,
+     "distinct": 1
+    },
+    {
+     "pose": "wide",
+     "section": 1,
+     "frames": 60,
+     "distinct": 1
+    },
+    {
+     "pose": "high",
+     "section": 0.5,
+     "frames": 60,
+     "distinct": 1
+    },
+    {
+     "pose": "high",
+     "section": 1,
+     "frames": 60,
+     "distinct": 1
+    },
+    {
+     "pose": "far",
+     "section": 0.5,
+     "frames": 60,
+     "distinct": 1
+    },
+    {
+     "pose": "far",
+     "section": 1,
+     "frames": 60,
+     "distinct": 1
+    }
+   ],
+   "errors": [],
+   "console": [
+    "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+   ]
+  }
+ }
+}

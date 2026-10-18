@@ -882,3 +882,107 @@ a.talk-credit__email:hover {
   border-color: var(--accent);
   color: #fff;
 }
+
+/* Chapter 3: the two reactor vessels at one scale (TalkOverlay.tsx VesselDiagram) -------------------------- */
+.talk-vessels {
+  width: 24cqw;
+  text-align: left;
+}
+
+.talk-vessels__title {
+  font-size: var(--talk-micro);
+  font-weight: var(--talk-micro-w);
+  letter-spacing: var(--talk-micro-ls);
+  line-height: var(--talk-micro-lh);
+  text-transform: uppercase;
+  color: var(--talk-c-text2);
+  text-shadow: var(--talk-halo);
+}
+
+.talk-vessels__figure {
+  position: relative;
+  height: 24cqh;
+  margin-top: 1.4cqh;
+}
+
+.talk-vessels__figure svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.talk-vessels__vessel {
+  fill: rgba(13, 15, 18, 0.55);
+  stroke: var(--talk-c-text);
+  vector-effect: non-scaling-stroke;
+  stroke-width: 1.5px;
+}
+
+.talk-vessels__core {
+  fill: var(--talk-c-copper);
+  opacity: 0.55;
+}
+
+.talk-vessels__ground,
+.talk-vessels__scale {
+  fill: none;
+  stroke: var(--talk-c-line);
+  vector-effect: non-scaling-stroke;
+  stroke-width: 1px;
+}
+
+.talk-vessels__tick {
+  position: absolute;
+  left: 2.2cqh;
+  translate: 0 50%;
+  font-size: var(--talk-source);
+  line-height: 1;
+  color: var(--talk-c-source);
+  text-shadow: var(--talk-halo);
+}
+
+.talk-vessels__captions {
+  position: relative;
+  height: calc(3 * var(--talk-source) * 1.3 + 0.8cqh);
+  margin-top: 1cqh;
+}
+
+.talk-vessels__caption {
+  position: absolute;
+  top: 0;
+  translate: -50% 0;
+  text-align: center;
+  white-space: nowrap;
+  text-shadow: var(--talk-halo);
+}
+
+.talk-vessels__name {
+  font-size: var(--talk-label);
+  font-weight: var(--talk-label-w);
+  letter-spacing: var(--talk-label-ls);
+  line-height: 1.3;
+  color: var(--talk-c-text);
+}
+
+.talk-vessels__dims {
+  font-size: var(--talk-source);
+  line-height: 1.3;
+  color: var(--talk-c-source);
+}
+
+.talk-vessels__point {
+  margin-top: 1.4cqh;
+  font-size: var(--talk-label);
+  font-weight: var(--talk-label-w);
+  letter-spacing: var(--talk-label-ls);
+  line-height: var(--talk-label-lh);
+  color: var(--talk-c-text);
+  text-shadow: var(--talk-halo);
+}
+
+.talk-vessels .talk-source {
+  max-width: none;
+  margin-top: 1cqh;
+}

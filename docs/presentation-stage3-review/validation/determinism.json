@@ -1,0 +1,388 @@
+{
+ "method": "Independent browser sessions, clock pinned at 100 s after load, 1/30 s steps; per sample a SHA-256 of the screenshot (WebGL + HTML overlay unless \"WebGL only\"). Windows \"stop:press\" = the previous stop settled, then a real next(); \"stop:jump\" = jumpStop(stop, play) (a seek).",
+ "pressLowFullFrame": {
+  "comparison": "session A vs B, real presses, full frame",
+  "quality": "low",
+  "rows": [
+   {
+    "window": "5:press",
+    "samples": 105,
+    "identical": 105,
+    "mismatchIndexes": []
+   },
+   {
+    "window": "7:press",
+    "samples": 60,
+    "identical": 60,
+    "mismatchIndexes": []
+   },
+   {
+    "window": "9:press",
+    "samples": 60,
+    "identical": 60,
+    "mismatchIndexes": []
+   },
+   {
+    "window": "10:press",
+    "samples": 67,
+    "identical": 67,
+    "mismatchIndexes": []
+   },
+   {
+    "window": "11:press",
+    "samples": 120,
+    "identical": 120,
+    "mismatchIndexes": []
+   },
+   {
+    "window": "12:press",
+    "samples": 65,
+    "identical": 65,
+    "mismatchIndexes": []
+   },
+   {
+    "window": "16:press",
+    "samples": 85,
+    "identical": 85,
+    "mismatchIndexes": []
+   },
+   {
+    "window": "19:press",
+    "samples": 80,
+    "identical": 72,
+    "mismatchIndexes": [
+     72,
+     73,
+     74,
+     75,
+     76,
+     77,
+     78,
+     79
+    ]
+   }
+  ],
+  "total": 642,
+  "identical": 634
+ },
+ "pressLowWebGlOnly": {
+  "comparison": "session A vs B, real presses, overlay hidden",
+  "quality": "low",
+  "rows": [
+   {
+    "window": "19:press",
+    "samples": 90,
+    "identical": 90,
+    "mismatchIndexes": []
+   },
+   {
+    "window": "12:press",
+    "samples": 65,
+    "identical": 65,
+    "mismatchIndexes": []
+   }
+  ],
+  "total": 155,
+  "identical": 155
+ },
+ "pressHighFullFrame": {
+  "comparison": "session A vs B, real presses, full frame, High",
+  "quality": "high",
+  "rows": [
+   {
+    "window": "5:press",
+    "samples": 63,
+    "identical": 63,
+    "mismatchIndexes": []
+   },
+   {
+    "window": "11:press",
+    "samples": 60,
+    "identical": 60,
+    "mismatchIndexes": []
+   },
+   {
+    "window": "16:press",
+    "samples": 51,
+    "identical": 51,
+    "mismatchIndexes": []
+   }
+  ],
+  "total": 174,
+  "identical": 174
+ },
+ "closingMismatchDetail": "Full-frame misses occur only in stop 19 and move between reruns (7.3-8.0 s in A vs B; 2.0-2.2 s and 6.7 s in a saved rerun). The saved ones are 1-level (maxDelta 1) differences inside HTML text regions while texts fade in (DOM compositing of semi-transparent text). With the overlay hidden, the same windows are identical in every sample (155 / 155).",
+ "seeksUnpinned": {
+  "comparison": "seeks, random order vs given order, full frame (absolute clock differs between the two orders)",
+  "quality": "low",
+  "rows": [
+   {
+    "window": "5:jump",
+    "samples": 105,
+    "identical": 105,
+    "mismatchIndexes": []
+   },
+   {
+    "window": "19:jump",
+    "samples": 80,
+    "identical": 33,
+    "mismatchIndexes": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     19,
+     44,
+     45,
+     46,
+     47,
+     48,
+     49,
+     50,
+     51,
+     52,
+     53,
+     54,
+     55,
+     56,
+     57,
+     58,
+     59,
+     60,
+     61,
+     62,
+     63,
+     64,
+     65,
+     66,
+     67,
+     68,
+     69,
+     70,
+     71,
+     72,
+     73,
+     74,
+     75,
+     76,
+     77,
+     78,
+     79
+    ]
+   },
+   {
+    "window": "16:jump",
+    "samples": 85,
+    "identical": 0,
+    "mismatchIndexes": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19,
+     20,
+     21,
+     22,
+     23,
+     24,
+     25,
+     26,
+     27,
+     28,
+     29,
+     30,
+     31,
+     32,
+     33,
+     34,
+     35,
+     36,
+     37,
+     38,
+     39,
+     40,
+     41,
+     42,
+     43,
+     44,
+     45,
+     46,
+     47,
+     48,
+     49,
+     50,
+     51,
+     52,
+     53,
+     54,
+     55,
+     56,
+     57,
+     58,
+     59,
+     60,
+     61,
+     62,
+     63,
+     64,
+     65,
+     66,
+     67,
+     68,
+     69,
+     70,
+     71,
+     72,
+     73,
+     74,
+     75,
+     76,
+     77,
+     78,
+     79,
+     80,
+     81,
+     82,
+     83,
+     84
+    ]
+   },
+   {
+    "window": "12:jump",
+    "samples": 65,
+    "identical": 13,
+    "mismatchIndexes": [
+     0,
+     14,
+     15,
+     16,
+     17,
+     18,
+     19,
+     20,
+     21,
+     22,
+     23,
+     24,
+     25,
+     26,
+     27,
+     28,
+     29,
+     30,
+     31,
+     32,
+     33,
+     34,
+     35,
+     36,
+     37,
+     38,
+     39,
+     40,
+     41,
+     42,
+     43,
+     44,
+     45,
+     46,
+     47,
+     48,
+     49,
+     50,
+     51,
+     52,
+     53,
+     54,
+     55,
+     56,
+     57,
+     58,
+     59,
+     60,
+     61,
+     62,
+     63,
+     64
+    ]
+   },
+   {
+    "window": "11:jump",
+    "samples": 120,
+    "identical": 119,
+    "mismatchIndexes": [
+     0
+    ]
+   }
+  ],
+  "total": 455,
+  "identical": 270
+ },
+ "seeksPinnedWebGl": {
+  "comparison": "seeks, random vs given order, clock pinned to the same value before every seek, overlay hidden",
+  "quality": "low",
+  "rows": [
+   {
+    "window": "5:jump",
+    "samples": 105,
+    "identical": 105,
+    "mismatchIndexes": []
+   },
+   {
+    "window": "19:jump",
+    "samples": 80,
+    "identical": 76,
+    "mismatchIndexes": [
+     0,
+     1,
+     2,
+     19
+    ]
+   },
+   {
+    "window": "16:jump",
+    "samples": 85,
+    "identical": 85,
+    "mismatchIndexes": []
+   },
+   {
+    "window": "12:jump",
+    "samples": 65,
+    "identical": 65,
+    "mismatchIndexes": []
+   },
+   {
+    "window": "11:jump",
+    "samples": 120,
+    "identical": 119,
+    "mismatchIndexes": [
+     0
+    ]
+   }
+  ],
+  "total": 455,
+  "identical": 450
+ },
+ "seekNote": "Unpinned seeks differ because the continuous processes (flow particles, line pulses, glints, the turbine shaft) run on the animation clock, not on the time since a stop began: they never restart on a press. With the clock pinned per seek, stops 5, 12 and 16 are identical in every sample; stop 11 differs in its first sample (0.2 s) and stop 19 in its first three (0.1-0.3 s) and one at 2.0 s: a short history effect after a debug seek, not reachable by presenter presses."
+}

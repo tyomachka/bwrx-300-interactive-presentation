@@ -1,14 +1,20 @@
 /**
- * Presentation v1 controller: the 7-minute talk as a manual sequence of beats (presenter keys).
+ * Presentation v1 controller: the 7-minute talk as presenter stops (keys), each a short automatic
+ * choreography that then holds (loops keep running) until the next key.
  *
- *   next      Right Arrow / Space / Page Down   the next beat's choreography (ignored while the
- *                                              beat's important transition locks input)
- *   prev      Left Arrow / Page Up             the previous beat, settled (no one-shots replayed)
- *   home      Home                             back to the first beat
- *   reset     R                                safe reset: dip to dark, the current beat re-established
+ *   next      Right Arrow / Space / Page Down   the next stop's choreography
+ *   prev      Left Arrow / Page Up             the previous stop, settled at its final state
+ *   home      Home                             back to the opening (its choreography)
+ *   reset     R                                stop and reset: dip to dark, the current stop
+ *                                              re-established at its final state (nothing runs on)
  *   exit      Esc                              hand the camera to Explore where it is
  *
- * There is no timer: after a transition the scene waits (loops keep running) until the next key.
+ * A stop is a beat the presenter enters plus the beats that follow it automatically (`after`,
+ * presentation/types.ts): one press = one idea. While a stop plays, a forward press is ignored for its
+ * `lock` (a double press never skips an idea); after that a press goes straight to the next stop,
+ * which takes over from whatever is on screen (nothing snaps, the rest of the old choreography is
+ * simply not played). Back always lands on a stop's final state, never inside a choreography.
+ *
  * The 48 s master sequence stays separate and untouched; starting one stops the other.
  */
 import { create } from 'zustand';
@@ -28,10 +34,13 @@ import { CHAPTERS } from './chapters';
 import { TALK } from './config';
 import { installTalkEffects, removeTalkEffects } from './effects';
 import { resolveTalk, type ResolvedBeat } from './resolve';
-import { clearRuntime, enterBeat, talkCameraSource, talkLook, type EntryOptions } from './runtime';
+import { beatTime, clearRuntime, currentEntry, enterBeat, talkCameraSource, talkLook, type EntryOptions } from './runtime';
 import type { EntryMode } from './types';
 
 export const TALK_BEATS: readonly ResolvedBeat[] = resolveTalk(CHAPTERS);
+
+/** The presenter stops: the first beat of each (flat index). */
+export const TALK_STOPS: readonly number[] = TALK_BEATS.filter((b) => !b.auto).map((b) => b.flat);
 
 export interface TalkUiState {
   /** The talk owns the scene. */
@@ -43,9 +52,11 @@ export interface TalkUiState {
   entry: number;
   /** Ever started in this page (resume vs first start). */
   started: boolean;
+  /** Forward presses that advanced a stop since the opening (debug / review). */
+  presses: number;
 }
 
-export const useTalkStore = create<TalkUiState>()(() => ({ active: false, flat: 0, mode: 'settle', entry: 0, started: false }));
+export const useTalkStore = create<TalkUiState>()(() => ({ active: false, flat: 0, mode: 'settle', entry: 0, started: false, presses: 0 }));
 
 /** The talk's look source (a stable function, so it can be withdrawn only if still installed). */
 const lookSource = () => talkLook;
@@ -87,7 +98,8 @@ class TalkController {
     const { started, flat } = useTalkStore.getState();
     const live = this.activate();
     // The very first entry plays the opening; a resume settles where the talk was left.
-    this.enter(started ? flat : 0, started ? 'settle' : 'play', { live });
+    if (started) this.enter(TALK_BEATS[flat]!.stopLast, 'settle', { live });
+    else this.enter(0, 'play', { live });
   }
 
   next(): void {
@@ -95,26 +107,30 @@ class TalkController {
       this.start();
       return;
     }
-    if (this.locked || this.flat >= TALK_BEATS.length - 1) return; // the closing composition holds
-    this.enter(this.flat + 1, 'play');
+    const following = this.beat.stopLast + 1;
+    if (this.locked || following >= TALK_BEATS.length) return; // the closing composition holds
+    this.enter(following, 'play');
+    useTalkStore.setState((s) => ({ presses: s.presses + 1 }));
   }
 
   prev(): void {
     if (!this.active || this.locked) return;
-    this.enter(Math.max(0, this.flat - 1), 'settle');
+    const stop = this.beat.stop;
+    this.enter(stop === 0 ? this.beat.stopLast : TALK_BEATS[this.beat.stopFirst - 1]!.stopLast, 'settle');
   }
 
   home(): void {
     if (!sceneReady()) return;
     const live = this.activate();
     this.enter(0, 'play', { live });
+    useTalkStore.setState({ presses: 0 });
   }
 
-  /** Safe reset: everything the talk drives is re-established for the current beat, behind a dip. */
+  /** Stop and reset: everything the talk drives re-established at the current stop's final state, behind a dip. */
   reset(): void {
     if (!this.active) return;
     const live = this.activate();
-    this.enter(this.flat, 'settle', { cut: true, live });
+    this.enter(this.beat.stopLast, 'settle', { cut: true, live });
   }
 
   /** Debug / automation: any beat, settled or with its own choreography (ignores the input lock). */
@@ -132,6 +148,40 @@ class TalkController {
     this.enter(target, mode, mode === 'settle' ? { cut: true, live } : { live });
   }
 
+  /** Debug / automation: a presenter stop (0-based) with its choreography, from the previous stop settled. */
+  jumpStop(stop: number, mode: EntryMode = 'play'): void {
+    const first = TALK_STOPS[Math.min(Math.max(0, Math.round(stop)), TALK_STOPS.length - 1)]!;
+    if (mode === 'play') {
+      if (first === 0) {
+        this.jump(0, 'play');
+        return;
+      }
+      if (!sceneReady()) return;
+      const before = TALK_BEATS[first - 1]!; // the previous stop's final beat
+      const live = this.activate();
+      this.enter(before.flat, 'settle', { instant: true, live });
+      this.enter(first, 'play', { live: before.finalPose });
+      return;
+    }
+    this.jump(TALK_BEATS[first]!.stopLast, 'settle');
+  }
+
+  /**
+   * Per frame, before the talk's evaluation (talk driver): enter the stop's automatic continuations at
+   * their scheduled moments (exact clock times, so a fixed-step capture plays the same every time).
+   */
+  update(): void {
+    if (!this.active) return;
+    for (let guard = 0; guard < 8; guard++) {
+      const e = currentEntry();
+      const following = TALK_BEATS[this.flat + 1];
+      if (!e || e.mode !== 'play' || !following?.auto || following.stop !== this.beat.stop) return;
+      const after = following.beat.after!;
+      if (beatTime() < after) return;
+      this.enter(following.flat, 'play', { continueAt: e.start + after });
+    }
+  }
+
   /** Esc: leave the talk; Explore takes over at the current view. The position is remembered. */
   exit(): void {
     if (!this.active) return;
@@ -145,7 +195,8 @@ class TalkController {
   private enter(flat: number, mode: EntryMode, options: EntryOptions & { live?: CameraPose } = {}): void {
     const beat = TALK_BEATS[flat]!;
     enterBeat(beat, mode, options.live ?? livePose(), options);
-    this.lockUntil = animationClock.time + (mode === 'play' ? beat.lock : TALK.settle.lock);
+    // A continuation keeps its stop's lock; a stop entered with its choreography locks for its own.
+    if (options.continueAt === undefined) this.lockUntil = animationClock.time + (mode === 'play' ? beat.lock : TALK.settle.lock);
     useTalkStore.setState((s) => ({ flat, mode, entry: s.entry + 1 }));
   }
 
@@ -216,13 +267,56 @@ export function settleTime(b: ResolvedBeat): number {
     ...(spec.camera?.keys ?? []).map((k) => k.at),
     spec.camera?.master ? (spec.camera.master.delay ?? 0) + (spec.camera.master.to - spec.camera.master.from) / (spec.camera.master.speed ?? 1) : 0,
     ...Object.values(spec.worldTiming ?? {}).map((t) => (t?.delay ?? 0) + (t?.duration ?? 0)),
-    ...Object.values(spec.cues ?? {}).map((c) => (c.delay ?? 0) + c.duration),
+    ...[...b.cueOwner.values()].filter((c) => c.flat === b.flat).map((c) => (c.spec.delay ?? 0) + c.spec.duration),
     ...Object.values(spec.reveal?.tracks ?? {}).map((t) => (t?.delay ?? 0) + (t?.duration ?? 0)),
     spec.reveal?.timing ? (spec.reveal.timing.delay ?? 0) + (spec.reveal.timing.duration ?? 0) : 0,
   ];
   return cut + Math.max(1.6, ...ends);
 }
 
+/** Seconds after `b` is entered at which its continuation starts (auto beats only). */
+const offsetInStop = (b: ResolvedBeat) => {
+  let t = 0;
+  for (let f = b.stopFirst + 1; f <= b.flat; f++) t += TALK_BEATS[f]!.beat.after ?? 0;
+  return t;
+};
+
+/** Seconds after a stop is entered (its first beat, after any dip) when its whole choreography has settled. */
+export function stopSettleTime(stop: number): number {
+  const beats = TALK_BEATS.filter((b) => b.stop === stop);
+  return Math.max(...beats.map((b) => offsetInStop(b) + settleTime(b)));
+}
+
 /** Diagnostics: the beat list for the debug panel and the review document. */
 export const talkOutline = () =>
-  TALK_BEATS.map((b) => ({ flat: b.flat, chapter: b.chapter.id, chapterIndex: b.chapterIndex, beat: b.beat.id, beatIndex: b.beatIndex, note: b.beat.note, lock: b.lock, settle: +settleTime(b).toFixed(2) }));
+  TALK_BEATS.map((b) => ({
+    flat: b.flat,
+    chapter: b.chapter.id,
+    chapterIndex: b.chapterIndex,
+    beat: b.beat.id,
+    beatIndex: b.beatIndex,
+    stop: b.stop,
+    auto: b.auto,
+    after: b.beat.after ?? null,
+    note: b.beat.note,
+    lock: b.lock,
+    settle: +settleTime(b).toFixed(2),
+  }));
+
+/** Diagnostics: the presenter stops (what one press plays), for the debug panel and the review. */
+export const stopOutline = () =>
+  TALK_STOPS.map((first, stop) => {
+    const b = TALK_BEATS[first]!;
+    const beats = TALK_BEATS.filter((x) => x.stop === stop);
+    return {
+      stop,
+      first,
+      last: b.stopLast,
+      chapter: b.chapter.id,
+      chapterIndex: b.chapterIndex,
+      id: `${b.chapter.id}/${b.beat.id}`,
+      beats: beats.map((x) => `${x.chapter.id}/${x.beat.id}${x.auto ? `@${x.beat.after}` : ''}`),
+      lock: b.lock,
+      settle: +stopSettleTime(stop).toFixed(2),
+    };
+  });

@@ -25,6 +25,12 @@ export interface ResolvedBeat {
   flat: number;
   chapterIndex: number;
   beatIndex: number;
+  /** The presenter stop this beat belongs to (0-based), its first and last beat (flat). */
+  stop: number;
+  stopFirst: number;
+  stopLast: number;
+  /** An automatic continuation (entered `beat.after` s after the beat before it). */
+  auto: boolean;
   chapter: TalkChapter;
   beat: TalkBeat;
   /** The beat's own shot (undefined: the camera holds where the previous beat left it). */
@@ -61,6 +67,7 @@ export function resolveTalk(chapters: readonly TalkChapter[]): ResolvedBeat[] {
   let world: WorldState = restingWorld();
   const cueOwner = new Map<string, { flat: number; spec: CueSpec }>();
   let overlay: OverlayItem[] = [];
+  let stop = -1;
 
   chapters.forEach((chapter, chapterIndex) => {
     overlay = [];
@@ -97,10 +104,30 @@ export function resolveTalk(chapters: readonly TalkChapter[]): ResolvedBeat[] {
           overlay = [...overlay.filter((item) => !ids.has(item.id)), ...beat.overlay];
         } else overlay = [...beat.overlay];
       }
+      // Text follows the picture: an item new in this beat fades in at `textAt` unless it has its own
+      // cue; an item that stays from the beat before simply stays (no second entrance).
+      const before = new Map((out[flat - 1]?.overlay ?? []).map((item) => [item.id, item]));
+      const textAt = beat.textAt ?? TALK.textAt;
+      overlay = overlay.map((item) => {
+        const kept = before.get(item.id);
+        if (kept) {
+          if (import.meta.env.DEV && sameContent(kept, item) === false) console.warn(`[talk] ${chapter.id}/${beat.id}: "${item.id}" changes content in place; give it a new id`);
+          return item;
+        }
+        if (item.cue) return item;
+        const cue = `@in:${flat}:${item.id}`;
+        cueOwner.set(cue, { flat, spec: { delay: textAt, duration: TALK.textIn } });
+        return { ...item, cue };
+      });
+      if (beat.after === undefined) stop++;
       out.push({
         flat,
         chapterIndex,
         beatIndex,
+        stop,
+        stopFirst: flat,
+        stopLast: flat,
+        auto: beat.after !== undefined,
         chapter,
         beat,
         shot: beat.camera,
@@ -111,9 +138,21 @@ export function resolveTalk(chapters: readonly TalkChapter[]): ResolvedBeat[] {
         world,
         cueOwner: new Map(cueOwner),
         overlay,
-        lock: beat.lock ?? TALK.lock,
+        lock: beat.after !== undefined ? 0 : (beat.lock ?? TALK.lock),
       });
     });
   });
+  if (out[0]?.auto) throw new Error('[talk] the first beat must be a presenter stop');
+  for (const b of out) {
+    b.stopFirst = out.findIndex((x) => x.stop === b.stop);
+    b.stopLast = b.stopFirst;
+    while (out[b.stopLast + 1]?.stop === b.stop) b.stopLast++;
+  }
   return out;
+}
+
+/** Two overlay items say the same thing (their cues aside). */
+function sameContent(a: OverlayItem, b: OverlayItem): boolean {
+  const strip = (item: OverlayItem) => JSON.stringify({ ...item, cue: undefined, out: undefined });
+  return strip(a) === strip(b);
 }

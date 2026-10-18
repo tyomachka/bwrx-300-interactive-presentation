@@ -1,0 +1,1561 @@
+{
+ "stops": 19,
+ "beats": 32,
+ "pressesToQa": 18,
+ "passed": 75,
+ "failed": 0,
+ "checks": [
+  {
+   "name": "forward to stop 1",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 0,
+    "mode": "play",
+    "entry": 1,
+    "started": true,
+    "presses": 0,
+    "locked": true,
+    "beatTime": -0.41999999999999993,
+    "dip": 0,
+    "beat": "hero",
+    "chapter": "hook",
+    "stop": 0,
+    "auto": false
+   }
+  },
+  {
+   "name": "stop 1 plays its beats by itself",
+   "ok": true,
+   "detail": {
+    "seen": [
+     0
+    ],
+    "first": 0,
+    "last": 0
+   }
+  },
+  {
+   "name": "forward to stop 2",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 1,
+    "mode": "play",
+    "entry": 2,
+    "started": true,
+    "presses": 1,
+    "locked": true,
+    "beatTime": 0,
+    "dip": 0,
+    "beat": "renewables",
+    "chapter": "lithuania",
+    "stop": 1,
+    "auto": false
+   }
+  },
+  {
+   "name": "stop 2 plays its beats by itself",
+   "ok": true,
+   "detail": {
+    "seen": [
+     1
+    ],
+    "first": 1,
+    "last": 1
+   }
+  },
+  {
+   "name": "forward to stop 3",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 2,
+    "mode": "play",
+    "entry": 3,
+    "started": true,
+    "presses": 2,
+    "locked": true,
+    "beatTime": 0,
+    "dip": 0,
+    "beat": "calm",
+    "chapter": "lithuania",
+    "stop": 2,
+    "auto": false
+   }
+  },
+  {
+   "name": "stop 3 plays its beats by itself",
+   "ok": true,
+   "detail": {
+    "seen": [
+     2
+    ],
+    "first": 2,
+    "last": 2
+   }
+  },
+  {
+   "name": "forward to stop 4",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 3,
+    "mode": "play",
+    "entry": 4,
+    "started": true,
+    "presses": 3,
+    "locked": true,
+    "beatTime": 0,
+    "dip": 0,
+    "beat": "assessment",
+    "chapter": "lithuania",
+    "stop": 3,
+    "auto": false
+   }
+  },
+  {
+   "name": "stop 4 plays its beats by itself",
+   "ok": true,
+   "detail": {
+    "seen": [
+     3
+    ],
+    "first": 3,
+    "last": 3
+   }
+  },
+  {
+   "name": "forward to stop 5",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 4,
+    "mode": "play",
+    "entry": 5,
+    "started": true,
+    "presses": 4,
+    "locked": true,
+    "beatTime": 0,
+    "dip": 0,
+    "beat": "large",
+    "chapter": "scale",
+    "stop": 4,
+    "auto": false
+   }
+  },
+  {
+   "name": "stop 5 plays its beats by itself",
+   "ok": true,
+   "detail": {
+    "seen": [
+     4,
+     5
+    ],
+    "first": 4,
+    "last": 5
+   }
+  },
+  {
+   "name": "forward to stop 6",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 6,
+    "mode": "play",
+    "entry": 7,
+    "started": true,
+    "presses": 5,
+    "locked": true,
+    "beatTime": 0,
+    "dip": 0,
+    "beat": "power",
+    "chapter": "facts",
+    "stop": 5,
+    "auto": false
+   }
+  },
+  {
+   "name": "stop 6 plays its beats by itself",
+   "ok": true,
+   "detail": {
+    "seen": [
+     6
+    ],
+    "first": 6,
+    "last": 6
+   }
+  },
+  {
+   "name": "forward to stop 7",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 7,
+    "mode": "play",
+    "entry": 8,
+    "started": true,
+    "presses": 6,
+    "locked": true,
+    "beatTime": 0,
+    "dip": 0,
+    "beat": "footprint",
+    "chapter": "facts",
+    "stop": 6,
+    "auto": false
+   }
+  },
+  {
+   "name": "stop 7 plays its beats by itself",
+   "ok": true,
+   "detail": {
+    "seen": [
+     7
+    ],
+    "first": 7,
+    "last": 7
+   }
+  },
+  {
+   "name": "forward to stop 8",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 8,
+    "mode": "play",
+    "entry": 9,
+    "started": true,
+    "presses": 7,
+    "locked": true,
+    "beatTime": 0,
+    "dip": 0,
+    "beat": "months",
+    "chapter": "facts",
+    "stop": 7,
+    "auto": false
+   }
+  },
+  {
+   "name": "stop 8 plays its beats by itself",
+   "ok": true,
+   "detail": {
+    "seen": [
+     8
+    ],
+    "first": 8,
+    "last": 8
+   }
+  },
+  {
+   "name": "forward to stop 9",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 9,
+    "mode": "play",
+    "entry": 10,
+    "started": true,
+    "presses": 8,
+    "locked": true,
+    "beatTime": 0,
+    "dip": 0,
+    "beat": "world",
+    "chapter": "projects",
+    "stop": 8,
+    "auto": false
+   }
+  },
+  {
+   "name": "stop 9 plays its beats by itself",
+   "ok": true,
+   "detail": {
+    "seen": [
+     9,
+     10
+    ],
+    "first": 9,
+    "last": 10
+   }
+  },
+  {
+   "name": "forward to stop 10",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 11,
+    "mode": "play",
+    "entry": 12,
+    "started": true,
+    "presses": 9,
+    "locked": true,
+    "beatTime": 0,
+    "dip": 0,
+    "beat": "land",
+    "chapter": "handoff",
+    "stop": 9,
+    "auto": false
+   }
+  },
+  {
+   "name": "stop 10 plays its beats by itself",
+   "ok": true,
+   "detail": {
+    "seen": [
+     11,
+     12
+    ],
+    "first": 11,
+    "last": 12
+   }
+  },
+  {
+   "name": "forward to stop 11",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 13,
+    "mode": "play",
+    "entry": 14,
+    "started": true,
+    "presses": 10,
+    "locked": true,
+    "beatTime": 0,
+    "dip": 0,
+    "beat": "chain",
+    "chapter": "fission",
+    "stop": 10,
+    "auto": false
+   }
+  },
+  {
+   "name": "stop 11 plays its beats by itself",
+   "ok": true,
+   "detail": {
+    "seen": [
+     13
+    ],
+    "first": 13,
+    "last": 13
+   }
+  },
+  {
+   "name": "forward to stop 12",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 14,
+    "mode": "play",
+    "entry": 15,
+    "started": true,
+    "presses": 11,
+    "locked": true,
+    "beatTime": 0,
+    "dip": 0,
+    "beat": "inFuel",
+    "chapter": "control",
+    "stop": 11,
+    "auto": false
+   }
+  },
+  {
+   "name": "stop 12 plays its beats by itself",
+   "ok": true,
+   "detail": {
+    "seen": [
+     14,
+     15,
+     16,
+     17
+    ],
+    "first": 14,
+    "last": 17
+   }
+  },
+  {
+   "name": "forward to stop 13",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 18,
+    "mode": "play",
+    "entry": 19,
+    "started": true,
+    "presses": 12,
+    "locked": true,
+    "beatTime": 0,
+    "dip": 0,
+    "beat": "boil",
+    "chapter": "energy",
+    "stop": 12,
+    "auto": false
+   }
+  },
+  {
+   "name": "stop 13 plays its beats by itself",
+   "ok": true,
+   "detail": {
+    "seen": [
+     18,
+     19
+    ],
+    "first": 18,
+    "last": 19
+   }
+  },
+  {
+   "name": "forward to stop 14",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 20,
+    "mode": "play",
+    "entry": 21,
+    "started": true,
+    "presses": 13,
+    "locked": true,
+    "beatTime": 0,
+    "dip": 0,
+    "beat": "turbine",
+    "chapter": "energy",
+    "stop": 13,
+    "auto": false
+   }
+  },
+  {
+   "name": "stop 14 plays its beats by itself",
+   "ok": true,
+   "detail": {
+    "seen": [
+     20,
+     21
+    ],
+    "first": 20,
+    "last": 21
+   }
+  },
+  {
+   "name": "forward to stop 15",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 22,
+    "mode": "play",
+    "entry": 23,
+    "started": true,
+    "presses": 14,
+    "locked": true,
+    "beatTime": 0,
+    "dip": 0,
+    "beat": "grid",
+    "chapter": "energy",
+    "stop": 14,
+    "auto": false
+   }
+  },
+  {
+   "name": "stop 15 plays its beats by itself",
+   "ok": true,
+   "detail": {
+    "seen": [
+     22
+    ],
+    "first": 22,
+    "last": 22
+   }
+  },
+  {
+   "name": "forward to stop 16",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 23,
+    "mode": "play",
+    "entry": 24,
+    "started": true,
+    "presses": 15,
+    "locked": true,
+    "beatTime": 0,
+    "dip": 0,
+    "beat": "normal",
+    "chapter": "safety",
+    "stop": 15,
+    "auto": false
+   }
+  },
+  {
+   "name": "stop 16 plays its beats by itself",
+   "ok": true,
+   "detail": {
+    "seen": [
+     23,
+     24,
+     25,
+     26
+    ],
+    "first": 23,
+    "last": 26
+   }
+  },
+  {
+   "name": "forward to stop 17",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 27,
+    "mode": "play",
+    "entry": 28,
+    "started": true,
+    "presses": 16,
+    "locked": true,
+    "beatTime": 0,
+    "dip": 0,
+    "beat": "ics",
+    "chapter": "safety",
+    "stop": 16,
+    "auto": false
+   }
+  },
+  {
+   "name": "stop 17 plays its beats by itself",
+   "ok": true,
+   "detail": {
+    "seen": [
+     27,
+     28
+    ],
+    "first": 27,
+    "last": 28
+   }
+  },
+  {
+   "name": "forward to stop 18",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 29,
+    "mode": "play",
+    "entry": 30,
+    "started": true,
+    "presses": 17,
+    "locked": true,
+    "beatTime": 0,
+    "dip": 0,
+    "beat": "limits",
+    "chapter": "limits",
+    "stop": 17,
+    "auto": false
+   }
+  },
+  {
+   "name": "stop 18 plays its beats by itself",
+   "ok": true,
+   "detail": {
+    "seen": [
+     29
+    ],
+    "first": 29,
+    "last": 29
+   }
+  },
+  {
+   "name": "forward to stop 19",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 30,
+    "mode": "play",
+    "entry": 31,
+    "started": true,
+    "presses": 18,
+    "locked": true,
+    "beatTime": 0,
+    "dip": 0,
+    "beat": "return",
+    "chapter": "close",
+    "stop": 18,
+    "auto": false
+   }
+  },
+  {
+   "name": "stop 19 plays its beats by itself",
+   "ok": true,
+   "detail": {
+    "seen": [
+     30,
+     31
+    ],
+    "first": 30,
+    "last": 31
+   }
+  },
+  {
+   "name": "presses from the opening to the Q&A",
+   "ok": true,
+   "detail": {
+    "presses": 18,
+    "stops": 19
+   }
+  },
+  {
+   "name": "the closing holds (a press at the end does nothing)",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 31,
+    "mode": "play",
+    "entry": 32,
+    "started": true,
+    "presses": 18,
+    "locked": false,
+    "beatTime": 3.499999999999517,
+    "dip": 0,
+    "beat": "qa",
+    "chapter": "close",
+    "stop": 18,
+    "auto": true
+   }
+  },
+  {
+   "name": "a second press inside the lock is ignored",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 4,
+    "mode": "play",
+    "entry": 34,
+    "started": true,
+    "presses": 19,
+    "locked": true,
+    "beatTime": 0.4999999999999716,
+    "dip": 0,
+    "beat": "large",
+    "chapter": "scale",
+    "stop": 4,
+    "auto": false
+   }
+  },
+  {
+   "name": "a press after the lock goes to the next stop",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 6,
+    "mode": "play",
+    "entry": 35,
+    "started": true,
+    "presses": 20,
+    "locked": true,
+    "beatTime": 0,
+    "dip": 0,
+    "beat": "power",
+    "chapter": "facts",
+    "stop": 5,
+    "auto": false
+   }
+  },
+  {
+   "name": "back to stop 18",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 29,
+    "mode": "settle",
+    "entry": 37,
+    "started": true,
+    "presses": 20,
+    "locked": true,
+    "beatTime": 0,
+    "dip": 0,
+    "beat": "limits",
+    "chapter": "limits",
+    "stop": 17,
+    "auto": false
+   }
+  },
+  {
+   "name": "back to stop 17",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 28,
+    "mode": "settle",
+    "entry": 38,
+    "started": true,
+    "presses": 20,
+    "locked": true,
+    "beatTime": 0,
+    "dip": 0,
+    "beat": "days",
+    "chapter": "safety",
+    "stop": 16,
+    "auto": true
+   }
+  },
+  {
+   "name": "back to stop 16",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 26,
+    "mode": "settle",
+    "entry": 39,
+    "started": true,
+    "presses": 20,
+    "locked": true,
+    "beatTime": 0,
+    "dip": 0,
+    "beat": "decay",
+    "chapter": "safety",
+    "stop": 15,
+    "auto": true
+   }
+  },
+  {
+   "name": "back to stop 15",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 22,
+    "mode": "settle",
+    "entry": 40,
+    "started": true,
+    "presses": 20,
+    "locked": true,
+    "beatTime": 0,
+    "dip": 0,
+    "beat": "grid",
+    "chapter": "energy",
+    "stop": 14,
+    "auto": false
+   }
+  },
+  {
+   "name": "back to stop 14",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 21,
+    "mode": "settle",
+    "entry": 41,
+    "started": true,
+    "presses": 20,
+    "locked": true,
+    "beatTime": 0,
+    "dip": 0,
+    "beat": "condenser",
+    "chapter": "energy",
+    "stop": 13,
+    "auto": true
+   }
+  },
+  {
+   "name": "back to stop 13",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 19,
+    "mode": "settle",
+    "entry": 42,
+    "started": true,
+    "presses": 20,
+    "locked": true,
+    "beatTime": 0,
+    "dip": 0,
+    "beat": "steam",
+    "chapter": "energy",
+    "stop": 12,
+    "auto": true
+   }
+  },
+  {
+   "name": "back to stop 12",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 17,
+    "mode": "settle",
+    "entry": 43,
+    "started": true,
+    "presses": 20,
+    "locked": true,
+    "beatTime": 0,
+    "dip": 0,
+    "beat": "withdraw",
+    "chapter": "control",
+    "stop": 11,
+    "auto": true
+   }
+  },
+  {
+   "name": "back to stop 11",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 13,
+    "mode": "settle",
+    "entry": 44,
+    "started": true,
+    "presses": 20,
+    "locked": true,
+    "beatTime": 0,
+    "dip": 0,
+    "beat": "chain",
+    "chapter": "fission",
+    "stop": 10,
+    "auto": false
+   }
+  },
+  {
+   "name": "back to stop 10",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 12,
+    "mode": "settle",
+    "entry": 45,
+    "started": true,
+    "presses": 20,
+    "locked": true,
+    "beatTime": 0,
+    "dip": 0,
+    "beat": "descend",
+    "chapter": "handoff",
+    "stop": 9,
+    "auto": true
+   }
+  },
+  {
+   "name": "back to stop 9",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 10,
+    "mode": "settle",
+    "entry": 46,
+    "started": true,
+    "presses": 20,
+    "locked": true,
+    "beatTime": 0,
+    "dip": 0,
+    "beat": "darlington",
+    "chapter": "projects",
+    "stop": 8,
+    "auto": true
+   }
+  },
+  {
+   "name": "back to stop 8",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 8,
+    "mode": "settle",
+    "entry": 47,
+    "started": true,
+    "presses": 20,
+    "locked": true,
+    "beatTime": 0,
+    "dip": 0,
+    "beat": "months",
+    "chapter": "facts",
+    "stop": 7,
+    "auto": false
+   }
+  },
+  {
+   "name": "back to stop 7",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 7,
+    "mode": "settle",
+    "entry": 48,
+    "started": true,
+    "presses": 20,
+    "locked": true,
+    "beatTime": 0,
+    "dip": 0,
+    "beat": "footprint",
+    "chapter": "facts",
+    "stop": 6,
+    "auto": false
+   }
+  },
+  {
+   "name": "back to stop 6",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 6,
+    "mode": "settle",
+    "entry": 49,
+    "started": true,
+    "presses": 20,
+    "locked": true,
+    "beatTime": 0,
+    "dip": 0,
+    "beat": "power",
+    "chapter": "facts",
+    "stop": 5,
+    "auto": false
+   }
+  },
+  {
+   "name": "back to stop 5",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 5,
+    "mode": "settle",
+    "entry": 50,
+    "started": true,
+    "presses": 20,
+    "locked": true,
+    "beatTime": 0,
+    "dip": 0,
+    "beat": "modules",
+    "chapter": "scale",
+    "stop": 4,
+    "auto": true
+   }
+  },
+  {
+   "name": "back to stop 4",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 3,
+    "mode": "settle",
+    "entry": 51,
+    "started": true,
+    "presses": 20,
+    "locked": true,
+    "beatTime": 0,
+    "dip": 0,
+    "beat": "assessment",
+    "chapter": "lithuania",
+    "stop": 3,
+    "auto": false
+   }
+  },
+  {
+   "name": "back to stop 3",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 2,
+    "mode": "settle",
+    "entry": 52,
+    "started": true,
+    "presses": 20,
+    "locked": true,
+    "beatTime": 0,
+    "dip": 0,
+    "beat": "calm",
+    "chapter": "lithuania",
+    "stop": 2,
+    "auto": false
+   }
+  },
+  {
+   "name": "back to stop 2",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 1,
+    "mode": "settle",
+    "entry": 53,
+    "started": true,
+    "presses": 20,
+    "locked": true,
+    "beatTime": 0,
+    "dip": 0,
+    "beat": "renewables",
+    "chapter": "lithuania",
+    "stop": 1,
+    "auto": false
+   }
+  },
+  {
+   "name": "back to stop 1",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 0,
+    "mode": "settle",
+    "entry": 54,
+    "started": true,
+    "presses": 20,
+    "locked": true,
+    "beatTime": 0,
+    "dip": 0,
+    "beat": "hero",
+    "chapter": "hook",
+    "stop": 0,
+    "auto": false
+   }
+  },
+  {
+   "name": "seek stop 1 play",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 0,
+    "mode": "play",
+    "entry": 55,
+    "started": true,
+    "presses": 20,
+    "locked": true,
+    "beatTime": -0.4199999999999875,
+    "dip": 0,
+    "beat": "hero",
+    "chapter": "hook",
+    "stop": 0,
+    "auto": false
+   }
+  },
+  {
+   "name": "seek stop 6 play",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 6,
+    "mode": "play",
+    "entry": 57,
+    "started": true,
+    "presses": 20,
+    "locked": true,
+    "beatTime": 0,
+    "dip": 0,
+    "beat": "power",
+    "chapter": "facts",
+    "stop": 5,
+    "auto": false
+   }
+  },
+  {
+   "name": "seek stop 17 play",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 27,
+    "mode": "play",
+    "entry": 59,
+    "started": true,
+    "presses": 20,
+    "locked": true,
+    "beatTime": 0,
+    "dip": 0,
+    "beat": "ics",
+    "chapter": "safety",
+    "stop": 16,
+    "auto": false
+   }
+  },
+  {
+   "name": "seek stop 10 play",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 11,
+    "mode": "play",
+    "entry": 61,
+    "started": true,
+    "presses": 20,
+    "locked": true,
+    "beatTime": 0,
+    "dip": 0,
+    "beat": "land",
+    "chapter": "handoff",
+    "stop": 9,
+    "auto": false
+   }
+  },
+  {
+   "name": "seek stop 9 play",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 9,
+    "mode": "play",
+    "entry": 64,
+    "started": true,
+    "presses": 20,
+    "locked": true,
+    "beatTime": 0,
+    "dip": 0,
+    "beat": "world",
+    "chapter": "projects",
+    "stop": 8,
+    "auto": false
+   }
+  },
+  {
+   "name": "seek stop 5 settle",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 5,
+    "mode": "settle",
+    "entry": 65,
+    "started": true,
+    "presses": 20,
+    "locked": true,
+    "beatTime": -0.4199999999999875,
+    "dip": 0,
+    "beat": "modules",
+    "chapter": "scale",
+    "stop": 4,
+    "auto": true
+   }
+  },
+  {
+   "name": "seek stop 3 play",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 2,
+    "mode": "play",
+    "entry": 67,
+    "started": true,
+    "presses": 20,
+    "locked": true,
+    "beatTime": 0,
+    "dip": 0,
+    "beat": "calm",
+    "chapter": "lithuania",
+    "stop": 2,
+    "auto": false
+   }
+  },
+  {
+   "name": "seek stop 12 settle",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 17,
+    "mode": "settle",
+    "entry": 68,
+    "started": true,
+    "presses": 20,
+    "locked": true,
+    "beatTime": -0.4199999999999875,
+    "dip": 0,
+    "beat": "withdraw",
+    "chapter": "control",
+    "stop": 11,
+    "auto": true
+   }
+  },
+  {
+   "name": "seek stop 8 play",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 8,
+    "mode": "play",
+    "entry": 70,
+    "started": true,
+    "presses": 20,
+    "locked": true,
+    "beatTime": 0,
+    "dip": 0,
+    "beat": "months",
+    "chapter": "facts",
+    "stop": 7,
+    "auto": false
+   }
+  },
+  {
+   "name": "seek stop 5 settle",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 5,
+    "mode": "settle",
+    "entry": 71,
+    "started": true,
+    "presses": 20,
+    "locked": true,
+    "beatTime": -0.4199999999999875,
+    "dip": 0,
+    "beat": "modules",
+    "chapter": "scale",
+    "stop": 4,
+    "auto": true
+   }
+  },
+  {
+   "name": "seek stop 12 settle",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 17,
+    "mode": "settle",
+    "entry": 72,
+    "started": true,
+    "presses": 20,
+    "locked": true,
+    "beatTime": -0.4199999999999875,
+    "dip": 0,
+    "beat": "withdraw",
+    "chapter": "control",
+    "stop": 11,
+    "auto": true
+   }
+  },
+  {
+   "name": "seek stop 10 play",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 11,
+    "mode": "play",
+    "entry": 74,
+    "started": true,
+    "presses": 20,
+    "locked": true,
+    "beatTime": 0,
+    "dip": 0,
+    "beat": "land",
+    "chapter": "handoff",
+    "stop": 9,
+    "auto": false
+   }
+  },
+  {
+   "name": "R settles the current stop at its final beat",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 26,
+    "mode": "settle",
+    "entry": 78,
+    "started": true,
+    "presses": 20,
+    "locked": true,
+    "beatTime": -0.4200000000000159,
+    "dip": 0,
+    "beat": "decay",
+    "chapter": "safety",
+    "stop": 15,
+    "auto": true
+   }
+  },
+  {
+   "name": "after R nothing runs on (still the final beat)",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 26,
+    "mode": "settle",
+    "entry": 78,
+    "started": true,
+    "presses": 20,
+    "locked": false,
+    "beatTime": 1.5800000000015757,
+    "dip": 0,
+    "beat": "decay",
+    "chapter": "safety",
+    "stop": 15,
+    "auto": true
+   }
+  },
+  {
+   "name": "Home plays the opening",
+   "ok": true,
+   "detail": {
+    "active": true,
+    "flat": 0,
+    "mode": "play",
+    "entry": 79,
+    "started": true,
+    "presses": 0,
+    "locked": true,
+    "beatTime": -0.4200000000000159,
+    "dip": 0,
+    "beat": "hero",
+    "chapter": "hook",
+    "stop": 0,
+    "auto": false
+   }
+  }
+ ],
+ "forward": [
+  {
+   "stop": 1,
+   "flat": 0,
+   "beat": "hook/hero",
+   "presses": 0
+  },
+  {
+   "stop": 2,
+   "flat": 1,
+   "beat": "lithuania/renewables",
+   "presses": 1
+  },
+  {
+   "stop": 3,
+   "flat": 2,
+   "beat": "lithuania/calm",
+   "presses": 2
+  },
+  {
+   "stop": 4,
+   "flat": 3,
+   "beat": "lithuania/assessment",
+   "presses": 3
+  },
+  {
+   "stop": 5,
+   "flat": 4,
+   "beat": "scale/large",
+   "presses": 4
+  },
+  {
+   "stop": 6,
+   "flat": 6,
+   "beat": "facts/power",
+   "presses": 5
+  },
+  {
+   "stop": 7,
+   "flat": 7,
+   "beat": "facts/footprint",
+   "presses": 6
+  },
+  {
+   "stop": 8,
+   "flat": 8,
+   "beat": "facts/months",
+   "presses": 7
+  },
+  {
+   "stop": 9,
+   "flat": 9,
+   "beat": "projects/world",
+   "presses": 8
+  },
+  {
+   "stop": 10,
+   "flat": 11,
+   "beat": "handoff/land",
+   "presses": 9
+  },
+  {
+   "stop": 11,
+   "flat": 13,
+   "beat": "fission/chain",
+   "presses": 10
+  },
+  {
+   "stop": 12,
+   "flat": 14,
+   "beat": "control/inFuel",
+   "presses": 11
+  },
+  {
+   "stop": 13,
+   "flat": 18,
+   "beat": "energy/boil",
+   "presses": 12
+  },
+  {
+   "stop": 14,
+   "flat": 20,
+   "beat": "energy/turbine",
+   "presses": 13
+  },
+  {
+   "stop": 15,
+   "flat": 22,
+   "beat": "energy/grid",
+   "presses": 14
+  },
+  {
+   "stop": 16,
+   "flat": 23,
+   "beat": "safety/normal",
+   "presses": 15
+  },
+  {
+   "stop": 17,
+   "flat": 27,
+   "beat": "safety/ics",
+   "presses": 16
+  },
+  {
+   "stop": 18,
+   "flat": 29,
+   "beat": "limits/limits",
+   "presses": 17
+  },
+  {
+   "stop": 19,
+   "flat": 30,
+   "beat": "close/return",
+   "presses": 18
+  }
+ ],
+ "back": [
+  {
+   "stop": 18,
+   "flat": 29,
+   "mode": "settle"
+  },
+  {
+   "stop": 17,
+   "flat": 28,
+   "mode": "settle"
+  },
+  {
+   "stop": 16,
+   "flat": 26,
+   "mode": "settle"
+  },
+  {
+   "stop": 15,
+   "flat": 22,
+   "mode": "settle"
+  },
+  {
+   "stop": 14,
+   "flat": 21,
+   "mode": "settle"
+  },
+  {
+   "stop": 13,
+   "flat": 19,
+   "mode": "settle"
+  },
+  {
+   "stop": 12,
+   "flat": 17,
+   "mode": "settle"
+  },
+  {
+   "stop": 11,
+   "flat": 13,
+   "mode": "settle"
+  },
+  {
+   "stop": 10,
+   "flat": 12,
+   "mode": "settle"
+  },
+  {
+   "stop": 9,
+   "flat": 10,
+   "mode": "settle"
+  },
+  {
+   "stop": 8,
+   "flat": 8,
+   "mode": "settle"
+  },
+  {
+   "stop": 7,
+   "flat": 7,
+   "mode": "settle"
+  },
+  {
+   "stop": 6,
+   "flat": 6,
+   "mode": "settle"
+  },
+  {
+   "stop": 5,
+   "flat": 5,
+   "mode": "settle"
+  },
+  {
+   "stop": 4,
+   "flat": 3,
+   "mode": "settle"
+  },
+  {
+   "stop": 3,
+   "flat": 2,
+   "mode": "settle"
+  },
+  {
+   "stop": 2,
+   "flat": 1,
+   "mode": "settle"
+  },
+  {
+   "stop": 1,
+   "flat": 0,
+   "mode": "settle"
+  }
+ ],
+ "seeks": [
+  {
+   "target": 1,
+   "mode": "play",
+   "flat": 0
+  },
+  {
+   "target": 6,
+   "mode": "play",
+   "flat": 6
+  },
+  {
+   "target": 17,
+   "mode": "play",
+   "flat": 27
+  },
+  {
+   "target": 10,
+   "mode": "play",
+   "flat": 11
+  },
+  {
+   "target": 9,
+   "mode": "play",
+   "flat": 9
+  },
+  {
+   "target": 5,
+   "mode": "settle",
+   "flat": 5
+  },
+  {
+   "target": 3,
+   "mode": "play",
+   "flat": 2
+  },
+  {
+   "target": 12,
+   "mode": "settle",
+   "flat": 17
+  },
+  {
+   "target": 8,
+   "mode": "play",
+   "flat": 8
+  },
+  {
+   "target": 5,
+   "mode": "settle",
+   "flat": 5
+  },
+  {
+   "target": 12,
+   "mode": "settle",
+   "flat": 17
+  },
+  {
+   "target": 10,
+   "mode": "play",
+   "flat": 11
+  }
+ ],
+ "log": {
+  "console": [
+   "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+  ],
+  "errors": [],
+  "external": []
+ }
+}

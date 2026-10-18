@@ -1,22 +1,24 @@
 /**
- * Presentation v1 debug panel (`?presentationDebug`, or T in dev / with `?debug`): jump to any
- * chapter or beat (settled, or replaying its entry), step, inspect the current beat and copy the
- * camera pose. Never part of the audience view: it only exists with those flags.
+ * Presentation v1 debug panel (`?presentationDebug`, or T in dev / with `?debug`): the presenter
+ * stop list with the press counter (stop k of N; click a stop to settle on it, shift-click to play
+ * it), the beats inside the current stop, step, inspect, copy the camera pose. Never part of the
+ * audience view: it only exists with those flags.
  */
 import { useEffect, useState } from 'react';
 import { cameraDirector } from '../../camera/cameraDirector';
-import { CHAPTERS } from '../chapters';
 import { beatTime } from '../runtime';
-import { talk, TALK_BEATS, useTalkStore } from '../talk';
+import { stopOutline, talk, TALK_BEATS, TALK_STOPS, useTalkStore } from '../talk';
 import { cues, world } from '../world';
 
 export function TalkDebug() {
   const active = useTalkStore((s) => s.active);
   const flat = useTalkStore((s) => s.flat);
   const mode = useTalkStore((s) => s.mode);
+  const presses = useTalkStore((s) => s.presses);
   const [, tick] = useState(0);
   const [open, setOpen] = useState(true);
   const beat = TALK_BEATS[flat]!;
+  const stops = stopOutline();
 
   useEffect(() => {
     const timer = window.setInterval(() => tick((n) => n + 1), 250);
@@ -43,7 +45,8 @@ export function TalkDebug() {
         </button>
       </div>
       <div className="talk-debug__state">
-        {beat.chapterIndex + 1}.{beat.beatIndex + 1} {beat.chapter.id} / {beat.beat.id} · {mode} · t {beatTime().toFixed(1)} s{talk.locked ? ' · locked' : ''}
+        stop {beat.stop + 1} / {TALK_STOPS.length} · presses {presses} · {beat.chapter.id} / {beat.beat.id}
+        {beat.auto ? ' (auto)' : ''} · {mode} · t {beatTime().toFixed(1)} s{talk.locked ? ' · locked' : ''}
         <br />
         <span className="talk-debug__note">{beat.beat.note}</span>
         {running.length > 0 && <div className="talk-debug__cues">{running.join(' · ')}</div>}
@@ -71,25 +74,24 @@ export function TalkDebug() {
       </div>
       {open && (
         <div className="talk-debug__list">
-          {CHAPTERS.map((chapter, ci) => (
-            <div key={chapter.id} className="talk-debug__chapter">
-              <span className="talk-debug__chapter-name">
-                {ci + 1}. {chapter.id} <em>{chapter.speaker}</em>
-              </span>
-              {chapter.beats.map((b) => {
-                const index = TALK_BEATS.findIndex((r) => r.beat === b);
-                return (
-                  <button
-                    key={b.id}
-                    type="button"
-                    className={index === flat ? 'is-current' : ''}
-                    title={`${b.note}\n(click: settle, shift-click: play its entry)`}
-                    onClick={(e) => talk.jump(index, e.shiftKey ? 'play' : 'settle')}
-                  >
-                    {b.id}
-                  </button>
-                );
-              })}
+          {stops.map((st) => (
+            <div key={st.stop} className="talk-debug__chapter">
+              <button
+                type="button"
+                className={st.stop === beat.stop ? 'is-current' : ''}
+                title={`${st.beats.join(' → ')}
+settles ${st.settle} s (click: settle, shift-click: play)`}
+                onClick={(e) => talk.jumpStop(st.stop, e.shiftKey ? 'play' : 'settle')}
+              >
+                {st.stop + 1}. {st.id}
+              </button>
+              {st.stop === beat.stop &&
+                TALK_BEATS.filter((b) => b.stop === st.stop).map((b) => (
+                  <span key={b.flat} className={b.flat === flat ? 'talk-debug__note is-current' : 'talk-debug__note'}>
+                    {b.auto ? `+${b.beat.after}s ` : ''}
+                    {b.beat.id}
+                  </span>
+                ))}
             </div>
           ))}
         </div>

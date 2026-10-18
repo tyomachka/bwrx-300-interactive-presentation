@@ -1,0 +1,11 @@
+9 / 10 identical
+film-00.5.png: identical
+film-05.8.png: differs changed=0 maxDelta=0 over8=0 bbox=(250, 690, 260, 740)
+film-10.0.png: identical
+film-15.4.png: identical
+film-20.0.png: identical
+film-26.0.png: identical
+film-32.0.png: identical
+film-38.0.png: identical
+film-44.0.png: identical
+film-47.9.png: identical

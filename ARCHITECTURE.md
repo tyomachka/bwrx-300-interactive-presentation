@@ -28,9 +28,9 @@ talk scene parts) → the talk overlay −70 (labels anchored to the scene).
 | File | Responsibility |
 |---|---|
 | `scene/SceneCanvas.tsx` | Canvas, ready gate (compiles hidden content too), mounts Plant + effect layers |
-| `scene/plant/*` | Plant massing (Stage 2): `dimensions.ts` (provenance-tagged numbers), `materials.ts` (section / context materials), `ReactorBuilding.tsx` (shaft, containment, pools, IC hardware) |
+| `scene/plant/*` | Plant massing (Stage 2): `dimensions.ts` (provenance-tagged numbers), `materials.ts` (section / context materials; `earthBelowShaft` yields in depth, see below), `ReactorBuilding.tsx` (shaft, containment, pools, IC hardware), `SiteGround.tsx` (earth above / below the shaft bottom, apron) |
 | `scene/rpv/*` | RPV and internals (Stage 4): `rpvData.ts` (heights), `coreLayout.ts` (blades) |
-| `scene/section/*` | The one section engine: `sectionLayers.ts` (planes, interior levels), `sectionShader.ts`, `drawOrder.ts` — **frozen architecture** |
+| `scene/section/*` | The one section engine: `sectionLayers.ts` (planes, interior levels), `sectionShader.ts`, `drawOrder.ts` — **frozen architecture**. Cut surfaces are back faces shaded at the cut, with the back face's depth: two solids 1 cm apart z-fight through a cut beyond ~200 m (24-bit depth, near 0.5 m). Presentation Stage 3: the earth below the shaft bottom (whose top lay 1 cm under the earth above and the basemat) has its own material with a constant polygon offset, so it always yields (`materials.ts earthBelowShaft`); the 48 s film's frames are unchanged |
 | `scene/components.ts` | The component registry (labels, focus poses, enclosures) — Stage 5 |
 | `scene/flow/*` | Stage 7: `flowMaterials.ts` (two programs: streak particles, pulse tubes), `VesselFlow`, `PowerFlow` |
 | `scene/control/*` | Stage 8: driver + activity glints |
@@ -61,10 +61,11 @@ it reads frozen poses and reveal states by name and drives the scene through add
 
 | File | Responsibility | Key API / state |
 |---|---|---|
-| `chapters.ts` | The script: 12 chapters, 32 beats (camera keys, reveal, look, world targets, cues, overlay, lock); presentation-only poses `P` | `CHAPTERS` |
-| `types.ts`, `resolve.ts` | Beat types; inheritance across beats and chapters, resolved once (`masterRevealAt` / `masterLookAt` for frozen states) | `resolveTalk()` → `ResolvedBeat[]` |
-| `talk.ts` | The controller: next / prev / home / reset / jump / exit, input lock (animation time), camera ownership, Explore suspend / resume | `talk`, `TALK_BEATS`, `useTalkStore`, `talkOutline()` |
-| `runtime.ts` | Per-frame evaluation from (entry snapshot, beat, time since entry): camera plan (PCHIP path, settle, dip), reveal, look, world, cues | `enterBeat`, `evaluateTalkFrame`, `talkCameraSource`, `dip` |
+| `chapters.ts` | The script: 12 chapters, 19 presenter stops in 32 beats (camera keys, reveal, look, world targets, cues, overlay, lock); a beat with `after` continues its stop automatically; presentation-only poses `P` | `CHAPTERS` |
+| `types.ts` | Beat types (`after`, `textAt`, item `cue` / `out`); resolved once (`masterRevealAt` / `masterLookAt` for frozen states) | `ResolvedBeat[]` |
+| `talk.ts` | The controller: next / prev (stop to stop; back lands on a stop's final beat, settled) / home / reset (settles the current stop) / jump / jumpStop / exit; `update()` enters a stop's continuations at their exact scheduled clock times; input lock per stop (a press after it goes to the next stop); press counter; camera ownership, Explore suspend / resume | `talk`, `TALK_BEATS`, `TALK_STOPS`, `useTalkStore` (`presses`), `talkOutline()`, `stopOutline()` |
+| `runtime.ts` | Per-frame evaluation from per-channel transition tracks (from, to, start, timing): a continuation keeps every track whose target it does not change and starts its camera move from the exact pose at its start; cues run across the stop's beats; camera plan (PCHIP path, settle, dip, master segment) | `enterBeat` (`continueAt`), `evaluateTalkFrame`, `talkCameraSource`, `beatTime`, `dip` |
+| `resolve.ts` | Inheritance across beats; stop indices; text follows the picture: an item new in a beat gets an implicit fade-in cue at the beat's `textAt` (default `TALK.textAt` 0.6 s, after the outgoing text's 0.35 s fade); `out` cues fade items within a stop | `resolveTalk()` |
 | `world.ts` | Every scalar the talk drives, with resting values (rest = the existing scene unchanged) | `world`, `cues`, `WORLD_CHANNELS` |
 | `effects.ts` | Installs the talk as the source for flow / control / safety (consulted only while the master is idle) | `installTalkEffects`, `removeTalkEffects`, through the additive hooks `setFlowSource`, `setControlSource`, `setSafetySource` (animation/*) and `setBladeScram` (rpv/coreLayout) |
 | `legacy.ts` | The frozen reveal at any master time | `masterRevealAt(t)` |
@@ -72,13 +73,14 @@ it reads frozen poses and reveal states by name and drives the scene through add
 | `qrCode.ts` | The opening / closing QR: a scannable SIZE TEST (version 3-M, plain text, never a link) until the public URL is approved | `QR_CODE` |
 | `copy.ts`, `sources.ts` | On-screen text LT / EN (typed); every public number with its source and status | `useTalkCopy()`, `FACTS` |
 | `design.ts`, `ui/talk.css`, `fonts/` | Stage 2 design system (B, editorial cinematic): 8 type roles, the semantic palette (amber = the one current concept), the composition grid, motion → CSS variables; the overlay only reads `var(--talk-…)`. Inter Variable bundled (`fonts/README.md`), registered and loaded by `loadTalkFont()`, which the scene's ready gate awaits | `TYPE`, `COLOR`, `GRID`, `MOTION`, `designVariables()`, `loadTalkFont()` |
-| `overlayLayer.ts`, `ui/TalkOverlay.tsx` | The HTML overlay in the 16:9 stage, four label roles: anchored labels (dot + leader, tone = process / status colour), claims, sources under what they qualify, metrics; count-ups, the day counter, the construction timeline, credits, QR, scrims, dip; per-frame DOM writes | `updateOverlay(camera, w, h)` |
-| `ui/TalkDebug.tsx` | Debug panel (`?presentationDebug`, or T in dev / `?debug`) | — |
+| `overlayLayer.ts`, `ui/TalkOverlay.tsx` | The HTML overlay in the 16:9 stage, four label roles: anchored labels (dot + leader, tone = process / status colour), claims, sources under what they qualify, metrics; count-ups, the day counter, the construction timeline, the vessel diagram (chapter 3), credits, QR, scrims, dip; per-frame DOM writes (cue in / out opacity) | `updateOverlay(camera, w, h)` |
+| `ui/TalkDebug.tsx` | Debug panel (`?presentationDebug`, or T in dev / `?debug`): stop list (stop k / 19), press counter, the beats of the current stop | — |
 | `scene/TalkScene.tsx` | Mounts the talk's scene parts; TalkDriver (−97), PlantSwitches (−96: lights, `p.zoom` plant scale) | — |
 | Design study (Stage 1) | Removed from the source in Stage 2; its record stays in `docs/presentation-design-study/` | — |
-| `scene/ChainFission.tsx`, `chainConfig.ts` | The looping chain fission (Stage 10 shaders with the optional `chain` variant); consecutive chains overlap (a second particle / sprite pair, same programs), so there is no dark seam | `CHAIN_LOOP`, `CHAIN_LABELS` |
+| `scene/FissionField.tsx`, `fieldConfig.ts`, `fieldShaders.ts` | Stage 3 fission: a chain that branches (1 -> 2 -> 3 fissions) and then holds steady in a widening view of the fuel: 15 sites on three closed rings (each fission sends one neutron on, the others are absorbed) + 7 idle nuclei, every position analytic in the chain time τ (no restart, no seam, bounded); Stage 10 nuclei, look, iris and backdrop program; its own two programs (one instanced draw each) | `FIELD_RINGS`, `FIELD_LABELS`, `chainTime`, `microView` |
 | `scene/LimitsCues.tsx`, `limitsLayout.ts` | Chapter 11: a generic spent-fuel cask pad beside the reactor building (`l.casks`), one instanced draw | `LIMITS_PAD` |
-| `scene/WaterCycle.tsx`, `GridCity.tsx`, `Comparison.tsx`, `Pitches.tsx`, `Maps.tsx` | Condenser and feedwater; transformer, line, city; large unit and module row; pitches; LT and North Atlantic map tables (radial reveal at the plant) | — |
+| `scene/WaterCycle.tsx`, `GridCity.tsx`, `Comparison.tsx` + `comparisonLayout.ts`, `Footprint.tsx` + `footprintLayout.ts`, `Maps.tsx` | Condenser and feedwater; transformer, line, city; the large BWR-family unit at matched scale (layout illustrative) and the module row; the ~148 x 78 m power-block outline and a 105 x 68 m pitch in a schematic stadium; LT and North Atlantic map tables (radial reveal at the plant) | `LARGE_UNIT`, `FOOTPRINT` |
+| `scene/TalkScene.tsx` `GroundFiller`, `PlantSwitches` | While the plant is scaled into a map point: the floor's site hole is filled with the floor's own surface, the earth block is hidden and the contact shadow scales with the plant (no plinth over a void) | — |
 | `scene/mapLayout.ts`, `data/geo.ts` | Map projections (LT 0.75 m/km; North Atlantic LAEA, Darlington at the origin), pins; Natural Earth rings (inlined) | `ltToWorld`, `worldToMap`, `pinPosition` |
 
 ## Interaction

@@ -60,3 +60,25 @@ tones keep U-235's proportion (92 : 143). There are no electrons.
   to read clearly in the cut building; no drawing gives them (`src/config/safety.ts`).
 - The decay-heat tint on the vessel and the warm plume in the pool are visual cues, not
   temperatures; no pool boiling, valve logic or accident sequence is shown.
+
+## Scale and footprint (Presentation Stage 3, verified 2026-10-17)
+
+Sources: **GD Rev J** (above). **GD Rev F**: GE-Hitachi, *BWRX-300 General Description*, 005N9751
+Revision F, December 2023 ("Released for Information"; the copy filed with the CNSC as CMD 24-H3
+Ref R1-9, sha256 `dd6b9dd0…c11f`, not kept in the repository). **NRC**: "ESBWR" design certification
+page (nrc.gov, accessed 2026-10-17). **UEFA**: Stadium Infrastructure Regulations, in force 1 June 2025.
+**LRT**: "Nacionalinis stadionas pamažu kyla", 2025-09-03.
+
+| ID | Fact | Source | Status | Project usage |
+|---|---|---|---|---|
+| SCL-01 | "The RPV has a minimum inside diameter of approximately 4.2 m ... and a nominal inner height of approximately 27.36 m." | GD Rev J §3.1.2, p. 30 | OFFICIAL | Vessel diagram (chapter 3); the model's RPV (`dimensions.ts`) |
+| SCL-02 | Table 2-1 compares ABWR / ESBWR / BWRX-300: gross output ~1,350 / ~1,600 / ~316 MWe; 3,926 / 4,500 / 870 MWth; RPV ID 7.1 / 7.1 / 4 m; RPV height (inside) 21.0 / 27.6 / 27 m; bundles 872 / 1,132 / 240; control rods 205 / 269 / 57; ESBWR and BWRX-300 natural circulation. | GD Rev J Table 2-1, pp. 28-29 | OFFICIAL | ESBWR as the large comparator; its vessel 7.1 x 27.6 m, 1,132 bundles |
+| SCL-03 | ESBWR "rated gross electrical power output of 1,594 megawatts electric (MWe)", "net ... approximately 1,535 MWe" (varies by up to 50 MWe with the turbine island and site), 4,500 MWt; certified 2014-10-15. | NRC ESBWR page | OFFICIAL | "≈ 1 500 MW" on the large unit (net, like the BWRX-300's ~300 MW) |
+| SCL-04 | Core width drawn as the equivalent circle of the bundles on the same 15.24 cm lattice: BWRX-300 240 -> 2.66 m; ESBWR 1,132 -> 5.78 m (inside 4.2 / 7.1 m). Core band height schematic (3.8 m for both). | Derived from SCL-01/02 and `rpvData.ts` | DERIVED | Vessel diagram core bands |
+| SCL-05 | "The power block is comprised of the RB, TB, CB, RWB, and the Turbine Maintenance Building. The footprint of the power block is approximately 148 m x 78 m." | GD Rev F §9, p. 63 of 95 | OFFICIAL (older revision) | The power-block outline (chapter 4); 11,544 m2 = 1.62 pitches |
+| SCL-06 | "Plant Powerblock Footprint 9,800 m2 (rectangular building envelope)"; "Site Footprint 27,100 m2 (fenced area)"; Rev J no longer states the 148 x 78 m sides. | GD Rev J Table 21-2, p. 123 | OFFICIAL | Report only (9,800 m2 = 1.37 pitches) |
+| SCL-07 | Field of play for UEFA categories 3 and 4: length 105 m, width 68 m (= 7,140 m2). | UEFA SIR art. 5.01 | OFFICIAL | The pitch (chapter 4) |
+| SCL-08 | The National Stadium being built in Šeškinė, Vilnius, is a "UEFA IV kategorijos" stadium, 18,000 seats, football only, completion planned end of 2027. No published drawing with the pitch size was found. | LRT 2025-09-03 | OFFICIAL (press) | Named only as the category it is built to; the pitch is labelled international-size |
+
+[MATCHED SCALE · LAYOUT ILLUSTRATIVE] The large plant's buildings are a simplified BWR massing (no
+public drawing gives the ESBWR building sides); the vessels are compared exactly in the overlay.

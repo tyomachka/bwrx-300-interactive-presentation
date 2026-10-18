@@ -1,0 +1,11 @@
+10 / 10 identical
+film-00.5.png: identical
+film-05.8.png: identical
+film-10.0.png: identical
+film-15.4.png: identical
+film-20.0.png: identical
+film-26.0.png: identical
+film-32.0.png: identical
+film-38.0.png: identical
+film-44.0.png: identical
+film-47.9.png: identical

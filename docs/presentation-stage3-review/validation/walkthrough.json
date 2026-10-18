@@ -1,0 +1,3789 @@
+{
+ "mode": "full",
+ "stepsPerSecond": 30,
+ "encodeFps": 30,
+ "speed": 1,
+ "preRoll": 30,
+ "frames": 7612,
+ "beats": [
+  {
+   "stop": 1,
+   "first": 0,
+   "beat": "hook/hero",
+   "beats": [
+    "hook/hero"
+   ],
+   "startFrame": 30,
+   "settle": 6.92,
+   "lock": 1.5,
+   "runFor": 10.433
+  },
+  {
+   "stop": 2,
+   "first": 1,
+   "beat": "lithuania/renewables",
+   "beats": [
+    "lithuania/renewables"
+   ],
+   "startFrame": 343,
+   "settle": 5.8,
+   "lock": 2.2,
+   "runFor": 9.3
+  },
+  {
+   "stop": 3,
+   "first": 2,
+   "beat": "lithuania/calm",
+   "beats": [
+    "lithuania/calm"
+   ],
+   "startFrame": 622,
+   "settle": 3.6,
+   "lock": 1.8,
+   "runFor": 7.1
+  },
+  {
+   "stop": 4,
+   "first": 3,
+   "beat": "lithuania/assessment",
+   "beats": [
+    "lithuania/assessment"
+   ],
+   "startFrame": 835,
+   "settle": 2.6,
+   "lock": 1.2,
+   "runFor": 6.1
+  },
+  {
+   "stop": 5,
+   "first": 4,
+   "beat": "scale/large",
+   "beats": [
+    "scale/large",
+    "scale/modules@12.5"
+   ],
+   "startFrame": 1018,
+   "settle": 20.2,
+   "lock": 3,
+   "runFor": 23.7
+  },
+  {
+   "stop": 6,
+   "first": 6,
+   "beat": "facts/power",
+   "beats": [
+    "facts/power"
+   ],
+   "startFrame": 1729,
+   "settle": 4,
+   "lock": 2,
+   "runFor": 7.5
+  },
+  {
+   "stop": 7,
+   "first": 7,
+   "beat": "facts/footprint",
+   "beats": [
+    "facts/footprint"
+   ],
+   "startFrame": 1954,
+   "settle": 5.1,
+   "lock": 2,
+   "runFor": 8.6
+  },
+  {
+   "stop": 8,
+   "first": 8,
+   "beat": "facts/months",
+   "beats": [
+    "facts/months"
+   ],
+   "startFrame": 2212,
+   "settle": 5.1,
+   "lock": 1.6,
+   "runFor": 8.6
+  },
+  {
+   "stop": 9,
+   "first": 9,
+   "beat": "projects/world",
+   "beats": [
+    "projects/world",
+    "projects/darlington@8.4"
+   ],
+   "startFrame": 2470,
+   "settle": 11.8,
+   "lock": 2.4,
+   "runFor": 15.3
+  },
+  {
+   "stop": 10,
+   "first": 11,
+   "beat": "handoff/land",
+   "beats": [
+    "handoff/land",
+    "handoff/descend@3.6"
+   ],
+   "startFrame": 2929,
+   "settle": 13.19,
+   "lock": 3,
+   "runFor": 16.7
+  },
+  {
+   "stop": 11,
+   "first": 13,
+   "beat": "fission/chain",
+   "beats": [
+    "fission/chain"
+   ],
+   "startFrame": 3430,
+   "settle": 12,
+   "lock": 2,
+   "runFor": 21
+  },
+  {
+   "stop": 12,
+   "first": 14,
+   "beat": "control/inFuel",
+   "beats": [
+    "control/inFuel",
+    "control/blades@2.8",
+    "control/insert@5",
+    "control/withdraw@3.6"
+   ],
+   "startFrame": 4060,
+   "settle": 13.4,
+   "lock": 1.6,
+   "runFor": 16.9
+  },
+  {
+   "stop": 13,
+   "first": 18,
+   "beat": "energy/boil",
+   "beats": [
+    "energy/boil",
+    "energy/steam@5.2"
+   ],
+   "startFrame": 4567,
+   "settle": 10.2,
+   "lock": 2.4,
+   "runFor": 13.7
+  },
+  {
+   "stop": 14,
+   "first": 20,
+   "beat": "energy/turbine",
+   "beats": [
+    "energy/turbine",
+    "energy/condenser@6.6"
+   ],
+   "startFrame": 4978,
+   "settle": 14.2,
+   "lock": 3,
+   "runFor": 17.7
+  },
+  {
+   "stop": 15,
+   "first": 22,
+   "beat": "energy/grid",
+   "beats": [
+    "energy/grid"
+   ],
+   "startFrame": 5509,
+   "settle": 8.2,
+   "lock": 3,
+   "runFor": 11.7
+  },
+  {
+   "stop": 16,
+   "first": 23,
+   "beat": "safety/normal",
+   "beats": [
+    "safety/normal",
+    "safety/blackout@5.4",
+    "safety/scram@3.2",
+    "safety/decay@5.2"
+   ],
+   "startFrame": 5860,
+   "settle": 16.8,
+   "lock": 2.6,
+   "runFor": 20.3
+  },
+  {
+   "stop": 17,
+   "first": 27,
+   "beat": "safety/ics",
+   "beats": [
+    "safety/ics",
+    "safety/days@6.4"
+   ],
+   "startFrame": 6469,
+   "settle": 12.3,
+   "lock": 3.6,
+   "runFor": 15.8
+  },
+  {
+   "stop": 18,
+   "first": 29,
+   "beat": "limits/limits",
+   "beats": [
+    "limits/limits"
+   ],
+   "startFrame": 6943,
+   "settle": 5.2,
+   "lock": 2,
+   "runFor": 8.7
+  },
+  {
+   "stop": 19,
+   "first": 30,
+   "beat": "close/return",
+   "beats": [
+    "close/return",
+    "close/qa@5"
+   ],
+   "startFrame": 7204,
+   "settle": 7.6,
+   "lock": 3,
+   "runFor": 13.6
+  }
+ ],
+ "stills": [
+  {
+   "name": "01-hook-hero",
+   "stop": 1,
+   "flat": 0,
+   "beat": "hook/hero",
+   "sincePress": 8.933,
+   "beatTime": 8.513,
+   "dip": 0,
+   "videoTime": 9.9,
+   "ui": {
+    "explore": false,
+    "setup": false,
+    "diagnostics": false,
+    "talkDebug": false,
+    "hoverTag": false,
+    "lang": "lt",
+    "talkActive": true
+   },
+   "calls": 67,
+   "tris": 11375,
+   "dom": {
+    "stage": {
+     "x": 0,
+     "y": 0,
+     "w": 1920,
+     "h": 1080
+    },
+    "texts": [
+     {
+      "text": "Mažieji moduliniai reaktoriai",
+      "cls": "talk-title__kicker",
+      "item": "talk-item talk-title talk-title--display talk-pos--top-left",
+      "x": 120,
+      "y": 140,
+      "w": 398.4,
+      "h": 19.2,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "15.9948px",
+      "fontWeight": "600",
+      "lineHeight": "19.1938px",
+      "letterSpacing": "1.91938px",
+      "textTransform": "uppercase",
+      "color": "rgb(209, 213, 217)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "BWRX-300",
+      "cls": "talk-title__title",
+      "item": "talk-item talk-title talk-title--display talk-pos--top-left",
+      "x": 120,
+      "y": 176.5,
+      "w": 398.4,
+      "h": 78.4,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "79.9956px",
+      "fontWeight": "600",
+      "lineHeight": "78.3957px",
+      "letterSpacing": "-2.39987px",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "none"
+     },
+     {
+      "text": "Virgilijus Kiltinavičius",
+      "cls": "talk-credit__name",
+      "item": "talk-item talk-credits talk-credits--intro",
+      "x": 120,
+      "y": 944.8,
+      "w": 315.9,
+      "h": 30,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "23.9976px",
+      "fontWeight": "600",
+      "lineHeight": "29.997px",
+      "letterSpacing": "-0.143986px",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "virgilijus.kiltinavicius@stud.vilniustech.lt",
+      "cls": "talk-credit__email",
+      "item": "talk-item talk-credits talk-credits--intro",
+      "x": 120,
+      "y": 980.2,
+      "w": 315.9,
+      "h": 23.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "16.9992px",
+      "fontWeight": "400",
+      "lineHeight": "23.7989px",
+      "letterSpacing": "normal",
+      "textTransform": "none",
+      "color": "rgb(209, 213, 217)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "Timofej Gaivoronskij",
+      "cls": "talk-credit__name",
+      "item": "talk-item talk-credits talk-credits--intro",
+      "x": 529.1,
+      "y": 944.8,
+      "w": 308.3,
+      "h": 30,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "23.9976px",
+      "fontWeight": "600",
+      "lineHeight": "29.997px",
+      "letterSpacing": "-0.143986px",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "timofej.gaivoronskij@stud.vilniustech.lt",
+      "cls": "talk-credit__email",
+      "item": "talk-item talk-credits talk-credits--intro",
+      "x": 529.1,
+      "y": 980.2,
+      "w": 308.3,
+      "h": 23.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "16.9992px",
+      "fontWeight": "400",
+      "lineHeight": "23.7989px",
+      "letterSpacing": "normal",
+      "textTransform": "none",
+      "color": "rgb(209, 213, 217)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "Interaktyvus modelis",
+      "cls": "talk-qr__label",
+      "item": "talk-item talk-qr talk-qr--intro",
+      "x": 1268.8,
+      "y": 951,
+      "w": 336.8,
+      "h": 22.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "18.9972px",
+      "fontWeight": "600",
+      "lineHeight": "22.7966px",
+      "letterSpacing": "normal",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "QR dydžio bandymas – nuoroda bus vėliau",
+      "cls": "talk-qr__sub is-todo",
+      "item": "talk-item talk-qr talk-qr--intro",
+      "x": 1268.8,
+      "y": 980.2,
+      "w": 336.8,
+      "h": 23.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "16.9992px",
+      "fontWeight": "400",
+      "lineHeight": "23.7989px",
+      "letterSpacing": "normal",
+      "textTransform": "none",
+      "color": "rgb(184, 190, 196)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     }
+    ],
+    "shapes": [
+     {
+      "sel": ".talk-qr__code",
+      "x": 1627.2,
+      "y": 831.2,
+      "w": 172.8,
+      "h": 172.8,
+      "opacity": 1
+     }
+    ]
+   }
+  },
+  {
+   "name": "02-lithuania-renewables",
+   "stop": 2,
+   "flat": 1,
+   "beat": "lithuania/renewables",
+   "sincePress": 7.8,
+   "beatTime": 7.8,
+   "dip": 0,
+   "videoTime": 19.2,
+   "ui": {
+    "explore": false,
+    "setup": false,
+    "diagnostics": false,
+    "talkDebug": false,
+    "hoverTag": false,
+    "lang": "lt",
+    "talkActive": true
+   },
+   "calls": 10,
+   "tris": 19347,
+   "dom": {
+    "stage": {
+     "x": 0,
+     "y": 0,
+     "w": 1920,
+     "h": 1080
+    },
+    "texts": [
+     {
+      "text": "Lietuva",
+      "cls": "talk__chapter",
+      "item": "talk__chapter",
+      "x": 120,
+      "y": 50,
+      "w": 80.6,
+      "h": 19.2,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "15.9948px",
+      "fontWeight": "600",
+      "lineHeight": "19.1938px",
+      "letterSpacing": "1.91938px",
+      "textTransform": "uppercase",
+      "color": "rgba(209, 213, 217, 0.86)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "50 %",
+      "cls": "talk-stat__number is-counting",
+      "item": "talk-item talk-stat talk-stat--metric talk-pos--left",
+      "x": 120,
+      "y": 356,
+      "w": 247.6,
+      "h": 102.6,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "108px",
+      "fontWeight": "500",
+      "lineHeight": "102.6px",
+      "letterSpacing": "-3.78px",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "Lietuvos elektros poreikio 2025 m. patenkino atsinaujinanti energetika",
+      "cls": "talk-stat__caption",
+      "item": "talk-item talk-stat talk-stat--metric talk-pos--left",
+      "x": 120,
+      "y": 482.3,
+      "w": 537.6,
+      "h": 66.2,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "23.9976px",
+      "fontWeight": "400",
+      "lineHeight": "33.1167px",
+      "letterSpacing": "-0.143986px",
+      "textTransform": "none",
+      "color": "rgb(209, 213, 217)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "Šaltinis: „Litgrid“, 2026-01-28",
+      "cls": "talk-source",
+      "item": "talk-item talk-stat talk-stat--metric talk-pos--left",
+      "x": 120,
+      "y": 565.8,
+      "w": 480,
+      "h": 23.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "16.9992px",
+      "fontWeight": "400",
+      "lineHeight": "23.7989px",
+      "letterSpacing": "normal",
+      "textTransform": "none",
+      "color": "rgb(184, 190, 196)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     }
+    ],
+    "shapes": []
+   }
+  },
+  {
+   "name": "03-lithuania-calm",
+   "stop": 3,
+   "flat": 2,
+   "beat": "lithuania/calm",
+   "sincePress": 5.6,
+   "beatTime": 5.6,
+   "dip": 0,
+   "videoTime": 26.3,
+   "ui": {
+    "explore": false,
+    "setup": false,
+    "diagnostics": false,
+    "talkDebug": false,
+    "hoverTag": false,
+    "lang": "lt",
+    "talkActive": true
+   },
+   "calls": 13,
+   "tris": 19643,
+   "dom": {
+    "stage": {
+     "x": 0,
+     "y": 0,
+     "w": 1920,
+     "h": 1080
+    },
+    "texts": [
+     {
+      "text": "Lietuva",
+      "cls": "talk__chapter",
+      "item": "talk__chapter",
+      "x": 120,
+      "y": 50,
+      "w": 80.6,
+      "h": 19.2,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "15.9948px",
+      "fontWeight": "600",
+      "lineHeight": "19.1938px",
+      "letterSpacing": "1.91938px",
+      "textTransform": "uppercase",
+      "color": "rgba(209, 213, 217, 0.86)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "O kai nėra vėjo ir saulės?",
+      "cls": "talk-caption__text",
+      "item": "talk-item talk-caption talk-caption--h1 talk-pos--left",
+      "x": 120,
+      "y": 356,
+      "w": 549,
+      "h": 55.1,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "52.002px",
+      "fontWeight": "600",
+      "lineHeight": "55.1221px",
+      "letterSpacing": "-1.14404px",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "Sistemai reikia ir valdomos gamybos",
+      "cls": "talk-caption__sub",
+      "item": "talk-item talk-caption talk-caption--h1 talk-pos--left",
+      "x": 120,
+      "y": 428.4,
+      "w": 537.6,
+      "h": 33.1,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "23.9976px",
+      "fontWeight": "400",
+      "lineHeight": "33.1167px",
+      "letterSpacing": "-0.143986px",
+      "textTransform": "none",
+      "color": "rgb(209, 213, 217)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "importas",
+      "cls": "talk-label__text",
+      "item": "talk-item talk-label talk-label--label",
+      "x": 291.6,
+      "y": 132.5,
+      "w": 78,
+      "h": 22.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "18.9972px",
+      "fontWeight": "500",
+      "lineHeight": "22.7966px",
+      "letterSpacing": "-0.0759888px",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     }
+    ],
+    "shapes": []
+   }
+  },
+  {
+   "name": "04-lithuania-assessment",
+   "stop": 4,
+   "flat": 3,
+   "beat": "lithuania/assessment",
+   "sincePress": 4.6,
+   "beatTime": 4.6,
+   "dip": 0,
+   "videoTime": 32.4,
+   "ui": {
+    "explore": false,
+    "setup": false,
+    "diagnostics": false,
+    "talkDebug": false,
+    "hoverTag": false,
+    "lang": "lt",
+    "talkActive": true
+   },
+   "calls": 13,
+   "tris": 19643,
+   "dom": {
+    "stage": {
+     "x": 0,
+     "y": 0,
+     "w": 1920,
+     "h": 1080
+    },
+    "texts": [
+     {
+      "text": "Lietuva",
+      "cls": "talk__chapter",
+      "item": "talk__chapter",
+      "x": 120,
+      "y": 50,
+      "w": 80.6,
+      "h": 19.2,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "15.9948px",
+      "fontWeight": "600",
+      "lineHeight": "19.1938px",
+      "letterSpacing": "1.91938px",
+      "textTransform": "uppercase",
+      "color": "rgba(209, 213, 217, 0.86)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "Lietuva vertina BWRX-300",
+      "cls": "talk-caption__text",
+      "item": "talk-item talk-caption talk-caption--h1 talk-pos--left",
+      "x": 120,
+      "y": 356,
+      "w": 576,
+      "h": 110.2,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "52.002px",
+      "fontWeight": "600",
+      "lineHeight": "55.1221px",
+      "letterSpacing": "-1.14404px",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "2026 m. vasario memorandumas",
+      "cls": "talk-caption__sub",
+      "item": "talk-item talk-caption talk-caption--h1 talk-pos--left",
+      "x": 120,
+      "y": 483.5,
+      "w": 537.6,
+      "h": 33.1,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "23.9976px",
+      "fontWeight": "400",
+      "lineHeight": "33.1167px",
+      "letterSpacing": "-0.143986px",
+      "textTransform": "none",
+      "color": "rgb(209, 213, 217)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "Šaltinis: LR energetikos ministerija, 2026-02-25",
+      "cls": "talk-source",
+      "item": "talk-item talk-caption talk-caption--h1 talk-pos--left",
+      "x": 120,
+      "y": 533.9,
+      "w": 480,
+      "h": 23.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "16.9992px",
+      "fontWeight": "400",
+      "lineHeight": "23.7989px",
+      "letterSpacing": "normal",
+      "textTransform": "none",
+      "color": "rgb(184, 190, 196)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     }
+    ],
+    "shapes": []
+   }
+  },
+  {
+   "name": "05-scale-large",
+   "stop": 5,
+   "flat": 5,
+   "beat": "scale/modules",
+   "sincePress": 22.2,
+   "beatTime": 9.7,
+   "dip": 0,
+   "videoTime": 56.1,
+   "ui": {
+    "explore": false,
+    "setup": false,
+    "diagnostics": false,
+    "talkDebug": false,
+    "hoverTag": false,
+    "lang": "lt",
+    "talkActive": true
+   },
+   "calls": 78,
+   "tris": 4453,
+   "dom": {
+    "stage": {
+     "x": 0,
+     "y": 0,
+     "w": 1920,
+     "h": 1080
+    },
+    "texts": [
+     {
+      "text": "Mastelis",
+      "cls": "talk__chapter",
+      "item": "talk__chapter",
+      "x": 120,
+      "y": 50,
+      "w": 95.7,
+      "h": 19.2,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "15.9948px",
+      "fontWeight": "600",
+      "lineHeight": "19.1938px",
+      "letterSpacing": "1.91938px",
+      "textTransform": "uppercase",
+      "color": "rgba(209, 213, 217, 0.86)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "Vienodi blokai – statomi vienas po kito",
+      "cls": "talk-caption__text",
+      "item": "talk-item talk-caption talk-caption--h1 talk-pos--top-left",
+      "x": 120,
+      "y": 140,
+      "w": 576,
+      "h": 110.2,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "52.002px",
+      "fontWeight": "600",
+      "lineHeight": "55.1221px",
+      "letterSpacing": "-1.14404px",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "ta pati fizika – kitas mastelis",
+      "cls": "talk-caption__sub",
+      "item": "talk-item talk-caption talk-caption--h1 talk-pos--top-left",
+      "x": 120,
+      "y": 267.5,
+      "w": 537.6,
+      "h": 33.1,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "23.9976px",
+      "fontWeight": "400",
+      "lineHeight": "33.1167px",
+      "letterSpacing": "-0.143986px",
+      "textTransform": "none",
+      "color": "rgb(209, 213, 217)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "5 × 300 MW",
+      "cls": "talk-label__text",
+      "item": "talk-item talk-label talk-label--value",
+      "x": 987.5,
+      "y": 278.4,
+      "w": 283.3,
+      "h": 52,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "52.002px",
+      "fontWeight": "600",
+      "lineHeight": "52.002px",
+      "letterSpacing": "-1.14404px",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "Mastelis suderintas; pastatų išdėstymas iliustracinis",
+      "cls": "talk-item talk-note is-shown",
+      "item": "talk-item talk-note",
+      "x": 120,
+      "y": 84.6,
+      "w": 409.5,
+      "h": 23.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "16.9992px",
+      "fontWeight": "400",
+      "lineHeight": "23.7989px",
+      "letterSpacing": "normal",
+      "textTransform": "none",
+      "color": "rgb(184, 190, 196)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     }
+    ],
+    "shapes": []
+   }
+  },
+  {
+   "name": "06-facts-power",
+   "stop": 6,
+   "flat": 6,
+   "beat": "facts/power",
+   "sincePress": 6,
+   "beatTime": 6,
+   "dip": 0,
+   "videoTime": 63.6,
+   "ui": {
+    "explore": false,
+    "setup": false,
+    "diagnostics": false,
+    "talkDebug": false,
+    "hoverTag": false,
+    "lang": "lt",
+    "talkActive": true
+   },
+   "calls": 67,
+   "tris": 11375,
+   "dom": {
+    "stage": {
+     "x": 0,
+     "y": 0,
+     "w": 1920,
+     "h": 1080
+    },
+    "texts": [
+     {
+      "text": "Trys faktai",
+      "cls": "talk__chapter",
+      "item": "talk__chapter",
+      "x": 120,
+      "y": 50,
+      "w": 123,
+      "h": 19.2,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "15.9948px",
+      "fontWeight": "600",
+      "lineHeight": "19.1938px",
+      "letterSpacing": "1.91938px",
+      "textTransform": "uppercase",
+      "color": "rgba(209, 213, 217, 0.86)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "~300",
+      "cls": "talk-stat__number is-counting",
+      "item": "talk-item talk-stat talk-stat--metric talk-pos--right",
+      "x": 1238,
+      "y": 160,
+      "w": 263.3,
+      "h": 102.6,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "108px",
+      "fontWeight": "500",
+      "lineHeight": "102.6px",
+      "letterSpacing": "-3.78px",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "MW",
+      "cls": "talk-stat__unit",
+      "item": "talk-item talk-stat talk-stat--metric talk-pos--right",
+      "x": 1512.1,
+      "y": 224,
+      "w": 57.9,
+      "h": 30.4,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "32.0004px",
+      "fontWeight": "500",
+      "lineHeight": "30.4004px",
+      "letterSpacing": "-0.384005px",
+      "textTransform": "none",
+      "color": "rgb(209, 213, 217)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "elektros galia, vienas blokas",
+      "cls": "talk-stat__caption",
+      "item": "talk-item talk-stat talk-stat--metric talk-pos--right",
+      "x": 1238,
+      "y": 286.3,
+      "w": 537.6,
+      "h": 33.1,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "23.9976px",
+      "fontWeight": "400",
+      "lineHeight": "33.1167px",
+      "letterSpacing": "-0.143986px",
+      "textTransform": "none",
+      "color": "rgb(209, 213, 217)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "į tinklą",
+      "cls": "talk-label__text",
+      "item": "talk-item talk-label talk-label--label",
+      "x": 1271.8,
+      "y": 588.4,
+      "w": 56.8,
+      "h": 22.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "18.9972px",
+      "fontWeight": "500",
+      "lineHeight": "22.7966px",
+      "letterSpacing": "-0.0759888px",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     }
+    ],
+    "shapes": []
+   }
+  },
+  {
+   "name": "07-facts-footprint",
+   "stop": 7,
+   "flat": 7,
+   "beat": "facts/footprint",
+   "sincePress": 7.1,
+   "beatTime": 7.1,
+   "dip": 0,
+   "videoTime": 72.2,
+   "ui": {
+    "explore": false,
+    "setup": false,
+    "diagnostics": false,
+    "talkDebug": false,
+    "hoverTag": false,
+    "lang": "lt",
+    "talkActive": true
+   },
+   "calls": 65,
+   "tris": 3181,
+   "dom": {
+    "stage": {
+     "x": 0,
+     "y": 0,
+     "w": 1920,
+     "h": 1080
+    },
+    "texts": [
+     {
+      "text": "Trys faktai",
+      "cls": "talk__chapter",
+      "item": "talk__chapter",
+      "x": 120,
+      "y": 50,
+      "w": 123,
+      "h": 19.2,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "15.9948px",
+      "fontWeight": "600",
+      "lineHeight": "19.1938px",
+      "letterSpacing": "1.91938px",
+      "textTransform": "uppercase",
+      "color": "rgba(209, 213, 217, 0.86)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "≈ 148 × 78 m",
+      "cls": "talk-label__text",
+      "item": "talk-item talk-label talk-label--label",
+      "x": 1586.8,
+      "y": 198.4,
+      "w": 144.3,
+      "h": 22.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "18.9972px",
+      "fontWeight": "500",
+      "lineHeight": "22.7966px",
+      "letterSpacing": "-0.0759888px",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "energetinis blokas",
+      "cls": "talk-label__sub",
+      "item": "talk-item talk-label talk-label--label",
+      "x": 1586.8,
+      "y": 224.4,
+      "w": 144.3,
+      "h": 23.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "16.9992px",
+      "fontWeight": "400",
+      "lineHeight": "23.7989px",
+      "letterSpacing": "normal",
+      "textTransform": "none",
+      "color": "rgb(209, 213, 217)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "105 × 68 m",
+      "cls": "talk-label__text",
+      "item": "talk-item talk-label talk-label--label",
+      "x": 411,
+      "y": 129.8,
+      "w": 259.8,
+      "h": 22.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "18.9972px",
+      "fontWeight": "500",
+      "lineHeight": "22.7966px",
+      "letterSpacing": "-0.0759888px",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "tarptautinio dydžio futbolo aikštė",
+      "cls": "talk-label__sub",
+      "item": "talk-item talk-label talk-label--label",
+      "x": 411,
+      "y": 155.8,
+      "w": 259.8,
+      "h": 23.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "16.9992px",
+      "fontWeight": "400",
+      "lineHeight": "23.7989px",
+      "letterSpacing": "normal",
+      "textTransform": "none",
+      "color": "rgb(209, 213, 217)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "≈ 1,6",
+      "cls": "talk-stat__number",
+      "item": "talk-item talk-stat talk-stat--metric talk-pos--bottom-left",
+      "x": 120,
+      "y": 722.8,
+      "w": 201.8,
+      "h": 102.6,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "108px",
+      "fontWeight": "500",
+      "lineHeight": "102.6px",
+      "letterSpacing": "-3.78px",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "futbolo aikštės ploto",
+      "cls": "talk-stat__unit",
+      "item": "talk-item talk-stat talk-stat--metric talk-pos--bottom-left",
+      "x": 332.6,
+      "y": 786.8,
+      "w": 279,
+      "h": 30.4,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "32.0004px",
+      "fontWeight": "500",
+      "lineHeight": "30.4004px",
+      "letterSpacing": "-0.384005px",
+      "textTransform": "none",
+      "color": "rgb(209, 213, 217)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "tiek užima BWRX-300 energetinis blokas: ≈ 148 × 78 m",
+      "cls": "talk-stat__caption",
+      "item": "talk-item talk-stat talk-stat--metric talk-pos--bottom-left",
+      "x": 120,
+      "y": 849.1,
+      "w": 537.6,
+      "h": 66.2,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "23.9976px",
+      "fontWeight": "400",
+      "lineHeight": "33.1167px",
+      "letterSpacing": "-0.143986px",
+      "textTransform": "none",
+      "color": "rgb(209, 213, 217)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "GE Hitachi, BWRX-300 GD Rev. F (2023), p. 63. Aikštė 105 × 68 m – UEFA reikalavimas IV kategorijos stadionui; toks statomas Vilniaus nacionalinis stadionas",
+      "cls": "talk-source",
+      "item": "talk-item talk-stat talk-stat--metric talk-pos--bottom-left",
+      "x": 120,
+      "y": 932.6,
+      "w": 480,
+      "h": 71.4,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "16.9992px",
+      "fontWeight": "400",
+      "lineHeight": "23.7989px",
+      "letterSpacing": "normal",
+      "textTransform": "none",
+      "color": "rgb(184, 190, 196)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     }
+    ],
+    "shapes": []
+   }
+  },
+  {
+   "name": "08-facts-months",
+   "stop": 8,
+   "flat": 8,
+   "beat": "facts/months",
+   "sincePress": 7.1,
+   "beatTime": 7.1,
+   "dip": 0,
+   "videoTime": 80.8,
+   "ui": {
+    "explore": false,
+    "setup": false,
+    "diagnostics": false,
+    "talkDebug": false,
+    "hoverTag": false,
+    "lang": "lt",
+    "talkActive": true
+   },
+   "calls": 65,
+   "tris": 3461,
+   "dom": {
+    "stage": {
+     "x": 0,
+     "y": 0,
+     "w": 1920,
+     "h": 1080
+    },
+    "texts": [
+     {
+      "text": "Trys faktai",
+      "cls": "talk__chapter",
+      "item": "talk__chapter",
+      "x": 120,
+      "y": 50,
+      "w": 123,
+      "h": 19.2,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "15.9948px",
+      "fontWeight": "600",
+      "lineHeight": "19.1938px",
+      "letterSpacing": "1.91938px",
+      "textTransform": "uppercase",
+      "color": "rgba(209, 213, 217, 0.86)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "24–36",
+      "cls": "talk-stat__number",
+      "item": "talk-item talk-stat talk-stat--metric talk-pos--top-left",
+      "x": 120,
+      "y": 130,
+      "w": 293.2,
+      "h": 102.6,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "108px",
+      "fontWeight": "500",
+      "lineHeight": "102.6px",
+      "letterSpacing": "-3.78px",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "mėn.*",
+      "cls": "talk-stat__unit",
+      "item": "talk-item talk-stat talk-stat--metric talk-pos--top-left",
+      "x": 424,
+      "y": 194,
+      "w": 83.8,
+      "h": 30.4,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "32.0004px",
+      "fontWeight": "500",
+      "lineHeight": "30.4004px",
+      "letterSpacing": "-0.384005px",
+      "textTransform": "none",
+      "color": "rgb(209, 213, 217)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "statyba: nuo pirmojo betono reaktoriaus pastate iki kuro įkrovimo",
+      "cls": "talk-stat__caption",
+      "item": "talk-item talk-stat talk-stat--metric talk-pos--top-left",
+      "x": 120,
+      "y": 256.3,
+      "w": 537.6,
+      "h": 66.2,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "23.9976px",
+      "fontWeight": "400",
+      "lineHeight": "33.1167px",
+      "letterSpacing": "-0.143986px",
+      "textTransform": "none",
+      "color": "rgb(209, 213, 217)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "*Gamintojo įvertis serijiniam blokui; be licencijavimo ir finansavimo",
+      "cls": "talk-source",
+      "item": "talk-item talk-stat talk-stat--metric talk-pos--top-left",
+      "x": 120,
+      "y": 339.8,
+      "w": 480,
+      "h": 47.6,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "16.9992px",
+      "fontWeight": "400",
+      "lineHeight": "23.7989px",
+      "letterSpacing": "normal",
+      "textTransform": "none",
+      "color": "rgb(184, 190, 196)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "serijinis blokas",
+      "cls": "talk-label__text",
+      "item": "talk-item talk-label talk-label--label",
+      "x": 832.6,
+      "y": 330,
+      "w": 129.8,
+      "h": 22.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "18.9972px",
+      "fontWeight": "500",
+      "lineHeight": "22.7966px",
+      "letterSpacing": "-0.0759888px",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "0",
+      "cls": "talk-timeline__tick",
+      "item": "talk-item talk-timeline talk-pos--bottom-left",
+      "x": 120,
+      "y": 965.1,
+      "w": 10.7,
+      "h": 23.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "16.9992px",
+      "fontWeight": "400",
+      "lineHeight": "23.7989px",
+      "letterSpacing": "normal",
+      "textTransform": "none",
+      "color": "rgb(184, 190, 196)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "12",
+      "cls": "talk-timeline__tick",
+      "item": "talk-item talk-timeline talk-pos--bottom-left",
+      "x": 444.3,
+      "y": 965.1,
+      "w": 17,
+      "h": 23.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "16.9992px",
+      "fontWeight": "400",
+      "lineHeight": "23.7989px",
+      "letterSpacing": "normal",
+      "textTransform": "none",
+      "color": "rgb(184, 190, 196)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "24",
+      "cls": "talk-timeline__tick is-band",
+      "item": "talk-item talk-timeline talk-pos--bottom-left",
+      "x": 774.9,
+      "y": 965.1,
+      "w": 21.5,
+      "h": 23.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "16.9992px",
+      "fontWeight": "600",
+      "lineHeight": "23.7989px",
+      "letterSpacing": "normal",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "36",
+      "cls": "talk-timeline__tick is-band",
+      "item": "talk-item talk-timeline talk-pos--bottom-left",
+      "x": 1096.9,
+      "y": 965.1,
+      "w": 21.5,
+      "h": 23.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "16.9992px",
+      "fontWeight": "600",
+      "lineHeight": "23.7989px",
+      "letterSpacing": "normal",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     }
+    ],
+    "shapes": []
+   }
+  },
+  {
+   "name": "09-projects-world",
+   "stop": 9,
+   "flat": 10,
+   "beat": "projects/darlington",
+   "sincePress": 13.8,
+   "beatTime": 5.4,
+   "dip": 0,
+   "videoTime": 96.1,
+   "ui": {
+    "explore": false,
+    "setup": false,
+    "diagnostics": false,
+    "talkDebug": false,
+    "hoverTag": false,
+    "lang": "lt",
+    "talkActive": true
+   },
+   "calls": 19,
+   "tris": 23819,
+   "dom": {
+    "stage": {
+     "x": 0,
+     "y": 0,
+     "w": 1920,
+     "h": 1080
+    },
+    "texts": [
+     {
+      "text": "Projektai",
+      "cls": "talk__chapter",
+      "item": "talk__chapter",
+      "x": 109.2,
+      "y": 44.6,
+      "w": 126.9,
+      "h": 30,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "15.9948px",
+      "fontWeight": "600",
+      "lineHeight": "19.1938px",
+      "letterSpacing": "1.91938px",
+      "textTransform": "uppercase",
+      "color": "rgba(209, 213, 217, 0.86)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "statoma",
+      "cls": "talk-legend__row",
+      "item": "talk-item talk-legend talk-pos--bottom-right",
+      "x": 1317.8,
+      "y": 807.3,
+      "w": 89.4,
+      "h": 23.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "16.9992px",
+      "fontWeight": "400",
+      "lineHeight": "23.7989px",
+      "letterSpacing": "normal",
+      "textTransform": "none",
+      "color": "rgb(209, 213, 217)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "licencijavimas",
+      "cls": "talk-legend__row",
+      "item": "talk-item talk-legend talk-pos--bottom-right",
+      "x": 1317.8,
+      "y": 840.8,
+      "w": 136.4,
+      "h": 23.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "16.9992px",
+      "fontWeight": "400",
+      "lineHeight": "23.7989px",
+      "letterSpacing": "normal",
+      "textTransform": "none",
+      "color": "rgb(209, 213, 217)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "planuojama",
+      "cls": "talk-legend__row",
+      "item": "talk-item talk-legend talk-pos--bottom-right",
+      "x": 1317.8,
+      "y": 874.3,
+      "w": 117.1,
+      "h": 23.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "16.9992px",
+      "fontWeight": "400",
+      "lineHeight": "23.7989px",
+      "letterSpacing": "normal",
+      "textTransform": "none",
+      "color": "rgb(209, 213, 217)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "vertinama",
+      "cls": "talk-legend__row",
+      "item": "talk-item talk-legend talk-pos--bottom-right",
+      "x": 1317.8,
+      "y": 907.8,
+      "w": 104.3,
+      "h": 23.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "16.9992px",
+      "fontWeight": "400",
+      "lineHeight": "23.7989px",
+      "letterSpacing": "normal",
+      "textTransform": "none",
+      "color": "rgb(209, 213, 217)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "Šaltiniai: CNSC, US NRC, GE Vernova Hitachi, LR energetikos ministerija (2025–2026)",
+      "cls": "talk-source",
+      "item": "talk-item talk-legend talk-pos--bottom-right",
+      "x": 1317.8,
+      "y": 954.3,
+      "w": 480,
+      "h": 47.6,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "16.9992px",
+      "fontWeight": "400",
+      "lineHeight": "23.7989px",
+      "letterSpacing": "normal",
+      "textTransform": "none",
+      "color": "rgb(184, 190, 196)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "Darlingtonas, Kanada",
+      "cls": "talk-label__text",
+      "item": "talk-item talk-label talk-label--label has-panel",
+      "x": 511.2,
+      "y": 318.9,
+      "w": 390.2,
+      "h": 22.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "18.9972px",
+      "fontWeight": "500",
+      "lineHeight": "22.7966px",
+      "letterSpacing": "-0.0759888px",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "none"
+     },
+     {
+      "text": "statoma",
+      "cls": "talk-label__sub",
+      "item": "talk-item talk-label talk-label--label has-panel",
+      "x": 511.2,
+      "y": 344.9,
+      "w": 390.2,
+      "h": 23.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "16.9992px",
+      "fontWeight": "400",
+      "lineHeight": "23.7989px",
+      "letterSpacing": "normal",
+      "textTransform": "none",
+      "color": "rgb(209, 213, 217)",
+      "textShadow": "none"
+     },
+     {
+      "text": "CNSC statybos licencija – 2025 m. balandžio 4 d.",
+      "cls": "talk-label__source",
+      "item": "talk-item talk-label talk-label--label has-panel",
+      "x": 511.2,
+      "y": 374.1,
+      "w": 390.2,
+      "h": 23.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "16.9992px",
+      "fontWeight": "400",
+      "lineHeight": "23.7989px",
+      "letterSpacing": "normal",
+      "textTransform": "none",
+      "color": "rgb(184, 190, 196)",
+      "textShadow": "none"
+     }
+    ],
+    "shapes": [
+     {
+      "sel": ".talk-legend",
+      "x": 1302.7,
+      "y": 794.3,
+      "w": 510.2,
+      "h": 220.5,
+      "opacity": 1
+     }
+    ]
+   }
+  },
+  {
+   "name": "10-handoff-land",
+   "stop": 10,
+   "flat": 12,
+   "beat": "handoff/descend",
+   "sincePress": 15.2,
+   "beatTime": 11.6,
+   "dip": 0,
+   "videoTime": 112.8,
+   "ui": {
+    "explore": false,
+    "setup": false,
+    "diagnostics": false,
+    "talkDebug": false,
+    "hoverTag": false,
+    "lang": "lt",
+    "talkActive": true
+   },
+   "calls": 57,
+   "tris": 35223,
+   "dom": {
+    "stage": {
+     "x": 0,
+     "y": 0,
+     "w": 1920,
+     "h": 1080
+    },
+    "texts": [],
+    "shapes": []
+   }
+  },
+  {
+   "name": "11-fission-chain-a-gen0-neutron",
+   "stop": 11,
+   "flat": 13,
+   "beat": "fission/chain",
+   "sincePress": 2.4,
+   "beatTime": 2.4,
+   "dip": 0,
+   "videoTime": 116.7,
+   "ui": {
+    "explore": false,
+    "setup": false,
+    "diagnostics": false,
+    "talkDebug": false,
+    "hoverTag": false,
+    "lang": "lt",
+    "talkActive": true
+   },
+   "calls": 60,
+   "tris": 211319,
+   "dom": {
+    "stage": {
+     "x": 0,
+     "y": 0,
+     "w": 1920,
+     "h": 1080
+    },
+    "texts": [
+     {
+      "text": "Dalijimasis",
+      "cls": "talk__chapter",
+      "item": "talk__chapter",
+      "x": 120,
+      "y": 50,
+      "w": 121.8,
+      "h": 19.2,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "15.9948px",
+      "fontWeight": "600",
+      "lineHeight": "19.1938px",
+      "letterSpacing": "1.91938px",
+      "textTransform": "uppercase",
+      "color": "rgba(209, 213, 217, 0.86)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "neutronas",
+      "cls": "talk-label__text",
+      "item": "talk-item talk-micro",
+      "x": 321.5,
+      "y": 367.7,
+      "w": 88.8,
+      "h": 22.8,
+      "opacity": 0.478,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "18.9972px",
+      "fontWeight": "500",
+      "lineHeight": "22.7966px",
+      "letterSpacing": "-0.0759888px",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "U-235",
+      "cls": "talk-label__text",
+      "item": "talk-item talk-micro",
+      "x": 528.4,
+      "y": 301.4,
+      "w": 56.2,
+      "h": 22.8,
+      "opacity": 0.955,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "18.9972px",
+      "fontWeight": "500",
+      "lineHeight": "22.7966px",
+      "letterSpacing": "-0.0759888px",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "Schema, ne mastelis",
+      "cls": "talk-item talk-note is-cued",
+      "item": "talk-item talk-note",
+      "x": 120,
+      "y": 84.6,
+      "w": 163.1,
+      "h": 23.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "16.9992px",
+      "fontWeight": "400",
+      "lineHeight": "23.7989px",
+      "letterSpacing": "normal",
+      "textTransform": "none",
+      "color": "rgb(184, 190, 196)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     }
+    ],
+    "shapes": []
+   }
+  },
+  {
+   "name": "11-fission-chain-b-gen0-split",
+   "stop": 11,
+   "flat": 13,
+   "beat": "fission/chain",
+   "sincePress": 4.2,
+   "beatTime": 4.2,
+   "dip": 0,
+   "videoTime": 118.5,
+   "ui": {
+    "explore": false,
+    "setup": false,
+    "diagnostics": false,
+    "talkDebug": false,
+    "hoverTag": false,
+    "lang": "lt",
+    "talkActive": true
+   },
+   "calls": 60,
+   "tris": 211319,
+   "dom": {
+    "stage": {
+     "x": 0,
+     "y": 0,
+     "w": 1920,
+     "h": 1080
+    },
+    "texts": [
+     {
+      "text": "Dalijimasis",
+      "cls": "talk__chapter",
+      "item": "talk__chapter",
+      "x": 120,
+      "y": 50,
+      "w": 121.8,
+      "h": 19.2,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "15.9948px",
+      "fontWeight": "600",
+      "lineHeight": "19.1938px",
+      "letterSpacing": "1.91938px",
+      "textTransform": "uppercase",
+      "color": "rgba(209, 213, 217, 0.86)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "energija → šiluma",
+      "cls": "talk-label__text",
+      "item": "talk-item talk-micro",
+      "x": 678.6,
+      "y": 588,
+      "w": 155.3,
+      "h": 22.8,
+      "opacity": 0.3,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "18.9972px",
+      "fontWeight": "500",
+      "lineHeight": "22.7966px",
+      "letterSpacing": "-0.0759888px",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "sugertas",
+      "cls": "talk-label__text",
+      "item": "talk-item talk-micro",
+      "x": 293.8,
+      "y": 292,
+      "w": 77.5,
+      "h": 22.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "18.9972px",
+      "fontWeight": "500",
+      "lineHeight": "22.7966px",
+      "letterSpacing": "-0.0759888px",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "Schema, ne mastelis",
+      "cls": "talk-item talk-note is-cued",
+      "item": "talk-item talk-note",
+      "x": 120,
+      "y": 84.6,
+      "w": 163.1,
+      "h": 23.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "16.9992px",
+      "fontWeight": "400",
+      "lineHeight": "23.7989px",
+      "letterSpacing": "normal",
+      "textTransform": "none",
+      "color": "rgb(184, 190, 196)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     }
+    ],
+    "shapes": []
+   }
+  },
+  {
+   "name": "11-fission-chain-c-gen1-two",
+   "stop": 11,
+   "flat": 13,
+   "beat": "fission/chain",
+   "sincePress": 6.6,
+   "beatTime": 6.6,
+   "dip": 0,
+   "videoTime": 120.9,
+   "ui": {
+    "explore": false,
+    "setup": false,
+    "diagnostics": false,
+    "talkDebug": false,
+    "hoverTag": false,
+    "lang": "lt",
+    "talkActive": true
+   },
+   "calls": 60,
+   "tris": 211319,
+   "dom": {
+    "stage": {
+     "x": 0,
+     "y": 0,
+     "w": 1920,
+     "h": 1080
+    },
+    "texts": [
+     {
+      "text": "Dalijimasis",
+      "cls": "talk__chapter",
+      "item": "talk__chapter",
+      "x": 120,
+      "y": 50,
+      "w": 121.8,
+      "h": 19.2,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "15.9948px",
+      "fontWeight": "600",
+      "lineHeight": "19.1938px",
+      "letterSpacing": "1.91938px",
+      "textTransform": "uppercase",
+      "color": "rgba(209, 213, 217, 0.86)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "energija → šiluma",
+      "cls": "talk-label__text",
+      "item": "talk-item talk-micro",
+      "x": 718.2,
+      "y": 583.1,
+      "w": 155.3,
+      "h": 22.8,
+      "opacity": 0.1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "18.9972px",
+      "fontWeight": "500",
+      "lineHeight": "22.7966px",
+      "letterSpacing": "-0.0759888px",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "Schema, ne mastelis",
+      "cls": "talk-item talk-note is-cued",
+      "item": "talk-item talk-note",
+      "x": 120,
+      "y": 84.6,
+      "w": 163.1,
+      "h": 23.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "16.9992px",
+      "fontWeight": "400",
+      "lineHeight": "23.7989px",
+      "letterSpacing": "normal",
+      "textTransform": "none",
+      "color": "rgb(184, 190, 196)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     }
+    ],
+    "shapes": []
+   }
+  },
+  {
+   "name": "11-fission-chain-d-gen2-three",
+   "stop": 11,
+   "flat": 13,
+   "beat": "fission/chain",
+   "sincePress": 8.4,
+   "beatTime": 8.4,
+   "dip": 0,
+   "videoTime": 122.7,
+   "ui": {
+    "explore": false,
+    "setup": false,
+    "diagnostics": false,
+    "talkDebug": false,
+    "hoverTag": false,
+    "lang": "lt",
+    "talkActive": true
+   },
+   "calls": 60,
+   "tris": 211319,
+   "dom": {
+    "stage": {
+     "x": 0,
+     "y": 0,
+     "w": 1920,
+     "h": 1080
+    },
+    "texts": [
+     {
+      "text": "Dalijimasis",
+      "cls": "talk__chapter",
+      "item": "talk__chapter",
+      "x": 120,
+      "y": 50,
+      "w": 121.8,
+      "h": 19.2,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "15.9948px",
+      "fontWeight": "600",
+      "lineHeight": "19.1938px",
+      "letterSpacing": "1.91938px",
+      "textTransform": "uppercase",
+      "color": "rgba(209, 213, 217, 0.86)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "grandininė reakcija",
+      "cls": "talk-label__text",
+      "item": "talk-item talk-micro",
+      "x": 1333,
+      "y": 398.7,
+      "w": 166.8,
+      "h": 22.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "18.9972px",
+      "fontWeight": "500",
+      "lineHeight": "22.7966px",
+      "letterSpacing": "-0.0759888px",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "Schema, ne mastelis",
+      "cls": "talk-item talk-note is-cued",
+      "item": "talk-item talk-note",
+      "x": 120,
+      "y": 84.6,
+      "w": 163.1,
+      "h": 23.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "16.9992px",
+      "fontWeight": "400",
+      "lineHeight": "23.7989px",
+      "letterSpacing": "normal",
+      "textTransform": "none",
+      "color": "rgb(184, 190, 196)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     }
+    ],
+    "shapes": []
+   }
+  },
+  {
+   "name": "11-fission-chain-e-widening",
+   "stop": 11,
+   "flat": 13,
+   "beat": "fission/chain",
+   "sincePress": 10.2,
+   "beatTime": 10.2,
+   "dip": 0,
+   "videoTime": 124.5,
+   "ui": {
+    "explore": false,
+    "setup": false,
+    "diagnostics": false,
+    "talkDebug": false,
+    "hoverTag": false,
+    "lang": "lt",
+    "talkActive": true
+   },
+   "calls": 60,
+   "tris": 211319,
+   "dom": {
+    "stage": {
+     "x": 0,
+     "y": 0,
+     "w": 1920,
+     "h": 1080
+    },
+    "texts": [
+     {
+      "text": "Dalijimasis",
+      "cls": "talk__chapter",
+      "item": "talk__chapter",
+      "x": 120,
+      "y": 50,
+      "w": 121.8,
+      "h": 19.2,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "15.9948px",
+      "fontWeight": "600",
+      "lineHeight": "19.1938px",
+      "letterSpacing": "1.91938px",
+      "textTransform": "uppercase",
+      "color": "rgba(209, 213, 217, 0.86)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "grandininė reakcija",
+      "cls": "talk-label__text",
+      "item": "talk-item talk-micro",
+      "x": 1232.8,
+      "y": 426.5,
+      "w": 166.8,
+      "h": 22.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "18.9972px",
+      "fontWeight": "500",
+      "lineHeight": "22.7966px",
+      "letterSpacing": "-0.0759888px",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "Schema, ne mastelis",
+      "cls": "talk-item talk-note is-cued",
+      "item": "talk-item talk-note",
+      "x": 120,
+      "y": 84.6,
+      "w": 163.1,
+      "h": 23.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "16.9992px",
+      "fontWeight": "400",
+      "lineHeight": "23.7989px",
+      "letterSpacing": "normal",
+      "textTransform": "none",
+      "color": "rgb(184, 190, 196)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     }
+    ],
+    "shapes": []
+   }
+  },
+  {
+   "name": "11-fission-chain",
+   "stop": 11,
+   "flat": 13,
+   "beat": "fission/chain",
+   "sincePress": 14,
+   "beatTime": 14,
+   "dip": 0,
+   "videoTime": 128.3,
+   "ui": {
+    "explore": false,
+    "setup": false,
+    "diagnostics": false,
+    "talkDebug": false,
+    "hoverTag": false,
+    "lang": "lt",
+    "talkActive": true
+   },
+   "calls": 60,
+   "tris": 211319,
+   "dom": {
+    "stage": {
+     "x": 0,
+     "y": 0,
+     "w": 1920,
+     "h": 1080
+    },
+    "texts": [
+     {
+      "text": "Dalijimasis",
+      "cls": "talk__chapter",
+      "item": "talk__chapter",
+      "x": 120,
+      "y": 50,
+      "w": 121.8,
+      "h": 19.2,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "15.9948px",
+      "fontWeight": "600",
+      "lineHeight": "19.1938px",
+      "letterSpacing": "1.91938px",
+      "textTransform": "uppercase",
+      "color": "rgba(209, 213, 217, 0.86)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "Schema, ne mastelis",
+      "cls": "talk-item talk-note is-cued",
+      "item": "talk-item talk-note",
+      "x": 120,
+      "y": 84.6,
+      "w": 163.1,
+      "h": 23.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "16.9992px",
+      "fontWeight": "400",
+      "lineHeight": "23.7989px",
+      "letterSpacing": "normal",
+      "textTransform": "none",
+      "color": "rgb(184, 190, 196)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "Valdoma grandininė reakcija",
+      "cls": "talk-caption__text",
+      "item": "talk-item talk-caption talk-caption--h2 talk-pos--bottom-left",
+      "x": 120,
+      "y": 883.7,
+      "w": 537.6,
+      "h": 36.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "32.0004px",
+      "fontWeight": "500",
+      "lineHeight": "36.8005px",
+      "letterSpacing": "-0.384005px",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "kiekvienas dalijimasis vidutiniškai sukelia vieną naują",
+      "cls": "talk-caption__sub",
+      "item": "talk-item talk-caption talk-caption--h2 talk-pos--bottom-left",
+      "x": 120,
+      "y": 937.8,
+      "w": 537.6,
+      "h": 66.2,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "23.9976px",
+      "fontWeight": "400",
+      "lineHeight": "33.1167px",
+      "letterSpacing": "-0.143986px",
+      "textTransform": "none",
+      "color": "rgb(209, 213, 217)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     }
+    ],
+    "shapes": []
+   }
+  },
+  {
+   "name": "11-fission-chain-f-steady-later",
+   "stop": 11,
+   "flat": 13,
+   "beat": "fission/chain",
+   "sincePress": 20.5,
+   "beatTime": 20.5,
+   "dip": 0,
+   "videoTime": 134.8,
+   "ui": {
+    "explore": false,
+    "setup": false,
+    "diagnostics": false,
+    "talkDebug": false,
+    "hoverTag": false,
+    "lang": "lt",
+    "talkActive": true
+   },
+   "calls": 60,
+   "tris": 211319,
+   "dom": {
+    "stage": {
+     "x": 0,
+     "y": 0,
+     "w": 1920,
+     "h": 1080
+    },
+    "texts": [
+     {
+      "text": "Dalijimasis",
+      "cls": "talk__chapter",
+      "item": "talk__chapter",
+      "x": 120,
+      "y": 50,
+      "w": 121.8,
+      "h": 19.2,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "15.9948px",
+      "fontWeight": "600",
+      "lineHeight": "19.1938px",
+      "letterSpacing": "1.91938px",
+      "textTransform": "uppercase",
+      "color": "rgba(209, 213, 217, 0.86)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "Schema, ne mastelis",
+      "cls": "talk-item talk-note is-cued",
+      "item": "talk-item talk-note",
+      "x": 120,
+      "y": 84.6,
+      "w": 163.1,
+      "h": 23.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "16.9992px",
+      "fontWeight": "400",
+      "lineHeight": "23.7989px",
+      "letterSpacing": "normal",
+      "textTransform": "none",
+      "color": "rgb(184, 190, 196)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "Valdoma grandininė reakcija",
+      "cls": "talk-caption__text",
+      "item": "talk-item talk-caption talk-caption--h2 talk-pos--bottom-left",
+      "x": 120,
+      "y": 883.7,
+      "w": 537.6,
+      "h": 36.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "32.0004px",
+      "fontWeight": "500",
+      "lineHeight": "36.8005px",
+      "letterSpacing": "-0.384005px",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "kiekvienas dalijimasis vidutiniškai sukelia vieną naują",
+      "cls": "talk-caption__sub",
+      "item": "talk-item talk-caption talk-caption--h2 talk-pos--bottom-left",
+      "x": 120,
+      "y": 937.8,
+      "w": 537.6,
+      "h": 66.2,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "23.9976px",
+      "fontWeight": "400",
+      "lineHeight": "33.1167px",
+      "letterSpacing": "-0.143986px",
+      "textTransform": "none",
+      "color": "rgb(209, 213, 217)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     }
+    ],
+    "shapes": []
+   }
+  },
+  {
+   "name": "12-control-inFuel",
+   "stop": 12,
+   "flat": 17,
+   "beat": "control/withdraw",
+   "sincePress": 15.4,
+   "beatTime": 4,
+   "dip": 0,
+   "videoTime": 150.7,
+   "ui": {
+    "explore": false,
+    "setup": false,
+    "diagnostics": false,
+    "talkDebug": false,
+    "hoverTag": false,
+    "lang": "lt",
+    "talkActive": true
+   },
+   "calls": 51,
+   "tris": 39561,
+   "dom": {
+    "stage": {
+     "x": 0,
+     "y": 0,
+     "w": 1920,
+     "h": 1080
+    },
+    "texts": [
+     {
+      "text": "Valdymas",
+      "cls": "talk__chapter",
+      "item": "talk__chapter",
+      "x": 109.2,
+      "y": 44.6,
+      "w": 126.5,
+      "h": 30,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "15.9948px",
+      "fontWeight": "600",
+      "lineHeight": "19.1938px",
+      "letterSpacing": "1.91938px",
+      "textTransform": "uppercase",
+      "color": "rgba(209, 213, 217, 0.86)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "Iliustracinis judesys",
+      "cls": "talk-item talk-note is-shown",
+      "item": "talk-item talk-note",
+      "x": 109.2,
+      "y": 79.2,
+      "w": 176,
+      "h": 34.6,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "16.9992px",
+      "fontWeight": "400",
+      "lineHeight": "23.7989px",
+      "letterSpacing": "normal",
+      "textTransform": "none",
+      "color": "rgb(184, 190, 196)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "valdymo mentės",
+      "cls": "talk-label__text",
+      "item": "talk-item talk-label talk-label--label",
+      "x": 1040.8,
+      "y": 873.8,
+      "w": 145.7,
+      "h": 22.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "18.9972px",
+      "fontWeight": "500",
+      "lineHeight": "22.7966px",
+      "letterSpacing": "-0.0759888px",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "none"
+     },
+     {
+      "text": "sugeria neutronus",
+      "cls": "talk-label__sub",
+      "item": "talk-item talk-label talk-label--label",
+      "x": 1040.8,
+      "y": 899.8,
+      "w": 145.7,
+      "h": 23.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "16.9992px",
+      "fontWeight": "400",
+      "lineHeight": "23.7989px",
+      "letterSpacing": "normal",
+      "textTransform": "none",
+      "color": "rgb(209, 213, 217)",
+      "textShadow": "none"
+     },
+     {
+      "text": "Daugiau įstumta → mažiau reakcijų",
+      "cls": "talk-caption__text",
+      "item": "talk-item talk-caption talk-caption--h2 talk-pos--bottom-left",
+      "x": 120,
+      "y": 868,
+      "w": 483.5,
+      "h": 36.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "32.0004px",
+      "fontWeight": "500",
+      "lineHeight": "36.8005px",
+      "letterSpacing": "-0.384005px",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "Mažiau įstumta → daugiau reakcijų",
+      "cls": "talk-caption__text",
+      "item": "talk-item talk-caption talk-caption--h2 talk-pos--bottom-left",
+      "x": 120,
+      "y": 924,
+      "w": 480.3,
+      "h": 36.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "32.0004px",
+      "fontWeight": "500",
+      "lineHeight": "36.8005px",
+      "letterSpacing": "-0.384005px",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     }
+    ],
+    "shapes": []
+   }
+  },
+  {
+   "name": "13-energy-boil",
+   "stop": 13,
+   "flat": 19,
+   "beat": "energy/steam",
+   "sincePress": 12.2,
+   "beatTime": 7,
+   "dip": 0,
+   "videoTime": 164.4,
+   "ui": {
+    "explore": false,
+    "setup": false,
+    "diagnostics": false,
+    "talkDebug": false,
+    "hoverTag": false,
+    "lang": "lt",
+    "talkActive": true
+   },
+   "calls": 61,
+   "tris": 33617,
+   "dom": {
+    "stage": {
+     "x": 0,
+     "y": 0,
+     "w": 1920,
+     "h": 1080
+    },
+    "texts": [
+     {
+      "text": "Nuo atomo iki elektros",
+      "cls": "talk__chapter",
+      "item": "talk__chapter",
+      "x": 120,
+      "y": 50,
+      "w": 252.5,
+      "h": 19.2,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "15.9948px",
+      "fontWeight": "600",
+      "lineHeight": "19.1938px",
+      "letterSpacing": "1.91938px",
+      "textTransform": "uppercase",
+      "color": "rgba(209, 213, 217, 0.86)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "separatoriai",
+      "cls": "talk-label__text",
+      "item": "talk-item talk-label talk-label--label",
+      "x": 639,
+      "y": 959.9,
+      "w": 104.3,
+      "h": 22.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "18.9972px",
+      "fontWeight": "500",
+      "lineHeight": "22.7966px",
+      "letterSpacing": "-0.0759888px",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "džiovintuvas",
+      "cls": "talk-label__text",
+      "item": "talk-item talk-label talk-label--label",
+      "x": 637.2,
+      "y": 625.8,
+      "w": 111.5,
+      "h": 22.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "18.9972px",
+      "fontWeight": "500",
+      "lineHeight": "22.7966px",
+      "letterSpacing": "-0.0759888px",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     }
+    ],
+    "shapes": []
+   }
+  },
+  {
+   "name": "14-energy-turbine",
+   "stop": 14,
+   "flat": 21,
+   "beat": "energy/condenser",
+   "sincePress": 16.2,
+   "beatTime": 9.6,
+   "dip": 0,
+   "videoTime": 182.1,
+   "ui": {
+    "explore": false,
+    "setup": false,
+    "diagnostics": false,
+    "talkDebug": false,
+    "hoverTag": false,
+    "lang": "lt",
+    "talkActive": true
+   },
+   "calls": 110,
+   "tris": 103601,
+   "dom": {
+    "stage": {
+     "x": 0,
+     "y": 0,
+     "w": 1920,
+     "h": 1080
+    },
+    "texts": [
+     {
+      "text": "Nuo atomo iki elektros",
+      "cls": "talk__chapter",
+      "item": "talk__chapter",
+      "x": 120,
+      "y": 50,
+      "w": 252.5,
+      "h": 19.2,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "15.9948px",
+      "fontWeight": "600",
+      "lineHeight": "19.1938px",
+      "letterSpacing": "1.91938px",
+      "textTransform": "uppercase",
+      "color": "rgba(209, 213, 217, 0.86)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "kondensatorius",
+      "cls": "talk-label__text",
+      "item": "talk-item talk-label talk-label--label",
+      "x": 1490.4,
+      "y": 414.5,
+      "w": 136,
+      "h": 22.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "18.9972px",
+      "fontWeight": "500",
+      "lineHeight": "22.7966px",
+      "letterSpacing": "-0.0759888px",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "vanduo grįžta į reaktorių",
+      "cls": "talk-label__text",
+      "item": "talk-item talk-label talk-label--label",
+      "x": 834.7,
+      "y": 683.2,
+      "w": 213.8,
+      "h": 22.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "18.9972px",
+      "fontWeight": "500",
+      "lineHeight": "22.7966px",
+      "letterSpacing": "-0.0759888px",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     }
+    ],
+    "shapes": []
+   }
+  },
+  {
+   "name": "15-energy-grid",
+   "stop": 15,
+   "flat": 22,
+   "beat": "energy/grid",
+   "sincePress": 10.2,
+   "beatTime": 10.2,
+   "dip": 0,
+   "videoTime": 193.8,
+   "ui": {
+    "explore": false,
+    "setup": false,
+    "diagnostics": false,
+    "talkDebug": false,
+    "hoverTag": false,
+    "lang": "lt",
+    "talkActive": true
+   },
+   "calls": 117,
+   "tris": 112717,
+   "dom": {
+    "stage": {
+     "x": 0,
+     "y": 0,
+     "w": 1920,
+     "h": 1080
+    },
+    "texts": [
+     {
+      "text": "Nuo atomo iki elektros",
+      "cls": "talk__chapter",
+      "item": "talk__chapter",
+      "x": 120,
+      "y": 50,
+      "w": 252.5,
+      "h": 19.2,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "15.9948px",
+      "fontWeight": "600",
+      "lineHeight": "19.1938px",
+      "letterSpacing": "1.91938px",
+      "textTransform": "uppercase",
+      "color": "rgba(209, 213, 217, 0.86)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "≈ 300 000",
+      "cls": "talk-stat__number is-counting",
+      "item": "talk-item talk-stat talk-stat--metric talk-pos--top-right",
+      "x": 1238,
+      "y": 250,
+      "w": 511.3,
+      "h": 102.6,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "108px",
+      "fontWeight": "500",
+      "lineHeight": "102.6px",
+      "letterSpacing": "-3.78px",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "namų ūkių*",
+      "cls": "talk-stat__unit",
+      "item": "talk-item talk-stat talk-stat--metric talk-pos--top-right",
+      "x": 1238,
+      "y": 359,
+      "w": 159.1,
+      "h": 30.4,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "32.0004px",
+      "fontWeight": "500",
+      "lineHeight": "30.4004px",
+      "letterSpacing": "-0.384005px",
+      "textTransform": "none",
+      "color": "rgb(209, 213, 217)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "*Gamintojo iliustracinis įvertis; miestas – ne konkreti vieta",
+      "cls": "talk-source",
+      "item": "talk-item talk-stat talk-stat--metric talk-pos--top-right",
+      "x": 1238,
+      "y": 406.7,
+      "w": 562,
+      "h": 23.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "16.9992px",
+      "fontWeight": "400",
+      "lineHeight": "23.7989px",
+      "letterSpacing": "normal",
+      "textTransform": "none",
+      "color": "rgb(184, 190, 196)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     }
+    ],
+    "shapes": []
+   }
+  },
+  {
+   "name": "16-safety-normal",
+   "stop": 16,
+   "flat": 26,
+   "beat": "safety/decay",
+   "sincePress": 18.8,
+   "beatTime": 5,
+   "dip": 0,
+   "videoTime": 214.1,
+   "ui": {
+    "explore": false,
+    "setup": false,
+    "diagnostics": false,
+    "talkDebug": false,
+    "hoverTag": false,
+    "lang": "lt",
+    "talkActive": true
+   },
+   "calls": 84,
+   "tris": 78073,
+   "dom": {
+    "stage": {
+     "x": 0,
+     "y": 0,
+     "w": 1920,
+     "h": 1080
+    },
+    "texts": [
+     {
+      "text": "Pasyvioji sauga",
+      "cls": "talk__chapter",
+      "item": "talk__chapter",
+      "x": 120,
+      "y": 50,
+      "w": 172.9,
+      "h": 19.2,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "15.9948px",
+      "fontWeight": "600",
+      "lineHeight": "19.1938px",
+      "letterSpacing": "1.91938px",
+      "textTransform": "uppercase",
+      "color": "rgba(209, 213, 217, 0.86)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "Bet šiluma nedingsta",
+      "cls": "talk-caption__text",
+      "item": "talk-item talk-caption talk-caption--h1 talk-pos--top-right",
+      "x": 1238,
+      "y": 140,
+      "w": 562,
+      "h": 55.1,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "52.002px",
+      "fontWeight": "600",
+      "lineHeight": "55.1221px",
+      "letterSpacing": "-1.14404px",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "dalijimasis",
+      "cls": "talk-meters__name",
+      "item": "talk-item talk-meters talk-pos--right",
+      "x": 1238,
+      "y": 508.3,
+      "w": 144,
+      "h": 19.2,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "15.9948px",
+      "fontWeight": "600",
+      "lineHeight": "19.1938px",
+      "letterSpacing": "1.91938px",
+      "textTransform": "uppercase",
+      "color": "rgb(209, 213, 217)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "≈ 0",
+      "cls": "talk-meters__value",
+      "item": "talk-item talk-meters talk-pos--right",
+      "x": 1399.2,
+      "y": 476.3,
+      "w": 75.1,
+      "h": 57.2,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "52.002px",
+      "fontWeight": "600",
+      "lineHeight": "57.2022px",
+      "letterSpacing": "-1.14404px",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "šiluma",
+      "cls": "talk-meters__name",
+      "item": "talk-item talk-meters talk-pos--right",
+      "x": 1238,
+      "y": 578.5,
+      "w": 144,
+      "h": 19.2,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "15.9948px",
+      "fontWeight": "600",
+      "lineHeight": "19.1938px",
+      "letterSpacing": "1.91938px",
+      "textTransform": "uppercase",
+      "color": "rgb(209, 213, 217)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "≠ 0",
+      "cls": "talk-meters__value",
+      "item": "talk-item talk-meters talk-pos--right",
+      "x": 1399.2,
+      "y": 546.5,
+      "w": 75.1,
+      "h": 57.2,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "52.002px",
+      "fontWeight": "600",
+      "lineHeight": "57.2022px",
+      "letterSpacing": "-1.14404px",
+      "textTransform": "none",
+      "color": "rgb(211, 140, 92)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     }
+    ],
+    "shapes": []
+   }
+  },
+  {
+   "name": "17-safety-ics",
+   "stop": 17,
+   "flat": 28,
+   "beat": "safety/days",
+   "sincePress": 14.3,
+   "beatTime": 7.9,
+   "dip": 0,
+   "videoTime": 229.9,
+   "ui": {
+    "explore": false,
+    "setup": false,
+    "diagnostics": false,
+    "talkDebug": false,
+    "hoverTag": false,
+    "lang": "lt",
+    "talkActive": true
+   },
+   "calls": 67,
+   "tris": 60623,
+   "dom": {
+    "stage": {
+     "x": 0,
+     "y": 0,
+     "w": 1920,
+     "h": 1080
+    },
+    "texts": [
+     {
+      "text": "Pasyvioji sauga",
+      "cls": "talk__chapter",
+      "item": "talk__chapter",
+      "x": 120,
+      "y": 50,
+      "w": 172.9,
+      "h": 19.2,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "15.9948px",
+      "fontWeight": "600",
+      "lineHeight": "19.1938px",
+      "letterSpacing": "1.91938px",
+      "textTransform": "uppercase",
+      "color": "rgba(209, 213, 217, 0.86)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "Pasyvusis aušinimas",
+      "cls": "talk-caption__text",
+      "item": "talk-item talk-caption talk-caption--h1 talk-pos--top-right",
+      "x": 1238,
+      "y": 140,
+      "w": 562,
+      "h": 55.1,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "52.002px",
+      "fontWeight": "600",
+      "lineHeight": "55.1221px",
+      "letterSpacing": "-1.14404px",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "be siurblių, be išorinės elektros",
+      "cls": "talk-caption__sub",
+      "item": "talk-item talk-caption talk-caption--h1 talk-pos--top-right",
+      "x": 1238,
+      "y": 212.4,
+      "w": 562,
+      "h": 33.1,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "23.9976px",
+      "fontWeight": "400",
+      "lineHeight": "33.1167px",
+      "letterSpacing": "-0.143986px",
+      "textTransform": "none",
+      "color": "rgb(209, 213, 217)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "garai kyla",
+      "cls": "talk-label__text",
+      "item": "talk-item talk-label talk-label--label",
+      "x": 696.1,
+      "y": 615.8,
+      "w": 84.8,
+      "h": 22.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "18.9972px",
+      "fontWeight": "500",
+      "lineHeight": "22.7966px",
+      "letterSpacing": "-0.0759888px",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "šiluma – į baseiną",
+      "cls": "talk-label__text",
+      "item": "talk-item talk-label talk-label--label",
+      "x": 695.7,
+      "y": 338.6,
+      "w": 154.7,
+      "h": 22.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "18.9972px",
+      "fontWeight": "500",
+      "lineHeight": "22.7966px",
+      "letterSpacing": "-0.0759888px",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "vanduo grįžta",
+      "cls": "talk-label__text",
+      "item": "talk-item talk-label talk-label--label",
+      "x": 1068.6,
+      "y": 715.5,
+      "w": 120.9,
+      "h": 22.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "18.9972px",
+      "fontWeight": "500",
+      "lineHeight": "22.7966px",
+      "letterSpacing": "-0.0759888px",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "7 paros*",
+      "cls": "talk-counter__value",
+      "item": "talk-item talk-counter talk-pos--right",
+      "x": 1238,
+      "y": 443.4,
+      "w": 562,
+      "h": 102.6,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "108px",
+      "fontWeight": "500",
+      "lineHeight": "102.6px",
+      "letterSpacing": "-3.78px",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "*Be operatorių veiksmų; tam pakanka 2 iš 3 kontūrų (GE Vernova Hitachi, GD Rev. J §3.3)",
+      "cls": "talk-source",
+      "item": "talk-item talk-counter talk-pos--right",
+      "x": 1238,
+      "y": 589,
+      "w": 562,
+      "h": 47.6,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "16.9992px",
+      "fontWeight": "400",
+      "lineHeight": "23.7989px",
+      "letterSpacing": "normal",
+      "textTransform": "none",
+      "color": "rgb(184, 190, 196)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     }
+    ],
+    "shapes": [
+     {
+      "sel": ".talk-counter__track",
+      "x": 1238,
+      "y": 569.7,
+      "w": 562,
+      "h": 2,
+      "opacity": 1
+     }
+    ]
+   }
+  },
+  {
+   "name": "18-limits-limits",
+   "stop": 18,
+   "flat": 29,
+   "beat": "limits/limits",
+   "sincePress": 7.2,
+   "beatTime": 7.2,
+   "dip": 0,
+   "videoTime": 238.6,
+   "ui": {
+    "explore": false,
+    "setup": false,
+    "diagnostics": false,
+    "talkDebug": false,
+    "hoverTag": false,
+    "lang": "lt",
+    "talkActive": true
+   },
+   "calls": 88,
+   "tris": 70127,
+   "dom": {
+    "stage": {
+     "x": 0,
+     "y": 0,
+     "w": 1920,
+     "h": 1080
+    },
+    "texts": [
+     {
+      "text": "Iššūkiai",
+      "cls": "talk__chapter",
+      "item": "talk__chapter",
+      "x": 120,
+      "y": 50,
+      "w": 83.7,
+      "h": 19.2,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "15.9948px",
+      "fontWeight": "600",
+      "lineHeight": "19.1938px",
+      "letterSpacing": "1.91938px",
+      "textTransform": "uppercase",
+      "color": "rgba(209, 213, 217, 0.86)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "ATLIEKOS",
+      "cls": "talk-label__text",
+      "item": "talk-item talk-label talk-label--label",
+      "x": 407.5,
+      "y": 567.1,
+      "w": 233.7,
+      "h": 22.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "18.9972px",
+      "fontWeight": "500",
+      "lineHeight": "22.7966px",
+      "letterSpacing": "-0.0759888px",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "panaudotą kurą reikia saugoti",
+      "cls": "talk-label__sub",
+      "item": "talk-item talk-label talk-label--label",
+      "x": 407.5,
+      "y": 593.1,
+      "w": 233.7,
+      "h": 23.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "16.9992px",
+      "fontWeight": "400",
+      "lineHeight": "23.7989px",
+      "letterSpacing": "normal",
+      "textTransform": "none",
+      "color": "rgb(209, 213, 217)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "LICENCIJAVIMAS",
+      "cls": "talk-label__text",
+      "item": "talk-item talk-label talk-label--label has-glyph",
+      "x": 683.6,
+      "y": 161.2,
+      "w": 259.2,
+      "h": 19.2,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "15.9948px",
+      "fontWeight": "600",
+      "lineHeight": "19.1938px",
+      "letterSpacing": "1.91938px",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "kiekviena šalis vertina atskirai",
+      "cls": "talk-label__sub",
+      "item": "talk-item talk-label talk-label--label has-glyph",
+      "x": 683.6,
+      "y": 183.6,
+      "w": 259.2,
+      "h": 26.6,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "18.9972px",
+      "fontWeight": "400",
+      "lineHeight": "26.5961px",
+      "letterSpacing": "normal",
+      "textTransform": "none",
+      "color": "rgb(209, 213, 217)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "PIRMŲJŲ PROJEKTŲ RIZIKA",
+      "cls": "talk-label__text",
+      "item": "talk-item talk-label talk-label--label has-glyph",
+      "x": 1274.3,
+      "y": 723.5,
+      "w": 262,
+      "h": 19.2,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "15.9948px",
+      "fontWeight": "600",
+      "lineHeight": "19.1938px",
+      "letterSpacing": "1.91938px",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "kaina ir terminai dar tikslinami",
+      "cls": "talk-label__sub",
+      "item": "talk-item talk-label talk-label--label has-glyph",
+      "x": 1274.3,
+      "y": 745.9,
+      "w": 262,
+      "h": 26.6,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "18.9972px",
+      "fontWeight": "400",
+      "lineHeight": "26.5961px",
+      "letterSpacing": "normal",
+      "textTransform": "none",
+      "color": "rgb(209, 213, 217)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     }
+    ],
+    "shapes": []
+   }
+  },
+  {
+   "name": "19-close-return",
+   "stop": 19,
+   "flat": 31,
+   "beat": "close/qa",
+   "sincePress": 9.6,
+   "beatTime": 4.6,
+   "dip": 0,
+   "videoTime": 249.7,
+   "ui": {
+    "explore": false,
+    "setup": false,
+    "diagnostics": false,
+    "talkDebug": false,
+    "hoverTag": false,
+    "lang": "lt",
+    "talkActive": true
+   },
+   "calls": 67,
+   "tris": 11375,
+   "dom": {
+    "stage": {
+     "x": 0,
+     "y": 0,
+     "w": 1920,
+     "h": 1080
+    },
+    "texts": [
+     {
+      "text": "Ta pati fizika. Kitas mastelis.",
+      "cls": "talk-title__title",
+      "item": "talk-item talk-title talk-title--display talk-pos--top-left",
+      "x": 120,
+      "y": 157.3,
+      "w": 760,
+      "h": 156.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "79.9956px",
+      "fontWeight": "600",
+      "lineHeight": "78.3957px",
+      "letterSpacing": "-2.39987px",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "none"
+     },
+     {
+      "text": "Jūsų klausimai",
+      "cls": "talk-title__sub",
+      "item": "talk-item talk-title talk-title--display talk-pos--top-left",
+      "x": 120,
+      "y": 344.3,
+      "w": 760,
+      "h": 36.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "32.0004px",
+      "fontWeight": "500",
+      "lineHeight": "36.8005px",
+      "letterSpacing": "-0.384005px",
+      "textTransform": "none",
+      "color": "rgb(232, 163, 61)",
+      "textShadow": "none"
+     },
+     {
+      "text": "Virgilijus Kiltinavičius",
+      "cls": "talk-credit__name",
+      "item": "talk-item talk-credits talk-credits--outro",
+      "x": 120,
+      "y": 944.8,
+      "w": 315.9,
+      "h": 30,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "23.9976px",
+      "fontWeight": "600",
+      "lineHeight": "29.997px",
+      "letterSpacing": "-0.143986px",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "virgilijus.kiltinavicius@stud.vilniustech.lt",
+      "cls": "talk-credit__email",
+      "item": "talk-item talk-credits talk-credits--outro",
+      "x": 120,
+      "y": 980.2,
+      "w": 315.9,
+      "h": 23.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "16.9992px",
+      "fontWeight": "400",
+      "lineHeight": "23.7989px",
+      "letterSpacing": "normal",
+      "textTransform": "none",
+      "color": "rgb(209, 213, 217)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "Timofej Gaivoronskij",
+      "cls": "talk-credit__name",
+      "item": "talk-item talk-credits talk-credits--outro",
+      "x": 529.1,
+      "y": 944.8,
+      "w": 308.3,
+      "h": 30,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "23.9976px",
+      "fontWeight": "600",
+      "lineHeight": "29.997px",
+      "letterSpacing": "-0.143986px",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "timofej.gaivoronskij@stud.vilniustech.lt",
+      "cls": "talk-credit__email",
+      "item": "talk-item talk-credits talk-credits--outro",
+      "x": 529.1,
+      "y": 980.2,
+      "w": 308.3,
+      "h": 23.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "16.9992px",
+      "fontWeight": "400",
+      "lineHeight": "23.7989px",
+      "letterSpacing": "normal",
+      "textTransform": "none",
+      "color": "rgb(209, 213, 217)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "Interaktyvus modelis",
+      "cls": "talk-qr__label",
+      "item": "talk-item talk-qr talk-qr--outro",
+      "x": 1171.6,
+      "y": 951,
+      "w": 336.8,
+      "h": 22.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "18.9972px",
+      "fontWeight": "600",
+      "lineHeight": "22.7966px",
+      "letterSpacing": "normal",
+      "textTransform": "none",
+      "color": "rgb(247, 248, 248)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     },
+     {
+      "text": "QR dydžio bandymas – nuoroda bus vėliau",
+      "cls": "talk-qr__sub is-todo",
+      "item": "talk-item talk-qr talk-qr--outro",
+      "x": 1171.6,
+      "y": 980.2,
+      "w": 336.8,
+      "h": 23.8,
+      "opacity": 1,
+      "fontFamily": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "fontSize": "16.9992px",
+      "fontWeight": "400",
+      "lineHeight": "23.7989px",
+      "letterSpacing": "normal",
+      "textTransform": "none",
+      "color": "rgb(184, 190, 196)",
+      "textShadow": "rgba(6, 7, 9, 0.55) 0px 0px 2px, rgba(6, 7, 9, 0.8) 0px 1px 14px"
+     }
+    ],
+    "shapes": [
+     {
+      "sel": ".talk-qr__code",
+      "x": 1530,
+      "y": 734,
+      "w": 270,
+      "h": 270,
+      "opacity": 1
+     }
+    ]
+   }
+  }
+ ],
+ "fontsSeen": {
+  "talk-item talk-title talk-title--display talk-pos--top-left is-cued": [
+   "Inter (Inter-28pt-Medium) x14",
+   "Inter (Inter-28pt-SemiBold) x30"
+  ],
+  "talk-title__kicker": [
+   "Inter (Inter-16pt-SemiBold) x29"
+  ],
+  "talk-title__title": [
+   "Inter (Inter-28pt-SemiBold) x30"
+  ],
+  "talk-credit__text": [
+   "Inter (Inter-24pt-SemiBold) x20",
+   "Inter (Inter-17pt) x40"
+  ],
+  "talk-credit__name": [
+   "Inter (Inter-24pt-SemiBold) x20"
+  ],
+  "talk-credit__email": [
+   "Inter (Inter-17pt) x40"
+  ],
+  "talk-qr__text": [
+   "Inter (Inter-18pt-SemiBold) x20",
+   "Inter (Inter-17pt) x39"
+  ],
+  "talk-qr__label": [
+   "Inter (Inter-18pt-SemiBold) x20"
+  ],
+  "talk-qr__sub is-todo": [
+   "Inter (Inter-17pt) x39"
+  ],
+  "talk__chapter": [
+   "Inter (Inter-16pt-SemiBold) x8"
+  ],
+  "talk-item talk-stat talk-stat--metric talk-pos--left is-cued": [
+   "Inter (Inter-24pt) x69",
+   "Inter (Inter-17pt) x31"
+  ],
+  "talk-stat__value": [
+   "Inter (Inter-28pt-Medium) x19"
+  ],
+  "talk-stat__number is-counting": [
+   "Inter (Inter-28pt-Medium) x9"
+  ],
+  "talk-stat__caption": [
+   "Inter (Inter-24pt) x64"
+  ],
+  "talk-source": [
+   "Inter (Inter-17pt) x86"
+  ],
+  "talk-item talk-caption talk-caption--h1 talk-pos--left is-cued": [
+   "Inter (Inter-17pt) x48",
+   "Inter (Inter-24pt) x28",
+   "Inter (Inter-28pt-SemiBold) x23"
+  ],
+  "talk-caption__text": [
+   "Inter (Inter-28pt-SemiBold) x19"
+  ],
+  "talk-caption__sub": [
+   "Inter (Inter-24pt) x33"
+  ],
+  "talk-label__words": [
+   "Inter (Inter-16pt-SemiBold) x23",
+   "Inter (Inter-18pt) x32"
+  ],
+  "talk-label__text": [
+   "Inter (Inter-16pt-SemiBold) x23"
+  ],
+  "talk-item talk-caption talk-caption--h1 talk-pos--top-left is-cued": [
+   "Inter (Inter-24pt) x31",
+   "Inter (Inter-28pt-SemiBold) x38"
+  ],
+  "talk-item talk-note is-shown": [
+   "Inter (Inter-17pt) x21"
+  ],
+  "talk-item talk-stat talk-stat--metric talk-pos--right is-cued": [
+   "Inter (Inter-24pt) x29"
+  ],
+  "talk-stat__unit": [
+   "Inter (Inter-28pt-Medium) x10"
+  ],
+  "talk-label__sub": [
+   "Inter (Inter-18pt) x32"
+  ],
+  "talk-item talk-stat talk-stat--metric talk-pos--bottom-left is-cued": [
+   "Inter (Inter-24pt) x51",
+   "Inter (Inter-17pt) x153"
+  ],
+  "talk-stat__number": [
+   "Inter (Inter-28pt-Medium) x5"
+  ],
+  "talk-item talk-stat talk-stat--metric talk-pos--top-left is-cued": [
+   "Inter (Inter-24pt) x64",
+   "Inter (Inter-17pt) x68"
+  ],
+  "talk-timeline__ticks": [
+   "Inter (Inter-17pt-SemiBold) x4",
+   "Inter (Inter-17pt) x3"
+  ],
+  "talk-timeline__tick": [
+   "Inter (Inter-17pt) x2"
+  ],
+  "talk-timeline__tick is-band": [
+   "Inter (Inter-17pt-SemiBold) x2"
+  ],
+  "talk-item talk-legend talk-pos--bottom-right is-shown": [
+   "Inter (Inter-17pt) x82"
+  ],
+  "talk-legend__row": [
+   "Inter (Inter-17pt) x9"
+  ],
+  "talk-label__source": [
+   "Inter (Inter-17pt) x48"
+  ],
+  "talk-item talk-note is-cued": [
+   "Inter (Inter-17pt) x19"
+  ],
+  "talk-item talk-caption talk-caption--h2 talk-pos--bottom-left is-cued": [
+   "Inter (Inter-28pt-Medium) x33"
+  ],
+  "talk-item talk-caption talk-caption--h2 talk-pos--bottom-left is-shown": [
+   "Inter (Inter-28pt-Medium) x33"
+  ],
+  "talk-item talk-stat talk-stat--metric talk-pos--top-right is-cued": [
+   "Inter (Inter-17pt) x61"
+  ],
+  "talk-item talk-caption talk-caption--h1 talk-pos--top-right is-cued": [
+   "Inter (Inter-28pt-SemiBold) x20"
+  ],
+  "talk-meters__row": [
+   "Inter (Inter-16pt-SemiBold) x11",
+   "Inter (Inter-28pt-SemiBold) x3"
+  ],
+  "talk-meters__name": [
+   "Inter (Inter-16pt-SemiBold) x6"
+  ],
+  "talk-meters__value": [
+   "Inter (Inter-28pt-SemiBold) x3"
+  ],
+  "talk-meters__row talk-meters__row--heat": [
+   "Inter (Inter-16pt-SemiBold) x6",
+   "Inter (Inter-28pt-SemiBold) x3"
+  ],
+  "talk-item talk-caption talk-caption--h1 talk-pos--top-right is-shown": [
+   "Inter (Inter-24pt) x33",
+   "Inter (Inter-28pt-SemiBold) x19"
+  ],
+  "talk-item talk-counter talk-pos--right is-cued": [
+   "Inter (Inter-28pt-Medium) x8",
+   "Inter (Inter-17pt) x86"
+  ],
+  "talk-counter__value": [
+   "Inter (Inter-28pt-Medium) x8"
+  ],
+  "talk-title__sub": [
+   "Inter (Inter-28pt-Medium) x14"
+  ]
+ },
+ "cssAnimations": 82,
+ "vtimers": [
+  {
+   "id": 1000000001,
+   "delay": 2500,
+   "at": 4.698
+  },
+  {
+   "id": 1000000002,
+   "delay": 2500,
+   "at": 15.131
+  },
+  {
+   "id": 1000000003,
+   "delay": 400,
+   "at": 15.131
+  },
+  {
+   "id": 1000000004,
+   "delay": 2500,
+   "at": 24.431
+  },
+  {
+   "id": 1000000005,
+   "delay": 400,
+   "at": 24.431
+  },
+  {
+   "id": 1000000006,
+   "delay": 2500,
+   "at": 31.531
+  },
+  {
+   "id": 1000000007,
+   "delay": 400,
+   "at": 31.531
+  },
+  {
+   "id": 1000000008,
+   "delay": 2500,
+   "at": 37.631
+  },
+  {
+   "id": 1000000009,
+   "delay": 400,
+   "at": 37.631
+  },
+  {
+   "id": 1000000010,
+   "delay": 400,
+   "at": 50.164
+  },
+  {
+   "id": 1000000011,
+   "delay": 2500,
+   "at": 61.331
+  },
+  {
+   "id": 1000000012,
+   "delay": 400,
+   "at": 61.331
+  },
+  {
+   "id": 1000000013,
+   "delay": 2500,
+   "at": 68.831
+  },
+  {
+   "id": 1000000014,
+   "delay": 400,
+   "at": 68.831
+  },
+  {
+   "id": 1000000015,
+   "delay": 2500,
+   "at": 77.431
+  },
+  {
+   "id": 1000000016,
+   "delay": 400,
+   "at": 77.431
+  },
+  {
+   "id": 1000000017,
+   "delay": 2500,
+   "at": 86.031
+  },
+  {
+   "id": 1000000018,
+   "delay": 400,
+   "at": 86.031
+  },
+  {
+   "id": 1000000019,
+   "delay": 400,
+   "at": 94.464
+  },
+  {
+   "id": 1000000020,
+   "delay": 2500,
+   "at": 101.331
+  },
+  {
+   "id": 1000000021,
+   "delay": 400,
+   "at": 101.331
+  },
+  {
+   "id": 1000000022,
+   "delay": 2500,
+   "at": 118.031
+  },
+  {
+   "id": 1000000023,
+   "delay": 2500,
+   "at": 139.031
+  },
+  {
+   "id": 1000000024,
+   "delay": 400,
+   "at": 139.031
+  },
+  {
+   "id": 1000000025,
+   "delay": 400,
+   "at": 141.864
+  },
+  {
+   "id": 1000000026,
+   "delay": 2500,
+   "at": 155.931
+  },
+  {
+   "id": 1000000027,
+   "delay": 400,
+   "at": 155.931
+  },
+  {
+   "id": 1000000028,
+   "delay": 400,
+   "at": 161.164
+  },
+  {
+   "id": 1000000029,
+   "delay": 2500,
+   "at": 169.631
+  },
+  {
+   "id": 1000000030,
+   "delay": 400,
+   "at": 169.631
+  },
+  {
+   "id": 1000000031,
+   "delay": 400,
+   "at": 176.264
+  },
+  {
+   "id": 1000000032,
+   "delay": 2500,
+   "at": 187.331
+  },
+  {
+   "id": 1000000033,
+   "delay": 400,
+   "at": 187.331
+  },
+  {
+   "id": 1000000034,
+   "delay": 2500,
+   "at": 199.031
+  },
+  {
+   "id": 1000000035,
+   "delay": 400,
+   "at": 199.031
+  },
+  {
+   "id": 1000000036,
+   "delay": 400,
+   "at": 204.464
+  },
+  {
+   "id": 1000000037,
+   "delay": 400,
+   "at": 207.664
+  },
+  {
+   "id": 1000000038,
+   "delay": 400,
+   "at": 212.864
+  },
+  {
+   "id": 1000000039,
+   "delay": 2500,
+   "at": 219.331
+  },
+  {
+   "id": 1000000040,
+   "delay": 400,
+   "at": 219.331
+  },
+  {
+   "id": 1000000041,
+   "delay": 2500,
+   "at": 235.131
+  },
+  {
+   "id": 1000000042,
+   "delay": 400,
+   "at": 235.131
+  },
+  {
+   "id": 1000000043,
+   "delay": 2500,
+   "at": 243.831
+  },
+  {
+   "id": 1000000044,
+   "delay": 400,
+   "at": 243.831
+  }
+ ],
+ "uiBefore": {
+  "explore": false,
+  "setup": false,
+  "diagnostics": false,
+  "talkDebug": false,
+  "hoverTag": false,
+  "lang": "lt",
+  "talkActive": false
+ },
+ "log": {
+  "console": [
+   "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+  ],
+  "errors": [],
+  "external": []
+ }
+}

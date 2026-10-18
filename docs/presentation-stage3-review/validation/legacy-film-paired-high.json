@@ -1,0 +1,48 @@
+{
+ "a": "film-pair-stage2-high",
+ "b": "film-pair-stage3-high",
+ "total": 10,
+ "identical": 10,
+ "rows": [
+  {
+   "name": "film-00.5.png",
+   "status": "identical"
+  },
+  {
+   "name": "film-05.8.png",
+   "status": "identical"
+  },
+  {
+   "name": "film-10.0.png",
+   "status": "identical"
+  },
+  {
+   "name": "film-15.4.png",
+   "status": "identical"
+  },
+  {
+   "name": "film-20.0.png",
+   "status": "identical"
+  },
+  {
+   "name": "film-26.0.png",
+   "status": "identical"
+  },
+  {
+   "name": "film-32.0.png",
+   "status": "identical"
+  },
+  {
+   "name": "film-38.0.png",
+   "status": "identical"
+  },
+  {
+   "name": "film-44.0.png",
+   "status": "identical"
+  },
+  {
+   "name": "film-47.9.png",
+   "status": "identical"
+  }
+ ]
+}

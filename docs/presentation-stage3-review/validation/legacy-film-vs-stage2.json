@@ -1,0 +1,57 @@
+{
+ "a": "C:/Users/user/AppData/Local/Temp/bwrx-stage3/stage2-regress",
+ "b": "C:/Users/user/AppData/Local/Temp/bwrx-stage3/film-final",
+ "total": 10,
+ "identical": 9,
+ "rows": [
+  {
+   "name": "film-00.5.png",
+   "status": "identical"
+  },
+  {
+   "name": "film-05.8.png",
+   "status": "differs",
+   "changedPixels": 0,
+   "maxDelta": 0,
+   "bbox": [
+    250,
+    690,
+    260,
+    740
+   ],
+   "over8": 0
+  },
+  {
+   "name": "film-10.0.png",
+   "status": "identical"
+  },
+  {
+   "name": "film-15.4.png",
+   "status": "identical"
+  },
+  {
+   "name": "film-20.0.png",
+   "status": "identical"
+  },
+  {
+   "name": "film-26.0.png",
+   "status": "identical"
+  },
+  {
+   "name": "film-32.0.png",
+   "status": "identical"
+  },
+  {
+   "name": "film-38.0.png",
+   "status": "identical"
+  },
+  {
+   "name": "film-44.0.png",
+   "status": "identical"
+  },
+  {
+   "name": "film-47.9.png",
+   "status": "identical"
+  }
+ ]
+}
