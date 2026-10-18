@@ -109,11 +109,28 @@ export function resolveRenderScale(search: string): number {
   return Number.isFinite(value) && value > 0 ? Math.min(1, Math.max(0.5, value)) : 1;
 }
 
+/** The two numbers that bound the drawing buffer. */
+export type RenderLimits = Pick<QualityPreset, 'maxPixelRatio' | 'maxRenderPixels'>;
+
+/**
+ * Post-final: a touch-only device (app/entry.ts HANDHELD) renders under a tighter cap. A 3x phone
+ * would otherwise draw a 1.3-1.9 MP buffer for a 6-inch screen; Low stays at 1.5x and about 1 MP
+ * (390x844: 585x1266), High at 2x and 1.6 MP. The labels and controls are HTML, crisp at any ratio.
+ */
+export const HANDHELD_RENDER_LIMITS: Record<QualityLevel, RenderLimits> = {
+  high: { maxPixelRatio: 2, maxRenderPixels: 1600 * 1000 },
+  low: { maxPixelRatio: 1.5, maxRenderPixels: 1280 * 800 },
+};
+
+export function renderLimits(preset: QualityPreset, handheld: boolean): RenderLimits {
+  return handheld ? HANDHELD_RENDER_LIMITS[preset.level] : preset;
+}
+
 /**
  * The canvas pixel ratio: the device ratio, capped by the preset, times the render scale, then
  * lowered further if the drawing buffer would exceed the preset's pixel budget.
  */
-export function canvasPixelRatio(preset: QualityPreset, cssWidth: number, cssHeight: number, deviceRatio: number, renderScale: number): number {
+export function canvasPixelRatio(preset: RenderLimits, cssWidth: number, cssHeight: number, deviceRatio: number, renderScale: number): number {
   const ratio = Math.min(deviceRatio, preset.maxPixelRatio) * renderScale;
   const cssPixels = Math.max(1, cssWidth * cssHeight);
   return Math.min(ratio, Math.sqrt(preset.maxRenderPixels / cssPixels));
@@ -125,20 +142,46 @@ export function isQualityLevel(value: unknown): value is QualityLevel {
 
 export interface InitialQuality {
   level: QualityLevel;
-  reason: 'query' | 'software-renderer' | 'portable' | 'default';
+  reason: 'query' | 'software-renderer' | 'portable' | 'handheld' | 'stored' | 'default';
 }
 
 /**
  * `?quality=low|high` wins; otherwise a CPU rasteriser starts in low; the portable single-file
  * build (the presentation package, `vite build --mode portable`) starts in low, the validated
- * presentation-safe preset; otherwise high.
+ * presentation-safe preset; a touch-only device (the QR audience) starts in low unless its user
+ * picked a level before (`stored`, see storeHandheldQuality); otherwise high.
  */
-export function resolveInitialQuality(search: string, caps: GpuCapabilities): InitialQuality {
+export function resolveInitialQuality(search: string, caps: GpuCapabilities, handheld = false): InitialQuality {
   const requested = new URLSearchParams(search).get(QUALITY_QUERY_PARAM);
   if (isQualityLevel(requested)) return { level: requested, reason: 'query' };
   if (caps.softwareRenderer) return { level: 'low', reason: 'software-renderer' };
   if (import.meta.env.MODE === 'portable') return { level: 'low', reason: 'portable' };
+  if (handheld) {
+    const stored = readHandheldQuality();
+    return stored ? { level: stored, reason: 'stored' } : { level: 'low', reason: 'handheld' };
+  }
   return { level: 'high', reason: 'default' };
+}
+
+const HANDHELD_QUALITY_KEY = 'bwrx300.handheldQuality';
+
+/** A touch-only device's explicit quality choice, if one was made (null when storage is blocked). */
+function readHandheldQuality(): QualityLevel | null {
+  try {
+    const value = window.localStorage.getItem(HANDHELD_QUALITY_KEY);
+    return isQualityLevel(value) ? value : null;
+  } catch {
+    return null;
+  }
+}
+
+/** Remember a touch-only device's explicit choice (desktop keeps the choice in the URL only). */
+export function storeHandheldQuality(level: QualityLevel): void {
+  try {
+    window.localStorage.setItem(HANDHELD_QUALITY_KEY, level);
+  } catch {
+    // Not remembered across a reload; the switch itself still applies.
+  }
 }
 
 /** Keep the URL in sync so a reload (or a bookmarked link) preserves the choice. */

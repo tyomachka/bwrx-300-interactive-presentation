@@ -7,6 +7,7 @@ import { clearSelection, toggleControl, toggleFlow, toggleIsolate, toggleLabels,
 import { cycleReviewView } from '../camera/reviewViews';
 import { talk } from '../presentation/talk';
 import { useAppStore } from '../state/store';
+import { EXPLORE_ONLY } from './entry';
 
 /**
  * Presentation v1 (the 7-minute talk, src/presentation): while it runs it owns the keys below and
@@ -100,6 +101,13 @@ const BINDINGS: Record<string, () => void> = {
   BracketRight: debugOnly(() => masterSequence.jumpBeat(1)),
 };
 
+/**
+ * The explore-only page (app/entry.ts) keeps the Explore keys and quality only: nothing there may
+ * start the talk or the 48 s film, nor open the talk's debug panel.
+ */
+const PRESENTATION_ONLY = new Set(['Space', 'Home', 'KeyT']);
+if (EXPLORE_ONLY) for (const code of PRESENTATION_ONLY) delete BINDINGS[code];
+
 function isTypingTarget(target: EventTarget | null): boolean {
   if (!(target instanceof HTMLElement)) return false;
   return target.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT'].includes(target.tagName);
@@ -123,7 +131,7 @@ export function useKeyboardShortcuts(): void {
         action();
         return;
       }
-      if (masterSequence.status === 'idle' && ENTER_TALK[event.code]) {
+      if (!EXPLORE_ONLY && masterSequence.status === 'idle' && ENTER_TALK[event.code]) {
         event.preventDefault();
         blurButton();
         ENTER_TALK[event.code]!();

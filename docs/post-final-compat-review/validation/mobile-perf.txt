@@ -1,0 +1,4 @@
+low cpu x1 585x1266 idle 60.1 orbit 60.1 p95 16.8
+low cpu x4 585x1266 idle 46.8 orbit 47 p95 33.4
+high cpu x1 780x1688 idle 60.1 orbit 60.1 p95 16.8
+high cpu x4 780x1688 idle 42.2 orbit 42.7 p95 33.4

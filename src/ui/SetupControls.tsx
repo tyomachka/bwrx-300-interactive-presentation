@@ -15,6 +15,7 @@ import { QUALITY_PRESETS, type QualityLevel } from '../config/quality';
 import { useStrings } from '../i18n/strings';
 import { useAppStore } from '../state/store';
 import { LanguageToggle } from './LanguageToggle';
+import { toggleFullscreen } from './fullscreen';
 
 const IDLE_HIDE_MS = 2500;
 const LEVELS = Object.keys(QUALITY_PRESETS) as QualityLevel[];
@@ -113,14 +114,4 @@ export function SetupControls() {
       <LanguageToggle />
     </div>
   );
-}
-
-/** Browser full screen on an explicit click; a refusal (or a browser without it) changes nothing. */
-async function toggleFullscreen(): Promise<void> {
-  try {
-    if (document.fullscreenElement) await document.exitFullscreen();
-    else await document.documentElement.requestFullscreen();
-  } catch {
-    // Permission denied or unsupported: F11 remains available.
-  }
 }

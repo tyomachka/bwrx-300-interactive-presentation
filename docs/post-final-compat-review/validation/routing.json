@@ -1,0 +1,116 @@
+[
+  {
+    "name": "desktop plain URL: presentation set-up (setup bar with Start / 48 s film, no explore-only UI)",
+    "ok": true,
+    "detail": {
+      "exploreOnly": false,
+      "setup": true,
+      "startButton": [
+        "Pradėti pristatymą",
+        "48 s filmas"
+      ],
+      "sheet": false,
+      "talk": false,
+      "master": "idle",
+      "stage": [
+        0,
+        0,
+        1920,
+        1080
+      ]
+    }
+  },
+  {
+    "name": "desktop plain URL: → enters the talk",
+    "ok": true
+  },
+  {
+    "name": "desktop plain URL: no errors",
+    "ok": true,
+    "detail": []
+  },
+  {
+    "name": "desktop ?mode=explore: explore-only (sheet, no setup bar, no talk overlay)",
+    "ok": true,
+    "detail": {
+      "exploreOnly": true,
+      "setup": false,
+      "startButton": [],
+      "sheet": true,
+      "talk": false,
+      "master": "idle",
+      "stage": [
+        0,
+        0,
+        1920,
+        1080
+      ]
+    }
+  },
+  {
+    "name": "desktop ?mode=explore: → Space PageDown Home start neither the talk nor the film",
+    "ok": true,
+    "detail": {
+      "talk": false,
+      "master": "idle"
+    }
+  },
+  {
+    "name": "desktop ?mode=explore: Explore keys still work (X → X-ray)",
+    "ok": true
+  },
+  {
+    "name": "desktop ?mode=explore: no errors",
+    "ok": true,
+    "detail": []
+  },
+  {
+    "name": "phone ?mode=presentation: lecture set-up, 16:9 stage",
+    "ok": true,
+    "detail": {
+      "exploreOnly": false,
+      "setup": true,
+      "startButton": [
+        "Pradėti pristatymą",
+        "48 s filmas"
+      ],
+      "sheet": false,
+      "talk": false,
+      "master": "idle",
+      "stage": [
+        0,
+        312,
+        390,
+        219
+      ]
+    }
+  },
+  {
+    "name": "phone ?mode=presentation: no errors",
+    "ok": true,
+    "detail": []
+  },
+  {
+    "name": "phone ?mode=explore (the QR): explore-only, full viewport",
+    "ok": true,
+    "detail": {
+      "exploreOnly": true,
+      "setup": false,
+      "startButton": [],
+      "sheet": true,
+      "talk": false,
+      "master": "idle",
+      "stage": [
+        0,
+        0,
+        390,
+        844
+      ]
+    }
+  },
+  {
+    "name": "phone ?mode=explore: no errors",
+    "ok": true,
+    "detail": []
+  }
+]

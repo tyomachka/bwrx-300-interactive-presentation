@@ -1,0 +1,77 @@
+[
+  {
+    "file": "fallback-forced-1920x1080.png",
+    "size": [
+      1920,
+      1080
+    ],
+    "full": "https://tyomachka.github.io/bwrx-300-interactive-presentation/?mode=explore",
+    "full_ok": true,
+    "version": "]Q1",
+    "position": "1171x506 1369x506 1369x704 1171x704",
+    "half": "https://tyomachka.github.io/bwrx-300-interactive-presentation/?mode=explore",
+    "half_ok": true,
+    "quarter+blur": null,
+    "quarter+blur_ok": false
+  },
+  {
+    "file": "fallback-forced-390x844.png",
+    "size": [
+      1170,
+      2532
+    ],
+    "full": "https://tyomachka.github.io/bwrx-300-interactive-presentation/?mode=explore",
+    "full_ok": true,
+    "version": "]Q1",
+    "position": "83x1565 409x1565 409x1891 83x1891",
+    "half": "https://tyomachka.github.io/bwrx-300-interactive-presentation/?mode=explore",
+    "half_ok": true,
+    "quarter+blur": "https://tyomachka.github.io/bwrx-300-interactive-presentation/?mode=explore",
+    "quarter+blur_ok": true
+  },
+  {
+    "file": "fallback-forced-960x540.png",
+    "size": [
+      1920,
+      1080
+    ],
+    "full": "https://tyomachka.github.io/bwrx-300-interactive-presentation/?mode=explore",
+    "full_ok": true,
+    "version": "]Q1",
+    "position": "1118x512 1394x512 1394x788 1118x788",
+    "half": "https://tyomachka.github.io/bwrx-300-interactive-presentation/?mode=explore",
+    "half_ok": true,
+    "quarter+blur": "https://tyomachka.github.io/bwrx-300-interactive-presentation/?mode=explore",
+    "quarter+blur_ok": true
+  },
+  {
+    "file": "fallback-forced-en-1920x1080.png",
+    "size": [
+      1920,
+      1080
+    ],
+    "full": "https://tyomachka.github.io/bwrx-300-interactive-presentation/?mode=explore",
+    "full_ok": true,
+    "version": "]Q1",
+    "position": "1171x506 1369x506 1369x704 1171x704",
+    "half": "https://tyomachka.github.io/bwrx-300-interactive-presentation/?mode=explore",
+    "half_ok": true,
+    "quarter+blur": null,
+    "quarter+blur_ok": false
+  },
+  {
+    "file": "fallback-no-webgl2-1920x1080.png",
+    "size": [
+      1920,
+      1080
+    ],
+    "full": "https://tyomachka.github.io/bwrx-300-interactive-presentation/?mode=explore",
+    "full_ok": true,
+    "version": "]Q1",
+    "position": "1171x496 1369x496 1369x694 1171x694",
+    "half": "https://tyomachka.github.io/bwrx-300-interactive-presentation/?mode=explore",
+    "half_ok": true,
+    "quarter+blur": null,
+    "quarter+blur_ok": false
+  }
+]

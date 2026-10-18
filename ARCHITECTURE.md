@@ -54,6 +54,16 @@ Interior levels (`Interior level=…`): content drawn only when a cut or X-ray o
 | `animation/presentation.ts` `startPresentation`, `startOrTogglePresentation` | The 48 s film: the "48 s filmas" button; Space / Home while the film plays or holds |
 | `config/quality.ts` `resolveInitialQuality` | Low in the portable build (`MODE === 'portable'`, reason `portable`); `?quality=` overrides |
 
+## Post-final compatibility (phones, weak browsers)
+
+| File | Responsibility | Key API / state |
+|---|---|---|
+| `app/entry.ts` | Which experience the page opens, once at load: `?mode=explore` / `?mode=presentation`, else a touch-only device opens the model only | `ENTRY`, `EXPLORE_ONLY`, `HANDHELD` |
+| `ui/ExploreSheet.tsx` (+ `styles.css` "Explore-only page") | The explore-only page's controls: top strip (name, LT \| EN), collapsible bottom sheet grouped View / Systems / Inspect + quality, full screen; selection card; side panel on a landscape phone. Same actions as `ExplorePanel`; nothing starts the talk or the film | `labelLayer.reserve` |
+| `scene/SceneCanvas.tsx` explore-only parts | The whole viewport instead of the 16:9 stage; `ViewportFit` (camera `zoom`, portrait keeps a 1.2-aspect horizontal view; no pose changes); the talk's scene parts and font are not mounted | — |
+| `config/quality.ts` `HANDHELD_RENDER_LIMITS`, `storeHandheldQuality` | Touch-only device: Low unless its user chose High before; drawing buffer capped (Low 1.5x / 1 MP, High 2x / 1.6 MP) | `renderLimits()` |
+| `index.html` startup gate, `app/boot.ts`, `build-tools/bootGate.ts` | ES5 gate before the bundle: HTML loading shell, watchdogs (start 60 s, first frame 12 s, ready 60 s), script / load errors, `nomodule`, then a plain-HTML fallback (poster, QR, backup video in the portable package, retry). The app reports start / frame / ready / failures (no WebGL 2, scene error, blank first frame, repeated context loss) until it is ready; afterwards its own status screens apply | `window.__bwrxBoot`, `boot` |
+
 ## Presentation v1: the ~7-minute talk (`src/presentation/`)
 
 A separate controller on top of the approved scene. It never edits frozen timing, keys or shaders;
@@ -70,7 +80,7 @@ it reads frozen poses and reveal states by name and drives the scene through add
 | `effects.ts` | Installs the talk as the source for flow / control / safety (consulted only while the master is idle) | `installTalkEffects`, `removeTalkEffects`, through the additive hooks `setFlowSource`, `setControlSource`, `setSafetySource` (animation/*) and `setBladeScram` (rpv/coreLayout) |
 | `legacy.ts` | The frozen reveal at any master time | `masterRevealAt(t)` |
 | `config.ts` | Presenters (names, e-mails; no likenesses), the public URL, timing constants | `PRESENTERS`, `PUBLIC_PRESENTATION_URL`, `TALK` |
-| `qrCode.ts` | The opening / closing QR: the public Pages URL, version 4-M (segno), verified by decoding the rendered code; not a link (no navigation during the talk) | `QR_CODE` |
+| `qrCode.ts` | The opening / closing QR: the explore-only page (`EXPLORE_PAGE_URL`, `?mode=explore`), version 5-M (segno), verified by decoding the rendered code; not a link (no navigation during the talk); the startup gate's fallback shows the same matrix | `QR_CODE` |
 | `copy.ts`, `sources.ts` | On-screen text LT / EN (typed); every public number with its source and status | `useTalkCopy()`, `FACTS` |
 | `design.ts`, `ui/talk.css`, `fonts/` | Stage 2 design system (B, editorial cinematic): 8 type roles, the semantic palette (amber = the one current concept), the composition grid, motion → CSS variables; the overlay only reads `var(--talk-…)`. Inter Variable bundled (`fonts/README.md`), registered and loaded by `loadTalkFont()`, which the scene's ready gate awaits | `TYPE`, `COLOR`, `GRID`, `MOTION`, `designVariables()`, `loadTalkFont()` |
 | `overlayLayer.ts`, `ui/TalkOverlay.tsx` | The HTML overlay in the 16:9 stage, four label roles: anchored labels (dot + leader, tone = process / status colour), claims, sources under what they qualify, metrics; count-ups, the day counter, the construction timeline, the vessel diagram (chapter 3), credits, QR, scrims, dip; per-frame DOM writes (cue in / out opacity) | `updateOverlay(camera, w, h)` |

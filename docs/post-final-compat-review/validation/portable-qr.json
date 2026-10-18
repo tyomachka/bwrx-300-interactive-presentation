@@ -1,0 +1,32 @@
+[
+  {
+    "file": "stop01-1920x1080.png",
+    "size": [
+      1920,
+      1080
+    ],
+    "full": "https://tyomachka.github.io/bwrx-300-interactive-presentation/?mode=explore",
+    "full_ok": true,
+    "version": "]Q1",
+    "position": "1623x827 1783x827 1783x987 1623x987",
+    "half": "https://tyomachka.github.io/bwrx-300-interactive-presentation/?mode=explore",
+    "half_ok": true,
+    "quarter+blur": null,
+    "quarter+blur_ok": false
+  },
+  {
+    "file": "stop12-1920x1080.png",
+    "size": [
+      1920,
+      1080
+    ],
+    "full": "https://tyomachka.github.io/bwrx-300-interactive-presentation/?mode=explore",
+    "full_ok": true,
+    "version": "]Q1",
+    "position": "1505x709 1771x709 1771x975 1505x975",
+    "half": "https://tyomachka.github.io/bwrx-300-interactive-presentation/?mode=explore",
+    "half_ok": true,
+    "quarter+blur": "https://tyomachka.github.io/bwrx-300-interactive-presentation/?mode=explore",
+    "quarter+blur_ok": true
+  }
+]

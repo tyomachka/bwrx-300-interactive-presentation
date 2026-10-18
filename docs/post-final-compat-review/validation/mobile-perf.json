@@ -1,0 +1,102 @@
+[
+  {
+    "quality": "low",
+    "cpuThrottle": 1,
+    "buffer": [
+      585,
+      1266
+    ],
+    "mp": 0.74,
+    "idle": {
+      "frames": 241,
+      "fps": 60.1,
+      "p50": 16.6,
+      "p95": 16.8,
+      "worst": 17.2
+    },
+    "orbiting": {
+      "frames": 240,
+      "fps": 60.1,
+      "p50": 16.6,
+      "p95": 16.8,
+      "worst": 17.3
+    },
+    "touchMoves": 84,
+    "errors": 0
+  },
+  {
+    "quality": "low",
+    "cpuThrottle": 4,
+    "buffer": [
+      585,
+      1266
+    ],
+    "mp": 0.74,
+    "idle": {
+      "frames": 189,
+      "fps": 46.8,
+      "p50": 16.7,
+      "p95": 33.4,
+      "worst": 49.9
+    },
+    "orbiting": {
+      "frames": 189,
+      "fps": 47,
+      "p50": 16.7,
+      "p95": 33.4,
+      "worst": 49.9
+    },
+    "touchMoves": 77,
+    "errors": 0
+  },
+  {
+    "quality": "high",
+    "cpuThrottle": 1,
+    "buffer": [
+      780,
+      1688
+    ],
+    "mp": 1.32,
+    "idle": {
+      "frames": 241,
+      "fps": 60.1,
+      "p50": 16.6,
+      "p95": 16.9,
+      "worst": 17.3
+    },
+    "orbiting": {
+      "frames": 240,
+      "fps": 60.1,
+      "p50": 16.6,
+      "p95": 16.8,
+      "worst": 17.2
+    },
+    "touchMoves": 84,
+    "errors": 0
+  },
+  {
+    "quality": "high",
+    "cpuThrottle": 4,
+    "buffer": [
+      780,
+      1688
+    ],
+    "mp": 1.32,
+    "idle": {
+      "frames": 169,
+      "fps": 42.2,
+      "p50": 16.7,
+      "p95": 33.5,
+      "worst": 50.1
+    },
+    "orbiting": {
+      "frames": 172,
+      "fps": 42.7,
+      "p50": 16.7,
+      "p95": 33.4,
+      "worst": 50
+    },
+    "touchMoves": 81,
+    "errors": 0
+  }
+]

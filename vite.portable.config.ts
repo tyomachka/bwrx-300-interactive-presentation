@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { portableSingleFile } from './build-tools/portableSingleFile.ts';
+import { bootGate } from './build-tools/bootGate.ts';
 
 /**
  * Stage 11 portable build (`npm run build:portable`): the same app as `vite.config.ts`, emitted as
@@ -17,6 +18,8 @@ export default defineConfig({
   base: './',
   plugins: [
     react(),
+    // The startup gate's fallback offers the backup video that sits next to the page.
+    bootGate({ backupVideo: true }),
     portableSingleFile({
       htmlName: 'BWRX300.html',
       extras: [

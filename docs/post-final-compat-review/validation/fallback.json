@@ -1,0 +1,376 @@
+[
+  {
+    "scenario": "normal-desktop",
+    "expect": "ready",
+    "pass": true,
+    "state": {
+      "boot": "ready",
+      "reason": "",
+      "at": {
+        "start": 751,
+        "renderer": 1482,
+        "frame": 4264,
+        "ready": 4696
+      },
+      "fallbackVisible": false,
+      "rootHidden": false,
+      "canvas": true,
+      "shellVisible": false,
+      "sceneStatus": "ready",
+      "h1": "Šiame įrenginyje 3D modelis nepasileido.",
+      "poster": {
+        "complete": false,
+        "w": 0
+      },
+      "reasonText": "",
+      "videoButton": false,
+      "lostOverlay": false,
+      "ms": 4052
+    },
+    "errors": [],
+    "console": [],
+    "failed": [],
+    "external": []
+  },
+  {
+    "scenario": "forced",
+    "expect": "forced",
+    "pass": true,
+    "state": {
+      "boot": "failed",
+      "reason": "forced",
+      "at": {
+        "failed": 26
+      },
+      "fallbackVisible": true,
+      "rootHidden": true,
+      "canvas": false,
+      "shellVisible": false,
+      "sceneStatus": null,
+      "h1": "Šiame įrenginyje 3D modelis nepasileido.",
+      "poster": {
+        "complete": true,
+        "w": 1280
+      },
+      "reasonText": "forced",
+      "videoButton": false,
+      "lostOverlay": false,
+      "ms": 64,
+      "english": {
+        "boot": "failed",
+        "reason": "forced",
+        "at": {
+          "failed": 26
+        },
+        "fallbackVisible": true,
+        "rootHidden": true,
+        "canvas": false,
+        "shellVisible": false,
+        "sceneStatus": null,
+        "h1": "The 3D model could not start on this device.",
+        "poster": {
+          "complete": true,
+          "w": 1280
+        },
+        "reasonText": "forced",
+        "videoButton": false,
+        "lostOverlay": false
+      },
+      "retryHref": ""
+    },
+    "errors": [],
+    "console": [
+      "[warn] [BWRX-300] The 3D view did not start (forced); showing the fallback. "
+    ],
+    "failed": [],
+    "external": []
+  },
+  {
+    "scenario": "no-webgl2",
+    "expect": "no-webgl2",
+    "pass": true,
+    "state": {
+      "boot": "failed",
+      "reason": "no-webgl2",
+      "at": {
+        "start": 277,
+        "failed": 277
+      },
+      "fallbackVisible": true,
+      "rootHidden": true,
+      "canvas": false,
+      "shellVisible": false,
+      "sceneStatus": null,
+      "h1": "Šiame įrenginyje 3D modelis nepasileido.",
+      "poster": {
+        "complete": true,
+        "w": 1280
+      },
+      "reasonText": "no-webgl2 (The browser supports WebGL 2, but it could not be started. Hardware acceleration may be turned off or the graphics driver may be blocked.)",
+      "videoButton": false,
+      "lostOverlay": false,
+      "ms": 82
+    },
+    "errors": [],
+    "console": [
+      "[warn] [BWRX-300] The 3D view did not start (no-webgl2); showing the fallback. The browser supports WebGL 2, but it could not be started. Hardware acceleration may be turned off or the graphics driver may be blocked."
+    ],
+    "failed": [],
+    "external": []
+  },
+  {
+    "scenario": "renderer-failure",
+    "expect": "scene-error",
+    "pass": true,
+    "state": {
+      "boot": "failed",
+      "reason": "scene-error",
+      "at": {
+        "start": 157,
+        "failed": 272
+      },
+      "fallbackVisible": true,
+      "rootHidden": true,
+      "canvas": false,
+      "shellVisible": false,
+      "sceneStatus": "loading",
+      "h1": "Šiame įrenginyje 3D modelis nepasileido.",
+      "poster": {
+        "complete": true,
+        "w": 1280
+      },
+      "reasonText": "scene-error (THREE.WebGLRenderer: Error creating WebGL context.)",
+      "videoButton": false,
+      "lostOverlay": false,
+      "ms": 283
+    },
+    "errors": [],
+    "console": [
+      "[error] THREE.WebGLRenderer: THREE.WebGLRenderer: Error creating WebGL context.",
+      "[error] Error: THREE.WebGLRenderer: Error creating WebGL context.",
+      "[error] [BWRX-300] 3D scene crashed: Error: THREE.WebGLRenderer: Error creating WebGL context. \n    at Dh (http://127.0.0.1:4302/assets/index-D5zpMWe9.js:4236:19402)\n    at $f (http://127.0.0.1:4302/assets/index-D5zpMWe9.js:4225:59084)\n    at Oh (<anonymous>)\n    at GS (http://127.0.0.1:4302/assets/index-D5",
+      "[warn] [BWRX-300] The 3D view did not start (scene-error); showing the fallback. THREE.WebGLRenderer: Error creating WebGL context."
+    ],
+    "failed": [],
+    "external": []
+  },
+  {
+    "scenario": "renderer-timeout",
+    "expect": "no-renderer",
+    "pass": true,
+    "state": {
+      "boot": "failed",
+      "reason": "no-renderer",
+      "at": {
+        "start": 147,
+        "failed": 12156
+      },
+      "fallbackVisible": true,
+      "rootHidden": true,
+      "canvas": false,
+      "shellVisible": false,
+      "sceneStatus": "loading",
+      "h1": "Šiame įrenginyje 3D modelis nepasileido.",
+      "poster": {
+        "complete": true,
+        "w": 1280
+      },
+      "reasonText": "no-renderer",
+      "videoButton": false,
+      "lostOverlay": false,
+      "ms": 12194
+    },
+    "errors": [],
+    "console": [
+      "[warn] [BWRX-300] The 3D view did not start (no-renderer); showing the fallback. "
+    ],
+    "failed": [],
+    "external": []
+  },
+  {
+    "scenario": "first-frame-timeout",
+    "expect": "no-first-frame",
+    "pass": true,
+    "state": {
+      "boot": "failed",
+      "reason": "no-first-frame",
+      "at": {
+        "start": 303,
+        "renderer": 948,
+        "failed": 45949
+      },
+      "fallbackVisible": true,
+      "rootHidden": true,
+      "canvas": false,
+      "shellVisible": false,
+      "sceneStatus": "loading",
+      "h1": "Šiame įrenginyje 3D modelis nepasileido.",
+      "poster": {
+        "complete": true,
+        "w": 1280
+      },
+      "reasonText": "no-first-frame",
+      "videoButton": false,
+      "lostOverlay": false,
+      "ms": 45825
+    },
+    "errors": [],
+    "console": [
+      "[warn] [BWRX-300] The 3D view did not start (no-first-frame); showing the fallback. "
+    ],
+    "failed": [],
+    "external": []
+  },
+  {
+    "scenario": "bundle-load-failure",
+    "expect": "load-script",
+    "pass": true,
+    "state": {
+      "boot": "failed",
+      "reason": "load-script",
+      "at": {
+        "failed": 89
+      },
+      "fallbackVisible": true,
+      "rootHidden": true,
+      "canvas": false,
+      "shellVisible": false,
+      "sceneStatus": null,
+      "h1": "Šiame įrenginyje 3D modelis nepasileido.",
+      "poster": {
+        "complete": true,
+        "w": 1280
+      },
+      "reasonText": "load-script (http://127.0.0.1:4302/assets/index-D5zpMWe9.js)",
+      "videoButton": false,
+      "lostOverlay": false,
+      "ms": 61
+    },
+    "errors": [],
+    "console": [
+      "[error] Failed to load resource: net::ERR_FAILED",
+      "[warn] [BWRX-300] The 3D view did not start (load-script); showing the fallback. http://127.0.0.1:4302/assets/index-D5zpMWe9.js"
+    ],
+    "failed": [
+      "http://127.0.0.1:4302/assets/index-D5zpMWe9.js net::ERR_FAILED"
+    ],
+    "external": []
+  },
+  {
+    "scenario": "blank-frame",
+    "expect": "blank-frame",
+    "pass": true,
+    "state": {
+      "boot": "failed",
+      "reason": "blank-frame",
+      "at": {
+        "start": 161,
+        "renderer": 560,
+        "frame": 975,
+        "failed": 1128
+      },
+      "fallbackVisible": true,
+      "rootHidden": true,
+      "canvas": false,
+      "shellVisible": false,
+      "sceneStatus": "loading",
+      "h1": "Šiame įrenginyje 3D modelis nepasileido.",
+      "poster": {
+        "complete": true,
+        "w": 1280
+      },
+      "reasonText": "blank-frame",
+      "videoButton": false,
+      "lostOverlay": false,
+      "ms": 1128
+    },
+    "errors": [],
+    "console": [
+      "[warn] [BWRX-300] The 3D view did not start (blank-frame); showing the fallback. "
+    ],
+    "failed": [],
+    "external": []
+  },
+  {
+    "scenario": "context-loss-before-ready",
+    "expect": "context-lost",
+    "pass": true,
+    "state": {
+      "boot": "failed",
+      "reason": "context-lost",
+      "at": {
+        "start": 174,
+        "renderer": 583,
+        "frame": 1506,
+        "failed": 4295
+      },
+      "fallbackVisible": true,
+      "rootHidden": true,
+      "canvas": false,
+      "shellVisible": false,
+      "sceneStatus": "loading",
+      "h1": "Šiame įrenginyje 3D modelis nepasileido.",
+      "poster": {
+        "complete": true,
+        "w": 1280
+      },
+      "reasonText": "context-lost",
+      "videoButton": false,
+      "lostOverlay": false,
+      "ms": 4304
+    },
+    "errors": [],
+    "console": [
+      "[warn] [BWRX-300] WebGL context lost; rebuilding the scene.",
+      "[warn] THREE.WebGLRenderer: WEBGL_lose_context extension not supported.",
+      "[warn] [BWRX-300] WebGL context lost; rebuilding the scene.",
+      "[warn] [BWRX-300] The 3D view did not start (context-lost); showing the fallback. "
+    ],
+    "failed": [],
+    "external": []
+  },
+  {
+    "scenario": "context-loss-after-ready",
+    "expect": "recovers",
+    "pass": true,
+    "state": {
+      "boot": "ready",
+      "reason": "",
+      "at": {
+        "start": 311,
+        "renderer": 921,
+        "frame": 1944,
+        "ready": 3770
+      },
+      "fallbackVisible": false,
+      "rootHidden": false,
+      "canvas": true,
+      "shellVisible": false,
+      "sceneStatus": "ready",
+      "h1": "Šiame įrenginyje 3D modelis nepasileido.",
+      "poster": {
+        "complete": false,
+        "w": 0
+      },
+      "reasonText": "",
+      "videoButton": false,
+      "lostOverlay": false,
+      "ms": 366,
+      "during": "loading",
+      "repeated": {
+        "lostOverlay": true,
+        "fallbackVisible": false,
+        "sceneStatus": "context-lost"
+      }
+    },
+    "errors": [],
+    "console": [
+      "[warn] [BWRX-300] WebGL context lost; rebuilding the scene.",
+      "[warn] THREE.WebGLRenderer: WEBGL_lose_context extension not supported.",
+      "[warn] [BWRX-300] WebGL context lost; rebuilding the scene.",
+      "[warn] [BWRX-300] WebGL context lost repeatedly; waiting for the browser or a manual restart."
+    ],
+    "failed": [],
+    "external": []
+  }
+]

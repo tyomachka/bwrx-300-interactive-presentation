@@ -1,0 +1,11 @@
+stop01-1024x768.png (1024, 768) full True half False quarter+blur False 
+stop01-1280x800.png (1280, 800) full True half False quarter+blur False 
+stop01-1920x1080.png (1920, 1080) full True half True quarter+blur False 
+stop12-1024x768.png (1024, 768) full True half True quarter+blur False 
+stop12-1280x800.png (1280, 800) full True half True quarter+blur False 
+stop12-1920x1080.png (1920, 1080) full True half True quarter+blur True 
+fallback-forced-1920x1080.png (1920, 1080) full True half True quarter+blur False 
+fallback-forced-390x844.png (1170, 2532) full True half True quarter+blur True 
+fallback-forced-960x540.png (1920, 1080) full True half True quarter+blur True 
+fallback-forced-en-1920x1080.png (1920, 1080) full True half True quarter+blur False 
+fallback-no-webgl2-1920x1080.png (1920, 1080) full True half True quarter+blur False 

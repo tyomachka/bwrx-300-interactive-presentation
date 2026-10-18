@@ -12,6 +12,11 @@
  *  - double-click on a surface: the director turns the camera to orbit around that point
  *    (cameraDirector.pivotTo). A single click is therefore applied DOUBLE_CLICK_MS after it, once
  *    no second click followed, so a double-click never selects, deselects or starts a focus move.
+ *
+ * Touch (post-final, the phone page): OrbitControls' own gestures (one finger orbits, two fingers
+ * pinch-zoom and pan); a tap selects, a tap on empty space clears, a double tap pivots like a
+ * double-click. A finger wobbles more than a mouse, so taps get wider tolerances (TOUCH_SLOP), and a
+ * gesture that ever had two fingers down is never a tap.
  */
 import { useFrame, useThree } from '@react-three/fiber';
 import { useEffect, useRef } from 'react';
@@ -33,6 +38,8 @@ const CLICK_MS = 600;
 /** A second click within this time (ms) and distance (px) of the first makes a double-click. */
 const DOUBLE_CLICK_MS = 300;
 const DOUBLE_CLICK_SLOP = 6;
+/** Touch: the click and double-click distances (px) for a finger. */
+const TOUCH_SLOP = { click: 12, double: 32 };
 /**
  * Wheel steps at the same pointer position within this time (ms) reuse the surface point picked
  * for the first: the zoom moves the camera along the line through it, so it stays under the
@@ -57,6 +64,8 @@ export function ExploreDriver() {
   const controls = useThree((s) => s.controls) as ExploreOrbitControls | null;
   const pointer = useRef({ ndc: new Vector2(), clientX: 0, clientY: 0, localX: 0, localY: 0, pending: false, inside: false, held: false, down: null as { x: number; y: number; t: number } | null });
   const clicks = useRef({ pending: null as PendingClick | null, secondPress: false });
+  // Fingers down now, and whether the current touch gesture ever had two (a pinch is never a tap).
+  const touch = useRef({ ids: new Set<number>(), multi: false });
   // The camera when the hover was last picked, and last frame: a stationary pointer re-picks
   // once the camera comes to rest somewhere new (after an orbit, a wheel zoom, a focus move).
   const camAtPick = useRef(new Matrix4());
@@ -85,13 +94,21 @@ export function ExploreDriver() {
       if (c.pending) window.clearTimeout(c.pending.timer);
       c.pending = null;
     };
+    const tc = touch.current;
     const onDown = (e: PointerEvent) => {
+      const finger = e.pointerType === 'touch';
+      if (finger) {
+        if (tc.ids.size === 0) tc.multi = false;
+        tc.ids.add(e.pointerId);
+        if (tc.ids.size > 1) tc.multi = true;
+      }
       if (e.button === 0) {
         p.down = { x: e.clientX, y: e.clientY, t: performance.now() };
         // A second press close to a waiting click may become a double-click. Any other press
         // supersedes the waiting click (a new click or a drag follows).
         const first = c.pending;
-        c.secondPress = !!first && p.down.t - first.t < DOUBLE_CLICK_MS && Math.hypot(e.clientX - first.x, e.clientY - first.y) <= DOUBLE_CLICK_SLOP;
+        const slop = finger ? TOUCH_SLOP.double : DOUBLE_CLICK_SLOP;
+        c.secondPress = !!first && !(finger && tc.multi) && p.down.t - first.t < DOUBLE_CLICK_MS && Math.hypot(e.clientX - first.x, e.clientY - first.y) <= slop;
         cancelPendingClick();
       }
       p.held = true;
@@ -100,6 +117,8 @@ export function ExploreDriver() {
       placeHoverTag(0, 0, false);
     };
     const onUp = (e: PointerEvent) => {
+      const finger = e.pointerType === 'touch';
+      if (finger) tc.ids.delete(e.pointerId);
       const d = p.down;
       p.down = null;
       p.held = false;
@@ -108,7 +127,8 @@ export function ExploreDriver() {
       const second = c.secondPress;
       if (e.button === 0) c.secondPress = false;
       if (e.button !== 0 || !d || exploreState().mode !== 'explore') return;
-      if (Math.hypot(e.clientX - d.x, e.clientY - d.y) > CLICK_SLOP || performance.now() - d.t > CLICK_MS) return;
+      if (finger && tc.multi) return;
+      if (Math.hypot(e.clientX - d.x, e.clientY - d.y) > (finger ? TOUCH_SLOP.click : CLICK_SLOP) || performance.now() - d.t > CLICK_MS) return;
       const hit = pickComponent(p.ndc, camera);
       if (second) {
         // Double-click: orbit around the point under the pointer (any visible surface).
@@ -123,6 +143,13 @@ export function ExploreDriver() {
       }, DOUBLE_CLICK_MS);
       c.pending = { x: e.clientX, y: e.clientY, t: d.t, selectableId, timer };
     };
+    // The browser took a touch over (or it was interrupted): it is not a tap.
+    const onCancel = (e: PointerEvent) => {
+      if (e.pointerType !== 'touch') return;
+      tc.ids.delete(e.pointerId);
+      p.down = null;
+      p.held = false;
+    };
     const onLeave = () => {
       p.inside = false;
       p.held = false;
@@ -134,12 +161,14 @@ export function ExploreDriver() {
     canvas.addEventListener('pointermove', onMove);
     canvas.addEventListener('pointerdown', onDown);
     canvas.addEventListener('pointerup', onUp);
+    canvas.addEventListener('pointercancel', onCancel);
     canvas.addEventListener('pointerleave', onLeave);
     return () => {
       cancelPendingClick();
       canvas.removeEventListener('pointermove', onMove);
       canvas.removeEventListener('pointerdown', onDown);
       canvas.removeEventListener('pointerup', onUp);
+      canvas.removeEventListener('pointercancel', onCancel);
       canvas.removeEventListener('pointerleave', onLeave);
       canvas.style.cursor = '';
       setPickingView(null, null);

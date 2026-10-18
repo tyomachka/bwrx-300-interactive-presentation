@@ -19,8 +19,14 @@ export const PRESENTERS: readonly [Presenter, Presenter] = [
   { id: 'timofej', name: 'Timofej Gaivoronskij', email: 'timofej.gaivoronskij@stud.vilniustech.lt', portrait: null },
 ];
 
-/** The public interactive page the QR code opens (GitHub Pages; presentation/qrCode.ts encodes it). */
+/** The public interactive page (GitHub Pages). */
 export const PUBLIC_PRESENTATION_URL = 'https://tyomachka.github.io/bwrx-300-interactive-presentation/';
+
+/**
+ * What the QR code opens (presentation/qrCode.ts encodes it): the same page in its explore-only
+ * mode (app/entry.ts), the interactive model with no lecture controls, on a phone or a computer.
+ */
+export const EXPLORE_PAGE_URL = `${PUBLIC_PRESENTATION_URL}?mode=explore`;
 
 /** A value that is still a placeholder (never linked, never encoded into a QR code). */
 export const isPlaceholder = (value: string) => /_TODO$/.test(value);

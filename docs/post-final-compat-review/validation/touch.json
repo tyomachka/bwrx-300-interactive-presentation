@@ -1,0 +1,90 @@
+{
+  "checks": [
+    {
+      "name": "one-finger drag orbits (azimuth changes, distance kept)",
+      "ok": true,
+      "detail": {
+        "dAzimuthDeg": -25.8,
+        "distance": [
+          213.6,
+          213.6
+        ]
+      }
+    },
+    {
+      "name": "pinch out zooms in (distance shrinks)",
+      "ok": true,
+      "detail": {
+        "distance": [
+          213.6,
+          88.7
+        ]
+      }
+    },
+    {
+      "name": "two-finger drag pans (target moves, distance kept)",
+      "ok": true,
+      "detail": {
+        "targetMoved": 4.17,
+        "distance": [
+          88.7,
+          88.7
+        ]
+      }
+    },
+    {
+      "name": "tap selects the component under the finger",
+      "ok": true,
+      "detail": {
+        "expected": "turbine-building",
+        "selected": "turbine-building"
+      }
+    },
+    {
+      "name": "tap on empty space clears the selection",
+      "ok": true,
+      "detail": {
+        "at": {
+          "x": 40,
+          "y": 120
+        }
+      }
+    },
+    {
+      "name": "double tap pivots to the point (target moves) and does not select",
+      "ok": true,
+      "detail": {
+        "targetMoved": 41.06,
+        "selected": null
+      }
+    },
+    {
+      "name": "a pinch never selects",
+      "ok": true,
+      "detail": {
+        "selected": null
+      }
+    },
+    {
+      "name": "the page never scrolled or zoomed",
+      "ok": true,
+      "detail": {
+        "scroll": [
+          0,
+          0
+        ],
+        "zoom": 1,
+        "bodyScroll": 0
+      }
+    },
+    {
+      "name": "no page errors",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "console": [
+    "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+  ],
+  "external": []
+}

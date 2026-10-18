@@ -1,0 +1,1184 @@
+[
+  {
+    "device": "360x800@3",
+    "readyMs": 4839,
+    "boot": {
+      "start": 781,
+      "renderer": 1608,
+      "frame": 4558,
+      "ready": 4811
+    },
+    "media": {
+      "coarse": true,
+      "anyFine": false
+    },
+    "collapsed": {
+      "viewport": [
+        360,
+        800
+      ],
+      "dpr": 3,
+      "exploreOnly": true,
+      "horizontalOverflow": false,
+      "scroll": [
+        0,
+        0
+      ],
+      "canvasRect": [
+        0,
+        0,
+        360,
+        800
+      ],
+      "letterbox": false,
+      "drawingBuffer": [
+        540,
+        1200
+      ],
+      "renderMP": 0.65,
+      "pixelRatio": 1.5,
+      "lectureUi": {
+        "setupBar": false,
+        "desktopExplorePanel": false,
+        "talkOverlay": false,
+        "startText": false
+      },
+      "controls": 3,
+      "reachedByScrolling": 0,
+      "clipped": [],
+      "small": [],
+      "sheet": [
+        10,
+        740,
+        350,
+        790
+      ],
+      "topStrip": [
+        10,
+        10,
+        350,
+        63
+      ],
+      "label": null,
+      "labelOverlapsUi": false,
+      "pressedQuality": []
+    },
+    "fps": {
+      "frames": 241,
+      "fps": 60.1,
+      "p50": 16.6,
+      "p95": 16.8,
+      "worst": 17
+    },
+    "open": {
+      "viewport": [
+        360,
+        800
+      ],
+      "dpr": 3,
+      "exploreOnly": true,
+      "horizontalOverflow": false,
+      "scroll": [
+        0,
+        0
+      ],
+      "canvasRect": [
+        0,
+        0,
+        360,
+        800
+      ],
+      "letterbox": false,
+      "drawingBuffer": [
+        540,
+        1200
+      ],
+      "renderMP": 0.65,
+      "pixelRatio": 1.5,
+      "lectureUi": {
+        "setupBar": false,
+        "desktopExplorePanel": false,
+        "talkOverlay": false,
+        "startText": false
+      },
+      "controls": 18,
+      "reachedByScrolling": 0,
+      "clipped": [],
+      "small": [],
+      "sheet": [
+        10,
+        196,
+        350,
+        790
+      ],
+      "topStrip": [
+        10,
+        10,
+        350,
+        63
+      ],
+      "label": null,
+      "labelOverlapsUi": false,
+      "pressedQuality": [
+        "Žema"
+      ]
+    },
+    "bodyScrollable": [
+      544,
+      544
+    ],
+    "selected": {
+      "tapped": "turbine-building",
+      "selectedId": "turbine-building",
+      "layout": {
+        "viewport": [
+          360,
+          800
+        ],
+        "dpr": 3,
+        "exploreOnly": true,
+        "horizontalOverflow": false,
+        "scroll": [
+          0,
+          0
+        ],
+        "canvasRect": [
+          0,
+          0,
+          360,
+          800
+        ],
+        "letterbox": false,
+        "drawingBuffer": [
+          540,
+          1200
+        ],
+        "renderMP": 0.65,
+        "pixelRatio": 1.5,
+        "lectureUi": {
+          "setupBar": false,
+          "desktopExplorePanel": false,
+          "talkOverlay": false,
+          "startText": false
+        },
+        "controls": 5,
+        "reachedByScrolling": 0,
+        "clipped": [],
+        "small": [],
+        "sheet": [
+          10,
+          628,
+          350,
+          790
+        ],
+        "topStrip": [
+          10,
+          10,
+          350,
+          63
+        ],
+        "label": [
+          224,
+          357,
+          340,
+          393
+        ],
+        "labelOverlapsUi": false,
+        "pressedQuality": []
+      }
+    },
+    "log": {
+      "console": [
+        "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+      ],
+      "errors": [],
+      "external": [],
+      "failed": []
+    }
+  },
+  {
+    "device": "390x844@3",
+    "readyMs": 1795,
+    "boot": {
+      "start": 259,
+      "renderer": 831,
+      "frame": 1613,
+      "ready": 1771
+    },
+    "media": {
+      "coarse": true,
+      "anyFine": false
+    },
+    "collapsed": {
+      "viewport": [
+        390,
+        844
+      ],
+      "dpr": 3,
+      "exploreOnly": true,
+      "horizontalOverflow": false,
+      "scroll": [
+        0,
+        0
+      ],
+      "canvasRect": [
+        0,
+        0,
+        390,
+        844
+      ],
+      "letterbox": false,
+      "drawingBuffer": [
+        585,
+        1266
+      ],
+      "renderMP": 0.74,
+      "pixelRatio": 1.5,
+      "lectureUi": {
+        "setupBar": false,
+        "desktopExplorePanel": false,
+        "talkOverlay": false,
+        "startText": false
+      },
+      "controls": 3,
+      "reachedByScrolling": 0,
+      "clipped": [],
+      "small": [],
+      "sheet": [
+        10,
+        784,
+        380,
+        834
+      ],
+      "topStrip": [
+        10,
+        10,
+        380,
+        63
+      ],
+      "label": null,
+      "labelOverlapsUi": false,
+      "pressedQuality": []
+    },
+    "fps": {
+      "frames": 240,
+      "fps": 60.1,
+      "p50": 16.6,
+      "p95": 16.9,
+      "worst": 17.2
+    },
+    "open": {
+      "viewport": [
+        390,
+        844
+      ],
+      "dpr": 3,
+      "exploreOnly": true,
+      "horizontalOverflow": false,
+      "scroll": [
+        0,
+        0
+      ],
+      "canvasRect": [
+        0,
+        0,
+        390,
+        844
+      ],
+      "letterbox": false,
+      "drawingBuffer": [
+        585,
+        1266
+      ],
+      "renderMP": 0.74,
+      "pixelRatio": 1.5,
+      "lectureUi": {
+        "setupBar": false,
+        "desktopExplorePanel": false,
+        "talkOverlay": false,
+        "startText": false
+      },
+      "controls": 18,
+      "reachedByScrolling": 0,
+      "clipped": [],
+      "small": [],
+      "sheet": [
+        10,
+        344,
+        380,
+        834
+      ],
+      "topStrip": [
+        10,
+        10,
+        380,
+        63
+      ],
+      "label": null,
+      "labelOverlapsUi": false,
+      "pressedQuality": [
+        "Žema"
+      ]
+    },
+    "bodyScrollable": [
+      440,
+      440
+    ],
+    "selected": {
+      "tapped": "turbine-building",
+      "selectedId": "turbine-building",
+      "layout": {
+        "viewport": [
+          390,
+          844
+        ],
+        "dpr": 3,
+        "exploreOnly": true,
+        "horizontalOverflow": false,
+        "scroll": [
+          0,
+          0
+        ],
+        "canvasRect": [
+          0,
+          0,
+          390,
+          844
+        ],
+        "letterbox": false,
+        "drawingBuffer": [
+          585,
+          1266
+        ],
+        "renderMP": 0.74,
+        "pixelRatio": 1.5,
+        "lectureUi": {
+          "setupBar": false,
+          "desktopExplorePanel": false,
+          "talkOverlay": false,
+          "startText": false
+        },
+        "controls": 5,
+        "reachedByScrolling": 0,
+        "clipped": [],
+        "small": [],
+        "sheet": [
+          10,
+          692,
+          380,
+          834
+        ],
+        "topStrip": [
+          10,
+          10,
+          380,
+          63
+        ],
+        "label": [
+          247,
+          377,
+          363,
+          413
+        ],
+        "labelOverlapsUi": false,
+        "pressedQuality": []
+      }
+    },
+    "log": {
+      "console": [
+        "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+      ],
+      "errors": [],
+      "external": [],
+      "failed": []
+    }
+  },
+  {
+    "device": "390x844@2",
+    "readyMs": 1730,
+    "boot": {
+      "start": 283,
+      "renderer": 799,
+      "frame": 1552,
+      "ready": 1709
+    },
+    "media": {
+      "coarse": true,
+      "anyFine": false
+    },
+    "collapsed": {
+      "viewport": [
+        390,
+        844
+      ],
+      "dpr": 2,
+      "exploreOnly": true,
+      "horizontalOverflow": false,
+      "scroll": [
+        0,
+        0
+      ],
+      "canvasRect": [
+        0,
+        0,
+        390,
+        844
+      ],
+      "letterbox": false,
+      "drawingBuffer": [
+        585,
+        1266
+      ],
+      "renderMP": 0.74,
+      "pixelRatio": 1.5,
+      "lectureUi": {
+        "setupBar": false,
+        "desktopExplorePanel": false,
+        "talkOverlay": false,
+        "startText": false
+      },
+      "controls": 3,
+      "reachedByScrolling": 0,
+      "clipped": [],
+      "small": [],
+      "sheet": [
+        10,
+        784,
+        380,
+        834
+      ],
+      "topStrip": [
+        10,
+        10,
+        380,
+        63
+      ],
+      "label": null,
+      "labelOverlapsUi": false,
+      "pressedQuality": []
+    },
+    "fps": {
+      "frames": 240,
+      "fps": 60.1,
+      "p50": 16.6,
+      "p95": 16.8,
+      "worst": 17.3
+    },
+    "open": {
+      "viewport": [
+        390,
+        844
+      ],
+      "dpr": 2,
+      "exploreOnly": true,
+      "horizontalOverflow": false,
+      "scroll": [
+        0,
+        0
+      ],
+      "canvasRect": [
+        0,
+        0,
+        390,
+        844
+      ],
+      "letterbox": false,
+      "drawingBuffer": [
+        585,
+        1266
+      ],
+      "renderMP": 0.74,
+      "pixelRatio": 1.5,
+      "lectureUi": {
+        "setupBar": false,
+        "desktopExplorePanel": false,
+        "talkOverlay": false,
+        "startText": false
+      },
+      "controls": 18,
+      "reachedByScrolling": 0,
+      "clipped": [],
+      "small": [],
+      "sheet": [
+        10,
+        344,
+        380,
+        834
+      ],
+      "topStrip": [
+        10,
+        10,
+        380,
+        63
+      ],
+      "label": null,
+      "labelOverlapsUi": false,
+      "pressedQuality": [
+        "Žema"
+      ]
+    },
+    "bodyScrollable": [
+      440,
+      440
+    ],
+    "selected": {
+      "tapped": "turbine-building",
+      "selectedId": "turbine-building",
+      "layout": {
+        "viewport": [
+          390,
+          844
+        ],
+        "dpr": 2,
+        "exploreOnly": true,
+        "horizontalOverflow": false,
+        "scroll": [
+          0,
+          0
+        ],
+        "canvasRect": [
+          0,
+          0,
+          390,
+          844
+        ],
+        "letterbox": false,
+        "drawingBuffer": [
+          585,
+          1266
+        ],
+        "renderMP": 0.74,
+        "pixelRatio": 1.5,
+        "lectureUi": {
+          "setupBar": false,
+          "desktopExplorePanel": false,
+          "talkOverlay": false,
+          "startText": false
+        },
+        "controls": 5,
+        "reachedByScrolling": 0,
+        "clipped": [],
+        "small": [],
+        "sheet": [
+          10,
+          692,
+          380,
+          834
+        ],
+        "topStrip": [
+          10,
+          10,
+          380,
+          63
+        ],
+        "label": [
+          245,
+          378,
+          361,
+          414
+        ],
+        "labelOverlapsUi": false,
+        "pressedQuality": []
+      }
+    },
+    "log": {
+      "console": [
+        "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+      ],
+      "errors": [],
+      "external": [],
+      "failed": []
+    }
+  },
+  {
+    "device": "412x915@2.625",
+    "readyMs": 1843,
+    "boot": {
+      "start": 332,
+      "renderer": 793,
+      "frame": 1628,
+      "ready": 1819
+    },
+    "media": {
+      "coarse": true,
+      "anyFine": false
+    },
+    "collapsed": {
+      "viewport": [
+        412,
+        915
+      ],
+      "dpr": 2.625,
+      "exploreOnly": true,
+      "horizontalOverflow": false,
+      "scroll": [
+        0,
+        0
+      ],
+      "canvasRect": [
+        0,
+        0,
+        412,
+        915
+      ],
+      "letterbox": false,
+      "drawingBuffer": [
+        618,
+        1372
+      ],
+      "renderMP": 0.85,
+      "pixelRatio": 1.5,
+      "lectureUi": {
+        "setupBar": false,
+        "desktopExplorePanel": false,
+        "talkOverlay": false,
+        "startText": false
+      },
+      "controls": 3,
+      "reachedByScrolling": 0,
+      "clipped": [],
+      "small": [],
+      "sheet": [
+        10,
+        855,
+        402,
+        905
+      ],
+      "topStrip": [
+        10,
+        10,
+        402,
+        63
+      ],
+      "label": null,
+      "labelOverlapsUi": false,
+      "pressedQuality": []
+    },
+    "fps": {
+      "frames": 240,
+      "fps": 60.1,
+      "p50": 16.6,
+      "p95": 16.9,
+      "worst": 17.6
+    },
+    "open": {
+      "viewport": [
+        412,
+        915
+      ],
+      "dpr": 2.625,
+      "exploreOnly": true,
+      "horizontalOverflow": false,
+      "scroll": [
+        0,
+        0
+      ],
+      "canvasRect": [
+        0,
+        0,
+        412,
+        915
+      ],
+      "letterbox": false,
+      "drawingBuffer": [
+        618,
+        1372
+      ],
+      "renderMP": 0.85,
+      "pixelRatio": 1.5,
+      "lectureUi": {
+        "setupBar": false,
+        "desktopExplorePanel": false,
+        "talkOverlay": false,
+        "startText": false
+      },
+      "controls": 18,
+      "reachedByScrolling": 0,
+      "clipped": [],
+      "small": [],
+      "sheet": [
+        10,
+        415,
+        402,
+        905
+      ],
+      "topStrip": [
+        10,
+        10,
+        402,
+        63
+      ],
+      "label": null,
+      "labelOverlapsUi": false,
+      "pressedQuality": [
+        "Žema"
+      ]
+    },
+    "bodyScrollable": [
+      440,
+      440
+    ],
+    "selected": {
+      "tapped": "turbine-building",
+      "selectedId": "turbine-building",
+      "layout": {
+        "viewport": [
+          412,
+          915
+        ],
+        "dpr": 2.625,
+        "exploreOnly": true,
+        "horizontalOverflow": false,
+        "scroll": [
+          0,
+          0
+        ],
+        "canvasRect": [
+          0,
+          0,
+          412,
+          915
+        ],
+        "letterbox": false,
+        "drawingBuffer": [
+          618,
+          1372
+        ],
+        "renderMP": 0.85,
+        "pixelRatio": 1.5,
+        "lectureUi": {
+          "setupBar": false,
+          "desktopExplorePanel": false,
+          "talkOverlay": false,
+          "startText": false
+        },
+        "controls": 5,
+        "reachedByScrolling": 0,
+        "clipped": [],
+        "small": [],
+        "sheet": [
+          10,
+          763,
+          402,
+          905
+        ],
+        "topStrip": [
+          10,
+          10,
+          402,
+          63
+        ],
+        "label": [
+          258,
+          412,
+          373,
+          448
+        ],
+        "labelOverlapsUi": false,
+        "pressedQuality": []
+      }
+    },
+    "log": {
+      "console": [
+        "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+      ],
+      "errors": [],
+      "external": [],
+      "failed": []
+    }
+  },
+  {
+    "device": "430x932@3",
+    "readyMs": 1760,
+    "boot": {
+      "start": 275,
+      "renderer": 647,
+      "frame": 1562,
+      "ready": 1739
+    },
+    "media": {
+      "coarse": true,
+      "anyFine": false
+    },
+    "collapsed": {
+      "viewport": [
+        430,
+        932
+      ],
+      "dpr": 3,
+      "exploreOnly": true,
+      "horizontalOverflow": false,
+      "scroll": [
+        0,
+        0
+      ],
+      "canvasRect": [
+        0,
+        0,
+        430,
+        932
+      ],
+      "letterbox": false,
+      "drawingBuffer": [
+        645,
+        1398
+      ],
+      "renderMP": 0.9,
+      "pixelRatio": 1.5,
+      "lectureUi": {
+        "setupBar": false,
+        "desktopExplorePanel": false,
+        "talkOverlay": false,
+        "startText": false
+      },
+      "controls": 3,
+      "reachedByScrolling": 0,
+      "clipped": [],
+      "small": [],
+      "sheet": [
+        10,
+        872,
+        420,
+        922
+      ],
+      "topStrip": [
+        10,
+        10,
+        420,
+        63
+      ],
+      "label": null,
+      "labelOverlapsUi": false,
+      "pressedQuality": []
+    },
+    "fps": {
+      "frames": 241,
+      "fps": 60.1,
+      "p50": 16.6,
+      "p95": 16.8,
+      "worst": 17.6
+    },
+    "open": {
+      "viewport": [
+        430,
+        932
+      ],
+      "dpr": 3,
+      "exploreOnly": true,
+      "horizontalOverflow": false,
+      "scroll": [
+        0,
+        0
+      ],
+      "canvasRect": [
+        0,
+        0,
+        430,
+        932
+      ],
+      "letterbox": false,
+      "drawingBuffer": [
+        645,
+        1398
+      ],
+      "renderMP": 0.9,
+      "pixelRatio": 1.5,
+      "lectureUi": {
+        "setupBar": false,
+        "desktopExplorePanel": false,
+        "talkOverlay": false,
+        "startText": false
+      },
+      "controls": 18,
+      "reachedByScrolling": 0,
+      "clipped": [],
+      "small": [],
+      "sheet": [
+        10,
+        432,
+        420,
+        922
+      ],
+      "topStrip": [
+        10,
+        10,
+        420,
+        63
+      ],
+      "label": null,
+      "labelOverlapsUi": false,
+      "pressedQuality": [
+        "Žema"
+      ]
+    },
+    "bodyScrollable": [
+      440,
+      440
+    ],
+    "selected": {
+      "tapped": "turbine-building",
+      "selectedId": "turbine-building",
+      "layout": {
+        "viewport": [
+          430,
+          932
+        ],
+        "dpr": 3,
+        "exploreOnly": true,
+        "horizontalOverflow": false,
+        "scroll": [
+          0,
+          0
+        ],
+        "canvasRect": [
+          0,
+          0,
+          430,
+          932
+        ],
+        "letterbox": false,
+        "drawingBuffer": [
+          645,
+          1398
+        ],
+        "renderMP": 0.9,
+        "pixelRatio": 1.5,
+        "lectureUi": {
+          "setupBar": false,
+          "desktopExplorePanel": false,
+          "talkOverlay": false,
+          "startText": false
+        },
+        "controls": 5,
+        "reachedByScrolling": 0,
+        "clipped": [],
+        "small": [],
+        "sheet": [
+          10,
+          780,
+          420,
+          922
+        ],
+        "topStrip": [
+          10,
+          10,
+          420,
+          63
+        ],
+        "label": [
+          268,
+          419,
+          383,
+          455
+        ],
+        "labelOverlapsUi": false,
+        "pressedQuality": []
+      }
+    },
+    "log": {
+      "console": [
+        "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+      ],
+      "errors": [],
+      "external": [],
+      "failed": []
+    }
+  },
+  {
+    "device": "844x390@3",
+    "readyMs": 1847,
+    "boot": {
+      "start": 302,
+      "renderer": 842,
+      "frame": 1673,
+      "ready": 1824
+    },
+    "media": {
+      "coarse": true,
+      "anyFine": false
+    },
+    "collapsed": {
+      "viewport": [
+        844,
+        390
+      ],
+      "dpr": 3,
+      "exploreOnly": true,
+      "horizontalOverflow": false,
+      "scroll": [
+        0,
+        0
+      ],
+      "canvasRect": [
+        0,
+        0,
+        844,
+        390
+      ],
+      "letterbox": false,
+      "drawingBuffer": [
+        1266,
+        585
+      ],
+      "renderMP": 0.74,
+      "pixelRatio": 1.5,
+      "lectureUi": {
+        "setupBar": false,
+        "desktopExplorePanel": false,
+        "talkOverlay": false,
+        "startText": false
+      },
+      "controls": 3,
+      "reachedByScrolling": 0,
+      "clipped": [],
+      "small": [],
+      "sheet": [
+        514,
+        10,
+        834,
+        380
+      ],
+      "topStrip": [
+        10,
+        10,
+        504,
+        63
+      ],
+      "label": null,
+      "labelOverlapsUi": false,
+      "pressedQuality": []
+    },
+    "fps": {
+      "frames": 240,
+      "fps": 60.1,
+      "p50": 16.6,
+      "p95": 16.8,
+      "worst": 17.3
+    },
+    "open": {
+      "viewport": [
+        844,
+        390
+      ],
+      "dpr": 3,
+      "exploreOnly": true,
+      "horizontalOverflow": false,
+      "scroll": [
+        0,
+        0
+      ],
+      "canvasRect": [
+        0,
+        0,
+        844,
+        390
+      ],
+      "letterbox": false,
+      "drawingBuffer": [
+        1266,
+        585
+      ],
+      "renderMP": 0.74,
+      "pixelRatio": 1.5,
+      "lectureUi": {
+        "setupBar": false,
+        "desktopExplorePanel": false,
+        "talkOverlay": false,
+        "startText": false
+      },
+      "controls": 18,
+      "reachedByScrolling": 3,
+      "clipped": [],
+      "small": [],
+      "sheet": [
+        514,
+        10,
+        834,
+        380
+      ],
+      "topStrip": [
+        10,
+        10,
+        504,
+        63
+      ],
+      "label": null,
+      "labelOverlapsUi": false,
+      "pressedQuality": [
+        "Žema"
+      ]
+    },
+    "bodyScrollable": [
+      499,
+      320
+    ],
+    "selected": {
+      "tapped": "turbine-building",
+      "selectedId": "turbine-building",
+      "layout": {
+        "viewport": [
+          844,
+          390
+        ],
+        "dpr": 3,
+        "exploreOnly": true,
+        "horizontalOverflow": false,
+        "scroll": [
+          0,
+          0
+        ],
+        "canvasRect": [
+          0,
+          0,
+          844,
+          390
+        ],
+        "letterbox": false,
+        "drawingBuffer": [
+          1266,
+          585
+        ],
+        "renderMP": 0.74,
+        "pixelRatio": 1.5,
+        "lectureUi": {
+          "setupBar": false,
+          "desktopExplorePanel": false,
+          "talkOverlay": false,
+          "startText": false
+        },
+        "controls": 5,
+        "reachedByScrolling": 0,
+        "clipped": [],
+        "small": [],
+        "sheet": [
+          514,
+          10,
+          834,
+          380
+        ],
+        "topStrip": [
+          10,
+          10,
+          504,
+          63
+        ],
+        "label": [
+          378,
+          145,
+          494,
+          181
+        ],
+        "labelOverlapsUi": false,
+        "pressedQuality": []
+      }
+    },
+    "log": {
+      "console": [
+        "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+      ],
+      "errors": [],
+      "external": [],
+      "failed": []
+    }
+  }
+]

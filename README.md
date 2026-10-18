@@ -25,9 +25,14 @@ npm run preview    # serve dist/ locally
 
 | Parameter | Effect |
 |---|---|
-| `?quality=low` / `?quality=high` | Choose the rendering preset (otherwise: high, or low on a software renderer) |
+| `?mode=explore` | The interactive model only (what the opening / closing QR opens): the whole viewport, the touch-friendly Explore sheet, no talk, no 48 s film, on any device |
+| `?mode=presentation` | The lecture set-up even on a phone (testing the talk at a phone-sized viewport) |
+| (no `mode`) | A touch-only device (phone, tablet: coarse pointer and no mouse / trackpad) opens the model only; every other device opens the lecture set-up |
+| `?quality=low` / `?quality=high` | Choose the rendering preset (otherwise: high; low on a software renderer, in the portable package, and on a touch-only device unless its user picked High before) |
+| `?forceFallback=1` | Show the startup gate's HTML fallback (poster, QR, backup video in the portable package) instead of starting the 3D view (testing) |
+| `?bootWait=long` | Give the startup gate five times longer before it falls back (the fallback's "try again") |
 | `?debug` | Show the diagnostics panel and enable the review keys (works in production builds too) |
-| `?presentationDebug` | Open the talk's debug panel: beat list with direct jumps, beat inspection, "copy camera pose". With `?debug` (or in dev) `T` toggles it. Never part of the audience view |
+| `?presentationDebug` | Open the talk's debug panel: beat list with direct jumps, beat inspection, "copy camera pose". With `?debug` (or in dev) `T` toggles it. Never part of the audience view (ignored with `?mode=explore`) |
 
 ## Keyboard
 

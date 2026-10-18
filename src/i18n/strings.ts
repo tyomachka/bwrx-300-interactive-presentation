@@ -52,6 +52,17 @@ export interface UiStrings {
     focus: string;
     clearSelection: string;
   };
+  /** The explore-only page (post-final: the phone / QR audience, ui/ExploreSheet.tsx). */
+  audience: {
+    subtitle: string;
+    tools: string;
+    view: string;
+    systems: string;
+    inspect: string;
+    /** How to move the model: touch, and mouse (`?mode=explore` on a computer). */
+    touchHint: string;
+    mouseHint: string;
+  };
   loading: { preparing: string; ready: string };
   status: {
     webglTitle: string;
@@ -118,6 +129,15 @@ export const UI_STRINGS: Record<Language, UiStrings> = {
       focus: 'Focus',
       clearSelection: 'Clear selection',
     },
+    audience: {
+      subtitle: 'Interactive model',
+      tools: 'Tools',
+      view: 'View',
+      systems: 'Systems',
+      inspect: 'Inspect',
+      touchHint: 'One finger: orbit · two: zoom and pan · tap: select · double tap: orbit there',
+      mouseHint: 'Drag: orbit · wheel: zoom · right drag: pan · click: select · double-click: orbit there',
+    },
     loading: { preparing: 'Preparing 3D scene', ready: 'Ready' },
     status: {
       webglTitle: 'The 3D view cannot start on this computer',
@@ -178,6 +198,15 @@ export const UI_STRINGS: Record<Language, UiStrings> = {
       reset: 'Atkurti',
       focus: 'Priartinti',
       clearSelection: 'Atšaukti pasirinkimą',
+    },
+    audience: {
+      subtitle: 'Interaktyvus modelis',
+      tools: 'Įrankiai',
+      view: 'Vaizdas',
+      systems: 'Sistemos',
+      inspect: 'Apžiūra',
+      touchHint: 'Vienu pirštu – sukti · dviem – artinti ir slinkti · bakstelėti – pasirinkti · dukart – sukti aplink tašką',
+      mouseHint: 'Tempti – sukti · ratukas – artinti · dešiniuoju – slinkti · spustelėti – pasirinkti · dukart – sukti aplink tašką',
     },
     loading: { preparing: 'Ruošiama 3D scena', ready: 'Paruošta' },
     status: {

@@ -2,7 +2,8 @@
 <html lang="lt">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- viewport-fit=cover: the explore-only page lays its controls out with the safe-area insets. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="color-scheme" content="dark" />
     <!-- Inline icon: no favicon request, so nothing 404s when served from a USB drive. -->
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b0c0e'/%3E%3Ccircle cx='16' cy='16' r='8' fill='none' stroke='%23e8a33d' stroke-width='3'/%3E%3C/svg%3E" />
@@ -10,10 +11,204 @@
     <!-- Paint the page dark before any JS runs so a slow machine never flashes white. -->
     <style>
       html, body { margin: 0; height: 100%; background: #0b0c0e; color: #d9dcdf; }
+
+      /* Startup gate (src/app/boot.ts): the loading shell and the fallback, plain HTML and CSS that an
+         old TV browser can still draw (no grid, no gap, no custom properties). */
+      .boot { position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: 50; background: #0b0c0e; color: #d9dcdf; font-family: system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+      .boot-shell { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+      .boot-shell__mark { width: 34px; height: 34px; box-sizing: border-box; border: 2px solid rgba(255, 255, 255, 0.12); border-top-color: #8b9096; border-radius: 50%; animation: boot-spin 1.1s linear infinite; }
+      .boot-shell__text { margin: 1rem 0 0; font-size: 0.95rem; letter-spacing: 0.06em; color: #8b9096; }
+      @keyframes boot-spin { to { transform: rotate(360deg); } }
+      html[data-boot='failed'] #root, html[data-boot='failed'] #boot-shell { display: none; }
+
+      .boot-fb { box-sizing: border-box; overflow: auto; -webkit-overflow-scrolling: touch; padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left); }
+      .boot-fb[hidden], .boot-fb [hidden] { display: none !important; }
+      .boot-fb__bar { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; }
+      .boot-fb__brand { font-weight: 600; letter-spacing: 0.02em; color: #fff; }
+      .boot-fb button { min-height: 44px; padding: 0 1.1rem; border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 10px; background: rgba(255, 255, 255, 0.04); color: #d9dcdf; font: inherit; font-size: 0.95rem; cursor: pointer; }
+      .boot-fb button:hover, .boot-fb button:focus { background: rgba(255, 255, 255, 0.09); outline: none; border-color: rgba(255, 255, 255, 0.35); }
+      .boot-fb button[aria-pressed='true'] { border-color: #e8a33d; color: #fff; }
+      .boot-fb__lang button { min-width: 44px; margin-left: 4px; padding: 0 0.8rem; }
+      .boot-fb__main { display: flex; align-items: center; justify-content: center; box-sizing: border-box; min-height: calc(100% - 76px); padding: 8px 24px 32px; }
+      .boot-fb__media { flex: 1 1 55%; max-width: 900px; margin-right: 40px; }
+      .boot-fb__poster { display: block; width: 100%; height: auto; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; }
+      .boot-fb__text { flex: 1 1 45%; max-width: 560px; }
+      .boot-fb h1 { margin: 0 0 12px; font-size: 1.9rem; font-weight: 600; line-height: 1.2; color: #fff; }
+      .boot-fb p { margin: 0; line-height: 1.5; color: #8b9096; }
+      .boot-fb__qr { display: flex; align-items: center; margin: 24px 0; }
+      .boot-fb__code { flex: none; width: 168px; height: 168px; margin-right: 20px; border-radius: 6px; }
+      .boot-fb p.boot-fb__qr-label { font-weight: 600; color: #d9dcdf; }
+      .boot-fb p.boot-fb__url { margin-top: 6px; font-size: 0.8rem; word-break: break-all; }
+      .boot-fb__actions button { margin: 0 10px 10px 0; }
+      .boot-fb #boot-play { border-color: rgba(232, 163, 61, 0.55); }
+      .boot-fb p.boot-fb__reason { margin-top: 14px; font-size: 0.78rem; }
+      .boot-fb__reason code { font-family: ui-monospace, Consolas, 'Courier New', monospace; color: #d9dcdf; }
+      .boot-fb__video { position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: 60; display: flex; align-items: center; justify-content: center; background: #000; }
+      .boot-fb__video video { width: 100%; height: 100%; object-fit: contain; background: #000; }
+      .boot-fb p.boot-fb__missing { padding: 2rem; text-align: center; color: #d9dcdf; }
+      .boot-fb #boot-video-close { position: absolute; top: 16px; right: 16px; background: rgba(16, 18, 21, 0.82); }
+      @media (max-width: 820px) {
+        .boot-fb__bar { padding: 12px 16px; }
+        .boot-fb__main { flex-direction: column; align-items: stretch; padding: 0 16px 24px; }
+        .boot-fb__media, .boot-fb__text { flex: none; max-width: none; }
+        .boot-fb__media { margin: 0 0 20px; }
+        .boot-fb h1 { font-size: 1.4rem; }
+        .boot-fb__code { width: 132px; height: 132px; }
+      }
+      @media (min-width: 1600px) {
+        .boot-fb h1 { font-size: 2.5rem; }
+        .boot-fb p { font-size: 1.2rem; }
+        .boot-fb__code { width: 240px; height: 240px; }
+      }
     </style>
+    <!-- Without JavaScript nothing will load: no spinner over the message below. -->
+    <noscript><style>#boot-shell { display: none; }</style></noscript>
+    <!-- The startup gate itself: plain ES5, no dependencies, before (and without) the app bundle. -->
+    <script>
+      (function () {
+        var doc = document, root = doc.documentElement, search = location.search || '';
+        // The fallback's "try again" gives a slow device five times longer.
+        var patience = /[?&]bootWait=long(&|$)/.test(search) ? 5 : 1;
+        // start: the bundle runs after the page is parsed; renderer: WebGL is up after the bundle starts;
+        // frame: the model's first frame after that (building it is CPU work, slow on a weak machine, under
+        // the spinner); ready: shaders compiled after the first frame.
+        var LIMIT = { start: 60000, renderer: 12000, frame: 45000, ready: 60000 };
+        var timer = 0, wired = false, lang = 'lt';
+        // `at`: milliseconds since navigation start of each step (diagnostics and validation).
+        var B = (window.__bwrxBoot = { state: 'loading', reason: '', at: {} });
+        try { if (localStorage.getItem('bwrx300.language') === 'en') lang = 'en'; } catch (e) {}
+
+        function byId(id) { return doc.getElementById(id); }
+        function parsed(fn) { if (doc.readyState === 'loading') doc.addEventListener('DOMContentLoaded', fn); else fn(); }
+        function mark(step) { B.at[step] = window.performance && performance.now ? Math.round(performance.now()) : 0; }
+        function arm(ms, reason) { clearTimeout(timer); timer = setTimeout(function () { B.fail(reason); }, ms * patience); }
+        function localize(scope) {
+          var texts = scope.querySelectorAll('[data-en]'), i;
+          for (i = 0; i < texts.length; i++) {
+            if (!texts[i].hasAttribute('data-lt')) texts[i].setAttribute('data-lt', texts[i].textContent);
+            texts[i].textContent = texts[i].getAttribute(lang === 'en' ? 'data-en' : 'data-lt');
+          }
+          var langs = scope.querySelectorAll('[data-lang]');
+          for (i = 0; i < langs.length; i++) langs[i].setAttribute('aria-pressed', String(langs[i].getAttribute('data-lang') === lang));
+        }
+        function retryUrl() {
+          var parts = search.replace(/^\?/, '').split('&'), keep = [];
+          for (var i = 0; i < parts.length; i++) if (parts[i] && !/^(forceFallback|bootWait)=/.test(parts[i])) keep.push(parts[i]);
+          keep.push('bootWait=long');
+          return location.pathname + '?' + keep.join('&') + location.hash;
+        }
+        function show(reason, detail) {
+          var fb = byId('boot-fallback');
+          if (!fb) return;
+          B.hideShell();
+          byId('boot-reason').textContent = reason + (detail ? ' (' + String(detail).slice(0, 160) + ')' : '');
+          localize(fb);
+          root.setAttribute('lang', lang);
+          fb.removeAttribute('hidden');
+          if (wired) return;
+          wired = true;
+          var langs = fb.querySelectorAll('[data-lang]');
+          for (var i = 0; i < langs.length; i++) {
+            langs[i].onclick = function () {
+              lang = this.getAttribute('data-lang');
+              try { localStorage.setItem('bwrx300.language', lang); } catch (e) {}
+              localize(fb);
+              root.setAttribute('lang', lang);
+            };
+          }
+          byId('boot-retry').onclick = function () { location.href = retryUrl(); };
+          var play = byId('boot-play'), box = byId('boot-video'), video = byId('boot-video-el'), missing = byId('boot-video-missing');
+          if (!play) return;
+          play.onclick = function () {
+            missing.setAttribute('hidden', '');
+            video.style.display = '';
+            video.onerror = function () { video.style.display = 'none'; missing.removeAttribute('hidden'); };
+            video.src = 'BWRX300-fallback-' + lang + '.mp4';
+            box.removeAttribute('hidden');
+            try { var p = video.play(); if (p && p.catch) p.catch(function () {}); } catch (e) {}
+          };
+          byId('boot-video-close').onclick = function () {
+            video.onerror = null;
+            try { video.pause(); } catch (e) {}
+            video.removeAttribute('src');
+            box.setAttribute('hidden', '');
+          };
+        }
+
+        B.localize = localize;
+        B.start = function () { if (B.state !== 'loading') return; B.state = 'started'; mark('start'); arm(LIMIT.renderer, 'no-renderer'); };
+        B.renderer = function () { if (B.state !== 'started') return; B.state = 'renderer'; mark('renderer'); arm(LIMIT.frame, 'no-first-frame'); };
+        B.frame = function () { if (B.state !== 'started' && B.state !== 'renderer') return; B.state = 'framed'; mark('frame'); arm(LIMIT.ready, 'not-ready'); };
+        B.ready = function () { if (B.state === 'failed') return; B.state = 'ready'; mark('ready'); clearTimeout(timer); };
+        B.hideShell = function () { var s = byId('boot-shell'); if (s) s.style.display = 'none'; };
+        B.fail = function (reason, detail) {
+          if (B.state === 'failed') return true;
+          if (B.state === 'ready') return false;
+          B.state = 'failed';
+          B.reason = reason;
+          mark('failed');
+          clearTimeout(timer);
+          root.setAttribute('data-boot', 'failed');
+          try { console.warn('[BWRX-300] The 3D view did not start (' + reason + '); showing the fallback.', detail || ''); } catch (e) {}
+          parsed(function () { show(reason, detail); });
+          try { var ev = doc.createEvent('Event'); ev.initEvent('bwrx:fallback', false, false); window.dispatchEvent(ev); } catch (e) {}
+          return true;
+        };
+
+        // Until the bundle starts, any script error or failed script / style load means it never will.
+        window.addEventListener('error', function (e) {
+          if (B.state !== 'loading') return;
+          var t = e && e.target, tag = t && t.tagName;
+          B.fail(tag ? 'load-' + tag.toLowerCase() : 'script-error', (e && e.message) || (t && (t.src || t.href)) || '');
+        }, true);
+        if (/[?&]forceFallback=1(&|$)/.test(search)) B.fail('forced');
+        else parsed(function () { if (B.state === 'loading') arm(LIMIT.start, 'no-start'); });
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
+    <div id="boot-shell" class="boot boot-shell" role="status" aria-live="polite">
+      <div class="boot-shell__mark" aria-hidden="true"></div>
+      <p class="boot-shell__text" data-en="Preparing 3D scene">Ruošiama 3D scena</p>
+    </div>
+    <script>
+      window.__bwrxBoot.localize(document.getElementById('boot-shell'));
+    </script>
+    <div id="boot-fallback" class="boot boot-fb" hidden>
+      <div class="boot-fb__bar">
+        <span class="boot-fb__brand">BWRX-300</span>
+        <span class="boot-fb__lang" role="group" aria-label="Kalba / Language">
+          <button type="button" lang="lt" data-lang="lt">LT</button><button type="button" lang="en" data-lang="en">EN</button>
+        </span>
+      </div>
+      <div class="boot-fb__main">
+        <div class="boot-fb__media">
+          <img class="boot-fb__poster" src="/src/app/fallback-poster.jpg" alt="BWRX-300" width="1280" height="720" loading="lazy" onerror="this.style.display = 'none'" />
+        </div>
+        <div class="boot-fb__text" role="alert">
+          <h1 data-en="The 3D model could not start on this device.">Šiame įrenginyje 3D modelis nepasileido.</h1>
+          <p data-en="Open the interactive model on a phone, or on a computer in the latest Chrome or Edge.">Atverkite interaktyvų modelį telefone arba kompiuteryje naujausia „Chrome“ ar „Edge“ naršykle.</p>
+          <div class="boot-fb__qr">
+            <!--bwrx:qr-->
+            <div>
+              <p class="boot-fb__qr-label" data-en="Scan to open the model on a phone">Nuskenuokite ir atverkite modelį telefone</p>
+              <p class="boot-fb__url"><!--bwrx:url--></p>
+            </div>
+          </div>
+          <div class="boot-fb__actions">
+            <!--bwrx:video-->
+            <button type="button" id="boot-retry" data-en="Try again">Bandyti dar kartą</button>
+          </div>
+          <p class="boot-fb__reason"><span data-en="Reason:">Priežastis:</span> <code id="boot-reason"></code></p>
+        </div>
+      </div>
+      <div id="boot-video" class="boot-fb__video" hidden>
+        <video id="boot-video-el" controls muted playsinline></video>
+        <p id="boot-video-missing" class="boot-fb__missing" hidden data-en="The backup video was not found next to this page.">Atsarginio vaizdo įrašo šalia šio puslapio nėra.</p>
+        <button type="button" id="boot-video-close" data-en="Close video">Uždaryti vaizdo įrašą</button>
+      </div>
+    </div>
     <noscript>
       <!-- Without JavaScript the language cannot be chosen, so this one message gives both. -->
       <p style="font: 16px/1.5 system-ui, sans-serif; padding: 2rem 2rem 0; max-width: 40rem">
@@ -25,6 +220,10 @@
         <code>BWRX300-fallback-en.mp4</code> from the same folder instead.
       </p>
     </noscript>
+    <!-- A browser without ES modules never runs the app: straight to the fallback. -->
+    <script nomodule>
+      window.__bwrxBoot.fail('no-modules');
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

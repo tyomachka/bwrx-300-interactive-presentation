@@ -1,0 +1,10 @@
+PASS normal-desktop {"reason":"","at":{"start":751,"renderer":1482,"frame":4264,"ready":4696},"boot":"ready","ms":4052,"fb":false,"status":"ready","poster":{"complete":false,"w":0}}
+PASS forced {"reason":"forced","at":{"failed":26},"boot":"failed","ms":64,"fb":true,"status":null,"poster":{"complete":true,"w":1280},"en":"The 3D model could not start on this device."}
+PASS no-webgl2 {"reason":"no-webgl2","at":{"start":277,"failed":277},"boot":"failed","ms":82,"fb":true,"status":null,"poster":{"complete":true,"w":1280}}
+PASS renderer-failure {"reason":"scene-error","at":{"start":157,"failed":272},"boot":"failed","ms":283,"fb":true,"status":"loading","poster":{"complete":true,"w":1280}}
+PASS renderer-timeout {"reason":"no-renderer","at":{"start":147,"failed":12156},"boot":"failed","ms":12194,"fb":true,"status":"loading","poster":{"complete":true,"w":1280}}
+PASS first-frame-timeout {"reason":"no-first-frame","at":{"start":303,"renderer":948,"failed":45949},"boot":"failed","ms":45825,"fb":true,"status":"loading","poster":{"complete":true,"w":1280}}
+PASS bundle-load-failure {"reason":"load-script","at":{"failed":89},"boot":"failed","ms":61,"fb":true,"status":null,"poster":{"complete":true,"w":1280}}
+PASS blank-frame {"reason":"blank-frame","at":{"start":161,"renderer":560,"frame":975,"failed":1128},"boot":"failed","ms":1128,"fb":true,"status":"loading","poster":{"complete":true,"w":1280}}
+PASS context-loss-before-ready {"reason":"context-lost","at":{"start":174,"renderer":583,"frame":1506,"failed":4295},"boot":"failed","ms":4304,"fb":true,"status":"loading","poster":{"complete":true,"w":1280}}
+PASS context-loss-after-ready {"reason":"","at":{"start":311,"renderer":921,"frame":1944,"ready":3770},"boot":"ready","ms":366,"fb":false,"status":"ready","poster":{"complete":false,"w":0},"during":"loading","repeated":{"lostOverlay":true,"fallbackVisible":false,"sceneStatus":"context-lost"}}

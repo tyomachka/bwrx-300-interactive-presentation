@@ -1,0 +1,303 @@
+{
+  "checks": [
+    {
+      "name": "12 chapters, one presenter stop each",
+      "ok": true,
+      "detail": [
+        "hook",
+        "lithuania",
+        "scale",
+        "facts",
+        "projects",
+        "handoff",
+        "fission",
+        "control",
+        "energy",
+        "safety",
+        "limits",
+        "close"
+      ]
+    },
+    {
+      "name": "press → chapter 1 (hook)",
+      "ok": true,
+      "detail": {
+        "stop": 0,
+        "chapter": "hook",
+        "presses": 0
+      }
+    },
+    {
+      "name": "chapter 1 plays its beats by itself to the last",
+      "ok": true,
+      "detail": {
+        "flat": 0,
+        "last": 0
+      }
+    },
+    {
+      "name": "press → chapter 2 (lithuania)",
+      "ok": true,
+      "detail": {
+        "stop": 1,
+        "chapter": "lithuania",
+        "presses": 1
+      }
+    },
+    {
+      "name": "chapter 2 plays its beats by itself to the last",
+      "ok": true,
+      "detail": {
+        "flat": 3,
+        "last": 3
+      }
+    },
+    {
+      "name": "press → chapter 3 (scale)",
+      "ok": true,
+      "detail": {
+        "stop": 2,
+        "chapter": "scale",
+        "presses": 2
+      }
+    },
+    {
+      "name": "chapter 3 plays its beats by itself to the last",
+      "ok": true,
+      "detail": {
+        "flat": 6,
+        "last": 6
+      }
+    },
+    {
+      "name": "press → chapter 4 (facts)",
+      "ok": true,
+      "detail": {
+        "stop": 3,
+        "chapter": "facts",
+        "presses": 3
+      }
+    },
+    {
+      "name": "chapter 4 plays its beats by itself to the last",
+      "ok": true,
+      "detail": {
+        "flat": 9,
+        "last": 9
+      }
+    },
+    {
+      "name": "press → chapter 5 (projects)",
+      "ok": true,
+      "detail": {
+        "stop": 4,
+        "chapter": "projects",
+        "presses": 4
+      }
+    },
+    {
+      "name": "chapter 5 plays its beats by itself to the last",
+      "ok": true,
+      "detail": {
+        "flat": 11,
+        "last": 11
+      }
+    },
+    {
+      "name": "press → chapter 6 (handoff)",
+      "ok": true,
+      "detail": {
+        "stop": 5,
+        "chapter": "handoff",
+        "presses": 5
+      }
+    },
+    {
+      "name": "chapter 6 plays its beats by itself to the last",
+      "ok": true,
+      "detail": {
+        "flat": 13,
+        "last": 13
+      }
+    },
+    {
+      "name": "press → chapter 7 (fission)",
+      "ok": true,
+      "detail": {
+        "stop": 6,
+        "chapter": "fission",
+        "presses": 6
+      }
+    },
+    {
+      "name": "chapter 7 plays its beats by itself to the last",
+      "ok": true,
+      "detail": {
+        "flat": 14,
+        "last": 14
+      }
+    },
+    {
+      "name": "press → chapter 8 (control)",
+      "ok": true,
+      "detail": {
+        "stop": 7,
+        "chapter": "control",
+        "presses": 7
+      }
+    },
+    {
+      "name": "chapter 8 plays its beats by itself to the last",
+      "ok": true,
+      "detail": {
+        "flat": 18,
+        "last": 18
+      }
+    },
+    {
+      "name": "press → chapter 9 (energy)",
+      "ok": true,
+      "detail": {
+        "stop": 8,
+        "chapter": "energy",
+        "presses": 8
+      }
+    },
+    {
+      "name": "chapter 9 plays its beats by itself to the last",
+      "ok": true,
+      "detail": {
+        "flat": 23,
+        "last": 23
+      }
+    },
+    {
+      "name": "press → chapter 10 (safety)",
+      "ok": true,
+      "detail": {
+        "stop": 9,
+        "chapter": "safety",
+        "presses": 9
+      }
+    },
+    {
+      "name": "chapter 10 plays its beats by itself to the last",
+      "ok": true,
+      "detail": {
+        "flat": 29,
+        "last": 29
+      }
+    },
+    {
+      "name": "press → chapter 11 (limits)",
+      "ok": true,
+      "detail": {
+        "stop": 10,
+        "chapter": "limits",
+        "presses": 10
+      }
+    },
+    {
+      "name": "chapter 11 plays its beats by itself to the last",
+      "ok": true,
+      "detail": {
+        "flat": 30,
+        "last": 30
+      }
+    },
+    {
+      "name": "press → chapter 12 (close)",
+      "ok": true,
+      "detail": {
+        "stop": 11,
+        "chapter": "close",
+        "presses": 11
+      }
+    },
+    {
+      "name": "chapter 12 plays its beats by itself to the last",
+      "ok": true,
+      "detail": {
+        "flat": 32,
+        "last": 32
+      }
+    },
+    {
+      "name": "11 presses from the opening to the Q&A",
+      "ok": true,
+      "detail": {
+        "presses": 11
+      }
+    },
+    {
+      "name": "the closing holds (a press at the end changes nothing)",
+      "ok": true,
+      "detail": {
+        "stop": 11
+      }
+    },
+    {
+      "name": "no page errors",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "name": "no external requests",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "visited": [
+    {
+      "chapter": "hook",
+      "presses": 0
+    },
+    {
+      "chapter": "lithuania",
+      "presses": 1
+    },
+    {
+      "chapter": "scale",
+      "presses": 2
+    },
+    {
+      "chapter": "facts",
+      "presses": 3
+    },
+    {
+      "chapter": "projects",
+      "presses": 4
+    },
+    {
+      "chapter": "handoff",
+      "presses": 5
+    },
+    {
+      "chapter": "fission",
+      "presses": 6
+    },
+    {
+      "chapter": "control",
+      "presses": 7
+    },
+    {
+      "chapter": "energy",
+      "presses": 8
+    },
+    {
+      "chapter": "safety",
+      "presses": 9
+    },
+    {
+      "chapter": "limits",
+      "presses": 10
+    },
+    {
+      "chapter": "close",
+      "presses": 11
+    }
+  ],
+  "console": [
+    "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+  ]
+}

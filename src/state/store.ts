@@ -6,9 +6,11 @@
  * read fields from the preset (see config/quality.ts).
  */
 import { create } from 'zustand';
+import { EXPLORE_ONLY, HANDHELD } from '../app/entry';
 import {
   QUALITY_PRESETS,
   resolveInitialQuality,
+  storeHandheldQuality,
   writeQualityToUrl,
   type InitialQuality,
   type QualityLevel,
@@ -46,10 +48,11 @@ interface AppState {
 }
 
 const caps = detectGpuCapabilities();
-const initialQuality = resolveInitialQuality(window.location.search, caps);
+const initialQuality = resolveInitialQuality(window.location.search, caps, HANDHELD);
 const query = new URLSearchParams(window.location.search);
 const debugParam = query.has('debug');
-const presentationDebugParam = query.has('presentationDebug');
+// The talk's debug panel jumps into the talk: never on the explore-only page.
+const presentationDebugParam = query.has('presentationDebug') && !EXPLORE_ONLY;
 
 export const useAppStore = create<AppState>()((set, get) => ({
   caps,
@@ -65,6 +68,7 @@ export const useAppStore = create<AppState>()((set, get) => ({
   setQuality: (level) => {
     if (level === get().quality) return;
     writeQualityToUrl(level);
+    if (HANDHELD) storeHandheldQuality(level);
     // A preset change may alter context attributes (MSAA), so the canvas is rebuilt.
     set((s) => ({ quality: level, qualityReason: 'user', status: 'loading', canvasKey: s.canvasKey + 1 }));
   },
@@ -74,7 +78,7 @@ export const useAppStore = create<AppState>()((set, get) => ({
     if (get().debugAvailable) set((s) => ({ debugVisible: !s.debugVisible }));
   },
   togglePresentationDebug: () => {
-    if (get().debugAvailable) set((s) => ({ presentationDebug: !s.presentationDebug }));
+    if (get().debugAvailable && !EXPLORE_ONLY) set((s) => ({ presentationDebug: !s.presentationDebug }));
   },
   setSectionReview: (on) => set({ sectionReview: on }),
 }));

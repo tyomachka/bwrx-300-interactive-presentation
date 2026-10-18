@@ -1,0 +1,21 @@
+release vs release (session noise):
+film-00.5.png IDENTICAL
+film-0006.png DIFF px=3 bbox=(345, 451, 1695, 1072) max=1
+film-0012.png IDENTICAL
+film-0018.png IDENTICAL
+film-0024.png IDENTICAL
+film-0030.png IDENTICAL
+film-0036.png IDENTICAL
+film-0042.png IDENTICAL
+film-47.5.png IDENTICAL
+
+release run 2 vs this build:
+film-00.5.png IDENTICAL
+film-0006.png IDENTICAL
+film-0012.png IDENTICAL
+film-0018.png IDENTICAL
+film-0024.png IDENTICAL
+film-0030.png IDENTICAL
+film-0036.png IDENTICAL
+film-0042.png IDENTICAL
+film-47.5.png IDENTICAL

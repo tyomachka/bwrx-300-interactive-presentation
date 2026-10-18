@@ -1,0 +1,9 @@
+PASS one-finger drag orbits (azimuth changes, distance kept) {"dAzimuthDeg":-25.8,"distance":[213.6,213.6]}
+PASS pinch out zooms in (distance shrinks) {"distance":[213.6,88.7]}
+PASS two-finger drag pans (target moves, distance kept) {"targetMoved":4.17,"distance":[88.7,88.7]}
+PASS tap selects the component under the finger {"expected":"turbine-building","selected":"turbine-building"}
+PASS tap on empty space clears the selection {"at":{"x":40,"y":120}}
+PASS double tap pivots to the point (target moves) and does not select {"targetMoved":41.06,"selected":null}
+PASS a pinch never selects {"selected":null}
+PASS the page never scrolled or zoomed {"scroll":[0,0],"zoom":1,"bodyScroll":0}
+PASS no page errors []

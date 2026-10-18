@@ -1,0 +1,21 @@
+{
+  "button": "Rodyti vaizdo įrašą",
+  "video": {
+    "src": "BWRX300-fallback-lt.mp4",
+    "time": 2.27,
+    "readyState": 4,
+    "w": 1920,
+    "h": 1080,
+    "missingShown": false
+  },
+  "closed": true,
+  "pass": true,
+  "log": {
+    "console": [
+      "[warn] [BWRX-300] The 3D view did not start (forced); showing the fallback. "
+    ],
+    "errors": [],
+    "external": [],
+    "failed": []
+  }
+}

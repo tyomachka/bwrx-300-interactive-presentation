@@ -9,7 +9,7 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import { Vector3 } from 'three';
 import { useLanguageStore, type Language } from '../../i18n/language';
-import { isPlaceholder, PRESENTERS, PUBLIC_PRESENTATION_URL } from '../config';
+import { EXPLORE_PAGE_URL, isPlaceholder, PRESENTERS } from '../config';
 import { useTalkCopy, type TalkCopy } from '../copy';
 import { designVariables, stageX, stageY, type Tone } from '../design';
 import { overlayLayer } from '../overlayLayer';
@@ -475,7 +475,7 @@ function Qr({ copy }: { copy: TalkCopy }) {
   const n = QR_CODE.modules + 8; // a 4-module quiet zone on each side
   return (
     <>
-      <svg className="talk-qr__code" viewBox={`-4 -4 ${n} ${n}`} shapeRendering="crispEdges" role="img" aria-label={`QR: ${PUBLIC_PRESENTATION_URL}`}>
+      <svg className="talk-qr__code" viewBox={`-4 -4 ${n} ${n}`} shapeRendering="crispEdges" role="img" aria-label={`QR: ${EXPLORE_PAGE_URL}`}>
         <rect x={-4} y={-4} width={n} height={n} className="talk-qr__paper" />
         <path d={QR_CODE.path} className="talk-qr__ink" />
       </svg>

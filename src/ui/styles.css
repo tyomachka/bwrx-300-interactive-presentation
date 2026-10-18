@@ -507,3 +507,347 @@ button:disabled {
   color: var(--text);
   white-space: nowrap;
 }
+
+/* Explore-only page (post-final: the phone / QR audience; app/entry.ts, ui/ExploreSheet.tsx) ----- */
+/* The whole viewport instead of the 16:9 stage: no letterbox. `dvh` follows a phone's browser bars;
+   the safe areas need `viewport-fit=cover` (index.html). No page scroll, pinch or double-tap zoom
+   fights the model: the canvas has its own gestures, the sheet's body scrolls on its own. */
+.app--explore {
+  bottom: auto;
+  height: 100vh;
+  height: 100dvh;
+  background: var(--bg);
+  overscroll-behavior: none;
+  touch-action: none;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --edge: 10px;
+  --sheet-width: 100%;
+}
+
+.app--explore .stage {
+  width: 100%;
+  height: 100%;
+}
+
+.app--explore button {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.app--explore .segmented button {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* The anchored label names the part; its sentence is in the card (ExploreSheet). */
+.app--explore .explore-label {
+  max-width: min(19rem, calc(100% - 40px));
+  padding: 0.45rem 0.75rem 0.5rem;
+}
+
+.app--explore .explore-label__name {
+  font-size: 1rem;
+}
+
+.app--explore .explore-label__text {
+  display: none;
+}
+
+/* Top strip: the name, LT | EN. Touches between its pieces reach the model. */
+.xs-top {
+  position: absolute;
+  top: calc(var(--safe-top) + var(--edge));
+  left: calc(var(--safe-left) + var(--edge));
+  right: calc(var(--safe-right) + var(--edge));
+  z-index: 11;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  pointer-events: none;
+  transition: opacity 400ms ease;
+}
+
+.xs-top > * {
+  pointer-events: auto;
+}
+
+.xs-top__title,
+.xs-top__lang,
+.xs-card,
+.xs-panel {
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) + 4px);
+  background: var(--panel);
+}
+
+.xs-top__title {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 0.4rem 0.85rem 0.45rem;
+}
+
+.xs-top__name {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: #fff;
+}
+
+.xs-top__sub {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+}
+
+.xs-top__lang {
+  padding: 3px;
+}
+
+/* The sheet: the selection card over a panel that opens from one handle. */
+.xs {
+  position: absolute;
+  left: calc(var(--safe-left) + var(--edge));
+  right: calc(var(--safe-right) + var(--edge));
+  bottom: calc(var(--safe-bottom) + var(--edge));
+  z-index: 10;
+  max-height: calc(100% - var(--safe-top) - var(--safe-bottom) - 84px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 8px;
+  pointer-events: none;
+  transition: opacity 400ms ease;
+}
+
+.xs > * {
+  pointer-events: auto;
+}
+
+.xs.is-hidden,
+.xs-top.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.xs.is-hidden > *,
+.xs-top.is-hidden > * {
+  pointer-events: none;
+}
+
+.xs-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  flex: none;
+  padding: 0.55rem 0.55rem 0.6rem 0.9rem;
+  border-left: 2px solid var(--accent);
+}
+
+.xs-card__text {
+  flex: 1;
+  min-width: 0;
+}
+
+.xs-card__name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.xs-card__parent {
+  min-height: 30px;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: 0.85rem;
+  text-align: left;
+  color: var(--text-dim);
+}
+
+.xs-card__parent:hover {
+  background: none;
+  color: var(--text);
+}
+
+/* Never a wall of text over the model: at most about four lines, then it scrolls. */
+.xs-card__description {
+  max-height: 5.7em;
+  margin-top: 0.15rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: var(--text);
+}
+
+.xs-card__actions {
+  display: flex;
+  gap: 6px;
+}
+
+.xs-card__actions button {
+  min-width: 44px;
+  padding: 0 0.8rem;
+}
+
+.xs-panel {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.xs-handle {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
+  min-height: 48px;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.xs-handle__chevron {
+  width: 9px;
+  height: 9px;
+  margin-top: 4px;
+  border-top: 2px solid var(--text-dim);
+  border-left: 2px solid var(--text-dim);
+  transform: rotate(45deg);
+  transition: transform 200ms ease, margin 200ms ease;
+}
+
+.xs.is-open .xs-handle__chevron {
+  margin-top: -4px;
+  transform: rotate(225deg);
+}
+
+.xs-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 0;
+  padding: 2px 12px 12px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+}
+
+.xs-group__title {
+  margin: 0 0 5px 2px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.xs-group__row {
+  display: flex;
+  gap: 6px;
+}
+
+.xs-group__row > button {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 0 0.4rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.xs-group__sub {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  margin-top: 8px;
+}
+
+.xs-slider {
+  flex: 1 1 140px;
+  min-width: 0;
+  height: 44px;
+  margin: 0;
+  accent-color: var(--accent);
+}
+
+.xs-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+}
+
+.xs-foot .segmented {
+  align-items: center;
+}
+
+.xs-foot__label {
+  padding: 0 0.3rem 0 0.1rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.xs-hint {
+  margin: 0;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: var(--text-dim);
+}
+
+/* A phone in landscape: a side panel on the right, the model keeps the height. */
+@media (orientation: landscape) and (max-height: 520px) {
+  .app--explore {
+    --sheet-width: min(320px, 46vw);
+  }
+
+  .xs {
+    top: calc(var(--safe-top) + var(--edge));
+    left: auto;
+    width: var(--sheet-width);
+    max-height: none;
+  }
+
+  .xs-top {
+    right: calc(var(--safe-right) + var(--edge) * 2 + var(--sheet-width));
+    justify-content: flex-start;
+  }
+
+  .xs-card__description {
+    max-height: 4.3em;
+  }
+
+  /* Height is the scarce dimension here; the gestures are the phone's usual ones. */
+  .xs-hint {
+    display: none;
+  }
+}
+
+/* A computer (`?mode=explore` on a desktop): a floating panel at the bottom centre. */
+@media (min-width: 900px) and (min-height: 521px) {
+  .app--explore {
+    --sheet-width: 540px;
+  }
+
+  .xs {
+    left: calc(50% - var(--sheet-width) / 2);
+    right: auto;
+    width: var(--sheet-width);
+  }
+}

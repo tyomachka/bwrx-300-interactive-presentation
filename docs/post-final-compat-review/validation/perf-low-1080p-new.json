@@ -1,0 +1,102 @@
+{
+  "rows": [
+    {
+      "chapter": 1,
+      "id": "hook",
+      "fps": 60.1,
+      "p95": 16.8,
+      "worst": 17.3,
+      "over34": 0
+    },
+    {
+      "chapter": 2,
+      "id": "lithuania",
+      "fps": 60,
+      "p95": 16.8,
+      "worst": 33.2,
+      "over34": 0
+    },
+    {
+      "chapter": 3,
+      "id": "scale",
+      "fps": 60.1,
+      "p95": 16.8,
+      "worst": 33.3,
+      "over34": 0
+    },
+    {
+      "chapter": 4,
+      "id": "facts",
+      "fps": 60.1,
+      "p95": 16.8,
+      "worst": 17.8,
+      "over34": 0
+    },
+    {
+      "chapter": 5,
+      "id": "projects",
+      "fps": 60.1,
+      "p95": 16.8,
+      "worst": 17.7,
+      "over34": 0
+    },
+    {
+      "chapter": 6,
+      "id": "handoff",
+      "fps": 60.1,
+      "p95": 16.8,
+      "worst": 17.3,
+      "over34": 0
+    },
+    {
+      "chapter": 7,
+      "id": "fission",
+      "fps": 59.5,
+      "p95": 16.8,
+      "worst": 33.5,
+      "over34": 0
+    },
+    {
+      "chapter": 8,
+      "id": "control",
+      "fps": 59.1,
+      "p95": 16.8,
+      "worst": 50.1,
+      "over34": 2
+    },
+    {
+      "chapter": 9,
+      "id": "energy",
+      "fps": 60,
+      "p95": 16.8,
+      "worst": 49.8,
+      "over34": 1
+    },
+    {
+      "chapter": 10,
+      "id": "safety",
+      "fps": 60.1,
+      "p95": 16.8,
+      "worst": 17.3,
+      "over34": 0
+    },
+    {
+      "chapter": 11,
+      "id": "limits",
+      "fps": 60.1,
+      "p95": 16.8,
+      "worst": 17.4,
+      "over34": 0
+    },
+    {
+      "chapter": 12,
+      "id": "close",
+      "fps": 60.1,
+      "p95": 16.8,
+      "worst": 17.4,
+      "over34": 0
+    }
+  ],
+  "errors": [],
+  "external": []
+}
