@@ -119,7 +119,7 @@ bright core interiors, as before). Not optimised further: Low is the delivery pr
 
 ## 7. Projectors (`validation/projector.txt`, `review/final-projector-sheet.png`)
 
-1920×1080 LT (24 text-heaviest moments, final build): **0 texts outside the stage, 0 overlaps, 0 outside the 4 % safe zone.** The first pass at 1280×800 and 1024×768 found two collisions (the stadium label against the "≈ 1,4" metric; the ESBWR value label at the left margin and against the "≈ 300 MW" label); both fixed and the affected moments re-captured clean at all three sizes. The full 96-still re-run on the final build (LT at three sizes + EN) is recorded in §12.
+1920×1080 LT (24 text-heaviest moments, final build): **0 texts outside the stage, 0 overlaps, 0 outside the 4 % safe zone.** The first pass at 1280×800 and 1024×768 found two collisions (the stadium label against the "≈ 1,4" metric; the ESBWR value label at the left margin and against the "≈ 300 MW" label); both fixed and the affected moments re-captured clean at all three sizes. Full 96-still re-run on the final build (LT at three sizes + EN): **0 outside, 0 overlaps, 0 outside the safe zone** (§12).
 
 ## 8. Determinism (`validation/determinism-*.json`)
 
@@ -159,7 +159,12 @@ Targeted windows (Lithuania, scale / footprint, map, handoff, fission steady sta
 
 ## 12. Release record
 
-Filled in by the follow-up commit after deployment: release commit hash, Pages workflow run and result, live-site
-check in Chrome (12 chapters, QR decodes to the live URL), the full projector re-run, determinism, and the
-rehearsal video.
-
+| | |
+|---|---|
+| Release commit | `92b0beb` *presentation: final stage — 12 chapters, speech sync, facts, stability, real QR* (`presentation-v1`; `main` fast-forwarded from `8802aa1`, pushed without force) |
+| Pages workflow | push events do not start the workflow in this repository (as for the first deploy), so it was dispatched on `main`: run **39141314851**, head `92b0beb`, **success** (build 43 s, deploy) — https://github.com/tyomachka/bwrx-300-interactive-presentation/actions/runs/39141314851 |
+| Live site (Chrome, `validation/live/`) | https://tyomachka.github.io/bwrx-300-interactive-presentation/ serves **`index-Dw5MTYLh.js`** (the validated build); ready in 12.3 s; the audience build walked by real presses: start + 11 presses reach the Q&A composition (`live-closing.png`); **QR decodes to the live URL** on the opening and the closing; 0 external requests, 0 errors (only the known `THREE.Clock` warning) |
+| Repository | stays **private** (Pages public) |
+| Portable (`validation/portable/`) | rebuilt from the release source; opened from `file://`: ready in 12 s, 12 chapters by 11 presses, 0 external requests, 0 errors, QR decodes |
+| Projectors (`validation/projector.txt`) | full re-run on the final build: **96 stills** (24 moments × LT 1920×1080, 1280×800, 1024×768 + EN 1920×1080): **0** texts outside the stage, **0** overlaps, **0** outside the 4 % safe zone; `review/final-projector-sheet.png` |
+| Determinism, rehearsal video | added by the next commit (captures still running at this commit) |

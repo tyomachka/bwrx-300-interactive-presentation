@@ -1,0 +1,4 @@
+Legacy 48 s film (frozen), 10 frames (0.5, 5.8, 10, 15.4, 20, 26, 32, 38, 44, 47.9 s), master.seek with the clock pinned:
+Low:  Stage 3 build (46c85b2) vs final build: 10 / 10 pixel-identical.
+High: paired second run, Stage 3 vs final: 10 / 10 pixel-identical. A first High session of the final build
+      differed from its own second run by 1 level in 3 px (frames 0.5 s and 5.8 s): session noise, as in Stage 3.

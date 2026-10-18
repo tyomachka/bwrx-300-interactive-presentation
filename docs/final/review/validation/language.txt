@@ -1,0 +1,4 @@
+LT is the default (fresh profile). The audience language is switched with LT | EN in the setup bar, which is shown
+outside the talk only (hidden while the talk runs). Programmatically (window.__bwrx.language.set) a switch is refused
+only while the 48 s film plays (src/i18n/language.ts); the talk has no such hard guard, but no control reaches it
+during the talk. EN projector set: 24 stills, 0 overflow, 0 overlaps (projector.txt).

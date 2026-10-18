@@ -1,0 +1,5 @@
+every frame (30 fps) of the 11 chapter entries by a real press: 2471 frames
+ground ownership (earth XOR filler, filler iff scale < 0.9999) or grade-marker error > 1 mm: 0 failures
+max grade-marker error: 0 m; frames with the plant scaled: 545
+ground-owner switches: 4 (each in one frame, both owners never visible together, never neither)
+errors []; external requests []

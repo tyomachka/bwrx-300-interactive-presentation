@@ -1,0 +1,1154 @@
+[
+ {
+  "name": "01-hook-hero-8.9-1920x1080",
+  "stage": [
+   1920,
+   1080
+  ],
+  "texts": 8,
+  "smallestPx": 15.9948,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "02-lithuania-renewables-12.0-1920x1080",
+  "stage": [
+   1920,
+   1080
+  ],
+  "texts": 5,
+  "smallestPx": 15.9948,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "02-lithuania-renewables-27.0-1920x1080",
+  "stage": [
+   1920,
+   1080
+  ],
+  "texts": 4,
+  "smallestPx": 15.9948,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "03-scale-units-15.0-1920x1080",
+  "stage": [
+   1920,
+   1080
+  ],
+  "texts": 6,
+  "smallestPx": 15.9948,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "03-scale-units-34.0-1920x1080",
+  "stage": [
+   1920,
+   1080
+  ],
+  "texts": 18,
+  "smallestPx": 15.9948,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "04-facts-power-6.0-1920x1080",
+  "stage": [
+   1920,
+   1080
+  ],
+  "texts": 5,
+  "smallestPx": 15.9948,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "04-facts-power-14.0-1920x1080",
+  "stage": [
+   1920,
+   1080
+  ],
+  "texts": 10,
+  "smallestPx": 15.9948,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "04-facts-power-32.0-1920x1080",
+  "stage": [
+   1920,
+   1080
+  ],
+  "texts": 10,
+  "smallestPx": 15.9948,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "05-projects-world-17.0-1920x1080",
+  "stage": [
+   1920,
+   1080
+  ],
+  "texts": 17,
+  "smallestPx": 15.9948,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "05-projects-world-28.0-1920x1080",
+  "stage": [
+   1920,
+   1080
+  ],
+  "texts": 10,
+  "smallestPx": 15.9948,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "06-handoff-land-20.7-1920x1080",
+  "stage": [
+   1920,
+   1080
+  ],
+  "texts": 0,
+  "smallestPx": 0,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "07-fission-chain-13.0-1920x1080",
+  "stage": [
+   1920,
+   1080
+  ],
+  "texts": 3,
+  "smallestPx": 15.9948,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "07-fission-chain-30.0-1920x1080",
+  "stage": [
+   1920,
+   1080
+  ],
+  "texts": 4,
+  "smallestPx": 15.9948,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "08-control-inFuel-17.0-1920x1080",
+  "stage": [
+   1920,
+   1080
+  ],
+  "texts": 6,
+  "smallestPx": 15.9948,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "09-energy-boil-10.0-1920x1080",
+  "stage": [
+   1920,
+   1080
+  ],
+  "texts": 5,
+  "smallestPx": 15.9948,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "09-energy-boil-21.0-1920x1080",
+  "stage": [
+   1920,
+   1080
+  ],
+  "texts": 2,
+  "smallestPx": 15.9948,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "09-energy-boil-33.0-1920x1080",
+  "stage": [
+   1920,
+   1080
+  ],
+  "texts": 2,
+  "smallestPx": 15.9948,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "09-energy-boil-46.0-1920x1080",
+  "stage": [
+   1920,
+   1080
+  ],
+  "texts": 4,
+  "smallestPx": 15.9948,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "10-safety-normal-3.0-1920x1080",
+  "stage": [
+   1920,
+   1080
+  ],
+  "texts": 2,
+  "smallestPx": 15.9948,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "10-safety-normal-13.0-1920x1080",
+  "stage": [
+   1920,
+   1080
+  ],
+  "texts": 2,
+  "smallestPx": 15.9948,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "10-safety-normal-24.0-1920x1080",
+  "stage": [
+   1920,
+   1080
+  ],
+  "texts": 6,
+  "smallestPx": 15.9948,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "10-safety-normal-40.0-1920x1080",
+  "stage": [
+   1920,
+   1080
+  ],
+  "texts": 8,
+  "smallestPx": 15.9948,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "11-limits-limits-13.0-1920x1080",
+  "stage": [
+   1920,
+   1080
+  ],
+  "texts": 7,
+  "smallestPx": 15.9948,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "12-close-return-26.0-1920x1080",
+  "stage": [
+   1920,
+   1080
+  ],
+  "texts": 8,
+  "smallestPx": 16.9992,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "01-hook-hero-8.9-1280x800",
+  "stage": [
+   1280,
+   720
+  ],
+  "texts": 8,
+  "smallestPx": 12.0,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "02-lithuania-renewables-12.0-1280x800",
+  "stage": [
+   1280,
+   720
+  ],
+  "texts": 5,
+  "smallestPx": 12.0,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "02-lithuania-renewables-27.0-1280x800",
+  "stage": [
+   1280,
+   720
+  ],
+  "texts": 4,
+  "smallestPx": 12.0,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "03-scale-units-15.0-1280x800",
+  "stage": [
+   1280,
+   720
+  ],
+  "texts": 6,
+  "smallestPx": 12.0,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "03-scale-units-34.0-1280x800",
+  "stage": [
+   1280,
+   720
+  ],
+  "texts": 18,
+  "smallestPx": 12.0,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "04-facts-power-6.0-1280x800",
+  "stage": [
+   1280,
+   720
+  ],
+  "texts": 5,
+  "smallestPx": 12.0,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "04-facts-power-14.0-1280x800",
+  "stage": [
+   1280,
+   720
+  ],
+  "texts": 10,
+  "smallestPx": 12.0,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "04-facts-power-32.0-1280x800",
+  "stage": [
+   1280,
+   720
+  ],
+  "texts": 10,
+  "smallestPx": 12.0,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "05-projects-world-17.0-1280x800",
+  "stage": [
+   1280,
+   720
+  ],
+  "texts": 17,
+  "smallestPx": 12.0,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "05-projects-world-28.0-1280x800",
+  "stage": [
+   1280,
+   720
+  ],
+  "texts": 10,
+  "smallestPx": 12.0,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "06-handoff-land-20.7-1280x800",
+  "stage": [
+   1280,
+   720
+  ],
+  "texts": 0,
+  "smallestPx": 0,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "07-fission-chain-13.0-1280x800",
+  "stage": [
+   1280,
+   720
+  ],
+  "texts": 3,
+  "smallestPx": 12.0,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "07-fission-chain-30.0-1280x800",
+  "stage": [
+   1280,
+   720
+  ],
+  "texts": 4,
+  "smallestPx": 12.0,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "08-control-inFuel-17.0-1280x800",
+  "stage": [
+   1280,
+   720
+  ],
+  "texts": 6,
+  "smallestPx": 12.0,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "09-energy-boil-10.0-1280x800",
+  "stage": [
+   1280,
+   720
+  ],
+  "texts": 5,
+  "smallestPx": 12.0,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "09-energy-boil-21.0-1280x800",
+  "stage": [
+   1280,
+   720
+  ],
+  "texts": 2,
+  "smallestPx": 12.0,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "09-energy-boil-33.0-1280x800",
+  "stage": [
+   1280,
+   720
+  ],
+  "texts": 2,
+  "smallestPx": 12.0,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "09-energy-boil-46.0-1280x800",
+  "stage": [
+   1280,
+   720
+  ],
+  "texts": 4,
+  "smallestPx": 12.0,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "10-safety-normal-3.0-1280x800",
+  "stage": [
+   1280,
+   720
+  ],
+  "texts": 2,
+  "smallestPx": 12.0,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "10-safety-normal-13.0-1280x800",
+  "stage": [
+   1280,
+   720
+  ],
+  "texts": 2,
+  "smallestPx": 12.0,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "10-safety-normal-24.0-1280x800",
+  "stage": [
+   1280,
+   720
+  ],
+  "texts": 6,
+  "smallestPx": 12.0,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "10-safety-normal-40.0-1280x800",
+  "stage": [
+   1280,
+   720
+  ],
+  "texts": 8,
+  "smallestPx": 12.0,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "11-limits-limits-13.0-1280x800",
+  "stage": [
+   1280,
+   720
+  ],
+  "texts": 7,
+  "smallestPx": 12.0,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "12-close-return-26.0-1280x800",
+  "stage": [
+   1280,
+   720
+  ],
+  "texts": 8,
+  "smallestPx": 12.0,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "01-hook-hero-8.9-1024x768",
+  "stage": [
+   1024,
+   576
+  ],
+  "texts": 8,
+  "smallestPx": 12.0,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "02-lithuania-renewables-12.0-1024x768",
+  "stage": [
+   1024,
+   576
+  ],
+  "texts": 5,
+  "smallestPx": 12.0,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "02-lithuania-renewables-27.0-1024x768",
+  "stage": [
+   1024,
+   576
+  ],
+  "texts": 4,
+  "smallestPx": 12.0,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "03-scale-units-15.0-1024x768",
+  "stage": [
+   1024,
+   576
+  ],
+  "texts": 6,
+  "smallestPx": 12.0,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "03-scale-units-34.0-1024x768",
+  "stage": [
+   1024,
+   576
+  ],
+  "texts": 18,
+  "smallestPx": 12.0,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "04-facts-power-6.0-1024x768",
+  "stage": [
+   1024,
+   576
+  ],
+  "texts": 5,
+  "smallestPx": 12.0,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "04-facts-power-14.0-1024x768",
+  "stage": [
+   1024,
+   576
+  ],
+  "texts": 10,
+  "smallestPx": 12.0,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "04-facts-power-32.0-1024x768",
+  "stage": [
+   1024,
+   576
+  ],
+  "texts": 10,
+  "smallestPx": 12.0,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "05-projects-world-17.0-1024x768",
+  "stage": [
+   1024,
+   576
+  ],
+  "texts": 17,
+  "smallestPx": 12.0,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "05-projects-world-28.0-1024x768",
+  "stage": [
+   1024,
+   576
+  ],
+  "texts": 10,
+  "smallestPx": 12.0,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "06-handoff-land-20.7-1024x768",
+  "stage": [
+   1024,
+   576
+  ],
+  "texts": 0,
+  "smallestPx": 0,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "07-fission-chain-13.0-1024x768",
+  "stage": [
+   1024,
+   576
+  ],
+  "texts": 3,
+  "smallestPx": 12.0,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "07-fission-chain-30.0-1024x768",
+  "stage": [
+   1024,
+   576
+  ],
+  "texts": 4,
+  "smallestPx": 12.0,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "08-control-inFuel-17.0-1024x768",
+  "stage": [
+   1024,
+   576
+  ],
+  "texts": 6,
+  "smallestPx": 12.0,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "09-energy-boil-10.0-1024x768",
+  "stage": [
+   1024,
+   576
+  ],
+  "texts": 5,
+  "smallestPx": 12.0,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "09-energy-boil-21.0-1024x768",
+  "stage": [
+   1024,
+   576
+  ],
+  "texts": 2,
+  "smallestPx": 12.0,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "09-energy-boil-33.0-1024x768",
+  "stage": [
+   1024,
+   576
+  ],
+  "texts": 2,
+  "smallestPx": 12.0,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "09-energy-boil-46.0-1024x768",
+  "stage": [
+   1024,
+   576
+  ],
+  "texts": 4,
+  "smallestPx": 12.0,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "10-safety-normal-3.0-1024x768",
+  "stage": [
+   1024,
+   576
+  ],
+  "texts": 2,
+  "smallestPx": 12.0,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "10-safety-normal-13.0-1024x768",
+  "stage": [
+   1024,
+   576
+  ],
+  "texts": 2,
+  "smallestPx": 12.0,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "10-safety-normal-24.0-1024x768",
+  "stage": [
+   1024,
+   576
+  ],
+  "texts": 6,
+  "smallestPx": 12.0,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "10-safety-normal-40.0-1024x768",
+  "stage": [
+   1024,
+   576
+  ],
+  "texts": 8,
+  "smallestPx": 12.0,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "11-limits-limits-13.0-1024x768",
+  "stage": [
+   1024,
+   576
+  ],
+  "texts": 7,
+  "smallestPx": 12.0,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "12-close-return-26.0-1024x768",
+  "stage": [
+   1024,
+   576
+  ],
+  "texts": 8,
+  "smallestPx": 12.0,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "en-01-hook-hero-8.9-1920x1080",
+  "stage": [
+   1920,
+   1080
+  ],
+  "texts": 8,
+  "smallestPx": 15.9948,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "en-02-lithuania-renewables-12.0-1920x1080",
+  "stage": [
+   1920,
+   1080
+  ],
+  "texts": 5,
+  "smallestPx": 15.9948,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "en-02-lithuania-renewables-27.0-1920x1080",
+  "stage": [
+   1920,
+   1080
+  ],
+  "texts": 4,
+  "smallestPx": 15.9948,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "en-03-scale-units-15.0-1920x1080",
+  "stage": [
+   1920,
+   1080
+  ],
+  "texts": 6,
+  "smallestPx": 15.9948,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "en-03-scale-units-34.0-1920x1080",
+  "stage": [
+   1920,
+   1080
+  ],
+  "texts": 18,
+  "smallestPx": 15.9948,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "en-04-facts-power-6.0-1920x1080",
+  "stage": [
+   1920,
+   1080
+  ],
+  "texts": 5,
+  "smallestPx": 15.9948,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "en-04-facts-power-14.0-1920x1080",
+  "stage": [
+   1920,
+   1080
+  ],
+  "texts": 10,
+  "smallestPx": 15.9948,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "en-04-facts-power-32.0-1920x1080",
+  "stage": [
+   1920,
+   1080
+  ],
+  "texts": 10,
+  "smallestPx": 15.9948,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "en-05-projects-world-17.0-1920x1080",
+  "stage": [
+   1920,
+   1080
+  ],
+  "texts": 17,
+  "smallestPx": 15.9948,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "en-05-projects-world-28.0-1920x1080",
+  "stage": [
+   1920,
+   1080
+  ],
+  "texts": 10,
+  "smallestPx": 15.9948,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "en-06-handoff-land-20.7-1920x1080",
+  "stage": [
+   1920,
+   1080
+  ],
+  "texts": 0,
+  "smallestPx": 0,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "en-07-fission-chain-13.0-1920x1080",
+  "stage": [
+   1920,
+   1080
+  ],
+  "texts": 3,
+  "smallestPx": 15.9948,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "en-07-fission-chain-30.0-1920x1080",
+  "stage": [
+   1920,
+   1080
+  ],
+  "texts": 4,
+  "smallestPx": 15.9948,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "en-08-control-inFuel-17.0-1920x1080",
+  "stage": [
+   1920,
+   1080
+  ],
+  "texts": 6,
+  "smallestPx": 15.9948,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "en-09-energy-boil-10.0-1920x1080",
+  "stage": [
+   1920,
+   1080
+  ],
+  "texts": 5,
+  "smallestPx": 15.9948,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "en-09-energy-boil-21.0-1920x1080",
+  "stage": [
+   1920,
+   1080
+  ],
+  "texts": 2,
+  "smallestPx": 15.9948,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "en-09-energy-boil-33.0-1920x1080",
+  "stage": [
+   1920,
+   1080
+  ],
+  "texts": 2,
+  "smallestPx": 15.9948,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "en-09-energy-boil-46.0-1920x1080",
+  "stage": [
+   1920,
+   1080
+  ],
+  "texts": 4,
+  "smallestPx": 15.9948,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "en-10-safety-normal-3.0-1920x1080",
+  "stage": [
+   1920,
+   1080
+  ],
+  "texts": 2,
+  "smallestPx": 15.9948,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "en-10-safety-normal-13.0-1920x1080",
+  "stage": [
+   1920,
+   1080
+  ],
+  "texts": 2,
+  "smallestPx": 15.9948,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "en-10-safety-normal-24.0-1920x1080",
+  "stage": [
+   1920,
+   1080
+  ],
+  "texts": 6,
+  "smallestPx": 15.9948,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "en-10-safety-normal-40.0-1920x1080",
+  "stage": [
+   1920,
+   1080
+  ],
+  "texts": 8,
+  "smallestPx": 15.9948,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "en-11-limits-limits-13.0-1920x1080",
+  "stage": [
+   1920,
+   1080
+  ],
+  "texts": 7,
+  "smallestPx": 15.9948,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ },
+ {
+  "name": "en-12-close-return-26.0-1920x1080",
+  "stage": [
+   1920,
+   1080
+  ],
+  "texts": 8,
+  "smallestPx": 16.9992,
+  "outside": [],
+  "outsideSafe": [],
+  "overlaps": []
+ }
+]

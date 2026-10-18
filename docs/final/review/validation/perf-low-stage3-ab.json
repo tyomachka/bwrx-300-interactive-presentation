@@ -1,0 +1,55 @@
+{
+ "gpu": "ANGLE (Intel, Intel(R) Iris(R) Plus Graphics (0x00008A52) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+ "quality": "low",
+ "size": "1920x1080",
+ "hold": 1.5,
+ "presses": 3,
+ "perStop": [
+  {
+   "stop": 11,
+   "id": "fission/chain",
+   "window": 13.5,
+   "frames": 780,
+   "fps": 57.8,
+   "p95": 17.1,
+   "worst": 33.5,
+   "over20": 32,
+   "over34": 0,
+   "calls": 60,
+   "tris": 211319
+  },
+  {
+   "stop": 12,
+   "id": "control/inFuel",
+   "window": 14.9,
+   "frames": 779,
+   "fps": 52.2,
+   "p95": 33.3,
+   "worst": 66.4,
+   "over20": 113,
+   "over34": 7,
+   "calls": 51,
+   "tris": 39561
+  },
+  {
+   "stop": 16,
+   "id": "safety/normal",
+   "window": 18.3,
+   "frames": 1004,
+   "fps": 54.9,
+   "p95": 33.3,
+   "worst": 84.2,
+   "over20": 77,
+   "over34": 13,
+   "calls": 84,
+   "tris": 78073
+  }
+ ],
+ "log": {
+  "console": [
+   "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+  ],
+  "errors": [],
+  "external": []
+ }
+}

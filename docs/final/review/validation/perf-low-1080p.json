@@ -1,0 +1,172 @@
+{
+ "gpu": "ANGLE (Intel, Intel(R) Iris(R) Plus Graphics (0x00008A52) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+ "quality": "low",
+ "size": "1920x1080",
+ "hold": 1.5,
+ "presses": 12,
+ "perStop": [
+  {
+   "stop": 1,
+   "id": "hook/hero",
+   "window": 8.42,
+   "frames": 507,
+   "fps": 60.1,
+   "p95": 16.8,
+   "worst": 18.2,
+   "over20": 0,
+   "over34": 0,
+   "calls": 67,
+   "tris": 11375
+  },
+  {
+   "stop": 2,
+   "id": "lithuania/renewables",
+   "window": 26.6,
+   "frames": 1599,
+   "fps": 60.1,
+   "p95": 16.8,
+   "worst": 17.5,
+   "over20": 0,
+   "over34": 0,
+   "calls": 13,
+   "tris": 19643
+  },
+  {
+   "stop": 3,
+   "id": "scale/units",
+   "window": 32.5,
+   "frames": 1954,
+   "fps": 60.1,
+   "p95": 16.8,
+   "worst": 17.3,
+   "over20": 0,
+   "over34": 0,
+   "calls": 69,
+   "tris": 6557
+  },
+  {
+   "stop": 4,
+   "id": "facts/power",
+   "window": 31.4,
+   "frames": 1888,
+   "fps": 60.1,
+   "p95": 16.8,
+   "worst": 17.2,
+   "over20": 0,
+   "over34": 0,
+   "calls": 65,
+   "tris": 3461
+  },
+  {
+   "stop": 5,
+   "id": "projects/world",
+   "window": 26.4,
+   "frames": 1586,
+   "fps": 60.1,
+   "p95": 16.8,
+   "worst": 33.2,
+   "over20": 1,
+   "over34": 0,
+   "calls": 19,
+   "tris": 23707
+  },
+  {
+   "stop": 6,
+   "id": "handoff/land",
+   "window": 20.19,
+   "frames": 1214,
+   "fps": 60.1,
+   "p95": 16.8,
+   "worst": 17.3,
+   "over20": 0,
+   "over34": 0,
+   "calls": 57,
+   "tris": 35223
+  },
+  {
+   "stop": 7,
+   "id": "fission/chain",
+   "window": 28.9,
+   "frames": 1576,
+   "fps": 54.5,
+   "p95": 33.3,
+   "worst": 34.1,
+   "over20": 162,
+   "over34": 1,
+   "calls": 60,
+   "tris": 211349
+  },
+  {
+   "stop": 8,
+   "id": "control/inFuel",
+   "window": 15.9,
+   "frames": 853,
+   "fps": 53.6,
+   "p95": 33.3,
+   "worst": 49.9,
+   "over20": 103,
+   "over34": 1,
+   "calls": 51,
+   "tris": 39561
+  },
+  {
+   "stop": 9,
+   "id": "energy/boil",
+   "window": 45.2,
+   "frames": 2638,
+   "fps": 58.3,
+   "p95": 16.9,
+   "worst": 49.9,
+   "over20": 80,
+   "over34": 1,
+   "calls": 119,
+   "tris": 113825
+  },
+  {
+   "stop": 10,
+   "id": "safety/normal",
+   "window": 38.4,
+   "frames": 2198,
+   "fps": 57.2,
+   "p95": 17.1,
+   "worst": 66.7,
+   "over20": 98,
+   "over34": 8,
+   "calls": 67,
+   "tris": 60623
+  },
+  {
+   "stop": 11,
+   "id": "limits/limits",
+   "window": 11.7,
+   "frames": 704,
+   "fps": 60.1,
+   "p95": 16.8,
+   "worst": 17,
+   "over20": 0,
+   "over34": 0,
+   "calls": 88,
+   "tris": 70127
+  },
+  {
+   "stop": 12,
+   "id": "close/return",
+   "window": 24.5,
+   "frames": 1473,
+   "fps": 60.1,
+   "p95": 16.8,
+   "worst": 17.8,
+   "over20": 0,
+   "over34": 0,
+   "calls": 67,
+   "tris": 11375
+  }
+ ],
+ "log": {
+  "console": [
+   "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+  ],
+  "errors": [],
+  "external": []
+ }
+}

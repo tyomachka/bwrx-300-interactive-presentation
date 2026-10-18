@@ -1,0 +1,58 @@
+{
+ "frames": 2471,
+ "chapters": [
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12
+ ],
+ "ownershipOrGradeFailures": 0,
+ "maxGradeError": 0,
+ "scaledFrames": 545,
+ "switches": [
+  {
+   "chapter": 2,
+   "f": 14,
+   "scaled": true,
+   "scale": 0.9997372429221116,
+   "earth": false,
+   "filler": true
+  },
+  {
+   "chapter": 3,
+   "f": 95,
+   "scaled": false,
+   "scale": 0.9999671515889491,
+   "earth": true,
+   "filler": false
+  },
+  {
+   "chapter": 5,
+   "f": 20,
+   "scaled": true,
+   "scale": 0.999737242922112,
+   "earth": false,
+   "filler": true
+  },
+  {
+   "chapter": 6,
+   "f": 92,
+   "scaled": false,
+   "scale": 0.9999671515889481,
+   "earth": true,
+   "filler": false
+  }
+ ],
+ "console": [
+  "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+ ],
+ "errors": [],
+ "external": []
+}

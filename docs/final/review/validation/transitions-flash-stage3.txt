@@ -1,0 +1,5 @@
+s02: 211 frames, frames with any flashing pixel 51, most pixels 32355 px (f14, densest tile 94%), densest tile 94% at f14 (32355 px), solid pops (> 200 px and a tile >= 50 %): 1
+s05: 211 frames, frames with any flashing pixel 99, most pixels 6791 px (f92, densest tile 68%), densest tile 68% at f92 (6791 px), solid pops (> 200 px and a tile >= 50 %): 2
+s09: 211 frames, frames with any flashing pixel 79, most pixels 22119 px (f11, densest tile 100%), densest tile 100% at f11 (22119 px), solid pops (> 200 px and a tile >= 50 %): 1
+s10: 211 frames, frames with any flashing pixel 69, most pixels 12626 px (f89, densest tile 98%), densest tile 98% at f89 (12626 px), solid pops (> 200 px and a tile >= 50 %): 1
+frames over 200 flashing px: 5

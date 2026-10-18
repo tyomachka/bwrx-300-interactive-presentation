@@ -1,0 +1,13 @@
+{
+ "url": "https://tyomachka.github.io/bwrx-300-interactive-presentation/",
+ "readyMs": 12323,
+ "bundle": [
+  "https://tyomachka.github.io/bwrx-300-interactive-presentation/assets/index-Dw5MTYLh.js"
+ ],
+ "external": [],
+ "errors": [],
+ "console": [
+  "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+ ],
+ "requests": 7
+}

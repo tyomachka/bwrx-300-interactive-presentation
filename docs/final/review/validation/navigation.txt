@@ -1,0 +1,51 @@
+navigation: 50 / 50 passed; chapters 12; presses opening -> Q&A 11
+PASS  12 chapters, one stop each
+PASS  chapter order
+PASS  forward to chapter 1
+PASS  chapter 1 plays its beats by itself
+PASS  forward to chapter 2
+PASS  chapter 2 plays its beats by itself
+PASS  forward to chapter 3
+PASS  chapter 3 plays its beats by itself
+PASS  forward to chapter 4
+PASS  chapter 4 plays its beats by itself
+PASS  forward to chapter 5
+PASS  chapter 5 plays its beats by itself
+PASS  forward to chapter 6
+PASS  chapter 6 plays its beats by itself
+PASS  forward to chapter 7
+PASS  chapter 7 plays its beats by itself
+PASS  forward to chapter 8
+PASS  chapter 8 plays its beats by itself
+PASS  forward to chapter 9
+PASS  chapter 9 plays its beats by itself
+PASS  forward to chapter 10
+PASS  chapter 10 plays its beats by itself
+PASS  forward to chapter 11
+PASS  chapter 11 plays its beats by itself
+PASS  forward to chapter 12
+PASS  chapter 12 plays its beats by itself
+PASS  11 presses from the opening to the Q&A
+PASS  the closing holds (a press at the end does nothing)
+PASS  scale: a second press inside the guard is ignored
+PASS  scale: an early press after the guard goes to the next chapter
+PASS  safety: a second press inside the guard is ignored
+PASS  safety: an early press after the guard goes to the next chapter
+PASS  Limitations -> Q&A: one press enters the closing
+PASS  ... and the Q&A composition arrives by itself
+PASS  back to chapter 11
+PASS  back to chapter 10
+PASS  back to chapter 9
+PASS  back to chapter 8
+PASS  back to chapter 7
+PASS  back to chapter 6
+PASS  back to chapter 5
+PASS  back to chapter 4
+PASS  back to chapter 3
+PASS  back to chapter 2
+PASS  back to chapter 1
+PASS  R settles the current chapter at its final beat
+PASS  after R nothing runs on
+PASS  Home plays the opening, press counter reset
+PASS  Esc leaves the talk
+PASS  → resumes at the same chapter, settled

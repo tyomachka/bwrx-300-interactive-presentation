@@ -1,0 +1,1855 @@
+{
+ "mode": "settled",
+ "stops": 12,
+ "crossings": [],
+ "events": [
+  {
+   "text": "Virgilijus Kiltinavičius",
+   "stop": 1,
+   "appears": 3.4,
+   "beat": "hook/hero",
+   "beatTime": 3.05
+  },
+  {
+   "text": "Timofej Gaivoronskij",
+   "stop": 1,
+   "appears": 3.4,
+   "beat": "hook/hero",
+   "beatTime": 3.05
+  },
+  {
+   "text": "Mažieji moduliniai reaktoriai",
+   "stop": 1,
+   "appears": 4.4,
+   "beat": "hook/hero",
+   "beatTime": 4.05
+  },
+  {
+   "text": "BWRX-300",
+   "stop": 1,
+   "appears": 4.4,
+   "beat": "hook/hero",
+   "beatTime": 4.05
+  },
+  {
+   "text": "Interaktyvus modelis",
+   "stop": 1,
+   "appears": 5.33,
+   "beat": "hook/hero",
+   "beatTime": 4.98
+  },
+  {
+   "text": "Nuskenuokite ir tyrinėkite",
+   "stop": 1,
+   "appears": 5.33,
+   "beat": "hook/hero",
+   "beatTime": 4.98
+  },
+  {
+   "text": "Mažieji moduliniai reaktoriai",
+   "stop": 2,
+   "appears": 0,
+   "beat": "lithuania/renewables",
+   "beatTime": 0.07
+  },
+  {
+   "text": "BWRX-300",
+   "stop": 2,
+   "appears": 0,
+   "beat": "lithuania/renewables",
+   "beatTime": 0.07
+  },
+  {
+   "text": "Virgilijus Kiltinavičius",
+   "stop": 2,
+   "appears": 0,
+   "beat": "lithuania/renewables",
+   "beatTime": 0.07
+  },
+  {
+   "text": "Timofej Gaivoronskij",
+   "stop": 2,
+   "appears": 0,
+   "beat": "lithuania/renewables",
+   "beatTime": 0.07
+  },
+  {
+   "text": "Interaktyvus modelis",
+   "stop": 2,
+   "appears": 0,
+   "beat": "lithuania/renewables",
+   "beatTime": 0.07
+  },
+  {
+   "text": "Nuskenuokite ir tyrinėkite",
+   "stop": 2,
+   "appears": 0,
+   "beat": "lithuania/renewables",
+   "beatTime": 0.07
+  },
+  {
+   "text": "Lietuva",
+   "stop": 2,
+   "appears": 0.07,
+   "beat": "lithuania/renewables",
+   "beatTime": 0.13
+  },
+  {
+   "text": "0 %",
+   "stop": 2,
+   "appears": 3.93,
+   "beat": "lithuania/renewables",
+   "beatTime": 4
+  },
+  {
+   "text": "AEI gamyba 2025 m. sudarė 49,9 % bendro Lietuvos elektros po",
+   "stop": 2,
+   "appears": 3.93,
+   "beat": "lithuania/renewables",
+   "beatTime": 4
+  },
+  {
+   "text": "Šaltinis: „Litgrid“, 2025 m. elektros gamybos ir vartojimo b",
+   "stop": 2,
+   "appears": 3.93,
+   "beat": "lithuania/renewables",
+   "beatTime": 4
+  },
+  {
+   "text": "5 %",
+   "stop": 2,
+   "appears": 4,
+   "beat": "lithuania/renewables",
+   "beatTime": 4.07
+  },
+  {
+   "text": "10 %",
+   "stop": 2,
+   "appears": 4.07,
+   "beat": "lithuania/renewables",
+   "beatTime": 4.13
+  },
+  {
+   "text": "15 %",
+   "stop": 2,
+   "appears": 4.13,
+   "beat": "lithuania/renewables",
+   "beatTime": 4.2
+  },
+  {
+   "text": "19 %",
+   "stop": 2,
+   "appears": 4.2,
+   "beat": "lithuania/renewables",
+   "beatTime": 4.27
+  },
+  {
+   "text": "23 %",
+   "stop": 2,
+   "appears": 4.27,
+   "beat": "lithuania/renewables",
+   "beatTime": 4.33
+  },
+  {
+   "text": "26 %",
+   "stop": 2,
+   "appears": 4.33,
+   "beat": "lithuania/renewables",
+   "beatTime": 4.4
+  },
+  {
+   "text": "30 %",
+   "stop": 2,
+   "appears": 4.4,
+   "beat": "lithuania/renewables",
+   "beatTime": 4.47
+  },
+  {
+   "text": "33 %",
+   "stop": 2,
+   "appears": 4.47,
+   "beat": "lithuania/renewables",
+   "beatTime": 4.53
+  },
+  {
+   "text": "35 %",
+   "stop": 2,
+   "appears": 4.53,
+   "beat": "lithuania/renewables",
+   "beatTime": 4.6
+  },
+  {
+   "text": "38 %",
+   "stop": 2,
+   "appears": 4.6,
+   "beat": "lithuania/renewables",
+   "beatTime": 4.67
+  },
+  {
+   "text": "40 %",
+   "stop": 2,
+   "appears": 4.67,
+   "beat": "lithuania/renewables",
+   "beatTime": 4.73
+  },
+  {
+   "text": "41 %",
+   "stop": 2,
+   "appears": 4.73,
+   "beat": "lithuania/renewables",
+   "beatTime": 4.8
+  },
+  {
+   "text": "43 %",
+   "stop": 2,
+   "appears": 4.8,
+   "beat": "lithuania/renewables",
+   "beatTime": 4.87
+  },
+  {
+   "text": "44 %",
+   "stop": 2,
+   "appears": 4.87,
+   "beat": "lithuania/renewables",
+   "beatTime": 4.93
+  },
+  {
+   "text": "46 %",
+   "stop": 2,
+   "appears": 4.93,
+   "beat": "lithuania/renewables",
+   "beatTime": 5
+  },
+  {
+   "text": "47 %",
+   "stop": 2,
+   "appears": 5,
+   "beat": "lithuania/renewables",
+   "beatTime": 5.07
+  },
+  {
+   "text": "48 %",
+   "stop": 2,
+   "appears": 5.13,
+   "beat": "lithuania/renewables",
+   "beatTime": 5.2
+  },
+  {
+   "text": "49 %",
+   "stop": 2,
+   "appears": 5.2,
+   "beat": "lithuania/renewables",
+   "beatTime": 5.27
+  },
+  {
+   "text": "50 %",
+   "stop": 2,
+   "appears": 5.4,
+   "beat": "lithuania/renewables",
+   "beatTime": 5.47
+  },
+  {
+   "text": "Vietos gamyba: 73,3 % poreikio",
+   "stop": 2,
+   "appears": 9.67,
+   "beat": "lithuania/renewables",
+   "beatTime": 9.73
+  },
+  {
+   "text": "O kai nėra vėjo ir saulės?",
+   "stop": 2,
+   "appears": 15.53,
+   "beat": "lithuania/calm",
+   "beatTime": 1.6
+  },
+  {
+   "text": "Sistemai reikia ir valdomos gamybos",
+   "stop": 2,
+   "appears": 15.53,
+   "beat": "lithuania/calm",
+   "beatTime": 1.6
+  },
+  {
+   "text": "importas",
+   "stop": 2,
+   "appears": 16.6,
+   "beat": "lithuania/calm",
+   "beatTime": 2.67
+  },
+  {
+   "text": "Lietuva vertina BWRX-300",
+   "stop": 2,
+   "appears": 23.87,
+   "beat": "lithuania/assessment",
+   "beatTime": 1.43
+  },
+  {
+   "text": "2026 m. vasario memorandumas: techninis ir ekonominis vertin",
+   "stop": 2,
+   "appears": 23.87,
+   "beat": "lithuania/assessment",
+   "beatTime": 1.43
+  },
+  {
+   "text": "Šaltinis: LR energetikos ministerija, 2026-02-25",
+   "stop": 2,
+   "appears": 23.87,
+   "beat": "lithuania/assessment",
+   "beatTime": 1.43
+  },
+  {
+   "text": "Lietuva vertina BWRX-300",
+   "stop": 3,
+   "appears": 0,
+   "beat": "scale/units",
+   "beatTime": 0.07
+  },
+  {
+   "text": "2026 m. vasario memorandumas: techninis ir ekonominis vertin",
+   "stop": 3,
+   "appears": 0,
+   "beat": "scale/units",
+   "beatTime": 0.07
+  },
+  {
+   "text": "Šaltinis: LR energetikos ministerija, 2026-02-25",
+   "stop": 3,
+   "appears": 0,
+   "beat": "scale/units",
+   "beatTime": 0.07
+  },
+  {
+   "text": "Mastelis",
+   "stop": 3,
+   "appears": 0.07,
+   "beat": "scale/units",
+   "beatTime": 0.13
+  },
+  {
+   "text": "≈ 300 MW",
+   "stop": 3,
+   "appears": 7,
+   "beat": "scale/units",
+   "beatTime": 7.07
+  },
+  {
+   "text": "BWRX-300",
+   "stop": 3,
+   "appears": 7,
+   "beat": "scale/units",
+   "beatTime": 7.07
+  },
+  {
+   "text": "≈ 1 535 MW",
+   "stop": 3,
+   "appears": 12.4,
+   "beat": "scale/units",
+   "beatTime": 12.47
+  },
+  {
+   "text": "ESBWR – didelis tos pačios šeimos BWR",
+   "stop": 3,
+   "appears": 12.4,
+   "beat": "scale/units",
+   "beatTime": 12.47
+  },
+  {
+   "text": "Pastatų išdėstymas iliustracinis; mastelis suderintas. Galia",
+   "stop": 3,
+   "appears": 12.4,
+   "beat": "scale/units",
+   "beatTime": 12.47
+  },
+  {
+   "text": "Vienodi blokai – statomi vienas po kito",
+   "stop": 3,
+   "appears": 19.67,
+   "beat": "scale/modules",
+   "beatTime": 2.73
+  },
+  {
+   "text": "panaši bendra galia – ne vienas prie vieno pakaitalas",
+   "stop": 3,
+   "appears": 19.67,
+   "beat": "scale/modules",
+   "beatTime": 2.73
+  },
+  {
+   "text": "5 × 300 MW",
+   "stop": 3,
+   "appears": 23.67,
+   "beat": "scale/modules",
+   "beatTime": 6.73
+  },
+  {
+   "text": "reaktoriaus indai",
+   "stop": 3,
+   "appears": 30,
+   "beat": "scale/vessels",
+   "beatTime": 3.07
+  },
+  {
+   "text": "abu ≈ 27 m aukščio",
+   "stop": 3,
+   "appears": 30,
+   "beat": "scale/vessels",
+   "beatTime": 3.07
+  },
+  {
+   "text": "Reaktoriaus indai tuo pačiu masteliu",
+   "stop": 3,
+   "appears": 30.47,
+   "beat": "scale/vessels",
+   "beatTime": 3.53
+  },
+  {
+   "text": "10 m",
+   "stop": 3,
+   "appears": 30.47,
+   "beat": "scale/vessels",
+   "beatTime": 3.53
+  },
+  {
+   "text": "ESBWR",
+   "stop": 3,
+   "appears": 30.47,
+   "beat": "scale/vessels",
+   "beatTime": 3.53
+  },
+  {
+   "text": "⌀ 7,1 × 27,6 m",
+   "stop": 3,
+   "appears": 30.47,
+   "beat": "scale/vessels",
+   "beatTime": 3.53
+  },
+  {
+   "text": "1 132 kuro rinklės",
+   "stop": 3,
+   "appears": 30.47,
+   "beat": "scale/vessels",
+   "beatTime": 3.53
+  },
+  {
+   "text": "⌀ 4,2 × 27,4 m",
+   "stop": 3,
+   "appears": 30.47,
+   "beat": "scale/vessels",
+   "beatTime": 3.53
+  },
+  {
+   "text": "240 kuro rinklių",
+   "stop": 3,
+   "appears": 30.47,
+   "beat": "scale/vessels",
+   "beatTime": 3.53
+  },
+  {
+   "text": "Aukštis panašus. Skiriasi plotis, kuro kiekis, galia ir sist",
+   "stop": 3,
+   "appears": 30.47,
+   "beat": "scale/vessels",
+   "beatTime": 3.53
+  },
+  {
+   "text": "Vidiniai matmenys. GE Vernova Hitachi, BWRX-300 GD Rev. J (2",
+   "stop": 3,
+   "appears": 30.47,
+   "beat": "scale/vessels",
+   "beatTime": 3.53
+  },
+  {
+   "text": "Pastatų išdėstymas iliustracinis; mastelis suderintas. Galia",
+   "stop": 4,
+   "appears": 0,
+   "beat": "facts/power",
+   "beatTime": 0.07
+  },
+  {
+   "text": "≈ 300 MW",
+   "stop": 4,
+   "appears": 0,
+   "beat": "facts/power",
+   "beatTime": 0.07
+  },
+  {
+   "text": "BWRX-300",
+   "stop": 4,
+   "appears": 0,
+   "beat": "facts/power",
+   "beatTime": 0.07
+  },
+  {
+   "text": "≈ 1 535 MW",
+   "stop": 4,
+   "appears": 0,
+   "beat": "facts/power",
+   "beatTime": 0.07
+  },
+  {
+   "text": "ESBWR – didelis tos pačios šeimos BWR",
+   "stop": 4,
+   "appears": 0,
+   "beat": "facts/power",
+   "beatTime": 0.07
+  },
+  {
+   "text": "reaktoriaus indai",
+   "stop": 4,
+   "appears": 0,
+   "beat": "facts/power",
+   "beatTime": 0.07
+  },
+  {
+   "text": "abu ≈ 27 m aukščio",
+   "stop": 4,
+   "appears": 0,
+   "beat": "facts/power",
+   "beatTime": 0.07
+  },
+  {
+   "text": "Reaktoriaus indai tuo pačiu masteliu",
+   "stop": 4,
+   "appears": 0,
+   "beat": "facts/power",
+   "beatTime": 0.07
+  },
+  {
+   "text": "10 m",
+   "stop": 4,
+   "appears": 0,
+   "beat": "facts/power",
+   "beatTime": 0.07
+  },
+  {
+   "text": "ESBWR",
+   "stop": 4,
+   "appears": 0,
+   "beat": "facts/power",
+   "beatTime": 0.07
+  },
+  {
+   "text": "⌀ 7,1 × 27,6 m",
+   "stop": 4,
+   "appears": 0,
+   "beat": "facts/power",
+   "beatTime": 0.07
+  },
+  {
+   "text": "1 132 kuro rinklės",
+   "stop": 4,
+   "appears": 0,
+   "beat": "facts/power",
+   "beatTime": 0.07
+  },
+  {
+   "text": "⌀ 4,2 × 27,4 m",
+   "stop": 4,
+   "appears": 0,
+   "beat": "facts/power",
+   "beatTime": 0.07
+  },
+  {
+   "text": "240 kuro rinklių",
+   "stop": 4,
+   "appears": 0,
+   "beat": "facts/power",
+   "beatTime": 0.07
+  },
+  {
+   "text": "Aukštis panašus. Skiriasi plotis, kuro kiekis, galia ir sist",
+   "stop": 4,
+   "appears": 0,
+   "beat": "facts/power",
+   "beatTime": 0.07
+  },
+  {
+   "text": "Vidiniai matmenys. GE Vernova Hitachi, BWRX-300 GD Rev. J (2",
+   "stop": 4,
+   "appears": 0,
+   "beat": "facts/power",
+   "beatTime": 0.07
+  },
+  {
+   "text": "Trys faktai",
+   "stop": 4,
+   "appears": 0.07,
+   "beat": "facts/power",
+   "beatTime": 0.13
+  },
+  {
+   "text": "~227",
+   "stop": 4,
+   "appears": 2.93,
+   "beat": "facts/power",
+   "beatTime": 3
+  },
+  {
+   "text": "MW",
+   "stop": 4,
+   "appears": 2.93,
+   "beat": "facts/power",
+   "beatTime": 3
+  },
+  {
+   "text": "elektros galia (neto), vienas blokas",
+   "stop": 4,
+   "appears": 2.93,
+   "beat": "facts/power",
+   "beatTime": 3
+  },
+  {
+   "text": "į tinklą",
+   "stop": 4,
+   "appears": 2.93,
+   "beat": "facts/power",
+   "beatTime": 3
+  },
+  {
+   "text": "~240",
+   "stop": 4,
+   "appears": 3,
+   "beat": "facts/power",
+   "beatTime": 3.07
+  },
+  {
+   "text": "~252",
+   "stop": 4,
+   "appears": 3.07,
+   "beat": "facts/power",
+   "beatTime": 3.13
+  },
+  {
+   "text": "~262",
+   "stop": 4,
+   "appears": 3.13,
+   "beat": "facts/power",
+   "beatTime": 3.2
+  },
+  {
+   "text": "~271",
+   "stop": 4,
+   "appears": 3.2,
+   "beat": "facts/power",
+   "beatTime": 3.27
+  },
+  {
+   "text": "~278",
+   "stop": 4,
+   "appears": 3.27,
+   "beat": "facts/power",
+   "beatTime": 3.33
+  },
+  {
+   "text": "~284",
+   "stop": 4,
+   "appears": 3.33,
+   "beat": "facts/power",
+   "beatTime": 3.4
+  },
+  {
+   "text": "~289",
+   "stop": 4,
+   "appears": 3.4,
+   "beat": "facts/power",
+   "beatTime": 3.47
+  },
+  {
+   "text": "~293",
+   "stop": 4,
+   "appears": 3.47,
+   "beat": "facts/power",
+   "beatTime": 3.53
+  },
+  {
+   "text": "~295",
+   "stop": 4,
+   "appears": 3.53,
+   "beat": "facts/power",
+   "beatTime": 3.6
+  },
+  {
+   "text": "~297",
+   "stop": 4,
+   "appears": 3.6,
+   "beat": "facts/power",
+   "beatTime": 3.67
+  },
+  {
+   "text": "~299",
+   "stop": 4,
+   "appears": 3.67,
+   "beat": "facts/power",
+   "beatTime": 3.73
+  },
+  {
+   "text": "~300",
+   "stop": 4,
+   "appears": 3.8,
+   "beat": "facts/power",
+   "beatTime": 3.87
+  },
+  {
+   "text": "≈ 9 800 m²",
+   "stop": 4,
+   "appears": 10.2,
+   "beat": "facts/footprint",
+   "beatTime": 3.27
+  },
+  {
+   "text": "energetinis blokas · plotui lygiavertė schema",
+   "stop": 4,
+   "appears": 10.2,
+   "beat": "facts/footprint",
+   "beatTime": 3.27
+  },
+  {
+   "text": "105 × 68 m",
+   "stop": 4,
+   "appears": 11,
+   "beat": "facts/footprint",
+   "beatTime": 4.07
+  },
+  {
+   "text": "UEFA IV kategorijos aikštė",
+   "stop": 4,
+   "appears": 11,
+   "beat": "facts/footprint",
+   "beatTime": 4.07
+  },
+  {
+   "text": "Vilniaus Nacionalinis stadionas — UEFA IV kategorijos projek",
+   "stop": 4,
+   "appears": 11,
+   "beat": "facts/footprint",
+   "beatTime": 4.07
+  },
+  {
+   "text": "≈ 1,4",
+   "stop": 4,
+   "appears": 11.6,
+   "beat": "facts/footprint",
+   "beatTime": 4.67
+  },
+  {
+   "text": "futbolo aikštės ploto",
+   "stop": 4,
+   "appears": 11.6,
+   "beat": "facts/footprint",
+   "beatTime": 4.67
+  },
+  {
+   "text": "BWRX-300 energetinis blokas užima ≈ 9 800 m²",
+   "stop": 4,
+   "appears": 11.6,
+   "beat": "facts/footprint",
+   "beatTime": 4.67
+  },
+  {
+   "text": "GE Vernova Hitachi, BWRX-300 GD Rev. J (2026), 21-2 lent. Ai",
+   "stop": 4,
+   "appears": 11.6,
+   "beat": "facts/footprint",
+   "beatTime": 4.67
+  },
+  {
+   "text": "vėlesnis serijinis blokas",
+   "stop": 4,
+   "appears": 26.13,
+   "beat": "facts/months",
+   "beatTime": 1.2
+  },
+  {
+   "text": "0",
+   "stop": 4,
+   "appears": 26.13,
+   "beat": "facts/months",
+   "beatTime": 1.2
+  },
+  {
+   "text": "12",
+   "stop": 4,
+   "appears": 26.13,
+   "beat": "facts/months",
+   "beatTime": 1.2
+  },
+  {
+   "text": "24",
+   "stop": 4,
+   "appears": 26.13,
+   "beat": "facts/months",
+   "beatTime": 1.2
+  },
+  {
+   "text": "36",
+   "stop": 4,
+   "appears": 26.13,
+   "beat": "facts/months",
+   "beatTime": 1.2
+  },
+  {
+   "text": "24–36",
+   "stop": 4,
+   "appears": 29,
+   "beat": "facts/months",
+   "beatTime": 4.07
+  },
+  {
+   "text": "mėn.*",
+   "stop": 4,
+   "appears": 29,
+   "beat": "facts/months",
+   "beatTime": 4.07
+  },
+  {
+   "text": "statyba: nuo pirmojo branduolinio betono iki pasirengimo pak",
+   "stop": 4,
+   "appears": 29,
+   "beat": "facts/months",
+   "beatTime": 4.07
+  },
+  {
+   "text": "*Gamintojo tikslas vėlesniems (nth-of-a-kind) blokams; ne vi",
+   "stop": 4,
+   "appears": 29,
+   "beat": "facts/months",
+   "beatTime": 4.07
+  },
+  {
+   "text": "24–36",
+   "stop": 5,
+   "appears": 0,
+   "beat": "projects/world",
+   "beatTime": 0.07
+  },
+  {
+   "text": "mėn.*",
+   "stop": 5,
+   "appears": 0,
+   "beat": "projects/world",
+   "beatTime": 0.07
+  },
+  {
+   "text": "statyba: nuo pirmojo branduolinio betono iki pasirengimo pak",
+   "stop": 5,
+   "appears": 0,
+   "beat": "projects/world",
+   "beatTime": 0.07
+  },
+  {
+   "text": "*Gamintojo tikslas vėlesniems (nth-of-a-kind) blokams; ne vi",
+   "stop": 5,
+   "appears": 0,
+   "beat": "projects/world",
+   "beatTime": 0.07
+  },
+  {
+   "text": "vėlesnis serijinis blokas",
+   "stop": 5,
+   "appears": 0,
+   "beat": "projects/world",
+   "beatTime": 0.07
+  },
+  {
+   "text": "0",
+   "stop": 5,
+   "appears": 0,
+   "beat": "projects/world",
+   "beatTime": 0.07
+  },
+  {
+   "text": "12",
+   "stop": 5,
+   "appears": 0,
+   "beat": "projects/world",
+   "beatTime": 0.07
+  },
+  {
+   "text": "24",
+   "stop": 5,
+   "appears": 0,
+   "beat": "projects/world",
+   "beatTime": 0.07
+  },
+  {
+   "text": "36",
+   "stop": 5,
+   "appears": 0,
+   "beat": "projects/world",
+   "beatTime": 0.07
+  },
+  {
+   "text": "Projektai",
+   "stop": 5,
+   "appears": 0.07,
+   "beat": "projects/world",
+   "beatTime": 0.13
+  },
+  {
+   "text": "Darlingtonas, Kanada",
+   "stop": 5,
+   "appears": 4.27,
+   "beat": "projects/world",
+   "beatTime": 4.33
+  },
+  {
+   "text": "statoma",
+   "stop": 5,
+   "appears": 4.27,
+   "beat": "projects/world",
+   "beatTime": 4.33
+  },
+  {
+   "text": "išduotas statybos leidimas",
+   "stop": 5,
+   "appears": 4.6,
+   "beat": "projects/world",
+   "beatTime": 4.67
+  },
+  {
+   "text": "rengiamas projektas",
+   "stop": 5,
+   "appears": 4.6,
+   "beat": "projects/world",
+   "beatTime": 4.67
+  },
+  {
+   "text": "planuojama",
+   "stop": 5,
+   "appears": 4.6,
+   "beat": "projects/world",
+   "beatTime": 4.67
+  },
+  {
+   "text": "vertinama",
+   "stop": 5,
+   "appears": 4.6,
+   "beat": "projects/world",
+   "beatTime": 4.67
+  },
+  {
+   "text": "Šaltiniai: CNSC, US NRC, GE Vernova Hitachi, ORLEN Synthos G",
+   "stop": 5,
+   "appears": 4.6,
+   "beat": "projects/world",
+   "beatTime": 4.67
+  },
+  {
+   "text": "Clinch River, JAV",
+   "stop": 5,
+   "appears": 7.67,
+   "beat": "projects/world",
+   "beatTime": 7.73
+  },
+  {
+   "text": "statybos leidimas išduotas 2026-09-29",
+   "stop": 5,
+   "appears": 7.67,
+   "beat": "projects/world",
+   "beatTime": 7.73
+  },
+  {
+   "text": "Lenkija",
+   "stop": 5,
+   "appears": 11.27,
+   "beat": "projects/world",
+   "beatTime": 11.33
+  },
+  {
+   "text": "kuriamas bendrasis BWRX-300 projektas",
+   "stop": 5,
+   "appears": 11.27,
+   "beat": "projects/world",
+   "beatTime": 11.33
+  },
+  {
+   "text": "Estija",
+   "stop": 5,
+   "appears": 13.47,
+   "beat": "projects/world",
+   "beatTime": 13.53
+  },
+  {
+   "text": "pasirinkta, planuojama",
+   "stop": 5,
+   "appears": 13.47,
+   "beat": "projects/world",
+   "beatTime": 13.53
+  },
+  {
+   "text": "Lietuva",
+   "stop": 5,
+   "appears": 15.47,
+   "beat": "projects/world",
+   "beatTime": 15.53
+  },
+  {
+   "text": "vertinama (memorandumas, 2026-02-25)",
+   "stop": 5,
+   "appears": 15.47,
+   "beat": "projects/world",
+   "beatTime": 15.53
+  },
+  {
+   "text": "CNSC statybos licencija – 2025-04-04",
+   "stop": 5,
+   "appears": 24.47,
+   "beat": "projects/darlington",
+   "beatTime": 3.03
+  },
+  {
+   "text": "statoma",
+   "stop": 6,
+   "appears": 0,
+   "beat": "handoff/land",
+   "beatTime": 0.07
+  },
+  {
+   "text": "išduotas statybos leidimas",
+   "stop": 6,
+   "appears": 0,
+   "beat": "handoff/land",
+   "beatTime": 0.07
+  },
+  {
+   "text": "rengiamas projektas",
+   "stop": 6,
+   "appears": 0,
+   "beat": "handoff/land",
+   "beatTime": 0.07
+  },
+  {
+   "text": "planuojama",
+   "stop": 6,
+   "appears": 0,
+   "beat": "handoff/land",
+   "beatTime": 0.07
+  },
+  {
+   "text": "vertinama",
+   "stop": 6,
+   "appears": 0,
+   "beat": "handoff/land",
+   "beatTime": 0.07
+  },
+  {
+   "text": "Šaltiniai: CNSC, US NRC, GE Vernova Hitachi, ORLEN Synthos G",
+   "stop": 6,
+   "appears": 0,
+   "beat": "handoff/land",
+   "beatTime": 0.07
+  },
+  {
+   "text": "Darlingtonas, Kanada",
+   "stop": 6,
+   "appears": 0,
+   "beat": "handoff/land",
+   "beatTime": 0.07
+  },
+  {
+   "text": "CNSC statybos licencija – 2025-04-04",
+   "stop": 6,
+   "appears": 0,
+   "beat": "handoff/land",
+   "beatTime": 0.07
+  },
+  {
+   "text": "Dalijimasis",
+   "stop": 7,
+   "appears": 0.07,
+   "beat": "fission/chain",
+   "beatTime": 0.13
+  },
+  {
+   "text": "Schema, ne mastelis; dalijimasis išlaisvina 2–3 neutronus",
+   "stop": 7,
+   "appears": 0.73,
+   "beat": "fission/chain",
+   "beatTime": 0.8
+  },
+  {
+   "text": "U-235",
+   "stop": 7,
+   "appears": 2.13,
+   "beat": "fission/chain",
+   "beatTime": 2.2
+  },
+  {
+   "text": "neutronas",
+   "stop": 7,
+   "appears": 2.73,
+   "beat": "fission/chain",
+   "beatTime": 2.8
+  },
+  {
+   "text": "sugertas",
+   "stop": 7,
+   "appears": 8.87,
+   "beat": "fission/chain",
+   "beatTime": 8.93
+  },
+  {
+   "text": "energija → šiluma",
+   "stop": 7,
+   "appears": 9.73,
+   "beat": "fission/chain",
+   "beatTime": 9.8
+  },
+  {
+   "text": "grandininė reakcija",
+   "stop": 7,
+   "appears": 15.2,
+   "beat": "fission/chain",
+   "beatTime": 15.27
+  },
+  {
+   "text": "Valdoma grandininė reakcija",
+   "stop": 7,
+   "appears": 26.87,
+   "beat": "fission/chain",
+   "beatTime": 26.93
+  },
+  {
+   "text": "vidutiniškai vienas dalijimasis sukelia maždaug vieną kitą",
+   "stop": 7,
+   "appears": 26.87,
+   "beat": "fission/chain",
+   "beatTime": 26.93
+  },
+  {
+   "text": "Schema, ne mastelis; dalijimasis išlaisvina 2–3 neutronus",
+   "stop": 8,
+   "appears": 0,
+   "beat": "control/inFuel",
+   "beatTime": 0.07
+  },
+  {
+   "text": "Valdoma grandininė reakcija",
+   "stop": 8,
+   "appears": 0,
+   "beat": "control/inFuel",
+   "beatTime": 0.07
+  },
+  {
+   "text": "vidutiniškai vienas dalijimasis sukelia maždaug vieną kitą",
+   "stop": 8,
+   "appears": 0,
+   "beat": "control/inFuel",
+   "beatTime": 0.07
+  },
+  {
+   "text": "Valdymas",
+   "stop": 8,
+   "appears": 0.07,
+   "beat": "control/inFuel",
+   "beatTime": 0.13
+  },
+  {
+   "text": "Tai vyksta kure",
+   "stop": 8,
+   "appears": 1.67,
+   "beat": "control/inFuel",
+   "beatTime": 1.73
+  },
+  {
+   "text": "Iliustracinis judesys",
+   "stop": 8,
+   "appears": 5.8,
+   "beat": "control/blades",
+   "beatTime": 3.47
+  },
+  {
+   "text": "valdymo mentės",
+   "stop": 8,
+   "appears": 5.8,
+   "beat": "control/blades",
+   "beatTime": 3.47
+  },
+  {
+   "text": "sugeria neutronus",
+   "stop": 8,
+   "appears": 5.8,
+   "beat": "control/blades",
+   "beatTime": 3.47
+  },
+  {
+   "text": "Giliau įstumtos → mažiau reakcijų",
+   "stop": 8,
+   "appears": 7.93,
+   "beat": "control/insert",
+   "beatTime": 1.2
+  },
+  {
+   "text": "Atitrauktos → daugiau reakcijų",
+   "stop": 8,
+   "appears": 13.53,
+   "beat": "control/withdraw",
+   "beatTime": 1.2
+  },
+  {
+   "text": "Iliustracinis judesys",
+   "stop": 9,
+   "appears": 0,
+   "beat": "energy/boil",
+   "beatTime": 0.07
+  },
+  {
+   "text": "valdymo mentės",
+   "stop": 9,
+   "appears": 0,
+   "beat": "energy/boil",
+   "beatTime": 0.07
+  },
+  {
+   "text": "sugeria neutronus",
+   "stop": 9,
+   "appears": 0,
+   "beat": "energy/boil",
+   "beatTime": 0.07
+  },
+  {
+   "text": "Giliau įstumtos → mažiau reakcijų",
+   "stop": 9,
+   "appears": 0,
+   "beat": "energy/boil",
+   "beatTime": 0.07
+  },
+  {
+   "text": "Atitrauktos → daugiau reakcijų",
+   "stop": 9,
+   "appears": 0,
+   "beat": "energy/boil",
+   "beatTime": 0.07
+  },
+  {
+   "text": "Nuo atomo iki elektros",
+   "stop": 9,
+   "appears": 0.07,
+   "beat": "energy/boil",
+   "beatTime": 0.13
+  },
+  {
+   "text": "vanduo kyla",
+   "stop": 9,
+   "appears": 2.6,
+   "beat": "energy/boil",
+   "beatTime": 2.67
+  },
+  {
+   "text": "verda",
+   "stop": 9,
+   "appears": 2.6,
+   "beat": "energy/boil",
+   "beatTime": 2.67
+  },
+  {
+   "text": "Natūrali cirkuliacija",
+   "stop": 9,
+   "appears": 7.2,
+   "beat": "energy/boil",
+   "beatTime": 7.27
+  },
+  {
+   "text": "normaliai cirkuliacijai per aktyviąją zoną nereikia didelių ",
+   "stop": 9,
+   "appears": 7.2,
+   "beat": "energy/boil",
+   "beatTime": 7.27
+  },
+  {
+   "text": "separatoriai",
+   "stop": 9,
+   "appears": 19,
+   "beat": "energy/steam",
+   "beatTime": 2.07
+  },
+  {
+   "text": "džiovintuvas",
+   "stop": 9,
+   "appears": 21.4,
+   "beat": "energy/steam",
+   "beatTime": 4.47
+  },
+  {
+   "text": "turbina",
+   "stop": 9,
+   "appears": 26.47,
+   "beat": "energy/turbine",
+   "beatTime": 4.03
+  },
+  {
+   "text": "kondensatorius",
+   "stop": 9,
+   "appears": 30.67,
+   "beat": "energy/condenser",
+   "beatTime": 2.23
+  },
+  {
+   "text": "vanduo grįžta į reaktorių",
+   "stop": 9,
+   "appears": 34.07,
+   "beat": "energy/condenser",
+   "beatTime": 5.63
+  },
+  {
+   "text": "generatorius",
+   "stop": 9,
+   "appears": 36.6,
+   "beat": "energy/grid",
+   "beatTime": 1.17
+  },
+  {
+   "text": "≈ 18 362",
+   "stop": 9,
+   "appears": 42.07,
+   "beat": "energy/grid",
+   "beatTime": 6.63
+  },
+  {
+   "text": "namų ūkių*",
+   "stop": 9,
+   "appears": 42.07,
+   "beat": "energy/grid",
+   "beatTime": 6.63
+  },
+  {
+   "text": "*GE Vernova iliustracinis palyginimas; faktinis skaičius pri",
+   "stop": 9,
+   "appears": 42.07,
+   "beat": "energy/grid",
+   "beatTime": 6.63
+  },
+  {
+   "text": "≈ 52 808",
+   "stop": 9,
+   "appears": 42.13,
+   "beat": "energy/grid",
+   "beatTime": 6.7
+  },
+  {
+   "text": "≈ 84 323",
+   "stop": 9,
+   "appears": 42.2,
+   "beat": "energy/grid",
+   "beatTime": 6.77
+  },
+  {
+   "text": "≈ 113 040",
+   "stop": 9,
+   "appears": 42.27,
+   "beat": "energy/grid",
+   "beatTime": 6.83
+  },
+  {
+   "text": "≈ 139 087",
+   "stop": 9,
+   "appears": 42.33,
+   "beat": "energy/grid",
+   "beatTime": 6.9
+  },
+  {
+   "text": "≈ 162 595",
+   "stop": 9,
+   "appears": 42.4,
+   "beat": "energy/grid",
+   "beatTime": 6.97
+  },
+  {
+   "text": "≈ 183 694",
+   "stop": 9,
+   "appears": 42.47,
+   "beat": "energy/grid",
+   "beatTime": 7.03
+  },
+  {
+   "text": "≈ 202 515",
+   "stop": 9,
+   "appears": 42.53,
+   "beat": "energy/grid",
+   "beatTime": 7.1
+  },
+  {
+   "text": "≈ 219 187",
+   "stop": 9,
+   "appears": 42.6,
+   "beat": "energy/grid",
+   "beatTime": 7.17
+  },
+  {
+   "text": "≈ 233 841",
+   "stop": 9,
+   "appears": 42.67,
+   "beat": "energy/grid",
+   "beatTime": 7.23
+  },
+  {
+   "text": "≈ 246 606",
+   "stop": 9,
+   "appears": 42.73,
+   "beat": "energy/grid",
+   "beatTime": 7.3
+  },
+  {
+   "text": "≈ 257 614",
+   "stop": 9,
+   "appears": 42.8,
+   "beat": "energy/grid",
+   "beatTime": 7.37
+  },
+  {
+   "text": "≈ 266 995",
+   "stop": 9,
+   "appears": 42.87,
+   "beat": "energy/grid",
+   "beatTime": 7.43
+  },
+  {
+   "text": "≈ 274 878",
+   "stop": 9,
+   "appears": 42.93,
+   "beat": "energy/grid",
+   "beatTime": 7.5
+  },
+  {
+   "text": "≈ 281 394",
+   "stop": 9,
+   "appears": 43,
+   "beat": "energy/grid",
+   "beatTime": 7.57
+  },
+  {
+   "text": "≈ 286 673",
+   "stop": 9,
+   "appears": 43.07,
+   "beat": "energy/grid",
+   "beatTime": 7.63
+  },
+  {
+   "text": "≈ 290 845",
+   "stop": 9,
+   "appears": 43.13,
+   "beat": "energy/grid",
+   "beatTime": 7.7
+  },
+  {
+   "text": "≈ 294 040",
+   "stop": 9,
+   "appears": 43.2,
+   "beat": "energy/grid",
+   "beatTime": 7.77
+  },
+  {
+   "text": "≈ 296 389",
+   "stop": 9,
+   "appears": 43.27,
+   "beat": "energy/grid",
+   "beatTime": 7.83
+  },
+  {
+   "text": "≈ 298 022",
+   "stop": 9,
+   "appears": 43.33,
+   "beat": "energy/grid",
+   "beatTime": 7.9
+  },
+  {
+   "text": "≈ 299 070",
+   "stop": 9,
+   "appears": 43.4,
+   "beat": "energy/grid",
+   "beatTime": 7.97
+  },
+  {
+   "text": "≈ 299 661",
+   "stop": 9,
+   "appears": 43.47,
+   "beat": "energy/grid",
+   "beatTime": 8.03
+  },
+  {
+   "text": "≈ 299 927",
+   "stop": 9,
+   "appears": 43.53,
+   "beat": "energy/grid",
+   "beatTime": 8.1
+  },
+  {
+   "text": "≈ 299 997",
+   "stop": 9,
+   "appears": 43.6,
+   "beat": "energy/grid",
+   "beatTime": 8.17
+  },
+  {
+   "text": "≈ 300 000",
+   "stop": 9,
+   "appears": 43.67,
+   "beat": "energy/grid",
+   "beatTime": 8.23
+  },
+  {
+   "text": "≈ 300 000",
+   "stop": 10,
+   "appears": 0,
+   "beat": "safety/normal",
+   "beatTime": 0.07
+  },
+  {
+   "text": "namų ūkių*",
+   "stop": 10,
+   "appears": 0,
+   "beat": "safety/normal",
+   "beatTime": 0.07
+  },
+  {
+   "text": "*GE Vernova iliustracinis palyginimas; faktinis skaičius pri",
+   "stop": 10,
+   "appears": 0,
+   "beat": "safety/normal",
+   "beatTime": 0.07
+  },
+  {
+   "text": "Pasyvioji sauga",
+   "stop": 10,
+   "appears": 0.07,
+   "beat": "safety/normal",
+   "beatTime": 0.13
+  },
+  {
+   "text": "Įprastas darbas",
+   "stop": 10,
+   "appears": 2.33,
+   "beat": "safety/normal",
+   "beatTime": 2.4
+  },
+  {
+   "text": "Dingo išorinis elektros tiekimas",
+   "stop": 10,
+   "appears": 5.33,
+   "beat": "safety/blackout",
+   "beatTime": 1
+  },
+  {
+   "text": "Grandininė reakcija sustabdoma",
+   "stop": 10,
+   "appears": 8.93,
+   "beat": "safety/scram",
+   "beatTime": 3
+  },
+  {
+   "text": "Bet šiluma nedingsta iš karto",
+   "stop": 10,
+   "appears": 12.33,
+   "beat": "safety/decay",
+   "beatTime": 1.6
+  },
+  {
+   "text": "dalijimasis",
+   "stop": 10,
+   "appears": 13.4,
+   "beat": "safety/decay",
+   "beatTime": 2.67
+  },
+  {
+   "text": "≈ 0",
+   "stop": 10,
+   "appears": 13.4,
+   "beat": "safety/decay",
+   "beatTime": 2.67
+  },
+  {
+   "text": "liekamoji šiluma",
+   "stop": 10,
+   "appears": 13.4,
+   "beat": "safety/decay",
+   "beatTime": 2.67
+  },
+  {
+   "text": "≠ 0",
+   "stop": 10,
+   "appears": 13.4,
+   "beat": "safety/decay",
+   "beatTime": 2.67
+  },
+  {
+   "text": "Pasyvusis aušinimas",
+   "stop": 10,
+   "appears": 20.53,
+   "beat": "safety/ics",
+   "beatTime": 3.6
+  },
+  {
+   "text": "3 nepriklausomos grandys · be siurblių ir be išorinės elektr",
+   "stop": 10,
+   "appears": 20.53,
+   "beat": "safety/ics",
+   "beatTime": 3.6
+  },
+  {
+   "text": "garai kyla",
+   "stop": 10,
+   "appears": 22.2,
+   "beat": "safety/ics",
+   "beatTime": 5.27
+  },
+  {
+   "text": "šiluma – į baseiną",
+   "stop": 10,
+   "appears": 22.2,
+   "beat": "safety/ics",
+   "beatTime": 5.27
+  },
+  {
+   "text": "vanduo grįžta",
+   "stop": 10,
+   "appears": 22.2,
+   "beat": "safety/ics",
+   "beatTime": 5.27
+  },
+  {
+   "text": "1 para",
+   "stop": 10,
+   "appears": 33.2,
+   "beat": "safety/days",
+   "beatTime": 2.27
+  },
+  {
+   "text": "*Pakanka 2 iš 3 grandžių; be operatoriaus veiksmų ir be išor",
+   "stop": 10,
+   "appears": 33.2,
+   "beat": "safety/days",
+   "beatTime": 2.27
+  },
+  {
+   "text": "2 paros",
+   "stop": 10,
+   "appears": 33.8,
+   "beat": "safety/days",
+   "beatTime": 2.87
+  },
+  {
+   "text": "3 paros",
+   "stop": 10,
+   "appears": 34.4,
+   "beat": "safety/days",
+   "beatTime": 3.47
+  },
+  {
+   "text": "4 paros",
+   "stop": 10,
+   "appears": 35,
+   "beat": "safety/days",
+   "beatTime": 4.07
+  },
+  {
+   "text": "5 paros",
+   "stop": 10,
+   "appears": 35.67,
+   "beat": "safety/days",
+   "beatTime": 4.73
+  },
+  {
+   "text": "6 paros",
+   "stop": 10,
+   "appears": 36.27,
+   "beat": "safety/days",
+   "beatTime": 5.33
+  },
+  {
+   "text": "7 paros*",
+   "stop": 10,
+   "appears": 36.87,
+   "beat": "safety/days",
+   "beatTime": 5.93
+  },
+  {
+   "text": "Pasyvusis aušinimas",
+   "stop": 11,
+   "appears": 0,
+   "beat": "limits/limits",
+   "beatTime": 0.07
+  },
+  {
+   "text": "3 nepriklausomos grandys · be siurblių ir be išorinės elektr",
+   "stop": 11,
+   "appears": 0,
+   "beat": "limits/limits",
+   "beatTime": 0.07
+  },
+  {
+   "text": "garai kyla",
+   "stop": 11,
+   "appears": 0,
+   "beat": "limits/limits",
+   "beatTime": 0.07
+  },
+  {
+   "text": "šiluma – į baseiną",
+   "stop": 11,
+   "appears": 0,
+   "beat": "limits/limits",
+   "beatTime": 0.07
+  },
+  {
+   "text": "vanduo grįžta",
+   "stop": 11,
+   "appears": 0,
+   "beat": "limits/limits",
+   "beatTime": 0.07
+  },
+  {
+   "text": "7 paros*",
+   "stop": 11,
+   "appears": 0,
+   "beat": "limits/limits",
+   "beatTime": 0.07
+  },
+  {
+   "text": "*Pakanka 2 iš 3 grandžių; be operatoriaus veiksmų ir be išor",
+   "stop": 11,
+   "appears": 0,
+   "beat": "limits/limits",
+   "beatTime": 0.07
+  },
+  {
+   "text": "Iššūkiai",
+   "stop": 11,
+   "appears": 0.07,
+   "beat": "limits/limits",
+   "beatTime": 0.13
+  },
+  {
+   "text": "ATLIEKOS",
+   "stop": 11,
+   "appears": 5.07,
+   "beat": "limits/limits",
+   "beatTime": 5.13
+  },
+  {
+   "text": "panaudotą kurą reikia saugoti",
+   "stop": 11,
+   "appears": 5.07,
+   "beat": "limits/limits",
+   "beatTime": 5.13
+  },
+  {
+   "text": "LICENCIJAVIMAS",
+   "stop": 11,
+   "appears": 7.27,
+   "beat": "limits/limits",
+   "beatTime": 7.33
+  },
+  {
+   "text": "kiekviena šalis vertina atskirai",
+   "stop": 11,
+   "appears": 7.27,
+   "beat": "limits/limits",
+   "beatTime": 7.33
+  },
+  {
+   "text": "PIRMŲJŲ PROJEKTŲ RIZIKA",
+   "stop": 11,
+   "appears": 9.67,
+   "beat": "limits/limits",
+   "beatTime": 9.73
+  },
+  {
+   "text": "kaina ir terminai dar tikslinami",
+   "stop": 11,
+   "appears": 9.67,
+   "beat": "limits/limits",
+   "beatTime": 9.73
+  },
+  {
+   "text": "ATLIEKOS",
+   "stop": 12,
+   "appears": 0,
+   "beat": "close/return",
+   "beatTime": 0.07
+  },
+  {
+   "text": "panaudotą kurą reikia saugoti",
+   "stop": 12,
+   "appears": 0,
+   "beat": "close/return",
+   "beatTime": 0.07
+  },
+  {
+   "text": "LICENCIJAVIMAS",
+   "stop": 12,
+   "appears": 0,
+   "beat": "close/return",
+   "beatTime": 0.07
+  },
+  {
+   "text": "kiekviena šalis vertina atskirai",
+   "stop": 12,
+   "appears": 0,
+   "beat": "close/return",
+   "beatTime": 0.07
+  },
+  {
+   "text": "PIRMŲJŲ PROJEKTŲ RIZIKA",
+   "stop": 12,
+   "appears": 0,
+   "beat": "close/return",
+   "beatTime": 0.07
+  },
+  {
+   "text": "kaina ir terminai dar tikslinami",
+   "stop": 12,
+   "appears": 0,
+   "beat": "close/return",
+   "beatTime": 0.07
+  },
+  {
+   "text": "Ta pati fizika. Kitas mastelis.",
+   "stop": 12,
+   "appears": 5.6,
+   "beat": "close/qa",
+   "beatTime": 0.67
+  },
+  {
+   "text": "Virgilijus Kiltinavičius",
+   "stop": 12,
+   "appears": 6.33,
+   "beat": "close/qa",
+   "beatTime": 1.4
+  },
+  {
+   "text": "Timofej Gaivoronskij",
+   "stop": 12,
+   "appears": 6.33,
+   "beat": "close/qa",
+   "beatTime": 1.4
+  },
+  {
+   "text": "Interaktyvus modelis",
+   "stop": 12,
+   "appears": 6.93,
+   "beat": "close/qa",
+   "beatTime": 2
+  },
+  {
+   "text": "Nuskenuokite ir tyrinėkite",
+   "stop": 12,
+   "appears": 6.93,
+   "beat": "close/qa",
+   "beatTime": 2
+  },
+  {
+   "text": "Jūsų klausimai",
+   "stop": 12,
+   "appears": 22.33,
+   "beat": "close/qa",
+   "beatTime": 17.4
+  }
+ ],
+ "log": {
+  "console": [
+   "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+  ],
+  "errors": [],
+  "external": []
+ }
+}

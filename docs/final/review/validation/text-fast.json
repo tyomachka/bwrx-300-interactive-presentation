@@ -1,0 +1,413 @@
+{
+ "mode": "fast",
+ "stops": 12,
+ "crossings": [],
+ "events": [
+  {
+   "text": "Mažieji moduliniai reaktoriai",
+   "stop": 2,
+   "appears": 0,
+   "beat": "lithuania/renewables",
+   "beatTime": 0.07
+  },
+  {
+   "text": "BWRX-300",
+   "stop": 2,
+   "appears": 0,
+   "beat": "lithuania/renewables",
+   "beatTime": 0.07
+  },
+  {
+   "text": "Virgilijus Kiltinavičius",
+   "stop": 2,
+   "appears": 0,
+   "beat": "lithuania/renewables",
+   "beatTime": 0.07
+  },
+  {
+   "text": "Timofej Gaivoronskij",
+   "stop": 2,
+   "appears": 0,
+   "beat": "lithuania/renewables",
+   "beatTime": 0.07
+  },
+  {
+   "text": "Interaktyvus modelis",
+   "stop": 2,
+   "appears": 0,
+   "beat": "lithuania/renewables",
+   "beatTime": 0.07
+  },
+  {
+   "text": "Nuskenuokite ir tyrinėkite",
+   "stop": 2,
+   "appears": 0,
+   "beat": "lithuania/renewables",
+   "beatTime": 0.07
+  },
+  {
+   "text": "Lietuva",
+   "stop": 2,
+   "appears": 0.07,
+   "beat": "lithuania/renewables",
+   "beatTime": 0.13
+  },
+  {
+   "text": "50 %",
+   "stop": 3,
+   "appears": 0,
+   "beat": "scale/units",
+   "beatTime": 0.07
+  },
+  {
+   "text": "AEI gamyba 2025 m. sudarė 49,9 % bendro Lietuvos elektros po",
+   "stop": 3,
+   "appears": 0,
+   "beat": "scale/units",
+   "beatTime": 0.07
+  },
+  {
+   "text": "Vietos gamyba: 73,3 % poreikio",
+   "stop": 3,
+   "appears": 0,
+   "beat": "scale/units",
+   "beatTime": 0.07
+  },
+  {
+   "text": "Šaltinis: „Litgrid“, 2025 m. elektros gamybos ir vartojimo b",
+   "stop": 3,
+   "appears": 0,
+   "beat": "scale/units",
+   "beatTime": 0.07
+  },
+  {
+   "text": "Mastelis",
+   "stop": 3,
+   "appears": 0.07,
+   "beat": "scale/units",
+   "beatTime": 0.13
+  },
+  {
+   "text": "≈ 300 MW",
+   "stop": 4,
+   "appears": 0,
+   "beat": "facts/power",
+   "beatTime": 0.07
+  },
+  {
+   "text": "BWRX-300",
+   "stop": 4,
+   "appears": 0,
+   "beat": "facts/power",
+   "beatTime": 0.07
+  },
+  {
+   "text": "≈ 1 535 MW",
+   "stop": 4,
+   "appears": 0,
+   "beat": "facts/power",
+   "beatTime": 0.07
+  },
+  {
+   "text": "ESBWR – didelis tos pačios šeimos BWR",
+   "stop": 4,
+   "appears": 0,
+   "beat": "facts/power",
+   "beatTime": 0.07
+  },
+  {
+   "text": "Pastatų išdėstymas iliustracinis; mastelis suderintas. Galia",
+   "stop": 4,
+   "appears": 0,
+   "beat": "facts/power",
+   "beatTime": 0.07
+  },
+  {
+   "text": "Trys faktai",
+   "stop": 4,
+   "appears": 0.07,
+   "beat": "facts/power",
+   "beatTime": 0.13
+  },
+  {
+   "text": "~300",
+   "stop": 5,
+   "appears": 0,
+   "beat": "projects/world",
+   "beatTime": 0.07
+  },
+  {
+   "text": "MW",
+   "stop": 5,
+   "appears": 0,
+   "beat": "projects/world",
+   "beatTime": 0.07
+  },
+  {
+   "text": "elektros galia (neto), vienas blokas",
+   "stop": 5,
+   "appears": 0,
+   "beat": "projects/world",
+   "beatTime": 0.07
+  },
+  {
+   "text": "į tinklą",
+   "stop": 5,
+   "appears": 0,
+   "beat": "projects/world",
+   "beatTime": 0.07
+  },
+  {
+   "text": "Projektai",
+   "stop": 5,
+   "appears": 0.07,
+   "beat": "projects/world",
+   "beatTime": 0.13
+  },
+  {
+   "text": "statoma",
+   "stop": 6,
+   "appears": 0,
+   "beat": "handoff/land",
+   "beatTime": 0.07
+  },
+  {
+   "text": "išduotas statybos leidimas",
+   "stop": 6,
+   "appears": 0,
+   "beat": "handoff/land",
+   "beatTime": 0.07
+  },
+  {
+   "text": "rengiamas projektas",
+   "stop": 6,
+   "appears": 0,
+   "beat": "handoff/land",
+   "beatTime": 0.07
+  },
+  {
+   "text": "planuojama",
+   "stop": 6,
+   "appears": 0,
+   "beat": "handoff/land",
+   "beatTime": 0.07
+  },
+  {
+   "text": "vertinama",
+   "stop": 6,
+   "appears": 0,
+   "beat": "handoff/land",
+   "beatTime": 0.07
+  },
+  {
+   "text": "Šaltiniai: CNSC, US NRC, GE Vernova Hitachi, ORLEN Synthos G",
+   "stop": 6,
+   "appears": 0,
+   "beat": "handoff/land",
+   "beatTime": 0.07
+  },
+  {
+   "text": "Darlingtonas, Kanada",
+   "stop": 6,
+   "appears": 0,
+   "beat": "handoff/land",
+   "beatTime": 0.07
+  },
+  {
+   "text": "Clinch River, JAV",
+   "stop": 6,
+   "appears": 0,
+   "beat": "handoff/land",
+   "beatTime": 0.07
+  },
+  {
+   "text": "statybos leidimas išduotas 2026-09-29",
+   "stop": 6,
+   "appears": 0,
+   "beat": "handoff/land",
+   "beatTime": 0.07
+  },
+  {
+   "text": "Lenkija",
+   "stop": 6,
+   "appears": 0,
+   "beat": "handoff/land",
+   "beatTime": 0.07
+  },
+  {
+   "text": "kuriamas bendrasis BWRX-300 projektas",
+   "stop": 6,
+   "appears": 0,
+   "beat": "handoff/land",
+   "beatTime": 0.07
+  },
+  {
+   "text": "Estija",
+   "stop": 6,
+   "appears": 0,
+   "beat": "handoff/land",
+   "beatTime": 0.07
+  },
+  {
+   "text": "pasirinkta, planuojama",
+   "stop": 6,
+   "appears": 0,
+   "beat": "handoff/land",
+   "beatTime": 0.07
+  },
+  {
+   "text": "Lietuva",
+   "stop": 6,
+   "appears": 0,
+   "beat": "handoff/land",
+   "beatTime": 0.07
+  },
+  {
+   "text": "vertinama (memorandumas, 2026-02-25)",
+   "stop": 6,
+   "appears": 0,
+   "beat": "handoff/land",
+   "beatTime": 0.07
+  },
+  {
+   "text": "Dalijimasis",
+   "stop": 7,
+   "appears": 0.07,
+   "beat": "fission/chain",
+   "beatTime": 0.13
+  },
+  {
+   "text": "Schema, ne mastelis; dalijimasis išlaisvina 2–3 neutronus",
+   "stop": 7,
+   "appears": 0.73,
+   "beat": "fission/chain",
+   "beatTime": 0.8
+  },
+  {
+   "text": "Schema, ne mastelis; dalijimasis išlaisvina 2–3 neutronus",
+   "stop": 8,
+   "appears": 0,
+   "beat": "control/inFuel",
+   "beatTime": 0.07
+  },
+  {
+   "text": "Valdoma grandininė reakcija",
+   "stop": 8,
+   "appears": 0,
+   "beat": "control/inFuel",
+   "beatTime": 0.07
+  },
+  {
+   "text": "vidutiniškai vienas dalijimasis sukelia maždaug vieną kitą",
+   "stop": 8,
+   "appears": 0,
+   "beat": "control/inFuel",
+   "beatTime": 0.07
+  },
+  {
+   "text": "Valdymas",
+   "stop": 8,
+   "appears": 0.07,
+   "beat": "control/inFuel",
+   "beatTime": 0.13
+  },
+  {
+   "text": "Tai vyksta kure",
+   "stop": 9,
+   "appears": 0,
+   "beat": "energy/boil",
+   "beatTime": 0.07
+  },
+  {
+   "text": "Nuo atomo iki elektros",
+   "stop": 9,
+   "appears": 0.07,
+   "beat": "energy/boil",
+   "beatTime": 0.13
+  },
+  {
+   "text": "vanduo kyla",
+   "stop": 10,
+   "appears": 0,
+   "beat": "safety/normal",
+   "beatTime": 0.07
+  },
+  {
+   "text": "verda",
+   "stop": 10,
+   "appears": 0,
+   "beat": "safety/normal",
+   "beatTime": 0.07
+  },
+  {
+   "text": "Natūrali cirkuliacija",
+   "stop": 10,
+   "appears": 0,
+   "beat": "safety/normal",
+   "beatTime": 0.07
+  },
+  {
+   "text": "normaliai cirkuliacijai per aktyviąją zoną nereikia didelių ",
+   "stop": 10,
+   "appears": 0,
+   "beat": "safety/normal",
+   "beatTime": 0.07
+  },
+  {
+   "text": "Pasyvioji sauga",
+   "stop": 10,
+   "appears": 0.07,
+   "beat": "safety/normal",
+   "beatTime": 0.13
+  },
+  {
+   "text": "Įprastas darbas",
+   "stop": 11,
+   "appears": 0,
+   "beat": "limits/limits",
+   "beatTime": 0.07
+  },
+  {
+   "text": "Iššūkiai",
+   "stop": 11,
+   "appears": 0.07,
+   "beat": "limits/limits",
+   "beatTime": 0.13
+  },
+  {
+   "text": "LICENCIJAVIMAS",
+   "stop": 12,
+   "appears": 0,
+   "beat": "close/return",
+   "beatTime": 0.07
+  },
+  {
+   "text": "kiekviena šalis vertina atskirai",
+   "stop": 12,
+   "appears": 0,
+   "beat": "close/return",
+   "beatTime": 0.07
+  },
+  {
+   "text": "PIRMŲJŲ PROJEKTŲ RIZIKA",
+   "stop": 12,
+   "appears": 0,
+   "beat": "close/return",
+   "beatTime": 0.07
+  },
+  {
+   "text": "kaina ir terminai dar tikslinami",
+   "stop": 12,
+   "appears": 0,
+   "beat": "close/return",
+   "beatTime": 0.07
+  }
+ ],
+ "log": {
+  "console": [
+   "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+  ],
+  "errors": [],
+  "external": []
+ }
+}

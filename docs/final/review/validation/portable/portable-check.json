@@ -1,0 +1,82 @@
+{
+ "bytes": 1858247,
+ "qrUrlInHtml": true,
+ "todoInHtml": 1,
+ "readyMs": 12119,
+ "quality": null,
+ "lang": "lt",
+ "chapters": 12,
+ "landed": [
+  {
+   "chapter": 1,
+   "ok": true,
+   "presses": 0
+  },
+  {
+   "chapter": 2,
+   "ok": true,
+   "presses": 1
+  },
+  {
+   "chapter": 3,
+   "ok": true,
+   "presses": 2
+  },
+  {
+   "chapter": 4,
+   "ok": true,
+   "presses": 3
+  },
+  {
+   "chapter": 5,
+   "ok": true,
+   "presses": 4
+  },
+  {
+   "chapter": 6,
+   "ok": true,
+   "presses": 5
+  },
+  {
+   "chapter": 7,
+   "ok": true,
+   "presses": 6
+  },
+  {
+   "chapter": 8,
+   "ok": true,
+   "presses": 7
+  },
+  {
+   "chapter": 9,
+   "ok": true,
+   "presses": 8
+  },
+  {
+   "chapter": 10,
+   "ok": true,
+   "presses": 9
+  },
+  {
+   "chapter": 11,
+   "ok": true,
+   "presses": 10
+  },
+  {
+   "chapter": 12,
+   "ok": true,
+   "presses": 11
+  }
+ ],
+ "external": [],
+ "log": {
+  "console": [
+   "[warn] THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+  ],
+  "errors": [],
+  "requests": [
+   "file:///C:/Users/user/Desktop/viesoji_komunikacija/dist-portable/BWRX300/BWRX300.html?debug",
+   "data:font/woff2;base64,d09GMgA"
+  ]
+ }
+}

@@ -1,0 +1,12 @@
+c02: 211 frames, frames with any flashing pixel 40, most pixels 370 px (f135, densest tile 5%), densest tile 5% at f135 (370 px), solid pops (> 200 px and a tile >= 50 %): 0
+c03: 241 frames, frames with any flashing pixel 68, most pixels 4990 px (f38, densest tile 18%), densest tile 27% at f43 (4189 px), solid pops (> 200 px and a tile >= 50 %): 0
+c04: 181 frames, frames with any flashing pixel 35, most pixels 642 px (f102, densest tile 8%), densest tile 8% at f102 (642 px), solid pops (> 200 px and a tile >= 50 %): 0
+c05: 181 frames, frames with any flashing pixel 74, most pixels 94 px (f20, densest tile 2%), densest tile 2% at f20 (94 px), solid pops (> 200 px and a tile >= 50 %): 0
+c06: 601 frames, frames with any flashing pixel 131, most pixels 3265 px (f26, densest tile 15%), densest tile 15% at f26 (3265 px), solid pops (> 200 px and a tile >= 50 %): 0
+c07: 151 frames, frames with any flashing pixel 30, most pixels 2343 px (f50, densest tile 16%), densest tile 16% at f50 (2343 px), solid pops (> 200 px and a tile >= 50 %): 0
+c08: 151 frames, frames with any flashing pixel 33, most pixels 3885 px (f29, densest tile 14%), densest tile 18% at f28 (3408 px), solid pops (> 200 px and a tile >= 50 %): 0
+c09: 151 frames, frames with any flashing pixel 35, most pixels 472 px (f71, densest tile 5%), densest tile 6% at f72 (409 px), solid pops (> 200 px and a tile >= 50 %): 0
+c10: 181 frames, frames with any flashing pixel 79, most pixels 1682 px (f37, densest tile 4%), densest tile 5% at f38 (1601 px), solid pops (> 200 px and a tile >= 50 %): 0
+c11: 181 frames, frames with any flashing pixel 44, most pixels 175 px (f40, densest tile 3%), densest tile 3% at f40 (175 px), solid pops (> 200 px and a tile >= 50 %): 0
+c12: 241 frames, frames with any flashing pixel 1, most pixels 3 px (f92, densest tile 0%), densest tile 0% at f92 (3 px), solid pops (> 200 px and a tile >= 50 %): 0
+frames over 200 flashing px: 0
