@@ -1,11 +1,12 @@
 /**
  * Presentation v1 debug panel (`?presentationDebug`, or T in dev / with `?debug`): the presenter
- * chapter list with the press counter (chapter k / 12: one presenter stop per chapter; click one to
- * settle on it, shift-click to play it), the beats inside the current chapter, step, inspect, copy the camera pose. Never part of the
+ * stop list with the press counter (stop k / 23, chapter c / 12; click one to settle on it,
+ * shift-click to play it), the beats inside the current stop, step, inspect, copy the camera pose. Never part of the
  * audience view: it only exists with those flags.
  */
 import { useEffect, useState } from 'react';
 import { cameraDirector } from '../../camera/cameraDirector';
+import { CHAPTERS } from '../chapters';
 import { beatTime } from '../runtime';
 import { stopOutline, talk, TALK_BEATS, TALK_STOPS, useTalkStore } from '../talk';
 import { cues, world } from '../world';
@@ -45,7 +46,7 @@ export function TalkDebug() {
         </button>
       </div>
       <div className="talk-debug__state">
-        chapter {beat.stop + 1} / {TALK_STOPS.length} · presses {presses} · {beat.chapter.id} / {beat.beat.id}
+        stop {beat.stop + 1} / {TALK_STOPS.length} · chapter {beat.chapterIndex + 1} / {CHAPTERS.length} · presses {presses} · {beat.chapter.id} / {beat.beat.id}
         {beat.auto ? ' (auto)' : ''} · {mode} · t {beatTime().toFixed(1)} s{talk.locked ? ' · locked' : ''}
         <br />
         <span className="talk-debug__note">{beat.beat.note}</span>

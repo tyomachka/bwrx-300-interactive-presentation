@@ -1,14 +1,15 @@
 /**
  * Presentation v1: the ~7-minute talk, chapter by chapter (the script the controller plays).
  *
- * Final stage: ONE presenter stop per chapter, 12 chapters, 11 presses from the opening to the
- * questions. A press means "the spoken idea changes": it enters the chapter, whose internal beats
- * (`after`) then play by themselves, timed to the final Lithuanian narration
- * (docs/final/FINAL_SPEECH_LT.md, cue sheet docs/final/PRESENTER_CUES_LT.md), and the chapter holds on
- * its final state indefinitely, physical processes still running (flow, steam, turbine, the passive
- * loop, the chain reaction). The rhythm is change -> settle -> the presenter speaks over a living
- * hold -> the next change. Target times are speaking guides, never timers; a press after the short
- * guard goes straight to the next chapter. Information effects (count-ups, pins, the 0 h -> 7 days
+ * 12 chapters, 23 presenter stops, 22 presses from the opening to the questions. A press means "the
+ * spoken idea changes": it enters a stop, whose following beats (`after`) then play by themselves,
+ * timed to the final Lithuanian narration (docs/final/FINAL_SPEECH_LT.md, cue sheet
+ * docs/final/PRESENTER_CUES_LT.md), and the stop holds on its final state indefinitely, physical
+ * processes still running (flow, steam, turbine, the passive loop, the chain reaction). Chapters 2-5,
+ * 9 and 10 hold on each of their pictures in turn (one stop per picture, a press at the sentence that
+ * moves on); the others are one stop each. The rhythm is change -> settle -> the presenter speaks over
+ * a living hold -> the next change. Target times are speaking guides, never timers; a press after the
+ * short guard goes straight to the next stop. Information effects (count-ups, pins, the 0 h -> 7 days
  * counter) run once.
  *
  * Text follows the picture: a beat's new text fades in once its subject reads (`textAt`, or the
@@ -178,7 +179,7 @@ const clearedAfter = (delay: number) => Object.fromEntries(Object.keys(COMPARISO
 
 const ZOOM_EASE = 'power2.inOut';
 
-/** The guard against an accidental double press (s): after it, a press goes straight to the next chapter. */
+/** The guard against an accidental double press (s): after it, a press goes straight to the next stop. */
 const GUARD = 1.2;
 
 // ---- Chapters ---------------------------------------------------------------------------------------------
@@ -244,8 +245,7 @@ export const CHAPTERS: readonly TalkChapter[] = [
       },
       {
         id: 'calm',
-        after: 14.0,
-        note: 'A calm night: the turbines slow, the sun sets, local flows fade, imports grow; a controllable node lights up. "And when there is no wind or sun?"',
+        note: 'Press 2. A calm night: the turbines slow, the sun sets, local flows fade, imports grow; a controllable node lights up. "And when there is no wind or sun?"',
         camera: { keys: [{ at: 3.2, pose: P.ltCalm }] },
         world: { 'lt.wind': 0.06, 'lt.sun': 0, 'lt.imports': 1, 'lt.node': 1 },
         worldTiming: { 'lt.wind': { duration: 2.6 }, 'lt.sun': { duration: 2.2 }, 'lt.imports': { delay: 1.0, duration: 2.0 }, 'lt.node': { delay: 2.6, duration: 1.0 } },
@@ -256,11 +256,11 @@ export const CHAPTERS: readonly TalkChapter[] = [
           { kind: 'caption', id: 'lt-calm', text: 'lt.calm', sub: 'lt.calmSub', position: 'left', y: 356 },
           { kind: 'label', id: 'lt-imports', text: 'lt.imports', at: ltToWorld(18.8, 56.13, 4), leader: [0, -44], tone: 'power', cue: 'importsLabel' },
         ],
+        lock: GUARD,
       },
       {
         id: 'assessment',
-        after: 8.5,
-        note: 'Lithuania warms up: the country is assessing the BWRX-300 (memorandum, 25 February 2026). Holds on a clean Lithuania view.',
+        note: 'Press 3. Lithuania warms up: the country is assessing the BWRX-300 (memorandum, 25 February 2026). Holds on a clean Lithuania view.',
         camera: { keys: [{ at: 2.6, pose: P.ltMou }] },
         world: { 'lt.highlight': 1, 'lt.wind': 0.5, 'lt.sun': 0.35, 'lt.imports': 0.4 },
         textAt: 1.2,
@@ -268,6 +268,7 @@ export const CHAPTERS: readonly TalkChapter[] = [
           { kind: 'scrim', id: 'scrim-lt', side: 'left' },
           { kind: 'caption', id: 'lt-mou', text: 'lt.mou', sub: 'lt.mouSub', source: 'lt.mouNote', position: 'left', y: 356 },
         ],
+        lock: GUARD,
       },
     ],
   },
@@ -282,7 +283,7 @@ export const CHAPTERS: readonly TalkChapter[] = [
     beats: [
       {
         id: 'units',
-        note: 'Press 2. Down into the node: the plant grows back as the map closes, the camera settling square on, far away, one baseline. "≈ 300 MW" over our plant; then, at the same scale, the large ESBWR-class plant is built up beside it ("≈ 1 535 MW").',
+        note: 'Press 4. Down into the node: the plant grows back as the map closes, the camera settling square on, far away, one baseline. "≈ 300 MW" over our plant; then, at the same scale, the large ESBWR-class plant is built up beside it ("≈ 1 535 MW").',
         camera: { keys: [{ at: 1.6, pose: P.ltDive }, { at: 5.6, pose: P.scaleCompare }], drift: 0.5 },
         world: {
           'p.zoom': 0,
@@ -318,8 +319,7 @@ export const CHAPTERS: readonly TalkChapter[] = [
       },
       {
         id: 'modules',
-        after: 17.0,
-        note: 'The large unit steps back; four more BWRX-300 units are built one after another behind ours: 5 x 300 MW, a similar total output (not a one-to-one substitute).',
+        note: 'Press 5. The large unit steps back; four more BWRX-300 units are built one after another behind ours: 5 x 300 MW, a similar total output (not a one-to-one substitute).',
         camera: { keys: [{ at: 4, pose: P.scaleModules }], drift: 0.7 },
         world: { 'k.modules': 4, 'k.largeDim': 1 },
         worldTiming: { 'k.modules': { delay: 1.0, duration: 6.5, ease: 'none' }, 'k.largeDim': { duration: 1.6 } },
@@ -330,11 +330,11 @@ export const CHAPTERS: readonly TalkChapter[] = [
           { kind: 'label', id: 'scale-modules', text: 'scale.modules', at: [0, 32, -336], leader: [48, -40], size: 'value', cue: 'modulesLabel' },
           { kind: 'note', id: 'scale-note', text: 'scale.note' },
         ],
+        lock: GUARD,
       },
       {
         id: 'vessels',
-        after: 10.0,
-        note: 'Back square on the two plants: the copies dissolve, the large unit returns solid; the two reactor vessels stand as amber outlines in front of their reactor buildings at the same scale (as tall, far wider), with the sourced vessel diagram: "Similar height. Width, fuel, output and system scale differ." Holds.',
+        note: 'Press 6. Back square on the two plants: the copies dissolve, the large unit returns solid; the two reactor vessels stand as amber outlines in front of their reactor buildings at the same scale (as tall, far wider), with the sourced vessel diagram: "Similar height. Width, fuel, output and system scale differ." Holds.',
         camera: { keys: [{ at: 3.4, pose: P.scaleVessels }], drift: 0.5 },
         world: { 'k.modulesFade': 1, 'k.largeDim': 0, 'k.vessels': 1 },
         worldTiming: { 'k.modulesFade': { duration: 1.2 }, 'k.largeDim': { delay: 0.6, duration: 1.4 }, 'k.vessels': { delay: 1.6, duration: 1.6 } },
@@ -347,6 +347,7 @@ export const CHAPTERS: readonly TalkChapter[] = [
           { kind: 'scrim', id: 'scrim-vessels', side: 'right', cue: 'vessels' },
           { kind: 'vessels', id: 'scale-vessels', position: 'bottom-right', cue: 'vessels' },
         ],
+        lock: GUARD,
       },
     ],
   },
@@ -361,7 +362,7 @@ export const CHAPTERS: readonly TalkChapter[] = [
     beats: [
       {
         id: 'power',
-        note: 'Press 3. The comparison dissolves where it stands; one unit remains, its hall lit, its line carrying power out. "~300 MW" counts up beside the line it leaves by.',
+        note: 'Press 7. The comparison dissolves where it stands; one unit remains, its hall lit, its line carrying power out. "~300 MW" counts up beside the line it leaves by.',
         camera: { keys: [{ at: 3.4, pose: P.factsPower }], drift: 1 },
         world: { ...COMPARISON_CLEARED, 'k.fade': 1, 'g.show': 1, 'g.power': 1, 'g.city': 1, 'e.fogNear': FOG.near, 'e.fogFar': FOG.far },
         worldTiming: {
@@ -381,8 +382,7 @@ export const CHAPTERS: readonly TalkChapter[] = [
       },
       {
         id: 'footprint',
-        after: 7.0,
-        note: 'From above, at one ground scale: the power block\'s 9,800 m2 as an area-equivalent rectangle with the pitch\'s width (dashed amber, then filled) around our plant; beside it a 105 x 68 m pitch in a schematic stadium (UEFA category 4: the Vilnius National Stadium is a category 4 project). "≈ 1.4 football pitches of area" with its source.',
+        note: 'Press 8. From above, at one ground scale: the power block\'s 9,800 m2 as an area-equivalent rectangle with the pitch\'s width (dashed amber, then filled) around our plant; beside it a 105 x 68 m pitch in a schematic stadium (UEFA category 4: the Vilnius National Stadium is a category 4 project). "≈ 1.4 football pitches of area" with its source.',
         camera: { keys: [{ at: 3.4, pose: P.footprint }], drift: 0.6 },
         world: { 'q.block': 1, 'q.stadium': 1, 'g.show': 0, 'g.power': 0, 'g.city': 0 },
         worldTiming: { 'q.block': { delay: 1.4, duration: 2.2 }, 'q.stadium': { delay: 2.4, duration: 1.6 }, 'g.show': { delay: 1.0 }, 'g.power': { duration: 0.6 } },
@@ -393,11 +393,11 @@ export const CHAPTERS: readonly TalkChapter[] = [
           { kind: 'scrim', id: 'scrim-footprint', side: 'bottom-left', cue: 'footprint' },
           { kind: 'stat', id: 'facts-footprint', value: 'facts.footprint', unit: 'facts.footprintUnit', caption: 'facts.footprintCaption', source: 'facts.footprintNote', position: 'bottom-left', cue: 'footprint' },
         ],
+        lock: GUARD,
       },
       {
         id: 'months',
-        after: 18.0,
-        note: 'A second, identical unit is built beside ours while a 0-36 month timeline fills; the 24-36 band lights and "24-36 months*" lands with its qualifier (vendor target for later units, first nuclear concrete to ready for fuel load, not the whole licensing and project time). Illustrative: one unit\'s construction window.',
+        note: 'Press 9. A second, identical unit is built beside ours while a 0-36 month timeline fills; the 24-36 band lights and "24-36 months*" lands with its qualifier (vendor target for later units, first nuclear concrete to ready for fuel load, not the whole licensing and project time). Illustrative: one unit\'s construction window.',
         camera: { keys: [{ at: 3.2, pose: P.factsMonths }], drift: 1 },
         world: { 'q.block': 0, 'q.stadium': 0, 'k.show': 1, 'k.fade': 0, 'k.modules': 1, 'k.large': 0, 'k.largeDim': 0 },
         worldTiming: { 'q.block': { duration: 1.0 }, 'q.stadium': { duration: 1.0 }, 'k.show': { duration: 0 }, 'k.fade': { duration: 0 }, 'k.modules': { delay: 0.9, duration: 4.0, ease: 'none' } },
@@ -408,6 +408,7 @@ export const CHAPTERS: readonly TalkChapter[] = [
           { kind: 'label', id: 'facts-series', text: 'facts.seriesUnit', at: [0, 32, -84], leader: [36, -44], tone: 'neutral', cue: 'buildIn' },
           { kind: 'timeline', id: 'facts-timeline', progress: 'build', position: 'bottom-left', cue: 'buildIn' },
         ],
+        lock: GUARD,
       },
     ],
   },
@@ -422,7 +423,7 @@ export const CHAPTERS: readonly TalkChapter[] = [
     beats: [
       {
         id: 'world',
-        note: 'Press 4. The second unit dissolves; up into geography: the plant becomes the Darlington pin as the North Atlantic opens. Each pin appears, styled by status, as it is named: Darlington (under construction), Clinch River (construction permit 2026-09-29), Poland (generic design), Estonia (selected, planned), Lithuania (assessing).',
+        note: 'Press 10. The second unit dissolves; up into geography: the plant becomes the Darlington pin as the North Atlantic opens. Each pin appears, styled by status, as it is named: Darlington (under construction), Clinch River (construction permit 2026-09-29), Poland (generic design), Estonia (selected, planned), Lithuania (assessing).',
         camera: { keys: [{ at: 1.7, pose: P.worldRise }, { at: 4.4, pose: P.worldWide }], drift: 1 },
         world: { ...COMPARISON_CLEARED, 'k.fade': 1, 'p.zoom': POINT, 'm.world': 1, 'g.show': 0, 'g.power': 0, 'g.city': 0 },
         worldTiming: {
@@ -462,8 +463,7 @@ export const CHAPTERS: readonly TalkChapter[] = [
       },
       {
         id: 'darlington',
-        after: 21.5,
-        note: '"Real projects, but series construction still has to prove itself": the camera glides to Canada: Darlington, under construction (CNSC licence 4 April 2025); the other pins step back. Holds.',
+        note: 'Press 11. "Real projects, but series construction still has to prove itself": the camera glides to Canada: Darlington, under construction (CNSC licence 4 April 2025); the other pins step back. Holds.',
         camera: { keys: [{ at: 3.4, pose: P.worldDarlington }], drift: 0.8 },
         world: { 'w.focus': 1 },
         // Darlington's tag fades and returns with its licence date once the camera has arrived (never swapped in place).
@@ -475,6 +475,7 @@ export const CHAPTERS: readonly TalkChapter[] = [
           { kind: 'label', id: 'pin-darlington-licence', text: 'projects.darlington', sub: 'projects.darlingtonSub', source: 'projects.darlingtonNote', at: pinPosition('darlington', 9), leader: [-34, -46], tone: 'amber', panel: true, cue: 'darlingtonIn' },
         ],
         lightScene: true,
+        lock: GUARD,
       },
     ],
   },
@@ -490,7 +491,7 @@ export const CHAPTERS: readonly TalkChapter[] = [
     beats: [
       {
         id: 'land',
-        note: 'Press 5. Into the Darlington pin: the plant grows out of it as the map closes, the camera arriving on the approved descent where it starts to push in; a short living hold on the exterior ("what happens inside?").',
+        note: 'Press 12. Into the Darlington pin: the plant grows out of it as the map closes, the camera arriving on the approved descent where it starts to push in; a short living hold on the exterior ("what happens inside?").',
         camera: { keys: [{ at: 1.4, pose: P.worldDive }, { at: 3.6, pose: 'stage3ExteriorPush' }], drift: 0.4 },
         reveal: { to: CLOSED },
         look: { subjects: {}, ghosts: {}, contextDim: 0, interior: [] },
@@ -521,7 +522,7 @@ export const CHAPTERS: readonly TalkChapter[] = [
     beats: [
       {
         id: 'chain',
-        note: 'Press 6. From a spot on the fuel the micro view opens, paced to the narration: neutron -> U-235 (absorbed ~5 s) -> split (~7 s) -> heat, three neutrons (one absorbed) -> two fissions (~12 s) -> three (~17 s) -> the view widens into a steady field of fissions in the fuel, held indefinitely (no restart); "controlled chain reaction" at ~27 s.',
+        note: 'Press 13. From a spot on the fuel the micro view opens, paced to the narration: neutron -> U-235 (absorbed ~5 s) -> split (~7 s) -> heat, three neutrons (one absorbed) -> two fissions (~12 s) -> three (~17 s) -> the view widens into a steady field of fissions in the fuel, held indefinitely (no restart); "controlled chain reaction" at ~27 s.',
         camera: { keys: [{ at: 1.2, pose: 'masterCoreHold' }], drift: 0.25 },
         reveal: { to: CORE_OPEN },
         // The bright core recedes while the micro view opens (luminance ramps, it does not cut).
@@ -549,7 +550,7 @@ export const CHAPTERS: readonly TalkChapter[] = [
     beats: [
       {
         id: 'inFuel',
-        note: 'Press 7. The micro view collapses into the fuel spot as warmth (this happens in the fuel); then out to the control blades, one illustrative insert / withdraw cycle timed to the two sentences, and a hold with both statements.',
+        note: 'Press 14. The micro view collapses into the fuel spot as warmth (this happens in the fuel); then out to the control blades, one illustrative insert / withdraw cycle timed to the two sentences, and a hold with both statements.',
         world: { 'x.open': 0, 'x.spot': 1 },
         worldTiming: { 'x.open': { duration: 2.0, ease: 'none' }, 'x.spot': { delay: 1.0, duration: 0.7 } },
         cues: { inFuel: { delay: 1.5, duration: 0.5 } },
@@ -617,7 +618,7 @@ export const CHAPTERS: readonly TalkChapter[] = [
     beats: [
       {
         id: 'boil',
-        note: 'Press 8. The control demo settles; water rises through the core and boils; the mixture rises through the chimney; cooler water returns down the sides: "Natural circulation" (no large recirculation pumps for normal flow).',
+        note: 'Press 15. The control demo settles; water rises through the core and boils; the mixture rises through the chimney; cooler water returns down the sides: "Natural circulation" (no large recirculation pumps for normal flow).',
         camera: { keys: [{ at: 3.0, pose: 'masterArchitecture' }], drift: 0.5 },
         reveal: { to: { bladeEmphasis: 0 }, timing: { duration: 0.8 } },
         look: { subjects: { [C.core]: 1, [C.chimney]: 1 }, ghosts: {}, contextDim: 0.55, interior: [] },
@@ -634,8 +635,7 @@ export const CHAPTERS: readonly TalkChapter[] = [
       },
       {
         id: 'steam',
-        after: 17.0,
-        note: 'Separators throw the water out, the dryer catches the last drops: dry steam leaves the vessel.',
+        note: 'Press 16. Separators throw the water out, the dryer catches the last drops: dry steam leaves the vessel.',
         camera: { keys: [{ at: 2.4, pose: 'masterSeparators' }, { at: 5.0, pose: 'masterSteamExit' }], drift: 0.5 },
         look: { subjects: { [C.steamSeparators]: 1, [C.steamDryer]: 1, [C.mainSteamNozzle]: 0.8 }, contextDim: 0.55, interior: ['steamPath'] },
         world: { 'f.separatorWater': 1, 'f.separatorSteam': 1, 'f.drySteam': 1, 'f.steamOutlet': 1, 'f.coreWater': 0.7 },
@@ -645,11 +645,11 @@ export const CHAPTERS: readonly TalkChapter[] = [
           { kind: 'label', id: 'energy-separators', text: 'energy.separators', at: [-1.2, -6.6, 1.2], leader: [-80, 0], tone: 'steam', cue: 'sepLabel' },
           { kind: 'label', id: 'energy-dryer', text: 'energy.dryer', at: [-0.9, -3.6, 0.9], leader: [-80, 0], tone: 'steam', cue: 'dryLabel' },
         ],
+        lock: GUARD,
       },
       {
         id: 'turbine',
-        after: 5.5,
-        note: 'Steam runs along the main steam line straight to the turbine; the shaft starts turning (it drives the generator).',
+        note: 'Press 17. Steam runs along the main steam line straight to the turbine; the shaft starts turning (it drives the generator).',
         camera: { keys: [{ at: 2.6, pose: 'masterSteamLine' }, { at: 5.2, pose: 'masterTurbine' }], drift: 0.6 },
         reveal: { to: { exteriorDim: 0.25 }, timing: { delay: 1.2, duration: 2.0 } },
         look: { subjects: { [C.mainSteamPath]: 1, [C.turbine]: 1 }, ghosts: { [C.turbineBuilding]: 1 }, contextDim: 0, interior: ['steamPath'] },
@@ -657,11 +657,12 @@ export const CHAPTERS: readonly TalkChapter[] = [
         worldTiming: { 'f.mainSteam': { delay: 0.6, duration: 0.6 }, 'f.turbine': { delay: 3.4, duration: 0.8 }, 'f.shaft': { delay: 3.8, duration: 2.0 } },
         cues: { steam: { delay: 0.6, duration: 3.4 }, turbine: { delay: 3.6, duration: 3.0 }, turbineLabel: { delay: 3.8, duration: 0.6 } },
         overlay: [{ kind: 'label', id: 'energy-turbine', text: 'energy.turbine', at: [56, 19, 0], leader: [0, -64], tone: 'steam', cue: 'turbineLabel' }],
+        lock: GUARD,
       },
       {
         id: 'condenser',
         after: 6.0,
-        note: 'Under the turbine the condenser turns exhaust steam back into water; pumps send it back to the reactor. The water cycle closes.',
+        note: 'Under the turbine the condenser turns exhaust steam back into water; pumps send it back to the reactor. The water cycle closes. Holds.',
         camera: { keys: [{ at: 2.6, pose: P.condenser }, { at: 5.6, pose: P.cycleWide }], drift: 0.6 },
         look: { subjects: { [C.turbine]: 0.5 }, ghosts: { [C.turbineBuilding]: 1 }, contextDim: 0, interior: ['steamPath', 'turbineHall'] },
         world: { 'y.show': 1, 'y.exhaust': 1, 'y.feedwater': 1 },
@@ -674,8 +675,7 @@ export const CHAPTERS: readonly TalkChapter[] = [
       },
       {
         id: 'grid',
-        after: 7.0,
-        note: '"The reaction makes heat, not electricity": the generator sends electricity out of the hall, through the transformer, along the line: the city lights up (scale illustration), "≈ 300,000 homes*" with the vendor qualifier. Holds on the city.',
+        note: 'Press 18. "The reaction makes heat, not electricity": the generator sends electricity out of the hall, through the transformer, along the line: the city lights up (scale illustration), "≈ 300,000 homes*" with the vendor qualifier. Holds on the city.',
         camera: { keys: [{ at: 2.0, pose: 'masterGenerator' }, { at: 4.0, pose: P.gridMid }, { at: 6.8, pose: P.grid }], drift: 0.8 },
         look: { subjects: { [C.generator]: 1 }, ghosts: { [C.turbineBuilding]: 1 }, contextDim: 0, interior: ['steamPath', 'turbineHall'] },
         world: { 'f.electricity': 1, 'f.generator': 1, 'g.show': 1, 'g.power': 1, 'g.city': 1, 'e.fogNear': 900, 'e.fogFar': 1500 },
@@ -691,6 +691,7 @@ export const CHAPTERS: readonly TalkChapter[] = [
           { kind: 'label', id: 'energy-generator', text: 'energy.generator', at: [80, 17.2, 0], leader: [0, -56], tone: 'power', cue: 'genLabel', out: 'grid' },
           { kind: 'stat', id: 'energy-homes', value: 'energy.homes', unit: 'energy.homesCaption', source: 'energy.homesNote', count: { cue: 'homes', to: 300000, group: true }, position: 'top-right', y: 250, cue: 'homesIn' },
         ],
+        lock: GUARD,
       },
     ],
   },
@@ -705,7 +706,7 @@ export const CHAPTERS: readonly TalkChapter[] = [
     beats: [
       {
         id: 'normal',
-        note: 'Press 9. Back from the city to the plant, still running ("normal operation"); then external power is lost, the reactor is shut down, the heat remains; the passive loop; 0 h -> 7 days*; holds.',
+        note: 'Press 19. Back from the city to the plant, still running ("normal operation"); then external power is lost, the reactor is shut down, the heat remains (holds there).',
         camera: { keys: [{ at: 4.0, pose: P.overview }], drift: 0.6 },
         reveal: { to: { ...CORE_OPEN, exteriorDim: 0.6, poolsReveal: 1 }, timing: { delay: 0.5, duration: 2.0 } },
         look: { subjects: {}, ghosts: { [C.turbineBuilding]: 1 }, contextDim: 0, interior: ['steamPath', 'turbineHall'] },
@@ -783,8 +784,7 @@ export const CHAPTERS: readonly TalkChapter[] = [
       },
       {
         id: 'ics',
-        after: 6.2,
-        note: 'The isolation-condenser loop (three independent trains): steam rises to the submerged condensers, heat goes into the pool, water returns by gravity. No pump.',
+        note: 'Press 20. The isolation-condenser loop (three independent trains): steam rises to the submerged condensers, heat goes into the pool, water returns by gravity. No pump.',
         camera: { keys: [{ at: 1.4, pose: 'masterSafetyRise' }, { at: 4.2, pose: P.icsLoop }], drift: 0.6 },
         reveal: { to: { vesselCut: 0, rpvEmphasis: 1, poolsReveal: 1 }, tracks: { vesselCut: { delay: 0.6, duration: 1.4 }, rpvEmphasis: { delay: 1.0, duration: 1.6 } } },
         look: { subjects: { [C.icsPools]: 1.6 }, contextDim: 0.5 },
@@ -800,6 +800,7 @@ export const CHAPTERS: readonly TalkChapter[] = [
           { kind: 'label', id: 'loop-pool', text: 'safety.pool', at: ICS_EAST.condenser, leader: [-60, -64], tone: 'copper', cue: 'icsLabels' },
           { kind: 'label', id: 'loop-back', text: 'safety.waterBack', at: ICS_EAST.back, leader: [70, 40], tone: 'cool', cue: 'icsLabels' },
         ],
+        lock: GUARD,
       },
       {
         id: 'days',
@@ -827,7 +828,7 @@ export const CHAPTERS: readonly TalkChapter[] = [
     beats: [
       {
         id: 'limits',
-        note: 'Press 10. The rhythm slows: wide over the plant, calmly lit again. Three honest limits, each tied to a place as it is named: spent fuel in casks beside the reactor; licensing, layered approvals on the reactor building; first-of-a-kind risk, a schedule with an uncertain end, on the site.',
+        note: 'Press 21. The rhythm slows: wide over the plant, calmly lit again. Three honest limits, each tied to a place as it is named: spent fuel in casks beside the reactor; licensing, layered approvals on the reactor building; first-of-a-kind risk, a schedule with an uncertain end, on the site.',
         camera: { keys: [{ at: 4.2, pose: P.limits }], drift: 0.8 },
         reveal: { to: { exteriorDim: 0.15 }, timing: { delay: 0.6, duration: 2.4 } },
         world: { 's.icsSteam': 0.6, 's.icsCondensing': 0.6, 's.icsCondensate': 0.6, 's.poolHeat': 0.6, 'p.lights': 1, 'l.casks': 1 },
@@ -853,7 +854,7 @@ export const CHAPTERS: readonly TalkChapter[] = [
     beats: [
       {
         id: 'return',
-        note: 'Press 11 (the last). The limits text clears; vessel, containment, shaft and ground close while the camera glides through open space back to the opening view; the grid reconnects; then the thesis, the presenters, the larger QR; "Your questions" in amber. Holds for Q&A.',
+        note: 'Press 22 (the last). The limits text clears; vessel, containment, shaft and ground close while the camera glides through open space back to the opening view; the grid reconnects; then the thesis, the presenters, the larger QR; "Your questions" in amber. Holds for Q&A.',
         camera: { keys: [{ at: 5.6, pose: P.hook }], drift: 0.7 },
         reveal: {
           to: CLOSED,
